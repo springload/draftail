@@ -1,0 +1,70 @@
+{
+  "name": "draftail",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "keywords": [
+    "draftjs",
+    "draft.js",
+    "draft",
+    "draft-js",
+    "editor",
+    "wysiwyg",
+    "rich text",
+    "rte",
+    "react",
+    "react.js"
+  ],
+  "author": "Springload",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/springload/draftail.git"
+  },
+  "bugs": {
+    "url": "https://github.com/springload/draftail/issues"
+  },
+  "homepage": "https://github.com/springload/draftail#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "draft-js": "^0.9.1",
+    "draftjs-utils": "^0.3.2",
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.6.0",
+    "express": "^4.14.0",
+    "immutable": "^3.8.1",
+    "jest": "^17.0.0",
+    "node-sass": "^3.11.2",
+    "progress-bar-webpack-plugin": "^1.9.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "webpack": "^1.13.3",
+    "webpack-dev-middleware": "^1.8.4",
+    "webpack-hot-middleware": "^2.13.2"
+  },
+  "peerDependencies": {
+    "draft-js": "^0.9.x",
+    "draftjs-utils": "^0.3.2",
+    "immutable": "^3.x.x",
+    "react": "^15.x.x",
+    "react-dom": "^15.x.x"
+  },
+  "scripts": {
+    "start": "npm run server -s",
+    "server": "nodemon server/index.js",
+    "css": "node-sass lib/index.scss docs/index.css",
+    "dist": "babel -d dist lib",
+    "lint": "eslint .",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  }
+}

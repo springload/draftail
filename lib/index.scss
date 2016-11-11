@@ -1,0 +1,242 @@
+$controls-padding: .5rem;
+$button-padding: .25rem;
+
+.json-text__controls {
+    border: solid 1px #eee;
+    border-radius: 3px;
+    padding: $controls-padding;
+}
+
+.json-text--readonly {
+    opacity: .5;
+
+}
+
+.RichEditor-styleButton {
+    padding: $button-padding $controls-padding;
+    background: #eee;
+    display: inline-block;
+    border-radius: 0;
+    margin-right: 4px;
+    margin-right: $button-padding;
+    cursor: pointer;
+}
+
+
+.RichEditor-tooltip__button {
+    appearance: none;
+    background: #808080;
+    color: #fff;
+    padding: $button-padding $controls-padding;
+    border: 0;
+    border-radius: 1px;
+
+    + .RichEditor-tooltip__button {
+        margin-left: $button-padding;
+    }
+}
+
+.RichEditor-activeButton {
+    background: #666;
+    color: #fff;
+}
+
+
+.RichEditor-controls {
+    margin-bottom: $controls-padding;
+    display: inline-block;
+}
+
+
+.RichEditor-link {
+    background: #eef8ff;
+    border-bottom: dotted 1px #43b1b0;
+    cursor: pointer;
+
+    &:before {
+        color: #43b1b0;
+    }
+}
+
+
+.Modal {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Modal-content {
+    background: #fff;
+    max-width: 500px;
+}
+
+.Modal-header {
+    padding: 1em;
+}
+
+.Modal-header-tab {
+    padding-bottom: 0;
+}
+
+.Modal-body {
+    padding: 1em;
+}
+
+.Modal-actions {
+    padding-top: 1rem;
+}
+
+
+@import 'draft.elements';
+
+
+.public-DraftEditor-content {
+    font-size: 15px;
+    line-height: 1.5;
+    font-family: sans-serif;
+}
+
+
+.RichEditor-media {
+    outline: dotted 1px #dadada;
+    position: relative;
+}
+
+.RichEditor-media:hover,
+.RichEditor-media--open {
+    outline: dotted 1px #43b1b0;
+
+    .RichEditor-media-container {
+        cursor: pointer;
+    }
+}
+
+.RichEditor-grid {
+    margin-left: -2rem;
+}
+
+.RichEditor-grid:after {
+    display: table;
+    content: '';
+    clear: both;
+}
+
+.RichEditor-col {
+    width: 50%;
+    float: left;
+    padding-left: 2rem;
+    box-sizing: border-box;
+}
+
+.RichEditor-media--open {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+.RichEditor-media img {
+    max-width: 100%;
+}
+
+.RichEditor-media-icon {
+    position: absolute;
+    top: $controls-padding;
+    left: $controls-padding;
+    background: rgba(255, 255, 255, 0.9);
+    line-height: 1;
+    padding-left: $button-padding;
+    padding-bottom: .125rem;
+    pointer-events: none;
+}
+
+.RichEditor-media-preview {
+    max-width: 260px;
+    display: inline-block;
+    user-select: none;
+}
+
+.RichEditor-media-options {
+    background: #f3f3f3;
+    border-top: solid 1px #e2e2e2;
+    font-size: 13px;
+    font-family: Open Sans, sans-serif;
+    padding: 1rem;
+
+    h3,
+    h4 {
+        margin-top: 0;
+    }
+
+    label {
+        // color: #fff;
+        width: auto;
+        padding: 0;
+        display: inline-block;
+        float: none;
+        margin-right: 1rem;
+        cursor: pointer;
+    }
+
+    input[type=radio]:before,
+    input[type=radio]:after {
+        display: none;
+    }
+
+    input[type=radio] {
+        margin-right: 8px;
+    }
+
+    input[type=text] {
+        font-size: 14px;
+    }
+}
+
+.RichEditor-tooltip {
+    position: absolute;
+    padding: .375rem $controls-padding;
+    margin-top: $controls-padding;
+    background-color: #333;
+    color: #fff;
+    z-index: 1;
+
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 1rem;
+        border: solid transparent 5px;
+        border-bottom-color: #000;
+    }
+}
+
+.RichEditor-tooltip__text,
+.RichEditor-tooltip__link {
+    color: #ddd;
+    margin-right: $controls-padding;
+    display: inline-block;
+}
+
+.RichEditor-tooltip__link {
+    &:hover {
+        color: #fff;
+    }
+}
+
+.RichEditor-tooltip__link:last-child {
+    margin-right: 0;
+}
+
+
+.RichEditor-horizontal-rule {
+    border-top: solid 1px #eee;
+}
+
+.u-block {
+    display: block !important;
+}
