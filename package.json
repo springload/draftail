@@ -1,7 +1,7 @@
 {
   "name": "draftail",
   "version": "0.1.0",
-  "description": "",
+  "description": "A batteries-excluded rich text editor based on Draft.js",
   "main": "dist/index.js",
   "keywords": [
     "draftjs",

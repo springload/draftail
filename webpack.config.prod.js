@@ -5,9 +5,9 @@ const webpack = require('webpack');
 const config = require('./webpack.config.dev');
 
 // Lose the webpack middleware
-config.entry.shift();
+delete config.entry.hmr;
 config.watch = false;
-config.devtool = '';
+config.devtool = false;
 config.output.path = path.join(__dirname, 'docs');
 
 config.plugins = [

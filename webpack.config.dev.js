@@ -7,19 +7,21 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 module.exports = {
     // See http://webpack.github.io/docs/configuration.html#devtool
     devtool: 'inline-source-map',
-    entry: [
-        'webpack-hot-middleware/client',
-        './examples/index',
-    ],
+    entry: {
+        hmr: 'webpack-hot-middleware/client',
+        basic: './examples/basic',
+        entities: './examples/entities',
+    },
     output: {
         path: path.join(__dirname, 'build'),
-        filename: 'examples.bundle.js',
+        filename: '[name].bundle.js',
         publicPath: '/',
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         new ProgressBarPlugin(),
+        new webpack.optimize.CommonsChunkPlugin('common', 'common.bundle.js', Infinity),
     ],
     module: {
         loaders: [

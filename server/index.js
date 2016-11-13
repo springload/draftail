@@ -12,7 +12,7 @@ const compiler = webpack(config);
 
 const PORT = process.env.PORT || 3000;
 
-app.use('/', express.static(path.join(__dirname, '..', 'docs')));
+app.use('/', express.static(path.join(__dirname, '..', 'examples')));
 
 app.use(webpackDev(compiler, {
     noInfo: true,
@@ -21,8 +21,8 @@ app.use(webpackDev(compiler, {
 
 app.use(webpackHot(compiler));
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'docs/index.html'));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'examples/index.html'));
 });
 
 app.listen(PORT, 'localhost', () => {
