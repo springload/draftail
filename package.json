@@ -60,7 +60,7 @@
   "scripts": {
     "start": "npm run server -s",
     "server": "nodemon server/index.js",
-    "css": "node-sass lib/index.scss docs/index.css",
+    "css": "node-sass lib/index.scss examples/assets/draftail.css",
     "dist": "babel -d dist lib",
     "lint": "eslint .",
     "test": "jest",
