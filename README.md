@@ -19,6 +19,8 @@ npm install --save draftail
 nvm install
 # Then, install all project dependencies.
 npm install
+# Optionally, install the git hooks.
+./.githooks/deploy
 ```
 
 ### Working on the project
