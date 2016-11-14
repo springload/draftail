@@ -12,12 +12,15 @@
         "no-new": [1],
         "no-multi-spaces": [0],
         "no-warning-comments": [1, { "terms": ["todo", "fixme", "xxx"], "location": "start" }],
+        "no-plusplus": [0],
         "react/sort-comp": [0],
         "react/jsx-boolean-value": [0],
         "react/jsx-no-bind": [0],
         "react/prefer-es6-class": [0, "never"],
         "react/jsx-filename-extension": [2, { "extensions": [".js"] }],
-        "jsx-quotes": [1, "prefer-double"]
+        "react/forbid-prop-types": [2, { "forbid": ["any"] }],
+        "jsx-quotes": [1, "prefer-double"],
+        "jsx-a11y/label-has-for": [0]
     },
 
     "env": {

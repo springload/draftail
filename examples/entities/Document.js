@@ -23,7 +23,7 @@ const Document = ({ entityKey, children }) => {
 };
 
 Document.propTypes = {
-    entityKey: React.PropTypes.any.isRequired,
+    entityKey: React.PropTypes.string.isRequired,
     children: React.PropTypes.node.isRequired,
 };
 

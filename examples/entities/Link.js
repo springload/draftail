@@ -23,7 +23,7 @@ const Link = ({ entityKey, children }) => {
 };
 
 Link.propTypes = {
-    entityKey: React.PropTypes.any.isRequired,
+    entityKey: React.PropTypes.string.isRequired,
     children: React.PropTypes.node.isRequired,
 };
 

@@ -62,7 +62,8 @@
     "server": "nodemon server/index.js",
     "css": "node-sass lib/index.scss examples/assets/draftail.css",
     "dist": "babel -d dist lib",
-    "lint": "eslint .",
+    "linter:js": "eslint",
+    "lint": "npm run linter:js -s -- .",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"

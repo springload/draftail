@@ -1,11 +1,11 @@
 import React from 'react';
-import { Entity, AtomicBlockUtils, RichUtils } from 'draft-js';
+import { Entity, RichUtils } from 'draft-js';
 
 class BasicLinkSource extends React.Component {
     componentDidMount() {
         const { editorState, entityType, onUpdate } = this.props;
         const entityKey = Entity.create(entityType, 'MUTABLE', {
-            url: window.prompt('Link URL'),
+            url: global.prompt('Link URL'),
         });
         const nextState = RichUtils.toggleLink(editorState, editorState.getSelection(), entityKey);
 
@@ -16,6 +16,12 @@ class BasicLinkSource extends React.Component {
         return null;
     }
 }
+
+BasicLinkSource.propTypes = {
+    editorState: React.PropTypes.object.isRequired,
+    entityType: React.PropTypes.string.isRequired,
+    onUpdate: React.PropTypes.func.isRequired,
+};
 
 export default BasicLinkSource;
 
