@@ -2,6 +2,8 @@
   "name": "draftail",
   "version": "0.1.0",
   "description": "A batteries-excluded rich text editor based on Draft.js",
+  "author": "Springload",
+  "license": "MIT",
   "main": "dist/index.js",
   "keywords": [
     "draftjs",
@@ -15,8 +17,6 @@
     "react",
     "react.js"
   ],
-  "author": "Springload",
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/springload/draftail.git"
@@ -59,13 +59,15 @@
   },
   "scripts": {
     "start": "npm run server -s",
-    "server": "nodemon server/index.js",
+    "server": "node server/index.js",
     "css": "node-sass lib/index.scss examples/assets/draftail.css",
     "dist": "babel -d dist lib",
     "linter:js": "eslint",
     "lint": "npm run linter:js -s -- .",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "pages": "rm -rf pages && cp -R examples pages && webpack --config=webpack.config.prod.js --progress -p",
+    "deploy": "./bin/deploy.sh"
   }
 }

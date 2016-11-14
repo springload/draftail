@@ -9,19 +9,20 @@ module.exports = {
     devtool: 'inline-source-map',
     entry: {
         hmr: 'webpack-hot-middleware/client',
+        vendor: ['react', 'react-dom', 'immutable', 'draft-js', 'draftjs-utils'],
         basic: './examples/basic',
         entities: './examples/entities',
     },
     output: {
         path: path.join(__dirname, 'build'),
         filename: '[name].bundle.js',
-        publicPath: '/',
+        publicPath: '/assets/',
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         new ProgressBarPlugin(),
-        new webpack.optimize.CommonsChunkPlugin('common', 'common.bundle.js', Infinity),
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js', Infinity),
     ],
     module: {
         loaders: [

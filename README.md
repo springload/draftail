@@ -7,6 +7,8 @@ This is a work in progress. It is intended to be integrated into [Wagtail](https
 
 ```sh
 npm install --save draftail
+# Draftail's peerDependencies:
+npm install --save draft-js@^0.9.x draftjs-utils@^0.3.2 immutable@^3.x.x react@^15.x.x react-dom@^15.x.x
 ```
 
 ## Development
