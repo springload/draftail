@@ -1,6 +1,9 @@
 $controls-padding: .5rem;
 $button-padding: .25rem;
 
+$color-teal: #43b1b0;
+$color-white: #ffffff;
+
 .json-text__controls {
     border: solid 1px #eee;
     border-radius: 3px;
@@ -19,14 +22,27 @@ $button-padding: .25rem;
     border-radius: 0;
     margin-right: 4px;
     margin-right: $button-padding;
+    color: inherit;
     cursor: pointer;
+
+    &:hover {
+        color: inherit;
+    }
 }
 
+.RichEditor-activeButton {
+    background: #666;
+    color: $color-white;
+
+    &:hover {
+        color: $color-white;
+    }
+}
 
 .RichEditor-tooltip__button {
     appearance: none;
     background: #808080;
-    color: #fff;
+    color: $color-white;
     padding: $button-padding $controls-padding;
     border: 0;
     border-radius: 1px;
@@ -36,12 +52,6 @@ $button-padding: .25rem;
     }
 }
 
-.RichEditor-activeButton {
-    background: #666;
-    color: #fff;
-}
-
-
 .RichEditor-controls {
     margin-bottom: $controls-padding;
     display: inline-block;
@@ -50,11 +60,11 @@ $button-padding: .25rem;
 
 .RichEditor-link {
     background: #eef8ff;
-    border-bottom: dotted 1px #43b1b0;
+    border-bottom: dotted 1px $color-teal;
     cursor: pointer;
 
     &:before {
-        color: #43b1b0;
+        color: $color-teal;
     }
 }
 
@@ -73,7 +83,7 @@ $button-padding: .25rem;
 }
 
 .Modal-content {
-    background: #fff;
+    background: $color-white;
     max-width: 500px;
 }
 
@@ -111,7 +121,7 @@ $button-padding: .25rem;
 
 .RichEditor-media:hover,
 .RichEditor-media--open {
-    outline: dotted 1px #43b1b0;
+    outline: dotted 1px $color-teal;
 
     .RichEditor-media-container {
         cursor: pointer;
@@ -174,7 +184,7 @@ $button-padding: .25rem;
     }
 
     label {
-        // color: #fff;
+        // color: $color-white;
         width: auto;
         padding: 0;
         display: inline-block;
@@ -202,7 +212,7 @@ $button-padding: .25rem;
     padding: .375rem $controls-padding;
     margin-top: $controls-padding;
     background-color: #333;
-    color: #fff;
+    color: $color-white;
     z-index: 1;
 
     &:before {
@@ -224,7 +234,7 @@ $button-padding: .25rem;
 
 .RichEditor-tooltip__link {
     &:hover {
-        color: #fff;
+        color: $color-white;
     }
 }
 

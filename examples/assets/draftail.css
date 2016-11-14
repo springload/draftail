@@ -13,7 +13,16 @@
   border-radius: 0;
   margin-right: 4px;
   margin-right: 0.25rem;
+  color: inherit;
   cursor: pointer; }
+  .RichEditor-styleButton:hover {
+    color: inherit; }
+
+.RichEditor-activeButton {
+  background: #666;
+  color: #fff; }
+  .RichEditor-activeButton:hover {
+    color: #fff; }
 
 .RichEditor-tooltip__button {
   appearance: none;
@@ -24,10 +33,6 @@
   border-radius: 1px; }
   .RichEditor-tooltip__button + .RichEditor-tooltip__button {
     margin-left: 0.25rem; }
-
-.RichEditor-activeButton {
-  background: #666;
-  color: #fff; }
 
 .RichEditor-controls {
   margin-bottom: 0.5rem;
