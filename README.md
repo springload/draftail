@@ -1,4 +1,4 @@
-draftail [![Build Status](https://travis-ci.org/springload/draftail.svg?branch=master)](https://travis-ci.org/springload/draftail) [![Dependency Status](https://david-dm.org/springload/draftail.svg?style=flat-square)](https://david-dm.org/springload/draftail) [![devDependency Status](https://david-dm.org/springload/draftail/dev-status.svg?style=flat-square)](https://david-dm.org/springload/draftail#info=devDependencies)
+draftail [![npm](https://img.shields.io/npm/v/draftail.svg?style=flat-square)](https://www.npmjs.com/package/draftail) [![Build Status](https://travis-ci.org/springload/draftail.svg?branch=master)](https://travis-ci.org/springload/draftail) [![Dependency Status](https://david-dm.org/springload/draftail.svg?style=flat-square)](https://david-dm.org/springload/draftail) [![devDependency Status](https://david-dm.org/springload/draftail/dev-status.svg?style=flat-square)](https://david-dm.org/springload/draftail#info=devDependencies)
 =========
 
 > A batteries-excluded rich text editor based on [Draft.js](https://facebook.github.io/draft-js/). :memo::cocktail:
