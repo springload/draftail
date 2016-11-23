@@ -24,7 +24,7 @@ const options = {
     ],
 };
 
-const value = {
+const rawContentState = {
     entityMap: {},
     blocks: [
         {
@@ -223,8 +223,16 @@ const value = {
     ],
 };
 
+const onSave = (contentState) => {
+    console.log('Save basic example:', contentState);
+};
+
 const editor = (
-    <DraftailEditor name="basic" value={JSON.stringify(value)} options={options} />
+    <DraftailEditor
+        rawContentState={rawContentState}
+        options={options}
+        onSave={onSave}
+    />
 );
 
 ReactDOM.render(editor, mount);
