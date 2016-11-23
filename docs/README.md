@@ -10,7 +10,7 @@ Other approaches:
 - https://github.com/ianstormtaylor/slate
 - http://quilljs.com/
 
-## Exporter behavior
+## Editor behavior
 
 ### Supported
 
@@ -22,7 +22,7 @@ Other approaches:
 
 ## R&D notes
 
-### Other Wagtail-integrated editors to learn from
+### Other Wagtail-integrated editors to learn from.
 
 Things to borrow: keyboard shortcuts, Wagtail integration mechanism,
 
