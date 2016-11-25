@@ -14,20 +14,21 @@
   margin-right: 4px;
   margin-right: 0.25rem;
   color: inherit;
+  border: 0;
   cursor: pointer; }
   .RichEditor-styleButton:hover {
     color: inherit; }
 
 .RichEditor-activeButton {
   background: #666;
-  color: #fff; }
+  color: #ffffff; }
   .RichEditor-activeButton:hover {
-    color: #fff; }
+    color: #ffffff; }
 
 .RichEditor-tooltip__button {
   appearance: none;
   background: #808080;
-  color: #fff;
+  color: #ffffff;
   padding: 0.25rem 0.5rem;
   border: 0;
   border-radius: 1px; }
@@ -58,7 +59,7 @@
   justify-content: center; }
 
 .Modal-content {
-  background: #fff;
+  background: #ffffff;
   max-width: 500px; }
 
 .Modal-header {
@@ -311,7 +312,7 @@
   padding: 0.375rem 0.5rem;
   margin-top: 0.5rem;
   background-color: #333;
-  color: #fff;
+  color: #ffffff;
   z-index: 1; }
   .RichEditor-tooltip:before {
     content: '';
@@ -328,7 +329,7 @@
   display: inline-block; }
 
 .RichEditor-tooltip__link:hover {
-  color: #fff; }
+  color: #ffffff; }
 
 .RichEditor-tooltip__link:last-child {
   margin-right: 0; }
