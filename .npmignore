@@ -12,3 +12,5 @@ webpack.config.dev.js
 .eslintignore
 .eslintrc
 .editorconfig
+.githooks
+bin
