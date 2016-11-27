@@ -15,6 +15,7 @@ There are other, not so explicit dependencies at the moment:
 
 - jQuery 2, separately loaded onto the page.
 - Specific styles from Wagtail, including its icon font.
+- ES6 polyfill (like for Draft.js)
 
 ## Development
 

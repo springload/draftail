@@ -23,6 +23,7 @@ $color-white: #ffffff;
     margin-right: 4px;
     margin-right: $button-padding;
     color: inherit;
+    border: 0;
     cursor: pointer;
 
     &:hover {

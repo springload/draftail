@@ -88,11 +88,21 @@ const options = {
     ],
 };
 
+const saveField = document.createElement('input');
+saveField.type = 'hidden';
+mount.parentNode.appendChild(saveField);
+
+const onSave = (rawContentState) => {
+    const serialised = JSON.stringify(rawContentState);
+    saveField.value = serialised;
+    localStorage.setItem('entities:rawContentState', serialised);
+};
+
 const editor = (
     <DraftailEditor
-        name="test"
-        value="{}"
+        rawContentState={JSON.parse(localStorage.getItem('entities:rawContentState')) || {}}
         options={options}
+        onSave={onSave}
     />
 );
 
