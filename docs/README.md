@@ -32,6 +32,9 @@ Other shortcuts we would like to support in the future:
 
 ### Expected behavior
 
+- Pressing return on an empty list item should un-indent it until it is not nested, and then remove it.
+- Pressing return at the end of a block should create an empty unstyled block.
+
 ### Unsupported scenarios
 
 - Nesting `ol` inside `ul` or the other way around.

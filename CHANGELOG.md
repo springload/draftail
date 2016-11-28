@@ -4,6 +4,13 @@ Changelog
 > All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [[v0.3.2]](https://github.com/springload/draftail/releases/tag/v0.3.2) - 2016-11-29
+
+### Added
+
+- Pressing return on an empty list item should un-indent it until it is not nested, and then remove it.
+- Pressing return at the end of a block should create an empty unstyled block.
+
 ## [[v0.3.1]](https://github.com/springload/draftail/releases/tag/v0.3.1) - 2016-11-28
 
 ### Fixed
