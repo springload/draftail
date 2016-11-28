@@ -4,6 +4,12 @@ Changelog
 > All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [[v0.3.1]](https://github.com/springload/draftail/releases/tag/v0.3.1) - 2016-11-28
+
+### Fixed
+
+- Buttons do not trigger a form submit
+
 ## [[v0.3.0]](https://github.com/springload/draftail/releases/tag/v0.3.0) - 2016-11-28
 
 > This release contains __breaking changes__.
