@@ -12,6 +12,7 @@ module.exports = {
         vendor: ['react', 'react-dom', 'immutable', 'draft-js', 'draftjs-utils'],
         basic: './examples/basic',
         entities: './examples/entities',
+        test: './examples/test',
     },
     output: {
         path: path.join(__dirname, 'build'),
