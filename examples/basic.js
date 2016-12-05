@@ -100,7 +100,7 @@ const rawContentState = {
         {
             key: '672oo',
             text: ' ',
-            type: 'horizontal-rule',
+            type: 'atomic:break',
             depth: 0,
             inlineStyleRanges: [],
             entityRanges: [],

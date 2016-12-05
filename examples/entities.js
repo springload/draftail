@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import DraftailEditor from '../lib';
+import DraftailEditor, { ENTITY_TYPE } from '../lib';
 
 // =============================================================================
 // A `Source` provides a wrapper around whatever chooser you're using.
@@ -15,11 +15,10 @@ import DraftailEditor from '../lib';
 // import WagtailEmbedSource from './sources/WagtailEmbedSource';
 import BasicLinkSource from './sources/BasicLinkSource';
 
-import Link, { LINK, findLinkEntities } from './entities/Link';
+import Link, { findLinkEntities } from './entities/Link';
 // import Document, { DOCUMENT, findDocumentEntities } from './entities/Document';
 // import Model, { MODEL, findModelEntities } from './entities/Model';
 
-const DOCUMENT = 'DOCUMENT';
 const MODEL = 'MODEL';
 const WAGTAIL_IMAGE = 'WAGTAIL_IMAGE';
 const WAGTAIL_EMBED = 'WAGTAIL_EMBED';
@@ -45,18 +44,18 @@ const options = {
     ],
     dialogControls: [
         {
-            entity: LINK,
+            entity: ENTITY_TYPE.LINK,
             label: 'Link',
             icon: 'link',
         },
         {
-            entity: DOCUMENT,
+            entity: ENTITY_TYPE.DOCUMENT,
             label: 'Document',
             icon: 'doc-full',
         },
     ],
     sources: [
-        { entity: LINK, control: BasicLinkSource },
+        { entity: ENTITY_TYPE.LINK, control: BasicLinkSource },
         // { entity: LINK, control: WagtailLinkSource },
         // { entity: DOCUMENT, control: WagtailDocumentSource },
         // { entity: MODEL, control: GenericModelSource },
@@ -95,12 +94,11 @@ mount.parentNode.appendChild(saveField);
 const onSave = (rawContentState) => {
     const serialised = JSON.stringify(rawContentState);
     saveField.value = serialised;
-    localStorage.setItem('entities:rawContentState', serialised);
 };
 
 const editor = (
     <DraftailEditor
-        rawContentState={JSON.parse(localStorage.getItem('entities:rawContentState')) || {}}
+        rawContentState={{}}
         options={options}
         onSave={onSave}
     />
