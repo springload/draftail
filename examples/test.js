@@ -14,6 +14,7 @@ import DraftailEditor, { ENTITY_TYPE } from '../lib';
 // import GenericModelSource from './sources/GenericModelSource';
 // import WagtailEmbedSource from './sources/WagtailEmbedSource';
 import BasicLinkSource from './sources/BasicLinkSource';
+import BasicEmbedSource from './sources/BasicEmbedSource';
 
 import Link, { findLinkEntities } from './entities/Link';
 // import Document, { DOCUMENT, findDocumentEntities } from './entities/Document';
@@ -21,7 +22,7 @@ import Link, { findLinkEntities } from './entities/Link';
 
 const MODEL = 'MODEL';
 const WAGTAIL_IMAGE = 'WAGTAIL_IMAGE';
-const WAGTAIL_EMBED = 'WAGTAIL_EMBED';
+const EMBED = 'EMBED';
 
 const mount = document.querySelector('[data-mount-test]');
 
@@ -37,7 +38,7 @@ const options = {
             icon: 'image',
         },
         {
-            entity: WAGTAIL_EMBED,
+            entity: EMBED,
             label: 'Embed',
             icon: 'media',
         },
@@ -60,7 +61,7 @@ const options = {
         // { entity: DOCUMENT, control: WagtailDocumentSource },
         // { entity: MODEL, control: GenericModelSource },
         // { entity: WAGTAIL_IMAGE, control: WagtailImageSource },
-        // { entity: WAGTAIL_EMBED, control: WagtailEmbedSource },
+        { entity: EMBED, control: BasicEmbedSource },
     ],
     // In-line decorators that format text in interesting ways.
     decorators: [

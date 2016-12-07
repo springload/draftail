@@ -1,16 +1,21 @@
 import React from 'react';
-import { Entity, RichUtils } from 'draft-js';
+import { AtomicBlockUtils, Entity } from 'draft-js';
 
-class BasicLinkSource extends React.Component {
+class BasicEmbedSource extends React.Component {
     componentDidMount() {
         const { editorState, entityType, onUpdate } = this.props;
+
         const url = global.prompt('Link URL');
 
         if (url) {
-            const entityKey = Entity.create(entityType, 'MUTABLE', {
+            const entityKey = Entity.create(entityType, 'IMMUTABLE', {
                 url: url,
+                title: 'Test embed',
+                providerName: 'YouTube',
+                authorName: 'Test author',
+                thumbnail: 'https://placekitten.com/g/480/480',
             });
-            const nextState = RichUtils.toggleLink(editorState, editorState.getSelection(), entityKey);
+            const nextState = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ');
 
             onUpdate(nextState);
         } else {
@@ -23,10 +28,10 @@ class BasicLinkSource extends React.Component {
     }
 }
 
-BasicLinkSource.propTypes = {
+BasicEmbedSource.propTypes = {
     editorState: React.PropTypes.object.isRequired,
     entityType: React.PropTypes.string.isRequired,
     onUpdate: React.PropTypes.func.isRequired,
 };
 
-export default BasicLinkSource;
+export default BasicEmbedSource;
