@@ -8,39 +8,28 @@ import DraftailEditor, { ENTITY_TYPE } from '../lib';
 // All it needs to know about is when the value is updated so it can close.
 // =============================================================================
 
-// import WagtailLinkSource from './sources/WagtailLinkSource';
-// import WagtailImageSource from './sources/WagtailImageSource';
-// import WagtailDocumentSource from './sources/WagtailDocumentSource';
-// import GenericModelSource from './sources/GenericModelSource';
-// import WagtailEmbedSource from './sources/WagtailEmbedSource';
 import BasicLinkSource from './sources/BasicLinkSource';
 
 import Link, { findLinkEntities } from './entities/Link';
-// import Document, { DOCUMENT, findDocumentEntities } from './entities/Document';
-// import Model, { MODEL, findModelEntities } from './entities/Model';
-
-const MODEL = 'MODEL';
-const WAGTAIL_IMAGE = 'WAGTAIL_IMAGE';
-const WAGTAIL_EMBED = 'WAGTAIL_EMBED';
 
 const mount = document.querySelector('[data-mount-entities]');
 
 const options = {
     modelPickerOptions: [],
-    MODEL: MODEL,
+    MODEL: ENTITY_TYPE.MODEL,
     imageFormats: [],
     // Modals and other external sources of data
     mediaControls: [
-        {
-            entity: WAGTAIL_IMAGE,
-            label: 'Image',
-            icon: 'image',
-        },
-        {
-            entity: WAGTAIL_EMBED,
-            label: 'Embed',
-            icon: 'media',
-        },
+        // {
+        //     entity: ENTITY_TYPE.WAGTAIL_IMAGE,
+        //     label: 'Image',
+        //     icon: 'image',
+        // },
+        // {
+        //     entity: ENTITY_TYPE.WAGTAIL_EMBED,
+        //     label: 'Embed',
+        //     icon: 'media',
+        // },
     ],
     dialogControls: [
         {

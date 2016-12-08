@@ -8,37 +8,32 @@ import DraftailEditor, { ENTITY_TYPE } from '../lib';
 // All it needs to know about is when the value is updated so it can close.
 // =============================================================================
 
-// import WagtailLinkSource from './sources/WagtailLinkSource';
 // import WagtailImageSource from './sources/WagtailImageSource';
 // import WagtailDocumentSource from './sources/WagtailDocumentSource';
 // import GenericModelSource from './sources/GenericModelSource';
-// import WagtailEmbedSource from './sources/WagtailEmbedSource';
 import BasicLinkSource from './sources/BasicLinkSource';
+import BasicImageSource from './sources/BasicImageSource';
 import BasicEmbedSource from './sources/BasicEmbedSource';
 
 import Link, { findLinkEntities } from './entities/Link';
-// import Document, { DOCUMENT, findDocumentEntities } from './entities/Document';
-// import Model, { MODEL, findModelEntities } from './entities/Model';
-
-const MODEL = 'MODEL';
-const WAGTAIL_IMAGE = 'WAGTAIL_IMAGE';
-const EMBED = 'EMBED';
+// import Document, { findDocumentEntities } from './entities/Document';
+// import Model, { findModelEntities } from './entities/Model';
 
 const mount = document.querySelector('[data-mount-test]');
 
 const options = {
     modelPickerOptions: [],
-    MODEL: MODEL,
+    MODEL: ENTITY_TYPE.MODEL,
     imageFormats: [],
     // Modals and other external sources of data
     mediaControls: [
         {
-            entity: WAGTAIL_IMAGE,
+            entity: ENTITY_TYPE.IMAGE,
             label: 'Image',
             icon: 'image',
         },
         {
-            entity: EMBED,
+            entity: ENTITY_TYPE.EMBED,
             label: 'Embed',
             icon: 'media',
         },
@@ -57,11 +52,10 @@ const options = {
     ],
     sources: [
         { entity: ENTITY_TYPE.LINK, control: BasicLinkSource },
-        // { entity: LINK, control: WagtailLinkSource },
-        // { entity: DOCUMENT, control: WagtailDocumentSource },
-        // { entity: MODEL, control: GenericModelSource },
-        // { entity: WAGTAIL_IMAGE, control: WagtailImageSource },
-        { entity: EMBED, control: BasicEmbedSource },
+        // { entity: ENTITY_TYPE.DOCUMENT, control: WagtailDocumentSource },
+        // { entity: ENTITY_TYPE.MODEL, control: GenericModelSource },
+        { entity: ENTITY_TYPE.IMAGE, control: BasicImageSource },
+        { entity: ENTITY_TYPE.EMBED, control: BasicEmbedSource },
     ],
     // In-line decorators that format text in interesting ways.
     decorators: [
