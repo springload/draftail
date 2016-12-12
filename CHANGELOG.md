@@ -4,6 +4,12 @@ Changelog
 > All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [[v0.3.3]](https://github.com/springload/draftail/releases/tag/v0.3.3) - 2016-12-13
+
+### Added
+
+- Allow customisation of block style function & block render map
+
 ## [[v0.3.2]](https://github.com/springload/draftail/releases/tag/v0.3.2) - 2016-11-29
 
 ### Added
