@@ -404,3 +404,7 @@ footer {
 h4:hover .anchor {
   display: inline;
 }
+
+.u-blue {
+    color: blue;
+}

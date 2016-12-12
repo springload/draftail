@@ -68,6 +68,7 @@ const options = {
         { label: 'H3', style: 'header-three' },
         { label: 'H4', style: 'header-four' },
         { label: 'H5', style: 'header-five' },
+        { label: 'Intro', style: 'intro-text', icon: 'bin', element: 'pre', className: 'u-blue' },
         { label: 'Blockquote', style: 'blockquote', icon: 'openquote' },
         { label: 'UL', style: 'unordered-list-item', icon: 'list-ul' },
         { label: 'OL', style: 'ordered-list-item', icon: 'list-ol' },
