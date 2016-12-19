@@ -51,7 +51,7 @@ npm run
 ### Publish
 
 ```sh
-git release x.y.z
+git release vx.y.z
 npm run dist
 # Use irish-pub to check the package content. Install w/ npm install -g first.
 irish-pub
