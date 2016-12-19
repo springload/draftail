@@ -34,6 +34,7 @@ Other shortcuts we would like to support in the future:
 
 - Pressing return on an empty list item should un-indent it until it is not nested, and then remove it.
 - Pressing return at the end of a block should create an empty unstyled block.
+- Atomic blocks (images, embeds, `hr`) are always preceded and followed by an empty block. See [facebook/draft-js#327](https://github.com/facebook/draft-js/issues/327).
 
 ### Unsupported scenarios
 
