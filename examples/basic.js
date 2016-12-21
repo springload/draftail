@@ -25,7 +25,13 @@ const options = {
 };
 
 const rawContentState = {
-    entityMap: {},
+    entityMap: {
+        0: {
+            type: 'HORIZONTAL_RULE',
+            mutability: 'IMMUTABLE',
+            data: {},
+        },
+    },
     blocks: [
         {
             key: '6mgfh',
@@ -98,12 +104,19 @@ const rawContentState = {
             entityRanges: [],
         },
         {
-            key: '672oo',
+            key: '3mfvu',
             text: ' ',
-            type: 'atomic:break',
+            type: 'atomic',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [],
+            entityRanges: [
+                {
+                    offset: 0,
+                    length: 1,
+                    key: 0,
+                },
+            ],
+            data: {},
         },
         {
             key: 'fq3f',
