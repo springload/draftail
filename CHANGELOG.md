@@ -1,14 +1,31 @@
 Changelog
 =========
 
-> All notable changes to this project will be documented in this file.
+> All notable changes to this project are documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## [[v0.4.0]](https://github.com/springload/draftail/releases/tag/v0.4.0) - 2016-12-22
+
+### Added
+
+- Make `hr` availability configurable with `enableHorizontalRule`. #25.
+- Add `br` support, availability configurable with `enableLineBreak`.
+- Prevent soft line breaks from keyboard shortcut if disabled.
+
+### Changed
+
+- Maximum nested list level is now 1.
+- Change `hr` representation to use atomic block and entity instead of custom block type. #1
+
+### Fixed
+
+- Fix erratic behavior of list nesting changes with tab and shift+tab shortcuts. #34
 
 ## [[v0.3.3]](https://github.com/springload/draftail/releases/tag/v0.3.3) - 2016-12-13
 
 ### Added
 
-- Allow customisation of block style function & block render map
+- Allow customisation of block style function & block render map.
 
 ## [[v0.3.2]](https://github.com/springload/draftail/releases/tag/v0.3.2) - 2016-11-29
 
