@@ -40,6 +40,38 @@ Other shortcuts we would like to support in the future:
 
 - Nesting `ol` inside `ul` or the other way around.
 
+## Browser support
+
+**Supported browser / device versions:**
+
+| Browser | Device/OS | Version | Notes |
+|---------|-----------|---------|-------|
+| Mobile Safari | iOS | latest ||
+| Mobile Safari | iOS | latest - 1 | Mobile Safari updates are tied to iOS updates, which are infrequent |
+| Chrome | Android | latest ||
+| IE | Windows | 11 ||
+| MS Edge | Windows | latest ||
+| Chrome | Desktop | latest ||
+| Firefox | Desktop | latest ||
+| Safari | OSX | latest ||
+
+For all browser versions defined as "latest", we will ensure support by using a combination of:
+
+- Manual tests on Nightly & Beta browser releases during development.
+- Manual & automated tests on latest stable releases during development & testing.
+- Automated tests on recent stable releases during testing.
+
+**Unsupported browser / device versions:**
+
+| Browser | Device/OS | Version | Notes |
+|---------|-----------|---------|-------|
+| Stock browser | Android | 4 |  |
+| Stock browser | Windows Phone | ? |  |
+| IE | Desktop | 10 |  |
+| IE | Desktop | 9 |  |
+| IE | Desktop | 8 |  |
+
+
 ## R&D notes
 
 ### Other Draft.js editors
