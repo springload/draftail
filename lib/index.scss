@@ -59,10 +59,10 @@ $color-black: #000;
 
 .RichEditor-link {
     background: #eef8ff;
-    border-bottom: dotted 1px $color-teal;
+    border-bottom: 1px dotted $color-teal;
     cursor: pointer;
 
-    &:before {
+    .icon {
         color: $color-teal;
     }
 }
@@ -74,13 +74,13 @@ $color-black: #000;
 }
 
 .RichEditor-media {
-    outline: dotted 1px #dadada;
+    outline: 1px dotted #dadada;
     position: relative;
 }
 
 .RichEditor-media:hover,
 .RichEditor-media--open {
-    outline: dotted 1px $color-teal;
+    outline: 1px dotted $color-teal;
 
     .RichEditor-media-container {
         cursor: pointer;

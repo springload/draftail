@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import DraftailEditor from '../lib';
+import DraftailEditor, { BLOCK_TYPE, INLINE_STYLE } from '../lib';
 
 const mount = document.querySelector('[data-mount-basic]');
 
 const options = {
+    enableHorizontalRule: true,
+    enableLineBreak: true,
     modelPickerOptions: [],
     imageFormats: [],
     mediaControls: [],
@@ -13,14 +15,14 @@ const options = {
     sources: [],
     decorators: [],
     BLOCK_TYPES: [
-        { label: 'H2', style: 'header-two' },
-        { label: 'H3', style: 'header-three' },
-        { label: 'UL', style: 'unordered-list-item', icon: 'list-ul' },
+        { label: 'H2', style: BLOCK_TYPE.HEADER_TWO },
+        { label: 'H3', style: BLOCK_TYPE.HEADER_THREE },
+        { label: 'UL', style: BLOCK_TYPE.UNORDERED_LIST_ITEM, icon: 'icon-list-ul' },
     ],
 
     INLINE_STYLES: [
-        { label: 'Bold', style: 'BOLD', icon: 'bold' },
-        { label: 'Italic', style: 'ITALIC', icon: 'italic' },
+        { label: 'Bold', style: INLINE_STYLE.BOLD, icon: 'icon-bold' },
+        { label: 'Italic', style: INLINE_STYLE.ITALIC, icon: 'icon-italic' },
     ],
 };
 

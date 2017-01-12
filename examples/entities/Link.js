@@ -1,6 +1,6 @@
 import React from 'react';
 import { Entity } from 'draft-js';
-import { ENTITY_TYPE } from '../../lib';
+import { ENTITY_TYPE, Icon } from '../../lib';
 
 export function findLinkEntities(contentBlock, callback) {
     contentBlock.findEntityRanges((character) => {
@@ -16,7 +16,8 @@ const Link = ({ entityKey, children }) => {
     const { url } = Entity.get(entityKey).getData();
 
     return (
-        <span data-tooltip={url} className={`RichEditor-link icon icon-${url.indexOf('mailto:') !== -1 ? 'mail' : 'link'}`}>
+        <span data-tooltip={url} className="RichEditor-link">
+            <Icon name={`icon-${url.indexOf('mailto:') !== -1 ? 'mail' : 'link'}`} />
             {children}
         </span>
     );

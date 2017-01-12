@@ -1,6 +1,6 @@
 import React from 'react';
 import { Entity } from 'draft-js';
-import { ENTITY_TYPE } from '../../lib';
+import { ENTITY_TYPE, Icon } from '../../lib';
 
 export function findDocumentEntities(contentBlock, callback) {
     contentBlock.findEntityRanges((character) => {
@@ -15,7 +15,8 @@ export function findDocumentEntities(contentBlock, callback) {
 const Document = ({ entityKey, children }) => {
     const { url, title } = Entity.get(entityKey).getData();
     return (
-        <span data-tooltip={url} className="RichEditor-link icon icon-doc-full" title={title}>
+        <span data-tooltip={url} className="RichEditor-link" title={title}>
+            <Icon name="icon-doc-full" />
             {children}
         </span>
     );

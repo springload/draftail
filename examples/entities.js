@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import DraftailEditor, { ENTITY_TYPE } from '../lib';
+import DraftailEditor, { ENTITY_TYPE, BLOCK_TYPE, INLINE_STYLE } from '../lib';
 
 // =============================================================================
 // A `Source` provides a wrapper around whatever chooser you're using.
@@ -23,26 +23,26 @@ const options = {
     // Modals and other external sources of data
     mediaControls: [
         // {
-        //     entity: ENTITY_TYPE.WAGTAIL_IMAGE,
+        //     entity: ENTITY_TYPE.IMAGE,
         //     label: 'Image',
-        //     icon: 'image',
+        //     icon: 'icon-image',
         // },
         // {
-        //     entity: ENTITY_TYPE.WAGTAIL_EMBED,
+        //     entity: ENTITY_TYPE.EMBED,
         //     label: 'Embed',
-        //     icon: 'media',
+        //     icon: 'icon-media',
         // },
     ],
     dialogControls: [
         {
             entity: ENTITY_TYPE.LINK,
             label: 'Link',
-            icon: 'link',
+            icon: 'icon-link',
         },
         {
             entity: ENTITY_TYPE.DOCUMENT,
             label: 'Document',
-            icon: 'doc-full',
+            icon: 'icon-doc-full',
         },
     ],
     sources: [
@@ -50,8 +50,8 @@ const options = {
         // { entity: LINK, control: WagtailLinkSource },
         // { entity: DOCUMENT, control: WagtailDocumentSource },
         // { entity: MODEL, control: GenericModelSource },
-        // { entity: WAGTAIL_IMAGE, control: WagtailImageSource },
-        // { entity: WAGTAIL_EMBED, control: WagtailEmbedSource },
+        // { entity: IMAGE, control: WagtailImageSource },
+        // { entity: EMBED, control: WagtailEmbedSource },
     ],
     // In-line decorators that format text in interesting ways.
     decorators: [
@@ -60,21 +60,21 @@ const options = {
         // { strategy: findDocumentEntities, component: Document },
     ],
     BLOCK_TYPES: [
-        { label: 'H2', style: 'header-two' },
-        { label: 'H3', style: 'header-three' },
-        { label: 'H4', style: 'header-four' },
-        { label: 'H5', style: 'header-five' },
-        { label: 'Blockquote', style: 'blockquote', icon: 'openquote' },
-        { label: 'UL', style: 'unordered-list-item', icon: 'list-ul' },
-        { label: 'OL', style: 'ordered-list-item', icon: 'list-ol' },
+        { label: 'H2', style: BLOCK_TYPE.HEADER_TWO },
+        { label: 'H3', style: BLOCK_TYPE.HEADER_THREE },
+        { label: 'H4', style: BLOCK_TYPE.HEADER_FOUR },
+        { label: 'H5', style: BLOCK_TYPE.HEADER_FIVE },
+        { label: 'Blockquote', style: BLOCK_TYPE.BLOCKQUOTE, icon: 'icon-openquote' },
+        { label: 'UL', style: BLOCK_TYPE.UNORDERED_LIST_ITEM, icon: 'icon-list-ul' },
+        { label: 'OL', style: BLOCK_TYPE.ORDERED_LIST_ITEM, icon: 'icon-list-ol' },
     ],
 
     INLINE_STYLES: [
-        { label: 'Bold', style: 'BOLD', icon: 'bold' },
-        { label: 'Italic', style: 'ITALIC', icon: 'italic' },
-        // {label: 'Underline', style: 'UNDERLINE'},
-        // {label: 'Monospace', style: 'CODE'},
-        // {label: 'Strikethrough', style: 'STRIKETHROUGH'},
+        { label: 'Bold', style: INLINE_STYLE.BOLD, icon: 'icon-bold' },
+        { label: 'Italic', style: INLINE_STYLE.ITALIC, icon: 'icon-italic' },
+        // {label: 'Underline', style: INLINE_STYLE.UNDERLINE },
+        // {label: 'Monospace', style: INLINE_STYLE.CODE },
+        // {label: 'Strikethrough', style: INLINE_STYLE.STRIKETHROUGH },
     ],
 };
 
