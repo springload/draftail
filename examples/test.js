@@ -79,9 +79,9 @@ const options = {
     INLINE_STYLES: [
         { label: 'Bold', style: INLINE_STYLE.BOLD, icon: 'icon-bold' },
         { label: 'Italic', style: INLINE_STYLE.ITALIC, icon: 'icon-italic' },
-        // {label: 'Underline', style: INLINE_STYLE.UNDERLINE },
-        // {label: 'Monospace', style: INLINE_STYLE.CODE },
-        // {label: 'Strikethrough', style: INLINE_STYLE.STRIKETHROUGH },
+        { label: 'Underline', style: INLINE_STYLE.UNDERLINE, icon: 'icon-underline' },
+        { label: 'Monospace', style: INLINE_STYLE.CODE, icon: 'icon-pacman' },
+        { label: 'Strikethrough', style: INLINE_STYLE.STRIKETHROUGH, icon: 'icon-strikethrough' },
     ],
 };
 

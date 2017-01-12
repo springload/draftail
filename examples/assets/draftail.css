@@ -176,7 +176,8 @@
 .editor__controls {
   border: solid 1px #eee;
   border-radius: 3px;
-  padding: 0.5rem; }
+  padding: 0.5rem;
+  margin-bottom: 1rem; }
 
 .editor--readonly {
   opacity: .5;
@@ -213,38 +214,10 @@
 
 .RichEditor-link {
   background: #eef8ff;
-  border-bottom: dotted 1px #43b1b0;
+  border-bottom: 1px dotted #43b1b0;
   cursor: pointer; }
-  .RichEditor-link:before {
+  .RichEditor-link .icon {
     color: #43b1b0; }
-
-.Modal {
-  position: fixed;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center; }
-
-.Modal-content {
-  background: #ffffff;
-  max-width: 500px; }
-
-.Modal-header {
-  padding: 1em; }
-
-.Modal-header-tab {
-  padding-bottom: 0; }
-
-.Modal-body {
-  padding: 1em; }
-
-.Modal-actions {
-  padding-top: 1rem; }
 
 .public-DraftEditor-content {
   font-size: 15px;
@@ -252,12 +225,12 @@
   font-family: sans-serif; }
 
 .RichEditor-media {
-  outline: dotted 1px #dadada;
+  outline: 1px dotted #dadada;
   position: relative; }
 
 .RichEditor-media:hover,
 .RichEditor-media--open {
-  outline: dotted 1px #43b1b0; }
+  outline: 1px dotted #43b1b0; }
   .RichEditor-media:hover .RichEditor-media-container,
   .RichEditor-media--open .RichEditor-media-container {
     cursor: pointer; }

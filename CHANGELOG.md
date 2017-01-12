@@ -24,6 +24,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ### Removed
 
 - draftail no longer depends on jQuery.
+- draftail no longer depends on the Wagtail font icon.
 
 ## [[v0.3.3]](https://github.com/springload/draftail/releases/tag/v0.3.3) - 2016-12-13
 

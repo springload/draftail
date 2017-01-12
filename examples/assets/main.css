@@ -408,3 +408,8 @@ h4:hover .anchor {
 .u-blue {
     color: blue;
 }
+
+.icon {
+    width: 1.3em;
+    margin-right: 0.2em;
+}
