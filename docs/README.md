@@ -5,23 +5,39 @@ draftail documentation
 
 ### Keyboard shortcuts
 
-We support most of the common keyboard shortcuts users would expect to find in text editors thanks to [Draft.js key bindings](https://facebook.github.io/draft-js/docs/advanced-topics-key-bindings.html).
+We support most of the common keyboard shortcuts users would expect to find in text editors, thanks to [Draft.js key bindings](https://facebook.github.io/draft-js/docs/advanced-topics-key-bindings.html).
 
-Here are the most important shortcuts:
+#### Common actions
 
-|Shortcut|Function (if enabled)|
-|--------|--------|
-|Cmd + B | Bold |
-|Cmd + I | Italicize |
-|Cmd + U | Underline |
-|Cmd + J | Monospace (code) |
-|Option + Shift + 5 | Strikethrough |
-|Cmd + Z | Undo |
-|Cmd + Shift + Z | Redo |
-|Cmd + Left | Move focus to start of block |
-|Cmd + Right | Move focus to end of block |
-|Cmd + Tab |Increase indentation of list items |
-|Cmd + Shift + Tab |Decrease indentation of list items |
+| Function | Shortcut |
+|----------|----------|
+| Copy | Ctrl + C |
+| Cut | Ctrl + X |
+| Paste | Ctrl + V |
+| Paste without formatting | Ctrl + Shift + V |
+| Undo | Ctrl + Z |
+| Redo | Ctrl + Shift + Z |
+
+#### Text formatting (if enabled)
+
+| Function | Shortcut |
+|----------|----------|
+| Bold | Cmd + B |
+| Italicize | Cmd + I |
+| Underline | Cmd + U |
+| Monospace (code) | Cmd + J |
+| Strikethrough | Option + Shift + 5 |
+
+#### Other
+
+| Function | Shortcut |
+|----------|----------|
+| Ctrl + Left | Move focus to start of block |
+| Ctrl + Right | Move focus to end of block |
+| Tab | Increase indentation of list items |
+| Shift + Tab | Decrease indentation of list items |
+
+#### Unsupported
 
 Other shortcuts we would like to support in the future:
 
