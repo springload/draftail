@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - Make `hr` availability configurable with `enableHorizontalRule`. #25.
 - Add `br` support, availability configurable with `enableLineBreak`.
 - Prevent soft line breaks from keyboard shortcut if disabled.
+- Add editor CSS to published package. #17
 
 ### Changed
 

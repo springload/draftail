@@ -61,8 +61,9 @@
   "scripts": {
     "start": "npm run server -s",
     "server": "node server/index.js",
-    "css": "node-sass lib/index.scss examples/assets/draftail.css",
-    "dist": "babel -d dist lib",
+    "js": "babel -d dist lib",
+    "css": "node-sass lib/index.scss examples/assets/draftail.css && cp examples/assets/draftail.css dist",
+    "dist": "npm run js -s && npm run css -s",
     "linter:js": "eslint",
     "lint": "npm run linter:js -s -- .",
     "test": "jest",
