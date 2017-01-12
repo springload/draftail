@@ -9,18 +9,19 @@ We support most of the common keyboard shortcuts users would expect to find in t
 
 Here are the most important shortcuts:
 
-|Shortcut|Function|
+|Shortcut|Function (if enabled)|
 |--------|--------|
-|Cmd + B | Bolden text (if enabled) |
-|Cmd + I | Italicise text (if enabled) |
-|Cmd + U | Underline text (if enabled) |
-|Cmd + J | Format as code (if enabled) |
+|Cmd + B | Bold |
+|Cmd + I | Italicize |
+|Cmd + U | Underline |
+|Cmd + J | Monospace (code) |
+|Option + Shift + 5 | Strikethrough |
 |Cmd + Z | Undo |
-|Cmd + Maj + Z | Redo |
-|Cmd + Left | Move selection to start of block |
-|Cmd + Right | Move selection to end of block |
-|Cmd + Tab|Increase indentation of list items|
-|Cmd + Maj + Tab|Decrease indentation of list items|
+|Cmd + Shift + Z | Redo |
+|Cmd + Left | Move focus to start of block |
+|Cmd + Right | Move focus to end of block |
+|Cmd + Tab |Increase indentation of list items |
+|Cmd + Shift + Tab |Decrease indentation of list items |
 
 Other shortcuts we would like to support in the future:
 
@@ -70,7 +71,6 @@ For all browser versions defined as "latest", we will ensure support by using a 
 | IE | Desktop | 10 |  |
 | IE | Desktop | 9 |  |
 | IE | Desktop | 8 |  |
-
 
 ## R&D notes
 

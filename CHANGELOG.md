@@ -21,6 +21,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ### Fixed
 
 - Fix erratic behavior of list nesting changes with tab and shift+tab shortcuts. #34
+- Fix keyboard shortcuts giving access to unallowed formatting. #32
 
 ### Removed
 

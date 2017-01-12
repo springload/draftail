@@ -24,6 +24,7 @@ const options = {
     INLINE_STYLES: [
         { label: 'Bold', style: INLINE_STYLE.BOLD, icon: 'icon-bold' },
         { label: 'Italic', style: INLINE_STYLE.ITALIC, icon: 'icon-italic' },
+        { label: 'Strikethrough', style: INLINE_STYLE.STRIKETHROUGH, icon: 'icon-pacman' },
     ],
 };
 
