@@ -22,6 +22,8 @@ import Link, { findLinkEntities } from './entities/Link';
 const mount = document.querySelector('[data-mount-test]');
 
 const options = {
+    enableHorizontalRule: true,
+    enableLineBreak: true,
     modelPickerOptions: [],
     MODEL: ENTITY_TYPE.MODEL,
     imageFormats: [],
