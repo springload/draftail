@@ -21,6 +21,10 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 - Fix erratic behavior of list nesting changes with tab and shift+tab shortcuts. #34
 
+### Removed
+
+- draftail no longer depends on jQuery.
+
 ## [[v0.3.3]](https://github.com/springload/draftail/releases/tag/v0.3.3) - 2016-12-13
 
 ### Added

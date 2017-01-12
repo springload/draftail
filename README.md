@@ -13,9 +13,8 @@ npm install --save draft-js@^0.9.x draftjs-utils@^0.3.2 immutable@^3.x.x react@^
 
 There are other, not so explicit dependencies at the moment:
 
-- jQuery 2, separately loaded onto the page.
 - Specific styles from Wagtail, including its icon font.
-- ES6 polyfill [for Draft.js](https://facebook.github.io/draft-js/docs/advanced-topics-issues-and-pitfalls.html#polyfills)
+- ES6 polyfills [for Draft.js](https://facebook.github.io/draft-js/docs/advanced-topics-issues-and-pitfalls.html#polyfills)
 
 ## Development
 
