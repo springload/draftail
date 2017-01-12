@@ -1,10 +1,186 @@
-.json-text__controls {
+/**
+ * Draft v0.9.1
+ *
+ * Copyright (c) 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+.DraftEditor-editorContainer, .DraftEditor-root, .public-DraftEditor-content {
+  height: inherit;
+  text-align: initial; }
+
+.public-DraftEditor-content[contenteditable=true] {
+  -webkit-user-modify: read-write-plaintext-only; }
+
+.DraftEditor-root {
+  position: relative; }
+
+.DraftEditor-editorContainer {
+  background-color: rgba(255, 255, 255, 0);
+  border-left: .1px solid transparent;
+  position: relative;
+  z-index: 1; }
+
+.public-DraftEditor-block {
+  position: relative; }
+
+.DraftEditor-alignLeft .public-DraftStyleDefault-block {
+  text-align: left; }
+
+.DraftEditor-alignLeft .public-DraftEditorPlaceholder-root {
+  left: 0;
+  text-align: left; }
+
+.DraftEditor-alignCenter .public-DraftStyleDefault-block {
+  text-align: center; }
+
+.DraftEditor-alignCenter .public-DraftEditorPlaceholder-root {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%; }
+
+.DraftEditor-alignRight .public-DraftStyleDefault-block {
+  text-align: right; }
+
+.DraftEditor-alignRight .public-DraftEditorPlaceholder-root {
+  right: 0;
+  text-align: right; }
+
+.public-DraftEditorPlaceholder-root {
+  color: #9197a3;
+  position: absolute;
+  z-index: 0; }
+
+.public-DraftEditorPlaceholder-hasFocus {
+  color: #bdc1c9; }
+
+.DraftEditorPlaceholder-hidden {
+  display: none; }
+
+.public-DraftStyleDefault-block {
+  position: relative;
+  white-space: pre-wrap; }
+
+.public-DraftStyleDefault-ltr {
+  direction: ltr;
+  text-align: left; }
+
+.public-DraftStyleDefault-rtl {
+  direction: rtl;
+  text-align: right; }
+
+.public-DraftStyleDefault-listLTR {
+  direction: ltr; }
+
+.public-DraftStyleDefault-listRTL {
+  direction: rtl; }
+
+.public-DraftStyleDefault-ol, .public-DraftStyleDefault-ul {
+  margin: 16px 0;
+  padding: 0; }
+
+.public-DraftStyleDefault-depth0.public-DraftStyleDefault-listLTR {
+  margin-left: 1.5em; }
+
+.public-DraftStyleDefault-depth0.public-DraftStyleDefault-listRTL {
+  margin-right: 1.5em; }
+
+.public-DraftStyleDefault-depth1.public-DraftStyleDefault-listLTR {
+  margin-left: 3em; }
+
+.public-DraftStyleDefault-depth1.public-DraftStyleDefault-listRTL {
+  margin-right: 3em; }
+
+.public-DraftStyleDefault-depth2.public-DraftStyleDefault-listLTR {
+  margin-left: 4.5em; }
+
+.public-DraftStyleDefault-depth2.public-DraftStyleDefault-listRTL {
+  margin-right: 4.5em; }
+
+.public-DraftStyleDefault-depth3.public-DraftStyleDefault-listLTR {
+  margin-left: 6em; }
+
+.public-DraftStyleDefault-depth3.public-DraftStyleDefault-listRTL {
+  margin-right: 6em; }
+
+.public-DraftStyleDefault-depth4.public-DraftStyleDefault-listLTR {
+  margin-left: 7.5em; }
+
+.public-DraftStyleDefault-depth4.public-DraftStyleDefault-listRTL {
+  margin-right: 7.5em; }
+
+.public-DraftStyleDefault-unorderedListItem {
+  list-style-type: square;
+  position: relative; }
+
+.public-DraftStyleDefault-unorderedListItem.public-DraftStyleDefault-depth0 {
+  list-style-type: disc; }
+
+.public-DraftStyleDefault-unorderedListItem.public-DraftStyleDefault-depth1 {
+  list-style-type: circle; }
+
+.public-DraftStyleDefault-orderedListItem {
+  list-style-type: none;
+  position: relative; }
+
+.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-listLTR:before {
+  left: -36px;
+  position: absolute;
+  text-align: right;
+  width: 30px; }
+
+.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-listRTL:before {
+  position: absolute;
+  right: -36px;
+  text-align: left;
+  width: 30px; }
+
+.public-DraftStyleDefault-orderedListItem:before {
+  content: counter(ol0) ". ";
+  counter-increment: ol0; }
+
+.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth1:before {
+  content: counter(ol1) ". ";
+  counter-increment: ol1; }
+
+.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth2:before {
+  content: counter(ol2) ". ";
+  counter-increment: ol2; }
+
+.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth3:before {
+  content: counter(ol3) ". ";
+  counter-increment: ol3; }
+
+.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth4:before {
+  content: counter(ol4) ". ";
+  counter-increment: ol4; }
+
+.public-DraftStyleDefault-depth0.public-DraftStyleDefault-reset {
+  counter-reset: ol0; }
+
+.public-DraftStyleDefault-depth1.public-DraftStyleDefault-reset {
+  counter-reset: ol1; }
+
+.public-DraftStyleDefault-depth2.public-DraftStyleDefault-reset {
+  counter-reset: ol2; }
+
+.public-DraftStyleDefault-depth3.public-DraftStyleDefault-reset {
+  counter-reset: ol3; }
+
+.public-DraftStyleDefault-depth4.public-DraftStyleDefault-reset {
+  counter-reset: ol4; }
+
+.editor__controls {
   border: solid 1px #eee;
   border-radius: 3px;
   padding: 0.5rem; }
 
-.json-text--readonly {
-  opacity: .5; }
+.editor--readonly {
+  opacity: .5;
+  pointer-events: none; }
 
 .RichEditor-styleButton {
   padding: 0.25rem 0.5rem;
@@ -34,10 +210,6 @@
   border-radius: 1px; }
   .RichEditor-tooltip__button + .RichEditor-tooltip__button {
     margin-left: 0.25rem; }
-
-.RichEditor-controls {
-  margin-bottom: 0.5rem;
-  display: inline-block; }
 
 .RichEditor-link {
   background: #eef8ff;
@@ -73,164 +245,6 @@
 
 .Modal-actions {
   padding-top: 1rem; }
-
-/**
- * @providesModule DraftStyleDefault
- */
-.public-DraftStyleDefault-block {
-  position: relative;
-  white-space: pre-wrap; }
-
-/* @noflip */
-.public-DraftStyleDefault-ltr {
-  direction: ltr;
-  text-align: left; }
-
-/* @noflip */
-.public-DraftStyleDefault-rtl {
-  direction: rtl;
-  text-align: right; }
-
-/**
- * These rules provide appropriate text direction for counter pseudo-elements.
- */
-/* @noflip */
-.public-DraftStyleDefault-listLTR {
-  direction: ltr; }
-
-/* @noflip */
-.public-DraftStyleDefault-listRTL {
-  direction: rtl; }
-
-/**
- * Default spacing for list container elements. Override with CSS as needed.
- */
-.public-DraftStyleDefault-ul,
-.public-DraftStyleDefault-ol {
-  margin: 16px 0;
-  padding: 0; }
-
-/**
- * Default counters and styles are provided for five levels of nesting.
- * If you require nesting beyond that level, you should use your own CSS
- * classes to do so. If you care about handling RTL languages, the rules you
- * create should look a lot like these.
- */
-/* @noflip */
-.public-DraftStyleDefault-depth0.public-DraftStyleDefault-listLTR {
-  margin-left: 1.5em; }
-
-/* @noflip */
-.public-DraftStyleDefault-depth0.public-DraftStyleDefault-listRTL {
-  margin-right: 1.5em; }
-
-/* @noflip */
-.public-DraftStyleDefault-depth1.public-DraftStyleDefault-listLTR {
-  margin-left: 3em; }
-
-/* @noflip */
-.public-DraftStyleDefault-depth1.public-DraftStyleDefault-listRTL {
-  margin-right: 3em; }
-
-/* @noflip */
-.public-DraftStyleDefault-depth2.public-DraftStyleDefault-listLTR {
-  margin-left: 4.5em; }
-
-/* @noflip */
-.public-DraftStyleDefault-depth2.public-DraftStyleDefault-listRTL {
-  margin-right: 4.5em; }
-
-/* @noflip */
-.public-DraftStyleDefault-depth3.public-DraftStyleDefault-listLTR {
-  margin-left: 6em; }
-
-/* @noflip */
-.public-DraftStyleDefault-depth3.public-DraftStyleDefault-listRTL {
-  margin-right: 6em; }
-
-/* @noflip */
-.public-DraftStyleDefault-depth4.public-DraftStyleDefault-listLTR {
-  margin-left: 7.5em; }
-
-/* @noflip */
-.public-DraftStyleDefault-depth4.public-DraftStyleDefault-listRTL {
-  margin-right: 7.5em; }
-
-/**
- * Only use `square` list-style after the first two levels.
- */
-.public-DraftStyleDefault-unorderedListItem {
-  list-style: square outside none;
-  position: relative; }
-
-.public-DraftStyleDefault-unorderedListItem.public-DraftStyleDefault-depth0 {
-  list-style-type: disc; }
-
-.public-DraftStyleDefault-unorderedListItem.public-DraftStyleDefault-depth1 {
-  list-style-type: circle; }
-
-/**
- * Ordered list item counters are managed with CSS, since all list nesting is
- * purely visual.
- */
-.public-DraftStyleDefault-orderedListItem {
-  list-style-type: none;
-  list-style-position: outside;
-  position: relative; }
-
-/* @noflip */
-.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-listLTR:before {
-  left: -36px;
-  position: absolute;
-  text-align: right;
-  width: 30px; }
-
-/* @noflip */
-.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-listRTL:before {
-  position: absolute;
-  right: -36px;
-  text-align: left;
-  width: 30px; }
-
-/**
- * Counters are reset in JavaScript. If you need different counter styles,
- * override these rules. If you need more nesting, create your own rules to
- * do so.
- */
-.public-DraftStyleDefault-orderedListItem:before {
-  content: counter(ol0) ". ";
-  counter-increment: ol0; }
-
-.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth1:before {
-  content: counter(ol1) ". ";
-  counter-increment: ol1; }
-
-.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth2:before {
-  content: counter(ol2) ". ";
-  counter-increment: ol2; }
-
-.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth3:before {
-  content: counter(ol3) ". ";
-  counter-increment: ol3; }
-
-.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth4:before {
-  content: counter(ol4) ". ";
-  counter-increment: ol4; }
-
-.public-DraftStyleDefault-depth0.public-DraftStyleDefault-reset {
-  counter-reset: ol0; }
-
-.public-DraftStyleDefault-depth1.public-DraftStyleDefault-reset {
-  counter-reset: ol1; }
-
-.public-DraftStyleDefault-depth2.public-DraftStyleDefault-reset {
-  counter-reset: ol2; }
-
-.public-DraftStyleDefault-depth3.public-DraftStyleDefault-reset {
-  counter-reset: ol3; }
-
-.public-DraftStyleDefault-depth4.public-DraftStyleDefault-reset {
-  counter-reset: ol4; }
 
 .public-DraftEditor-content {
   font-size: 15px;
@@ -328,14 +342,14 @@
   margin-right: 0.5rem;
   display: inline-block; }
 
-.RichEditor-tooltip__link:hover {
-  color: #ffffff; }
-
 .RichEditor-tooltip__link:last-child {
   margin-right: 0; }
 
-.RichEditor-horizontal-rule {
-  border-top: solid 1px #eee; }
+.RichEditor-tooltip__link:hover {
+  color: #ffffff; }
 
 .u-block {
   display: block !important; }
+
+.u-inline-block {
+  display: inline-block !important; }
