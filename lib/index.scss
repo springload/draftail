@@ -66,47 +66,11 @@ $color-black: #000;
     }
 }
 
-
-.Modal {
-    position: fixed;
-    z-index: 999;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.Modal-content {
-    background: $color-white;
-    max-width: 500px;
-}
-
-.Modal-header {
-    padding: 1em;
-}
-
-.Modal-header-tab {
-    padding-bottom: 0;
-}
-
-.Modal-body {
-    padding: 1em;
-}
-
-.Modal-actions {
-    padding-top: 1rem;
-}
-
 .public-DraftEditor-content {
     font-size: 15px;
     line-height: 1.5;
     font-family: sans-serif;
 }
-
 
 .RichEditor-media {
     outline: dotted 1px #dadada;
