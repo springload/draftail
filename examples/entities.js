@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import DraftailEditor, { ENTITY_TYPE, BLOCK_TYPE, INLINE_STYLE } from '../lib';
+import DraftailEditor, { ENTITY_TYPE, BLOCK_TYPE } from '../lib';
 
 // =============================================================================
 // A `Source` provides a wrapper around whatever chooser you're using.
@@ -9,8 +9,10 @@ import DraftailEditor, { ENTITY_TYPE, BLOCK_TYPE, INLINE_STYLE } from '../lib';
 // =============================================================================
 
 import BasicLinkSource from './sources/BasicLinkSource';
+import BasicDocumentSource from './sources/BasicDocumentSource';
 
 import Link, { findLinkEntities } from './entities/Link';
+import Document, { findDocumentEntities } from './entities/Document';
 
 const mount = document.querySelector('[data-mount-entities]');
 
@@ -47,35 +49,24 @@ const options = {
     ],
     sources: [
         { entity: ENTITY_TYPE.LINK, control: BasicLinkSource },
-        // { entity: LINK, control: WagtailLinkSource },
-        // { entity: DOCUMENT, control: WagtailDocumentSource },
-        // { entity: MODEL, control: GenericModelSource },
-        // { entity: IMAGE, control: WagtailImageSource },
-        // { entity: EMBED, control: WagtailEmbedSource },
+        { entity: ENTITY_TYPE.DOCUMENT, control: BasicDocumentSource },
+        // { entity: ENTITY_TYPE.MODEL, control: GenericModelSource },
+        // { entity: ENTITY_TYPE.IMAGE, control: BasicImageSource },
+        // { entity: ENTITY_TYPE.EMBED, control: BasicEmbedSource },
     ],
     // In-line decorators that format text in interesting ways.
     decorators: [
         { strategy: findLinkEntities, component: Link },
+        { strategy: findDocumentEntities, component: Document },
         // { strategy: findModelEntities, component: Model },
-        // { strategy: findDocumentEntities, component: Document },
     ],
     BLOCK_TYPES: [
         { label: 'H2', style: BLOCK_TYPE.HEADER_TWO },
         { label: 'H3', style: BLOCK_TYPE.HEADER_THREE },
-        { label: 'H4', style: BLOCK_TYPE.HEADER_FOUR },
-        { label: 'H5', style: BLOCK_TYPE.HEADER_FIVE },
         { label: 'Blockquote', style: BLOCK_TYPE.BLOCKQUOTE, icon: 'icon-openquote' },
-        { label: 'UL', style: BLOCK_TYPE.UNORDERED_LIST_ITEM, icon: 'icon-list-ul' },
-        { label: 'OL', style: BLOCK_TYPE.ORDERED_LIST_ITEM, icon: 'icon-list-ol' },
     ],
 
-    INLINE_STYLES: [
-        { label: 'Bold', style: INLINE_STYLE.BOLD, icon: 'icon-bold' },
-        { label: 'Italic', style: INLINE_STYLE.ITALIC, icon: 'icon-italic' },
-        // {label: 'Underline', style: INLINE_STYLE.UNDERLINE },
-        // {label: 'Monospace', style: INLINE_STYLE.CODE },
-        // {label: 'Strikethrough', style: INLINE_STYLE.STRIKETHROUGH },
-    ],
+    INLINE_STYLES: [],
 };
 
 const saveField = document.createElement('input');
@@ -87,9 +78,61 @@ const onSave = (rawContentState) => {
     saveField.value = serialised;
 };
 
+const rawContentState = {
+    entityMap: {
+        0: {
+            type: 'DOCUMENT',
+            mutability: 'MUTABLE',
+            data: {
+                url: 'https://www.example.com/example.pdf',
+                title: 'Kritik der reinen Vernunft',
+            },
+        },
+        1: {
+            type: 'LINK',
+            mutability: 'MUTABLE',
+            data: {
+                url: 'http://example.com/',
+            },
+        },
+    },
+    blocks: [
+        {
+            key: '4s66d',
+            text: 'Solving human problems, with digital experience.',
+            type: 'header-three',
+            depth: 0,
+            inlineStyleRanges: [],
+            entityRanges: [
+                {
+                    offset: 29,
+                    length: 18,
+                    key: 0,
+                },
+            ],
+            data: {},
+        },
+        {
+            key: 'b3pmj',
+            text: 'We build digital websites and applications that drive measurable change and help our clients\' businesses grow. Let us help yours!',
+            type: 'blockquote',
+            depth: 0,
+            inlineStyleRanges: [],
+            entityRanges: [
+                {
+                    offset: 111,
+                    length: 18,
+                    key: 1,
+                },
+            ],
+            data: {},
+        },
+    ],
+};
+
 const editor = (
     <DraftailEditor
-        rawContentState={{}}
+        rawContentState={rawContentState}
         options={options}
         onSave={onSave}
     />

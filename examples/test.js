@@ -8,15 +8,13 @@ import DraftailEditor, { ENTITY_TYPE, BLOCK_TYPE, INLINE_STYLE } from '../lib';
 // All it needs to know about is when the value is updated so it can close.
 // =============================================================================
 
-// import WagtailImageSource from './sources/WagtailImageSource';
-// import WagtailDocumentSource from './sources/WagtailDocumentSource';
-// import GenericModelSource from './sources/GenericModelSource';
+import BasicDocumentSource from './sources/BasicDocumentSource';
 import BasicLinkSource from './sources/BasicLinkSource';
 import BasicImageSource from './sources/BasicImageSource';
 import BasicEmbedSource from './sources/BasicEmbedSource';
 
 import Link, { findLinkEntities } from './entities/Link';
-// import Document, { findDocumentEntities } from './entities/Document';
+import Document, { findDocumentEntities } from './entities/Document';
 // import Model, { findModelEntities } from './entities/Model';
 
 const mount = document.querySelector('[data-mount-test]');
@@ -54,7 +52,7 @@ const options = {
     ],
     sources: [
         { entity: ENTITY_TYPE.LINK, control: BasicLinkSource },
-        // { entity: ENTITY_TYPE.DOCUMENT, control: WagtailDocumentSource },
+        { entity: ENTITY_TYPE.DOCUMENT, control: BasicDocumentSource },
         // { entity: ENTITY_TYPE.MODEL, control: GenericModelSource },
         { entity: ENTITY_TYPE.IMAGE, control: BasicImageSource },
         { entity: ENTITY_TYPE.EMBED, control: BasicEmbedSource },
@@ -62,8 +60,8 @@ const options = {
     // In-line decorators that format text in interesting ways.
     decorators: [
         { strategy: findLinkEntities, component: Link },
+        { strategy: findDocumentEntities, component: Document },
         // { strategy: findModelEntities, component: Model },
-        // { strategy: findDocumentEntities, component: Document },
     ],
     BLOCK_TYPES: [
         { label: 'H2', style: BLOCK_TYPE.HEADER_TWO },
@@ -74,6 +72,7 @@ const options = {
         { label: 'Blockquote', style: BLOCK_TYPE.BLOCKQUOTE, icon: 'icon-openquote' },
         { label: 'UL', style: BLOCK_TYPE.UNORDERED_LIST_ITEM, icon: 'icon-list-ul' },
         { label: 'OL', style: BLOCK_TYPE.ORDERED_LIST_ITEM, icon: 'icon-list-ol' },
+        { label: 'T&C', style: 'terms-and-conditions', element: 'div', className: 'u-smalltext' },
     ],
 
     INLINE_STYLES: [
