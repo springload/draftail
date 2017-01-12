@@ -12,6 +12,7 @@ module.exports = {
         vendor: ['react', 'react-dom', 'immutable', 'draft-js', 'draftjs-utils'],
         basic: './examples/basic',
         entities: './examples/entities',
+        custom: './examples/custom',
         test: './examples/test',
     },
     output: {
