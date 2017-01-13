@@ -38,6 +38,7 @@
     "babel-loader": "^6.2.7",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.16.0",
+    "coveralls": "^2.11.15",
     "draft-js": "^0.9.1",
     "draftjs-utils": "^0.3.2",
     "enzyme": "^2.6.0",
@@ -76,6 +77,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "pages": "rm -rf pages && cp -R examples pages && webpack --config=webpack.config.prod.js --progress -p",
     "deploy": "./bin/deploy.sh"
   }
