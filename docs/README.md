@@ -126,9 +126,22 @@ Other approaches:
 - https://github.com/ianstormtaylor/slate
 - http://quilljs.com/
 
-### Other Wagtail-integrated editors to learn from.
+### Other Wagtail-integrated editors to learn from
 
 Things to borrow: keyboard shortcuts, Wagtail integration mechanism,
 
 - https://github.com/jaydensmith/wagtailfroala
 - https://github.com/isotoma/wagtailtinymce
+
+### Things that it would be cool to support
+
+- Emojis
+- Hashtags
+- Linkification
+- Mentions
+- Undo/redo buttons
+- Character / word counter
+- Autolist – convert *, -, 1. to list items
+- Markdown syntax shortcuts
+- UI displaying all available keyboard shortcuts
+- Drag and drop image insertion
