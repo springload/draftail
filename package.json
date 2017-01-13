@@ -28,7 +28,8 @@
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/",
-      "/dist/"
+      "/dist/",
+      "/examples/test.js"
     ]
   },
   "dependencies": {},
