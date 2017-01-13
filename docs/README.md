@@ -5,12 +5,11 @@ draftail documentation
 
 ### Keyboard shortcuts
 
-We support most of the common keyboard shortcuts users would expect to find in text editors, thanks to [Draft.js key bindings](https://facebook.github.io/draft-js/docs/advanced-topics-key-bindings.html).
-
-#### Common actions
+We support keyboard shortcuts inspired by the ones used in [Google Docs](https://support.google.com/docs/answer/179738?co=GENIE.Platform%3DDesktop&hl=en), thanks to [Draft.js key bindings](https://facebook.github.io/draft-js/docs/advanced-topics-key-bindings.html).
 
 | Function | Shortcut |
 |----------|----------|
+| **Common actions** ||
 | Copy | ⌘ + C |
 | Cut | ⌘ + X |
 | Paste | ⌘ + V |
@@ -19,21 +18,13 @@ We support most of the common keyboard shortcuts users would expect to find in t
 | Redo | ⌘ + Shift + Z |
 | Insert or edit link | ⌘ + K |
 | Open link | Option + Enter |
-
-#### Text formatting (if enabled)
-
-| Function | Shortcut |
-|----------|----------|
+| Text formatting (if enabled) ||
 | Bold | ⌘ + B |
 | Italicize | ⌘ + I |
 | Underline | ⌘ + U |
 | Monospace (code) | ⌘ + J |
 | Strikethrough | Option + Shift + 5 |
-
-#### Paragraph formatting (if enabled)
-
-| Function | Shortcut |
-|----------|----------|
+| **Paragraph formatting (if enabled)** ||
 | Increase list indentation | Tab  |
 | Decrease list indentation | Shift + Tab |
 | Apply normal text style | ⌘ + Option + 0 |
@@ -43,11 +34,7 @@ We support most of the common keyboard shortcuts users would expect to find in t
 | Go to new line | Enter  |
 | Insert soft new line | Shift + Enter |
 | Insert soft new line | ⌘ + Enter |
-
-#### Text selection with keyboard
-
-| Function | Shortcut |
-|----------|----------|
+| **Text selection with keyboard** ||
 | Select all | ⌘ + A |
 | Extend selection one character | Shift + Left/right arrow |
 | Extend selection one line | Shift + Up/down arrow |
@@ -56,24 +43,11 @@ We support most of the common keyboard shortcuts users would expect to find in t
 | Extend selection to the end of the line | ⌘ + Shift + Right arrow |
 | Extend selection to the beginning of the document | Shift + Home |
 | Extend selection to the end of the document | Shift + End |
-
-#### Text selection with mouse
-
-| Function | Shortcut |
-|----------|----------|
+| **Text selection with mouse** ||
 | Select word | Double-click |
 | Extend selection one word at a time | Double-click + drag |
 | Select paragraph | Triple-click |
 | Extend selection one paragraph at a time | Triple-click + drag |
-
-#### Unsupported
-
-Other shortcuts we would like to support in the future:
-
-| Function | Shortcut |
-|----------|----------|
-
-| Show common keyboard shortcuts | ⌘ + / |
 
 ### Expected behavior
 
