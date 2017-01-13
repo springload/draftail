@@ -12,6 +12,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - Add `br` support, availability configurable with `enableLineBreak`.
 - Prevent soft line breaks from keyboard shortcut if disabled.
 - Add editor CSS to published package. #17
+- Add common keyboard shortcuts (inspired by Google Docs, see documentation for the full list).
 
 ### Changed
 

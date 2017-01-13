@@ -11,41 +11,68 @@ We support most of the common keyboard shortcuts users would expect to find in t
 
 | Function | Shortcut |
 |----------|----------|
-| Copy | Ctrl + C |
-| Cut | Ctrl + X |
-| Paste | Ctrl + V |
-| Paste without formatting | Ctrl + Shift + V |
-| Undo | Ctrl + Z |
-| Redo | Ctrl + Shift + Z |
+| Copy | ⌘ + C |
+| Cut | ⌘ + X |
+| Paste | ⌘ + V |
+| Paste without formatting | ⌘ + Shift + V |
+| Undo | ⌘ + Z |
+| Redo | ⌘ + Shift + Z |
 
 #### Text formatting (if enabled)
 
 | Function | Shortcut |
 |----------|----------|
-| Bold | Cmd + B |
-| Italicize | Cmd + I |
-| Underline | Cmd + U |
-| Monospace (code) | Cmd + J |
+| Bold | ⌘ + B |
+| Italicize | ⌘ + I |
+| Underline | ⌘ + U |
+| Monospace (code) | ⌘ + J |
 | Strikethrough | Option + Shift + 5 |
 
-#### Other
+#### Paragraph formatting (if enabled)
 
 | Function | Shortcut |
 |----------|----------|
-| Ctrl + Left | Move focus to start of block |
-| Ctrl + Right | Move focus to end of block |
-| Tab | Increase indentation of list items |
-| Shift + Tab | Decrease indentation of list items |
+| Increase list indentation | Tab  |
+| Decrease list indentation | Shift + Tab |
+| Apply normal text style | ⌘ + Option + 0 |
+| Apply heading style [1-6] | ⌘ + Option + [1-6] |
+| Numbered list | ⌘ + Shift + 7 |
+| Bulleted list | ⌘ + Shift + 8 |
+| Go to new line | Enter  |
+| Insert soft new line | Shift + Enter |
+| Insert soft new line | ⌘ + Enter |
+
+#### Text selection with keyboard
+
+| Function | Shortcut |
+|----------|----------|
+| Select all | ⌘ + A |
+| Extend selection one character | Shift + Left/right arrow |
+| Extend selection one line | Shift + Up/down arrow |
+| Extend selection one word | Option + Shift + Left/right arrow |
+| Extend selection to the beginning of the line | ⌘ + Shift + Left arrow |
+| Extend selection to the end of the line | ⌘ + Shift + Right arrow |
+| Extend selection to the beginning of the document | Shift + Home |
+| Extend selection to the end of the document | Shift + End |
+
+#### Text selection with mouse
+
+| Function | Shortcut |
+|----------|----------|
+| Select word | Double-click |
+| Extend selection one word at a time | Double-click + drag |
+| Select paragraph | Triple-click |
+| Extend selection one paragraph at a time | Triple-click + drag |
 
 #### Unsupported
 
 Other shortcuts we would like to support in the future:
 
-|Shortcut|Function|
-|--------|--------|
-|Cmd + Option + 1/2/3/4/5/6 | Format as heading level |
-|Cmd + Option + 0 | Format as paragraph |
-|Cmd + K  | Create a link (if enabled) |
+| Function | Shortcut |
+|----------|----------|
+| Insert or edit link | ⌘ + K |
+| Open link | Option + Enter |
+| Show common keyboard shortcuts | ⌘ + / |
 
 ### Expected behavior
 
