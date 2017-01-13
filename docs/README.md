@@ -18,6 +18,7 @@ We support most of the common keyboard shortcuts users would expect to find in t
 | Undo | ⌘ + Z |
 | Redo | ⌘ + Shift + Z |
 | Insert or edit link | ⌘ + K |
+| Open link | Option + Enter |
 
 #### Text formatting (if enabled)
 
@@ -71,7 +72,7 @@ Other shortcuts we would like to support in the future:
 
 | Function | Shortcut |
 |----------|----------|
-| Open link | Option + Enter |
+
 | Show common keyboard shortcuts | ⌘ + / |
 
 ### Expected behavior
@@ -143,5 +144,5 @@ Things to borrow: keyboard shortcuts, Wagtail integration mechanism,
 - Character / word counter
 - Autolist – convert *, -, 1. to list items
 - Markdown syntax shortcuts
-- UI displaying all available keyboard shortcuts
+- UI displaying all available keyboard shortcuts (`cmd + /`)
 - Drag and drop image insertion
