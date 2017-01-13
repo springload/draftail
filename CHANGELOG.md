@@ -18,6 +18,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 - Maximum nested list level is now 1.
 - Change `hr` representation to use atomic block and entity instead of custom block type. #1
+- `mediaControls` and `dialogControls` options are now a single `ENTITY_TYPES` array. #26
 
 ### Fixed
 

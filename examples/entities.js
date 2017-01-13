@@ -22,31 +22,6 @@ const options = {
     modelPickerOptions: [],
     MODEL: ENTITY_TYPE.MODEL,
     imageFormats: [],
-    // Modals and other external sources of data
-    mediaControls: [
-        // {
-        //     entity: ENTITY_TYPE.IMAGE,
-        //     label: 'Image',
-        //     icon: 'icon-image',
-        // },
-        // {
-        //     entity: ENTITY_TYPE.EMBED,
-        //     label: 'Embed',
-        //     icon: 'icon-media',
-        // },
-    ],
-    dialogControls: [
-        {
-            entity: ENTITY_TYPE.LINK,
-            label: 'Link',
-            icon: 'icon-link',
-        },
-        {
-            entity: ENTITY_TYPE.DOCUMENT,
-            label: 'Document',
-            icon: 'icon-doc-full',
-        },
-    ],
     sources: [
         { entity: ENTITY_TYPE.LINK, control: BasicLinkSource },
         { entity: ENTITY_TYPE.DOCUMENT, control: BasicDocumentSource },
@@ -59,6 +34,18 @@ const options = {
         { strategy: findLinkEntities, component: Link },
         { strategy: findDocumentEntities, component: Document },
         // { strategy: findModelEntities, component: Model },
+    ],
+    ENTITY_TYPES: [
+        {
+            entity: ENTITY_TYPE.LINK,
+            label: 'Link',
+            icon: 'icon-link',
+        },
+        {
+            entity: ENTITY_TYPE.DOCUMENT,
+            label: 'Document',
+            icon: 'icon-doc-full',
+        },
     ],
     BLOCK_TYPES: [
         { label: 'H2', style: BLOCK_TYPE.HEADER_TWO },

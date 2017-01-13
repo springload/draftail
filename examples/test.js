@@ -25,31 +25,6 @@ const options = {
     modelPickerOptions: [],
     MODEL: ENTITY_TYPE.MODEL,
     imageFormats: [],
-    // Modals and other external sources of data
-    mediaControls: [
-        {
-            entity: ENTITY_TYPE.IMAGE,
-            label: 'Image',
-            icon: 'icon-image',
-        },
-        {
-            entity: ENTITY_TYPE.EMBED,
-            label: 'Embed',
-            icon: 'icon-media',
-        },
-    ],
-    dialogControls: [
-        {
-            entity: ENTITY_TYPE.LINK,
-            label: 'Link',
-            icon: 'icon-link',
-        },
-        {
-            entity: ENTITY_TYPE.DOCUMENT,
-            label: 'Document',
-            icon: 'icon-doc-full',
-        },
-    ],
     sources: [
         { entity: ENTITY_TYPE.LINK, control: BasicLinkSource },
         { entity: ENTITY_TYPE.DOCUMENT, control: BasicDocumentSource },
@@ -63,6 +38,28 @@ const options = {
         { strategy: findDocumentEntities, component: Document },
         // { strategy: findModelEntities, component: Model },
     ],
+    ENTITY_TYPES: [
+        {
+            entity: ENTITY_TYPE.IMAGE,
+            label: 'Image',
+            icon: 'icon-image',
+        },
+        {
+            entity: ENTITY_TYPE.EMBED,
+            label: 'Embed',
+            icon: 'icon-media',
+        },
+        {
+            entity: ENTITY_TYPE.LINK,
+            label: 'Link',
+            icon: 'icon-link',
+        },
+        {
+            entity: ENTITY_TYPE.DOCUMENT,
+            label: 'Document',
+            icon: 'icon-doc-full',
+        },
+    ],
     BLOCK_TYPES: [
         { label: 'H2', style: BLOCK_TYPE.HEADER_TWO },
         { label: 'H3', style: BLOCK_TYPE.HEADER_THREE },
@@ -74,7 +71,6 @@ const options = {
         { label: 'OL', style: BLOCK_TYPE.ORDERED_LIST_ITEM, icon: 'icon-list-ol' },
         { label: 'T&C', style: 'terms-and-conditions', element: 'div', className: 'u-smalltext' },
     ],
-
     INLINE_STYLES: [
         { label: 'Bold', style: INLINE_STYLE.BOLD, icon: 'icon-bold' },
         { label: 'Italic', style: INLINE_STYLE.ITALIC, icon: 'icon-italic' },

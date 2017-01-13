@@ -10,10 +10,9 @@ const options = {
     enableLineBreak: true,
     modelPickerOptions: [],
     imageFormats: [],
-    mediaControls: [],
-    dialogControls: [],
     sources: [],
     decorators: [],
+    ENTITY_TYPES: [],
     BLOCK_TYPES: [
         { label: 'H2', style: BLOCK_TYPE.HEADER_TWO },
         { label: 'H3', style: BLOCK_TYPE.HEADER_THREE },

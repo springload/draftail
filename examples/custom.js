@@ -8,10 +8,9 @@ const mount = document.querySelector('[data-mount-custom]');
 const options = {
     modelPickerOptions: [],
     imageFormats: [],
-    mediaControls: [],
-    dialogControls: [],
     sources: [],
     decorators: [],
+    ENTITY_TYPES: [],
     BLOCK_TYPES: [
         { label: 'H2', style: BLOCK_TYPE.HEADER_TWO },
         { label: 'T&C', style: 'terms-and-conditions', element: 'div', className: 'u-smalltext' },
