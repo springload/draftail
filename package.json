@@ -25,6 +25,12 @@
     "url": "https://github.com/springload/draftail/issues"
   },
   "homepage": "https://github.com/springload/draftail#readme",
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/dist/"
+    ]
+  },
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.18.2",
