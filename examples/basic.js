@@ -10,20 +10,17 @@ const options = {
     enableLineBreak: true,
     modelPickerOptions: [],
     imageFormats: [],
-    sources: [],
-    decorators: [],
-    ENTITY_TYPES: [],
-    BLOCK_TYPES: [
-        { label: 'H2', style: BLOCK_TYPE.HEADER_TWO },
-        { label: 'H3', style: BLOCK_TYPE.HEADER_THREE },
-        { label: 'UL', style: BLOCK_TYPE.UNORDERED_LIST_ITEM, icon: 'icon-list-ul' },
-        { label: 'OL', style: BLOCK_TYPE.ORDERED_LIST_ITEM, icon: 'icon-list-ol' },
+    entityTypes: [],
+    blockTypes: [
+        { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
+        { label: 'H3', type: BLOCK_TYPE.HEADER_THREE },
+        { label: 'UL', type: BLOCK_TYPE.UNORDERED_LIST_ITEM, icon: 'icon-list-ul' },
+        { label: 'OL', type: BLOCK_TYPE.ORDERED_LIST_ITEM, icon: 'icon-list-ol' },
     ],
-
-    INLINE_STYLES: [
-        { label: 'Bold', style: INLINE_STYLE.BOLD, icon: 'icon-bold' },
-        { label: 'Italic', style: INLINE_STYLE.ITALIC, icon: 'icon-italic' },
-        { label: 'Strikethrough', style: INLINE_STYLE.STRIKETHROUGH, icon: 'icon-pacman' },
+    inlineStyles: [
+        { label: 'Bold', type: INLINE_STYLE.BOLD, icon: 'icon-bold' },
+        { label: 'Italic', type: INLINE_STYLE.ITALIC, icon: 'icon-italic' },
+        { label: 'Strikethrough', type: INLINE_STYLE.STRIKETHROUGH, icon: 'icon-pacman' },
     ],
 };
 

@@ -3,11 +3,6 @@ import ReactDOM from 'react-dom';
 
 import DraftailEditor, { ENTITY_TYPE, BLOCK_TYPE, INLINE_STYLE } from '../lib';
 
-// =============================================================================
-// A `Source` provides a wrapper around whatever chooser you're using.
-// All it needs to know about is when the value is updated so it can close.
-// =============================================================================
-
 import BasicDocumentSource from './sources/BasicDocumentSource';
 import BasicLinkSource from './sources/BasicLinkSource';
 import BasicImageSource from './sources/BasicImageSource';
@@ -23,60 +18,30 @@ const options = {
     enableHorizontalRule: true,
     enableLineBreak: true,
     modelPickerOptions: [],
-    MODEL: ENTITY_TYPE.MODEL,
     imageFormats: [],
-    sources: [
-        { entity: ENTITY_TYPE.LINK, control: BasicLinkSource },
-        { entity: ENTITY_TYPE.DOCUMENT, control: BasicDocumentSource },
-        // { entity: ENTITY_TYPE.MODEL, control: GenericModelSource },
-        { entity: ENTITY_TYPE.IMAGE, control: BasicImageSource },
-        { entity: ENTITY_TYPE.EMBED, control: BasicEmbedSource },
+    entityTypes: [
+        { label: 'Image', type: ENTITY_TYPE.IMAGE, icon: 'icon-image', control: BasicImageSource },
+        { label: 'Embed', type: ENTITY_TYPE.EMBED, icon: 'icon-media', control: BasicEmbedSource },
+        { label: 'Link', type: ENTITY_TYPE.LINK, icon: 'icon-link', control: BasicLinkSource, strategy: findLinkEntities, component: Link },
+        { label: 'Document', type: ENTITY_TYPE.DOCUMENT, icon: 'icon-doc-full', control: BasicDocumentSource, strategy: findDocumentEntities, component: Document },
+        // { label: 'Model', type: ENTITY_TYPE.MODEL, icon: 'icon-cog', control: GenericModelSource, strategy: findModelEntities, component: Model },
     ],
-    // In-line decorators that format text in interesting ways.
-    decorators: [
-        { strategy: findLinkEntities, component: Link },
-        { strategy: findDocumentEntities, component: Document },
-        // { strategy: findModelEntities, component: Model },
+    blockTypes: [
+        { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
+        { label: 'H3', type: BLOCK_TYPE.HEADER_THREE },
+        { label: 'H4', type: BLOCK_TYPE.HEADER_FOUR },
+        { label: 'H5', type: BLOCK_TYPE.HEADER_FIVE },
+        { label: 'Blockquote', type: BLOCK_TYPE.BLOCKQUOTE, icon: 'icon-openquote' },
+        { label: 'UL', type: BLOCK_TYPE.UNORDERED_LIST_ITEM, icon: 'icon-list-ul' },
+        { label: 'OL', type: BLOCK_TYPE.ORDERED_LIST_ITEM, icon: 'icon-list-ol' },
+        { label: 'T&C', type: 'terms-and-conditions', element: 'div', className: 'u-smalltext' },
     ],
-    ENTITY_TYPES: [
-        {
-            entity: ENTITY_TYPE.IMAGE,
-            label: 'Image',
-            icon: 'icon-image',
-        },
-        {
-            entity: ENTITY_TYPE.EMBED,
-            label: 'Embed',
-            icon: 'icon-media',
-        },
-        {
-            entity: ENTITY_TYPE.LINK,
-            label: 'Link',
-            icon: 'icon-link',
-        },
-        {
-            entity: ENTITY_TYPE.DOCUMENT,
-            label: 'Document',
-            icon: 'icon-doc-full',
-        },
-    ],
-    BLOCK_TYPES: [
-        { label: 'H2', style: BLOCK_TYPE.HEADER_TWO },
-        { label: 'H3', style: BLOCK_TYPE.HEADER_THREE },
-        { label: 'H4', style: BLOCK_TYPE.HEADER_FOUR },
-        { label: 'H5', style: BLOCK_TYPE.HEADER_FIVE },
-        { label: 'Intro', style: 'intro-text', icon: 'icon-bin', element: 'pre', className: 'u-blue' },
-        { label: 'Blockquote', style: BLOCK_TYPE.BLOCKQUOTE, icon: 'icon-openquote' },
-        { label: 'UL', style: BLOCK_TYPE.UNORDERED_LIST_ITEM, icon: 'icon-list-ul' },
-        { label: 'OL', style: BLOCK_TYPE.ORDERED_LIST_ITEM, icon: 'icon-list-ol' },
-        { label: 'T&C', style: 'terms-and-conditions', element: 'div', className: 'u-smalltext' },
-    ],
-    INLINE_STYLES: [
-        { label: 'Bold', style: INLINE_STYLE.BOLD, icon: 'icon-bold' },
-        { label: 'Italic', style: INLINE_STYLE.ITALIC, icon: 'icon-italic' },
-        { label: 'Underline', style: INLINE_STYLE.UNDERLINE, icon: 'icon-underline' },
-        { label: 'Monospace', style: INLINE_STYLE.CODE, icon: 'icon-pacman' },
-        { label: 'Strikethrough', style: INLINE_STYLE.STRIKETHROUGH, icon: 'icon-strikethrough' },
+    inlineStyles: [
+        { label: 'Bold', type: INLINE_STYLE.BOLD, icon: 'icon-bold' },
+        { label: 'Italic', type: INLINE_STYLE.ITALIC, icon: 'icon-italic' },
+        { label: 'Underline', type: INLINE_STYLE.UNDERLINE, icon: 'icon-underline' },
+        { label: 'Monospace', type: INLINE_STYLE.CODE, icon: 'icon-pacman' },
+        { label: 'Strikethrough', type: INLINE_STYLE.STRIKETHROUGH, icon: 'icon-strikethrough' },
     ],
 };
 

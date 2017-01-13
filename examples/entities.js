@@ -20,40 +20,17 @@ const options = {
     enableHorizontalRule: true,
     enableLineBreak: true,
     modelPickerOptions: [],
-    MODEL: ENTITY_TYPE.MODEL,
     imageFormats: [],
-    sources: [
-        { entity: ENTITY_TYPE.LINK, control: BasicLinkSource },
-        { entity: ENTITY_TYPE.DOCUMENT, control: BasicDocumentSource },
-        // { entity: ENTITY_TYPE.MODEL, control: GenericModelSource },
-        // { entity: ENTITY_TYPE.IMAGE, control: BasicImageSource },
-        // { entity: ENTITY_TYPE.EMBED, control: BasicEmbedSource },
+    entityTypes: [
+        { label: 'Link', type: ENTITY_TYPE.LINK, icon: 'icon-link', control: BasicLinkSource, strategy: findLinkEntities, component: Link },
+        { label: 'Document', type: ENTITY_TYPE.DOCUMENT, icon: 'icon-doc-full', control: BasicDocumentSource, strategy: findDocumentEntities, component: Document },
     ],
-    // In-line decorators that format text in interesting ways.
-    decorators: [
-        { strategy: findLinkEntities, component: Link },
-        { strategy: findDocumentEntities, component: Document },
-        // { strategy: findModelEntities, component: Model },
+    blockTypes: [
+        { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
+        { label: 'H3', type: BLOCK_TYPE.HEADER_THREE },
+        { label: 'Blockquote', type: BLOCK_TYPE.BLOCKQUOTE, icon: 'icon-openquote' },
     ],
-    ENTITY_TYPES: [
-        {
-            entity: ENTITY_TYPE.LINK,
-            label: 'Link',
-            icon: 'icon-link',
-        },
-        {
-            entity: ENTITY_TYPE.DOCUMENT,
-            label: 'Document',
-            icon: 'icon-doc-full',
-        },
-    ],
-    BLOCK_TYPES: [
-        { label: 'H2', style: BLOCK_TYPE.HEADER_TWO },
-        { label: 'H3', style: BLOCK_TYPE.HEADER_THREE },
-        { label: 'Blockquote', style: BLOCK_TYPE.BLOCKQUOTE, icon: 'icon-openquote' },
-    ],
-
-    INLINE_STYLES: [],
+    inlineStyles: [],
 };
 
 const saveField = document.createElement('input');
