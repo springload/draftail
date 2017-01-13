@@ -17,6 +17,7 @@ We support most of the common keyboard shortcuts users would expect to find in t
 | Paste without formatting | ⌘ + Shift + V |
 | Undo | ⌘ + Z |
 | Redo | ⌘ + Shift + Z |
+| Insert or edit link | ⌘ + K |
 
 #### Text formatting (if enabled)
 
@@ -70,7 +71,6 @@ Other shortcuts we would like to support in the future:
 
 | Function | Shortcut |
 |----------|----------|
-| Insert or edit link | ⌘ + K |
 | Open link | Option + Enter |
 | Show common keyboard shortcuts | ⌘ + / |
 
