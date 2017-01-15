@@ -18,7 +18,11 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 - Maximum nested list level is now 1.
 - Change `hr` representation to use atomic block and entity instead of custom block type. #1
-- `mediaControls` and `dialogControls` options are now a single `ENTITY_TYPES` array. #26
+- `mediaControls`, `dialogControls` and `modelPickerOptions` are now a single `entityTypes` array. #26
+- `sources` and `decorators` are now declared directly in the `entityTypes` array items.
+- `INLINE_STYLES` property is now `inlineStyles`.
+- `BLOCK_TYPES` property is now `blockTypes`.
+- Inline styles and block types now use the `type` attribute instead of `style`.
 
 ### Fixed
 

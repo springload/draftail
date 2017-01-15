@@ -8,7 +8,6 @@ const mount = document.querySelector('[data-mount-basic]');
 const options = {
     enableHorizontalRule: true,
     enableLineBreak: true,
-    modelPickerOptions: [],
     imageFormats: [],
     entityTypes: [],
     blockTypes: [

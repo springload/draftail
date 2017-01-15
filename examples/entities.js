@@ -19,7 +19,6 @@ const mount = document.querySelector('[data-mount-entities]');
 const options = {
     enableHorizontalRule: true,
     enableLineBreak: true,
-    modelPickerOptions: [],
     imageFormats: [],
     entityTypes: [
         { label: 'Link', type: ENTITY_TYPE.LINK, icon: 'icon-link', control: BasicLinkSource, strategy: findLinkEntities, component: Link },

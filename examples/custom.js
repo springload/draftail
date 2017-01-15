@@ -6,7 +6,6 @@ import DraftailEditor, { BLOCK_TYPE } from '../lib';
 const mount = document.querySelector('[data-mount-custom]');
 
 const options = {
-    modelPickerOptions: [],
     imageFormats: [],
     entityTypes: [],
     blockTypes: [

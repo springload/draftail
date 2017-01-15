@@ -17,7 +17,6 @@ const mount = document.querySelector('[data-mount-test]');
 const options = {
     enableHorizontalRule: true,
     enableLineBreak: true,
-    modelPickerOptions: [],
     imageFormats: [],
     entityTypes: [
         { label: 'Image', type: ENTITY_TYPE.IMAGE, icon: 'icon-image', control: BasicImageSource },
