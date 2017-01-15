@@ -6,7 +6,6 @@ import DraftailEditor, { BLOCK_TYPE } from '../lib';
 const mount = document.querySelector('[data-mount-custom]');
 
 const options = {
-    imageFormats: [],
     entityTypes: [],
     blockTypes: [
         { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },

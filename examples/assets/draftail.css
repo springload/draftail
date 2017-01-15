@@ -173,13 +173,13 @@
 .public-DraftStyleDefault-depth4.public-DraftStyleDefault-reset {
   counter-reset: ol4; }
 
-.editor__controls {
+.editor__toolbar {
   border: solid 1px #eee;
   border-radius: 3px;
   padding: 0.5rem;
   margin-bottom: 1rem; }
 
-.editor--readonly {
+.editor--readonly .editor__toolbar {
   opacity: .5;
   pointer-events: none; }
 

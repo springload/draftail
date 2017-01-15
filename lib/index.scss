@@ -7,14 +7,14 @@ $color-teal: #43b1b0;
 $color-white: #ffffff;
 $color-black: #000;
 
-.editor__controls {
+.editor__toolbar {
     border: solid 1px #eee;
     border-radius: 3px;
     padding: $controls-padding;
     margin-bottom: $controls-padding * 2;
 }
 
-.editor--readonly {
+.editor--readonly .editor__toolbar {
     opacity: .5;
     pointer-events: none;
 }

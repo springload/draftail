@@ -23,6 +23,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - `INLINE_STYLES` property is now `inlineStyles`.
 - `BLOCK_TYPES` property is now `blockTypes`.
 - Inline styles and block types now use the `type` attribute instead of `style`.
+- `imageFormats` are now assigned directly on the `IMAGE` entity type. #33
 
 ### Fixed
 

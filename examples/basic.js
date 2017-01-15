@@ -8,7 +8,6 @@ const mount = document.querySelector('[data-mount-basic]');
 const options = {
     enableHorizontalRule: true,
     enableLineBreak: true,
-    imageFormats: [],
     entityTypes: [],
     blockTypes: [
         { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
