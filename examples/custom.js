@@ -5,15 +5,6 @@ import DraftailEditor, { BLOCK_TYPE } from '../lib';
 
 const mount = document.querySelector('[data-mount-custom]');
 
-const options = {
-    entityTypes: [],
-    blockTypes: [
-        { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
-        { label: 'T&C', type: 'terms-and-conditions', element: 'div', className: 'u-smalltext' },
-    ],
-    inlineStyles: [],
-};
-
 const rawContentState = {
     entityMap: {},
     blocks: [
@@ -35,8 +26,11 @@ const onSave = (contentState) => {
 const editor = (
     <DraftailEditor
         rawContentState={rawContentState}
-        options={options}
         onSave={onSave}
+        blockTypes={[
+            { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
+            { label: 'T&C', type: 'terms-and-conditions', element: 'div', className: 'u-smalltext' },
+        ]}
     />
 );
 

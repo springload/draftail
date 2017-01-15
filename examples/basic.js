@@ -5,23 +5,6 @@ import DraftailEditor, { BLOCK_TYPE, INLINE_STYLE } from '../lib';
 
 const mount = document.querySelector('[data-mount-basic]');
 
-const options = {
-    enableHorizontalRule: true,
-    enableLineBreak: true,
-    entityTypes: [],
-    blockTypes: [
-        { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
-        { label: 'H3', type: BLOCK_TYPE.HEADER_THREE },
-        { label: 'UL', type: BLOCK_TYPE.UNORDERED_LIST_ITEM, icon: 'icon-list-ul' },
-        { label: 'OL', type: BLOCK_TYPE.ORDERED_LIST_ITEM, icon: 'icon-list-ol' },
-    ],
-    inlineStyles: [
-        { label: 'Bold', type: INLINE_STYLE.BOLD, icon: 'icon-bold' },
-        { label: 'Italic', type: INLINE_STYLE.ITALIC, icon: 'icon-italic' },
-        { label: 'Strikethrough', type: INLINE_STYLE.STRIKETHROUGH, icon: 'icon-pacman' },
-    ],
-};
-
 const rawContentState = {
     entityMap: {
         0: {
@@ -137,8 +120,20 @@ const onSave = (contentState) => {
 const editor = (
     <DraftailEditor
         rawContentState={rawContentState}
-        options={options}
         onSave={onSave}
+        enableHorizontalRule={true}
+        enableLineBreak={true}
+        blockTypes={[
+            { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
+            { label: 'H3', type: BLOCK_TYPE.HEADER_THREE },
+            { label: 'UL', type: BLOCK_TYPE.UNORDERED_LIST_ITEM, icon: 'icon-list-ul' },
+            { label: 'OL', type: BLOCK_TYPE.ORDERED_LIST_ITEM, icon: 'icon-list-ol' },
+        ]}
+        inlineStyles={[
+            { label: 'Bold', type: INLINE_STYLE.BOLD, icon: 'icon-bold' },
+            { label: 'Italic', type: INLINE_STYLE.ITALIC, icon: 'icon-italic' },
+            { label: 'Strikethrough', type: INLINE_STYLE.STRIKETHROUGH, icon: 'icon-strikethrough' },
+        ]}
     />
 );
 

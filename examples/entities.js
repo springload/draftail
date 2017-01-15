@@ -16,21 +16,6 @@ import Document, { findDocumentEntities } from './entities/Document';
 
 const mount = document.querySelector('[data-mount-entities]');
 
-const options = {
-    enableHorizontalRule: true,
-    enableLineBreak: true,
-    entityTypes: [
-        { label: 'Link', type: ENTITY_TYPE.LINK, icon: 'icon-link', control: BasicLinkSource, strategy: findLinkEntities, component: Link },
-        { label: 'Document', type: ENTITY_TYPE.DOCUMENT, icon: 'icon-doc-full', control: BasicDocumentSource, strategy: findDocumentEntities, component: Document },
-    ],
-    blockTypes: [
-        { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
-        { label: 'H3', type: BLOCK_TYPE.HEADER_THREE },
-        { label: 'Blockquote', type: BLOCK_TYPE.BLOCKQUOTE, icon: 'icon-openquote' },
-    ],
-    inlineStyles: [],
-};
-
 const saveField = document.createElement('input');
 saveField.type = 'hidden';
 mount.parentNode.appendChild(saveField);
@@ -95,8 +80,16 @@ const rawContentState = {
 const editor = (
     <DraftailEditor
         rawContentState={rawContentState}
-        options={options}
         onSave={onSave}
+        entityTypes={[
+            { label: 'Link', type: ENTITY_TYPE.LINK, icon: 'icon-link', control: BasicLinkSource, strategy: findLinkEntities, component: Link },
+            { label: 'Document', type: ENTITY_TYPE.DOCUMENT, icon: 'icon-doc-full', control: BasicDocumentSource, strategy: findDocumentEntities, component: Document },
+        ]}
+        blockTypes={[
+            { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
+            { label: 'H3', type: BLOCK_TYPE.HEADER_THREE },
+            { label: 'Blockquote', type: BLOCK_TYPE.BLOCKQUOTE, icon: 'icon-openquote' },
+        ]}
     />
 );
 

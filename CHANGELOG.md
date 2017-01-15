@@ -24,6 +24,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - `BLOCK_TYPES` property is now `blockTypes`.
 - Inline styles and block types now use the `type` attribute instead of `style`.
 - `imageFormats` are now assigned directly on the `IMAGE` entity type. #33
+- All options are now direct props of `DraftailEditor` instead of attributes of the `options` prop. #21
 
 ### Fixed
 
