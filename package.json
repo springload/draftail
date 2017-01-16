@@ -60,8 +60,8 @@
     "webpack-hot-middleware": "^2.13.2"
   },
   "peerDependencies": {
-    "draft-js": "^0.9.x",
-    "draftjs-utils": "^0.3.2",
+    "draft-js": "0.9.1",
+    "draftjs-utils": "0.3.2",
     "immutable": "^3.x.x",
     "react": "^15.x.x",
     "react-dom": "^15.x.x"
