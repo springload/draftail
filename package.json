@@ -30,18 +30,23 @@
       "/node_modules/",
       "/dist/",
       "/examples/test.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
     ]
   },
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.18.2",
+    "babel-jest": "^18.0.0",
     "babel-loader": "^6.2.7",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "coveralls": "^2.11.15",
     "draft-js": "^0.9.1",
     "draftjs-utils": "^0.3.2",
-    "enzyme": "^2.6.0",
+    "enzyme": "^2.7.0",
+    "enzyme-to-json": "^1.4.5",
     "eslint": "^3.9.1",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",

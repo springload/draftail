@@ -1,0 +1,79 @@
+exports[`Tooltip #entityData.label 1`] = `
+<div
+  className="RichEditor-tooltip"
+  role="tooltip"
+  style={
+    Object {
+      "left": 0,
+      "top": 0,
+    }
+  }>
+  <span
+    className="RichEditor-tooltip__text">
+    Test label
+  </span>
+  <button
+    className="RichEditor-tooltip__button"
+    onClick={[Function]}>
+    Edit
+  </button>
+  <button
+    className="RichEditor-tooltip__button"
+    onClick={[Function]}>
+    Remove
+  </button>
+</div>
+`;
+
+exports[`Tooltip #entityData.url 1`] = `
+<div
+  className="RichEditor-tooltip"
+  role="tooltip"
+  style={
+    Object {
+      "left": 0,
+      "top": 0,
+    }
+  }>
+  <a
+    className="RichEditor-tooltip__link"
+    href="http://www.example.com/"
+    rel="noopener noreferrer"
+    target="_blank">
+    www.example.com/
+  </a>
+  <button
+    className="RichEditor-tooltip__button"
+    onClick={[Function]}>
+    Edit
+  </button>
+  <button
+    className="RichEditor-tooltip__button"
+    onClick={[Function]}>
+    Remove
+  </button>
+</div>
+`;
+
+exports[`Tooltip basic 1`] = `
+<div
+  className="RichEditor-tooltip"
+  role="tooltip"
+  style={
+    Object {
+      "left": 0,
+      "top": 0,
+    }
+  }>
+  <button
+    className="RichEditor-tooltip__button"
+    onClick={[Function]}>
+    Edit
+  </button>
+  <button
+    className="RichEditor-tooltip__button"
+    onClick={[Function]}>
+    Remove
+  </button>
+</div>
+`;

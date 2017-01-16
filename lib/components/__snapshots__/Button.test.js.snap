@@ -1,0 +1,34 @@
+exports[`Button #active 1`] = `
+<button
+  className="RichEditor-styleButton RichEditor-activeButton"
+  onMouseDown={[Function]}
+  type="button" />
+`;
+
+exports[`Button #icon 1`] = `
+<button
+  className="RichEditor-styleButton"
+  onMouseDown={[Function]}
+  type="button">
+  <Icon
+    className=""
+    name="icon-test"
+    title={null} />
+</button>
+`;
+
+exports[`Button #label 1`] = `
+<button
+  className="RichEditor-styleButton"
+  onMouseDown={[Function]}
+  type="button">
+  Test label
+</button>
+`;
+
+exports[`Button empty 1`] = `
+<button
+  className="RichEditor-styleButton"
+  onMouseDown={[Function]}
+  type="button" />
+`;

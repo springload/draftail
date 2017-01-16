@@ -1,0 +1,69 @@
+exports[`EmbedBlock #active 1`] = `
+<div>
+  <Icon
+    className="RichEditor-media-icon"
+    name="icon-media"
+    title={null} />
+  <div
+    className="RichEditor-media-container"
+    onClick={[Function]}>
+    <span
+      className="RichEditor-media-preview">
+      <img
+        alt="Test title"
+        src="http://www.example.com/example.png" />
+    </span>
+  </div>
+  <div
+    className="RichEditor-media-options">
+    <h3>
+      <strong>
+        Test title
+      </strong>
+    </h3>
+    <p>
+      <span>
+        URL:
+         
+        <a
+          href="http://www.example.com/"
+          rel="noopener noreferrer"
+          target="_blank">
+          http://www.example.com/
+        </a>
+      </span>
+      <br />
+      <span>
+        Provider:
+         
+      </span>
+      Test provider
+      <br />
+      <span>
+        Author:
+         
+      </span>
+      Test author
+    </p>
+  </div>
+</div>
+`;
+
+exports[`EmbedBlock basic 1`] = `
+<div>
+  <Icon
+    className="RichEditor-media-icon"
+    name="icon-media"
+    title={null} />
+  <div
+    className="RichEditor-media-container"
+    onClick={[Function]}>
+    <span
+      className="RichEditor-media-preview">
+      <img
+        alt="Test title"
+        src="http://www.example.com/example.png" />
+    </span>
+  </div>
+</div>
+`;

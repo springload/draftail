@@ -1,0 +1,67 @@
+exports[`MediaBlock #active 1`] = `
+<div
+  className="RichEditor-media RichEditor-media--open">
+  <NullBlock
+    active={true}
+    entity={
+      Object {
+        "type": "TEST",
+      }
+    }
+    entityConfig={Object {}}
+    onCancel={[Function]}
+    onClick={[Function]}
+    onSave={[Function]} />
+</div>
+`;
+
+exports[`MediaBlock basic 1`] = `
+<div
+  className="RichEditor-media">
+  <NullBlock
+    active={false}
+    entity={
+      Object {
+        "type": "TEST",
+      }
+    }
+    entityConfig={Object {}}
+    onCancel={[Function]}
+    onClick={[Function]}
+    onSave={[Function]} />
+</div>
+`;
+
+exports[`MediaBlock embed 1`] = `
+<div
+  className="RichEditor-media">
+  <EmbedBlock
+    active={false}
+    entity={
+      Object {
+        "type": "EMBED",
+      }
+    }
+    entityConfig={Object {}}
+    onCancel={[Function]}
+    onClick={[Function]}
+    onSave={[Function]} />
+</div>
+`;
+
+exports[`MediaBlock image 1`] = `
+<div
+  className="RichEditor-media">
+  <ImageBlock
+    active={false}
+    entity={
+      Object {
+        "type": "IMAGE",
+      }
+    }
+    entityConfig={Object {}}
+    onCancel={[Function]}
+    onClick={[Function]}
+    onSave={[Function]} />
+</div>
+`;

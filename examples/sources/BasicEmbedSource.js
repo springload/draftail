@@ -3,12 +3,12 @@ import { AtomicBlockUtils, Entity } from 'draft-js';
 
 class BasicEmbedSource extends React.Component {
     componentDidMount() {
-        const { editorState, entityType, onUpdate } = this.props;
+        const { editorState, options, onUpdate } = this.props;
 
         const url = global.prompt('Link URL');
 
         if (url) {
-            const entityKey = Entity.create(entityType, 'IMMUTABLE', {
+            const entityKey = Entity.create(options.type, 'IMMUTABLE', {
                 url: url,
                 title: 'Test embed',
                 providerName: 'YouTube',
@@ -30,7 +30,7 @@ class BasicEmbedSource extends React.Component {
 
 BasicEmbedSource.propTypes = {
     editorState: React.PropTypes.object.isRequired,
-    entityType: React.PropTypes.string.isRequired,
+    options: React.PropTypes.object.isRequired,
     onUpdate: React.PropTypes.func.isRequired,
 };
 

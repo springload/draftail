@@ -3,12 +3,12 @@ import { AtomicBlockUtils, Entity } from 'draft-js';
 
 class BasicImageSource extends React.Component {
     componentDidMount() {
-        const { editorState, entityType, onUpdate } = this.props;
+        const { editorState, options, onUpdate } = this.props;
 
         const url = global.prompt('Link URL');
 
         if (url) {
-            const entityKey = Entity.create(entityType, 'IMMUTABLE', {
+            const entityKey = Entity.create(options.type, 'IMMUTABLE', {
                 altText: 'Test image alt text',
                 alignment: 'left',
                 src: 'https://placekitten.com/g/400/200',
@@ -28,7 +28,7 @@ class BasicImageSource extends React.Component {
 
 BasicImageSource.propTypes = {
     editorState: React.PropTypes.object.isRequired,
-    entityType: React.PropTypes.string.isRequired,
+    options: React.PropTypes.object.isRequired,
     onUpdate: React.PropTypes.func.isRequired,
 };
 
