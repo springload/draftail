@@ -108,7 +108,7 @@ Things to borrow: keyboard shortcuts, Wagtail integration mechanism,
 - https://github.com/jaydensmith/wagtailfroala
 - https://github.com/isotoma/wagtailtinymce
 
-### Things that it would be cool to support
+### Things that it would be cool to support in the future
 
 - Emojis
 - Hashtags
@@ -116,7 +116,9 @@ Things to borrow: keyboard shortcuts, Wagtail integration mechanism,
 - Mentions
 - Undo/redo buttons
 - Character / word counter
-- Autolist – convert *, -, 1. to list items
-- Markdown syntax shortcuts
+- Markdown syntax shortcuts (see https://github.com/brijeshb42/medium-draft/blob/ec7aa4315b9aea2eb5c12241052fffe5a5f601ea/src/util/beforeinput.js)
 - UI displaying all available keyboard shortcuts (`cmd + /`)
 - Drag and drop image insertion
+- Custom inline styles (see https://github.com/jpuri/draftjs-utils/commit/02f452cef415a20351d809fac3b87b9f2ae5f7a9, https://github.com/jpuri/draftjs-utils/commit/6a12f693330f0e8a82ec0461661be505f16b6003)
+- Smart quotes replacement
+- https://github.com/globocom/megadraft/blob/master/src/utils.js#L67

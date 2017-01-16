@@ -13,10 +13,13 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - Prevent soft line breaks from keyboard shortcut if disabled.
 - Add editor CSS to published package. #17
 - Add common keyboard shortcuts (inspired by Google Docs, see documentation for the full list).
+- Add support for "autolist" behavior (lines starting with `- `, `* `, `1. ` are automatically converted to list items).
 
 ### Changed
 
-- Maximum nested list level is now 1.
+- Max nested list level is now 1.
+- Max nested list level is now configurable via a prop.
+- Save interval is now configurable via a prop.
 - Change `hr` representation to use atomic block and entity instead of custom block type. #1
 - `mediaControls`, `dialogControls` and `modelPickerOptions` are now a single `entityTypes` array. #26
 - `sources` and `decorators` are now declared directly in the `entityTypes` array items.
