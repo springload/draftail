@@ -10,6 +10,7 @@ module.exports = {
     entry: {
         hmr: 'webpack-hot-middleware/client',
         vendor: ['react', 'react-dom', 'immutable', 'draft-js', 'draftjs-utils'],
+        intro: './examples/intro',
         basic: './examples/basic',
         entities: './examples/entities',
         custom: './examples/custom',

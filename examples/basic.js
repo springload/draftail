@@ -16,7 +16,7 @@ const rawContentState = {
     blocks: [
         {
             key: '6mgfh',
-            text: 'User experience design 🚀',
+            text: 'User experience design',
             type: 'header-two',
             depth: 0,
             inlineStyleRanges: [
