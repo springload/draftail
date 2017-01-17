@@ -16,7 +16,7 @@ const Link = ({ entityKey, children }) => {
     const { url } = Entity.get(entityKey).getData();
 
     return (
-        <span data-tooltip={url} className="RichEditor-link">
+        <span data-tooltip={entityKey} className="RichEditor-link">
             <Icon name={`icon-${url.indexOf('mailto:') !== -1 ? 'mail' : 'link'}`} />
             {children}
         </span>

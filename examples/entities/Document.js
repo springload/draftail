@@ -13,9 +13,9 @@ export function findDocumentEntities(contentBlock, callback) {
 }
 
 const Document = ({ entityKey, children }) => {
-    const { url, title } = Entity.get(entityKey).getData();
+    const { title } = Entity.get(entityKey).getData();
     return (
-        <span data-tooltip={url} className="RichEditor-link" title={title}>
+        <span data-tooltip={entityKey} className="RichEditor-link" title={title}>
             <Icon name="icon-doc-full" />
             {children}
         </span>
