@@ -4,7 +4,7 @@ Changelog
 > All notable changes to this project are documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [[v0.4.0]](https://github.com/springload/draftail/releases/tag/v0.4.0) - 2016-12-22
+## [[v0.4.0]](https://github.com/springload/draftail/releases/tag/v0.4.0) - 2017-01-18
 
 ### Added
 
