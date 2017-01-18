@@ -1,64 +1,3 @@
-exports[`ImageBlock #active 1`] = `
-<div>
-  <Icon
-    className="RichEditor-media-icon"
-    name="icon-image"
-    title={null} />
-  <div
-    className="RichEditor-media-container"
-    onClick={[Function]}>
-    <span
-      className="RichEditor-media-preview">
-      <img
-        alt="Test alt"
-        src="http://www.example.com/example.png" />
-    </span>
-  </div>
-  <div
-    className="RichEditor-media-options">
-    <div
-      className="RichEditor-grid">
-      <div
-        className="RichEditor-col">
-        <label
-          className="u-block">
-          <h4>
-            Alt text
-          </h4>
-          <p>
-            <input
-              onChange={[Function]}
-              type="text"
-              value="Test alt text" />
-          </p>
-        </label>
-      </div>
-      <div
-        className="RichEditor-col">
-        <h4>
-          Image alignment
-        </h4>
-        <p />
-      </div>
-    </div>
-    <p>
-      <button
-        className="button button-secondary"
-        onClick={[Function]}
-        type="button">
-        Save changes
-      </button>
-      <button
-        className="button button-secondary no"
-        onClick={[Function]}
-        type="button">
-        Cancel
-      </button>
-    </p>
-  </div>
-</div>
-`;
-
 exports[`ImageBlock #alignment 1`] = `
 <div>
   <Icon
@@ -195,6 +134,67 @@ exports[`ImageBlock #entityConfig.imageFormats 1`] = `
             Right
           </label>
         </p>
+      </div>
+    </div>
+    <p>
+      <button
+        className="button button-secondary"
+        onClick={[Function]}
+        type="button">
+        Save changes
+      </button>
+      <button
+        className="button button-secondary no"
+        onClick={[Function]}
+        type="button">
+        Cancel
+      </button>
+    </p>
+  </div>
+</div>
+`;
+
+exports[`ImageBlock #isActive 1`] = `
+<div>
+  <Icon
+    className="RichEditor-media-icon"
+    name="icon-image"
+    title={null} />
+  <div
+    className="RichEditor-media-container"
+    onClick={[Function]}>
+    <span
+      className="RichEditor-media-preview">
+      <img
+        alt="Test alt"
+        src="http://www.example.com/example.png" />
+    </span>
+  </div>
+  <div
+    className="RichEditor-media-options">
+    <div
+      className="RichEditor-grid">
+      <div
+        className="RichEditor-col">
+        <label
+          className="u-block">
+          <h4>
+            Alt text
+          </h4>
+          <p>
+            <input
+              onChange={[Function]}
+              type="text"
+              value="Test alt text" />
+          </p>
+        </label>
+      </div>
+      <div
+        className="RichEditor-col">
+        <h4>
+          Image alignment
+        </h4>
+        <p />
       </div>
     </div>
     <p>

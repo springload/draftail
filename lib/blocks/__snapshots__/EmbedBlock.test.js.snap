@@ -1,4 +1,4 @@
-exports[`EmbedBlock #active 1`] = `
+exports[`EmbedBlock #isActive 1`] = `
 <div>
   <Icon
     className="RichEditor-media-icon"

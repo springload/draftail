@@ -1,14 +1,14 @@
-exports[`MediaBlock #active 1`] = `
+exports[`MediaBlock #isActive 1`] = `
 <div
   className="RichEditor-media RichEditor-media--open">
   <NullBlock
-    active={true}
     entity={
       Object {
         "type": "TEST",
       }
     }
     entityConfig={Object {}}
+    isActive={true}
     onCancel={[Function]}
     onClick={[Function]}
     onSave={[Function]} />
@@ -19,13 +19,13 @@ exports[`MediaBlock basic 1`] = `
 <div
   className="RichEditor-media">
   <NullBlock
-    active={false}
     entity={
       Object {
         "type": "TEST",
       }
     }
     entityConfig={Object {}}
+    isActive={false}
     onCancel={[Function]}
     onClick={[Function]}
     onSave={[Function]} />
@@ -36,13 +36,13 @@ exports[`MediaBlock embed 1`] = `
 <div
   className="RichEditor-media">
   <EmbedBlock
-    active={false}
     entity={
       Object {
         "type": "EMBED",
       }
     }
     entityConfig={Object {}}
+    isActive={false}
     onCancel={[Function]}
     onClick={[Function]}
     onSave={[Function]} />
@@ -53,13 +53,13 @@ exports[`MediaBlock image 1`] = `
 <div
   className="RichEditor-media">
   <ImageBlock
-    active={false}
     entity={
       Object {
         "type": "IMAGE",
       }
     }
     entityConfig={Object {}}
+    isActive={false}
     onCancel={[Function]}
     onClick={[Function]}
     onSave={[Function]} />
