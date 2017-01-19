@@ -1,18 +1,22 @@
 body {
-  background-color: #fff;
-  padding:50px;
-  font: 16px/1.5  "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color:#727272;
-  font-weight:400;
+  background-color: #f3f3f3;
+  padding: 50px;
+  font-size: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #333;
+  font-weight: normal;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color:#222;
-  margin:0 0 15px;
+  margin:0 0 1rem;
 }
 
-p, ul, ol, table, dl {
-  margin:0 0 20px;
+p, .public-DraftStyleDefault-block {
+  margin:0 0 0.5rem;
+}
+
+li .public-DraftStyleDefault-block {
+    margin-bottom: 0.25rem;
 }
 
 pre {
@@ -56,15 +60,15 @@ a:hover small {
 }
 
 .wrapper {
-  width:860px;
+  width: 960px;
   margin:0 auto;
 }
 
 blockquote {
-  border-left:1px solid #e5e5e5;
-  margin:0;
-  padding:0 0 0 20px;
-  font-style:italic;
+  border-left: 1px solid #e5e5e5;
+  padding: 0 0 0 20px;
+  margin-left: 0;
+  font-style: italic;
 }
 
 code, pre {
@@ -112,69 +116,17 @@ header {
   -webkit-font-smoothing:subpixel-antialiased;
 }
 
-header ul {
-  list-style:none;
-  height:40px;
-  padding:0;
-  background: #f4f4f4;
-  border-radius:5px;
-  border:1px solid #e0e0e0;
-  width:270px;
-}
-
-header li {
-  width:89px;
-  float:left;
-  border-right:1px solid #e0e0e0;
-  height:40px;
-}
-
-header li:first-child a {
-  border-radius:5px 0 0 5px;
-}
-
-header li:last-child a {
-  border-radius:0 5px 5px 0;
-}
-
-header ul a {
-  line-height:1;
-  font-size:11px;
-  color:#999;
-  display:block;
-  text-align:center;
-  padding-top:6px;
-  height:34px;
-}
-
-header ul a:hover {
-  color:#999;
-}
-
-header ul a:active {
-  background-color:#f0f0f0;
-}
-
 strong {
   color:#222;
   font-weight:700;
 }
 
-header ul li + li + li {
-  border-right:none;
-  width:89px;
-}
-
-header ul a strong {
-  font-size:14px;
-  display:block;
-  color:#222;
-}
-
 section {
-  width:500px;
+  width:560px;
   float:right;
   padding-bottom:25px;
+  background-color: #fff;
+  padding: 0 2rem;
 }
 
 small {
@@ -212,23 +164,6 @@ footer {
   header {
     padding-right:320px;
   }
-
-  section {
-    border:1px solid #e5e5e5;
-    border-width:1px 0;
-    padding:20px 0;
-    margin:0 0 20px;
-  }
-
-  header a small {
-    display:inline;
-  }
-
-  header ul {
-    position:absolute;
-    right:50px;
-    top:52px;
-  }
 }
 
 @media print, screen and (max-width: 720px) {
@@ -240,10 +175,6 @@ footer {
     padding:0;
   }
 
-  header ul, header p.view {
-    position:static;
-  }
-
   pre, code {
     word-wrap:normal;
   }
@@ -252,14 +183,6 @@ footer {
 @media print, screen and (max-width: 480px) {
   body {
     padding:15px;
-  }
-
-  header ul {
-    width:99%;
-  }
-
-  header li, header ul li + li + li {
-    width:33%;
   }
 }
 
@@ -394,7 +317,7 @@ footer {
  */
 
 .example {
-  padding: 12.5px 0;
+  padding: 2rem 0;
 }
 
 .anchor {

@@ -5,7 +5,7 @@ draftail documentation
 
 ### Keyboard shortcuts
 
-We support keyboard shortcuts inspired by the ones used in [Google Docs](https://support.google.com/docs/answer/179738?co=GENIE.Platform%3DDesktop&hl=en), thanks to [Draft.js key bindings](https://facebook.github.io/draft-js/docs/advanced-topics-key-bindings.html).
+We support keyboard shortcuts inspired by the ones used in [Google Docs](https://support.google.com/docs/answer/179738), thanks to [Draft.js key bindings](https://facebook.github.io/draft-js/docs/advanced-topics-key-bindings.html).
 
 | Function | Shortcut |
 |----------|----------|
