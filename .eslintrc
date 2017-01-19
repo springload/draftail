@@ -21,7 +21,7 @@
         "react/forbid-prop-types": [2, { "forbid": ["any"] }],
         "jsx-quotes": [1, "prefer-double"],
         "jsx-a11y/label-has-for": [0],
-        "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}],
+        "import/no-extraneous-dependencies": [2, {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}],
         "import/prefer-default-export": [0]
     },
 

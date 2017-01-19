@@ -20,7 +20,7 @@ const rawContentState = {
 };
 
 const onSave = (contentState) => {
-    console.log('Save custom example:', contentState);
+    sessionStorage.setItem('custom:rawContentState', JSON.stringify(contentState));
 };
 
 const editor = (

@@ -114,7 +114,7 @@ const rawContentState = {
 };
 
 const onSave = (contentState) => {
-    console.log('Save basic example:', contentState);
+    sessionStorage.setItem('basic:rawContentState', JSON.stringify(contentState));
 };
 
 const editor = (
