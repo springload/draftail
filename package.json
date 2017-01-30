@@ -43,8 +43,8 @@
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "coveralls": "^2.11.15",
-    "draft-js": "^0.9.1",
-    "draftjs-utils": "^0.5.0",
+    "draft-js": "~0.10.0",
+    "draftjs-utils": "0.5.0",
     "enzyme": "^2.7.0",
     "enzyme-to-json": "^1.4.5",
     "eslint": "^3.13.1",
@@ -65,7 +65,7 @@
     "webpack-hot-middleware": "^2.13.2"
   },
   "peerDependencies": {
-    "draft-js": "0.10.0",
+    "draft-js": "~0.10.0",
     "draftjs-utils": "0.5.0",
     "immutable": "^3.x.x",
     "react": "^15.x.x",
