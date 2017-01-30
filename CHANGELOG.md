@@ -4,19 +4,19 @@ Changelog
 > All notable changes to this project are documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [[v0.4.1]](https://github.com/springload/draftail/releases/tag/v0.4.1) - 2017-01-30
+## [[v0.4.1]](https://github.com/springload/draftail/releases/tag/v0.4.1)
 
 ### Changed
 
 - Update project to use draft-js@0.10 API
 
-## [[v0.4.1]](https://github.com/springload/draftail/releases/tag/v0.4.1) - 2017-01-18
+## [[v0.4.1]](https://github.com/springload/draftail/releases/tag/v0.4.1)
 
 ### Fixed
 
 - Fix image block not unlocking editor on cancel
 
-## [[v0.4.0]](https://github.com/springload/draftail/releases/tag/v0.4.0) - 2017-01-18
+## [[v0.4.0]](https://github.com/springload/draftail/releases/tag/v0.4.0)
 
 ### Added
 
@@ -52,26 +52,26 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - draftail no longer depends on jQuery.
 - draftail no longer depends on the Wagtail font icon.
 
-## [[v0.3.3]](https://github.com/springload/draftail/releases/tag/v0.3.3) - 2016-12-13
+## [[v0.3.3]](https://github.com/springload/draftail/releases/tag/v0.3.3)
 
 ### Added
 
 - Allow customisation of block style function & block render map.
 
-## [[v0.3.2]](https://github.com/springload/draftail/releases/tag/v0.3.2) - 2016-11-29
+## [[v0.3.2]](https://github.com/springload/draftail/releases/tag/v0.3.2)
 
 ### Added
 
 - Pressing return on an empty list item should un-indent it until it is not nested, and then remove it.
 - Pressing return at the end of a block should create an empty unstyled block.
 
-## [[v0.3.1]](https://github.com/springload/draftail/releases/tag/v0.3.1) - 2016-11-28
+## [[v0.3.1]](https://github.com/springload/draftail/releases/tag/v0.3.1)
 
 ### Fixed
 
 - Buttons do not trigger a form submit
 
-## [[v0.3.0]](https://github.com/springload/draftail/releases/tag/v0.3.0) - 2016-11-28
+## [[v0.3.0]](https://github.com/springload/draftail/releases/tag/v0.3.0)
 
 > This release contains __breaking changes__.
 
@@ -89,20 +89,22 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - https://github.com/springload/draftail/issues/3
 - https://github.com/springload/draftail/issues/28
 
-## [[v0.2.0]](https://github.com/springload/draftail/releases/tag/v0.2.0) - 2016-11-14
+## [[v0.2.0]](https://github.com/springload/draftail/releases/tag/v0.2.0)
 
 ### Changed
 
 - Reworking most of the editor codebase to make it more maintainable.
 - Configurable block types and inline styles.
 
-## [[v0.1.0]](https://github.com/springload/draftail/releases/tag/v0.1.0) - 2016-11-11
+## [[v0.1.0]](https://github.com/springload/draftail/releases/tag/v0.1.0)
 
 First usable release!
 
 -------------
 
-## [[x.y.z]](https://github.com/springload/draftail/releases/tag/x.y.z) - YYYY-MM-DD (Template: http://keepachangelog.com/)
+Template from http://keepachangelog.com/
+
+## [[vx.y.z]](https://github.com/springload/draftail/releases/tag/x.y.z)
 
 ### Added
 
