@@ -1,5 +1,5 @@
 import React from 'react';
-import { AtomicBlockUtils, Entity } from 'draft-js';
+import { AtomicBlockUtils } from 'draft-js';
 
 class BasicImageSource extends React.Component {
     componentDidMount() {
@@ -8,11 +8,13 @@ class BasicImageSource extends React.Component {
         const url = global.prompt('Link URL');
 
         if (url) {
-            const entityKey = Entity.create(options.type, 'IMMUTABLE', {
+            const contentState = editorState.getCurrentContent();
+            const contentStateWithEntity = contentState.createEntity(options.type, 'IMMUTABLE', {
                 altText: 'Test image alt text',
                 alignment: 'left',
                 src: 'https://placekitten.com/g/400/200',
             });
+            const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
             const nextState = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ');
 
             onUpdate(nextState);

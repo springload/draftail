@@ -1,19 +1,18 @@
 import React from 'react';
-import { Entity } from 'draft-js';
 import { ENTITY_TYPE, Icon } from '../../lib';
 
-export function findDocumentEntities(contentBlock, callback) {
+export function findDocumentEntities(contentBlock, callback, contentState) {
     contentBlock.findEntityRanges((character) => {
         const entityKey = character.getEntity();
         return (
             entityKey !== null &&
-            Entity.get(entityKey).getType() === ENTITY_TYPE.DOCUMENT
+            contentState.getEntity(entityKey).getType() === ENTITY_TYPE.DOCUMENT
         );
     }, callback);
 }
 
-const Document = ({ entityKey, children }) => {
-    const { title } = Entity.get(entityKey).getData();
+const Document = ({ entityKey, contentState, children }) => {
+    const { title } = contentState.getEntity(entityKey).getData();
     return (
         <span data-tooltip={entityKey} className="RichEditor-link" title={title}>
             <Icon name="icon-doc-full" />
@@ -24,6 +23,7 @@ const Document = ({ entityKey, children }) => {
 
 Document.propTypes = {
     entityKey: React.PropTypes.string.isRequired,
+    contentState: React.PropTypes.object.isRequired,
     children: React.PropTypes.node.isRequired,
 };
 

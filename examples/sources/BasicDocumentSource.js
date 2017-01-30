@@ -1,5 +1,5 @@
 import React from 'react';
-import { Entity, RichUtils } from 'draft-js';
+import { RichUtils } from 'draft-js';
 
 class BasicDocumentSource extends React.Component {
     componentDidMount() {
@@ -7,10 +7,12 @@ class BasicDocumentSource extends React.Component {
         const url = global.prompt('Document URL', entity ? entity.getData().url : '');
 
         if (url) {
-            const entityKey = Entity.create(options.type, 'MUTABLE', {
+            const contentState = editorState.getCurrentContent();
+            const contentStateWithEntity = contentState.createEntity(options.type, 'MUTABLE', {
                 url: url,
                 title: 'Kritik der reinen Vernunft',
             });
+            const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
             const nextState = RichUtils.toggleLink(editorState, editorState.getSelection(), entityKey);
 
             onUpdate(nextState);
