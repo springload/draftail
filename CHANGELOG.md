@@ -4,6 +4,12 @@ Changelog
 > All notable changes to this project are documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [[v0.4.1]](https://github.com/springload/draftail/releases/tag/v0.4.1) - 2017-01-30
+
+### Changed
+
+- Update project to use draft-js@0.10 API
+
 ## [[v0.4.1]](https://github.com/springload/draftail/releases/tag/v0.4.1) - 2017-01-18
 
 ### Fixed
