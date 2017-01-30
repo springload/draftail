@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ### Changed
 
 - Update project to use draft-js@0.10 API
+- Move draftjs-utils `peerDependency` to be a dependency.
 
 ## [[v0.4.1]](https://github.com/springload/draftail/releases/tag/v0.4.1)
 
