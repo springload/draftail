@@ -4,7 +4,11 @@ Changelog
 > All notable changes to this project are documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [[v0.4.1]](https://github.com/springload/draftail/releases/tag/v0.4.1)
+## [[v0.5.0]](https://github.com/springload/draftail/releases/tag/v0.5.0)
+
+### Added
+
+- Implement list depth normalisation on copy/paste
 
 ### Changed
 
