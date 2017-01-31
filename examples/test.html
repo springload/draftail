@@ -19,26 +19,46 @@
 
             <div data-mount-test></div>
 
-            <h2>Copy/paste test cases</h2>
+            <h2>Copy/paste test cases – HTML to Draftail</h2>
 
-            <h3>Block nesting normalization: copy the following, and paste it in the editor</h3>
-            <p>Depth 0</p>
-            <ul>
-                <li>Depth 0</li>
-                <li>
+            <p>Use the following by copy/pasting them in the editor, <em>see what happens</em>.</p>
+
+            <div class="example">
+                <h3>Block nesting normalization</h3>
+                <div>
+                    <p>Depth 0</p>
                     <ul>
-                        <li>Depth 1</li>
-                        <ul>
-                            <li>Depth 2</li>
+                        <li>Depth 0</li>
+                        <li>
                             <ul>
-                                <li>Depth 3</li>
+                                <li>Depth 1</li>
+                                <ul>
+                                    <li>Depth 2</li>
+                                    <ul>
+                                        <li>Depth 3</li>
+                                    </ul>
+                                    <li>Depth 2</li>
+                                </ul>
                             </ul>
-                            <li>Depth 2</li>
-                        </ul>
+                        </li>
                     </ul>
-                </li>
-            </ul>
-        </section>
+                </div>
+            </div>
+            <div class="example">
+                <h3>Preserve <code>a</code> tags as <code>LINK</code> entities</h3>
+                <div>
+                    <p>Draftail is a rich text editor built on <a href="https://facebook.github.io/draft-js/">Draft.js</a>, intended to be integrated into <a href="https://wagtail.io/">Wagtail</a>.</p>
+                </div>
+            </div>
+            <div class="example">
+                <h3>Preserve <code>img</code> tags as <code>IMAGE</code> entities</h3>
+                <div>
+                    <p>Draftail supports images and embeds out of the box.</p>
+                    <img src="https://placekitten.com/g/400/300" alt="Placekitten example image">
+                    <p>It can be extended to support more entities from Wagtail.</p>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="assets/vendor.bundle.js"></script>
