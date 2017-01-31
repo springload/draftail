@@ -25,6 +25,13 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         new ProgressBarPlugin(),
+        new webpack.DefinePlugin({
+            // Set an environment variable of EMBEDLY_API_KEY to use this in development.
+            EMBEDLY_API_KEY: JSON.stringify(process.env.EMBEDLY_API_KEY),
+            'process.env': {
+                NODE_ENV: JSON.stringify('development'),
+            },
+        }),
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js', Infinity),
     ],
     module: {

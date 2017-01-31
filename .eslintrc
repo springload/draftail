@@ -28,5 +28,9 @@
     "env": {
         "jest": true,
         "browser": true
+    },
+
+    "globals": {
+        "EMBEDLY_API_KEY": true
     }
 }

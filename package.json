@@ -45,6 +45,7 @@
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "coveralls": "^2.11.15",
+    "dotenv": "^4.0.0",
     "draft-js": "^0.10.0",
     "enzyme": "^2.7.0",
     "enzyme-to-json": "^1.4.5",
