@@ -8,18 +8,20 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Added
 
-- Implement list depth normalisation on copy/paste
+- Implement list depth normalisation on copy/paste.
 
 ### Changed
 
 - Update project to use draft-js@0.10 API
 - Move draftjs-utils `peerDependency` to be a dependency.
+- Copy/paste of rich text is now configurable via the `stripPastedStyles` option.
+- Copy/paste of rich text is now disabled by default. This will be enabled by default once it is better supported.
 
 ## [[v0.4.1]](https://github.com/springload/draftail/releases/tag/v0.4.1)
 
 ### Fixed
 
-- Fix image block not unlocking editor on cancel
+- Fix image block not unlocking editor on cancel.
 
 ## [[v0.4.0]](https://github.com/springload/draftail/releases/tag/v0.4.0)
 
