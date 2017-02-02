@@ -341,3 +341,9 @@ h4:hover .anchor {
     width: 1.3em;
     margin-right: 0.2em;
 }
+
+.loading {
+    opacity: 0.3;
+    user-select: none;
+    cursor: not-allowed;
+}

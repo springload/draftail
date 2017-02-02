@@ -12,7 +12,7 @@ class BasicImageSource extends React.Component {
             const contentStateWithEntity = contentState.createEntity(options.type, 'IMMUTABLE', {
                 altText: 'Test image alt text',
                 alignment: 'left',
-                src: 'https://placekitten.com/g/400/200',
+                src: url,
             });
             const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
             const nextState = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ');
