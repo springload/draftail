@@ -39,9 +39,9 @@
     "draftjs-utils": "0.5.1"
   },
   "devDependencies": {
-    "babel-core": "^6.18.2",
+    "babel-cli": "^6.22.2",
     "babel-jest": "^18.0.0",
-    "babel-loader": "^6.2.7",
+    "babel-loader": "^6.2.10",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "coveralls": "^2.11.15",
