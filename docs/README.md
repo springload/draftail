@@ -10,44 +10,44 @@ We support keyboard shortcuts inspired by the ones used in [Google Docs](https:/
 | Function | Shortcut |
 |----------|----------|
 | **Common actions** ||
-| Copy | ⌘ + C |
-| Cut | ⌘ + X |
-| Paste | ⌘ + V |
-| Paste without formatting | ⌘ + Shift + V |
-| Undo | ⌘ + Z |
-| Redo | ⌘ + Shift + Z |
-| Insert or edit link | ⌘ + K |
-| Open link | Option + Enter |
+| Copy | `⌘ + C` |
+| Cut | `⌘ + X` |
+| Paste | `⌘ + V` |
+| Paste without formatting | `⌘ + Shift + V` |
+| Undo | `⌘ + Z` |
+| Redo | `⌘ + Shift + Z` |
+| Insert or edit link | `⌘ + K` |
+| Open link | `Option + Enter` |
 | **Text formatting (if enabled)** ||
-| Bold | ⌘ + B |
-| Italicize | ⌘ + I |
-| Underline | ⌘ + U |
-| Monospace (code) | ⌘ + J |
-| Strikethrough | Option + Shift + 5 |
+| Bold | `⌘ + B` |
+| Italicize | `⌘ + I` |
+| Underline | `⌘ + U` |
+| Monospace (code) | `⌘ + J` |
+| Strikethrough | `Option + Shift + 5` |
 | **Paragraph formatting (if enabled)** ||
-| Increase list indentation | Tab  |
-| Decrease list indentation | Shift + Tab |
-| Apply normal text style | ⌘ + Option + 0 |
-| Apply heading style [1-6] | ⌘ + Option + [1-6] |
-| Numbered list | ⌘ + Shift + 7 |
-| Bulleted list | ⌘ + Shift + 8 |
-| Go to new line | Enter  |
-| Insert soft new line | Shift + Enter |
-| Insert soft new line | ⌘ + Enter |
+| Increase list indentation | `Tab ` |
+| Decrease list indentation | `Shift + Tab` |
+| Apply normal text style | `⌘ + Option + 0` |
+| Apply heading style [1-6] | `⌘ + Option + [1-6]` |
+| Numbered list | `⌘ + Shift + 7` |
+| Bulleted list | `⌘ + Shift + 8` |
+| Go to new line | `Enter ` |
+| Insert soft new line | `Shift + Enter` |
+| Insert soft new line | `⌘ + Enter` |
 | **Text selection with keyboard** ||
-| Select all | ⌘ + A |
-| Extend selection one character | Shift + Left/right arrow |
-| Extend selection one line | Shift + Up/down arrow |
-| Extend selection one word | Option + Shift + Left/right arrow |
-| Extend selection to the beginning of the line | ⌘ + Shift + Left arrow |
-| Extend selection to the end of the line | ⌘ + Shift + Right arrow |
-| Extend selection to the beginning of the document | Shift + Home |
-| Extend selection to the end of the document | Shift + End |
+| Select all | `⌘ + A` |
+| Extend selection one character | `Shift + Left/right arrow` |
+| Extend selection one line | `Shift + Up/down arrow` |
+| Extend selection one word | `Option + Shift + Left/right arrow` |
+| Extend selection to the beginning of the line | `⌘ + Shift + Left arrow` |
+| Extend selection to the end of the line | `⌘ + Shift + Right arrow` |
+| Extend selection to the beginning of the document | `Shift + Home` |
+| Extend selection to the end of the document | `Shift + End` |
 | **Text selection with mouse** ||
-| Select word | Double-click |
-| Extend selection one word at a time | Double-click + drag |
-| Select paragraph | Triple-click |
-| Extend selection one paragraph at a time | Triple-click + drag |
+| Select word | `Double-click` |
+| Extend selection one word at a time | `Double-click + drag` |
+| Select paragraph | `Triple-click` |
+| Extend selection one paragraph at a time | `Triple-click + drag` |
 
 ### Expected behavior
 
