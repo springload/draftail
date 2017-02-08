@@ -15,7 +15,7 @@ const getJSON = (endpoint, data, successCallback) => {
     request.send(data);
 };
 
-class BasicEmbedSource extends React.Component {
+class EmbedSource extends React.Component {
     componentDidMount() {
         const { editorState, options, onUpdate } = this.props;
 
@@ -46,10 +46,10 @@ class BasicEmbedSource extends React.Component {
     }
 }
 
-BasicEmbedSource.propTypes = {
+EmbedSource.propTypes = {
     editorState: React.PropTypes.object.isRequired,
     options: React.PropTypes.object.isRequired,
     onUpdate: React.PropTypes.func.isRequired,
 };
 
-export default BasicEmbedSource;
+export default EmbedSource;

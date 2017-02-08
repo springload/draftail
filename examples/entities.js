@@ -8,8 +8,8 @@ import DraftailEditor, { ENTITY_TYPE, BLOCK_TYPE } from '../lib';
 // All it needs to know about is when the value is updated so it can close.
 // =============================================================================
 
-import BasicLinkSource from './sources/BasicLinkSource';
-import BasicDocumentSource from './sources/BasicDocumentSource';
+import LinkSource from './sources/LinkSource';
+import DocumentSource from './sources/DocumentSource';
 
 import Link, { findLinkEntities } from './entities/Link';
 import Document, { findDocumentEntities } from './entities/Document';
@@ -82,8 +82,8 @@ const editor = (
         rawContentState={rawContentState}
         onSave={onSave}
         entityTypes={[
-            { label: 'Link', type: ENTITY_TYPE.LINK, icon: 'icon-link', control: BasicLinkSource, strategy: findLinkEntities, component: Link },
-            { label: 'Document', type: ENTITY_TYPE.DOCUMENT, icon: 'icon-doc-full', control: BasicDocumentSource, strategy: findDocumentEntities, component: Document },
+            { label: 'Link', type: ENTITY_TYPE.LINK, icon: 'icon-link', control: LinkSource, strategy: findLinkEntities, component: Link },
+            { label: 'Document', type: ENTITY_TYPE.DOCUMENT, icon: 'icon-doc-full', control: DocumentSource, strategy: findDocumentEntities, component: Document },
         ]}
         blockTypes={[
             { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },

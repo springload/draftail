@@ -26,6 +26,7 @@ const editor = (
         onSave={onSave}
         enableHorizontalRule={true}
         enableLineBreak={true}
+        stripPastedStyles={false}
         entityTypes={[
             { label: 'Image', type: ENTITY_TYPE.IMAGE, icon: 'icon-image', control: ImageSource, imageFormats: [] },
             { label: 'Embed', type: ENTITY_TYPE.EMBED, icon: 'icon-media', control: EmbedSource },

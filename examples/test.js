@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 
 import DraftailEditor, { ENTITY_TYPE, BLOCK_TYPE, INLINE_STYLE } from '../lib';
 
-import BasicDocumentSource from './sources/BasicDocumentSource';
-import BasicLinkSource from './sources/BasicLinkSource';
-import BasicImageSource from './sources/BasicImageSource';
-import BasicEmbedSource from './sources/BasicEmbedSource';
+import DocumentSource from './sources/DocumentSource';
+import LinkSource from './sources/LinkSource';
+import ImageSource from './sources/ImageSource';
+import EmbedSource from './sources/EmbedSource';
 
 import Link, { findLinkEntities } from './entities/Link';
 import Document, { findDocumentEntities } from './entities/Document';
@@ -27,10 +27,10 @@ const editor = (
         enableLineBreak={true}
         stripPastedStyles={false}
         entityTypes={[
-            { label: 'Image', type: ENTITY_TYPE.IMAGE, icon: 'icon-image', control: BasicImageSource, imageFormats: [] },
-            { label: 'Embed', type: ENTITY_TYPE.EMBED, icon: 'icon-media', control: BasicEmbedSource },
-            { label: 'Link', type: ENTITY_TYPE.LINK, icon: 'icon-link', control: BasicLinkSource, strategy: findLinkEntities, component: Link },
-            { label: 'Document', type: ENTITY_TYPE.DOCUMENT, icon: 'icon-doc-full', control: BasicDocumentSource, strategy: findDocumentEntities, component: Document },
+            { label: 'Image', type: ENTITY_TYPE.IMAGE, icon: 'icon-image', control: ImageSource, imageFormats: [] },
+            { label: 'Embed', type: ENTITY_TYPE.EMBED, icon: 'icon-media', control: EmbedSource },
+            { label: 'Link', type: ENTITY_TYPE.LINK, icon: 'icon-link', control: LinkSource, strategy: findLinkEntities, component: Link },
+            { label: 'Document', type: ENTITY_TYPE.DOCUMENT, icon: 'icon-doc-full', control: DocumentSource, strategy: findDocumentEntities, component: Document },
             // { label: 'Model', type: ENTITY_TYPE.MODEL, icon: 'icon-cog', control: GenericModelSource, strategy: findModelEntities, component: Model },
         ]}
         blockTypes={[

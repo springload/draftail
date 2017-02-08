@@ -1,16 +1,15 @@
 import React from 'react';
 import { RichUtils } from 'draft-js';
 
-class BasicDocumentSource extends React.Component {
+class LinkSource extends React.Component {
     componentDidMount() {
         const { editorState, entity, options, onUpdate } = this.props;
-        const url = global.prompt('Document URL', entity ? entity.getData().url : '');
+        const url = global.prompt('Link URL', entity ? entity.getData().url : '');
 
         if (url) {
             const contentState = editorState.getCurrentContent();
             const contentStateWithEntity = contentState.createEntity(options.type, 'MUTABLE', {
                 url: url,
-                title: 'Kritik der reinen Vernunft',
             });
             const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
             const nextState = RichUtils.toggleLink(editorState, editorState.getSelection(), entityKey);
@@ -26,15 +25,15 @@ class BasicDocumentSource extends React.Component {
     }
 }
 
-BasicDocumentSource.propTypes = {
+LinkSource.propTypes = {
     editorState: React.PropTypes.object.isRequired,
     options: React.PropTypes.object.isRequired,
     entity: React.PropTypes.object,
     onUpdate: React.PropTypes.func.isRequired,
 };
 
-BasicDocumentSource.defaultProps = {
+LinkSource.defaultProps = {
     entity: null,
 };
 
-export default BasicDocumentSource;
+export default LinkSource;

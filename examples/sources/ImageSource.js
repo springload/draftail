@@ -1,7 +1,7 @@
 import React from 'react';
 import { AtomicBlockUtils } from 'draft-js';
 
-class BasicImageSource extends React.Component {
+class ImageSource extends React.Component {
     componentDidMount() {
         const { editorState, options, onUpdate } = this.props;
 
@@ -28,10 +28,10 @@ class BasicImageSource extends React.Component {
     }
 }
 
-BasicImageSource.propTypes = {
+ImageSource.propTypes = {
     editorState: React.PropTypes.object.isRequired,
     options: React.PropTypes.object.isRequired,
     onUpdate: React.PropTypes.func.isRequired,
 };
 
-export default BasicImageSource;
+export default ImageSource;
