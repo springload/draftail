@@ -8,7 +8,7 @@ This is a work in progress. It is intended to be integrated into [Wagtail](https
 ```sh
 npm install --save draftail
 # Draftail's peerDependencies:
-npm install --save draft-js@^0.10.0 react@15.x.x react-dom@15.x.x
+npm install --save draft-js@^0.10.0 react@^15.0.0 react-dom@^15.0.0
 ```
 
 [ES6 polyfills for Draft.js](https://facebook.github.io/draft-js/docs/advanced-topics-issues-and-pitfalls.html#polyfills) are also required.
