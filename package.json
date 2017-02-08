@@ -36,7 +36,8 @@
     ]
   },
   "dependencies": {
-    "draftjs-utils": "0.6.0"
+    "draftjs-utils": "0.6.0",
+    "immutable": "^3.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.22.2",
@@ -55,7 +56,6 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.9.0",
     "express": "^4.14.0",
-    "immutable": "^3.8.1",
     "jest": "^18.1.0",
     "node-sass": "^4.3.0",
     "progress-bar-webpack-plugin": "^1.9.0",
@@ -68,7 +68,6 @@
   },
   "peerDependencies": {
     "draft-js": "^0.10.0",
-    "immutable": "3.x.x",
     "react": "15.x.x",
     "react-dom": "15.x.x"
   },
