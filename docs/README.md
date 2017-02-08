@@ -7,47 +7,47 @@ draftail documentation
 
 We support keyboard shortcuts inspired by the ones used in [Google Docs](https://support.google.com/docs/answer/179738), thanks to [Draft.js key bindings](https://facebook.github.io/draft-js/docs/advanced-topics-key-bindings.html).
 
-| Function | Shortcut |
-|----------|----------|
-| **Common actions** ||
-| Copy | `⌘ + C` |
-| Cut | `⌘ + X` |
-| Paste | `⌘ + V` |
-| Paste without formatting | `⌘ + Shift + V` |
-| Undo | `⌘ + Z` |
-| Redo | `⌘ + Shift + Z` |
-| Insert or edit link | `⌘ + K` |
-| Open link | `Option + Enter` |
-| **Text formatting (if enabled)** ||
-| Bold | `⌘ + B` |
-| Italicize | `⌘ + I` |
-| Underline | `⌘ + U` |
-| Monospace (code) | `⌘ + J` |
-| Strikethrough | `Option + Shift + 5` |
-| **Paragraph formatting (if enabled)** ||
-| Increase list indentation | `Tab ` |
-| Decrease list indentation | `Shift + Tab` |
-| Apply normal text style | `⌘ + Option + 0` |
-| Apply heading style [1-6] | `⌘ + Option + [1-6]` |
-| Numbered list | `⌘ + Shift + 7` |
-| Bulleted list | `⌘ + Shift + 8` |
-| Go to new line | `Enter ` |
-| Insert soft new line | `Shift + Enter` |
-| Insert soft new line | `⌘ + Enter` |
-| **Text selection with keyboard** ||
-| Select all | `⌘ + A` |
-| Extend selection one character | `Shift + Left/right arrow` |
-| Extend selection one line | `Shift + Up/down arrow` |
-| Extend selection one word | `Option + Shift + Left/right arrow` |
-| Extend selection to the beginning of the line | `⌘ + Shift + Left arrow` |
-| Extend selection to the end of the line | `⌘ + Shift + Right arrow` |
-| Extend selection to the beginning of the document | `Shift + Home` |
-| Extend selection to the end of the document | `Shift + End` |
-| **Text selection with mouse** ||
-| Select word | `Double-click` |
-| Extend selection one word at a time | `Double-click + drag` |
-| Select paragraph | `Triple-click` |
-| Extend selection one paragraph at a time | `Triple-click + drag` |
+| Function | Shortcut | Shortcut (macOS) |
+|----------|----------|------------------|
+| **Common actions** |||
+| Copy | `ctrl + C` | `⌘ + C` |
+| Cut | `ctrl + X` | `⌘ + X` |
+| Paste | `ctrl + V` | `⌘ + V` |
+| Paste without formatting | `ctrl + shift + V` | `⌘ + shift + V` |
+| Undo | `ctrl + Z` | `⌘ + Z` |
+| Redo | `ctrl + shift + Z` | `⌘ + shift + Z` |
+| Insert or edit link | `ctrl + K` | `⌘ + K` |
+| Open link | `alt + enter` | `option + enter` |
+| **Text formatting (if enabled)** |||
+| Bold | `ctrl + B` | `⌘ + B` |
+| Italicize | `ctrl + I` | `⌘ + I` |
+| Underline | `ctrl + U` | `⌘ + U` |
+| Monospace (code) | `ctrl + J` | `⌘ + J` |
+| Strikethrough | `alt + shift + 5` | `option + shift + 5` |
+| **Paragraph formatting (if enabled)** |||
+| Increase list indentation | `Tab` | `Tab` |
+| Decrease list indentation | `shift + Tab` | `shift + Tab` |
+| Apply normal text style | `ctrl + alt + 0` | `⌘ + option + 0` |
+| Apply heading style [1-6] | `ctrl + alt + [1-6]` | `⌘ + option + [1-6]` |
+| Numbered list | `ctrl + shift + 7` | `⌘ + shift + 7` |
+| Bulleted list | `ctrl + shift + 8` | `⌘ + shift + 8` |
+| Go to new line | `enter` | `enter` |
+| Insert soft new line | `shift + enter` | `shift + enter` |
+| Insert soft new line | `ctrl + enter` | `⌘ + enter` |
+| **Text selection with keyboard** |||
+| Select all | `ctrl + A` | `⌘ + A` |
+| Extend selection one character | `shift + Left/right arrow` | `shift + Left/right arrow` |
+| Extend selection one line | `shift + Up/down arrow` | `shift + Up/down arrow` |
+| Extend selection one word | `alt + shift + Left/right arrow` | `option + shift + Left/right arrow` |
+| Extend selection to the beginning of the line | `ctrl + shift + Left arrow` | `⌘ + shift + Left arrow` |
+| Extend selection to the end of the line | `ctrl + shift + Right arrow` | `⌘ + shift + Right arrow` |
+| Extend selection to the beginning of the document | `shift + Home` | `shift + Home` |
+| Extend selection to the end of the document | `shift + End` | `shift + End` |
+| **Text selection with mouse** |||
+| Select word | `Double-click` | `Double-click` |
+| Extend selection one word at a time | `Double-click + drag` | `Double-click + drag` |
+| Select paragraph | `Triple-click` | `Triple-click` |
+| Extend selection one paragraph at a time | `Triple-click + drag` | `Triple-click + drag` |
 
 ### Expected behavior
 
