@@ -18,7 +18,7 @@ We support keyboard shortcuts inspired by the ones used in [Google Docs](https:/
 | Redo | ⌘ + Shift + Z |
 | Insert or edit link | ⌘ + K |
 | Open link | Option + Enter |
-| Text formatting (if enabled) ||
+| **Text formatting (if enabled)** ||
 | Bold | ⌘ + B |
 | Italicize | ⌘ + I |
 | Underline | ⌘ + U |
