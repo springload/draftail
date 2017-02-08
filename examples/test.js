@@ -16,12 +16,12 @@ const mount = document.querySelector('[data-mount-test]');
 
 const onSave = (rawContentState) => {
     const serialised = JSON.stringify(rawContentState);
-    sessionStorage.setItem('test:rawContentState', serialised);
+    sessionStorage.setItem('test:contentState', serialised);
 };
 
 const editor = (
     <DraftailEditor
-        rawContentState={JSON.parse(sessionStorage.getItem('test:rawContentState')) || {}}
+        rawContentState={JSON.parse(sessionStorage.getItem('test:contentState')) || {}}
         onSave={onSave}
         enableHorizontalRule={true}
         enableLineBreak={true}

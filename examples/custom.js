@@ -20,7 +20,7 @@ const rawContentState = {
 };
 
 const onSave = (contentState) => {
-    sessionStorage.setItem('custom:rawContentState', JSON.stringify(contentState));
+    sessionStorage.setItem('custom:contentState', JSON.stringify(contentState));
 };
 
 const editor = (
