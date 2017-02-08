@@ -15,7 +15,8 @@ p, .public-DraftStyleDefault-block {
   margin:0 0 0.5rem;
 }
 
-li .public-DraftStyleDefault-block {
+li .public-DraftStyleDefault-block,
+code .public-DraftStyleDefault-block {
     margin-bottom: 0.25rem;
 }
 
