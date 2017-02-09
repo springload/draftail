@@ -36,7 +36,7 @@
     ]
   },
   "dependencies": {
-    "draftjs-utils": "0.6.0",
+    "draftjs-utils": "0.6.3",
     "immutable": "^3.0.0"
   },
   "devDependencies": {
