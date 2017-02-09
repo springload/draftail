@@ -6,17 +6,20 @@ exports[`Toolbar #blockTypes 1`] = `
     active={false}
     icon={null}
     label="Test 1"
-    onClick={[Function]} />
+    onClick={[Function]}
+    title="No keyboard shortcut" />
   <Button
     active={false}
     icon="icon-test-2"
     label="Test 2"
-    onClick={[Function]} />
+    onClick={[Function]}
+    title="No keyboard shortcut" />
   <Button
     active={false}
     icon="icon-test-3"
     label="Test 3"
-    onClick={[Function]} />
+    onClick={[Function]}
+    title="No keyboard shortcut" />
 </div>
 `;
 
@@ -28,7 +31,8 @@ exports[`Toolbar #enableHorizontalRule 1`] = `
     active={false}
     icon={null}
     label="HR"
-    onClick={[Function]} />
+    onClick={[Function]}
+    title={null} />
 </div>
 `;
 
@@ -40,7 +44,8 @@ exports[`Toolbar #enableLineBreak 1`] = `
     active={false}
     icon={null}
     label="BR"
-    onClick={[Function]} />
+    onClick={[Function]}
+    title="shift + enter" />
 </div>
 `;
 
@@ -52,17 +57,20 @@ exports[`Toolbar #entityTypes 1`] = `
     active={false}
     icon={null}
     label="Test 1"
-    onClick={[Function]} />
+    onClick={[Function]}
+    title="No keyboard shortcut" />
   <Button
     active={false}
     icon="icon-test-2"
     label="Test 2"
-    onClick={[Function]} />
+    onClick={[Function]}
+    title="No keyboard shortcut" />
   <Button
     active={false}
     icon="icon-test-3"
     label="Test 3"
-    onClick={[Function]} />
+    onClick={[Function]}
+    title="No keyboard shortcut" />
 </div>
 `;
 
@@ -74,17 +82,20 @@ exports[`Toolbar #inlineStyles 1`] = `
     active={false}
     icon={null}
     label="Test 1"
-    onClick={[Function]} />
+    onClick={[Function]}
+    title="No keyboard shortcut" />
   <Button
     active={false}
     icon="icon-test-2"
     label="Test 2"
-    onClick={[Function]} />
+    onClick={[Function]}
+    title="No keyboard shortcut" />
   <Button
     active={false}
     icon="icon-test-3"
     label="Test 3"
-    onClick={[Function]} />
+    onClick={[Function]}
+    title="No keyboard shortcut" />
 </div>
 `;
 

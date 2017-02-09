@@ -2,6 +2,7 @@ exports[`Button #active 1`] = `
 <button
   className="RichEditor-styleButton RichEditor-activeButton"
   onMouseDown={[Function]}
+  title={null}
   type="button" />
 `;
 
@@ -9,6 +10,7 @@ exports[`Button #icon 1`] = `
 <button
   className="RichEditor-styleButton"
   onMouseDown={[Function]}
+  title={null}
   type="button">
   <Icon
     className=""
@@ -21,6 +23,7 @@ exports[`Button #label 1`] = `
 <button
   className="RichEditor-styleButton"
   onMouseDown={[Function]}
+  title={null}
   type="button">
   Test label
 </button>
@@ -30,5 +33,6 @@ exports[`Button empty 1`] = `
 <button
   className="RichEditor-styleButton"
   onMouseDown={[Function]}
+  title={null}
   type="button" />
 `;
