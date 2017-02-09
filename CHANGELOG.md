@@ -9,11 +9,14 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ### Added
 
 - Implement list depth normalisation on copy/paste.
+- Add title attributes on buttons to display keyboard shortcuts. Fix #37.
+- Override default code-block element. Fix #41.
 
 ### Changed
 
 - Update project to use draft-js@0.10 API
 - Move draftjs-utils `peerDependency` to be a dependency.
+- Move immutable `peerDependency` to be a dependency.
 - Copy/paste of rich text is now configurable via the `stripPastedStyles` option.
 - Copy/paste of rich text is now disabled by default. This will be enabled by default once it is better supported.
 
