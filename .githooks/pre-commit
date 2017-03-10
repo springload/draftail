@@ -28,7 +28,7 @@ else
 
     if [ -n "$JS_FILES" ] || [ -n "$SNAPSHOT_FILES" ];
     then
-        npm run test -s;
+        npm run test -s
     fi
 
     exit 0
