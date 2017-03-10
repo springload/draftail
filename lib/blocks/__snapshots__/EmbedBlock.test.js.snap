@@ -1,21 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`EmbedBlock #isActive 1`] = `
 <div>
   <Icon
     className="RichEditor-media-icon"
     name="icon-media"
-    title={null} />
+    title={null}
+  />
   <div
     className="RichEditor-media-container"
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     <span
-      className="RichEditor-media-preview">
+      className="RichEditor-media-preview"
+    >
       <img
         alt="Test title"
-        src="http://www.example.com/example.png" />
+        src="http://www.example.com/example.png"
+      />
     </span>
   </div>
   <div
-    className="RichEditor-media-options">
+    className="RichEditor-media-options"
+  >
     <h3>
       <strong>
         Test title
@@ -28,7 +35,8 @@ exports[`EmbedBlock #isActive 1`] = `
         <a
           href="http://www.example.com/"
           rel="noopener noreferrer"
-          target="_blank">
+          target="_blank"
+        >
           http://www.example.com/
         </a>
       </span>
@@ -54,15 +62,19 @@ exports[`EmbedBlock basic 1`] = `
   <Icon
     className="RichEditor-media-icon"
     name="icon-media"
-    title={null} />
+    title={null}
+  />
   <div
     className="RichEditor-media-container"
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     <span
-      className="RichEditor-media-preview">
+      className="RichEditor-media-preview"
+    >
       <img
         alt="Test title"
-        src="http://www.example.com/example.png" />
+        src="http://www.example.com/example.png"
+      />
     </span>
   </div>
 </div>

@@ -1,106 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Toolbar #blockTypes 1`] = `
 <div
   className="editor__toolbar"
-  role="toolbar">
+  role="toolbar"
+>
   <Button
     active={false}
     icon={null}
     label="Test 1"
     onClick={[Function]}
-    title="No keyboard shortcut" />
+    title="No keyboard shortcut"
+  />
   <Button
     active={false}
     icon="icon-test-2"
     label="Test 2"
     onClick={[Function]}
-    title="No keyboard shortcut" />
+    title="No keyboard shortcut"
+  />
   <Button
     active={false}
     icon="icon-test-3"
     label="Test 3"
     onClick={[Function]}
-    title="No keyboard shortcut" />
+    title="No keyboard shortcut"
+  />
 </div>
 `;
 
 exports[`Toolbar #enableHorizontalRule 1`] = `
 <div
   className="editor__toolbar"
-  role="toolbar">
+  role="toolbar"
+>
   <Button
     active={false}
     icon={null}
     label="HR"
     onClick={[Function]}
-    title={null} />
+    title={null}
+  />
 </div>
 `;
 
 exports[`Toolbar #enableLineBreak 1`] = `
 <div
   className="editor__toolbar"
-  role="toolbar">
+  role="toolbar"
+>
   <Button
     active={false}
     icon={null}
     label="BR"
     onClick={[Function]}
-    title="shift + enter" />
+    title="shift + enter"
+  />
 </div>
 `;
 
 exports[`Toolbar #entityTypes 1`] = `
 <div
   className="editor__toolbar"
-  role="toolbar">
+  role="toolbar"
+>
   <Button
     active={false}
     icon={null}
     label="Test 1"
     onClick={[Function]}
-    title="No keyboard shortcut" />
+    title="No keyboard shortcut"
+  />
   <Button
     active={false}
     icon="icon-test-2"
     label="Test 2"
     onClick={[Function]}
-    title="No keyboard shortcut" />
+    title="No keyboard shortcut"
+  />
   <Button
     active={false}
     icon="icon-test-3"
     label="Test 3"
     onClick={[Function]}
-    title="No keyboard shortcut" />
+    title="No keyboard shortcut"
+  />
 </div>
 `;
 
 exports[`Toolbar #inlineStyles 1`] = `
 <div
   className="editor__toolbar"
-  role="toolbar">
+  role="toolbar"
+>
   <Button
     active={false}
     icon={null}
     label="Test 1"
     onClick={[Function]}
-    title="No keyboard shortcut" />
+    title="No keyboard shortcut"
+  />
   <Button
     active={false}
     icon="icon-test-2"
     label="Test 2"
     onClick={[Function]}
-    title="No keyboard shortcut" />
+    title="No keyboard shortcut"
+  />
   <Button
     active={false}
     icon="icon-test-3"
     label="Test 3"
     onClick={[Function]}
-    title="No keyboard shortcut" />
+    title="No keyboard shortcut"
+  />
 </div>
 `;
 
 exports[`Toolbar empty 1`] = `
 <div
   className="editor__toolbar"
-  role="toolbar" />
+  role="toolbar"
+/>
 `;

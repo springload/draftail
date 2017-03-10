@@ -1,6 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`MediaBlock #isActive 1`] = `
 <div
-  className="RichEditor-media RichEditor-media--open">
+  className="RichEditor-media RichEditor-media--open"
+>
   <NullBlock
     entity={
       Object {
@@ -11,13 +14,15 @@ exports[`MediaBlock #isActive 1`] = `
     isActive={true}
     onCancel={[Function]}
     onClick={[Function]}
-    onSave={[Function]} />
+    onSave={[Function]}
+  />
 </div>
 `;
 
 exports[`MediaBlock basic 1`] = `
 <div
-  className="RichEditor-media">
+  className="RichEditor-media"
+>
   <NullBlock
     entity={
       Object {
@@ -28,13 +33,15 @@ exports[`MediaBlock basic 1`] = `
     isActive={false}
     onCancel={[Function]}
     onClick={[Function]}
-    onSave={[Function]} />
+    onSave={[Function]}
+  />
 </div>
 `;
 
 exports[`MediaBlock embed 1`] = `
 <div
-  className="RichEditor-media">
+  className="RichEditor-media"
+>
   <EmbedBlock
     entity={
       Object {
@@ -45,13 +52,15 @@ exports[`MediaBlock embed 1`] = `
     isActive={false}
     onCancel={[Function]}
     onClick={[Function]}
-    onSave={[Function]} />
+    onSave={[Function]}
+  />
 </div>
 `;
 
 exports[`MediaBlock image 1`] = `
 <div
-  className="RichEditor-media">
+  className="RichEditor-media"
+>
   <ImageBlock
     entity={
       Object {
@@ -62,6 +71,7 @@ exports[`MediaBlock image 1`] = `
     isActive={false}
     onCancel={[Function]}
     onClick={[Function]}
-    onSave={[Function]} />
+    onSave={[Function]}
+  />
 </div>
 `;

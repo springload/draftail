@@ -1,21 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Icon #className 1`] = `
 <span
   aria-hidden={true}
-  className="icon icon-test u-test" />
+  className="icon icon-test u-test"
+/>
 `;
 
 exports[`Icon #name 1`] = `
 <span
   aria-hidden={true}
-  className="icon icon-test " />
+  className="icon icon-test "
+/>
 `;
 
 exports[`Icon #title 1`] = `
 <span
   aria-hidden={false}
-  className="icon icon-test ">
+  className="icon icon-test "
+>
   <span
-    role="presentation">
+    role="presentation"
+  >
     Test title
   </span>
 </span>

@@ -1,9 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Button #active 1`] = `
 <button
   className="RichEditor-styleButton RichEditor-activeButton"
   onMouseDown={[Function]}
   title={null}
-  type="button" />
+  type="button"
+/>
 `;
 
 exports[`Button #icon 1`] = `
@@ -11,11 +14,13 @@ exports[`Button #icon 1`] = `
   className="RichEditor-styleButton"
   onMouseDown={[Function]}
   title={null}
-  type="button">
+  type="button"
+>
   <Icon
     className=""
     name="icon-test"
-    title={null} />
+    title={null}
+  />
 </button>
 `;
 
@@ -24,7 +29,8 @@ exports[`Button #label 1`] = `
   className="RichEditor-styleButton"
   onMouseDown={[Function]}
   title={null}
-  type="button">
+  type="button"
+>
   Test label
 </button>
 `;
@@ -34,5 +40,6 @@ exports[`Button empty 1`] = `
   className="RichEditor-styleButton"
   onMouseDown={[Function]}
   title={null}
-  type="button" />
+  type="button"
+/>
 `;

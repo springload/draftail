@@ -1,27 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`ImageBlock #alignment 1`] = `
 <div>
   <Icon
     className="RichEditor-media-icon"
     name="icon-image"
-    title={null} />
+    title={null}
+  />
   <div
     className="RichEditor-media-container"
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     <span
-      className="RichEditor-media-preview">
+      className="RichEditor-media-preview"
+    >
       <img
         alt="Test alt"
-        src="http://www.example.com/example.png" />
+        src="http://www.example.com/example.png"
+      />
     </span>
   </div>
   <div
-    className="RichEditor-media-options">
+    className="RichEditor-media-options"
+  >
     <div
-      className="RichEditor-grid">
+      className="RichEditor-grid"
+    >
       <div
-        className="RichEditor-col">
+        className="RichEditor-col"
+      >
         <label
-          className="u-block">
+          className="u-block"
+        >
           <h4>
             Alt text
           </h4>
@@ -29,12 +39,14 @@ exports[`ImageBlock #alignment 1`] = `
             <input
               onChange={[Function]}
               type="text"
-              value="Test alt text" />
+              value="Test alt text"
+            />
           </p>
         </label>
       </div>
       <div
-        className="RichEditor-col">
+        className="RichEditor-col"
+      >
         <h4>
           Image alignment
         </h4>
@@ -44,7 +56,8 @@ exports[`ImageBlock #alignment 1`] = `
               checked={true}
               onChange={[Function]}
               type="radio"
-              value="left" />
+              value="left"
+            />
             Left
           </label>
           <label>
@@ -52,7 +65,8 @@ exports[`ImageBlock #alignment 1`] = `
               checked={false}
               onChange={[Function]}
               type="radio"
-              value="right" />
+              value="right"
+            />
             Right
           </label>
         </p>
@@ -62,13 +76,15 @@ exports[`ImageBlock #alignment 1`] = `
       <button
         className="button button-secondary"
         onClick={[Function]}
-        type="button">
+        type="button"
+      >
         Save changes
       </button>
       <button
         className="button button-secondary no"
         onClick={[Function]}
-        type="button">
+        type="button"
+      >
         Cancel
       </button>
     </p>
@@ -81,25 +97,33 @@ exports[`ImageBlock #entityConfig.imageFormats 1`] = `
   <Icon
     className="RichEditor-media-icon"
     name="icon-image"
-    title={null} />
+    title={null}
+  />
   <div
     className="RichEditor-media-container"
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     <span
-      className="RichEditor-media-preview">
+      className="RichEditor-media-preview"
+    >
       <img
         alt="Test alt"
-        src="http://www.example.com/example.png" />
+        src="http://www.example.com/example.png"
+      />
     </span>
   </div>
   <div
-    className="RichEditor-media-options">
+    className="RichEditor-media-options"
+  >
     <div
-      className="RichEditor-grid">
+      className="RichEditor-grid"
+    >
       <div
-        className="RichEditor-col">
+        className="RichEditor-col"
+      >
         <label
-          className="u-block">
+          className="u-block"
+        >
           <h4>
             Alt text
           </h4>
@@ -107,12 +131,14 @@ exports[`ImageBlock #entityConfig.imageFormats 1`] = `
             <input
               onChange={[Function]}
               type="text"
-              value="Test alt text" />
+              value="Test alt text"
+            />
           </p>
         </label>
       </div>
       <div
-        className="RichEditor-col">
+        className="RichEditor-col"
+      >
         <h4>
           Image alignment
         </h4>
@@ -122,7 +148,8 @@ exports[`ImageBlock #entityConfig.imageFormats 1`] = `
               checked={false}
               onChange={[Function]}
               type="radio"
-              value="left" />
+              value="left"
+            />
             Left
           </label>
           <label>
@@ -130,7 +157,8 @@ exports[`ImageBlock #entityConfig.imageFormats 1`] = `
               checked={true}
               onChange={[Function]}
               type="radio"
-              value="right" />
+              value="right"
+            />
             Right
           </label>
         </p>
@@ -140,13 +168,15 @@ exports[`ImageBlock #entityConfig.imageFormats 1`] = `
       <button
         className="button button-secondary"
         onClick={[Function]}
-        type="button">
+        type="button"
+      >
         Save changes
       </button>
       <button
         className="button button-secondary no"
         onClick={[Function]}
-        type="button">
+        type="button"
+      >
         Cancel
       </button>
     </p>
@@ -159,25 +189,33 @@ exports[`ImageBlock #isActive 1`] = `
   <Icon
     className="RichEditor-media-icon"
     name="icon-image"
-    title={null} />
+    title={null}
+  />
   <div
     className="RichEditor-media-container"
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     <span
-      className="RichEditor-media-preview">
+      className="RichEditor-media-preview"
+    >
       <img
         alt="Test alt"
-        src="http://www.example.com/example.png" />
+        src="http://www.example.com/example.png"
+      />
     </span>
   </div>
   <div
-    className="RichEditor-media-options">
+    className="RichEditor-media-options"
+  >
     <div
-      className="RichEditor-grid">
+      className="RichEditor-grid"
+    >
       <div
-        className="RichEditor-col">
+        className="RichEditor-col"
+      >
         <label
-          className="u-block">
+          className="u-block"
+        >
           <h4>
             Alt text
           </h4>
@@ -185,12 +223,14 @@ exports[`ImageBlock #isActive 1`] = `
             <input
               onChange={[Function]}
               type="text"
-              value="Test alt text" />
+              value="Test alt text"
+            />
           </p>
         </label>
       </div>
       <div
-        className="RichEditor-col">
+        className="RichEditor-col"
+      >
         <h4>
           Image alignment
         </h4>
@@ -201,13 +241,15 @@ exports[`ImageBlock #isActive 1`] = `
       <button
         className="button button-secondary"
         onClick={[Function]}
-        type="button">
+        type="button"
+      >
         Save changes
       </button>
       <button
         className="button button-secondary no"
         onClick={[Function]}
-        type="button">
+        type="button"
+      >
         Cancel
       </button>
     </p>
@@ -220,15 +262,19 @@ exports[`ImageBlock basic 1`] = `
   <Icon
     className="RichEditor-media-icon"
     name="icon-image"
-    title={null} />
+    title={null}
+  />
   <div
     className="RichEditor-media-container"
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     <span
-      className="RichEditor-media-preview">
+      className="RichEditor-media-preview"
+    >
       <img
         alt="Test alt"
-        src="http://www.example.com/example.png" />
+        src="http://www.example.com/example.png"
+      />
     </span>
   </div>
 </div>
