@@ -19,11 +19,17 @@ else
 
     NEW_FILES=$(git --no-pager diff --name-only --cached --diff-filter=d)
     JS_FILES=$(echo "$NEW_FILES" | { grep .js$ || true; })
+    SNAPSHOT_FILES=$(echo "$NEW_FILES" | { grep .snap$ || true; })
 
     if [ -n "$JS_FILES" ];
     then
         npm run linter:js -s -- $JS_FILES
-        npm run test -s;
-        exit 0
     fi
+
+    if [ -n "$JS_FILES" ] || [ -n "$SNAPSHOT_FILES" ];
+    then
+        npm run test -s;
+    fi
+
+    exit 0
 fi
