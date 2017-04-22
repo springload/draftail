@@ -59,17 +59,19 @@
     "jest": "^19.0.2",
     "node-sass": "^4.3.0",
     "progress-bar-webpack-plugin": "^1.9.0",
-    "react": "^15.4.1",
+    "prop-types": "^15.5.8",
+    "react": "^15.5.4",
     "react-addons-test-utils": "^15.4.1",
-    "react-dom": "^15.4.1",
+    "react-dom": "^15.5.4",
     "webpack": "^1.13.3",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.2"
   },
   "peerDependencies": {
     "draft-js": "^0.10.0",
-    "react": "^15.0.0",
-    "react-dom": "^15.0.0"
+    "prop-types": "^15.5.0",
+    "react": "^15.5.0",
+    "react-dom": "^15.5.0"
   },
   "scripts": {
     "start": "npm run server -s",
