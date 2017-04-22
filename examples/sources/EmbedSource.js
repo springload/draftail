@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { AtomicBlockUtils } from 'draft-js';
 
@@ -47,9 +48,9 @@ class EmbedSource extends React.Component {
 }
 
 EmbedSource.propTypes = {
-    editorState: React.PropTypes.object.isRequired,
-    options: React.PropTypes.object.isRequired,
-    onUpdate: React.PropTypes.func.isRequired,
+    editorState: PropTypes.object.isRequired,
+    options: PropTypes.object.isRequired,
+    onUpdate: PropTypes.func.isRequired,
 };
 
 export default EmbedSource;

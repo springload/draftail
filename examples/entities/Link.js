@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { ENTITY_TYPE, Icon } from '../../lib';
 
@@ -24,9 +25,9 @@ const Link = ({ entityKey, contentState, children }) => {
 };
 
 Link.propTypes = {
-    entityKey: React.PropTypes.string.isRequired,
-    contentState: React.PropTypes.object.isRequired,
-    children: React.PropTypes.node.isRequired,
+    entityKey: PropTypes.string.isRequired,
+    contentState: PropTypes.object.isRequired,
+    children: PropTypes.node.isRequired,
 };
 
 export default Link;
