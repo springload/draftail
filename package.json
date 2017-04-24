@@ -25,6 +25,9 @@
     "url": "https://github.com/springload/draftail/issues"
   },
   "homepage": "https://github.com/springload/draftail#readme",
+  "eslintConfig": {
+    "extends": "springload"
+  },
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/",
@@ -50,11 +53,11 @@
     "draft-js": "^0.10.0",
     "enzyme": "^2.8.2",
     "enzyme-to-json": "^1.5.1",
-    "eslint": "^3.13.1",
-    "eslint-config-airbnb": "^14.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^3.0.2",
-    "eslint-plugin-react": "^6.9.0",
+    "eslint": "3.19.0",
+    "eslint-config-springload": "1.0.2",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jsx-a11y": "3.0.2",
+    "eslint-plugin-react": "6.10.3",
     "express": "^4.14.0",
     "jest": "^19.0.2",
     "node-sass": "^4.3.0",
