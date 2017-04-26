@@ -1,6 +1,6 @@
 {
   "name": "draftail",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A batteries-excluded rich text editor based on Draft.js",
   "author": "Springload",
   "license": "MIT",
@@ -19,12 +19,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/springload/draftail.git"
+    "url": "https://github.com/springload/draftail"
   },
   "bugs": {
     "url": "https://github.com/springload/draftail/issues"
   },
-  "homepage": "https://github.com/springload/draftail#readme",
+  "homepage": "https://springload.github.io/draftail/",
   "babel": {
     "presets": [
       [
