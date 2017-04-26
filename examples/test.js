@@ -21,7 +21,7 @@ const onSave = (rawContentState) => {
 
 const editor = (
     <DraftailEditor
-        rawContentState={JSON.parse(sessionStorage.getItem('test:contentState')) || {}}
+        rawContentState={JSON.parse(sessionStorage.getItem('test:contentState')) || null}
         onSave={onSave}
         enableHorizontalRule={true}
         enableLineBreak={true}

@@ -25,7 +25,7 @@ import ReactDOM from 'react-dom';
 
 import DraftailEditor, { BLOCK_TYPE, INLINE_STYLE } from 'draftail';
 
-const initialContentState = JSON.parse(sessionStorage.getItem('basic:contentState')) || {};
+const initialContentState = JSON.parse(sessionStorage.getItem('basic:contentState')) || null;
 
 const onSave = (contentState) => {
     sessionStorage.setItem('basic:contentState', JSON.stringify(contentState));
