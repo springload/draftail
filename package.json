@@ -32,6 +32,7 @@
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/dist/",
+      "/pages/",
       "/examples/test.js"
     ],
     "snapshotSerializers": [
