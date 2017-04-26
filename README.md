@@ -3,9 +3,27 @@
 
 > A batteries-excluded rich text editor based on [Draft.js](https://facebook.github.io/draft-js/). :memo::cocktail:
 
-This is a work in progress. It is intended to be integrated into [Wagtail](https://wagtail.io/). [Try a demo now](https://springload.github.io/draftail/).
+It is developed alongside our Python [Draft.js exporter](https://github.com/springload/draftjs_exporter), for integration into [Wagtail](https://wagtail.io/). Check out [wagtaildraftail](https://github.com/springload/wagtaildraftail), and the [online demo](https://springload.github.io/draftail/)!
+
+## Features
+
+> This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html), and measures performance and [code coverage](https://coveralls.io/github/springload/draftail).
+
+Draftail aims for a mouse-free, keyboard-centric experience. Most formatting can be done by using common keyboard shortcuts, inspired by [Google Docs](https://support.google.com/docs/answer/179738).
+
+Here are important features worth highlighting:
+
+- Support for [keyboard shortcuts](https://github.com/springload/draftail/tree/master/docs#keyboard-shortcuts).
+- Autolists – start a line with `-` , `*` , `1.`  to create a list item.
+- Undo / redo – until the end of times.
+- Common text types: headings, paragraphs, quotes, lists.
+- Common text styles: Bold, Italic, Underline, Monospace, Strikethrough.
+- Built-in `Link` and `Document` controls.
+- Built-in `Image` and `Embed` blocks.
 
 ## Usage
+
+Draftail is meant to be used in scenarios where not all formatting should be available, and where custom formatting can be necessary. Available formats, built-in and custom, can be specificed declaratively for each editor instance.
 
 First, grab the package from npm:
 
@@ -48,6 +66,27 @@ const editor = (
 
 ReactDOM.render(editor, document.querySelector('[data-mount-basic]'));
 ```
+
+### Configuration
+
+#### Built-in formats
+
+- Block types: `H1`, `H2`, `H3`, `H4`, `H5`, `H6`, `Blockquote`, `Code`, `UL`, `OL`, `P`
+- Inline styles: `Bold`, `Italic`, `Underline`, `Monospace`, `Strikethrough`
+- Entities: `Images`, `Embeds`, (`Links`, `Documents`)
+- And `HR`, `BR` as special cases
+
+#### Custom block types
+
+TODO
+
+#### Custom inline styles
+
+TODO
+
+#### Custom entity types
+
+TODO
 
 ## Development
 
