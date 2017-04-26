@@ -11,8 +11,8 @@ import DraftailEditor, { ENTITY_TYPE, BLOCK_TYPE } from '../lib';
 import LinkSource from './sources/LinkSource';
 import DocumentSource from './sources/DocumentSource';
 
-import Link, { findLinkEntities } from './entities/Link';
-import Document, { findDocumentEntities } from './entities/Document';
+import Link from './entities/Link';
+import Document from './entities/Document';
 
 const mount = document.querySelector('[data-mount-entities]');
 
@@ -82,8 +82,8 @@ const editor = (
         rawContentState={rawContentState}
         onSave={onSave}
         entityTypes={[
-            { label: 'Link', type: ENTITY_TYPE.LINK, icon: 'icon-link', source: LinkSource, strategy: findLinkEntities, decorator: Link },
-            { label: 'Document', type: ENTITY_TYPE.DOCUMENT, icon: 'icon-doc-full', source: DocumentSource, strategy: findDocumentEntities, decorator: Document },
+            { label: 'Link', type: ENTITY_TYPE.LINK, icon: 'icon-link', source: LinkSource, decorator: Link },
+            { label: 'Document', type: ENTITY_TYPE.DOCUMENT, icon: 'icon-doc-full', source: DocumentSource, decorator: Document },
         ]}
         blockTypes={[
             { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },

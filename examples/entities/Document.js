@@ -1,16 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ENTITY_TYPE, Icon } from '../../lib';
-
-export function findDocumentEntities(contentBlock, callback, contentState) {
-    contentBlock.findEntityRanges((character) => {
-        const entityKey = character.getEntity();
-        return (
-            entityKey !== null &&
-            contentState.getEntity(entityKey).getType() === ENTITY_TYPE.DOCUMENT
-        );
-    }, callback);
-}
+import { Icon } from '../../lib';
 
 const Document = ({ entityKey, contentState, children }) => {
     const { title } = contentState.getEntity(entityKey).getData();

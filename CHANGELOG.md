@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 ### Changed
 
 - Change empty `RawDraftContentState` in conversion API to be null.
+- Change entity type nomenclature to use `source` and `decorator` in place of `control` and `component`.
 
 ## [[v0.5.0]](https://github.com/springload/draftail/releases/tag/v0.5.0)
 

@@ -8,9 +8,8 @@ import LinkSource from './sources/LinkSource';
 import ImageSource from './sources/ImageSource';
 import EmbedSource from './sources/EmbedSource';
 
-import Link, { findLinkEntities } from './entities/Link';
-import Document, { findDocumentEntities } from './entities/Document';
-// import Model, { findModelEntities } from './entities/Model';
+import Link from './entities/Link';
+import Document from './entities/Document';
 
 const mount = document.querySelector('[data-mount-test]');
 
@@ -29,9 +28,8 @@ const editor = (
         entityTypes={[
             { label: 'Image', type: ENTITY_TYPE.IMAGE, icon: 'icon-image', source: ImageSource, imageFormats: [] },
             { label: 'Embed', type: ENTITY_TYPE.EMBED, icon: 'icon-media', source: EmbedSource },
-            { label: 'Link', type: ENTITY_TYPE.LINK, icon: 'icon-link', source: LinkSource, strategy: findLinkEntities, decorator: Link },
-            { label: 'Document', type: ENTITY_TYPE.DOCUMENT, icon: 'icon-doc-full', source: DocumentSource, strategy: findDocumentEntities, decorator: Document },
-            // { label: 'Model', type: ENTITY_TYPE.MODEL, icon: 'icon-cog', source: GenericModelSource, strategy: findModelEntities, decorator: Model },
+            { label: 'Link', type: ENTITY_TYPE.LINK, icon: 'icon-link', source: LinkSource, decorator: Link },
+            { label: 'Document', type: ENTITY_TYPE.DOCUMENT, icon: 'icon-doc-full', source: DocumentSource, decorator: Document },
         ]}
         blockTypes={[
             { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
