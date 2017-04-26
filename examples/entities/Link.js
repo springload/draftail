@@ -1,17 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ENTITY_TYPE, Icon } from '../../lib';
-
-export function findLinkEntities(contentBlock, callback, contentState) {
-    contentBlock.findEntityRanges((character) => {
-        const entityKey = character.getEntity();
-
-        return (
-            entityKey !== null &&
-            contentState.getEntity(entityKey).getType() === ENTITY_TYPE.LINK
-        );
-    }, callback);
-}
+import { Icon } from '../../lib';
 
 const Link = ({ entityKey, contentState, children }) => {
     const { url } = contentState.getEntity(entityKey).getData();
