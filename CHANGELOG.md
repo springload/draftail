@@ -4,6 +4,12 @@ Changelog
 > All notable changes to this project are documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Changed
+
+- Change empty `RawDraftContentState` in conversion API to be null.
+
 ## [[v0.5.0]](https://github.com/springload/draftail/releases/tag/v0.5.0)
 
 ### Added

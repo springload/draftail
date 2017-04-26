@@ -8,7 +8,7 @@ import DraftailEditor, { BLOCK_TYPE, INLINE_STYLE } from '../lib';
  * It is meant to be mirrored as-is (except for this comment)
  * inside the editor documentation.
  */
-const initialContentState = JSON.parse(sessionStorage.getItem('basic:contentState')) || {};
+const initialContentState = JSON.parse(sessionStorage.getItem('basic:contentState')) || null;
 
 const onSave = (contentState) => {
     sessionStorage.setItem('basic:contentState', JSON.stringify(contentState));
