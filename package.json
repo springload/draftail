@@ -87,6 +87,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "test:ci": "npm run lint -s && npm run test:coverage -s && npm run dist -s && npm run pages -s",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "pages": "rm -rf pages && cp -R examples pages && webpack --config=webpack.config.prod.js --progress -p",
     "deploy": "./bin/deploy.sh"
