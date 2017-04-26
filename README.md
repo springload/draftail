@@ -12,7 +12,7 @@ First, grab the package from npm:
 ```sh
 npm install --save draftail
 # Draftail's peerDependencies:
-npm install --save draft-js@^0.10.0 react@^15.0.0 react-dom@^15.0.0
+npm install --save draft-js@^0.10.0 react@^15.5.0 react-dom@^15.5.0 prop-types@^15.5.0
 # Note: Draft.js builds upon ES6 language features. If targeting browsers that do not support them,
 # see https://facebook.github.io/draft-js/docs/advanced-topics-issues-and-pitfalls.html#polyfills.
 ```
