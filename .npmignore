@@ -13,5 +13,6 @@ webpack.config.dev.js
 .eslintrc
 .editorconfig
 .githooks
+.github
 bin
 .env
