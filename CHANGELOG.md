@@ -6,6 +6,10 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ## Unreleased
 
+### Added
+
+- Add default `strategy` for entity types based on `type`.
+
 ### Changed
 
 - Change empty `RawDraftContentState` in conversion API to be null.
