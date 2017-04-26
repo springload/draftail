@@ -82,8 +82,8 @@ const editor = (
         rawContentState={rawContentState}
         onSave={onSave}
         entityTypes={[
-            { label: 'Link', type: ENTITY_TYPE.LINK, icon: 'icon-link', control: LinkSource, strategy: findLinkEntities, component: Link },
-            { label: 'Document', type: ENTITY_TYPE.DOCUMENT, icon: 'icon-doc-full', control: DocumentSource, strategy: findDocumentEntities, component: Document },
+            { label: 'Link', type: ENTITY_TYPE.LINK, icon: 'icon-link', source: LinkSource, strategy: findLinkEntities, decorator: Link },
+            { label: 'Document', type: ENTITY_TYPE.DOCUMENT, icon: 'icon-doc-full', source: DocumentSource, strategy: findDocumentEntities, decorator: Document },
         ]}
         blockTypes={[
             { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
