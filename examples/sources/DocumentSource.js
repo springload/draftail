@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { RichUtils } from 'draft-js';
 
@@ -27,10 +28,10 @@ class DocumentSource extends React.Component {
 }
 
 DocumentSource.propTypes = {
-    editorState: React.PropTypes.object.isRequired,
-    options: React.PropTypes.object.isRequired,
-    entity: React.PropTypes.object,
-    onUpdate: React.PropTypes.func.isRequired,
+    editorState: PropTypes.object.isRequired,
+    options: PropTypes.object.isRequired,
+    entity: PropTypes.object,
+    onUpdate: PropTypes.func.isRequired,
 };
 
 DocumentSource.defaultProps = {
