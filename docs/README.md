@@ -1,4 +1,4 @@
-draftail documentation
+Draftail documentation
 ======================
 
 ## Editor behavior
@@ -102,7 +102,7 @@ For all browser versions defined as "latest", we will ensure support by using a 
 
 Other approaches:
 
-- https://github.com/ianstormtaylor/slate
+- http://slatejs.org/
 - http://quilljs.com/
 
 ### Other Wagtail-integrated editors to learn from
@@ -111,6 +111,7 @@ Things to borrow: keyboard shortcuts, Wagtail integration mechanism,
 
 - https://github.com/jaydensmith/wagtailfroala
 - https://github.com/isotoma/wagtailtinymce
+- https://github.com/dperetti/Django-wagtailmedium
 
 ### Things that it would be cool to support in the future
 
