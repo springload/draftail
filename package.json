@@ -1,7 +1,7 @@
 {
   "name": "draftail",
   "version": "0.6.0",
-  "description": "A batteries-excluded rich text editor based on Draft.js",
+  "description": "📝🍸 A batteries-excluded rich text editor based on Draft.js",
   "author": "Springload",
   "license": "MIT",
   "main": "dist/index.js",
