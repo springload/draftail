@@ -1,5 +1,4 @@
-Changelog
-=========
+# Changelog
 
 > All notable changes to this project are documented in this file. This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
@@ -126,7 +125,7 @@ First usable release!
 
 Template from http://keepachangelog.com/
 
-## [[vx.y.z]](https://github.com/springload/draftail/releases/tag/x.y.z)
+## [[vx.y.z]](https://github.com/springload/draftail/releases/tag/vx.y.z)
 
 ### Added
 
