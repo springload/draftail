@@ -1,5 +1,4 @@
-[Draftail](https://springload.github.io/draftail/) [![npm](https://img.shields.io/npm/v/draftail.svg?style=flat-square)](https://www.npmjs.com/package/draftail) [![Build Status](https://travis-ci.org/springload/draftail.svg?branch=master)](https://travis-ci.org/springload/draftail) [![Coverage Status](https://coveralls.io/repos/github/springload/draftail/badge.svg)](https://coveralls.io/github/springload/draftail)
-=========
+# [Draftail](https://springload.github.io/draftail/) [![npm](https://img.shields.io/npm/v/draftail.svg?style=flat-square)](https://www.npmjs.com/package/draftail) [![Build Status](https://travis-ci.org/springload/draftail.svg?branch=master)](https://travis-ci.org/springload/draftail) [![Coverage Status](https://coveralls.io/repos/github/springload/draftail/badge.svg)](https://coveralls.io/github/springload/draftail)
 
 > :memo::cocktail: A batteries-excluded rich text editor based on [Draft.js](https://facebook.github.io/draft-js/).
 
@@ -23,7 +22,7 @@ Here are important features worth highlighting:
 - Built-in `Link` and `Document` controls.
 - Built-in `Image` and `Embed` blocks.
 
-## Usage
+## Getting started
 
 Draftail is meant to be used in scenarios where not all formatting should be available, and where custom formatting can be necessary. Available formats, built-in and custom, can be specificed declaratively for each editor instance.
 
@@ -39,7 +38,7 @@ npm install --save draft-js@^0.10.0 react@^15.5.0 react-dom@^15.5.0 prop-types@^
 
 Then, import the editor and use it in your code. Here is a [basic example](https://springload.github.io/draftail/example.html):
 
-```js
+```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -69,26 +68,163 @@ const editor = (
 ReactDOM.render(editor, document.querySelector('[data-mount-basic]'));
 ```
 
-### Configuration
+## Options and configuration
 
-#### Built-in formats
+To change the behavior of the editor, pass props to `DraftailEditor`. Here are the available props, and their default values:
+
+```jsx
+// Initial content of the editor. Use this to edit pre-existing content.
+rawContentState: null,
+// Called when changes occured. Use this to persist editor content.
+onSave: () => {},
+// Enable the use of horizontal rules in the editor.
+enableHorizontalRule: false,
+// Enable the use of line breaks in the editor.
+enableLineBreak: false,
+// Disable copy/paste of rich text in the editor.
+stripPastedStyles: true,
+// List of the available block types.
+blockTypes: [],
+// List of the available inline styles.
+inlineStyles: [],
+// List of the available entity types.
+entityTypes: [],
+// Max level of nesting for unordered and ordered lists. 0 = no nesting.
+maxListNesting: 1,
+// Frequency at which the save callback is triggered (ms).
+stateSaveInterval: 250,
+```
+
+### Formatting options
+
+Draftail, like Draft.js, distinguishes between 3 content formats:
+
+- Blocks, that provide structure to the content. Blocks do not overlap – no content can be both a paragraph and a title.
+- Inline styles, providing inline formatting for text. Styles can overlap: a piece of text can be both bold and italic.
+- Entities, annotating content with metadata to represent rich content beyond text. Entities can be inline (eg. a link applied on a portion of text), or block-based (eg. an embedded video).
+
+### Built-in formats
+
+Common formatting options are available out of the box:
 
 - Block types: `H1`, `H2`, `H3`, `H4`, `H5`, `H6`, `Blockquote`, `Code`, `UL`, `OL`, `P`
 - Inline styles: `Bold`, `Italic`, `Underline`, `Monospace`, `Strikethrough`
 - Entities: `Images`, `Embeds`, (`Links`, `Documents`)
 - And `HR`, `BR` as special cases
 
-#### Custom block types
+### Configuring available formats
 
-TODO
+By default, the editor provides the least amount of rich text features. Formats have to be explicitly enabled by the developer, so they have as much control over what rich content is available as possible.
+
+To use a given format, add it to the corresponding list, following the options detailed in the next sections.
+
+```jsx
+// List of the available block types.
+blockTypes: [],
+// List of the available inline styles.
+inlineStyles: [],
+// List of the available entity types.
+entityTypes: [],
+```
+
+#### Blocks
+
+```jsx
+// Describes the block in the editor UI.
+label: PropTypes.string.isRequired,
+// Unique type shared between block instances.
+type: PropTypes.string.isRequired,
+// Represents the block in the editor UI.
+icon: PropTypes.string,
+// DOM element used to display the block within the editor area.
+element: PropTypes.string,
+// CSS class(es) added to the block for styling within the editor area.
+className: PropTypes.string,
+```
+
+#### Inline styles
+
+```jsx
+// Describes the inline style in the editor UI.
+label: PropTypes.string.isRequired,
+// Unique type shared between inline style instances.
+type: PropTypes.string.isRequired,
+// Represents the inline style in the editor UI.
+icon: PropTypes.string,
+```
+
+#### Entities
+
+```jsx
+// Describes the entity in the editor UI.
+label: PropTypes.string.isRequired,
+// Unique type shared between entity instances.
+type: PropTypes.string.isRequired,
+// Represents the entity in the editor UI.
+icon: PropTypes.string,
+// React component providing the UI to manage entities of this type.
+source: PropTypes.func.isRequired,
+// Determines which pieces of content correspond to this entity.
+strategy: PropTypes.func,
+// React component to display the entity within the editor area.
+decorator: PropTypes.func,
+```
+
+### Custom formats
+
+Draftail is meant to provide a consistent editing experience regardless of what formats (blocks, inline styles, entities) are available. It should be simple for developers to enable/disable a certain format, or to create new ones.
+
+Here are quick questions to help you determine which formatting to use, depending on the use case:
+
+| Question | Appropriate format                                      |
+|--------------------------------------------------------------------|
+| Does the format indicate the structure of the content? | Blocks    |
+| Does the user have to enter additional data/metadata? | Entities   |
+| Is this format only used on a portion of the text? | Inline styles |
+
+#### Blocks
+
+Simple blocks are very easy to create. Add a new block type to `blockTypes`, specifying which `element` and `className` to display the block as.
+
+More advanced blocks, requiring custom React components, aren't supported at the moment. If you need this, feel free to [create an issue](https://github.com/springload/draftail/issues/new).
 
 #### Custom inline styles
 
-TODO
+Custom inline styles aren't supported at the moment. This is on the roadmap, please refer to [#36](https://github.com/springload/draftail/issues/36).
 
 #### Custom entity types
 
+Creating custom entity types is a bit more involved because entities aren't simply on/off: they often need additional data (thus a UI to enter this data), and can be edited.
+
+Apart from the usual label/type/icon options, entities need:
+
+- A `source`, a React component that will be used to create/edit the entity from a specific data source (could be an API, or a form inside of a modal).
+- A `decorator`, a React component to display the entity within the editor area.
+
+##### Sources
+
 TODO
+
+##### Decorators
+
+Decorators receive the current textual content as `children`, as well as the entity key and content state. They can then render the entity based on its data:
+
+```jsx
+const Link = ({ entityKey, contentState, children }) => {
+    const { url } = contentState.getEntity(entityKey).getData();
+
+    return (
+        <span data-tooltip={entityKey} className="RichEditor-link">
+            <Icon name={`icon-${url.indexOf('mailto:') !== -1 ? 'mail' : 'link'}`} />
+            {children}
+        </span>
+    );
+};
+```
+
+#### Custom text decorators
+
+It is possible to create Draft.js text decorators via the entity API, by providing the appropriate `strategy`. This isn't explicitly supported at the moment - if you need this, feel free to [create an issue](https://github.com/springload/draftail/issues/new).
 
 ## Development
 
