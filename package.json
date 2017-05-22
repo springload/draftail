@@ -15,7 +15,8 @@
     "rich text",
     "rte",
     "react",
-    "react.js"
+    "react-component",
+    "react-components"
   ],
   "repository": {
     "type": "git",
