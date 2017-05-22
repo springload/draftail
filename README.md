@@ -177,7 +177,7 @@ Draftail is meant to provide a consistent editing experience regardless of what 
 Here are quick questions to help you determine which formatting to use, depending on the use case:
 
 | Question | Appropriate format                                      |
-|--------------------------------------------------------------------|
+|----------|---------------------------------------------------------|
 | Does the format indicate the structure of the content? | Blocks    |
 | Does the user have to enter additional data/metadata? | Entities   |
 | Is this format only used on a portion of the text? | Inline styles |
