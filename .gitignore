@@ -28,6 +28,7 @@ coverage
 build/Release
 dist
 pages
+examples/assets/draftail.css
 
 # Dependency directories
 node_modules
