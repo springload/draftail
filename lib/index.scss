@@ -9,7 +9,15 @@ $color-black: #000;
 
 $editor-z-index: 1;
 $tooltip-z-index: $editor-z-index + 1;
-$toolbar-z-index: $tooltip-z-index + 1;
+$overlay-z-index: $tooltip-z-index + 1;
+$activeblock-z-index: $overlay-z-index + 1;
+$toolbar-z-index: $activeblock-z-index + 1;
+
+@mixin disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+}
 
 .editor__toolbar {
     position: sticky;
@@ -22,9 +30,20 @@ $toolbar-z-index: $tooltip-z-index + 1;
     z-index: $toolbar-z-index;
 }
 
-.editor--readonly .editor__toolbar {
-    opacity: 0.5;
-    pointer-events: none;
+.DraftEditor-editorContainer {
+    .editor--readonly & {
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: $overlay-z-index;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+    }
 }
 
 .RichEditor-styleButton {
@@ -84,16 +103,20 @@ $toolbar-z-index: $tooltip-z-index + 1;
 .RichEditor-media {
     outline: 1px dotted #dadada;
     position: relative;
-}
 
-.RichEditor-media:hover,
-.RichEditor-media--open {
-    outline: 1px dotted $color-teal;
+    &:hover {
+        outline: 1px dotted $color-teal;
 
-    .RichEditor-media-container {
-        cursor: pointer;
+        .RichEditor-media-container {
+            cursor: pointer;
+        }
     }
 }
+
+    .RichEditor-media--open {
+        z-index: $activeblock-z-index;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
 
 .RichEditor-grid {
     margin-left: -2rem;
@@ -110,10 +133,6 @@ $toolbar-z-index: $tooltip-z-index + 1;
     float: left;
     padding-left: 2rem;
     box-sizing: border-box;
-}
-
-.RichEditor-media--open {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
 .RichEditor-media img {
