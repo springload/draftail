@@ -1,7 +1,7 @@
 @import '../node_modules/draft-js/dist/Draft';
 
-$controls-padding: .5rem;
-$button-padding: .25rem;
+$button-spacing: .25rem;
+$controls-spacing: $button-spacing * 2;
 
 $color-teal: #43b1b0;
 $color-white: #ffffff;
@@ -21,9 +21,11 @@ $toolbar-z-index: $activeblock-z-index + 1;
 
 .editor__toolbar {
     position: sticky;
-    top: $controls-padding * 2;
-    padding: $controls-padding;
-    margin-bottom: $controls-padding * 2;
+    top: $controls-spacing * 2;
+    padding: $controls-spacing;
+    // Offset the button's top margin to form rows.
+    padding-top: $controls-spacing - $button-spacing;
+    margin-bottom: $controls-spacing * 2;
     background-color: $color-white;
     border: solid 1px #eee;
     border-radius: 3px;
@@ -47,12 +49,12 @@ $toolbar-z-index: $activeblock-z-index + 1;
 }
 
 .RichEditor-styleButton {
-    padding: $button-padding $controls-padding;
+    padding: $button-spacing $controls-spacing;
     background: #eee;
     display: inline-block;
     border-radius: 0;
-    margin-right: 4px;
-    margin-right: $button-padding;
+    margin-top: $button-spacing;
+    margin-right: $button-spacing;
     color: inherit;
     border: 0;
     cursor: pointer;
@@ -75,12 +77,12 @@ $toolbar-z-index: $activeblock-z-index + 1;
     appearance: none;
     background: #808080;
     color: $color-white;
-    padding: $button-padding $controls-padding;
+    padding: $button-spacing $controls-spacing;
     border: 0;
     border-radius: 1px;
 
     + .RichEditor-tooltip__button {
-        margin-left: $button-padding;
+        margin-left: $button-spacing;
     }
 }
 
@@ -141,11 +143,11 @@ $toolbar-z-index: $activeblock-z-index + 1;
 
 .RichEditor-media-icon {
     position: absolute;
-    top: $controls-padding;
-    left: $controls-padding;
+    top: $controls-spacing;
+    left: $controls-spacing;
     background: rgba(255, 255, 255, 0.9);
     line-height: 1;
-    padding-left: $button-padding;
+    padding-left: $button-spacing;
     padding-bottom: .125rem;
     pointer-events: none;
 }
@@ -193,8 +195,8 @@ $toolbar-z-index: $activeblock-z-index + 1;
 
 .RichEditor-tooltip {
     position: absolute;
-    padding: .375rem $controls-padding;
-    margin-top: $controls-padding;
+    padding: .375rem $controls-spacing;
+    margin-top: $controls-spacing;
     background-color: #333;
     color: $color-white;
     z-index: $tooltip-z-index;
@@ -212,7 +214,7 @@ $toolbar-z-index: $activeblock-z-index + 1;
 .RichEditor-tooltip__text,
 .RichEditor-tooltip__link {
     color: #ddd;
-    margin-right: $controls-padding;
+    margin-right: $controls-spacing;
     display: inline-block;
 }
 
