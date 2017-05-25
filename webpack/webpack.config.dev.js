@@ -10,6 +10,19 @@ const extractSass = new ExtractTextPlugin('draftail.css');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
+const stats = {
+    // Add chunk information (setting this to `false` allows for a less verbose output)
+    chunks: false,
+    // Add the hash of the compilation
+    hash: false,
+    // `webpack --colors` equivalent
+    colors: true,
+    // Add information about the reasons why modules are included
+    reasons: false,
+    // Add webpack version information
+    version: false,
+};
+
 module.exports = {
     // See http://webpack.github.io/docs/configuration.html#devtool
     devtool: 'inline-source-map',
@@ -58,18 +71,7 @@ module.exports = {
         ],
     },
 
-    stats: {
-        // Add chunk information (setting this to `false` allows for a less verbose output)
-        chunks: false,
-        // Add the hash of the compilation
-        hash: false,
-        // `webpack --colors` equivalent
-        colors: true,
-        // Add information about the reasons why modules are included
-        reasons: false,
-        // Add webpack version information
-        version: false,
-    },
+    stats: stats,
 
     // Some libraries import Node modules but don't use them in the browser.
     // Tell Webpack to provide empty mocks for them so importing them works.
@@ -79,12 +81,15 @@ module.exports = {
         tls: 'empty',
     },
 
+    // https://webpack.js.org/configuration/dev-server/#devserver
     devServer: {
         contentBase: path.join(__dirname, '..', 'examples'),
+        watchContentBase: true,
         compress: true,
         hot: true,
         port: 4000,
         overlay: true,
         clientLogLevel: 'none',
+        stats: stats,
     },
 };
