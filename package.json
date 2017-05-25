@@ -92,7 +92,7 @@
     "react-dom": "^15.5.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --config=webpack.config.dev.js",
+    "start": "webpack-dev-server --config=webpack/webpack.config.dev.js",
     "js": "babel -d dist lib",
     "css": "node-sass lib/index.scss examples/assets/draftail.css && cp examples/assets/draftail.css dist",
     "dist": "npm run js -s && npm run css -s",
@@ -103,7 +103,7 @@
     "test:coverage": "jest --coverage",
     "test:ci": "npm run lint -s && npm run test:coverage -s && npm run dist -s && npm run pages -s",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "pages": "rm -rf pages && cp -R examples pages && webpack --config=webpack.config.prod.js --progress -p",
+    "pages": "rm -rf pages && cp -R examples pages && webpack --config=webpack/webpack.config.prod.js",
     "deploy": "./bin/deploy.sh"
   }
 }
