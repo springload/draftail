@@ -80,6 +80,7 @@ $toolbar-z-index: $activeblock-z-index + 1;
     padding: $button-spacing $controls-spacing;
     border: 0;
     border-radius: 1px;
+    cursor: pointer;
 
     + .RichEditor-tooltip__button {
         margin-left: $button-spacing;
