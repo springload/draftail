@@ -243,6 +243,7 @@ Draft.js and Draftail build upon ES6 language features. If targeting browsers th
 
 - [Draft.js required polyfills](https://facebook.github.io/draft-js/docs/advanced-topics-issues-and-pitfalls.html#polyfills).
 - [`position: sticky` support](https://caniuse.com/#feat=css-sticky), and [`stickyfill` polyfill](https://github.com/wilddeer/stickyfill).
+- [`Element.closest()` support](https://caniuse.com/#search=closest), and [polyfill](https://github.com/jonathantneal/closest).
 
 ## Development
 
