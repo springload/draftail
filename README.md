@@ -32,8 +32,6 @@ First, grab the package from npm:
 npm install --save draftail
 # Draftail's peerDependencies:
 npm install --save draft-js@^0.10.0 react@^15.5.0 react-dom@^15.5.0 prop-types@^15.5.0
-# Note: Draft.js builds upon ES6 language features. If targeting browsers that do not support them,
-# see https://facebook.github.io/draft-js/docs/advanced-topics-issues-and-pitfalls.html#polyfills.
 ```
 
 Then, import the editor and use it in your code. Here is a [basic example](https://springload.github.io/draftail/example.html):
@@ -225,6 +223,13 @@ const Link = ({ entityKey, contentState, children }) => {
 #### Custom text decorators
 
 It is possible to create Draft.js text decorators via the entity API, by providing the appropriate `strategy`. This isn't explicitly supported at the moment - if you need this, feel free to [create an issue](https://github.com/springload/draftail/issues/new).
+
+### Polyfills
+
+Draft.js and Draftail build upon ES6 language features. If targeting browsers that do not support them, have a look at:
+
+- [Draft.js required polyfills](https://facebook.github.io/draft-js/docs/advanced-topics-issues-and-pitfalls.html#polyfills).
+- [`position: sticky` support](https://caniuse.com/#feat=css-sticky), and [`stickyfill` polyfill](https://github.com/wilddeer/stickyfill).
 
 ## Development
 
