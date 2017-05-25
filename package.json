@@ -63,9 +63,9 @@
   "devDependencies": {
     "babel-cli": "^6.22.2",
     "babel-jest": "^20.0.0",
-    "babel-loader": "^6.2.10",
-    "babel-preset-env": "^1.4.0",
-    "babel-preset-react": "^6.16.0",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-react": "^6.24.1",
     "coveralls": "^2.11.15",
     "dotenv": "^4.0.0",
     "draft-js": "^0.10.0",
@@ -76,17 +76,14 @@
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "3.0.2",
     "eslint-plugin-react": "6.10.3",
-    "express": "^4.14.0",
     "jest": "^20.0.0",
     "node-sass": "^4.3.0",
-    "progress-bar-webpack-plugin": "^1.9.0",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",
-    "webpack": "^1.13.3",
-    "webpack-dev-middleware": "^1.8.4",
-    "webpack-hot-middleware": "^2.13.2"
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
   },
   "peerDependencies": {
     "draft-js": "^0.10.0",
@@ -95,8 +92,7 @@
     "react-dom": "^15.5.0"
   },
   "scripts": {
-    "start": "npm run server -s",
-    "server": "node server/index.js",
+    "start": "webpack-dev-server --config=webpack.config.dev.js",
     "js": "babel -d dist lib",
     "css": "node-sass lib/index.scss examples/assets/draftail.css && cp examples/assets/draftail.css dist",
     "dist": "npm run js -s && npm run css -s",
