@@ -7,15 +7,23 @@ $color-teal: #43b1b0;
 $color-white: #ffffff;
 $color-black: #000;
 
+$editor-z-index: 1;
+$tooltip-z-index: $editor-z-index + 1;
+$toolbar-z-index: $tooltip-z-index + 1;
+
 .editor__toolbar {
-    border: solid 1px #eee;
-    border-radius: 3px;
+    position: sticky;
+    top: $controls-padding * 2;
     padding: $controls-padding;
     margin-bottom: $controls-padding * 2;
+    background-color: $color-white;
+    border: solid 1px #eee;
+    border-radius: 3px;
+    z-index: $toolbar-z-index;
 }
 
 .editor--readonly .editor__toolbar {
-    opacity: .5;
+    opacity: 0.5;
     pointer-events: none;
 }
 
@@ -170,7 +178,7 @@ $color-black: #000;
     margin-top: $controls-padding;
     background-color: #333;
     color: $color-white;
-    z-index: 1;
+    z-index: $tooltip-z-index;
 
     &:before {
         content: '';
