@@ -46,6 +46,9 @@
     "extends": "springload"
   },
   "jest": {
+    "moduleNameMapper": {
+      "\\.scss$": "<rootDir>/lib/tests/styleMock.js"
+    },
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/dist/",
@@ -67,6 +70,7 @@
     "babel-preset-env": "^1.5.1",
     "babel-preset-react": "^6.24.1",
     "coveralls": "^2.11.15",
+    "css-loader": "^0.28.2",
     "dotenv": "^4.0.0",
     "draft-js": "^0.10.0",
     "enzyme": "^2.8.2",
@@ -76,12 +80,14 @@
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "3.0.2",
     "eslint-plugin-react": "6.10.3",
+    "extract-text-webpack-plugin": "^2.1.0",
     "jest": "^20.0.0",
-    "node-sass": "^4.3.0",
+    "node-sass": "^4.5.3",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",
+    "sass-loader": "^6.0.5",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
   },
@@ -94,8 +100,8 @@
   "scripts": {
     "start": "webpack-dev-server --config=webpack/webpack.config.dev.js",
     "js": "babel -d dist lib",
-    "css": "node-sass lib/index.scss examples/assets/draftail.css && cp examples/assets/draftail.css dist",
-    "dist": "npm run js -s && npm run css -s",
+    "build": "npm run js -s && webpack --config=webpack/webpack.config.prod.js && cp pages/assets/draftail.css dist",
+    "dist": "NODE_ENV=production npm run build -s",
     "linter:js": "eslint",
     "lint": "npm run linter:js -s -- .",
     "test": "jest",
@@ -103,7 +109,7 @@
     "test:coverage": "jest --coverage",
     "test:ci": "npm run lint -s && npm run test:coverage -s && npm run dist -s && npm run pages -s",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "pages": "rm -rf pages && cp -R examples pages && webpack --config=webpack/webpack.config.prod.js",
+    "pages": "rm -rf pages && cp -R examples pages && ",
     "deploy": "./bin/deploy.sh"
   }
 }

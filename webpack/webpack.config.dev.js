@@ -2,8 +2,13 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 require('dotenv').config();
+
+const extractSass = new ExtractTextPlugin('draftail.css');
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
     // See http://webpack.github.io/docs/configuration.html#devtool
@@ -22,8 +27,10 @@ module.exports = {
         publicPath: '/assets/',
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
+        extractSass,
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
             // Set an environment variable of EMBEDLY_API_KEY to use this in development.
             EMBEDLY_API_KEY: JSON.stringify(process.env.EMBEDLY_API_KEY),
@@ -31,7 +38,6 @@ module.exports = {
                 NODE_ENV: JSON.stringify('development'),
             },
         }),
-        new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
     ],
     module: {
         rules: [
@@ -39,6 +45,15 @@ module.exports = {
                 test: /\.js$/,
                 use: ['babel-loader'],
                 exclude: /node_modules/,
+            },
+            {
+                test: /\.scss$/,
+                use: extractSass.extract({
+                    use: [
+                        { loader: 'css-loader', options: { sourceMap: !isProduction } },
+                        { loader: 'sass-loader', options: { sourceMap: !isProduction } },
+                    ],
+                }),
             },
         ],
     },
@@ -70,5 +85,6 @@ module.exports = {
         hot: true,
         port: 4000,
         overlay: true,
+        clientLogLevel: 'none',
     },
 };

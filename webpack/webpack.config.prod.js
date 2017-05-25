@@ -9,7 +9,7 @@ config.watch = false;
 config.devtool = false;
 config.output.path = path.join(__dirname, '..', 'pages', 'assets');
 
-config.plugins = [
+config.plugins = config.plugins.slice(0, 3).concat([
     new webpack.DefinePlugin({
         // Key is hard-coded because it will be public on the demo site anyway.
         // Key usage is limited to whitelisted Referrers.
@@ -18,7 +18,6 @@ config.plugins = [
             NODE_ENV: JSON.stringify('production'),
         },
     }),
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
     new webpack.optimize.UglifyJsPlugin({
         compress: {
             screw_ie8: true, // React doesn't support IE8
@@ -32,6 +31,6 @@ config.plugins = [
             screw_ie8: true,
         },
     }),
-];
+]);
 
 module.exports = config;
