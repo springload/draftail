@@ -224,7 +224,20 @@ const Link = ({ entityKey, contentState, children }) => {
 
 It is possible to create Draft.js text decorators via the entity API, by providing the appropriate `strategy`. This isn't explicitly supported at the moment - if you need this, feel free to [create an issue](https://github.com/springload/draftail/issues/new).
 
-### Polyfills
+### Browser support and polyfills
+
+**Supported browser / device versions:**
+
+| Browser | Device/OS | Version |
+|---------|-----------|---------|
+| Mobile Safari | iOS Phone | latest |
+| Mobile Safari | iOS Tablet | latest |
+| Chrome | Android | latest |
+| IE | Desktop | 11 |
+| Chrome | Desktop | latest |
+| MS Edge | Desktop | latest |
+| Firefox | Desktop | latest |
+| Safari | OSX | latest |
 
 Draft.js and Draftail build upon ES6 language features. If targeting browsers that do not support them, have a look at:
 
