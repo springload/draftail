@@ -2,10 +2,9 @@ coverage
 .babelrc
 examples
 docs
+webpack
 lib
 .npmignore
-webpack.config.prod.js
-webpack.config.dev.js
 .nvmrc
 .travis.yml
 .eslintignore

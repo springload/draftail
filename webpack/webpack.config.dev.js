@@ -17,7 +17,7 @@ module.exports = {
         test: './examples/test',
     },
     output: {
-        path: path.join(__dirname, 'build'),
+        path: path.join(__dirname, '..', 'build'),
         filename: '[name].bundle.js',
         publicPath: '/assets/',
     },
@@ -65,7 +65,7 @@ module.exports = {
     },
 
     devServer: {
-        contentBase: path.join(__dirname, 'examples'),
+        contentBase: path.join(__dirname, '..', 'examples'),
         compress: true,
         hot: true,
         port: 4000,
