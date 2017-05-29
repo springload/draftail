@@ -4,6 +4,12 @@
 
 ## Unreleased
 
+## [[v0.7.1]](https://github.com/springload/draftail/releases/tag/v0.7.1)
+
+### Fixed
+
+- Fix CSS import present in published library.
+
 ## [[v0.7.0]](https://github.com/springload/draftail/releases/tag/v0.7.0)
 
 ### Added
