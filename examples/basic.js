@@ -17,6 +17,7 @@ const onSave = (contentState) => {
 const editor = (
     <DraftailEditor
         rawContentState={initialContentState}
+        placeholder="Write here…"
         onSave={onSave}
         blockTypes={[
             { label: 'H3', type: BLOCK_TYPE.HEADER_THREE },
