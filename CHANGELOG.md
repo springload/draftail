@@ -4,6 +4,26 @@
 
 ## Unreleased
 
+## [[v0.7.0]](https://github.com/springload/draftail/releases/tag/v0.7.0)
+
+### Added
+
+- Make the editor toolbar sticky (requires a polyfill, documented in README).
+- Add support for `placeholder` attribute.
+
+### Changed
+
+- Improve "active block" rendering and disabled state.
+
+### Fixed
+
+- Fix missing vertical spacing between button rows.
+- Fix missing pointer cursor on tooltip button.
+
+### Removed
+
+- Remove `Element.closest` polyfill from main lib.
+
 ## [[v0.6.0]](https://github.com/springload/draftail/releases/tag/v0.6.0)
 
 ### Added
