@@ -35,7 +35,7 @@ module.exports = {
     // See http://webpack.github.io/docs/configuration.html#devtool
     devtool: 'inline-source-map',
     entry: {
-        vendor: ['react', 'react-dom', 'immutable', 'draft-js', 'draftjs-utils', './examples/polyfills'],
+        vendor: ['react', 'react-dom', 'immutable', 'draft-js', 'draftjs-utils', './examples/utils/polyfills'],
         intro: './examples/intro',
         basic: './examples/basic',
         entities: './examples/entities',
