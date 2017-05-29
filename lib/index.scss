@@ -107,6 +107,12 @@ $toolbar-z-index: $activeblock-z-index + 1;
     font-family: sans-serif;
 }
 
+.public-DraftEditorPlaceholder-root {
+    .editor--hide-placeholder & {
+        display: none;
+    }
+}
+
 .RichEditor-media {
     outline: 1px dotted #dadada;
     position: relative;
