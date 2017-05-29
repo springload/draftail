@@ -272,8 +272,12 @@ nvm use
 npm run start
 # Runs linting.
 npm run lint
-# Runs tests.
-npm run test
+# Run tests in a watcher.
+npm run test:watch
+# Run test coverage
+npm run test:coverage
+# Open the coverage report with:
+npm run report:coverage
 # View other available commands with:
 npm run
 ```
