@@ -42,6 +42,7 @@ module.exports = {
             'draft-js',
             'draftjs-utils',
             'element-closest',
+            './lib/index.scss',
         ],
         intro: './examples/intro',
         basic: './examples/basic',
