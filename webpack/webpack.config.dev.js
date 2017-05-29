@@ -2,6 +2,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 require('dotenv').config();
@@ -9,6 +10,13 @@ require('dotenv').config();
 const extractSass = new ExtractTextPlugin('draftail.css');
 
 const isProduction = process.env.NODE_ENV === 'production';
+
+const autoprefixerConfig = {
+    browsers: [
+        '> 1%',
+        'ie 11',
+    ],
+};
 
 const stats = {
     // Add chunk information (setting this to `false` allows for a less verbose output)
@@ -63,8 +71,30 @@ module.exports = {
                 test: /\.scss$/,
                 use: extractSass.extract({
                     use: [
-                        { loader: 'css-loader', options: { sourceMap: !isProduction } },
-                        { loader: 'sass-loader', options: { sourceMap: !isProduction } },
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                sourceMap: !isProduction,
+                                minimize: isProduction ? {
+                                    autoprefixer: autoprefixerConfig,
+                                } : false,
+                            },
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                sourceMap: !isProduction,
+                                plugins: () => [
+                                    autoprefixer(autoprefixerConfig),
+                                ],
+                            },
+                        },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: !isProduction,
+                            },
+                        },
                     ],
                 }),
             },
