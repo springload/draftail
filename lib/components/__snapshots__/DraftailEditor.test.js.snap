@@ -1,0 +1,521 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DraftailEditor #placeholder 1`] = `
+<div
+  className="editornull"
+  onBlur={[Function]}
+  onKeyUp={[Function]}
+  onMouseUp={[Function]}
+>
+  <Toolbar
+    addBR={[Function]}
+    addHR={[Function]}
+    blockTypes={Array []}
+    editorState={
+      EditorState {
+        "_immutable": Object {
+          "allowUndo": true,
+          "currentContent": Object {
+            "blockMap": Object {
+              "98uqs": Object {
+                "characterList": Array [],
+                "data": Object {},
+                "depth": 0,
+                "key": "98uqs",
+                "text": "",
+                "type": "unstyled",
+              },
+            },
+            "entityMap": Object {
+              "__add": [Function],
+              "__create": [Function],
+              "__get": [Function],
+              "__getLastCreatedEntityKey": [Function],
+              "__mergeData": [Function],
+              "__replaceData": [Function],
+              "add": [Function],
+              "create": [Function],
+              "get": [Function],
+              "getLastCreatedEntityKey": [Function],
+              "mergeData": [Function],
+              "replaceData": [Function],
+            },
+            "selectionAfter": Object {
+              "anchorKey": "98uqs",
+              "anchorOffset": 0,
+              "focusKey": "98uqs",
+              "focusOffset": 0,
+              "hasFocus": false,
+              "isBackward": false,
+            },
+            "selectionBefore": Object {
+              "anchorKey": "98uqs",
+              "anchorOffset": 0,
+              "focusKey": "98uqs",
+              "focusOffset": 0,
+              "hasFocus": false,
+              "isBackward": false,
+            },
+          },
+          "decorator": CompositeDraftDecorator {
+            "_decorators": Array [],
+          },
+          "directionMap": Object {
+            "98uqs": "LTR",
+          },
+          "forceSelection": false,
+          "inCompositionMode": false,
+          "inlineStyleOverride": null,
+          "lastChangeType": null,
+          "nativelyRenderedContent": null,
+          "redoStack": Array [],
+          "selection": Object {
+            "anchorKey": "98uqs",
+            "anchorOffset": 0,
+            "focusKey": "98uqs",
+            "focusOffset": 0,
+            "hasFocus": false,
+            "isBackward": false,
+          },
+          "treeMap": Object {
+            "98uqs": Array [
+              Object {
+                "decoratorKey": null,
+                "end": 0,
+                "leaves": Array [
+                  Object {
+                    "end": 0,
+                    "start": 0,
+                  },
+                ],
+                "start": 0,
+              },
+            ],
+          },
+          "undoStack": Array [],
+        },
+      }
+    }
+    enableHorizontalRule={false}
+    enableLineBreak={false}
+    entityTypes={Array []}
+    inlineStyles={Array []}
+    onRequestDialog={[Function]}
+    readOnly={false}
+    toggleBlockType={[Function]}
+    toggleInlineStyle={[Function]}
+  />
+  <DraftEditor
+    blockRenderMap={
+      Immutable.Map {
+        ordered-list-item: Object {
+          "element": "li",
+          "wrapper": <ol
+            className="public-DraftStyleDefault-ol"
+        />,
+        },
+        header-six: Object {
+          "element": "h6",
+        },
+        header-four: Object {
+          "element": "h4",
+        },
+        header-one: Object {
+          "element": "h1",
+        },
+        unordered-list-item: Object {
+          "element": "li",
+          "wrapper": <ul
+            className="public-DraftStyleDefault-ul"
+        />,
+        },
+        atomic: Object {
+          "element": "figure",
+        },
+        unstyled: Object {
+          "aliasedElements": Array [
+            "p",
+          ],
+          "element": "div",
+        },
+        header-two: Object {
+          "element": "h2",
+        },
+        code-block: Object {
+          "element": "pre",
+          "wrapper": <pre
+            className="public-DraftStyleDefault-pre"
+        />,
+        },
+        blockquote: Object {
+          "element": "blockquote",
+        },
+        header-five: Object {
+          "element": "h5",
+        },
+        header-three: Object {
+          "element": "h3",
+        },
+      }
+    }
+    blockRendererFn={[Function]}
+    blockStyleFn={[Function]}
+    editorState={
+      EditorState {
+        "_immutable": Object {
+          "allowUndo": true,
+          "currentContent": Object {
+            "blockMap": Object {
+              "98uqs": Object {
+                "characterList": Array [],
+                "data": Object {},
+                "depth": 0,
+                "key": "98uqs",
+                "text": "",
+                "type": "unstyled",
+              },
+            },
+            "entityMap": Object {
+              "__add": [Function],
+              "__create": [Function],
+              "__get": [Function],
+              "__getLastCreatedEntityKey": [Function],
+              "__mergeData": [Function],
+              "__replaceData": [Function],
+              "add": [Function],
+              "create": [Function],
+              "get": [Function],
+              "getLastCreatedEntityKey": [Function],
+              "mergeData": [Function],
+              "replaceData": [Function],
+            },
+            "selectionAfter": Object {
+              "anchorKey": "98uqs",
+              "anchorOffset": 0,
+              "focusKey": "98uqs",
+              "focusOffset": 0,
+              "hasFocus": false,
+              "isBackward": false,
+            },
+            "selectionBefore": Object {
+              "anchorKey": "98uqs",
+              "anchorOffset": 0,
+              "focusKey": "98uqs",
+              "focusOffset": 0,
+              "hasFocus": false,
+              "isBackward": false,
+            },
+          },
+          "decorator": CompositeDraftDecorator {
+            "_decorators": Array [],
+          },
+          "directionMap": Object {
+            "98uqs": "LTR",
+          },
+          "forceSelection": false,
+          "inCompositionMode": false,
+          "inlineStyleOverride": null,
+          "lastChangeType": null,
+          "nativelyRenderedContent": null,
+          "redoStack": Array [],
+          "selection": Object {
+            "anchorKey": "98uqs",
+            "anchorOffset": 0,
+            "focusKey": "98uqs",
+            "focusOffset": 0,
+            "hasFocus": false,
+            "isBackward": false,
+          },
+          "treeMap": Object {
+            "98uqs": Array [
+              Object {
+                "decoratorKey": null,
+                "end": 0,
+                "leaves": Array [
+                  Object {
+                    "end": 0,
+                    "start": 0,
+                  },
+                ],
+                "start": 0,
+              },
+            ],
+          },
+          "undoStack": Array [],
+        },
+      }
+    }
+    handleBeforeInput={[Function]}
+    handleKeyCommand={[Function]}
+    handleReturn={[Function]}
+    keyBindingFn={[Function]}
+    onChange={[Function]}
+    onTab={[Function]}
+    placeholder="Write here…"
+    readOnly={false}
+    spellCheck={false}
+    stripPastedStyles={true}
+  />
+  <Portal />
+</div>
+`;
+
+exports[`DraftailEditor empty 1`] = `
+<div
+  className="editornull"
+  onBlur={[Function]}
+  onKeyUp={[Function]}
+  onMouseUp={[Function]}
+>
+  <Toolbar
+    addBR={[Function]}
+    addHR={[Function]}
+    blockTypes={Array []}
+    editorState={
+      EditorState {
+        "_immutable": Object {
+          "allowUndo": true,
+          "currentContent": Object {
+            "blockMap": Object {
+              "dk5n3": Object {
+                "characterList": Array [],
+                "data": Object {},
+                "depth": 0,
+                "key": "dk5n3",
+                "text": "",
+                "type": "unstyled",
+              },
+            },
+            "entityMap": Object {
+              "__add": [Function],
+              "__create": [Function],
+              "__get": [Function],
+              "__getLastCreatedEntityKey": [Function],
+              "__mergeData": [Function],
+              "__replaceData": [Function],
+              "add": [Function],
+              "create": [Function],
+              "get": [Function],
+              "getLastCreatedEntityKey": [Function],
+              "mergeData": [Function],
+              "replaceData": [Function],
+            },
+            "selectionAfter": Object {
+              "anchorKey": "dk5n3",
+              "anchorOffset": 0,
+              "focusKey": "dk5n3",
+              "focusOffset": 0,
+              "hasFocus": false,
+              "isBackward": false,
+            },
+            "selectionBefore": Object {
+              "anchorKey": "dk5n3",
+              "anchorOffset": 0,
+              "focusKey": "dk5n3",
+              "focusOffset": 0,
+              "hasFocus": false,
+              "isBackward": false,
+            },
+          },
+          "decorator": CompositeDraftDecorator {
+            "_decorators": Array [],
+          },
+          "directionMap": Object {
+            "dk5n3": "LTR",
+          },
+          "forceSelection": false,
+          "inCompositionMode": false,
+          "inlineStyleOverride": null,
+          "lastChangeType": null,
+          "nativelyRenderedContent": null,
+          "redoStack": Array [],
+          "selection": Object {
+            "anchorKey": "dk5n3",
+            "anchorOffset": 0,
+            "focusKey": "dk5n3",
+            "focusOffset": 0,
+            "hasFocus": false,
+            "isBackward": false,
+          },
+          "treeMap": Object {
+            "dk5n3": Array [
+              Object {
+                "decoratorKey": null,
+                "end": 0,
+                "leaves": Array [
+                  Object {
+                    "end": 0,
+                    "start": 0,
+                  },
+                ],
+                "start": 0,
+              },
+            ],
+          },
+          "undoStack": Array [],
+        },
+      }
+    }
+    enableHorizontalRule={false}
+    enableLineBreak={false}
+    entityTypes={Array []}
+    inlineStyles={Array []}
+    onRequestDialog={[Function]}
+    readOnly={false}
+    toggleBlockType={[Function]}
+    toggleInlineStyle={[Function]}
+  />
+  <DraftEditor
+    blockRenderMap={
+      Immutable.Map {
+        ordered-list-item: Object {
+          "element": "li",
+          "wrapper": <ol
+            className="public-DraftStyleDefault-ol"
+        />,
+        },
+        header-six: Object {
+          "element": "h6",
+        },
+        header-four: Object {
+          "element": "h4",
+        },
+        header-one: Object {
+          "element": "h1",
+        },
+        unordered-list-item: Object {
+          "element": "li",
+          "wrapper": <ul
+            className="public-DraftStyleDefault-ul"
+        />,
+        },
+        atomic: Object {
+          "element": "figure",
+        },
+        unstyled: Object {
+          "aliasedElements": Array [
+            "p",
+          ],
+          "element": "div",
+        },
+        header-two: Object {
+          "element": "h2",
+        },
+        code-block: Object {
+          "element": "pre",
+          "wrapper": <pre
+            className="public-DraftStyleDefault-pre"
+        />,
+        },
+        blockquote: Object {
+          "element": "blockquote",
+        },
+        header-five: Object {
+          "element": "h5",
+        },
+        header-three: Object {
+          "element": "h3",
+        },
+      }
+    }
+    blockRendererFn={[Function]}
+    blockStyleFn={[Function]}
+    editorState={
+      EditorState {
+        "_immutable": Object {
+          "allowUndo": true,
+          "currentContent": Object {
+            "blockMap": Object {
+              "dk5n3": Object {
+                "characterList": Array [],
+                "data": Object {},
+                "depth": 0,
+                "key": "dk5n3",
+                "text": "",
+                "type": "unstyled",
+              },
+            },
+            "entityMap": Object {
+              "__add": [Function],
+              "__create": [Function],
+              "__get": [Function],
+              "__getLastCreatedEntityKey": [Function],
+              "__mergeData": [Function],
+              "__replaceData": [Function],
+              "add": [Function],
+              "create": [Function],
+              "get": [Function],
+              "getLastCreatedEntityKey": [Function],
+              "mergeData": [Function],
+              "replaceData": [Function],
+            },
+            "selectionAfter": Object {
+              "anchorKey": "dk5n3",
+              "anchorOffset": 0,
+              "focusKey": "dk5n3",
+              "focusOffset": 0,
+              "hasFocus": false,
+              "isBackward": false,
+            },
+            "selectionBefore": Object {
+              "anchorKey": "dk5n3",
+              "anchorOffset": 0,
+              "focusKey": "dk5n3",
+              "focusOffset": 0,
+              "hasFocus": false,
+              "isBackward": false,
+            },
+          },
+          "decorator": CompositeDraftDecorator {
+            "_decorators": Array [],
+          },
+          "directionMap": Object {
+            "dk5n3": "LTR",
+          },
+          "forceSelection": false,
+          "inCompositionMode": false,
+          "inlineStyleOverride": null,
+          "lastChangeType": null,
+          "nativelyRenderedContent": null,
+          "redoStack": Array [],
+          "selection": Object {
+            "anchorKey": "dk5n3",
+            "anchorOffset": 0,
+            "focusKey": "dk5n3",
+            "focusOffset": 0,
+            "hasFocus": false,
+            "isBackward": false,
+          },
+          "treeMap": Object {
+            "dk5n3": Array [
+              Object {
+                "decoratorKey": null,
+                "end": 0,
+                "leaves": Array [
+                  Object {
+                    "end": 0,
+                    "start": 0,
+                  },
+                ],
+                "start": 0,
+              },
+            ],
+          },
+          "undoStack": Array [],
+        },
+      }
+    }
+    handleBeforeInput={[Function]}
+    handleKeyCommand={[Function]}
+    handleReturn={[Function]}
+    keyBindingFn={[Function]}
+    onChange={[Function]}
+    onTab={[Function]}
+    placeholder={null}
+    readOnly={false}
+    spellCheck={false}
+    stripPastedStyles={true}
+  />
+  <Portal />
+</div>
+`;
