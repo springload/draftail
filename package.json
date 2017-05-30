@@ -112,9 +112,9 @@
     "test:watch": "jest --watch",
     "test:watch:coverage": "jest --watch --coverage",
     "report:coverage": "open coverage/lcov-report/index.html",
-    "test:ci": "npm run lint -s && npm run test:coverage -s && npm run dist -s && npm run pages -s",
+    "test:ci": "npm run lint -s && npm run test:coverage -s && npm run dist -s",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "pages": "rm -rf pages && cp -R examples pages",
+    "pages": "rm -rf pages && cp -R examples pages && npm run dist -s",
     "deploy": "./bin/deploy.sh"
   }
 }
