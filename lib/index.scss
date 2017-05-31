@@ -55,6 +55,10 @@ $toolbar-z-index: $activeblock-z-index + 1;
     }
 }
 
+.DraftEditor-root {
+    margin-bottom: $controls-spacing * 2;
+}
+
 .RichEditor-styleButton {
     padding: $button-spacing $controls-spacing;
     background: #eee;
