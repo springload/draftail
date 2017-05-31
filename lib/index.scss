@@ -20,8 +20,6 @@ $toolbar-z-index: $activeblock-z-index + 1;
 }
 
 .editor__toolbar {
-    position: sticky;
-    top: $controls-spacing * 2;
     padding: $controls-spacing;
     // Offset the button's top margin to form rows.
     padding-top: $controls-spacing - $button-spacing;
@@ -33,6 +31,11 @@ $toolbar-z-index: $activeblock-z-index + 1;
 
     .editor--readonly & > * {
         @include disabled;
+    }
+
+    .editor--focus & {
+        position: sticky;
+        top: $controls-spacing * 2;
     }
 }
 
