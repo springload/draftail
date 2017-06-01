@@ -4,6 +4,17 @@
 
 ## Unreleased
 
+## [[v0.7.2]](https://github.com/springload/draftail/releases/tag/v0.7.2)
+
+### Changed
+
+- Only stick toolbar when editor is active.
+- Make editor slightly bigger.
+
+### Fixed
+
+- Fix `editor` class name concatenation.
+
 ## [[v0.7.1]](https://github.com/springload/draftail/releases/tag/v0.7.1)
 
 ### Fixed
