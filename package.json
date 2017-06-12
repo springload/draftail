@@ -109,6 +109,7 @@
     "test:watch": "jest --watch",
     "test:watch:coverage": "jest --watch --coverage",
     "report:coverage": "open coverage/lcov-report/index.html",
+    "report:build": "NODE_ENV=production webpack --config webpack/webpack.config.prod.js --profile --json > webpack-stats.json",
     "test:ci": "npm run lint -s && npm run test:coverage -s && npm run dist -s",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "pages": "rm -rf pages && cp -R examples pages && npm run dist -s",
