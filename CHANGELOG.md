@@ -4,6 +4,10 @@
 
 ## Unreleased
 
+## [[v0.7.3]](https://github.com/springload/draftail/releases/tag/v0.7.3)
+
+- Expose reusable Portal component as part of the API.
+
 ## [[v0.7.2]](https://github.com/springload/draftail/releases/tag/v0.7.2)
 
 ### Changed
