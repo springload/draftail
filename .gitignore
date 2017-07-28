@@ -27,6 +27,7 @@ coverage
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 dist
+es
 pages
 examples/assets/draftail.css
 
