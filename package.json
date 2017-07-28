@@ -5,6 +5,7 @@
   "author": "Springload",
   "license": "MIT",
   "main": "dist/index.js",
+  "module": "es/index.js",
   "keywords": [
     "draftjs",
     "draft.js",
@@ -36,11 +37,30 @@
               "> 1%",
               "IE 11"
             ]
-          }
+          },
+          "modules": false
         }
       ],
       "react"
-    ]
+    ],
+    "env": {
+      "test": {
+        "presets": [
+          [
+            "env",
+            {
+              "targets": {
+                "browsers": [
+                  "> 1%",
+                  "IE 11"
+                ]
+              }
+            }
+          ],
+          "react"
+        ]
+      }
+    }
   },
   "eslintConfig": {
     "extends": "plugin:springload/recommended"
@@ -99,7 +119,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --config=webpack/webpack.config.dev.js",
-    "js": "babel -d dist lib",
+    "js": "babel lib -d es && BABEL_ENV=test babel lib -d dist",
     "build": "npm run js -s && webpack --config=webpack/webpack.config.prod.js && cp pages/assets/draftail.css dist",
     "dist": "NODE_ENV=production npm run build -s",
     "linter:js": "eslint",
