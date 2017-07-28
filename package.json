@@ -60,7 +60,7 @@
     ]
   },
   "dependencies": {
-    "draftjs-utils": "0.7.3",
+    "draftjs-utils": "0.8.4",
     "immutable": "^3.0.0"
   },
   "devDependencies": {
@@ -83,10 +83,10 @@
     "jest": "^20.0.0",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.5",
-    "prop-types": "^15.5.8",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-test-renderer": "^15.5.4",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-test-renderer": "^15.6.1",
     "sass-loader": "^6.0.5",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
