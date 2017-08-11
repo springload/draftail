@@ -6,7 +6,7 @@ class ImageSource extends React.Component {
     componentDidMount() {
         const { editorState, options, onUpdate } = this.props;
 
-        const url = global.prompt('Link URL');
+        const url = window.prompt('Link URL');
 
         if (url) {
             const contentState = editorState.getCurrentContent();

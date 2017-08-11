@@ -5,7 +5,7 @@ import { RichUtils } from 'draft-js';
 class LinkSource extends React.Component {
     componentDidMount() {
         const { editorState, entity, options, onUpdate } = this.props;
-        const url = global.prompt('Link URL', entity ? entity.getData().url : '');
+        const url = window.prompt('Link URL', entity ? entity.getData().url : '');
 
         if (url) {
             const contentState = editorState.getCurrentContent();
