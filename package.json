@@ -120,7 +120,7 @@
   "scripts": {
     "start": "webpack-dev-server --config=webpack/webpack.config.dev.js",
     "js": "babel lib -d es && BABEL_ENV=test babel lib -d dist",
-    "build": "npm run js -s && webpack --config=webpack/webpack.config.prod.js && cp pages/assets/draftail.css dist",
+    "build": "npm run js -s && webpack --config=webpack/webpack.config.prod.js --display-optimization-bailout && cp pages/assets/draftail.css dist",
     "dist": "NODE_ENV=production npm run build -s",
     "linter:js": "eslint",
     "lint": "npm run linter:js -s -- .",

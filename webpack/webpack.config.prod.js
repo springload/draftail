@@ -10,7 +10,7 @@ config.devtool = false;
 config.devServer = {};
 config.output.path = path.join(__dirname, '..', 'pages', 'assets');
 
-config.plugins = config.plugins.slice(0, 3).concat([
+config.plugins = config.plugins.slice(0, 4).concat([
     new webpack.DefinePlugin({
         // Key is hard-coded because it will be public on the demo site anyway.
         // Key usage is limited to whitelisted Referrers.
