@@ -29,7 +29,7 @@ const editor = (
         onSave={onSave}
         blockTypes={[
             { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
-            { label: 'T&C', type: 'terms-and-conditions', element: 'div', className: 'u-smalltext' },
+            { label: 'Tiny', type: 'tiny-text', element: 'div', className: 'u-tinytext' },
         ]}
     />
 );

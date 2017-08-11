@@ -41,7 +41,7 @@ const editor = (
             { label: 'Code', type: BLOCK_TYPE.CODE, icon: 'icon-cog' },
             { label: 'UL', type: BLOCK_TYPE.UNORDERED_LIST_ITEM, icon: 'icon-list-ul' },
             { label: 'OL', type: BLOCK_TYPE.ORDERED_LIST_ITEM, icon: 'icon-list-ol' },
-            { label: 'T&C', type: 'terms-and-conditions', element: 'div', className: 'u-smalltext' },
+            { label: 'Tiny', type: 'tiny-text', element: 'div', className: 'u-tinytext' },
         ]}
         inlineStyles={[
             { label: 'Bold', type: INLINE_STYLE.BOLD, icon: 'icon-bold' },
