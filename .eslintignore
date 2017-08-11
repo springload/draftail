@@ -2,4 +2,3 @@ node_modules
 *.min.js
 coverage/
 dist/
-pages

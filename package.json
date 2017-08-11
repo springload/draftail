@@ -72,8 +72,7 @@
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/dist/",
-      "/pages/",
-      "/examples/test.js"
+      "/examples/"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
@@ -90,7 +89,6 @@
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
-    "coveralls": "^2.11.15",
     "css-loader": "^0.28.4",
     "dotenv": "^4.0.0",
     "draft-js": "^0.10.0",
@@ -120,7 +118,7 @@
   "scripts": {
     "start": "webpack-dev-server --config=webpack/webpack.config.dev.js",
     "js": "babel lib -d es && BABEL_ENV=test babel lib -d dist",
-    "build": "npm run js -s && webpack --config=webpack/webpack.config.prod.js --display-optimization-bailout && cp pages/assets/draftail.css dist",
+    "build": "npm run js -s && webpack --config=webpack/webpack.config.prod.js --display-optimization-bailout && cp examples/assets/draftail.css dist",
     "dist": "NODE_ENV=production npm run build -s",
     "linter:js": "eslint",
     "lint": "npm run linter:js -s -- .",
@@ -130,9 +128,6 @@
     "test:watch:coverage": "jest --watch --coverage",
     "report:coverage": "open coverage/lcov-report/index.html",
     "report:build": "NODE_ENV=production webpack --config webpack/webpack.config.prod.js --profile --json > webpack-stats.json",
-    "test:ci": "npm run lint -s && npm run test:coverage -s && npm run dist -s",
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "pages": "rm -rf pages && cp -R examples pages && npm run dist -s",
-    "deploy": "./bin/deploy.sh"
+    "test:ci": "npm run lint -s && npm run test:coverage -s && npm run dist -s"
   }
 }

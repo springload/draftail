@@ -8,7 +8,7 @@ const config = require('./webpack.config.dev');
 config.watch = false;
 config.devtool = false;
 config.devServer = {};
-config.output.path = path.join(__dirname, '..', 'pages', 'assets');
+config.output.path = path.join(__dirname, '..', 'examples', 'assets');
 
 config.plugins = config.plugins.slice(0, 4).concat([
     new webpack.DefinePlugin({
