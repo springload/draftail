@@ -79,8 +79,7 @@
     ]
   },
   "dependencies": {
-    "draftjs-utils": "0.8.4",
-    "immutable": "^3.0.0"
+    "draftjs-utils": "0.8.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -91,7 +90,7 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.4",
     "dotenv": "^4.0.0",
-    "draft-js": "^0.10.0",
+    "draft-js": "^0.10.1",
     "element-closest": "^2.0.2",
     "enzyme": "^2.8.2",
     "enzyme-to-json": "^1.5.1",
@@ -107,13 +106,15 @@
     "react-test-renderer": "^15.6.1",
     "sass-loader": "^6.0.6",
     "webpack": "^3.4.1",
+    "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.6.1"
   },
   "peerDependencies": {
-    "draft-js": "^0.10.0",
+    "draft-js": "^0.10.1",
     "prop-types": "^15.5.0",
     "react": "^15.5.0",
-    "react-dom": "^15.5.0"
+    "react-dom": "^15.5.0",
+    "immutable": "^3.0.0"
   },
   "scripts": {
     "start": "webpack-dev-server --config=webpack/webpack.config.dev.js",
