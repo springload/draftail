@@ -21,7 +21,7 @@ class EmbedSource extends React.Component {
     componentDidMount() {
         const { editorState, options, onUpdate } = this.props;
 
-        const url = global.prompt('Link URL');
+        const url = window.prompt('Link URL');
 
         if (url) {
             getJSON(`${EMBEDLY_ENDPOINT}&url=${encodeURIComponent(url)}`, null, (embed) => {
