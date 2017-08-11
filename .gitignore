@@ -43,3 +43,4 @@ jspm_packages
 
 .env
 webpack-stats.json
+webpack-stats.html

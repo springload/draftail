@@ -4,6 +4,7 @@ const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 require('dotenv').config();
 
@@ -57,6 +58,15 @@ module.exports = {
     },
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
+        new BundleAnalyzerPlugin({
+            // Can be `server`, `static` or `disabled`.
+            analyzerMode: 'static',
+            // Path to bundle report file that will be generated in `static` mode.
+            reportFilename: path.join(__dirname, 'webpack-stats.html'),
+            // Automatically open report in default browser
+            openAnalyzer: false,
+            logLevel: 'warn',
+        }),
         new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
         extractSass,
         new webpack.optimize.ModuleConcatenationPlugin(),
