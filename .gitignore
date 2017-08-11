@@ -28,8 +28,8 @@ coverage
 build/Release
 dist
 es
-pages
 examples/assets/draftail.css
+examples/assets/*.bundle.js
 
 # Dependency directories
 node_modules

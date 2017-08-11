@@ -17,4 +17,3 @@ bin
 npm-debug.log*
 *.test.js
 dist/tests/
-pages
