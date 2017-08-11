@@ -59,6 +59,7 @@ module.exports = {
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
         extractSass,
+        new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
             // Set an environment variable of EMBEDLY_API_KEY to use this in development.
