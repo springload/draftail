@@ -7,6 +7,13 @@
 ### Added
 
 - Add `name` attribute to button elements to facilitate targeting  in browser automation tests.
+- Publish the package as an ES2015 module.
+
+### Changed
+
+- Upgrade draftjs-utils to latest (draftjs-utils).
+- Use references to window object instead of global.
+- Update dependencies to remove Immutable.js duplication
 
 ## [[v0.7.3]](https://github.com/springload/draftail/releases/tag/v0.7.3)
 
