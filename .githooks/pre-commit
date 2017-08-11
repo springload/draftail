@@ -17,7 +17,7 @@ else
     # Fail on first line that fails.
     set -e
 
-    NEW_FILES=$(git --no-pager diff --name-only --cached --diff-filter=d)
+    NEW_FILES=$(git --no-pager diff --name-only --cached --diff-filter=ACM)
     JS_FILES=$(echo "$NEW_FILES" | { grep .js$ || true; })
     SNAPSHOT_FILES=$(echo "$NEW_FILES" | { grep .snap$ || true; })
 
