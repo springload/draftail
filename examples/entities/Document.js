@@ -5,7 +5,11 @@ import { Icon } from '../../lib';
 const Document = ({ entityKey, contentState, children }) => {
     const { title } = contentState.getEntity(entityKey).getData();
     return (
-        <span data-tooltip={entityKey} className="RichEditor-link" title={title}>
+        <span
+            data-tooltip={entityKey}
+            className="RichEditor-link"
+            title={title}
+        >
             <Icon name="icon-doc-full" />
             {children}
         </span>

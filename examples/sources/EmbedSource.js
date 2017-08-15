@@ -24,20 +24,32 @@ class EmbedSource extends React.Component {
         const url = window.prompt('Link URL');
 
         if (url) {
-            getJSON(`${EMBEDLY_ENDPOINT}&url=${encodeURIComponent(url)}`, null, (embed) => {
-                const contentState = editorState.getCurrentContent();
-                const contentStateWithEntity = contentState.createEntity(options.type, 'IMMUTABLE', {
-                    url: embed.url,
-                    title: embed.title,
-                    providerName: embed.provider_name,
-                    authorName: embed.author_name,
-                    thumbnail: embed.thumbnail_url,
-                });
-                const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-                const nextState = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ');
+            getJSON(
+                `${EMBEDLY_ENDPOINT}&url=${encodeURIComponent(url)}`,
+                null,
+                embed => {
+                    const contentState = editorState.getCurrentContent();
+                    const contentStateWithEntity = contentState.createEntity(
+                        options.type,
+                        'IMMUTABLE',
+                        {
+                            url: embed.url,
+                            title: embed.title,
+                            providerName: embed.provider_name,
+                            authorName: embed.author_name,
+                            thumbnail: embed.thumbnail_url,
+                        },
+                    );
+                    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+                    const nextState = AtomicBlockUtils.insertAtomicBlock(
+                        editorState,
+                        entityKey,
+                        ' ',
+                    );
 
-                onUpdate(nextState);
-            });
+                    onUpdate(nextState);
+                },
+            );
         } else {
             onUpdate(editorState);
         }

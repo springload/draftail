@@ -19,7 +19,7 @@ const rawContentState = {
     ],
 };
 
-const onSave = (contentState) => {
+const onSave = contentState => {
     sessionStorage.setItem('custom:contentState', JSON.stringify(contentState));
 };
 
@@ -29,7 +29,12 @@ const editor = (
         onSave={onSave}
         blockTypes={[
             { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
-            { label: 'Tiny', type: 'tiny-text', element: 'div', className: 'u-tinytext' },
+            {
+                label: 'Tiny',
+                type: 'tiny-text',
+                element: 'div',
+                className: 'u-tinytext',
+            },
         ]}
     />
 );

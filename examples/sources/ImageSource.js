@@ -10,13 +10,21 @@ class ImageSource extends React.Component {
 
         if (url) {
             const contentState = editorState.getCurrentContent();
-            const contentStateWithEntity = contentState.createEntity(options.type, 'IMMUTABLE', {
-                altText: 'Test image alt text',
-                alignment: 'left',
-                src: url,
-            });
+            const contentStateWithEntity = contentState.createEntity(
+                options.type,
+                'IMMUTABLE',
+                {
+                    altText: 'Test image alt text',
+                    alignment: 'left',
+                    src: url,
+                },
+            );
             const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-            const nextState = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ');
+            const nextState = AtomicBlockUtils.insertAtomicBlock(
+                editorState,
+                entityKey,
+                ' ',
+            );
 
             onUpdate(nextState);
         } else {

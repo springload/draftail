@@ -20,7 +20,7 @@ const saveField = document.createElement('input');
 saveField.type = 'hidden';
 mount.parentNode.appendChild(saveField);
 
-const onSave = (rawContentState) => {
+const onSave = rawContentState => {
     const serialised = JSON.stringify(rawContentState);
     saveField.value = serialised;
 };
@@ -61,7 +61,8 @@ const rawContentState = {
         },
         {
             key: 'b3pmj',
-            text: 'We build digital websites and applications that drive measurable change and help our clients\' businesses grow. Let us help yours!',
+            text:
+                "We build digital websites and applications that drive measurable change and help our clients' businesses grow. Let us help yours!",
             type: 'blockquote',
             depth: 0,
             inlineStyleRanges: [],
@@ -82,13 +83,29 @@ const editor = (
         rawContentState={rawContentState}
         onSave={onSave}
         entityTypes={[
-            { label: 'Link', type: ENTITY_TYPE.LINK, icon: 'icon-link', source: LinkSource, decorator: Link },
-            { label: 'Document', type: ENTITY_TYPE.DOCUMENT, icon: 'icon-doc-full', source: DocumentSource, decorator: Document },
+            {
+                label: 'Link',
+                type: ENTITY_TYPE.LINK,
+                icon: 'icon-link',
+                source: LinkSource,
+                decorator: Link,
+            },
+            {
+                label: 'Document',
+                type: ENTITY_TYPE.DOCUMENT,
+                icon: 'icon-doc-full',
+                source: DocumentSource,
+                decorator: Document,
+            },
         ]}
         blockTypes={[
             { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
             { label: 'H3', type: BLOCK_TYPE.HEADER_THREE },
-            { label: 'Blockquote', type: BLOCK_TYPE.BLOCKQUOTE, icon: 'icon-openquote' },
+            {
+                label: 'Blockquote',
+                type: BLOCK_TYPE.BLOCKQUOTE,
+                icon: 'icon-openquote',
+            },
         ]}
     />
 );
