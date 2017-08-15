@@ -7,7 +7,9 @@ const Link = ({ entityKey, contentState, children }) => {
 
     return (
         <span data-tooltip={entityKey} className="RichEditor-link">
-            <Icon name={`icon-${url.indexOf('mailto:') !== -1 ? 'mail' : 'link'}`} />
+            <Icon
+                name={`icon-${url.indexOf('mailto:') !== -1 ? 'mail' : 'link'}`}
+            />
             {children}
         </span>
     );

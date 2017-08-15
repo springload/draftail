@@ -4,7 +4,8 @@ const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+    .BundleAnalyzerPlugin;
 
 require('dotenv').config();
 
@@ -13,10 +14,7 @@ const extractSass = new ExtractTextPlugin('draftail.css');
 const isProduction = process.env.NODE_ENV === 'production';
 
 const autoprefixerConfig = {
-    browsers: [
-        '> 1%',
-        'ie 11',
-    ],
+    browsers: ['> 1%', 'ie 11'],
 };
 
 const stats = {
@@ -67,7 +65,10 @@ module.exports = {
             openAnalyzer: false,
             logLevel: 'warn',
         }),
-        new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            filename: 'vendor.bundle.js',
+        }),
         extractSass,
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.HotModuleReplacementPlugin(),
@@ -94,9 +95,11 @@ module.exports = {
                             loader: 'css-loader',
                             options: {
                                 sourceMap: !isProduction,
-                                minimize: isProduction ? {
-                                    autoprefixer: autoprefixerConfig,
-                                } : false,
+                                minimize: isProduction
+                                    ? {
+                                          autoprefixer: autoprefixerConfig,
+                                      }
+                                    : false,
                             },
                         },
                         {
