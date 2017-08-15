@@ -17,16 +17,32 @@ else
     # Fail on first line that fails.
     set -e
 
-    NEW_FILES=$(git --no-pager diff --name-only --cached --diff-filter=ACM)
-    JS_FILES=$(echo "$NEW_FILES" | { grep .js$ || true; })
-    SNAPSHOT_FILES=$(echo "$NEW_FILES" | { grep .snap$ || true; })
+    # Only keep staged files that are added (A), copied (C) or modified (M).
+    STAGED=$(git --no-pager diff --name-only --cached --diff-filter=ACM)
+    # Files which are only partly staged (eg. git add --patch).
+    PATCH_STAGED=$(git --no-pager diff --name-only --diff-filter=ACM $STAGED)
+    # Files which are fully staged.
+    FULLY_STAGED=$(comm -23 <(echo "$STAGED") <(echo "$PATCH_STAGED"))
 
-    if [ -n "$JS_FILES" ];
+    JS_STAGED=$(grep .js$ <<< "$STAGED" || true)
+    JS_FULLY_STAGED=$(grep .js$ <<< "$FULLY_STAGED" || true)
+    SNAPSHOT_STAGED=$(grep .snap$ <<< "$STAGED" || true)
+
+    # Uncomment for debugging help.
+    # tr ' ' '\n' <<< "STAGED $STAGED PATCH_STAGED $PATCH_STAGED FULLY_STAGED $FULLY_STAGED JS_STAGED $JS_STAGED JS_FULLY_STAGED $JS_FULLY_STAGED SNAPSHOT_STAGED $SNAPSHOT_STAGED"
+
+    if [ -n "$JS_STAGED" ];
     then
-        npm run linter:js -s -- $JS_FILES
+        # Format all files.
+        npm run formatter:js -s -- --write $JS_STAGED
+        # Only re-stage fully staged files.
+        git add $JS_FULLY_STAGED
+
+        # Lint all files.
+        npm run linter:js -s -- $JS_STAGED
     fi
 
-    if [ -n "$JS_FILES" ] || [ -n "$SNAPSHOT_FILES" ];
+    if [ -n "$JS_STAGED" ] || [ -n "$SNAPSHOT_STAGED" ];
     then
         npm run test:coverage -s
     fi
