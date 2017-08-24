@@ -10,10 +10,12 @@ lib
 .eslintignore
 .eslintrc
 .editorconfig
+.vscode
 .githooks
 .github
 bin
 .env
 npm-debug.log*
 *.test.js
-dist/tests/
+*/tests/
+__snapshots__
