@@ -274,12 +274,16 @@ nvm use
 npm run start
 # Runs linting.
 npm run lint
+# Re-formats all of the files in the project (with Prettier).
+npm run format
 # Run tests in a watcher.
 npm run test:watch
 # Run test coverage
 npm run test:coverage
 # Open the coverage report with:
 npm run report:coverage
+# Open the build report with:
+npm run report:build
 # View other available commands with:
 npm run
 ```
