@@ -11,7 +11,7 @@ const rawContentState = {
         {
             key: 'c1gc9',
             text: 'You can also implement custom block types as required.',
-            type: 'terms-and-conditions',
+            type: 'tiny-text',
             depth: 0,
             inlineStyleRanges: [],
             entityRanges: [],
