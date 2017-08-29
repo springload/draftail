@@ -29,76 +29,92 @@ const editor = (
         stripPastedStyles={false}
         entityTypes={[
             {
-                label: 'Image',
                 type: ENTITY_TYPE.IMAGE,
+                description: 'Image',
                 icon: 'icon-image',
                 source: ImageSource,
                 imageFormats: [],
             },
             {
-                label: 'Embed',
                 type: ENTITY_TYPE.EMBED,
+                description: 'Embed',
                 icon: 'icon-media',
                 source: EmbedSource,
             },
             {
-                label: 'Link',
                 type: ENTITY_TYPE.LINK,
+                description: 'Link',
                 icon: 'icon-link',
                 source: LinkSource,
                 decorator: Link,
             },
             {
-                label: 'Document',
                 type: ENTITY_TYPE.DOCUMENT,
+                description: 'Document',
                 icon: 'icon-doc-full',
                 source: DocumentSource,
                 decorator: Document,
             },
         ]}
         blockTypes={[
-            { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
-            { label: 'H3', type: BLOCK_TYPE.HEADER_THREE },
-            { label: 'H4', type: BLOCK_TYPE.HEADER_FOUR },
             {
-                label: 'Blockquote',
+                type: BLOCK_TYPE.HEADER_TWO,
+                label: 'H2',
+                description: 'Heading 2',
+            },
+            {
+                type: BLOCK_TYPE.HEADER_THREE,
+                label: 'H3',
+                description: 'Heading 3',
+            },
+            {
+                type: BLOCK_TYPE.HEADER_FOUR,
+                label: 'H4',
+                description: 'Heading 4',
+            },
+            {
                 type: BLOCK_TYPE.BLOCKQUOTE,
                 icon: 'icon-openquote',
+                description: 'Blockquote',
             },
             { label: 'Code', type: BLOCK_TYPE.CODE, icon: 'icon-cog' },
             {
-                label: 'UL',
                 type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
+                description: 'Bulleted list',
                 icon: 'icon-list-ul',
             },
             {
-                label: 'OL',
                 type: BLOCK_TYPE.ORDERED_LIST_ITEM,
+                description: 'Numbered list',
                 icon: 'icon-list-ol',
             },
             {
-                label: 'Tiny',
                 type: 'tiny-text',
+                label: 'Tiny',
                 element: 'div',
                 className: 'u-tinytext',
             },
         ]}
         inlineStyles={[
-            { label: 'Bold', type: INLINE_STYLE.BOLD, icon: 'icon-bold' },
-            { label: 'Italic', type: INLINE_STYLE.ITALIC, icon: 'icon-italic' },
+            { type: INLINE_STYLE.BOLD, description: 'Bold', icon: 'icon-bold' },
             {
-                label: 'Underline',
+                type: INLINE_STYLE.ITALIC,
+                description: 'Italic',
+                icon: 'icon-italic',
+            },
+            {
                 type: INLINE_STYLE.UNDERLINE,
+                description: 'Underline',
                 icon: 'icon-underline',
             },
             {
-                label: 'Monospace',
                 type: INLINE_STYLE.CODE,
+                description: 'Monospace',
                 icon: 'icon-pacman',
             },
             {
-                label: 'Strikethrough',
                 type: INLINE_STYLE.STRIKETHROUGH,
+                description: 'Strikethrough',
                 icon: 'icon-strikethrough',
             },
         ]}
