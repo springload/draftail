@@ -63,7 +63,12 @@
         "moduleNameMapper": {
             "\\.scss$": "<rootDir>/lib/tests/styleMock.js"
         },
-        "testPathIgnorePatterns": ["/node_modules/", "/dist/", "/examples/"],
+        "testPathIgnorePatterns": [
+            "/node_modules/",
+            "/dist/",
+            "/examples/",
+            "/es/"
+        ],
         "snapshotSerializers": ["enzyme-to-json/serializer"]
     },
     "dependencies": {
