@@ -59,7 +59,7 @@ exports[`Toolbar #enableLineBreak 1`] = `
     label="BR"
     name="BR"
     onClick={[Function]}
-    title="shift + enter"
+    title="Shift+Enter"
   />
 </div>
 `;
