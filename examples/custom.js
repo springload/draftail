@@ -27,6 +27,7 @@ const editor = (
     <DraftailEditor
         rawContentState={rawContentState}
         onSave={onSave}
+        stripPastedStyles={false}
         blockTypes={[
             { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
             {

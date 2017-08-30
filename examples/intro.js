@@ -1,22 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import DraftailEditor, { ENTITY_TYPE, BLOCK_TYPE, INLINE_STYLE } from '../lib';
+import DraftailEditor, { ENTITY_TYPE, BLOCK_TYPE, INLINE_STYLE } from "../lib";
 
-import DocumentSource from './sources/DocumentSource';
-import LinkSource from './sources/LinkSource';
-import ImageSource from './sources/ImageSource';
-import EmbedSource from './sources/EmbedSource';
+import DocumentSource from "./sources/DocumentSource";
+import LinkSource from "./sources/LinkSource";
+import ImageSource from "./sources/ImageSource";
+import EmbedSource from "./sources/EmbedSource";
 
-import Link from './entities/Link';
-import Document from './entities/Document';
+import Link from "./entities/Link";
+import Document from "./entities/Document";
 
-import introContentState from './utils/introContentState';
+import introContentState from "./utils/introContentState";
 
-const mount = document.querySelector('[data-mount-intro]');
+const mount = document.querySelector("[data-mount-intro]");
 
 const onSave = contentState => {
-    sessionStorage.setItem('intro:contentState', JSON.stringify(contentState));
+    sessionStorage.setItem("intro:contentState", JSON.stringify(contentState));
 };
 
 const editor = (
@@ -29,78 +29,87 @@ const editor = (
         stripPastedStyles={false}
         entityTypes={[
             {
-                label: 'Image',
+                label: "Image",
                 type: ENTITY_TYPE.IMAGE,
-                icon: 'icon-image',
+                icon: "icon-image",
                 source: ImageSource,
-                imageFormats: [],
+                imageFormats: []
             },
             {
-                label: 'Embed',
+                label: "Embed",
                 type: ENTITY_TYPE.EMBED,
-                icon: 'icon-media',
-                source: EmbedSource,
+                icon: "icon-media",
+                source: EmbedSource
             },
             {
-                label: 'Link',
+                label: "Link",
                 type: ENTITY_TYPE.LINK,
-                icon: 'icon-link',
+                icon: "icon-link",
                 source: LinkSource,
-                decorator: Link,
+                decorator: Link
             },
             {
-                label: 'Document',
+                label: "Document",
                 type: ENTITY_TYPE.DOCUMENT,
-                icon: 'icon-doc-full',
+                icon: "icon-doc-full",
                 source: DocumentSource,
-                decorator: Document,
-            },
+                decorator: Document
+            }
         ]}
         blockTypes={[
-            { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
-            { label: 'H3', type: BLOCK_TYPE.HEADER_THREE },
-            { label: 'H4', type: BLOCK_TYPE.HEADER_FOUR },
+            { label: "H2", type: BLOCK_TYPE.HEADER_TWO },
+            { label: "H3", type: BLOCK_TYPE.HEADER_THREE },
+            { label: "H4", type: BLOCK_TYPE.HEADER_FOUR },
             {
-                label: 'Blockquote',
+                label: "Blockquote",
                 type: BLOCK_TYPE.BLOCKQUOTE,
-                icon: 'icon-openquote',
+                icon: "icon-openquote"
             },
-            { label: 'Code', type: BLOCK_TYPE.CODE, icon: 'icon-cog' },
+            { label: "Code", type: BLOCK_TYPE.CODE, icon: "icon-cog" },
             {
-                label: 'UL',
+                label: "UL",
                 type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
-                icon: 'icon-list-ul',
+                icon: "icon-list-ul"
             },
             {
-                label: 'OL',
+                label: "OL",
                 type: BLOCK_TYPE.ORDERED_LIST_ITEM,
-                icon: 'icon-list-ol',
+                icon: "icon-list-ol"
             },
             {
-                label: 'Tiny',
-                type: 'tiny-text',
-                element: 'div',
-                className: 'u-tinytext',
-            },
+                label: "Tiny",
+                type: "tiny-text",
+                element: "div",
+                className: "u-tinytext"
+            }
         ]}
         inlineStyles={[
-            { label: 'Bold', type: INLINE_STYLE.BOLD, icon: 'icon-bold' },
-            { label: 'Italic', type: INLINE_STYLE.ITALIC, icon: 'icon-italic' },
+            { label: "Bold", type: INLINE_STYLE.BOLD, icon: "icon-bold" },
+            { label: "Italic", type: INLINE_STYLE.ITALIC, icon: "icon-italic" },
             {
-                label: 'Underline',
+                label: "Underline",
                 type: INLINE_STYLE.UNDERLINE,
-                icon: 'icon-underline',
+                icon: "icon-underline"
             },
             {
-                label: 'Monospace',
+                label: "Monospace",
                 type: INLINE_STYLE.CODE,
-                icon: 'icon-pacman',
+                icon: "icon-pacman"
             },
             {
-                label: 'Strikethrough',
+                label: "Strikethrough",
                 type: INLINE_STYLE.STRIKETHROUGH,
-                icon: 'icon-strikethrough',
+                icon: "icon-strikethrough"
             },
+            { label: "Keyboard", type: INLINE_STYLE.KEYBOARD },
+            { label: "Mark", type: INLINE_STYLE.MARK },
+            { label: "Quotation", type: INLINE_STYLE.QUOTATION },
+            { label: "Small", type: INLINE_STYLE.SMALL },
+            { label: "Sample", type: INLINE_STYLE.SAMPLE },
+            { label: "Insert", type: INLINE_STYLE.INSERT },
+            { label: "Delete", type: INLINE_STYLE.DELETE },
+            { label: "Subscript", type: INLINE_STYLE.SUBSCRIPT },
+            { label: "Superscript", type: INLINE_STYLE.SUPERSCRIPT }
         ]}
     />
 );
