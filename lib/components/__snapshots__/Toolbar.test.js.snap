@@ -5,8 +5,8 @@ exports[`Toolbar #blockTypes 1`] = `
   className="editor__toolbar"
   role="toolbar"
 >
-  <ButtonGroup />
-  <ButtonGroup>
+  <ToolbarGroup />
+  <ToolbarGroup>
     <Button
       active={false}
       icon={null}
@@ -31,9 +31,9 @@ exports[`Toolbar #blockTypes 1`] = `
       onClick={[Function]}
       title={null}
     />
-  </ButtonGroup>
-  <ButtonGroup />
-  <ButtonGroup />
+  </ToolbarGroup>
+  <ToolbarGroup />
+  <ToolbarGroup />
 </div>
 `;
 
@@ -42,9 +42,9 @@ exports[`Toolbar #enableHorizontalRule 1`] = `
   className="editor__toolbar"
   role="toolbar"
 >
-  <ButtonGroup />
-  <ButtonGroup />
-  <ButtonGroup>
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup>
     <Button
       active={false}
       icon={null}
@@ -53,8 +53,8 @@ exports[`Toolbar #enableHorizontalRule 1`] = `
       onClick={[Function]}
       title="Horizontal line"
     />
-  </ButtonGroup>
-  <ButtonGroup />
+  </ToolbarGroup>
+  <ToolbarGroup />
 </div>
 `;
 
@@ -63,9 +63,9 @@ exports[`Toolbar #enableLineBreak 1`] = `
   className="editor__toolbar"
   role="toolbar"
 >
-  <ButtonGroup />
-  <ButtonGroup />
-  <ButtonGroup>
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup>
     <Button
       active={false}
       icon={null}
@@ -74,8 +74,8 @@ exports[`Toolbar #enableLineBreak 1`] = `
       onClick={[Function]}
       title="Line break (Shift+Enter)"
     />
-  </ButtonGroup>
-  <ButtonGroup />
+  </ToolbarGroup>
+  <ToolbarGroup />
 </div>
 `;
 
@@ -84,10 +84,10 @@ exports[`Toolbar #entityTypes 1`] = `
   className="editor__toolbar"
   role="toolbar"
 >
-  <ButtonGroup />
-  <ButtonGroup />
-  <ButtonGroup />
-  <ButtonGroup>
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup>
     <Button
       active={false}
       icon={null}
@@ -112,7 +112,7 @@ exports[`Toolbar #entityTypes 1`] = `
       onClick={[Function]}
       title={null}
     />
-  </ButtonGroup>
+  </ToolbarGroup>
 </div>
 `;
 
@@ -121,7 +121,7 @@ exports[`Toolbar #inlineStyles 1`] = `
   className="editor__toolbar"
   role="toolbar"
 >
-  <ButtonGroup>
+  <ToolbarGroup>
     <Button
       active={false}
       icon={null}
@@ -146,10 +146,10 @@ exports[`Toolbar #inlineStyles 1`] = `
       onClick={[Function]}
       title={null}
     />
-  </ButtonGroup>
-  <ButtonGroup />
-  <ButtonGroup />
-  <ButtonGroup />
+  </ToolbarGroup>
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup />
 </div>
 `;
 
@@ -158,9 +158,9 @@ exports[`Toolbar empty 1`] = `
   className="editor__toolbar"
   role="toolbar"
 >
-  <ButtonGroup />
-  <ButtonGroup />
-  <ButtonGroup />
-  <ButtonGroup />
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup />
 </div>
 `;
