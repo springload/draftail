@@ -1,7 +1,7 @@
 @import '../node_modules/draft-js/dist/Draft';
 
-$button-spacing: .25rem;
-$controls-spacing: $button-spacing * 2;
+$button-spacing: .5rem;
+$controls-spacing: $button-spacing / 2;
 
 $color-teal: #43b1b0;
 $color-white: #ffffff;
@@ -22,9 +22,11 @@ $toolbar-z-index: $activeblock-z-index + 1;
 .editor__toolbar {
     padding: $controls-spacing;
     // Offset the button's top margin to form rows.
-    padding-top: $controls-spacing - $button-spacing;
+    padding-top: 0;
     margin-bottom: $controls-spacing * 2;
     background-color: $color-white;
+    background: #eee;
+
     border: solid 1px #eee;
     border-radius: 3px;
     z-index: $toolbar-z-index;
@@ -41,8 +43,13 @@ $toolbar-z-index: $activeblock-z-index + 1;
 
 .toolbar-group {
     display: inline-block;
-    margin-top: $button-spacing;
-    margin-right: $button-spacing;
+    margin-top: $controls-spacing;
+    margin-right: $controls-spacing;
+
+    & + & {
+        border-left: 1px solid darken(#eee, 10%);
+        padding-left: $controls-spacing;
+    }
 }
 
 
@@ -67,17 +74,35 @@ $toolbar-z-index: $activeblock-z-index + 1;
 }
 
 .RichEditor-styleButton {
-    padding: $button-spacing $controls-spacing;
+    padding: $button-spacing;
     background: #eee;
     display: inline-block;
     border-radius: 0;
     color: inherit;
     border: 0;
+    font-size: 1rem;
     cursor: pointer;
 
-    &:hover {
-        color: inherit;
-    }
+    //  &:first-of-type {
+    //      border-top-left-radius: 3px;
+    //      border-bottom-left-radius: 3px;
+    //  }
+
+    //  &:last-of-type {
+    //      border-top-right-radius: 3px;
+    //      border-bottom-right-radius: 3px;
+    //  }
+
+     &:hover,
+     &:focus {
+         color: inherit;
+         background: darken(#eee, 10%);
+     }
+
+     &:focus {
+         outline: 1px dotted $color-teal;
+     }
+
 }
 
 .RichEditor-activeButton {

@@ -5,12 +5,8 @@ exports[`Toolbar #blockTypes 1`] = `
   className="editor__toolbar"
   role="toolbar"
 >
-  <div
-    className="toolbar-group"
-  />
-  <div
-    className="toolbar-group"
-  >
+  <ButtonGroup />
+  <ButtonGroup>
     <Button
       active={false}
       icon={null}
@@ -35,7 +31,9 @@ exports[`Toolbar #blockTypes 1`] = `
       onClick={[Function]}
       title={null}
     />
-  </div>
+  </ButtonGroup>
+  <ButtonGroup />
+  <ButtonGroup />
 </div>
 `;
 
@@ -44,20 +42,19 @@ exports[`Toolbar #enableHorizontalRule 1`] = `
   className="editor__toolbar"
   role="toolbar"
 >
-  <div
-    className="toolbar-group"
-  />
-  <div
-    className="toolbar-group"
-  />
-  <Button
-    active={false}
-    icon={null}
-    label="HR"
-    name="HORIZONTAL_RULE"
-    onClick={[Function]}
-    title="Horizontal line"
-  />
+  <ButtonGroup />
+  <ButtonGroup />
+  <ButtonGroup>
+    <Button
+      active={false}
+      icon={null}
+      label="HR"
+      name="HORIZONTAL_RULE"
+      onClick={[Function]}
+      title="Horizontal line"
+    />
+  </ButtonGroup>
+  <ButtonGroup />
 </div>
 `;
 
@@ -66,20 +63,19 @@ exports[`Toolbar #enableLineBreak 1`] = `
   className="editor__toolbar"
   role="toolbar"
 >
-  <div
-    className="toolbar-group"
-  />
-  <div
-    className="toolbar-group"
-  />
-  <Button
-    active={false}
-    icon={null}
-    label="BR"
-    name="BR"
-    onClick={[Function]}
-    title="Line break (Shift+Enter)"
-  />
+  <ButtonGroup />
+  <ButtonGroup />
+  <ButtonGroup>
+    <Button
+      active={false}
+      icon={null}
+      label="BR"
+      name="BR"
+      onClick={[Function]}
+      title="Line break (Shift+Enter)"
+    />
+  </ButtonGroup>
+  <ButtonGroup />
 </div>
 `;
 
@@ -88,47 +84,10 @@ exports[`Toolbar #entityTypes 1`] = `
   className="editor__toolbar"
   role="toolbar"
 >
-  <div
-    className="toolbar-group"
-  />
-  <div
-    className="toolbar-group"
-  />
-  <Button
-    active={false}
-    icon={null}
-    label="Test 1"
-    name="TEST_1"
-    onClick={[Function]}
-    title={null}
-  />
-  <Button
-    active={false}
-    icon="icon-test-2"
-    label="Test 2"
-    name="TEST_2"
-    onClick={[Function]}
-    title={null}
-  />
-  <Button
-    active={false}
-    icon="icon-test-3"
-    label="Test 3"
-    name="TEST_3"
-    onClick={[Function]}
-    title={null}
-  />
-</div>
-`;
-
-exports[`Toolbar #inlineStyles 1`] = `
-<div
-  className="editor__toolbar"
-  role="toolbar"
->
-  <div
-    className="toolbar-group"
-  >
+  <ButtonGroup />
+  <ButtonGroup />
+  <ButtonGroup />
+  <ButtonGroup>
     <Button
       active={false}
       icon={null}
@@ -153,10 +112,44 @@ exports[`Toolbar #inlineStyles 1`] = `
       onClick={[Function]}
       title={null}
     />
-  </div>
-  <div
-    className="toolbar-group"
-  />
+  </ButtonGroup>
+</div>
+`;
+
+exports[`Toolbar #inlineStyles 1`] = `
+<div
+  className="editor__toolbar"
+  role="toolbar"
+>
+  <ButtonGroup>
+    <Button
+      active={false}
+      icon={null}
+      label="Test 1"
+      name="TEST_1"
+      onClick={[Function]}
+      title={null}
+    />
+    <Button
+      active={false}
+      icon="icon-test-2"
+      label="Test 2"
+      name="TEST_2"
+      onClick={[Function]}
+      title={null}
+    />
+    <Button
+      active={false}
+      icon="icon-test-3"
+      label="Test 3"
+      name="TEST_3"
+      onClick={[Function]}
+      title={null}
+    />
+  </ButtonGroup>
+  <ButtonGroup />
+  <ButtonGroup />
+  <ButtonGroup />
 </div>
 `;
 
@@ -165,11 +158,9 @@ exports[`Toolbar empty 1`] = `
   className="editor__toolbar"
   role="toolbar"
 >
-  <div
-    className="toolbar-group"
-  />
-  <div
-    className="toolbar-group"
-  />
+  <ButtonGroup />
+  <ButtonGroup />
+  <ButtonGroup />
+  <ButtonGroup />
 </div>
 `;
