@@ -39,6 +39,13 @@ $toolbar-z-index: $activeblock-z-index + 1;
     }
 }
 
+.toolbar-group {
+    display: inline-block;
+    margin-top: $button-spacing;
+    margin-right: $button-spacing;
+}
+
+
 .DraftEditor-editorContainer {
     .editor--readonly & {
         &:before {
@@ -64,8 +71,6 @@ $toolbar-z-index: $activeblock-z-index + 1;
     background: #eee;
     display: inline-block;
     border-radius: 0;
-    margin-top: $button-spacing;
-    margin-right: $button-spacing;
     color: inherit;
     border: 0;
     cursor: pointer;

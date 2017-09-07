@@ -5,30 +5,37 @@ exports[`Toolbar #blockTypes 1`] = `
   className="editor__toolbar"
   role="toolbar"
 >
-  <Button
-    active={false}
-    icon={null}
-    label="Test 1"
-    name="TEST_1"
-    onClick={[Function]}
-    title="No keyboard shortcut"
+  <div
+    className="toolbar-group"
   />
-  <Button
-    active={false}
-    icon="icon-test-2"
-    label="Test 2"
-    name="TEST_2"
-    onClick={[Function]}
-    title="No keyboard shortcut"
-  />
-  <Button
-    active={false}
-    icon="icon-test-3"
-    label="Test 3"
-    name="TEST_3"
-    onClick={[Function]}
-    title="No keyboard shortcut"
-  />
+  <div
+    className="toolbar-group"
+  >
+    <Button
+      active={false}
+      icon={null}
+      label="Test 1"
+      name="TEST_1"
+      onClick={[Function]}
+      title={null}
+    />
+    <Button
+      active={false}
+      icon="icon-test-2"
+      label="Test 2"
+      name="TEST_2"
+      onClick={[Function]}
+      title={null}
+    />
+    <Button
+      active={false}
+      icon="icon-test-3"
+      label="Test 3"
+      name="TEST_3"
+      onClick={[Function]}
+      title={null}
+    />
+  </div>
 </div>
 `;
 
@@ -37,13 +44,19 @@ exports[`Toolbar #enableHorizontalRule 1`] = `
   className="editor__toolbar"
   role="toolbar"
 >
+  <div
+    className="toolbar-group"
+  />
+  <div
+    className="toolbar-group"
+  />
   <Button
     active={false}
     icon={null}
     label="HR"
     name="HORIZONTAL_RULE"
     onClick={[Function]}
-    title={null}
+    title="Horizontal line"
   />
 </div>
 `;
@@ -53,13 +66,19 @@ exports[`Toolbar #enableLineBreak 1`] = `
   className="editor__toolbar"
   role="toolbar"
 >
+  <div
+    className="toolbar-group"
+  />
+  <div
+    className="toolbar-group"
+  />
   <Button
     active={false}
     icon={null}
     label="BR"
     name="BR"
     onClick={[Function]}
-    title="Shift+Enter"
+    title="Line break (Shift+Enter)"
   />
 </div>
 `;
@@ -69,13 +88,19 @@ exports[`Toolbar #entityTypes 1`] = `
   className="editor__toolbar"
   role="toolbar"
 >
+  <div
+    className="toolbar-group"
+  />
+  <div
+    className="toolbar-group"
+  />
   <Button
     active={false}
     icon={null}
     label="Test 1"
     name="TEST_1"
     onClick={[Function]}
-    title="No keyboard shortcut"
+    title={null}
   />
   <Button
     active={false}
@@ -83,7 +108,7 @@ exports[`Toolbar #entityTypes 1`] = `
     label="Test 2"
     name="TEST_2"
     onClick={[Function]}
-    title="No keyboard shortcut"
+    title={null}
   />
   <Button
     active={false}
@@ -91,7 +116,7 @@ exports[`Toolbar #entityTypes 1`] = `
     label="Test 3"
     name="TEST_3"
     onClick={[Function]}
-    title="No keyboard shortcut"
+    title={null}
   />
 </div>
 `;
@@ -101,29 +126,36 @@ exports[`Toolbar #inlineStyles 1`] = `
   className="editor__toolbar"
   role="toolbar"
 >
-  <Button
-    active={false}
-    icon={null}
-    label="Test 1"
-    name="TEST_1"
-    onClick={[Function]}
-    title="No keyboard shortcut"
-  />
-  <Button
-    active={false}
-    icon="icon-test-2"
-    label="Test 2"
-    name="TEST_2"
-    onClick={[Function]}
-    title="No keyboard shortcut"
-  />
-  <Button
-    active={false}
-    icon="icon-test-3"
-    label="Test 3"
-    name="TEST_3"
-    onClick={[Function]}
-    title="No keyboard shortcut"
+  <div
+    className="toolbar-group"
+  >
+    <Button
+      active={false}
+      icon={null}
+      label="Test 1"
+      name="TEST_1"
+      onClick={[Function]}
+      title={null}
+    />
+    <Button
+      active={false}
+      icon="icon-test-2"
+      label="Test 2"
+      name="TEST_2"
+      onClick={[Function]}
+      title={null}
+    />
+    <Button
+      active={false}
+      icon="icon-test-3"
+      label="Test 3"
+      name="TEST_3"
+      onClick={[Function]}
+      title={null}
+    />
+  </div>
+  <div
+    className="toolbar-group"
   />
 </div>
 `;
@@ -132,5 +164,12 @@ exports[`Toolbar empty 1`] = `
 <div
   className="editor__toolbar"
   role="toolbar"
-/>
+>
+  <div
+    className="toolbar-group"
+  />
+  <div
+    className="toolbar-group"
+  />
+</div>
 `;
