@@ -47,6 +47,7 @@ module.exports = {
         basic: './examples/basic',
         entities: './examples/entities',
         all: './examples/all',
+        wagtail: './examples/wagtail',
         custom: './examples/custom',
         test: './examples/test',
     },
