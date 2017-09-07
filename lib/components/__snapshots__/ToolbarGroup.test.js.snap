@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToolbarGroup empty 1`] = `null`;
+
+exports[`ToolbarGroup empty array children 1`] = `null`;
+
+exports[`ToolbarGroup empty children 1`] = `null`;

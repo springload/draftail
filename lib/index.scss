@@ -2,10 +2,14 @@
 
 $button-spacing: .5rem;
 $controls-spacing: $button-spacing / 2;
+$editor-spacing: $button-spacing + $controls-spacing;
 
 $color-teal: #43b1b0;
 $color-white: #ffffff;
 $color-black: #000;
+$color-light-grey: #eee;
+
+$color-editor-chrome: $color-light-grey;
 
 $editor-z-index: 1;
 $tooltip-z-index: $editor-z-index + 1;
@@ -23,12 +27,9 @@ $toolbar-z-index: $activeblock-z-index + 1;
     padding: $controls-spacing;
     // Offset the button's top margin to form rows.
     padding-top: 0;
-    margin-bottom: $controls-spacing * 2;
-    background-color: $color-white;
-    background: #eee;
-
-    border: solid 1px #eee;
-    border-radius: 3px;
+    background-color: $color-editor-chrome;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
     z-index: $toolbar-z-index;
 
     .editor--readonly & > * {
@@ -42,8 +43,7 @@ $toolbar-z-index: $activeblock-z-index + 1;
 }
 
 .toolbar-group {
-    display: inline-block;
-    margin-top: $controls-spacing;
+    display: inline;
     margin-right: $controls-spacing;
 
     & + & {
@@ -54,6 +54,8 @@ $toolbar-z-index: $activeblock-z-index + 1;
 
 
 .DraftEditor-editorContainer {
+    border: 1px solid $color-editor-chrome;
+
     .editor--readonly & {
         &:before {
             content: '';
@@ -74,6 +76,7 @@ $toolbar-z-index: $activeblock-z-index + 1;
 }
 
 .RichEditor-styleButton {
+    margin-top: $controls-spacing;
     padding: $button-spacing;
     background: #eee;
     display: inline-block;
@@ -138,8 +141,10 @@ $toolbar-z-index: $activeblock-z-index + 1;
     }
 }
 
-.public-DraftEditor-content {
-    font-size: 15px;
+.public-DraftEditor-content,
+.public-DraftEditorPlaceholder-root {
+    padding: $editor-spacing;
+    font-size: 1rem;
     line-height: 1.5;
     font-family: sans-serif;
 }
