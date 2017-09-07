@@ -80,6 +80,11 @@ const editor = (
                 description: 'Heading 4',
             },
             {
+                type: BLOCK_TYPE.HEADER_FIVE,
+                label: 'H5',
+                description: 'Heading 5',
+            },
+            {
                 type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
                 description: 'Bulleted list',
                 icon: 'icon-list-ul',
