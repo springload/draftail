@@ -2,7 +2,7 @@
 
 exports[`Button #active 1`] = `
 <button
-  className="RichEditor-styleButton RichEditor-activeButton"
+  className="toolbar-button toolbar-button--active"
   name={null}
   onMouseDown={[Function]}
   title={null}
@@ -12,7 +12,7 @@ exports[`Button #active 1`] = `
 
 exports[`Button #icon 1`] = `
 <button
-  className="RichEditor-styleButton"
+  className="toolbar-button"
   name={null}
   onMouseDown={[Function]}
   title={null}
@@ -28,7 +28,7 @@ exports[`Button #icon 1`] = `
 
 exports[`Button #label 1`] = `
 <button
-  className="RichEditor-styleButton"
+  className="toolbar-button"
   name={null}
   onMouseDown={[Function]}
   title={null}
@@ -40,7 +40,7 @@ exports[`Button #label 1`] = `
 
 exports[`Button #name 1`] = `
 <button
-  className="RichEditor-styleButton"
+  className="toolbar-button"
   name="TEST"
   onMouseDown={[Function]}
   title={null}
@@ -50,7 +50,7 @@ exports[`Button #name 1`] = `
 
 exports[`Button empty 1`] = `
 <button
-  className="RichEditor-styleButton"
+  className="toolbar-button"
   name={null}
   onMouseDown={[Function]}
   title={null}
