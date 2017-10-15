@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import DraftailEditor, { BLOCK_TYPE } from '../lib';
+import DraftailEditor, { BLOCK_TYPE, INLINE_STYLE } from '../lib';
 
 const mount = document.querySelector('[data-mount-custom]');
 
@@ -27,7 +27,6 @@ const editor = (
     <DraftailEditor
         rawContentState={rawContentState}
         onSave={onSave}
-        stripPastedStyles={false}
         blockTypes={[
             { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
             {
@@ -36,6 +35,10 @@ const editor = (
                 element: 'div',
                 className: 'u-tinytext',
             },
+        ]}
+        inlineStyles={[
+            { label: 'Bold', type: INLINE_STYLE.BOLD, style: { fontWeight: 'bold', textShadow: '1px 1px 1px black' } },
+            { label: 'Redacted', type: 'REDACTED', style: { backgroundColor: 'currentcolor' } },
         ]}
     />
 );
