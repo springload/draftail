@@ -33,28 +33,28 @@ const editor = (
                 type: ENTITY_TYPE.IMAGE,
                 icon: "icon-image",
                 source: ImageSource,
-                imageFormats: []
+                imageFormats: [],
             },
             {
                 label: "Embed",
                 type: ENTITY_TYPE.EMBED,
                 icon: "icon-media",
-                source: EmbedSource
+                source: EmbedSource,
             },
             {
                 label: "Link",
                 type: ENTITY_TYPE.LINK,
                 icon: "icon-link",
                 source: LinkSource,
-                decorator: Link
+                decorator: Link,
             },
             {
                 label: "Document",
                 type: ENTITY_TYPE.DOCUMENT,
                 icon: "icon-doc-full",
                 source: DocumentSource,
-                decorator: Document
-            }
+                decorator: Document,
+            },
         ]}
         blockTypes={[
             { label: "H2", type: BLOCK_TYPE.HEADER_TWO },
@@ -63,25 +63,25 @@ const editor = (
             {
                 label: "Blockquote",
                 type: BLOCK_TYPE.BLOCKQUOTE,
-                icon: "icon-openquote"
+                icon: "icon-openquote",
             },
             { label: "Code", type: BLOCK_TYPE.CODE, icon: "icon-cog" },
             {
                 label: "UL",
                 type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
-                icon: "icon-list-ul"
+                icon: "icon-list-ul",
             },
             {
                 label: "OL",
                 type: BLOCK_TYPE.ORDERED_LIST_ITEM,
-                icon: "icon-list-ol"
+                icon: "icon-list-ol",
             },
             {
                 label: "Tiny",
                 type: "tiny-text",
                 element: "div",
-                className: "u-tinytext"
-            }
+                className: "u-tinytext",
+            },
         ]}
         inlineStyles={[
             { label: "Bold", type: INLINE_STYLE.BOLD, icon: "icon-bold" },
@@ -89,27 +89,18 @@ const editor = (
             {
                 label: "Underline",
                 type: INLINE_STYLE.UNDERLINE,
-                icon: "icon-underline"
+                icon: "icon-underline",
             },
             {
                 label: "Monospace",
                 type: INLINE_STYLE.CODE,
-                icon: "icon-pacman"
+                icon: "icon-pacman",
             },
             {
                 label: "Strikethrough",
                 type: INLINE_STYLE.STRIKETHROUGH,
-                icon: "icon-strikethrough"
+                icon: "icon-strikethrough",
             },
-            { label: "Keyboard", type: INLINE_STYLE.KEYBOARD },
-            { label: "Mark", type: INLINE_STYLE.MARK },
-            { label: "Quotation", type: INLINE_STYLE.QUOTATION },
-            { label: "Small", type: INLINE_STYLE.SMALL },
-            { label: "Sample", type: INLINE_STYLE.SAMPLE },
-            { label: "Insert", type: INLINE_STYLE.INSERT },
-            { label: "Delete", type: INLINE_STYLE.DELETE },
-            { label: "Subscript", type: INLINE_STYLE.SUBSCRIPT },
-            { label: "Superscript", type: INLINE_STYLE.SUPERSCRIPT }
         ]}
     />
 );

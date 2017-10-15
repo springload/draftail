@@ -46,6 +46,7 @@ module.exports = {
         intro: './examples/intro',
         basic: './examples/basic',
         entities: './examples/entities',
+        all: './examples/all',
         custom: './examples/custom',
         test: './examples/test',
     },
