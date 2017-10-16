@@ -1,32 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import DraftailEditor, { INLINE_STYLE } from '../lib';
+import DraftailEditor, { BLOCK_TYPE, INLINE_STYLE } from '../lib';
+
+import allContentState from './utils/allContentState';
 
 const mount = document.querySelector('[data-mount-all]');
-
-const rawContentState = null;
 
 const onSave = (contentState) => {
     sessionStorage.setItem('all:contentState', JSON.stringify(contentState));
 };
 
+const allBlockTypes = Object.keys(BLOCK_TYPE).map(type => ({
+    label: `${type.charAt(0).toUpperCase()}${type.slice(1).toLowerCase().replace(/_/g, ' ')}`,
+    type: BLOCK_TYPE[type],
+}));
+
+const allInlineStyles = Object.keys(INLINE_STYLE).map(type => ({
+    label: `${type.charAt(0).toUpperCase()}${type.slice(1).toLowerCase()}`,
+    type: INLINE_STYLE[type],
+}));
+
 const editor = (
     <DraftailEditor
-        rawContentState={rawContentState}
+        rawContentState={allContentState}
         onSave={onSave}
         stripPastedStyles={false}
-        inlineStyles={[
-            { label: 'Mark', type: INLINE_STYLE.MARK },
-            { label: 'Quotation', type: INLINE_STYLE.QUOTATION },
-            { label: 'Small', type: INLINE_STYLE.SMALL },
-            { label: 'Sample', type: INLINE_STYLE.SAMPLE },
-            { label: 'Insert', type: INLINE_STYLE.INSERT },
-            { label: 'Delete', type: INLINE_STYLE.DELETE },
-            { label: 'Keyboard', type: INLINE_STYLE.KEYBOARD },
-            { label: 'Subscript', type: INLINE_STYLE.SUBSCRIPT },
-            { label: 'Superscript', type: INLINE_STYLE.SUPERSCRIPT },
-        ]}
+        blockTypes={allBlockTypes}
+        inlineStyles={allInlineStyles}
     />
 );
 
