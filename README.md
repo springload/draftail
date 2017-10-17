@@ -188,15 +188,15 @@ Here are quick questions to help you determine which formatting to use, dependin
 
 Simple blocks are very easy to create. Add a new block type to `blockTypes`, specifying which `element` and `className` to display the block as.
 
-Here is an example, creating a "Terms & conditions" block:
+Here is an example, creating a "Tiny text" block:
 
 ```jsx
 blockTypes={[
     {
-        label: 'T&C',
-        type: 'terms-and-conditions',
+        type: 'tiny-text',
+        label: 'Tiny',
         element: 'div',
-        className: 'u-smalltext',
+        className: 'u-tinytext',
     },
 ]}
 ```

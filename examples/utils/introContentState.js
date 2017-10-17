@@ -11,7 +11,8 @@ export default {
             mutability: 'MUTABLE',
             data: { url: 'https://support.google.com/docs/answer/179738' },
         },
-        '2': {
+        '2': { type: 'HORIZONTAL_RULE', mutability: 'IMMUTABLE', data: {} },
+        '3': {
             type: 'LINK',
             mutability: 'MUTABLE',
             data: {
@@ -19,18 +20,10 @@ export default {
                     'https://github.com/springload/draftail/tree/master/docs#keyboard-shortcuts',
             },
         },
-        '3': {
+        '4': {
             type: 'LINK',
             mutability: 'MUTABLE',
             data: { url: 'https://www.springload.co.nz/' },
-        },
-        '4': {
-            type: 'DOCUMENT',
-            mutability: 'MUTABLE',
-            data: {
-                url: 'http://www.example.com/example.pdf',
-                title: 'Kritik der reinen Vernunft',
-            },
         },
         '5': {
             type: 'IMAGE',
@@ -58,26 +51,13 @@ export default {
                 thumbnail: 'https://i.ytimg.com/vi/feUYwoLhE_4/hqdefault.jpg',
             },
         },
-        '8': {
-            type: 'LINK',
-            mutability: 'MUTABLE',
-            data: { url: 'https://www.springload.co.nz/' },
-        },
+        '8': { type: 'HORIZONTAL_RULE', mutability: 'IMMUTABLE', data: {} },
         '9': {
-            type: 'DOCUMENT',
-            mutability: 'MUTABLE',
-            data: {
-                url: 'http://www.example.com/example.pdf',
-                title: 'Kritik der reinen Vernunft',
-            },
-        },
-        '10': { type: 'HORIZONTAL_RULE', mutability: 'IMMUTABLE', data: {} },
-        '11': {
             type: 'LINK',
             mutability: 'MUTABLE',
             data: { url: 'https://springload.github.io/draftail/example.html' },
         },
-        '12': {
+        '10': {
             type: 'LINK',
             mutability: 'MUTABLE',
             data: { url: 'https://github.com/springload/draftail' },
@@ -96,9 +76,9 @@ export default {
         {
             key: '74al',
             text: 'Try it out by editing this text!',
-            type: 'blockquote',
+            type: 'unstyled',
             depth: 0,
-            inlineStyleRanges: [{ offset: 22, length: 9, style: 'BOLD' }],
+            inlineStyleRanges: [],
             entityRanges: [],
             data: {},
         },
@@ -122,7 +102,16 @@ export default {
             data: {},
         },
         {
-            key: '7rd57',
+            key: 'a15ts',
+            text: ' ',
+            type: 'atomic',
+            depth: 0,
+            inlineStyleRanges: [],
+            entityRanges: [{ offset: 0, length: 1, key: 2 }],
+            data: {},
+        },
+        {
+            key: 'ejqsd',
             text: 'Here are important features worth highlighting:',
             type: 'unstyled',
             depth: 0,
@@ -136,19 +125,19 @@ export default {
             type: 'unordered-list-item',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [{ offset: 12, length: 19, key: 2 }],
+            entityRanges: [{ offset: 12, length: 19, key: 3 }],
             data: {},
         },
         {
             key: 'f4gp0',
             text:
-                'Autolists – start a line with - , * , 1.  to create a list item.',
+                'Autolists – start a line with -, *, 1. to create a list item.',
             type: 'unordered-list-item',
             depth: 0,
             inlineStyleRanges: [
-                { offset: 30, length: 2, style: 'CODE' },
-                { offset: 34, length: 2, style: 'CODE' },
-                { offset: 38, length: 3, style: 'CODE' },
+                { offset: 30, length: 1, style: 'KEYBOARD' },
+                { offset: 33, length: 1, style: 'KEYBOARD' },
+                { offset: 36, length: 2, style: 'KEYBOARD' },
             ],
             entityRanges: [],
             data: {},
@@ -173,16 +162,12 @@ export default {
         },
         {
             key: '5qfeb',
-            text:
-                'Common text styles: Bold, Italic, Underline, Monospace, Strikethrough ',
+            text: 'Common text styles: Bold, Italic, etc',
             type: 'unordered-list-item',
             depth: 0,
             inlineStyleRanges: [
                 { offset: 20, length: 4, style: 'BOLD' },
                 { offset: 26, length: 6, style: 'ITALIC' },
-                { offset: 34, length: 9, style: 'UNDERLINE' },
-                { offset: 45, length: 9, style: 'CODE' },
-                { offset: 56, length: 13, style: 'STRIKETHROUGH' },
             ],
             entityRanges: [],
             data: {},
@@ -193,10 +178,7 @@ export default {
             type: 'unordered-list-item',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [
-                { offset: 9, length: 4, key: 3 },
-                { offset: 18, length: 8, key: 4 },
-            ],
+            entityRanges: [{ offset: 9, length: 4, key: 4 }],
             data: {},
         },
         {
@@ -247,13 +229,17 @@ export default {
         {
             key: 'df4ie',
             text:
-                'Apply h3 heading style: ctrl + alt + 3 or ⌘ + option + 3 (macOS)',
+                'Apply H3 heading style: ctrl + alt + 3 or ⌘ + option + 3 (macOS)',
             type: 'unordered-list-item',
             depth: 0,
             inlineStyleRanges: [
-                { offset: 6, length: 2, style: 'CODE' },
-                { offset: 24, length: 14, style: 'CODE' },
-                { offset: 42, length: 14, style: 'CODE' },
+                { offset: 6, length: 2, style: 'BOLD' },
+                { offset: 24, length: 4, style: 'KEYBOARD' },
+                { offset: 31, length: 3, style: 'KEYBOARD' },
+                { offset: 37, length: 1, style: 'KEYBOARD' },
+                { offset: 42, length: 1, style: 'KEYBOARD' },
+                { offset: 46, length: 6, style: 'KEYBOARD' },
+                { offset: 55, length: 1, style: 'KEYBOARD' },
             ],
             entityRanges: [],
             data: {},
@@ -264,8 +250,12 @@ export default {
             type: 'unordered-list-item',
             depth: 0,
             inlineStyleRanges: [
-                { offset: 15, length: 16, style: 'CODE' },
-                { offset: 35, length: 13, style: 'CODE' },
+                { offset: 15, length: 4, style: 'KEYBOARD' },
+                { offset: 22, length: 5, style: 'KEYBOARD' },
+                { offset: 30, length: 1, style: 'KEYBOARD' },
+                { offset: 35, length: 1, style: 'KEYBOARD' },
+                { offset: 39, length: 5, style: 'KEYBOARD' },
+                { offset: 47, length: 1, style: 'KEYBOARD' },
             ],
             entityRanges: [],
             data: {},
@@ -275,7 +265,7 @@ export default {
             text: 'Increase list indentation: tab',
             type: 'unordered-list-item',
             depth: 0,
-            inlineStyleRanges: [{ offset: 27, length: 3, style: 'CODE' }],
+            inlineStyleRanges: [{ offset: 27, length: 3, style: 'KEYBOARD' }],
             entityRanges: [],
             data: {},
         },
@@ -285,8 +275,10 @@ export default {
             type: 'unordered-list-item',
             depth: 0,
             inlineStyleRanges: [
-                { offset: 21, length: 8, style: 'CODE' },
-                { offset: 33, length: 5, style: 'CODE' },
+                { offset: 21, length: 4, style: 'KEYBOARD' },
+                { offset: 28, length: 1, style: 'KEYBOARD' },
+                { offset: 33, length: 1, style: 'KEYBOARD' },
+                { offset: 37, length: 1, style: 'KEYBOARD' },
             ],
             entityRanges: [],
             data: {},
@@ -297,8 +289,10 @@ export default {
             type: 'unordered-list-item',
             depth: 0,
             inlineStyleRanges: [
-                { offset: 11, length: 11, style: 'CODE' },
-                { offset: 26, length: 14, style: 'CODE' },
+                { offset: 11, length: 3, style: 'KEYBOARD' },
+                { offset: 17, length: 5, style: 'KEYBOARD' },
+                { offset: 26, length: 6, style: 'KEYBOARD' },
+                { offset: 35, length: 5, style: 'KEYBOARD' },
             ],
             entityRanges: [],
             data: {},
@@ -306,7 +300,7 @@ export default {
         {
             key: '1sggt',
             text: 'For developers 🚀',
-            type: 'header-three',
+            type: 'header-two',
             depth: 0,
             inlineStyleRanges: [],
             entityRanges: [],
@@ -325,7 +319,7 @@ export default {
         {
             key: '26mu7',
             text: 'Built-in',
-            type: 'header-four',
+            type: 'header-three',
             depth: 0,
             inlineStyleRanges: [],
             entityRanges: [],
@@ -344,34 +338,25 @@ export default {
         {
             key: '6h6as',
             text:
-                'Inline styles: Bold, Italic, Underline, Monospace, Strikethrough',
+                'Inline styles: Bold, Italic, Underline, Code, Strikethrough, Mark, Keyboard, Superscript, Subscript',
             type: 'unordered-list-item',
             depth: 0,
-            inlineStyleRanges: [
-                { offset: 15, length: 4, style: 'BOLD' },
-                { offset: 21, length: 6, style: 'ITALIC' },
-                { offset: 29, length: 9, style: 'UNDERLINE' },
-                { offset: 40, length: 9, style: 'CODE' },
-                { offset: 51, length: 13, style: 'STRIKETHROUGH' },
-            ],
+            inlineStyleRanges: [],
             entityRanges: [],
             data: {},
         },
         {
             key: '3haur',
-            text: 'Entities: Images, Embeds, (Links, Documents)',
+            text: 'Entities: Images, Embeds, Links, Documents',
             type: 'unordered-list-item',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [
-                { offset: 27, length: 5, key: 8 },
-                { offset: 34, length: 9, key: 9 },
-            ],
+            entityRanges: [],
             data: {},
         },
         {
             key: 'dnji2',
-            text: 'And HR, BR\nas special cases',
+            text: 'And HR, BR',
             type: 'unordered-list-item',
             depth: 0,
             inlineStyleRanges: [],
@@ -384,13 +369,13 @@ export default {
             type: 'atomic',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [{ offset: 0, length: 1, key: 10 }],
+            entityRanges: [{ offset: 0, length: 1, key: 8 }],
             data: {},
         },
         {
             key: 'd5k22',
             text: 'Custom block types',
-            type: 'header-four',
+            type: 'header-three',
             depth: 0,
             inlineStyleRanges: [],
             entityRanges: [],
@@ -399,15 +384,15 @@ export default {
         {
             key: '6h166',
             text:
-                'New block types can be created by giving them a unique type, a label and an icon (for the toolbar), and element and className attributes:',
+                'New block types can be created by giving them a unique type, a label or an icon (or both, for the toolbar), and element and className attributes:',
             type: 'unstyled',
             depth: 0,
             inlineStyleRanges: [
-                { offset: 55, length: 4, style: 'CODE' },
-                { offset: 63, length: 5, style: 'CODE' },
-                { offset: 76, length: 4, style: 'CODE' },
-                { offset: 104, length: 7, style: 'CODE' },
-                { offset: 116, length: 9, style: 'CODE' },
+                { offset: 55, length: 4, style: 'BOLD' },
+                { offset: 63, length: 5, style: 'BOLD' },
+                { offset: 75, length: 4, style: 'BOLD' },
+                { offset: 112, length: 7, style: 'BOLD' },
+                { offset: 124, length: 9, style: 'BOLD' },
             ],
             entityRanges: [],
             data: {},
@@ -415,25 +400,6 @@ export default {
         {
             key: '7p4gi',
             text: 'blockTypes={[',
-            type: 'code-block',
-            depth: 0,
-            inlineStyleRanges: [],
-            entityRanges: [],
-            data: {},
-        },
-        {
-            key: 'bdkde',
-            text: "    { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },",
-            type: 'code-block',
-            depth: 0,
-            inlineStyleRanges: [],
-            entityRanges: [],
-            data: {},
-        },
-        {
-            key: 'a3e7d',
-            text:
-                "    { label: 'Blockquote', type: BLOCK_TYPE.BLOCKQUOTE, icon: 'icon-openquote' },",
             type: 'code-block',
             depth: 0,
             inlineStyleRanges: [],
@@ -462,7 +428,7 @@ export default {
         {
             key: '7ouai',
             text: 'Custom inline styles',
-            type: 'header-four',
+            type: 'header-three',
             depth: 0,
             inlineStyleRanges: [],
             entityRanges: [],
@@ -470,7 +436,8 @@ export default {
         },
         {
             key: 'biqf8',
-            text: '// TODO',
+            text:
+                "inlineStyles={[\n    { label: 'Redacted', type: 'REDACTED', style: { backgroundColor: 'currentcolor' } },\n]}",
             type: 'code-block',
             depth: 0,
             inlineStyleRanges: [],
@@ -480,7 +447,7 @@ export default {
         {
             key: '2iad',
             text: 'Custom entity types',
-            type: 'header-four',
+            type: 'header-three',
             depth: 0,
             inlineStyleRanges: [],
             entityRanges: [],
@@ -557,7 +524,7 @@ export default {
         {
             key: 'dgi85',
             text: 'Usage',
-            type: 'header-three',
+            type: 'header-two',
             depth: 0,
             inlineStyleRanges: [],
             entityRanges: [],
@@ -627,7 +594,7 @@ export default {
             type: 'unstyled',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [{ offset: 59, length: 13, key: 11 }],
+            entityRanges: [{ offset: 59, length: 13, key: 9 }],
             data: {},
         },
         {
@@ -886,7 +853,7 @@ export default {
             type: 'unstyled',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [{ offset: 39, length: 17, key: 12 }],
+            entityRanges: [{ offset: 39, length: 17, key: 10 }],
             data: {},
         },
     ],
