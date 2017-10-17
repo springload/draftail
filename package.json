@@ -33,7 +33,10 @@
                 "env",
                 {
                     "targets": {
-                        "browsers": ["> 1%", "IE 11"]
+                        "browsers": [
+                            "> 1%",
+                            "IE 11"
+                        ]
                     },
                     "modules": false
                 }
@@ -47,7 +50,10 @@
                         "env",
                         {
                             "targets": {
-                                "browsers": ["> 1%", "IE 11"]
+                                "browsers": [
+                                    "> 1%",
+                                    "IE 11"
+                                ]
                             }
                         }
                     ],
@@ -69,7 +75,9 @@
             "/examples/",
             "/es/"
         ],
-        "snapshotSerializers": ["enzyme-to-json/serializer"]
+        "snapshotSerializers": [
+            "enzyme-to-json/serializer"
+        ]
     },
     "dependencies": {
         "draftjs-utils": "0.8.4"
@@ -88,13 +96,13 @@
         "enzyme": "^2.8.2",
         "enzyme-to-json": "^1.5.1",
         "eslint": "^3.19.0",
-        "eslint-plugin-springload": "^2.0.2",
+        "eslint-plugin-springload": "^2.2.0",
         "extract-text-webpack-plugin": "^3.0.0",
         "immutable": "~3.7.4",
         "jest": "^20.0.0",
         "node-sass": "^4.5.3",
         "postcss-loader": "^2.0.6",
-        "prettier": "^1.5.3",
+        "prettier": "^1.7.4",
         "prop-types": "^15.5.10",
         "react": "^15.6.1",
         "react-dom": "^15.6.1",
@@ -117,9 +125,9 @@
         "build": "npm run js -s && webpack --config=webpack/webpack.config.prod.js --display-optimization-bailout && cp examples/assets/draftail.css dist",
         "dist": "NODE_ENV=production npm run build -s",
         "linter:js": "eslint",
+        "formatter:js": "prettier --write",
         "lint": "npm run linter:js -s -- .",
-        "formatter:js": "prettier --print-width 80 --tab-width 4 --single-quote --trailing-comma all",
-        "format": "npm run formatter:js -- --write lib/**/*.js examples/sources/*.js examples/entities/*.js examples/utils/*.js examples/*.js webpack/*.js",
+        "format": "npm run formatter:js -- lib/**/*.js examples/sources/*.js examples/entities/*.js examples/utils/*.js examples/*.js webpack/*.js",
         "test": "jest",
         "test:coverage": "jest --coverage",
         "test:watch": "jest --watch",
