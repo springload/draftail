@@ -23,7 +23,7 @@ We support keyboard shortcuts inspired by the ones used in [Google Docs](https:/
 | Italicize | `Ctrl + I` | `⌘ + I` |
 | Underline | `Ctrl + U` | `⌘ + U` |
 | Monospace (code) | `Ctrl + J` | `⌘ + J` |
-| Strikethrough | `Alt + Shift + 5` | `Option + Shift + 5` |
+| Strikethrough | `Ctrl + Shift + X` | `⌘ + Shift + X` |
 | **Paragraph formatting (if enabled)** |||
 | Increase list indentation | `Tab` | `Tab` |
 | Decrease list indentation | `Shift + Tab` | `Shift + Tab` |
