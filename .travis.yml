@@ -7,7 +7,7 @@ install:
 - npm install -g coveralls
 script:
 - npm run test:ci
-- mv webpack/webpack-stats.html examples
+- mv webpack/webpack-stats.html examples || true
 after_success:
 - cat ./coverage/lcov.info | coveralls
 branches:
