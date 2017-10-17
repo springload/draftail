@@ -81,6 +81,8 @@ onSave: () => {},
 enableHorizontalRule: false,
 // Enable the use of line breaks in the editor.
 enableLineBreak: false,
+// Show undo/redo controls in the toolbar.
+showUndoRedoControls: false,
 // Disable copy/paste of rich text in the editor.
 stripPastedStyles: true,
 // List of the available block types.

@@ -34,6 +34,7 @@ exports[`Toolbar #blockTypes 1`] = `
   </ToolbarGroup>
   <ToolbarGroup />
   <ToolbarGroup />
+  <ToolbarGroup />
 </div>
 `;
 
@@ -55,6 +56,7 @@ exports[`Toolbar #enableHorizontalRule 1`] = `
     />
   </ToolbarGroup>
   <ToolbarGroup />
+  <ToolbarGroup />
 </div>
 `;
 
@@ -75,6 +77,7 @@ exports[`Toolbar #enableLineBreak 1`] = `
       title="Line break (Shift+Enter)"
     />
   </ToolbarGroup>
+  <ToolbarGroup />
   <ToolbarGroup />
 </div>
 `;
@@ -113,6 +116,7 @@ exports[`Toolbar #entityTypes 1`] = `
       title={null}
     />
   </ToolbarGroup>
+  <ToolbarGroup />
 </div>
 `;
 
@@ -150,6 +154,37 @@ exports[`Toolbar #inlineStyles 1`] = `
   <ToolbarGroup />
   <ToolbarGroup />
   <ToolbarGroup />
+  <ToolbarGroup />
+</div>
+`;
+
+exports[`Toolbar #showUndoRedoControls 1`] = `
+<div
+  className="editor__toolbar"
+  role="toolbar"
+>
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup>
+    <Button
+      active={false}
+      icon={null}
+      label="↺"
+      name="undo"
+      onClick={[Function]}
+      title="Undo (Ctrl+Z)"
+    />
+    <Button
+      active={false}
+      icon={null}
+      label="↻"
+      name="redo"
+      onClick={[Function]}
+      title="Redo (Ctrl+Shift+Z)"
+    />
+  </ToolbarGroup>
 </div>
 `;
 
@@ -158,6 +193,7 @@ exports[`Toolbar empty 1`] = `
   className="editor__toolbar"
   role="toolbar"
 >
+  <ToolbarGroup />
   <ToolbarGroup />
   <ToolbarGroup />
   <ToolbarGroup />
