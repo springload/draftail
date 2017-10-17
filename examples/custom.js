@@ -38,8 +38,16 @@ const editor = (
             },
         ]}
         inlineStyles={[
-            { label: 'Bold', type: INLINE_STYLE.BOLD, style: { fontWeight: 'bold', textShadow: '1px 1px 1px black' } },
-            { label: 'Redacted', type: 'REDACTED', style: { backgroundColor: 'currentcolor' } },
+            {
+                label: 'Bold',
+                type: INLINE_STYLE.BOLD,
+                style: { fontWeight: 'bold', textShadow: '1px 1px 1px black' },
+            },
+            {
+                label: 'Redacted',
+                type: 'REDACTED',
+                style: { backgroundColor: 'currentcolor' },
+            },
         ]}
     />
 );

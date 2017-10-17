@@ -7,12 +7,15 @@ import allContentState from './utils/allContentState';
 
 const mount = document.querySelector('[data-mount-all]');
 
-const onSave = (contentState) => {
+const onSave = contentState => {
     sessionStorage.setItem('all:contentState', JSON.stringify(contentState));
 };
 
 const allBlockTypes = Object.keys(BLOCK_TYPE).map(type => ({
-    label: `${type.charAt(0).toUpperCase()}${type.slice(1).toLowerCase().replace(/_/g, ' ')}`,
+    label: `${type.charAt(0).toUpperCase()}${type
+        .slice(1)
+        .toLowerCase()
+        .replace(/_/g, ' ')}`,
     type: BLOCK_TYPE[type],
 }));
 
