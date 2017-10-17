@@ -49,7 +49,7 @@ exports[`Toolbar #enableHorizontalRule 1`] = `
     <Button
       active={false}
       icon={null}
-      label="HR"
+      label="―"
       name="HORIZONTAL_RULE"
       onClick={[Function]}
       title="Horizontal line"
@@ -71,7 +71,7 @@ exports[`Toolbar #enableLineBreak 1`] = `
     <Button
       active={false}
       icon={null}
-      label="BR"
+      label="↵"
       name="BR"
       onClick={[Function]}
       title="Line break (Shift+Enter)"
