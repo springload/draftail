@@ -24,6 +24,8 @@ We support keyboard shortcuts inspired by the ones used in [Google Docs](https:/
 | Underline | `Ctrl + U` | `⌘ + U` |
 | Monospace (code) | `Ctrl + J` | `⌘ + J` |
 | Strikethrough | `Ctrl + Shift + X` | `⌘ + Shift + X` |
+| Superscript | `Ctrl + .` | `⌘ + .` |
+| Subscript | `Ctrl + ,` | `⌘ + ,` |
 | **Paragraph formatting (if enabled)** |||
 | Increase list indentation | `Tab` | `Tab` |
 | Decrease list indentation | `Shift + Tab` | `Shift + Tab` |
