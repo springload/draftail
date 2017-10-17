@@ -356,6 +356,12 @@ const initTest = () => {
                         description: 'Strikethrough',
                         icon: 'icon-strikethrough',
                     },
+                    {
+                        label: '█',
+                        type: 'REDACTED',
+                        description: 'Redacted',
+                        style: { backgroundColor: 'currentcolor' },
+                    },
                 ]}
             />
             <hr />
