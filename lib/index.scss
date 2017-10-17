@@ -53,7 +53,7 @@ $toolbar-z-index: $activeblock-z-index + 1;
 
     .editor--focus & {
         position: sticky;
-        top: $controls-spacing * 2;
+        top: 0;
     }
 }
 
@@ -66,7 +66,6 @@ $toolbar-z-index: $activeblock-z-index + 1;
         padding-left: $controls-spacing / 2;
     }
 }
-
 
 .DraftEditor-editorContainer {
     .editor--readonly & {
@@ -169,10 +168,10 @@ $toolbar-z-index: $activeblock-z-index + 1;
     }
 }
 
-    .RichEditor-media--open {
-        z-index: $activeblock-z-index;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-    }
+.RichEditor-media--open {
+    z-index: $activeblock-z-index;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
 
 .RichEditor-grid {
     margin-left: -2rem;
