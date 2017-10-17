@@ -33,6 +33,7 @@ const editor = (
         placeholder="Write here…"
         enableHorizontalRule={true}
         enableLineBreak={true}
+        showUndoRedoControls={true}
         stripPastedStyles={false}
         entityTypes={[
             {
