@@ -29,7 +29,11 @@ const editor = (
         onSave={onSave}
         stripPastedStyles={false}
         blockTypes={[
-            { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
+            {
+                label: 'H2',
+                type: BLOCK_TYPE.HEADER_TWO,
+                description: 'Heading 2',
+            },
             {
                 label: 'Tiny',
                 type: 'tiny-text',
@@ -39,8 +43,9 @@ const editor = (
         ]}
         inlineStyles={[
             {
-                label: 'Bold',
                 type: INLINE_STYLE.BOLD,
+                icon: 'icon-bold',
+                description: 'Bold',
                 style: { fontWeight: 'bold', textShadow: '1px 1px 1px black' },
             },
             {

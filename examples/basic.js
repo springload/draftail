@@ -21,16 +21,24 @@ const editor = (
         placeholder="Write here…"
         onSave={onSave}
         blockTypes={[
-            { label: 'H3', type: BLOCK_TYPE.HEADER_THREE },
             {
-                label: 'UL',
+                label: 'H3',
+                type: BLOCK_TYPE.HEADER_THREE,
+                description: 'Heading 3',
+            },
+            {
                 type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
+                description: 'Bulleted list',
                 icon: 'icon-list-ul',
             },
         ]}
         inlineStyles={[
-            { label: 'Bold', type: INLINE_STYLE.BOLD, icon: 'icon-bold' },
-            { label: 'Italic', type: INLINE_STYLE.ITALIC, icon: 'icon-italic' },
+            { type: INLINE_STYLE.BOLD, description: 'Bold', icon: 'icon-bold' },
+            {
+                type: INLINE_STYLE.ITALIC,
+                description: 'Italic',
+                icon: 'icon-italic',
+            },
         ]}
     />
 );

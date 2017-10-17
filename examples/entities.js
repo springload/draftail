@@ -84,26 +84,34 @@ const editor = (
         onSave={onSave}
         entityTypes={[
             {
-                label: 'Link',
                 type: ENTITY_TYPE.LINK,
+                description: 'Link',
                 icon: 'icon-link',
                 source: LinkSource,
                 decorator: Link,
             },
             {
-                label: 'Document',
                 type: ENTITY_TYPE.DOCUMENT,
+                description: 'Document',
                 icon: 'icon-doc-full',
                 source: DocumentSource,
                 decorator: Document,
             },
         ]}
         blockTypes={[
-            { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
-            { label: 'H3', type: BLOCK_TYPE.HEADER_THREE },
             {
-                label: 'Blockquote',
+                label: 'H2',
+                type: BLOCK_TYPE.HEADER_TWO,
+                description: 'Heading 2',
+            },
+            {
+                label: 'H3',
+                type: BLOCK_TYPE.HEADER_THREE,
+                description: 'Heading 3',
+            },
+            {
                 type: BLOCK_TYPE.BLOCKQUOTE,
+                description: 'Blockquote',
                 icon: 'icon-openquote',
             },
         ]}

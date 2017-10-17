@@ -31,51 +31,67 @@ const editors = (
             stripPastedStyles={false}
             entityTypes={[
                 {
-                    label: 'Image',
                     type: ENTITY_TYPE.IMAGE,
+                    description: 'Image',
                     icon: 'icon-image',
                     source: ImageSource,
                     imageFormats: [],
                 },
                 {
-                    label: 'Embed',
                     type: ENTITY_TYPE.EMBED,
+                    description: 'Embed',
                     icon: 'icon-media',
                     source: EmbedSource,
                 },
                 {
-                    label: 'Link',
                     type: ENTITY_TYPE.LINK,
+                    description: 'Link',
                     icon: 'icon-link',
                     source: LinkSource,
                     decorator: Link,
                 },
                 {
-                    label: 'Document',
                     type: ENTITY_TYPE.DOCUMENT,
+                    description: 'Document',
                     icon: 'icon-doc-full',
                     source: DocumentSource,
                     decorator: Document,
                 },
             ]}
             blockTypes={[
-                { label: 'H2', type: BLOCK_TYPE.HEADER_TWO },
-                { label: 'H3', type: BLOCK_TYPE.HEADER_THREE },
-                { label: 'H4', type: BLOCK_TYPE.HEADER_FOUR },
-                { label: 'H5', type: BLOCK_TYPE.HEADER_FIVE },
                 {
-                    label: 'Blockquote',
+                    label: 'H2',
+                    type: BLOCK_TYPE.HEADER_TWO,
+                    description: 'Heading 2',
+                },
+                {
+                    label: 'H3',
+                    type: BLOCK_TYPE.HEADER_THREE,
+                    description: 'Heading 3',
+                },
+                {
+                    label: 'H4',
+                    type: BLOCK_TYPE.HEADER_FOUR,
+                    description: 'Heading 4',
+                },
+                {
+                    label: 'H5',
+                    type: BLOCK_TYPE.HEADER_FIVE,
+                    description: 'Heading 5',
+                },
+                {
                     type: BLOCK_TYPE.BLOCKQUOTE,
+                    description: 'Blockquote',
                     icon: 'icon-openquote',
                 },
                 {
-                    label: 'UL',
                     type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
+                    description: 'Bulleted list',
                     icon: 'icon-list-ul',
                 },
                 {
-                    label: 'OL',
                     type: BLOCK_TYPE.ORDERED_LIST_ITEM,
+                    description: 'Numbered list',
                     icon: 'icon-list-ol',
                 },
                 {
@@ -86,25 +102,29 @@ const editors = (
                 },
             ]}
             inlineStyles={[
-                { label: 'Bold', type: INLINE_STYLE.BOLD, icon: 'icon-bold' },
                 {
-                    label: 'Italic',
+                    type: INLINE_STYLE.BOLD,
+                    description: 'Bold',
+                    icon: 'icon-bold',
+                },
+                {
                     type: INLINE_STYLE.ITALIC,
+                    description: 'Italic',
                     icon: 'icon-italic',
                 },
                 {
-                    label: 'Underline',
                     type: INLINE_STYLE.UNDERLINE,
+                    description: 'Underline',
                     icon: 'icon-underline',
                 },
                 {
-                    label: 'Monospace',
                     type: INLINE_STYLE.CODE,
-                    icon: 'icon-pacman',
+                    label: '</>',
+                    description: 'Code',
                 },
                 {
-                    label: 'Strikethrough',
                     type: INLINE_STYLE.STRIKETHROUGH,
+                    description: 'Strikethrough',
                     icon: 'icon-strikethrough',
                 },
             ]}
@@ -121,33 +141,41 @@ const editors = (
             stripPastedStyles={false}
             entityTypes={[
                 {
-                    label: 'Image',
                     type: ENTITY_TYPE.IMAGE,
+                    description: 'Image',
                     icon: 'icon-image',
                     source: ImageSource,
                     imageFormats: [],
                 },
                 {
-                    label: 'Link',
                     type: ENTITY_TYPE.LINK,
+                    description: 'Link',
                     icon: 'icon-link',
                     source: LinkSource,
                     decorator: Link,
                 },
             ]}
             blockTypes={[
-                { label: 'H4', type: BLOCK_TYPE.HEADER_FOUR },
                 {
-                    label: 'UL',
+                    label: 'H4',
+                    type: BLOCK_TYPE.HEADER_FOUR,
+                    description: 'Heading 4',
+                },
+                {
                     type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
+                    description: 'Bulleted list',
                     icon: 'icon-list-ul',
                 },
             ]}
             inlineStyles={[
-                { label: 'Bold', type: INLINE_STYLE.BOLD, icon: 'icon-bold' },
                 {
-                    label: 'Italic',
+                    type: INLINE_STYLE.BOLD,
+                    description: 'Bold',
+                    icon: 'icon-bold',
+                },
+                {
                     type: INLINE_STYLE.ITALIC,
+                    description: 'Italic',
                     icon: 'icon-italic',
                 },
             ]}
