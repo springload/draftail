@@ -108,7 +108,7 @@ Draftail, like Draft.js, distinguishes between 3 content formats:
 Common formatting options are available out of the box:
 
 - Block types: `H1`, `H2`, `H3`, `H4`, `H5`, `H6`, `Blockquote`, `Code`, `UL`, `OL`, `P`
-- Inline styles: `Bold`, `Italic`, `Underline`, `Monospace`, `Strikethrough`
+- Inline styles: `Bold`, `Italic`, `Code`, `Underline`, `Strikethrough`, `Mark`, `Keyboard`, `Superscript`, `Subscript`
 - Entities: `Images`, `Embeds`, (`Links`, `Documents`)
 - And `HR`, `BR` as special cases
 
@@ -151,6 +151,8 @@ label: PropTypes.string.isRequired,
 type: PropTypes.string.isRequired,
 // Represents the inline style in the editor UI.
 icon: PropTypes.string,
+// CSS properties (in JS format) to apply for styling within the editor area.
+style: PropTypes.Object,
 ```
 
 #### Entities
@@ -180,17 +182,59 @@ Here are quick questions to help you determine which formatting to use, dependin
 |----------------|--------------------------------------|
 | Indicate the structure of the content | Blocks        |
 | Enter additional data/metadata        | Entities      |
-| Format a portion of the text          | Inline styles |
+| Format a portion of a line            | Inline styles |
 
-#### Blocks
+#### Custom blocks
 
 Simple blocks are very easy to create. Add a new block type to `blockTypes`, specifying which `element` and `className` to display the block as.
+
+Here is an example, creating a "Terms & conditions" block:
+
+```jsx
+blockTypes={[
+    {
+        label: 'T&C',
+        type: 'terms-and-conditions',
+        element: 'div',
+        className: 'u-smalltext',
+    },
+]}
+```
 
 More advanced blocks, requiring custom React components, aren't supported at the moment. If you need this, feel free to [create an issue](https://github.com/springload/draftail/issues/new).
 
 #### Custom inline styles
 
-Custom inline styles aren't supported at the moment. This is on the roadmap, please refer to [#36](https://github.com/springload/draftail/issues/36).
+Custom inline styles only require a `style` prop, defining which CSS properties to apply when the format is active.
+
+Here is a basic example:
+
+```jsx
+inlineStyles={[
+    {
+        label: 'Redacted',
+        type: 'REDACTED',
+        style: {
+            backgroundColor: 'currentcolor',
+        },
+    },
+]}
+```
+
+It is also possible to override the styling of predefined inline styles:
+
+```jsx
+inlineStyles={[
+    {
+        label: 'Bold',
+        type: INLINE_STYLE.BOLD,
+        style: {
+            fontWeight: 'bold',
+            textShadow: '1px 1px 1px black',
+        },
+    },
+]}
+```
 
 #### Custom entity types
 
@@ -203,7 +247,7 @@ Apart from the usual label/type/icon options, entities need:
 
 ##### Sources
 
-TODO
+For now, please refer to the examples available with the project.
 
 ##### Decorators
 
