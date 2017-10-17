@@ -127,6 +127,11 @@ const editors = (
                     description: 'Strikethrough',
                     icon: 'icon-strikethrough',
                 },
+                {
+                    label: 'Redacted',
+                    type: 'REDACTED',
+                    style: { backgroundColor: 'currentcolor' },
+                },
             ]}
         />
         <hr />
