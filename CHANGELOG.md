@@ -2,6 +2,8 @@
 
 > All notable changes to this project are documented in this file. This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [[v0.9.0]](https://github.com/springload/draftail/releases/tag/v0.9.0)
+
 ## [[v0.8.0]](https://github.com/springload/draftail/releases/tag/v0.8.0)
 
 ### Added

@@ -1,139 +1,139 @@
 {
-    "name": "draftail",
-    "version": "0.8.0",
-    "description": "📝🍸 A configurable rich text editor based on Draft.js",
-    "author": "Springload",
-    "license": "MIT",
-    "main": "dist/index.js",
-    "module": "es/index.js",
-    "keywords": [
-        "draftjs",
-        "draft.js",
-        "draft",
-        "draft-js",
-        "editor",
-        "wysiwyg",
-        "rich text",
-        "rte",
-        "react",
-        "react-component",
-        "react-components"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/springload/draftail"
-    },
-    "bugs": {
-        "url": "https://github.com/springload/draftail/issues"
-    },
-    "homepage": "https://springload.github.io/draftail/",
-    "babel": {
-        "presets": [
-            [
-                "env",
-                {
-                    "targets": {
-                        "browsers": [
-                            "> 1%",
-                            "IE 11"
-                        ]
-                    },
-                    "modules": false
-                }
-            ],
-            "react"
-        ],
-        "env": {
-            "test": {
-                "presets": [
-                    [
-                        "env",
-                        {
-                            "targets": {
-                                "browsers": [
-                                    "> 1%",
-                                    "IE 11"
-                                ]
-                            }
-                        }
-                    ],
-                    "react"
-                ]
-            }
+  "name": "draftail",
+  "version": "0.9.0-beta.1",
+  "description": "📝🍸 A configurable rich text editor based on Draft.js",
+  "author": "Springload",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "es/index.js",
+  "keywords": [
+    "draftjs",
+    "draft.js",
+    "draft",
+    "draft-js",
+    "editor",
+    "wysiwyg",
+    "rich text",
+    "rte",
+    "react",
+    "react-component",
+    "react-components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/springload/draftail"
+  },
+  "bugs": {
+    "url": "https://github.com/springload/draftail/issues"
+  },
+  "homepage": "https://springload.github.io/draftail/",
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": [
+              "> 1%",
+              "IE 11"
+            ]
+          },
+          "modules": false
         }
-    },
-    "eslintConfig": {
-        "extends": "plugin:springload/prettier"
-    },
-    "jest": {
-        "moduleNameMapper": {
-            "\\.scss$": "<rootDir>/lib/tests/styleMock.js"
-        },
-        "testPathIgnorePatterns": [
-            "/node_modules/",
-            "/dist/",
-            "/examples/",
-            "/es/"
-        ],
-        "snapshotSerializers": [
-            "enzyme-to-json/serializer"
+      ],
+      "react"
+    ],
+    "env": {
+      "test": {
+        "presets": [
+          [
+            "env",
+            {
+              "targets": {
+                "browsers": [
+                  "> 1%",
+                  "IE 11"
+                ]
+              }
+            }
+          ],
+          "react"
         ]
-    },
-    "dependencies": {
-        "draftjs-utils": "0.8.4"
-    },
-    "devDependencies": {
-        "autoprefixer": "^7.1.2",
-        "babel-cli": "^6.24.1",
-        "babel-jest": "^20.0.0",
-        "babel-loader": "^7.1.1",
-        "babel-preset-env": "^1.6.0",
-        "babel-preset-react": "^6.24.1",
-        "css-loader": "^0.28.4",
-        "dotenv": "^4.0.0",
-        "draft-js": "^0.10.1",
-        "element-closest": "^2.0.2",
-        "enzyme": "^2.8.2",
-        "enzyme-to-json": "^1.5.1",
-        "eslint": "^3.19.0",
-        "eslint-plugin-springload": "^2.2.0",
-        "extract-text-webpack-plugin": "^3.0.0",
-        "immutable": "~3.7.4",
-        "jest": "^20.0.0",
-        "node-sass": "^4.5.3",
-        "postcss-loader": "^2.0.6",
-        "prettier": "^1.7.4",
-        "prop-types": "^15.5.10",
-        "react": "^15.6.1",
-        "react-dom": "^15.6.1",
-        "react-test-renderer": "^15.6.1",
-        "sass-loader": "^6.0.6",
-        "webpack": "^3.4.1",
-        "webpack-bundle-analyzer": "^2.9.0",
-        "webpack-dev-server": "^2.6.1"
-    },
-    "peerDependencies": {
-        "draft-js": "^0.10.1",
-        "prop-types": "^15.5.0",
-        "react": "^15.5.0",
-        "react-dom": "^15.5.0",
-        "immutable": "~3.7.4"
-    },
-    "scripts": {
-        "start": "webpack-dev-server --config=webpack/webpack.config.dev.js",
-        "js": "babel lib -d es && BABEL_ENV=test babel lib -d dist",
-        "build": "npm run js -s && webpack --config=webpack/webpack.config.prod.js --display-optimization-bailout && cp examples/assets/draftail.css dist",
-        "dist": "NODE_ENV=production npm run build -s",
-        "linter:js": "eslint",
-        "formatter:js": "prettier --write",
-        "lint": "npm run linter:js -s -- .",
-        "format": "npm run formatter:js -- lib/**/*.js examples/sources/*.js examples/entities/*.js examples/utils/*.js examples/*.js webpack/*.js",
-        "test": "jest",
-        "test:coverage": "jest --coverage",
-        "test:watch": "jest --watch",
-        "test:watch:coverage": "jest --watch --coverage",
-        "report:coverage": "open coverage/lcov-report/index.html",
-        "report:build": "open webpack/webpack-stats.html",
-        "test:ci": "npm run lint -s && npm run test:coverage -s && npm run dist -s"
+      }
     }
+  },
+  "eslintConfig": {
+    "extends": "plugin:springload/prettier"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.scss$": "<rootDir>/lib/tests/styleMock.js"
+    },
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/dist/",
+      "/examples/",
+      "/es/"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
+  "dependencies": {
+    "draftjs-utils": "0.8.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "babel-cli": "^6.24.1",
+    "babel-jest": "^20.0.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "dotenv": "^4.0.0",
+    "draft-js": "^0.10.1",
+    "element-closest": "^2.0.2",
+    "enzyme": "^2.8.2",
+    "enzyme-to-json": "^1.5.1",
+    "eslint": "^3.19.0",
+    "eslint-plugin-springload": "^2.2.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "immutable": "~3.7.4",
+    "jest": "^20.0.0",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.6",
+    "prettier": "^1.7.4",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-test-renderer": "^15.6.1",
+    "sass-loader": "^6.0.6",
+    "webpack": "^3.4.1",
+    "webpack-bundle-analyzer": "^2.9.0",
+    "webpack-dev-server": "^2.6.1"
+  },
+  "peerDependencies": {
+    "draft-js": "^0.10.1",
+    "prop-types": "^15.5.0",
+    "react": "^15.5.0",
+    "react-dom": "^15.5.0",
+    "immutable": "~3.7.4"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --config=webpack/webpack.config.dev.js",
+    "js": "babel lib -d es && BABEL_ENV=test babel lib -d dist",
+    "build": "npm run js -s && webpack --config=webpack/webpack.config.prod.js --display-optimization-bailout && cp examples/assets/draftail.css dist",
+    "dist": "NODE_ENV=production npm run build -s",
+    "linter:js": "eslint",
+    "formatter:js": "prettier --write",
+    "lint": "npm run linter:js -s -- .",
+    "format": "npm run formatter:js -- lib/**/*.js examples/sources/*.js examples/entities/*.js examples/utils/*.js examples/*.js webpack/*.js",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:watch:coverage": "jest --watch --coverage",
+    "report:coverage": "open coverage/lcov-report/index.html",
+    "report:build": "open webpack/webpack-stats.html",
+    "test:ci": "npm run lint -s && npm run test:coverage -s && npm run dist -s"
+  }
 }
