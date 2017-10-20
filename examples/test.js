@@ -144,6 +144,8 @@ const editors = (
             enableHorizontalRule={true}
             enableLineBreak={true}
             stripPastedStyles={false}
+            /*
+            TODO: uncomment when done testing pasting invalid entities
             entityTypes={[
                 {
                     type: ENTITY_TYPE.IMAGE,
@@ -160,6 +162,7 @@ const editors = (
                     decorator: Link,
                 },
             ]}
+            */
             blockTypes={[
                 {
                     label: 'H4',
