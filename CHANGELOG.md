@@ -4,11 +4,32 @@
 
 ## [[v0.9.0]](https://github.com/springload/draftail/releases/tag/v0.9.0)
 
+### Added
+
+- Add support for [custom inline styles](https://github.com/springload/draftail#custom-inline-styles), thanks to @vincentaudebert (#97).
+- Add [basic styles](https://github.com/springload/draftail/blob/60f2f6ef5684c10c7c409a6333f2b157b955fa45/lib/api/constants.js#L51) for common inline styles.
+- Add new `description` prop for all formats to describe the format's use with more text than the `label`.
+- Add separate button groups in the toolbar.
+- Add basic undo/redo controls in the toolbar (#100).
+- Introduce icons for hr and br.
+- Add keyboard shortcuts for superscript & subscript.
+
+### Changed
+
+- Update keyboard shortcuts format to follow that of Google Docs.
+- Refine toolbar styles. Fix toolbar to the top of the page when sticky.
+- Make the editor look closer to a textarea.
+- Update strikethrough shortcut from Google Docs.
+
+### Fixed
+
+- Fix tooltip position when scrolling (#99).
+
 ## [[v0.8.0]](https://github.com/springload/draftail/releases/tag/v0.8.0)
 
 ### Added
 
-- Add `name` attribute to button elements to facilitate targeting  in browser automation tests.
+- Add `name` attribute to button elements to simplify targeting  in browser automation tests.
 - Publish the package as an ES2015 module.
 
 ### Changed
