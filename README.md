@@ -66,6 +66,12 @@ const editor = (
 ReactDOM.render(editor, document.querySelector('[data-mount-basic]'));
 ```
 
+Also import the editor's styles:
+
+```scss
+@import 'draftail/dist/draftail.css';
+```
+
 ## Options and configuration
 
 To change the behavior of the editor, pass props to `DraftailEditor`. Here are the available props, and their default values:
