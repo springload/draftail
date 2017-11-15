@@ -20,6 +20,7 @@
 - Refine toolbar styles. Fix toolbar to the top of the page when sticky.
 - Make the editor look closer to a textarea.
 - Update strikethrough shortcut from Google Docs.
+- Update Draft.js dependency to 0.10.4, and `draftjs-utils` to 0.8.8.
 
 ### Fixed
 

@@ -31,7 +31,7 @@ First, grab the package from npm:
 ```sh
 npm install --save draftail
 # Draftail's peerDependencies:
-npm install --save draft-js@^0.10.0 react@^15.5.0 react-dom@^15.5.0 prop-types@^15.5.0
+npm install --save draft-js@^0.10.4 react@^15.5.0 react-dom@^15.5.0 prop-types@^15.5.0
 ```
 
 Then, import the editor and use it in your code. Here is a [basic example](https://springload.github.io/draftail/example.html):
