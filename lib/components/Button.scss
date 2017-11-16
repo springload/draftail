@@ -1,0 +1,33 @@
+.toolbar-button {
+    display: inline-block;
+    margin-top: $controls-spacing;
+    padding: $button-spacing;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        color: inherit;
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    &:focus {
+        border: 1px solid $color-editor-chrome-active;
+        outline: 0;
+    }
+
+    &--active {
+        background-color: rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.2);
+
+        &:hover,
+        &:focus {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    }
+}
