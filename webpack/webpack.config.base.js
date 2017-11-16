@@ -52,6 +52,7 @@ const webpackConfig = environment => {
     const compiler = {
         entry: {
             vendor: [
+                './examples/utils/polyfills.js',
                 'react',
                 'react-dom',
                 'immutable',

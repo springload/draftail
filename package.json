@@ -89,6 +89,7 @@
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
+    "core-js": "^2.5.1",
     "css-loader": "^0.28.4",
     "dotenv": "^4.0.0",
     "draft-js": "^0.10.4",
