@@ -2,20 +2,24 @@
 
 exports[`Button #active 1`] = `
 <button
+  aria-label={null}
   className="toolbar-button toolbar-button--active"
+  data-balloon={true}
   name={null}
   onMouseDown={[Function]}
-  title={null}
+  onMouseLeave={[Function]}
   type="button"
 />
 `;
 
 exports[`Button #icon 1`] = `
 <button
+  aria-label={null}
   className="toolbar-button"
+  data-balloon={true}
   name={null}
   onMouseDown={[Function]}
-  title={null}
+  onMouseLeave={[Function]}
   type="button"
 >
   <Icon
@@ -28,10 +32,12 @@ exports[`Button #icon 1`] = `
 
 exports[`Button #label 1`] = `
 <button
+  aria-label={null}
   className="toolbar-button"
+  data-balloon={true}
   name={null}
   onMouseDown={[Function]}
-  title={null}
+  onMouseLeave={[Function]}
   type="button"
 >
   Test label
@@ -40,20 +46,24 @@ exports[`Button #label 1`] = `
 
 exports[`Button #name 1`] = `
 <button
+  aria-label={null}
   className="toolbar-button"
+  data-balloon={true}
   name="TEST"
   onMouseDown={[Function]}
-  title={null}
+  onMouseLeave={[Function]}
   type="button"
 />
 `;
 
 exports[`Button empty 1`] = `
 <button
+  aria-label={null}
   className="toolbar-button"
+  data-balloon={true}
   name={null}
   onMouseDown={[Function]}
-  title={null}
+  onMouseLeave={[Function]}
   type="button"
 />
 `;
