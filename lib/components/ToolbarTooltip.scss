@@ -1,0 +1,132 @@
+// Code initially taken from Balloon.css
+// See https://github.com/kazzkiq/balloon.css.
+//
+// Variables
+// -----------------------------------------
+
+$balloon-bg: fade-out(#111, .1) !default;
+$ballon-text-color: $color-white;
+$balloon-base-size: 10px !default;
+$balloon-arrow-height: 6px;
+$balloon-arrow-offset: -1px;
+$ballon-border-radius: 4px;
+$ballon-transition-duration: 0;
+$ballon-transition-delay: 0;
+
+//
+// Mixins
+// -----------------------------------------
+
+@mixin svg-arrow($color, $position: up) {
+    $degrees: 0;
+    $height: 6px;
+    $width: 18px;
+
+    @if ($position == down) {
+        $degrees: 180 18 6;
+    } @else if ($position == left) {
+        $degrees: -90 18 18;
+        $width: 6px;
+        $height: 18px;
+    } @else if ($position == right) {
+        $degrees: 90 6 6;
+        $width: 6px;
+        $height: 18px;
+    }
+
+    background: no-repeat url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%22#{$width * 2}%22%20height%3D%22#{$height * 2}%22%3E%3Cpath%20fill%3D%22#{$color}%22%20transform%3D%22rotate(#{$degrees})%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E');
+    background-size: 100% auto;
+    width: $width;
+    height: $height;
+}
+
+@mixin base-effects() {
+    opacity: 0;
+    transition: all $ballon-transition-duration ease-out $ballon-transition-delay;
+}
+
+@mixin normalized-text() {
+    font-family: sans-serif !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    text-shadow: none !important;
+    font-size: $balloon-base-size + 2 !important;
+}
+
+@mixin ballon-position-down() {
+    &::after {
+        left: 50%;
+        margin-top: $balloon-arrow-offset + $balloon-arrow-height;
+        top: 100%;
+        transform: translate(-50%, -10px);
+    }
+
+    &::before {
+        @include svg-arrow($balloon-bg, 'down');
+        left: 50%;
+        margin-top: $balloon-arrow-offset;
+        top: 100%;
+        transform: translate(-50%, -10px);
+    }
+
+    &:hover,
+    &[data-balloon-visible] {
+        &::after {
+            transform: translate(-50%, 0);
+        }
+
+        &::before {
+            transform: translate(-50%, 0);
+        }
+    }
+}
+
+//
+// Styles
+// -----------------------------------------
+
+// IE 11 button bugfix.
+button[data-balloon] {
+    overflow: visible;
+}
+
+[data-balloon] {
+    position: relative;
+
+    // Fixing iOS Safari event issue.
+    // More info at: https://goo.gl/w8JF4W
+    cursor: pointer;
+
+    &::before,
+    &::after {
+        @include base-effects();
+        position: absolute;
+        z-index: $toolbar-tooltip-z-index;
+        pointer-events: none;
+    }
+
+    &::before {
+        content: '';
+    }
+
+    &::after {
+        @include normalized-text;
+        background: $balloon-bg;
+        border-radius: $ballon-border-radius;
+        color: $ballon-text-color;
+        content: attr(aria-label);
+        padding: .5em 1em;
+        white-space: nowrap;
+    }
+
+    &:hover,
+    &[data-balloon-visible] {
+        &::before,
+        &::after {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+
+    @include ballon-position-down;
+}

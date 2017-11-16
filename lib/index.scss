@@ -24,6 +24,7 @@ $tooltip-z-index: $editor-z-index + 1;
 $overlay-z-index: $tooltip-z-index + 1;
 $activeblock-z-index: $overlay-z-index + 1;
 $toolbar-z-index: $activeblock-z-index + 1;
+$toolbar-tooltip-z-index: $toolbar-z-index + 1;
 
 @mixin disabled {
     opacity: 0.5;
@@ -84,6 +85,7 @@ $toolbar-z-index: $activeblock-z-index + 1;
 }
 
 @import './components/Button';
+@import './components/ToolbarTooltip';
 
 .RichEditor-tooltip__button {
     appearance: none;
