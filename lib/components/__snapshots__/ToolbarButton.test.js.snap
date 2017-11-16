@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button #active 1`] = `
+exports[`ToolbarButton #active 1`] = `
 <button
   aria-label={null}
   className="toolbar-button toolbar-button--active"
@@ -12,7 +12,7 @@ exports[`Button #active 1`] = `
 />
 `;
 
-exports[`Button #icon 1`] = `
+exports[`ToolbarButton #icon 1`] = `
 <button
   aria-label={null}
   className="toolbar-button"
@@ -30,7 +30,7 @@ exports[`Button #icon 1`] = `
 </button>
 `;
 
-exports[`Button #label 1`] = `
+exports[`ToolbarButton #label 1`] = `
 <button
   aria-label={null}
   className="toolbar-button"
@@ -44,7 +44,7 @@ exports[`Button #label 1`] = `
 </button>
 `;
 
-exports[`Button #name 1`] = `
+exports[`ToolbarButton #name 1`] = `
 <button
   aria-label={null}
   className="toolbar-button"
@@ -56,7 +56,7 @@ exports[`Button #name 1`] = `
 />
 `;
 
-exports[`Button empty 1`] = `
+exports[`ToolbarButton empty 1`] = `
 <button
   aria-label={null}
   className="toolbar-button"

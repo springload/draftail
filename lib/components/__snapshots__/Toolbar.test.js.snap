@@ -7,7 +7,7 @@ exports[`Toolbar #blockTypes 1`] = `
 >
   <ToolbarGroup />
   <ToolbarGroup>
-    <Button
+    <ToolbarButton
       active={false}
       icon={null}
       label="Test 1"
@@ -15,7 +15,7 @@ exports[`Toolbar #blockTypes 1`] = `
       onClick={[Function]}
       title={null}
     />
-    <Button
+    <ToolbarButton
       active={false}
       icon="icon-test-2"
       label="Test 2"
@@ -23,7 +23,7 @@ exports[`Toolbar #blockTypes 1`] = `
       onClick={[Function]}
       title={null}
     />
-    <Button
+    <ToolbarButton
       active={false}
       icon="icon-test-3"
       label="Test 3"
@@ -46,7 +46,7 @@ exports[`Toolbar #enableHorizontalRule 1`] = `
   <ToolbarGroup />
   <ToolbarGroup />
   <ToolbarGroup>
-    <Button
+    <ToolbarButton
       active={false}
       icon={null}
       label="―"
@@ -68,7 +68,7 @@ exports[`Toolbar #enableLineBreak 1`] = `
   <ToolbarGroup />
   <ToolbarGroup />
   <ToolbarGroup>
-    <Button
+    <ToolbarButton
       active={false}
       icon={null}
       label="↵"
@@ -91,7 +91,7 @@ exports[`Toolbar #entityTypes 1`] = `
   <ToolbarGroup />
   <ToolbarGroup />
   <ToolbarGroup>
-    <Button
+    <ToolbarButton
       active={false}
       icon={null}
       label="Test 1"
@@ -99,7 +99,7 @@ exports[`Toolbar #entityTypes 1`] = `
       onClick={[Function]}
       title={null}
     />
-    <Button
+    <ToolbarButton
       active={false}
       icon="icon-test-2"
       label="Test 2"
@@ -107,7 +107,7 @@ exports[`Toolbar #entityTypes 1`] = `
       onClick={[Function]}
       title={null}
     />
-    <Button
+    <ToolbarButton
       active={false}
       icon="icon-test-3"
       label="Test 3"
@@ -126,7 +126,7 @@ exports[`Toolbar #inlineStyles 1`] = `
   role="toolbar"
 >
   <ToolbarGroup>
-    <Button
+    <ToolbarButton
       active={false}
       icon={null}
       label="Test 1"
@@ -134,7 +134,7 @@ exports[`Toolbar #inlineStyles 1`] = `
       onClick={[Function]}
       title={null}
     />
-    <Button
+    <ToolbarButton
       active={false}
       icon="icon-test-2"
       label="Test 2"
@@ -142,7 +142,7 @@ exports[`Toolbar #inlineStyles 1`] = `
       onClick={[Function]}
       title={null}
     />
-    <Button
+    <ToolbarButton
       active={false}
       icon="icon-test-3"
       label="Test 3"
@@ -168,7 +168,7 @@ exports[`Toolbar #showUndoRedoControls 1`] = `
   <ToolbarGroup />
   <ToolbarGroup />
   <ToolbarGroup>
-    <Button
+    <ToolbarButton
       active={false}
       icon={null}
       label="↺"
@@ -176,7 +176,7 @@ exports[`Toolbar #showUndoRedoControls 1`] = `
       onClick={[Function]}
       title="Undo (Ctrl+Z)"
     />
-    <Button
+    <ToolbarButton
       active={false}
       icon={null}
       label="↻"
