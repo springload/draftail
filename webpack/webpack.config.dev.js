@@ -1,138 +1,18 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
 const path = require('path');
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-    .BundleAnalyzerPlugin;
 
-require('dotenv').config();
+const base = require('./webpack.config.base');
 
-const extractSass = new ExtractTextPlugin('draftail.css');
+const config = base('development');
 
-const isProduction = process.env.NODE_ENV === 'production';
-
-const autoprefixerConfig = {
-    browsers: ['> 1%', 'ie 11'],
-};
-
-const stats = {
-    // Add chunk information (setting this to `false` allows for a less verbose output)
-    chunks: false,
-    // Add the hash of the compilation
-    hash: false,
-    // `webpack --colors` equivalent
-    colors: true,
-    // Add information about the reasons why modules are included
-    reasons: false,
-    // Add webpack version information
-    version: false,
-};
-
-module.exports = {
+module.exports = Object.assign({}, config, {
     // See http://webpack.github.io/docs/configuration.html#devtool
     devtool: 'inline-source-map',
-    entry: {
-        vendor: [
-            'react',
-            'react-dom',
-            'immutable',
-            'draft-js',
-            'draftjs-utils',
-            'element-closest',
-            './lib/index.scss',
-        ],
-        intro: './examples/intro',
-        basic: './examples/basic',
-        entities: './examples/entities',
-        all: './examples/all',
-        wagtail: './examples/wagtail',
-        custom: './examples/custom',
-        test: './examples/test',
-    },
-    output: {
-        path: path.join(__dirname, '..', 'build'),
-        filename: '[name].bundle.js',
-        publicPath: '/assets/',
-    },
-    plugins: [
-        new webpack.NoEmitOnErrorsPlugin(),
-        new BundleAnalyzerPlugin({
-            // Can be `server`, `static` or `disabled`.
-            analyzerMode: 'static',
-            // Path to bundle report file that will be generated in `static` mode.
-            reportFilename: path.join(__dirname, 'webpack-stats.html'),
-            // Automatically open report in default browser
-            openAnalyzer: false,
-            logLevel: 'warn',
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            filename: 'vendor.bundle.js',
-        }),
-        extractSass,
-        new webpack.optimize.ModuleConcatenationPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.DefinePlugin({
-            // Set an environment variable of EMBEDLY_API_KEY to use this in development.
-            EMBEDLY_API_KEY: JSON.stringify(process.env.EMBEDLY_API_KEY),
-            'process.env': {
-                NODE_ENV: JSON.stringify('development'),
-            },
-        }),
-    ],
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                use: ['babel-loader'],
-                exclude: /node_modules/,
-            },
-            {
-                test: /\.scss$/,
-                use: extractSass.extract({
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                sourceMap: !isProduction,
-                                minimize: isProduction
-                                    ? {
-                                          autoprefixer: autoprefixerConfig,
-                                      }
-                                    : false,
-                            },
-                        },
-                        {
-                            loader: 'postcss-loader',
-                            options: {
-                                sourceMap: !isProduction,
-                                plugins: () => [
-                                    autoprefixer(autoprefixerConfig),
-                                ],
-                            },
-                        },
-                        {
-                            loader: 'sass-loader',
-                            options: {
-                                sourceMap: !isProduction,
-                            },
-                        },
-                    ],
-                }),
-            },
-        ],
-    },
 
-    stats: stats,
-
-    // Some libraries import Node modules but don't use them in the browser.
-    // Tell Webpack to provide empty mocks for them so importing them works.
-    node: {
-        fs: 'empty',
-        net: 'empty',
-        tls: 'empty',
+    // Turn off performance hints during development because we don't do any
+    // splitting or minification in interest of speed. These warnings become
+    // cumbersome.
+    performance: {
+        hints: false,
     },
 
     // https://webpack.js.org/configuration/dev-server/#devserver
@@ -144,6 +24,6 @@ module.exports = {
         port: 4000,
         overlay: true,
         clientLogLevel: 'none',
-        stats: stats,
+        stats: config.stats,
     },
-};
+});

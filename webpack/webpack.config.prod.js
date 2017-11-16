@@ -1,37 +1,34 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
 const path = require('path');
 const webpack = require('webpack');
 
-const config = require('./webpack.config.dev');
+const base = require('./webpack.config.base');
 
-config.watch = false;
-config.devtool = false;
-config.devServer = {};
-config.output.path = path.join(__dirname, '..', 'examples', 'assets');
+const config = base('production');
 
-config.plugins = config.plugins.slice(0, 5).concat([
-    new webpack.DefinePlugin({
-        // Key is hard-coded because it will be public on the demo site anyway.
-        // Key usage is limited to whitelisted Referrers.
-        EMBEDLY_API_KEY: JSON.stringify('fd2d6a8502b54524a58f62d1ad8d8550'),
-        'process.env': {
-            NODE_ENV: JSON.stringify('production'),
-        },
+module.exports = Object.assign({}, config, {
+    output: Object.assign({}, config.output, {
+        path: path.join(__dirname, '..', 'examples', 'assets'),
     }),
-    new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            screw_ie8: true, // React doesn't support IE8
-            warnings: false,
-        },
-        mangle: {
-            screw_ie8: true,
-        },
-        output: {
-            comments: false,
-            screw_ie8: true,
-        },
-    }),
-]);
 
-module.exports = config;
+    plugins: config.plugins.concat([
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false,
+                // Disabled because of an issue with Uglify breaking seemingly valid code:
+                // https://github.com/facebookincubator/create-react-app/issues/2376
+                // Pending further investigation:
+                // https://github.com/mishoo/UglifyJS2/issues/2011
+                comparisons: false,
+            },
+            mangle: {
+                safari10: true,
+            },
+            output: {
+                comments: false,
+                // Turned on because emoji and regex is not minified properly using default
+                // https://github.com/facebookincubator/create-react-app/issues/2488
+                ascii_only: true,
+            },
+        }),
+    ]),
+});
