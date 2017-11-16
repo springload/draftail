@@ -84,7 +84,7 @@ $toolbar-tooltip-z-index: $toolbar-z-index + 1;
     }
 }
 
-@import './components/Button';
+@import './components/ToolbarButton';
 @import './components/ToolbarTooltip';
 
 .RichEditor-tooltip__button {
