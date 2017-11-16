@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ToolbarGroup children 1`] = `
+<div
+  className="toolbar-group"
+>
+  <span>
+    Test child
+  </span>
+</div>
+`;
+
 exports[`ToolbarGroup empty 1`] = `null`;
 
 exports[`ToolbarGroup empty array children 1`] = `null`;
