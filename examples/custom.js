@@ -49,8 +49,9 @@ const editor = (
                 style: { fontWeight: 'bold', textShadow: '1px 1px 1px black' },
             },
             {
-                label: 'Redacted',
+                label: '█',
                 type: 'REDACTED',
+                description: 'Redacted',
                 style: { backgroundColor: 'currentcolor' },
             },
         ]}
