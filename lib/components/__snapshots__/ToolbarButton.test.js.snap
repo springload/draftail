@@ -4,7 +4,7 @@ exports[`ToolbarButton #active 1`] = `
 <button
   aria-label={null}
   className="toolbar-button toolbar-button--active"
-  data-balloon={true}
+  data-balloon={null}
   name={null}
   onMouseDown={[Function]}
   onMouseLeave={[Function]}
@@ -16,7 +16,7 @@ exports[`ToolbarButton #icon 1`] = `
 <button
   aria-label={null}
   className="toolbar-button"
-  data-balloon={true}
+  data-balloon={null}
   name={null}
   onMouseDown={[Function]}
   onMouseLeave={[Function]}
@@ -34,7 +34,7 @@ exports[`ToolbarButton #label 1`] = `
 <button
   aria-label={null}
   className="toolbar-button"
-  data-balloon={true}
+  data-balloon={null}
   name={null}
   onMouseDown={[Function]}
   onMouseLeave={[Function]}
@@ -48,7 +48,7 @@ exports[`ToolbarButton #name 1`] = `
 <button
   aria-label={null}
   className="toolbar-button"
-  data-balloon={true}
+  data-balloon={null}
   name="TEST"
   onMouseDown={[Function]}
   onMouseLeave={[Function]}
@@ -60,7 +60,7 @@ exports[`ToolbarButton empty 1`] = `
 <button
   aria-label={null}
   className="toolbar-button"
-  data-balloon={true}
+  data-balloon={null}
   name={null}
   onMouseDown={[Function]}
   onMouseLeave={[Function]}
