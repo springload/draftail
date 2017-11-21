@@ -6,11 +6,11 @@
 
 ### Added
 
-- Add support for [custom inline styles](https://github.com/springload/draftail#custom-inline-styles), thanks to @vincentaudebert (#97).
+- Add support for [custom inline styles](https://github.com/springload/draftail#custom-inline-styles), thanks to [@vincentaudebert](https://github.com/vincentaudebert) ([#97](https://github.com/springload/draftail/pull/97)).
 - Add [basic styles](https://github.com/springload/draftail/blob/60f2f6ef5684c10c7c409a6333f2b157b955fa45/lib/api/constants.js#L51) for common inline styles.
 - Add new `description` prop for all formats to describe the format's use with more text than the `label`.
 - Add separate button groups in the toolbar.
-- Add basic undo/redo controls in the toolbar (#100).
+- Add basic undo/redo controls in the toolbar ([#100](https://github.com/springload/draftail/pull/100)).
 - Introduce icons for hr and br.
 - Add keyboard shortcuts for superscript & subscript.
 
@@ -24,7 +24,7 @@
 
 ### Fixed
 
-- Fix tooltip position when scrolling (#99).
+- Fix tooltip position when scrolling ([#99](https://github.com/springload/draftail/pull/99)).
 
 ## [[v0.8.0]](https://github.com/springload/draftail/releases/tag/v0.8.0)
 
