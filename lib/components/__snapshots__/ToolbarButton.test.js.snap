@@ -56,6 +56,18 @@ exports[`ToolbarButton #name 1`] = `
 />
 `;
 
+exports[`ToolbarButton #title 1`] = `
+<button
+  aria-label="Test title"
+  className="toolbar-button"
+  data-balloon={true}
+  name={null}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  type="button"
+/>
+`;
+
 exports[`ToolbarButton empty 1`] = `
 <button
   aria-label={null}
