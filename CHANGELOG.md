@@ -32,6 +32,31 @@
 - Fix beforeInput text replacement happening on non-collapsed selections.
 - Prevent text inserted after entities from continuing the entity. Fix [#86](https://github.com/springload/draftail/issue/86) ([#106](https://github.com/springload/draftail/pull/106)).
 
+### How to upgrade
+
+This release does not have many breaking changes, but the editor's toolbar styles have changed a lot and this may cause breakage.
+
+First, update Draftail and its Draft.js peer dependency: `npm install --save draft-js@^0.10.4 draftail@0.9.0`.
+
+Then, you will want to update controls to leverage the new `description` prop. It will be displayed in the new toolbar tooltips. Here is a brief example:
+
+```diff
+blockTypes={[
+    {
+        type: BLOCK_TYPE.HEADER_THREE,
+        label: 'H3',
+        // Use a description to further convey what the control does.
++        description: 'Heading 3',
+    },
+    {
+        type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
+        // The icon is enough – but use the new prop to help screen reader users.
+-        label: 'UL',
++        description: 'Bulleted list',
+        icon: 'icon-list-ul',
+    },
+]}
+
 ## [[v0.8.0]](https://github.com/springload/draftail/releases/tag/v0.8.0)
 
 ### Added
