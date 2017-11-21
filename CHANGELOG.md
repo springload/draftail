@@ -2,6 +2,8 @@
 
 > All notable changes to this project are documented in this file. This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
 ## [[v0.9.0]](https://github.com/springload/draftail/releases/tag/v0.9.0)
 
 ### Added
@@ -9,22 +11,26 @@
 - Add support for [custom inline styles](https://github.com/springload/draftail#custom-inline-styles), thanks to [@vincentaudebert](https://github.com/vincentaudebert) ([#97](https://github.com/springload/draftail/pull/97)).
 - Add [basic styles](https://github.com/springload/draftail/blob/60f2f6ef5684c10c7c409a6333f2b157b955fa45/lib/api/constants.js#L51) for common inline styles.
 - Add new `description` prop for all formats to describe the format's use with more text than the `label`.
+- Add tooltips for toolbar buttons to display the full control `description` as well as its keyboard shortcut.
 - Add separate button groups in the toolbar.
-- Add basic undo/redo controls in the toolbar ([#100](https://github.com/springload/draftail/pull/100)).
-- Introduce icons for hr and br.
+- Add basic undo/redo controls in the toolbar ([#100](https://github.com/springload/draftail/pull/100)), displaying the related keyboard shortcuts.
+- Introduce icons for hr: `―` and br: `↵`.
 - Add keyboard shortcuts for superscript & subscript.
 
 ### Changed
 
 - Update keyboard shortcuts format to follow that of Google Docs.
 - Refine toolbar styles. Fix toolbar to the top of the page when sticky.
-- Make the editor look closer to a textarea.
+- Make the editor look closer to a textarea ([#96](https://github.com/springload/draftail/issue/96)).
 - Update strikethrough shortcut from Google Docs.
 - Update Draft.js dependency to 0.10.4, and `draftjs-utils` to 0.8.8.
+- Stop preserving Markdown-like block marker when undoing block type change.
 
 ### Fixed
 
 - Fix tooltip position when scrolling ([#99](https://github.com/springload/draftail/pull/99)).
+- Fix beforeInput text replacement happening on non-collapsed selections.
+- Prevent text inserted after entities from continuing the entity. Fix [#86](https://github.com/springload/draftail/issue/86) ([#106](https://github.com/springload/draftail/pull/106)).
 
 ## [[v0.8.0]](https://github.com/springload/draftail/releases/tag/v0.8.0)
 
