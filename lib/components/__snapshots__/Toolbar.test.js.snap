@@ -52,7 +52,7 @@ exports[`Toolbar #enableHorizontalRule 1`] = `
       label="―"
       name="HORIZONTAL_RULE"
       onClick={[Function]}
-      title="Horizontal line"
+      title="Horizontal line (- - -)"
     />
   </ToolbarGroup>
   <ToolbarGroup />
