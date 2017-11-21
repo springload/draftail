@@ -16,6 +16,7 @@
 - Add basic undo/redo controls in the toolbar ([#100](https://github.com/springload/draftail/pull/100)), displaying the related keyboard shortcuts.
 - Introduce icons for hr: `―` and br: `↵`.
 - Add keyboard shortcuts for superscript & subscript.
+- Add more Markdown-like markers for heading levels (`## `), code block (triple backtick), blockquote (`> `) ([#53](https://github.com/springload/draftail/issues/53)).
 
 ### Changed
 
@@ -56,6 +57,7 @@ blockTypes={[
         icon: 'icon-list-ul',
     },
 ]}
+```
 
 ## [[v0.8.0]](https://github.com/springload/draftail/releases/tag/v0.8.0)
 
