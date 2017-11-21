@@ -26,6 +26,7 @@
 - Update strikethrough shortcut from Google Docs.
 - Update Draft.js dependency to 0.10.4, and `draftjs-utils` to 0.8.8.
 - Stop preserving Markdown-like block marker when undoing block type change.
+- Stop restricting block type changes based on Markdown-style markers to unstyled blocks only.
 
 ### Fixed
 
