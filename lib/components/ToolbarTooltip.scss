@@ -116,7 +116,7 @@ button[data-balloon] {
         color: $ballon-text-color;
         content: attr(aria-label);
         padding: .5em 1em;
-        white-space: nowrap;
+        white-space: pre;
     }
 
     &:hover,
