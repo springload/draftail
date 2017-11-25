@@ -35,6 +35,7 @@ const editor = (
         enableLineBreak={true}
         showUndoRedoControls={true}
         stripPastedStyles={false}
+        spellCheck={true}
         entityTypes={[
             {
                 type: ENTITY_TYPE.IMAGE,

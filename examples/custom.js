@@ -28,6 +28,7 @@ const editor = (
         rawContentState={rawContentState}
         onSave={onSave}
         stripPastedStyles={false}
+        spellCheck={true}
         blockTypes={[
             {
                 label: 'H2',

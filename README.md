@@ -91,6 +91,8 @@ enableLineBreak: false,
 showUndoRedoControls: false,
 // Disable copy/paste of rich text in the editor.
 stripPastedStyles: true,
+// Set whether spellcheck is turned on for your editor.
+spellCheck: false,
 // List of the available block types.
 blockTypes: [],
 // List of the available inline styles.

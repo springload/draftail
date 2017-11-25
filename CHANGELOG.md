@@ -17,6 +17,7 @@
 - Introduce icons for hr: `―` and br: `↵`.
 - Add keyboard shortcuts for superscript & subscript.
 - Add more Markdown-like markers for heading levels (`## `), code block (triple backtick), blockquote (`> `), hr (`---`) ([#53](https://github.com/springload/draftail/issues/53)).
+- Add `spellCheck` prop, passed to Draft.js `Editor`. Sets whether spellcheck is turned on for your editor.
 
 ### Changed
 
