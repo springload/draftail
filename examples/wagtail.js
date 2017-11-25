@@ -26,86 +26,110 @@ const onSave = contentState => {
     );
 };
 
+const onCopy = () => {
+    const hidden = document.createElement('textarea');
+    hidden.value = JSON.stringify(
+        JSON.parse(sessionStorage.getItem('wagtail:contentState') || ''),
+        null,
+        2,
+    );
+    document.body.appendChild(hidden);
+    hidden.select();
+    document.execCommand('copy');
+    document.body.removeChild(hidden);
+};
+
 const editor = (
-    <DraftailEditor
-        rawContentState={initialContentState}
-        onSave={onSave}
-        placeholder="Write here…"
-        enableHorizontalRule={true}
-        enableLineBreak={true}
-        showUndoRedoControls={true}
-        stripPastedStyles={false}
-        spellCheck={true}
-        entityTypes={[
-            {
-                type: ENTITY_TYPE.IMAGE,
-                description: 'Image',
-                icon: 'icon-image',
-                source: ImageSource,
-                imageFormats: [],
-            },
-            {
-                type: ENTITY_TYPE.EMBED,
-                description: 'Embed',
-                icon: 'icon-media',
-                source: EmbedSource,
-            },
-            {
-                type: ENTITY_TYPE.LINK,
-                description: 'Link',
-                icon: 'icon-link',
-                source: LinkSource,
-                decorator: Link,
-            },
-            {
-                type: ENTITY_TYPE.DOCUMENT,
-                description: 'Document',
-                icon: 'icon-doc-full',
-                source: DocumentSource,
-                decorator: Document,
-            },
-        ]}
-        blockTypes={[
-            {
-                type: BLOCK_TYPE.HEADER_TWO,
-                label: 'H2',
-                description: 'Heading 2',
-            },
-            {
-                type: BLOCK_TYPE.HEADER_THREE,
-                label: 'H3',
-                description: 'Heading 3',
-            },
-            {
-                type: BLOCK_TYPE.HEADER_FOUR,
-                label: 'H4',
-                description: 'Heading 4',
-            },
-            {
-                type: BLOCK_TYPE.HEADER_FIVE,
-                label: 'H5',
-                description: 'Heading 5',
-            },
-            {
-                type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
-                description: 'Bulleted list',
-                icon: 'icon-list-ul',
-            },
-            {
-                type: BLOCK_TYPE.ORDERED_LIST_ITEM,
-                description: 'Numbered list',
-                icon: 'icon-list-ol',
-            },
-        ]}
-        inlineStyles={[
-            { type: INLINE_STYLE.BOLD, description: 'Bold', icon: 'icon-bold' },
-            {
-                type: INLINE_STYLE.ITALIC,
-                description: 'Italic',
-                icon: 'icon-italic',
-            },
-        ]}
-    />
+    <div>
+        <DraftailEditor
+            rawContentState={initialContentState}
+            onSave={onSave}
+            placeholder="Write here…"
+            enableHorizontalRule={true}
+            enableLineBreak={true}
+            showUndoRedoControls={true}
+            stripPastedStyles={false}
+            maxListNesting={9}
+            spellCheck={true}
+            entityTypes={[
+                {
+                    type: ENTITY_TYPE.IMAGE,
+                    description: 'Image',
+                    icon: 'icon-image',
+                    source: ImageSource,
+                    imageFormats: [],
+                },
+                {
+                    type: ENTITY_TYPE.EMBED,
+                    description: 'Embed',
+                    icon: 'icon-media',
+                    source: EmbedSource,
+                },
+                {
+                    type: ENTITY_TYPE.LINK,
+                    description: 'Link',
+                    icon: 'icon-link',
+                    source: LinkSource,
+                    decorator: Link,
+                },
+                {
+                    type: ENTITY_TYPE.DOCUMENT,
+                    description: 'Document',
+                    icon: 'icon-doc-full',
+                    source: DocumentSource,
+                    decorator: Document,
+                },
+            ]}
+            blockTypes={[
+                {
+                    type: BLOCK_TYPE.HEADER_TWO,
+                    label: 'H2',
+                    description: 'Heading 2',
+                },
+                {
+                    type: BLOCK_TYPE.HEADER_THREE,
+                    label: 'H3',
+                    description: 'Heading 3',
+                },
+                {
+                    type: BLOCK_TYPE.HEADER_FOUR,
+                    label: 'H4',
+                    description: 'Heading 4',
+                },
+                {
+                    type: BLOCK_TYPE.HEADER_FIVE,
+                    label: 'H5',
+                    description: 'Heading 5',
+                },
+                {
+                    type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
+                    description: 'Bulleted list',
+                    icon: 'icon-list-ul',
+                },
+                {
+                    type: BLOCK_TYPE.ORDERED_LIST_ITEM,
+                    description: 'Numbered list',
+                    icon: 'icon-list-ol',
+                },
+            ]}
+            inlineStyles={[
+                {
+                    type: INLINE_STYLE.BOLD,
+                    description: 'Bold',
+                    icon: 'icon-bold',
+                },
+                {
+                    type: INLINE_STYLE.ITALIC,
+                    description: 'Italic',
+                    icon: 'icon-italic',
+                },
+            ]}
+        />
+        <details>
+            <summary>Debug</summary>
+            <button onClick={onCopy}>Copy editor content</button>
+        </details>
+    </div>
 );
 
 ReactDOM.render(editor, document.querySelector('[data-mount-wagtail]'));
