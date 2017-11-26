@@ -279,3 +279,25 @@ exports[`ImageBlock basic 1`] = `
   </div>
 </div>
 `;
+
+exports[`ImageBlock empty 1`] = `
+<div>
+  <Icon
+    className="RichEditor-media-icon"
+    name="icon-image"
+    title={null}
+  />
+  <div
+    className="RichEditor-media-container"
+    onClick={[Function]}
+  >
+    <span
+      className="RichEditor-media-preview"
+    >
+      <img
+        alt=""
+      />
+    </span>
+  </div>
+</div>
+`;
