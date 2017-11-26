@@ -53,7 +53,7 @@ exports[`Toolbar #enableHorizontalRule 1`] = `
       name="HORIZONTAL_RULE"
       onClick={[Function]}
       title="Horizontal line
-    - - -"
+- - -"
     />
   </ToolbarGroup>
   <ToolbarGroup />
@@ -76,7 +76,7 @@ exports[`Toolbar #enableLineBreak 1`] = `
       name="BR"
       onClick={[Function]}
       title="Line break
-    Shift+Enter"
+Shift+Enter"
     />
   </ToolbarGroup>
   <ToolbarGroup />
@@ -177,7 +177,7 @@ exports[`Toolbar #showUndoRedoControls 1`] = `
       name="undo"
       onClick={[Function]}
       title="Undo
-    Ctrl+Z"
+Ctrl+Z"
     />
     <ToolbarButton
       active={false}
@@ -186,7 +186,7 @@ exports[`Toolbar #showUndoRedoControls 1`] = `
       name="redo"
       onClick={[Function]}
       title="Redo
-    Ctrl+Shift+Z"
+Ctrl+Shift+Z"
     />
   </ToolbarGroup>
 </div>
