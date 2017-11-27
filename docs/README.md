@@ -129,3 +129,9 @@ Things to borrow: keyboard shortcuts, Wagtail integration mechanism,
 - Custom inline styles (see https://github.com/jpuri/draftjs-utils/commit/02f452cef415a20351d809fac3b87b9f2ae5f7a9, https://github.com/jpuri/draftjs-utils/commit/6a12f693330f0e8a82ec0461661be505f16b6003)
 - Smart quotes replacement
 - https://github.com/globocom/megadraft/blob/master/src/utils.js#L67
+
+## Demo site
+
+Website favicons generated with [RealFaviconGenerator](https://realfavicongenerator.net/).
+
+Original pencil icon is the [Noun project crayon](https://commons.wikimedia.org/wiki/File:Noun_project_-_crayon.svg) dedicated to the public domain (CC0) by D. Charbonnier.

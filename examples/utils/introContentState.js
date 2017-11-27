@@ -11,8 +11,13 @@ export default {
             mutability: 'MUTABLE',
             data: { url: 'https://support.google.com/docs/answer/179738' },
         },
-        '2': { type: 'HORIZONTAL_RULE', mutability: 'IMMUTABLE', data: {} },
-        '3': {
+        '2': {
+            type: 'LINK',
+            mutability: 'MUTABLE',
+            data: { url: 'https://en.wikipedia.org/wiki/Markdown' },
+        },
+        '3': { type: 'HORIZONTAL_RULE', mutability: 'IMMUTABLE', data: {} },
+        '4': {
             type: 'LINK',
             mutability: 'MUTABLE',
             data: {
@@ -20,12 +25,12 @@ export default {
                     'https://github.com/springload/draftail/tree/master/docs#keyboard-shortcuts',
             },
         },
-        '4': {
+        '5': {
             type: 'LINK',
             mutability: 'MUTABLE',
             data: { url: 'https://www.springload.co.nz/' },
         },
-        '5': {
+        '6': {
             type: 'IMAGE',
             mutability: 'IMMUTABLE',
             data: {
@@ -34,12 +39,12 @@ export default {
                 src: 'assets/example-image.png',
             },
         },
-        '6': {
+        '7': {
             type: 'LINK',
             mutability: 'MUTABLE',
             data: { url: 'http://embed.ly/' },
         },
-        '7': {
+        '8': {
             type: 'EMBED',
             mutability: 'IMMUTABLE',
             data: {
@@ -51,13 +56,13 @@ export default {
                 thumbnail: 'https://i.ytimg.com/vi/feUYwoLhE_4/hqdefault.jpg',
             },
         },
-        '8': { type: 'HORIZONTAL_RULE', mutability: 'IMMUTABLE', data: {} },
-        '9': {
+        '9': { type: 'HORIZONTAL_RULE', mutability: 'IMMUTABLE', data: {} },
+        '10': {
             type: 'LINK',
             mutability: 'MUTABLE',
             data: { url: 'https://springload.github.io/draftail/example.html' },
         },
-        '10': {
+        '11': {
             type: 'LINK',
             mutability: 'MUTABLE',
             data: { url: 'https://github.com/springload/draftail' },
@@ -94,11 +99,14 @@ export default {
         {
             key: '32lnv',
             text:
-                'Draftail aims for a mouse-free, keyboard-centric experience. Most formatting can be done by using common keyboard shortcuts, inspired by Google Docs.',
+                'Draftail aims for a mouse-free, keyboard-centric experience. Most formatting can be done by using common keyboard shortcuts, inspired by Google Docs and Markdown.',
             type: 'unstyled',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [{ offset: 137, length: 11, key: 1 }],
+            entityRanges: [
+                { offset: 137, length: 11, key: 1 },
+                { offset: 153, length: 8, key: 2 },
+            ],
             data: {},
         },
         {
@@ -107,7 +115,7 @@ export default {
             type: 'atomic',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [{ offset: 0, length: 1, key: 2 }],
+            entityRanges: [{ offset: 0, length: 1, key: 3 }],
             data: {},
         },
         {
@@ -125,7 +133,7 @@ export default {
             type: 'unordered-list-item',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [{ offset: 12, length: 19, key: 3 }],
+            entityRanges: [{ offset: 12, length: 19, key: 4 }],
             data: {},
         },
         {
@@ -178,7 +186,7 @@ export default {
             type: 'unordered-list-item',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [{ offset: 9, length: 4, key: 4 }],
+            entityRanges: [{ offset: 9, length: 4, key: 5 }],
             data: {},
         },
         {
@@ -196,7 +204,7 @@ export default {
             type: 'atomic',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [{ offset: 0, length: 1, key: 5 }],
+            entityRanges: [{ offset: 0, length: 1, key: 6 }],
             data: {},
         },
         {
@@ -205,7 +213,7 @@ export default {
             type: 'unstyled',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [{ offset: 42, length: 7, key: 6 }],
+            entityRanges: [{ offset: 42, length: 7, key: 7 }],
             data: {},
         },
         {
@@ -214,7 +222,7 @@ export default {
             type: 'atomic',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [{ offset: 0, length: 1, key: 7 }],
+            entityRanges: [{ offset: 0, length: 1, key: 8 }],
             data: {},
         },
         {
@@ -369,7 +377,7 @@ export default {
             type: 'atomic',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [{ offset: 0, length: 1, key: 8 }],
+            entityRanges: [{ offset: 0, length: 1, key: 9 }],
             data: {},
         },
         {
@@ -594,7 +602,7 @@ export default {
             type: 'unstyled',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [{ offset: 59, length: 13, key: 9 }],
+            entityRanges: [{ offset: 59, length: 13, key: 10 }],
             data: {},
         },
         {
@@ -853,7 +861,7 @@ export default {
             type: 'unstyled',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [{ offset: 39, length: 17, key: 10 }],
+            entityRanges: [{ offset: 39, length: 17, key: 11 }],
             data: {},
         },
     ],
