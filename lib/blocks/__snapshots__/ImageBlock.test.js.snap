@@ -51,7 +51,9 @@ exports[`ImageBlock #alignment 1`] = `
           Image alignment
         </h4>
         <p>
-          <label>
+          <label
+            key="left"
+          >
             <input
               checked={true}
               onChange={[Function]}
@@ -60,7 +62,9 @@ exports[`ImageBlock #alignment 1`] = `
             />
             Left
           </label>
-          <label>
+          <label
+            key="right"
+          >
             <input
               checked={false}
               onChange={[Function]}
@@ -143,7 +147,9 @@ exports[`ImageBlock #entityConfig.imageFormats 1`] = `
           Image alignment
         </h4>
         <p>
-          <label>
+          <label
+            key="left"
+          >
             <input
               checked={false}
               onChange={[Function]}
@@ -152,7 +158,9 @@ exports[`ImageBlock #entityConfig.imageFormats 1`] = `
             />
             Left
           </label>
-          <label>
+          <label
+            key="right"
+          >
             <input
               checked={true}
               onChange={[Function]}

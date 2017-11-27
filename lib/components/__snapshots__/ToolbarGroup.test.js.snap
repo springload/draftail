@@ -10,8 +10,8 @@ exports[`ToolbarGroup children 1`] = `
 </div>
 `;
 
-exports[`ToolbarGroup empty 1`] = `null`;
+exports[`ToolbarGroup empty 1`] = `""`;
 
-exports[`ToolbarGroup empty array children 1`] = `null`;
+exports[`ToolbarGroup empty array children 1`] = `""`;
 
-exports[`ToolbarGroup empty children 1`] = `null`;
+exports[`ToolbarGroup empty children 1`] = `""`;
