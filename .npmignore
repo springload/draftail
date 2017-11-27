@@ -19,3 +19,5 @@ npm-debug.log*
 *.test.js
 */tests/
 __snapshots__
+prettier.config.js
+.prettierignore
