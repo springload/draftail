@@ -14,13 +14,13 @@ Draftail aims for a mouse-free, keyboard-centric experience. Most formatting can
 
 Here are important features worth highlighting:
 
-- Support for [keyboard shortcuts](https://github.com/springload/draftail/tree/master/docs#keyboard-shortcuts).
-- Autolists – start a line with `-` , `*` , `1.`  to create a list item.
-- Undo / redo – until the end of times.
-- Common text types: headings, paragraphs, quotes, lists.
-- Common text styles: Bold, Italic, Underline, Monospace, Strikethrough.
-- Built-in `Link` and `Document` controls.
-- Built-in `Image` and `Embed` blocks.
+* Support for [keyboard shortcuts](https://github.com/springload/draftail/tree/master/docs#keyboard-shortcuts).
+* Autolists – start a line with `-` , `*` , `1.` to create a list item.
+* Undo / redo – until the end of times.
+* Common text types: headings, paragraphs, quotes, lists.
+* Common text styles: Bold, Italic, Underline, Monospace, Strikethrough.
+* Built-in `Link` and `Document` controls.
+* Built-in `Image` and `Embed` blocks.
 
 ## Getting started
 
@@ -42,9 +42,10 @@ import ReactDOM from 'react-dom';
 
 import DraftailEditor, { BLOCK_TYPE, INLINE_STYLE } from 'draftail';
 
-const initialContentState = JSON.parse(sessionStorage.getItem('basic:contentState')) || null;
+const initialContentState =
+    JSON.parse(sessionStorage.getItem('basic:contentState')) || null;
 
-const onSave = (contentState) => {
+const onSave = contentState => {
     sessionStorage.setItem('basic:contentState', JSON.stringify(contentState));
 };
 
@@ -54,7 +55,11 @@ const editor = (
         onSave={onSave}
         blockTypes={[
             { label: 'H3', type: BLOCK_TYPE.HEADER_THREE },
-            { label: 'UL', type: BLOCK_TYPE.UNORDERED_LIST_ITEM, icon: 'icon-list-ul' },
+            {
+                label: 'UL',
+                type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
+                icon: 'icon-list-ul',
+            },
         ]}
         inlineStyles={[
             { label: 'Bold', type: INLINE_STYLE.BOLD, icon: 'icon-bold' },
@@ -109,18 +114,18 @@ stateSaveInterval: 250,
 
 Draftail, like Draft.js, distinguishes between 3 content formats:
 
-- Blocks, that provide structure to the content. Blocks do not overlap – no content can be both a paragraph and a title.
-- Inline styles, providing inline formatting for text. Styles can overlap: a piece of text can be both bold and italic.
-- Entities, annotating content with metadata to represent rich content beyond text. Entities can be inline (eg. a link applied on a portion of text), or block-based (eg. an embedded video).
+* Blocks, that provide structure to the content. Blocks do not overlap – no content can be both a paragraph and a title.
+* Inline styles, providing inline formatting for text. Styles can overlap: a piece of text can be both bold and italic.
+* Entities, annotating content with metadata to represent rich content beyond text. Entities can be inline (eg. a link applied on a portion of text), or block-based (eg. an embedded video).
 
 ### Built-in formats
 
 Common formatting options are available out of the box:
 
-- Block types: `H1`, `H2`, `H3`, `H4`, `H5`, `H6`, `Blockquote`, `Code`, `UL`, `OL`, `P`
-- Inline styles: `Bold`, `Italic`, `Code`, `Underline`, `Strikethrough`, `Mark`, `Keyboard`, `Superscript`, `Subscript`
-- Entities: `Images`, `Embeds`, (`Links`, `Documents`)
-- And `HR`, `BR` as special cases
+* Block types: `H1`, `H2`, `H3`, `H4`, `H5`, `H6`, `Blockquote`, `Code`, `UL`, `OL`, `P`
+* Inline styles: `Bold`, `Italic`, `Code`, `Underline`, `Strikethrough`, `Mark`, `Keyboard`, `Superscript`, `Subscript`
+* Entities: `Images`, `Embeds`, (`Links`, `Documents`)
+* And `HR`, `BR` as special cases
 
 ### Configuring available formats
 
@@ -188,8 +193,8 @@ Draftail is meant to provide a consistent editing experience regardless of what 
 
 Here are quick questions to help you determine which formatting to use, depending on the use case:
 
-| In order to... | Use                                  |
-|----------------|--------------------------------------|
+| In order to...                        | Use           |
+| ------------------------------------- | ------------- |
 | Indicate the structure of the content | Blocks        |
 | Enter additional data/metadata        | Entities      |
 | Format a portion of a line            | Inline styles |
@@ -252,8 +257,8 @@ Creating custom entity types is a bit more involved because entities aren't simp
 
 Apart from the usual label/type/icon options, entities need:
 
-- A `source`, a React component that will be used to create/edit the entity from a specific data source (could be an API, or a form inside of a modal).
-- A `decorator`, a React component to display the entity within the editor area.
+* A `source`, a React component that will be used to create/edit the entity from a specific data source (could be an API, or a form inside of a modal).
+* A `decorator`, a React component to display the entity within the editor area.
 
 ##### Sources
 
@@ -269,7 +274,9 @@ const Link = ({ entityKey, contentState, children }) => {
 
     return (
         <span data-tooltip={entityKey} className="RichEditor-link">
-            <Icon name={`icon-${url.indexOf('mailto:') !== -1 ? 'mail' : 'link'}`} />
+            <Icon
+                name={`icon-${url.indexOf('mailto:') !== -1 ? 'mail' : 'link'}`}
+            />
             {children}
         </span>
     );
@@ -284,22 +291,22 @@ It is possible to create Draft.js text decorators via the entity API, by providi
 
 **Supported browser / device versions:**
 
-| Browser | Device/OS | Version |
-|---------|-----------|---------|
-| Mobile Safari | iOS Phone | latest |
-| Mobile Safari | iOS Tablet | latest |
-| Chrome | Android | latest |
-| IE | Desktop | 11 |
-| Chrome | Desktop | latest |
-| MS Edge | Desktop | latest |
-| Firefox | Desktop | latest |
-| Safari | OSX | latest |
+| Browser       | Device/OS  | Version |
+| ------------- | ---------- | ------- |
+| Mobile Safari | iOS Phone  | latest  |
+| Mobile Safari | iOS Tablet | latest  |
+| Chrome        | Android    | latest  |
+| IE            | Desktop    | 11      |
+| Chrome        | Desktop    | latest  |
+| MS Edge       | Desktop    | latest  |
+| Firefox       | Desktop    | latest  |
+| Safari        | OSX        | latest  |
 
 Draft.js and Draftail build upon ES6 language features. If targeting browsers that do not support them, have a look at:
 
-- [Draft.js required polyfills](https://facebook.github.io/draft-js/docs/advanced-topics-issues-and-pitfalls.html#polyfills).
-- [`position: sticky` support](https://caniuse.com/#feat=css-sticky), and [`stickyfill` polyfill](https://github.com/wilddeer/stickyfill).
-- [`Element.closest()` support](https://caniuse.com/#search=closest), and [polyfill](https://github.com/jonathantneal/closest).
+* [Draft.js required polyfills](https://facebook.github.io/draft-js/docs/advanced-topics-issues-and-pitfalls.html#polyfills).
+* [`position: sticky` support](https://caniuse.com/#feat=css-sticky), and [`stickyfill` polyfill](https://github.com/wilddeer/stickyfill).
+* [`Element.closest()` support](https://caniuse.com/#search=closest), and [polyfill](https://github.com/jonathantneal/closest).
 
 The Draftail demo site lists minimum polyfills for IE11 support: [`examples/utils/polyfills.js`](examples/utils/polyfills.js).
 
@@ -346,11 +353,11 @@ npm run
 
 ### Releases
 
-- Make a new branch for the release of the new version.
-- Update the [CHANGELOG](CHANGELOG.md).
-- Update the version number in `package.json`, following semver.
-- Make a PR and squash merge it.
-- Back on master with the PR merged, follow the instructions below.
+* Make a new branch for the release of the new version.
+* Update the [CHANGELOG](CHANGELOG.md).
+* Update the version number in `package.json`, following semver.
+* Make a PR and squash merge it.
+* Back on master with the PR merged, follow the instructions below.
 
 ```sh
 npm run dist
@@ -359,7 +366,7 @@ irish-pub
 npm publish
 ```
 
-- Finally, go to GitHub and create a release and a tag for the new version.
-- Done!
+* Finally, go to GitHub and create a release and a tag for the new version.
+* Done!
 
 > As a last step, you may want to go update our [Draft.js exporter demo](https://github.com/springload/draftjs_exporter_demo) to this new release to check that all is well in a fully separate project.
