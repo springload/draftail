@@ -4,6 +4,10 @@
 
 ## Unreleased
 
+### Removed
+
+* Remove Save and Cancel buttons from image block, thanks to [@allcaps](https://github.com/allcaps) ([#102](https://github.com/springload/draftail/pull/102))
+
 ## [[v0.9.0]](https://github.com/springload/draftail/releases/tag/v0.9.0)
 
 ### Added
