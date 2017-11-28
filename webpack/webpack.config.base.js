@@ -6,13 +6,18 @@ const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
     .BundleAnalyzerPlugin;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 require('dotenv').config();
+
+const pkg = require('../package.json');
 
 // Key is hard-coded because it will be public on the demo site anyway.
 // Key usage is limited to whitelisted Referrers.
 const EMBEDLY_API_KEY_PROD = 'fd2d6a8502b54524a58f62d1ad8d8550';
 const EMBEDLY_API_KEY = process.env.EMBEDLY_API_KEY || EMBEDLY_API_KEY_PROD;
+
+const GOOGLE_ANALYTICS_PROD = 'UA-79835767-5';
 
 const autoprefixerConfig = {
     browsers: ['> 1%', 'ie 11'],
@@ -49,6 +54,13 @@ const webpackConfig = environment => {
 
     const isProduction = environment === 'production';
 
+    const htmlPluginConfig = {
+        hash: true,
+        data: {
+            GOOGLE_ANALYTICS: isProduction ? GOOGLE_ANALYTICS_PROD : null,
+        },
+    };
+
     const compiler = {
         entry: {
             vendor: [
@@ -60,6 +72,7 @@ const webpackConfig = environment => {
                 'draftjs-utils',
                 'element-closest',
                 './lib/index.scss',
+                './examples/main.scss',
             ],
             intro: './examples/intro',
             basic: './examples/basic',
@@ -70,12 +83,55 @@ const webpackConfig = environment => {
             test: './examples/test',
         },
         output: {
-            path: path.join(__dirname, '..', 'build'),
+            path: path.join(__dirname, '..', 'public'),
             filename: '[name].bundle.js',
-            publicPath: '/assets/',
+            publicPath: isProduction ? '/draftail/' : '/',
         },
         plugins: [
             new webpack.NoEmitOnErrorsPlugin(),
+            new HtmlWebpackPlugin(
+                Object.assign({}, htmlPluginConfig, {
+                    template: path.join(
+                        __dirname,
+                        '..',
+                        'examples',
+                        'index.html',
+                    ),
+                    filename: 'index.html',
+                    chunks: ['vendor', 'intro'],
+                }),
+            ),
+            new HtmlWebpackPlugin(
+                Object.assign({}, htmlPluginConfig, {
+                    template: path.join(
+                        __dirname,
+                        '..',
+                        'examples',
+                        'test.html',
+                    ),
+                    filename: 'test.html',
+                    chunks: ['vendor', 'test'],
+                }),
+            ),
+            new HtmlWebpackPlugin(
+                Object.assign({}, htmlPluginConfig, {
+                    template: path.join(
+                        __dirname,
+                        '..',
+                        'examples',
+                        'examples.html',
+                    ),
+                    filename: 'examples.html',
+                    chunks: [
+                        'vendor',
+                        'basic',
+                        'entities',
+                        'wagtail',
+                        'custom',
+                        'all',
+                    ],
+                }),
+            ),
             new BundleAnalyzerPlugin({
                 // Can be `server`, `static` or `disabled`.
                 analyzerMode: 'static',
@@ -99,6 +155,7 @@ const webpackConfig = environment => {
                 'process.env': {
                     NODE_ENV: JSON.stringify(environment),
                 },
+                PKG_VERSION: JSON.stringify(pkg.version),
             }),
         ],
         module: {

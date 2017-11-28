@@ -6,17 +6,15 @@
     <title>Draftail – A configurable rich text editor based on Draft.js, built for Wagtail</title>
     <meta name="description" content="Draftail offers a mouse-free, keyboard-first experience. Most formatting can be done with shortcuts inspired by Google Docs and Markdown." />
 
-    <link rel="stylesheet" href="assets/main.css" />
     <!-- TODO Get rid of icon font. -->
-    <link rel="stylesheet" href="assets/icomoon/style.css" />
-    <link rel="stylesheet" href="assets/draftail.css" />
+    <link rel="stylesheet" href="static/icomoon/style.css" />
 
-    <link rel="shortcut icon" href="assets/favicons/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicons/manifest.json">
-    <link rel="mask-icon" href="assets/favicons/safari-pinned-tab.svg" color="#43b1b0">
+    <link rel="shortcut icon" href="static/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicons/favicon-16x16.png">
+    <link rel="manifest" href="static/favicons/manifest.json">
+    <link rel="mask-icon" href="static/favicons/safari-pinned-tab.svg" color="#43b1b0">
     <meta name="theme-color" content="#ffffff">
     <meta name="apple-mobile-web-app-title" content="Draftail">
 
@@ -26,7 +24,7 @@
     <meta property="og:site_name" content="Draftail">
     <meta property="og:title" content="Draftail – A configurable rich text editor based on Draft.js, built for Wagtail">
     <meta property="og:description" content="Draftail offers a mouse-free, keyboard-first experience. Most formatting can be done with shortcuts inspired by Google Docs and Markdown.">
-    <meta property="og:image" content="https://springload.github.io/draftail/assets/draftail-ui-screenshot.png">
+    <meta property="og:image" content="https://springload.github.io/draftail/static/draftail-ui-screenshot.png">
     <meta name="twitter:image:alt" content="Screenshot of the editor, with its toolbar and text area, and sample content">
     <meta name="twitter:label1" value="WYSIWYG?">
     <meta name="twitter:data1" value="Close enough">
@@ -91,13 +89,12 @@
             </a>
         </footer>
     </div>
-    <script src="assets/vendor.bundle.js"></script>
-    <script src="assets/intro.bundle.js"></script>
-
-    <script>
-        window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-        ga('create', 'UA-79835767-5', 'auto'); ga('send', 'pageview')
-    </script>
-    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    <% if (htmlWebpackPlugin.options.data.GOOGLE_ANALYTICS) { %>
+        <script>
+            window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+            ga('create', '<%= htmlWebpackPlugin.options.data.GOOGLE_ANALYTICS %>', 'auto'); ga('send', 'pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    <% } %>
 </body>
 </html>

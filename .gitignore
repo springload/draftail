@@ -30,7 +30,9 @@ build/Release
 dist
 es
 public/*.css
-public/*.bundle.js
+public/*.map
+public/*.html
+public/*.js
 
 # Dependency directories
 node_modules

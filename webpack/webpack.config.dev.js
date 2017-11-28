@@ -1,5 +1,3 @@
-const path = require('path');
-
 const base = require('./webpack.config.base');
 
 const config = base('development');
@@ -17,7 +15,7 @@ module.exports = Object.assign({}, config, {
 
     // https://webpack.js.org/configuration/dev-server/#devserver
     devServer: {
-        contentBase: path.join(__dirname, '..', 'examples'),
+        contentBase: config.output.path,
         watchContentBase: true,
         compress: true,
         hot: true,

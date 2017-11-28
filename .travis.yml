@@ -7,7 +7,7 @@ install:
 - npm install -g coveralls
 script:
 - npm run test:ci
-- mv webpack/webpack-stats.html examples || true
+- mv webpack/webpack-stats.html public || true
 after_success:
 - cat ./coverage/lcov.info | coveralls
 branches:
@@ -17,7 +17,7 @@ deploy:
   provider: pages
   skip_cleanup: true
   # Only deploy the subfolder, not the whole repository.
-  local_dir: examples
+  local_dir: public
   # This value is stored below, encrypted with travis-encrypt.
   github_token: "$GITHUB_TOKEN"
   on:
