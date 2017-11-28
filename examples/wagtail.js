@@ -11,6 +11,8 @@ import EmbedSource from './sources/EmbedSource';
 import Link from './entities/Link';
 import Document from './entities/Document';
 
+import SentryBoundary from './components/SentryBoundary';
+
 /* global PKG_VERSION */
 const DRAFTAIL_VERSION = PKG_VERSION;
 
@@ -44,90 +46,92 @@ const onCopy = () => {
 
 const editor = (
     <div>
-        <DraftailEditor
-            rawContentState={initialContentState}
-            onSave={onSave}
-            placeholder="Write here…"
-            enableHorizontalRule={true}
-            enableLineBreak={true}
-            showUndoRedoControls={true}
-            stripPastedStyles={false}
-            maxListNesting={9}
-            spellCheck={true}
-            entityTypes={[
-                {
-                    type: ENTITY_TYPE.IMAGE,
-                    description: 'Image',
-                    icon: 'icon-image',
-                    source: ImageSource,
-                    imageFormats: [],
-                },
-                {
-                    type: ENTITY_TYPE.EMBED,
-                    description: 'Embed',
-                    icon: 'icon-media',
-                    source: EmbedSource,
-                },
-                {
-                    type: ENTITY_TYPE.LINK,
-                    description: 'Link',
-                    icon: 'icon-link',
-                    source: LinkSource,
-                    decorator: Link,
-                },
-                {
-                    type: ENTITY_TYPE.DOCUMENT,
-                    description: 'Document',
-                    icon: 'icon-doc-full',
-                    source: DocumentSource,
-                    decorator: Document,
-                },
-            ]}
-            blockTypes={[
-                {
-                    type: BLOCK_TYPE.HEADER_TWO,
-                    label: 'H2',
-                    description: 'Heading 2',
-                },
-                {
-                    type: BLOCK_TYPE.HEADER_THREE,
-                    label: 'H3',
-                    description: 'Heading 3',
-                },
-                {
-                    type: BLOCK_TYPE.HEADER_FOUR,
-                    label: 'H4',
-                    description: 'Heading 4',
-                },
-                {
-                    type: BLOCK_TYPE.HEADER_FIVE,
-                    label: 'H5',
-                    description: 'Heading 5',
-                },
-                {
-                    type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
-                    description: 'Bulleted list',
-                    icon: 'icon-list-ul',
-                },
-                {
-                    type: BLOCK_TYPE.ORDERED_LIST_ITEM,
-                    description: 'Numbered list',
-                    icon: 'icon-list-ol',
-                },
-            ]}
-            inlineStyles={[
-                {
-                    type: INLINE_STYLE.BOLD,
-                    description: 'Bold',
-                    icon: 'icon-bold',
-                },
-                {
-                    type: INLINE_STYLE.ITALIC,
-                    description: 'Italic',
-                    icon: 'icon-italic',
-                },
-            ]}
-        />
+        <SentryBoundary>
+            <DraftailEditor
+                rawContentState={initialContentState}
+                onSave={onSave}
+                placeholder="Write here…"
+                enableHorizontalRule={true}
+                enableLineBreak={true}
+                showUndoRedoControls={true}
+                stripPastedStyles={false}
+                maxListNesting={9}
+                spellCheck={true}
+                entityTypes={[
+                    {
+                        type: ENTITY_TYPE.IMAGE,
+                        description: 'Image',
+                        icon: 'icon-image',
+                        source: ImageSource,
+                        imageFormats: [],
+                    },
+                    {
+                        type: ENTITY_TYPE.EMBED,
+                        description: 'Embed',
+                        icon: 'icon-media',
+                        source: EmbedSource,
+                    },
+                    {
+                        type: ENTITY_TYPE.LINK,
+                        description: 'Link',
+                        icon: 'icon-link',
+                        source: LinkSource,
+                        decorator: Link,
+                    },
+                    {
+                        type: ENTITY_TYPE.DOCUMENT,
+                        description: 'Document',
+                        icon: 'icon-doc-full',
+                        source: DocumentSource,
+                        decorator: Document,
+                    },
+                ]}
+                blockTypes={[
+                    {
+                        type: BLOCK_TYPE.HEADER_TWO,
+                        label: 'H2',
+                        description: 'Heading 2',
+                    },
+                    {
+                        type: BLOCK_TYPE.HEADER_THREE,
+                        label: 'H3',
+                        description: 'Heading 3',
+                    },
+                    {
+                        type: BLOCK_TYPE.HEADER_FOUR,
+                        label: 'H4',
+                        description: 'Heading 4',
+                    },
+                    {
+                        type: BLOCK_TYPE.HEADER_FIVE,
+                        label: 'H5',
+                        description: 'Heading 5',
+                    },
+                    {
+                        type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
+                        description: 'Bulleted list',
+                        icon: 'icon-list-ul',
+                    },
+                    {
+                        type: BLOCK_TYPE.ORDERED_LIST_ITEM,
+                        description: 'Numbered list',
+                        icon: 'icon-list-ol',
+                    },
+                ]}
+                inlineStyles={[
+                    {
+                        type: INLINE_STYLE.BOLD,
+                        description: 'Bold',
+                        icon: 'icon-bold',
+                    },
+                    {
+                        type: INLINE_STYLE.ITALIC,
+                        description: 'Italic',
+                        icon: 'icon-italic',
+                    },
+                ]}
+            />
+        </SentryBoundary>
         <details>
             <summary>Debug</summary>
             <button onClick={onCopy}>Copy editor content</button>

@@ -329,10 +329,6 @@ h4:hover .anchor {
   display: inline;
 }
 
-.u-blue {
-    color: blue;
-}
-
 .u-tinytext {
     font-size: 11px;
     font-style: italic;
@@ -347,4 +343,8 @@ h4:hover .anchor {
     opacity: 0.3;
     user-select: none;
     cursor: not-allowed;
+}
+
+.u-text-center {
+    text-align: center;
 }
