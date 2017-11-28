@@ -39,7 +39,7 @@ exports[`ImageBlock #alignment 1`] = `
             <input
               onChange={[Function]}
               type="text"
-              value="Test alt text"
+              value="Test alt"
             />
           </p>
         </label>
@@ -55,7 +55,7 @@ exports[`ImageBlock #alignment 1`] = `
             key="left"
           >
             <input
-              checked={true}
+              checked={false}
               onChange={[Function]}
               type="radio"
               value="left"
@@ -66,7 +66,7 @@ exports[`ImageBlock #alignment 1`] = `
             key="right"
           >
             <input
-              checked={false}
+              checked={true}
               onChange={[Function]}
               type="radio"
               value="right"
@@ -76,22 +76,6 @@ exports[`ImageBlock #alignment 1`] = `
         </p>
       </div>
     </div>
-    <p>
-      <button
-        className="button button-secondary"
-        onClick={[Function]}
-        type="button"
-      >
-        Save changes
-      </button>
-      <button
-        className="button button-secondary no"
-        onClick={[Function]}
-        type="button"
-      >
-        Cancel
-      </button>
-    </p>
   </div>
 </div>
 `;
@@ -135,7 +119,7 @@ exports[`ImageBlock #entityConfig.imageFormats 1`] = `
             <input
               onChange={[Function]}
               type="text"
-              value="Test alt text"
+              value="Test alt"
             />
           </p>
         </label>
@@ -172,22 +156,6 @@ exports[`ImageBlock #entityConfig.imageFormats 1`] = `
         </p>
       </div>
     </div>
-    <p>
-      <button
-        className="button button-secondary"
-        onClick={[Function]}
-        type="button"
-      >
-        Save changes
-      </button>
-      <button
-        className="button button-secondary no"
-        onClick={[Function]}
-        type="button"
-      >
-        Cancel
-      </button>
-    </p>
   </div>
 </div>
 `;
@@ -231,7 +199,7 @@ exports[`ImageBlock #isActive 1`] = `
             <input
               onChange={[Function]}
               type="text"
-              value="Test alt text"
+              value="Test alt"
             />
           </p>
         </label>
@@ -245,22 +213,6 @@ exports[`ImageBlock #isActive 1`] = `
         <p />
       </div>
     </div>
-    <p>
-      <button
-        className="button button-secondary"
-        onClick={[Function]}
-        type="button"
-      >
-        Save changes
-      </button>
-      <button
-        className="button button-secondary no"
-        onClick={[Function]}
-        type="button"
-      >
-        Cancel
-      </button>
-    </p>
   </div>
 </div>
 `;
@@ -284,6 +236,62 @@ exports[`ImageBlock basic 1`] = `
         src="http://www.example.com/example.png"
       />
     </span>
+  </div>
+</div>
+`;
+
+exports[`ImageBlock empty #isActive 1`] = `
+<div>
+  <Icon
+    className="RichEditor-media-icon"
+    name="icon-image"
+    title={null}
+  />
+  <div
+    className="RichEditor-media-container"
+    onClick={[Function]}
+  >
+    <span
+      className="RichEditor-media-preview"
+    >
+      <img
+        alt=""
+      />
+    </span>
+  </div>
+  <div
+    className="RichEditor-media-options"
+  >
+    <div
+      className="RichEditor-grid"
+    >
+      <div
+        className="RichEditor-col"
+      >
+        <label
+          className="u-block"
+        >
+          <h4>
+            Alt text
+          </h4>
+          <p>
+            <input
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+          </p>
+        </label>
+      </div>
+      <div
+        className="RichEditor-col"
+      >
+        <h4>
+          Image alignment
+        </h4>
+        <p />
+      </div>
+    </div>
   </div>
 </div>
 `;
