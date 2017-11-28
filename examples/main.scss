@@ -110,7 +110,7 @@ img {
   max-width:100%;
 }
 
-header {
+.wrapper > header {
   width:270px;
   float:left;
   position:fixed;
@@ -122,7 +122,7 @@ strong {
   font-weight:700;
 }
 
-section {
+.wrapper > section {
   width:560px;
   float:right;
   padding-bottom:25px;

@@ -7,14 +7,14 @@
     <meta name="description" content="Draftail offers a mouse-free, keyboard-first experience. Most formatting can be done with shortcuts inspired by Google Docs and Markdown." />
 
     <!-- TODO Get rid of icon font. -->
-    <link rel="stylesheet" href="static/icomoon/style.css" />
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.data.publicPath %>static/icomoon/style.css" />
 
-    <link rel="shortcut icon" href="static/favicons/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="static/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="static/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="static/favicons/favicon-16x16.png">
-    <link rel="manifest" href="static/favicons/manifest.json">
-    <link rel="mask-icon" href="static/favicons/safari-pinned-tab.svg" color="#43b1b0">
+    <link rel="shortcut icon" href="<%= htmlWebpackPlugin.options.data.publicPath %>static/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= htmlWebpackPlugin.options.data.publicPath %>static/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= htmlWebpackPlugin.options.data.publicPath %>static/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= htmlWebpackPlugin.options.data.publicPath %>static/favicons/favicon-16x16.png">
+    <link rel="manifest" href="<%= htmlWebpackPlugin.options.data.publicPath %>static/favicons/manifest.json">
+    <link rel="mask-icon" href="<%= htmlWebpackPlugin.options.data.publicPath %>static/favicons/safari-pinned-tab.svg" color="#43b1b0">
     <meta name="theme-color" content="#ffffff">
     <meta name="apple-mobile-web-app-title" content="Draftail">
 
@@ -37,47 +37,161 @@
             <p>A configurable rich text editor based on <a href="https://facebook.github.io/draft-js/">Draft.js</a>, built for <a href="https://github.com/wagtail/wagtail">Wagtail</a>.</p>
         </header>
         <section>
-            <div id="example-intro" class="example">
-                <div data-mount-intro>
-                    <div class="loading">
-                        <!-- Editor content exported with draftjs_exporter. Here for SEO. -->
-                        <h2>Draftail is a rich text editor built with Draft.js</h2>
-                        <blockquote><em>Try it out by editing </em><em><strong>this text</strong></em><em>!</em></blockquote>
-                        <h3>Features 📝🍸</h3>
-                        <p>Draftail aims for a mouse-free, keyboard-centric experience. Most formatting can be done by using common keyboard shortcuts, inspired by Google Docs and Markdown. Here are important features worth highlighting:</p>
-                        <ul class="bullet-list">
-                            <li>Support for keyboard shortcuts.</li>
-                            <li>Autolists – start a line with - , * , 1. to create a list item.</li>
-                            <li>Undo / redo – until the end of times.</li>
-                            <li>Common text types: headings, paragraphs, quotes, lists.</li>
-                            <li>Common text styles: <strong>Bold</strong>, <em>Italic</em>, <span style="text-decoration: underline;">Underline</span>, Monospace, <span style="text-decoration: line-through;">Strikethrough</span> </li>
-                            <li>Built-in Link and Document controls.</li>
-                            <li>Built-in Image and Embed blocks.</li>
-                        </ul>
-                        <p>The Embeds in this example are powered by Embedly:</p>
-                        <p>Try out some keyboard shortcuts:</p>
-                        <ul class="bullet-list">
-                            <li><em>&lt;Put a list of common shortcuts here&gt;</em></li>
-                        </ul>
-                        <h3>For developers 🚀</h3>
-                        <p>Draftail is meant to be used in scenarios where not all formatting should be available, and where custom formatting can be necessary. Available formats, built-in and custom, can be specificed declaratively for each editor instance.</p>
-                        <h4>Built-in</h4>
-                        <ul class="bullet-list">
-                            <li>Block types: H1, H2, H3, H4, H5, H6, Blockquote, Code, UL, OL, P</li>
-                            <li>Inline styles: <strong>Bold</strong>, <em>Italic</em>, <span style="text-decoration: underline;">Underline</span>, Monospace, <span style="text-decoration: line-through;">Strikethrough</span></li>
-                            <li>Entities: Images, Embeds, (Links, Documents)</li>
-                            <li>And HR, BR as special cases</li>
-                        </ul>
-                        <h4>Custom block types</h4>
-                        <p>New block types can be created by giving them a unique type, a label and an icon (for the toolbar), and element and className attributes:</p>
-                        <pre>{ label: 'Tiny', type: 'tiny-text', element: 'div', className: 'u-tinytext' },</pre>
-                        <h4>Custom inline styles</h4>
-                        <p>TODO</p>
-                        <h4>Custom entity types</h4>
-                        <p>TODO</p>
+            <% if (htmlWebpackPlugin.options.filename.includes('index')) { %>
+                <div id="example-intro" class="example">
+                    <div data-mount-intro>
+                        <div class="loading">
+                            <!-- Editor content exported with draftjs_exporter. Here for SEO. -->
+                            <h2>Draftail is a rich text editor built with Draft.js</h2>
+                            <blockquote><em>Try it out by editing </em><em><strong>this text</strong></em><em>!</em></blockquote>
+                            <h3>Features 📝🍸</h3>
+                            <p>Draftail aims for a mouse-free, keyboard-centric experience. Most formatting can be done by using common keyboard shortcuts, inspired by Google Docs and Markdown. Here are important features worth highlighting:</p>
+                            <ul class="bullet-list">
+                                <li>Support for keyboard shortcuts.</li>
+                                <li>Autolists – start a line with - , * , 1. to create a list item.</li>
+                                <li>Undo / redo – until the end of times.</li>
+                                <li>Common text types: headings, paragraphs, quotes, lists.</li>
+                                <li>Common text styles: <strong>Bold</strong>, <em>Italic</em>, <span style="text-decoration: underline;">Underline</span>, Monospace, <span style="text-decoration: line-through;">Strikethrough</span> </li>
+                                <li>Built-in Link and Document controls.</li>
+                                <li>Built-in Image and Embed blocks.</li>
+                            </ul>
+                            <p>The Embeds in this example are powered by Embedly:</p>
+                            <p>Try out some keyboard shortcuts:</p>
+                            <ul class="bullet-list">
+                                <li><em>&lt;Put a list of common shortcuts here&gt;</em></li>
+                            </ul>
+                            <h3>For developers 🚀</h3>
+                            <p>Draftail is meant to be used in scenarios where not all formatting should be available, and where custom formatting can be necessary. Available formats, built-in and custom, can be specificed declaratively for each editor instance.</p>
+                            <h4>Built-in</h4>
+                            <ul class="bullet-list">
+                                <li>Block types: H1, H2, H3, H4, H5, H6, Blockquote, Code, UL, OL, P</li>
+                                <li>Inline styles: <strong>Bold</strong>, <em>Italic</em>, <span style="text-decoration: underline;">Underline</span>, Monospace, <span style="text-decoration: line-through;">Strikethrough</span></li>
+                                <li>Entities: Images, Embeds, (Links, Documents)</li>
+                                <li>And HR, BR as special cases</li>
+                            </ul>
+                            <h4>Custom block types</h4>
+                            <p>New block types can be created by giving them a unique type, a label and an icon (for the toolbar), and element and className attributes:</p>
+                            <pre>{ label: 'Tiny', type: 'tiny-text', element: 'div', className: 'u-tinytext' },</pre>
+                            <h4>Custom inline styles</h4>
+                            <p>TODO</p>
+                            <h4>Custom entity types</h4>
+                            <p>TODO</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <% } %>
+            <% if (htmlWebpackPlugin.options.filename.includes('examples')) { %>
+                <h1>Examples</h1>
+
+                <div id="example-basic" class="example">
+                    <h4><a href="https://github.com/springload/draftail/blob/master/examples/basic.js">Basic features</a> <a class="anchor" href="#example-basic">#</a></h4>
+                    <div data-mount-basic></div>
+                </div>
+
+                <div id="example-entities" class="example">
+                    <h4><a href="https://github.com/springload/draftail/blob/master/examples/entities.js">Entities</a> <a class="anchor" href="#example-entities">#</a></h4>
+                    <div data-mount-entities></div>
+                </div>
+
+                <div id="example-wagtail" class="example">
+                    <h4><a href="https://github.com/springload/draftail/blob/master/examples/wagtail.js">Wagtail features</a> <a class="anchor" href="#example-wagtail">#</a></h4>
+                    <div data-mount-wagtail></div>
+                </div>
+
+                <div id="example-custom" class="example">
+                    <h4><a href="https://github.com/springload/draftail/blob/master/examples/custom.js">Custom formats</a> <a class="anchor" href="#example-custom">#</a></h4>
+                    <div data-mount-custom></div>
+                </div>
+
+                <div id="example-all" class="example">
+                    <h4><a href="https://github.com/springload/draftail/blob/master/examples/all.js">All built-in formats</a> <a class="anchor" href="#example-all">#</a></h4>
+                    <div data-mount-all></div>
+                </div>
+            <% } %>
+            <% if (htmlWebpackPlugin.options.filename.includes('test')) { %>
+                <h1>Test suite</h1>
+
+                <div data-mount-test></div>
+
+                <hr>
+
+                <h2>Copy/paste test cases – HTML to Draftail</h2>
+
+                <p>Use the following by copy/pasting them in the editor, <em>see what happens</em>.</p>
+
+                <div class="example">
+                    <h3>Block nesting normalization</h3>
+                    <div>
+                        <p>Depth 0</p>
+                        <ul>
+                            <li>Depth 0</li>
+                            <li>
+                                <ul>
+                                    <li>Depth 1</li>
+                                    <ul>
+                                        <li>Depth 2</li>
+                                        <ul>
+                                            <li>Depth 3</li>
+                                        </ul>
+                                        <li>Depth 2</li>
+                                    </ul>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="example">
+                    <h3>Preserve <code>a</code> tags as <code>LINK</code> entities</h3>
+                    <div>
+                        <p>Draftail is a rich text editor built on <a href="https://facebook.github.io/draft-js/">Draft.js</a>, intended to be integrated into <a href="https://wagtail.io/">Wagtail</a>.</p>
+                    </div>
+                </div>
+                <div class="example">
+                    <h3>Preserve <code>img</code> tags as <code>IMAGE</code> entities</h3>
+                    <div>
+                        <p>Draftail supports images and embeds out of the box.</p>
+                        <img src="<%= htmlWebpackPlugin.options.data.publicPath %>static/example-image.png" alt="Example image">
+                        <p>It can be extended to support more entities from Wagtail.</p>
+                    </div>
+                </div>
+                <div class="example">
+                    <h3>Preserve block types and tags, and drop unavailable types</h3>
+                    <div>
+                        <h1>h1 - Draftail</h1>
+                        <h2>h2 - Usage</h2>
+                        <ol>
+                            <li>ol li - Install</li>
+                            <li>ol li - Import</li>
+                            <li>ol li - Configure</li>
+                        </ol>
+                        <h3>h3 - Available options</h3>
+                        <ul>
+                            <li>ul li - Block types</li>
+                            <li>ul li - Inline styles</li>
+                        </ul>
+                        <h4>h4 - Limiting available block types</h4>
+                        <h5>h5 - Custom Draft.js block types</h5>
+                        <h6>h6 - Heading 6</h6>
+                        <hr>
+                        <p>p - Draftail is intended to be integrated into Wagtail.</p>
+                        <dl>
+                            <dt>dl dt - Draftail</dt>
+                            <dd>dl dd - A rich text editor built with Draft.js</dd>
+                            <dt>dl dt - Wagtail</dt>
+                            <dd>dl dd - An elegant and easy to use CMS built with Django</dd>
+                        </dl>
+                        <pre><code>pre code - import React from 'react';</code></pre>
+                        <img src="<%= htmlWebpackPlugin.options.data.publicPath %>static/example-image.png" alt="Example image">
+                        <blockquote>blockquote – The Python source distribution has long maintained the philosophy of "batteries included" -- having a rich and versatile standard library which is immediately available, without making the user download separate packages. - PEP206</blockquote>
+                    </div>
+                </div>
+
+                <hr>
+
+                <h2>Copy/paste test cases – Draftail to Draftail</h2>
+
+                <p>Use the following by copy/pasting them in the editor, <em>see what happens</em>.</p>
+            <% } %>
         </section>
         <footer>
             <a href="https://www.springload.co.nz/" style="display: block;">

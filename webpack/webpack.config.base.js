@@ -56,12 +56,16 @@ const webpackConfig = environment => {
 
     const isProduction = environment === 'production';
 
+    const publicPath = isProduction ? '/draftail/' : '/';
+
     const htmlPluginConfig = {
+        template: path.join(__dirname, '..', 'examples', 'index.html'),
         hash: true,
         data: {
             GOOGLE_ANALYTICS: isProduction ? GOOGLE_ANALYTICS_PROD : null,
             SENTRY_DSN: true ? SENTRY_DSN_PROD : null,
             SENTRY_RELEASE: pkg.version,
+            publicPath: publicPath,
         },
     };
 
@@ -89,42 +93,24 @@ const webpackConfig = environment => {
         output: {
             path: path.join(__dirname, '..', 'public'),
             filename: '[name].bundle.js',
-            publicPath: isProduction ? '/draftail/' : '/',
+            publicPath: publicPath,
         },
         plugins: [
             new webpack.NoEmitOnErrorsPlugin(),
             new HtmlWebpackPlugin(
                 Object.assign({}, htmlPluginConfig, {
-                    template: path.join(
-                        __dirname,
-                        '..',
-                        'examples',
-                        'index.html',
-                    ),
                     filename: 'index.html',
                     chunks: ['vendor', 'intro'],
                 }),
             ),
             new HtmlWebpackPlugin(
                 Object.assign({}, htmlPluginConfig, {
-                    template: path.join(
-                        __dirname,
-                        '..',
-                        'examples',
-                        'test.html',
-                    ),
                     filename: 'test.html',
                     chunks: ['vendor', 'test'],
                 }),
             ),
             new HtmlWebpackPlugin(
                 Object.assign({}, htmlPluginConfig, {
-                    template: path.join(
-                        __dirname,
-                        '..',
-                        'examples',
-                        'examples.html',
-                    ),
                     filename: 'examples.html',
                     chunks: [
                         'vendor',
