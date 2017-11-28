@@ -63,7 +63,7 @@ const webpackConfig = environment => {
         hash: true,
         data: {
             GOOGLE_ANALYTICS: isProduction ? GOOGLE_ANALYTICS_PROD : null,
-            SENTRY_DSN: true ? SENTRY_DSN_PROD : null,
+            SENTRY_DSN: isProduction ? SENTRY_DSN_PROD : null,
             SENTRY_RELEASE: pkg.version,
             publicPath: publicPath,
         },
