@@ -107,6 +107,7 @@
     "eslint": "^3.19.0",
     "eslint-plugin-springload": "^2.2.0",
     "extract-text-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^2.30.1",
     "immutable": "~3.7.4",
     "jest": "^21.2.1",
     "node-sass": "^4.5.3",
