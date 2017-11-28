@@ -3,7 +3,9 @@ import React from 'react';
 import { AtomicBlockUtils } from 'draft-js';
 
 /* global EMBEDLY_API_KEY */
-const EMBEDLY_ENDPOINT = `https://api.embedly.com/1/oembed?key=${EMBEDLY_API_KEY}`;
+const EMBEDLY_ENDPOINT = `https://api.embedly.com/1/oembed?key=${
+    EMBEDLY_API_KEY
+}`;
 
 const getJSON = (endpoint, data, successCallback) => {
     const request = new XMLHttpRequest();

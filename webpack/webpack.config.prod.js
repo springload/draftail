@@ -10,6 +10,8 @@ module.exports = Object.assign({}, config, {
 
     plugins: config.plugins.concat([
         new webpack.optimize.UglifyJsPlugin({
+            sourceMap: true,
+
             compress: {
                 warnings: false,
                 // Disabled because of an issue with Uglify breaking seemingly valid code:

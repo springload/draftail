@@ -89,6 +89,14 @@
             </a>
         </footer>
     </div>
+    <% if (htmlWebpackPlugin.options.data.SENTRY_DSN) { %>
+        <script src="https://cdn.ravenjs.com/3.20.1/raven.min.js" crossorigin="anonymous"></script>
+        <script>
+            Raven.config('<%= htmlWebpackPlugin.options.data.SENTRY_DSN %>', {
+                release: '<%= htmlWebpackPlugin.options.data.SENTRY_RELEASE %>'
+            }).install()
+        </script>
+    <% } %>
     <% if (htmlWebpackPlugin.options.data.GOOGLE_ANALYTICS) { %>
         <script>
             window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;

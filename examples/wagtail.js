@@ -11,6 +11,9 @@ import EmbedSource from './sources/EmbedSource';
 import Link from './entities/Link';
 import Document from './entities/Document';
 
+/* global PKG_VERSION */
+const DRAFTAIL_VERSION = PKG_VERSION;
+
 /**
  * This code sample is a basic example of Draftail usage.
  * It is meant to be mirrored as-is (except for this comment)
@@ -128,6 +131,7 @@ const editor = (
         <details>
             <summary>Debug</summary>
             <button onClick={onCopy}>Copy editor content</button>
+            <span>Draftail version: {DRAFTAIL_VERSION}</span>
         </details>
     </div>
 );
