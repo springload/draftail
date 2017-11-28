@@ -14,7 +14,7 @@ class ImageSource extends React.Component {
                 options.type,
                 'IMMUTABLE',
                 {
-                    altText: 'Test image alt text',
+                    alt: '',
                     alignment: 'left',
                     src: url,
                 },

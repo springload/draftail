@@ -34,7 +34,7 @@ export default {
             type: 'IMAGE',
             mutability: 'IMMUTABLE',
             data: {
-                altText: 'Test image alt text',
+                alt: 'Test image alt text',
                 alignment: 'left',
                 src: 'assets/example-image.png',
             },
