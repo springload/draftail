@@ -1,2 +1,7 @@
-// Use the Prettier config that comes with eslint-plugin-springload.
-module.exports = require('eslint-plugin-springload/prettier.config');
+module.exports = Object.assign(
+    {
+        proseWrap: false,
+    },
+    // Use the Prettier config that comes with eslint-plugin-springload.
+    require('eslint-plugin-springload/prettier.config'),
+);
