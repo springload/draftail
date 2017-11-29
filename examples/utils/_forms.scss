@@ -32,11 +32,11 @@ fieldset {
     appearance: none;
 
     label + & {
-        margin-top: .25rem;
+        margin-top: 0.25rem;
     }
 
     &[disabled] {
-        opacity: .5;
+        opacity: 0.5;
         cursor: not-allowed;
     }
 }

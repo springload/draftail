@@ -1,6 +1,6 @@
 @import '../node_modules/draft-js/dist/Draft';
 
-$button-spacing: .5rem;
+$button-spacing: 0.5rem;
 $controls-spacing: $button-spacing / 2;
 $editor-spacing: $button-spacing + $controls-spacing;
 
@@ -171,7 +171,7 @@ $toolbar-tooltip-z-index: $toolbar-z-index + 1;
     background: rgba(255, 255, 255, 0.9);
     line-height: 1;
     padding-left: $button-spacing;
-    padding-bottom: .125rem;
+    padding-bottom: 0.125rem;
     pointer-events: none;
 }
 
@@ -202,23 +202,23 @@ $toolbar-tooltip-z-index: $toolbar-z-index + 1;
         cursor: pointer;
     }
 
-    input[type=radio]:before,
-    input[type=radio]:after {
+    input[type='radio']:before,
+    input[type='radio']:after {
         display: none;
     }
 
-    input[type=radio] {
+    input[type='radio'] {
         margin-right: 8px;
     }
 
-    input[type=text] {
+    input[type='text'] {
         font-size: 14px;
     }
 }
 
 .RichEditor-tooltip {
     position: absolute;
-    padding: .375rem $controls-spacing;
+    padding: 0.375rem $controls-spacing;
     margin-top: $controls-spacing;
     background-color: #333;
     color: $color-white;

@@ -1,11 +1,11 @@
-$easing-circ: cubic-bezier(.075, .82, .165, 1);
+$easing-circ: cubic-bezier(0.075, 0.82, 0.165, 1);
 $color-bg-modal__overlay: rgba(0, 0, 0, 0.5);
 $color-bg-modal: #fff;
 
 $modal__overlay-z-index: 30;
 $modal-z-index: $modal__overlay-z-index + 1;
 
-$spacing-modal: .5rem;
+$spacing-modal: 0.5rem;
 
 .modal__container--open {
     overflow: hidden;
@@ -21,14 +21,14 @@ $spacing-modal: .5rem;
     -webkit-overflow-scrolling: touch;
     z-index: $modal-z-index;
     background-color: $color-bg-modal;
-    animation: modal-in .2s $easing-circ 0s backwards;
+    animation: modal-in 0.2s $easing-circ 0s backwards;
 }
 
 .modal--exit {
-    animation: modal-out .2s $easing-circ 0s forwards;
+    animation: modal-out 0.2s $easing-circ 0s forwards;
 
     .modal__content {
-        animation: affordance-out .2s ease-in 0s forwards;
+        animation: affordance-out 0.2s ease-in 0s forwards;
     }
 }
 
