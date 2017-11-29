@@ -1,0 +1,64 @@
+$color-field-border: #999;
+
+fieldset {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+@mixin inputs {
+    [type='text'],
+    [type='password'],
+    [type='email'],
+    [type='number'],
+    [type='tel'],
+    [type='file'],
+    [type='url'],
+    [type='search'],
+    textarea,
+    select {
+        @content;
+    }
+}
+
+@include inputs {
+    width: 100%;
+    padding: 0.75rem;
+
+    background-color: transparent;
+    border-radius: 3px;
+    border: 1px solid $color-field-border;
+    outline: none;
+    appearance: none;
+
+    label + & {
+        margin-top: .25rem;
+    }
+
+    &[disabled] {
+        opacity: .5;
+        cursor: not-allowed;
+    }
+}
+
+.form-field {
+    display: block;
+    cursor: pointer;
+
+    @include inputs {
+        display: block;
+    }
+
+    & + & {
+        margin-top: 1rem;
+    }
+
+    & + button {
+        margin-top: 0.25rem;
+    }
+}
+
+.form-field__label {
+    display: block;
+    margin-bottom: 1rem;
+}

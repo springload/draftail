@@ -1,0 +1,141 @@
+$easing-circ: cubic-bezier(.075, .82, .165, 1);
+$color-bg-modal__overlay: rgba(0, 0, 0, 0.5);
+$color-bg-modal: #fff;
+
+$modal__overlay-z-index: 30;
+$modal-z-index: $modal__overlay-z-index + 1;
+
+$spacing-modal: .5rem;
+
+.modal__container--open {
+    overflow: hidden;
+}
+
+.modal {
+    position: absolute;
+    left: 50%;
+    top: 25vh;
+    min-width: 320px;
+    transform: translate(-50%, -50%);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: $modal-z-index;
+    background-color: $color-bg-modal;
+    animation: modal-in .2s $easing-circ 0s backwards;
+}
+
+.modal--exit {
+    animation: modal-out .2s $easing-circ 0s forwards;
+
+    .modal__content {
+        animation: affordance-out .2s ease-in 0s forwards;
+    }
+}
+
+.modal__overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $color-bg-modal__overlay;
+    z-index: $modal__overlay-z-index;
+    cursor: pointer;
+}
+
+// .modal__table {
+//     display: table;
+//     position: relative;
+//     width: 100%;
+//     height: 100%;
+//     vertical-align: middle;
+// }
+
+// .modal__center {
+//     text-align: center;
+//     vertical-align: middle;
+//     animation: modal-in .15s $easing-circ .25s backwards;
+// }
+
+// .modal__content {
+//     display: inline-block;
+//     position: relative;
+//     max-width: 30rem;
+//     min-width: 20rem;
+//     min-height: 6rem;
+//     margin-bottom: 2.5%;
+//     padding: $spacing-double $spacing;
+//     z-index: $z-index-modal-content;
+//     background: $color-modal-content-bg;
+//     border: 1px solid $color-grey-transparent;
+//     border-radius: $radius-small;
+//     animation: affordance-in .5s $easing-circ .3s backwards;
+
+//     @include medium {
+//         margin-top: 5%;
+//         min-width: 24rem;
+//     }
+// }
+
+// .modal__control {
+//     display: none;
+// }
+
+// .modal__close {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     z-index: $z-index-modal-content;
+//     padding: $spacing-two-thirds;
+//     line-height: 1;
+//     cursor: pointer;
+//     color: $color-links;
+
+//     @include hover {
+//         color: $color-links-hover;
+//     }
+// }
+
+@keyframes modal-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes modal-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes affordance-in {
+    0% {
+        opacity: 0;
+        transform: translateY(5%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes affordance-out {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(5%);
+    }
+}
