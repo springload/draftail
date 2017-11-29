@@ -5,6 +5,5 @@ dist/
 es/
 *.bundle.js
 *.json
-*.scss
 *.css
 *.html
