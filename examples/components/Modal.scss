@@ -8,7 +8,9 @@ $modal-z-index: $modal__overlay-z-index + 1;
 $spacing-modal: 0.5rem;
 
 .modal__container--open {
-    overflow: hidden;
+    @include small {
+        overflow: hidden;
+    }
 }
 
 .modal {
