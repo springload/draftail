@@ -1,0 +1,46 @@
+// ----------------------------------------------------------------------------
+// Breakpoints and simple media query mixins
+// ----------------------------------------------------------------------------
+
+$breakpoint-xsmall: 480;
+$breakpoint-small: 768;
+$breakpoint-medium: $breakpoint-small + 1;
+$breakpoint-large: 1024;
+$breakpoint-xlarge: 1280;
+$breakpoint-xxlarge: 1380;
+
+@mixin xsmall {
+    @media only screen and (max-width: em($breakpoint-xsmall)) {
+        @content;
+    }
+}
+
+@mixin small {
+    @media only screen and (max-width: em($breakpoint-small)) {
+        @content;
+    }
+}
+
+@mixin medium {
+    @media only screen and (min-width: em($breakpoint-medium)) {
+        @content;
+    }
+}
+
+@mixin large {
+    @media only screen and (min-width: em($breakpoint-large)) {
+        @content;
+    }
+}
+
+@mixin xlarge {
+    @media only screen and (min-width: em($breakpoint-xlarge)) {
+        @content;
+    }
+}
+
+@mixin xxlarge {
+    @media only screen and (min-width: em($breakpoint-xxlarge)) {
+        @content;
+    }
+}

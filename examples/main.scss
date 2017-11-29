@@ -1,11 +1,12 @@
+@import '../node_modules/normalize.css';
+@import './utils/breakpoints';
+@import './utils/elements';
+@import './utils/forms';
+
 body {
-  background-color: #f3f3f3;
-  padding: 50px;
-  font-size: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #333;
-  font-weight: normal;
+    padding: 50px;
 }
+
 
 h1, h2, h3, h4, h5, h6 {
   margin:0 0 1rem;
@@ -348,3 +349,6 @@ h4:hover .anchor {
 .u-text-center {
     text-align: center;
 }
+
+@import './components/Modal';
+@import './sources/LinkSource';
