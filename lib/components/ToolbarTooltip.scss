@@ -4,7 +4,7 @@
 // Variables
 // -----------------------------------------
 
-$balloon-bg: fade-out(#111, .1) !default;
+$balloon-bg: fade-out(#111, 0.1) !default;
 $ballon-text-color: $color-white;
 $balloon-base-size: 10px !default;
 $balloon-arrow-height: 6px;
@@ -34,7 +34,8 @@ $ballon-transition-delay: 0;
         $height: 18px;
     }
 
-    background: no-repeat url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%22#{$width * 2}%22%20height%3D%22#{$height * 2}%22%3E%3Cpath%20fill%3D%22#{$color}%22%20transform%3D%22rotate(#{$degrees})%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E');
+    background: no-repeat
+        url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%22#{$width * 2}%22%20height%3D%22#{$height * 2}%22%3E%3Cpath%20fill%3D%22#{$color}%22%20transform%3D%22rotate(#{$degrees})%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E');
     background-size: 100% auto;
     width: $width;
     height: $height;
@@ -42,7 +43,8 @@ $ballon-transition-delay: 0;
 
 @mixin base-effects() {
     opacity: 0;
-    transition: all $ballon-transition-duration ease-out $ballon-transition-delay;
+    transition: all $ballon-transition-duration ease-out
+        $ballon-transition-delay;
 }
 
 @mixin normalized-text() {
@@ -115,7 +117,7 @@ button[data-balloon] {
         border-radius: $ballon-border-radius;
         color: $ballon-text-color;
         content: attr(aria-label);
-        padding: .5em 1em;
+        padding: 0.5em 1em;
         white-space: pre;
     }
 
