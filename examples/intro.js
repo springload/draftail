@@ -68,6 +68,7 @@ const editor = (
                 label: '</>',
                 type: BLOCK_TYPE.CODE,
                 description: 'Code',
+                // className: 'language-unknown',
             },
             {
                 type: BLOCK_TYPE.UNORDERED_LIST_ITEM,

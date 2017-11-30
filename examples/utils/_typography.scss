@@ -8,7 +8,55 @@ body {
     font-family: $FONT_FAMILY_SANS;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 1rem;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.1;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+h2 {
+    color: #393939;
+}
+
+h3,
+h4,
+h5,
+h6 {
+    color: #494949;
+}
+
 code,
 pre {
     font-family: $FONT_FAMILY_MONOSPACE;
+}
+
+pre {
+    font-size: 14px;
+    padding: 1em;
+    margin: 0.5em 0;
+    overflow: auto;
+    background: #f5f2f0;
+    color: black;
+    text-shadow: 0 1px white;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    tab-size: 4;
+    hyphens: none;
+    overflow-x: auto;
 }

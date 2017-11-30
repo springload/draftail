@@ -8,15 +8,6 @@ body {
     padding: 50px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin: 0 0 1rem;
-}
-
 p,
 .public-DraftStyleDefault-block {
     margin: 0 0 0.5rem;
@@ -27,45 +18,24 @@ code .public-DraftStyleDefault-block {
     margin-bottom: 0.25rem;
 }
 
-h1,
-h2,
-h3 {
-    line-height: 1.1;
-}
-
-h1 {
-    font-size: 1.5rem;
-}
-
-h2 {
-    color: #393939;
-}
-
-h3,
-h4,
-h5,
-h6 {
-    color: #494949;
-}
-
 a {
     color: inherit;
     text-decoration: none;
-}
 
-a:hover {
-    color: #069;
-}
+    &:hover {
+        color: #069;
+    }
 
-a small {
-    font-size: 11px;
-    color: #777;
-    margin-top: -0.3em;
-    display: block;
-}
+    small {
+        font-size: 11px;
+        color: #777;
+        margin-top: -0.3em;
+        display: block;
+    }
 
-a:hover small {
-    color: #777;
+    &:hover small {
+        color: #777;
+    }
 }
 
 .wrapper {
@@ -78,40 +48,6 @@ blockquote {
     padding: 0 0 0 20px;
     margin-left: 0;
     font-style: italic;
-}
-
-pre {
-    font-size: 12px;
-    padding: 8px 15px;
-    background: #f8f8f8;
-    border-radius: 5px;
-    border: 1px solid #e5e5e5;
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th,
-td {
-    text-align: left;
-    padding: 5px 10px;
-    border-bottom: 1px solid #e5e5e5;
-}
-
-dt {
-    color: #444;
-    font-weight: 700;
-}
-
-th {
-    color: #444;
-}
-
-img {
-    max-width: 100%;
 }
 
 .wrapper > header {
@@ -129,10 +65,6 @@ strong {
     padding: 0 2rem;
 }
 
-small {
-    font-size: 11px;
-}
-
 hr {
     border: 0;
     background: #e5e5e5;
@@ -140,12 +72,8 @@ hr {
     margin: 0 0 20px;
 }
 
-footer {
-    -webkit-font-smoothing: subpixel-antialiased;
-}
-
 @media print, screen and (max-width: 960px) {
-    div.wrapper {
+    .wrapper {
         width: auto;
         margin: 0;
     }
@@ -170,11 +98,6 @@ footer {
 
     header {
         padding: 0;
-    }
-
-    pre,
-    code {
-        word-wrap: normal;
     }
 }
 
@@ -219,6 +142,29 @@ h4:hover .anchor {
 .u-text-center {
     text-align: center;
 }
+
+// TODO Continue code block styles.
+// http://prismjs.com/index.html#plugins
+// https://github.com/PrismJS/prism-themes
+// .public-DraftStyleDefault-pre {
+//     counter-reset: lineNumber;
+
+//     > code {
+//         display: block;
+//         counter-increment: lineNumber 1;
+
+//         &:before {
+//             content: counter(lineNumber);
+//             background-color: white;
+//             padding: 4px;
+//             min-width: 20px;
+//         }
+
+//         > div {
+//             display: inline;
+//         }
+//     }
+// }
 
 @import '../lib/index';
 

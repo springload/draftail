@@ -54,7 +54,14 @@ class PrismDecorator {
         const blockKey = block.getKey();
         const blockText = block.getText();
 
-        const tokens = Prism.tokenize(blockText, Prism.languages[language]);
+        let tokens;
+
+        try {
+            tokens = Prism.tokenize(blockText, Prism.languages[language]);
+        } catch (e) {
+            console.error(e);
+            return;
+        }
 
         this.highlighted[blockKey] = {};
 
