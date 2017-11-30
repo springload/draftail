@@ -64,7 +64,11 @@ const editor = (
                 label: 'H3',
                 description: 'Heading 3',
             },
-            { label: '</>', type: BLOCK_TYPE.CODE, description: 'Code' },
+            {
+                label: '</>',
+                type: BLOCK_TYPE.CODE,
+                description: 'Code',
+            },
             {
                 type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
                 description: 'Bulleted list',

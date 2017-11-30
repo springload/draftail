@@ -1,0 +1,14 @@
+$FONT_FAMILY_SANS: -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
+    Helvetica, Arial, sans-serif;
+$FONT_FAMILY_MONOSPACE: Monaco, Bitstream Vera Sans Mono, Lucida Console,
+    Terminal, Consolas, Liberation Mono, DejaVu Sans Mono, Courier New,
+    monospace;
+
+body {
+    font-family: $FONT_FAMILY_SANS;
+}
+
+code,
+pre {
+    font-family: $FONT_FAMILY_MONOSPACE;
+}
