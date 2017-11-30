@@ -52,7 +52,7 @@ const stats = {
  * Base Webpack config, defining how our code should compile.
  */
 const webpackConfig = environment => {
-    const extractSass = new ExtractTextPlugin('draftail.css');
+    const extractSass = new ExtractTextPlugin('[name].css');
 
     const isProduction = environment === 'production';
 
@@ -78,10 +78,11 @@ const webpackConfig = environment => {
                 'immutable',
                 'draft-js',
                 'draftjs-utils',
-                'element-closest',
-                './lib/index.scss',
+                'react-modal',
                 './examples/main.scss',
             ],
+            // Stylesheet shipped with the package.
+            draftail: ['./lib/index.scss'],
             intro: './examples/intro',
             basic: './examples/basic',
             entities: './examples/entities',
@@ -134,6 +135,7 @@ const webpackConfig = environment => {
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'vendor',
                 filename: 'vendor.bundle.js',
+                minChunks: 2,
             }),
             extractSass,
             new webpack.optimize.ModuleConcatenationPlugin(),

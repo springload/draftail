@@ -23,5 +23,6 @@ module.exports = Object.assign({}, config, {
         overlay: true,
         clientLogLevel: 'none',
         stats: config.stats,
+        disableHostCheck: true,
     },
 });
