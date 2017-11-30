@@ -114,6 +114,7 @@
     "normalize.css": "^7.0.0",
     "postcss-loader": "^2.0.6",
     "prettier": "^1.8.2",
+    "prismjs": "^1.8.4",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",

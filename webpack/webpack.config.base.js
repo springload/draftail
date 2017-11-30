@@ -79,6 +79,7 @@ const webpackConfig = environment => {
                 'draft-js',
                 'draftjs-utils',
                 'react-modal',
+                'prismjs',
                 './examples/main.scss',
             ],
             // Stylesheet shipped with the package.

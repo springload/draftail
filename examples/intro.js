@@ -11,6 +11,8 @@ import Link from './entities/Link';
 
 import introContentState from './utils/introContentState';
 
+import PrismDecorator from './components/PrismDecorator';
+
 const mount = document.querySelector('[data-mount-intro]');
 
 const onSave = contentState => {
@@ -27,6 +29,9 @@ const editor = (
         showUndoRedoControls={true}
         stripPastedStyles={false}
         entityTypes={[
+            new PrismDecorator({
+                defaultLanguage: 'javascript',
+            }),
             {
                 type: ENTITY_TYPE.LINK,
                 description: 'Link',

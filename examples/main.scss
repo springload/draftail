@@ -3,6 +3,10 @@
 @import './utils/elements';
 @import './utils/forms';
 
+$FONT_FAMILY_MONOSPACE: Monaco, Bitstream Vera Sans Mono, Lucida Console,
+    Terminal, Consolas, Liberation Mono, DejaVu Sans Mono, Courier New,
+    monospace;
+
 body {
     padding: 50px;
 }
@@ -85,9 +89,7 @@ blockquote {
 
 code,
 pre {
-    font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal,
-        Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
-    color: #333;
+    font-family: $FONT_FAMILY_MONOSPACE;
 }
 
 pre {
@@ -366,5 +368,6 @@ h4:hover .anchor {
 
 @import '../lib/index';
 
+@import '../node_modules/prismjs/themes/prism';
 @import './components/Modal';
 @import './sources/LinkSource';
