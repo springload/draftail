@@ -38,8 +38,8 @@
                 A configurable rich text editor based on Draft.js, built&nbsp;for&nbsp;<a href="https://github.com/wagtail/wagtail" class="link u-wagtail">Wagtail&nbsp;<span data-balloon="true" aria-label="(A very cool CMS)"><img src="https://cdn.rawgit.com/springload/awesome-wagtail/ac912cc661a7099813f90545adffa6bb3e75216c/logo.svg" alt="" width="32"></span></a>
             </p>
         </header>
-        <section class="page-section">
-            <% if (htmlWebpackPlugin.options.filename.startsWith('index')) { %>
+        <% if (htmlWebpackPlugin.options.filename.startsWith('index')) { %>
+            <section class="page-section">
                 <nav>
                     <ul class="page-nav">
                         <li><a href="https://github.com/springload/draftail" class="link">View it on GitHub</a></li>
@@ -84,37 +84,36 @@
                         </div>
                     </div>
                 </div>
-            <% } %>
-            <% if (htmlWebpackPlugin.options.filename.startsWith('examples')) { %>
-                <h1>Examples</h1>
+            </section>
+        <% } %>
+        <% if (htmlWebpackPlugin.options.filename.startsWith('examples')) { %>
+            <section class="page-section">
+                <h2>More examples of Draftail usage</h2>
 
-                <div id="example-basic" class="example">
-                    <h4><a href="https://github.com/springload/draftail/blob/master/examples/basic.js">Basic features</a> <a class="anchor" href="#example-basic">#</a></h4>
+                <div class="example">
+                    <h4>Simple editor (<a href="https://github.com/springload/draftail/blob/master/examples/simple.js" class="link">simple.js</a>) <a class="anchor" id="simple" href="#simple">#</a></h4>
                     <div data-mount></div>
                 </div>
 
-                <div id="example-entities" class="example">
-                    <h4><a href="https://github.com/springload/draftail/blob/master/examples/entities.js">Entities</a> <a class="anchor" href="#example-entities">#</a></h4>
-                    <div data-mount-entities></div>
-                </div>
-
-                <div id="example-wagtail" class="example">
-                    <h4><a href="https://github.com/springload/draftail/blob/master/examples/wagtail.js">Wagtail features</a> <a class="anchor" href="#example-wagtail">#</a></h4>
+                <div class="example">
+                    <h4>Wagtail features<a class="anchor" id="wagtail" href="#wagtail">#</a></h4>
+                    <p>This editor demonstrates rich text features available in Wagtail.</p>
                     <div data-mount-wagtail></div>
                 </div>
 
-                <div id="example-custom" class="example">
-                    <h4><a href="https://github.com/springload/draftail/blob/master/examples/custom.js">Custom formats</a> <a class="anchor" href="#example-custom">#</a></h4>
+                <div class="example">
+                    <h4>Custom formats<a class="anchor" id="custom" href="#custom">#</a></h4>
                     <div data-mount-custom></div>
                 </div>
 
-                <div id="example-all" class="example">
-                    <h4><a href="https://github.com/springload/draftail/blob/master/examples/all.js">All built-in formats</a> <a class="anchor" href="#example-all">#</a></h4>
+                <div class="example">
+                    <h4>All built-in formats<a class="anchor" id="all" href="#all">#</a></h4>
                     <div data-mount-all></div>
                 </div>
-            <% } %>
-            <% if (htmlWebpackPlugin.options.filename.startsWith('test')) { %>
-                <h1>Test suite</h1>
+            </section>
+
+            <section class="page-section">
+                <h2>Test editors</h2>
 
                 <div data-mount-test></div>
 
@@ -155,7 +154,7 @@
                     <h3>Preserve <code>img</code> tags as <code>IMAGE</code> entities</h3>
                     <div>
                         <p>Draftail supports images and embeds out of the box.</p>
-                        <img src="<%= htmlWebpackPlugin.options.data.publicPath %>static/example-image.png" alt="Example image">
+                        <img src="<%= htmlWebpackPlugin.options.data.publicPath %>static/image.png" alt="Example image">
                         <p>It can be extended to support more entities from Wagtail.</p>
                     </div>
                 </div>
@@ -196,8 +195,8 @@
                 <h2>Copy/paste test cases – Draftail to Draftail</h2>
 
                 <p>Use the following by copy/pasting them in the editor, <em>see what happens</em>.</p>
-            <% } %>
-        </section>
+            </section>
+        <% } %>
         <footer class="page-section">
             <p class="page-disclaimer">
                     <a href="https://www.springload.co.nz/">

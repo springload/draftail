@@ -85,12 +85,7 @@ const webpackConfig = environment => {
             // Stylesheet shipped with the package.
             draftail: ['./lib/index.scss'],
             index: './examples/index',
-            basic: './examples/basic',
-            entities: './examples/entities',
-            all: './examples/all',
-            wagtail: './examples/wagtail',
-            custom: './examples/custom',
-            test: './examples/test',
+            examples: './examples/examples',
         },
         output: {
             path: path.join(__dirname, '..', 'public'),
@@ -107,21 +102,8 @@ const webpackConfig = environment => {
             ),
             new HtmlWebpackPlugin(
                 Object.assign({}, htmlPluginConfig, {
-                    filename: 'test.html',
-                    chunks: ['vendor', 'test'],
-                }),
-            ),
-            new HtmlWebpackPlugin(
-                Object.assign({}, htmlPluginConfig, {
                     filename: 'examples/index.html',
-                    chunks: [
-                        'vendor',
-                        'basic',
-                        'entities',
-                        'wagtail',
-                        'custom',
-                        'all',
-                    ],
+                    chunks: ['vendor', 'examples'],
                 }),
             ),
             new BundleAnalyzerPlugin({
