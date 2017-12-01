@@ -47,14 +47,6 @@ $ballon-transition-delay: 0;
         $ballon-transition-delay;
 }
 
-@mixin normalized-text() {
-    font-family: sans-serif !important;
-    font-weight: normal !important;
-    font-style: normal !important;
-    text-shadow: none !important;
-    font-size: $balloon-base-size + 2 !important;
-}
-
 @mixin ballon-position-down() {
     &::after {
         left: 50%;
@@ -112,13 +104,15 @@ button[data-balloon] {
     }
 
     &::after {
-        @include normalized-text;
         background: $balloon-bg;
         border-radius: $ballon-border-radius;
         color: $ballon-text-color;
         content: attr(aria-label);
         padding: 0.5em 1em;
         white-space: pre;
+        font-size: 0.875em;
+        // Light text on dark background.
+        -webkit-font-smoothing: antialiased;
     }
 
     &:hover,
