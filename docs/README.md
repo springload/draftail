@@ -61,17 +61,6 @@ We support keyboard shortcuts inspired by the ones used in [Google Docs](https:/
 * Blocks starting with "- ", "\* ", "1. " are automatically converted to list items.
 * Pasting content with block nesting above the configured maxium should reduce the depth up to the maximum.
 
-## R&D notes
-
-### Other Draft.js editors
-
-> Full list on https://github.com/nikgraf/awesome-draft-js
-
-Other approaches:
-
-* http://slatejs.org/
-* http://quilljs.com/
-
 ## Demo site
 
 Website favicons generated with [RealFaviconGenerator](https://realfavicongenerator.net/).
