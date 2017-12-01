@@ -1,0 +1,94 @@
+.public-DraftEditor-content > * > figure {
+    margin: 0;
+}
+
+.RichEditor-media {
+    outline: 1px dotted #dadada;
+    position: relative;
+
+    &:hover {
+        outline: 1px dotted $color-teal;
+
+        .RichEditor-media-container {
+            cursor: pointer;
+        }
+    }
+}
+
+.RichEditor-media--open {
+    z-index: $activeblock-z-index;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.RichEditor-grid {
+    margin-left: -2rem;
+}
+
+.RichEditor-grid:after {
+    display: table;
+    content: '';
+    clear: both;
+}
+
+.RichEditor-col {
+    width: 50%;
+    float: left;
+    padding-left: 2rem;
+    box-sizing: border-box;
+}
+
+.RichEditor-media img {
+    max-width: 100%;
+}
+
+.RichEditor-media-icon {
+    position: absolute;
+    top: $controls-spacing;
+    left: $controls-spacing;
+    background: rgba(255, 255, 255, 0.9);
+    line-height: 1;
+    padding-left: $button-spacing;
+    padding-bottom: 0.125rem;
+    pointer-events: none;
+}
+
+.RichEditor-media-preview {
+    max-width: 260px;
+    display: inline-block;
+    user-select: none;
+}
+
+.RichEditor-media-options {
+    background: #f3f3f3;
+    border-top: solid 1px #e2e2e2;
+    font-size: 13px;
+    font-family: Open Sans, sans-serif;
+    padding: 1rem;
+
+    h3,
+    h4 {
+        margin-top: 0;
+    }
+
+    label {
+        width: auto;
+        padding: 0;
+        display: inline-block;
+        float: none;
+        margin-right: 1rem;
+        cursor: pointer;
+    }
+
+    input[type='radio']:before,
+    input[type='radio']:after {
+        display: none;
+    }
+
+    input[type='radio'] {
+        margin-right: 8px;
+    }
+
+    input[type='text'] {
+        font-size: 14px;
+    }
+}

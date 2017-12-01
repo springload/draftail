@@ -1,0 +1,19 @@
+.editor__toolbar {
+    position: relative;
+    padding: $controls-spacing;
+    // Offset the button's top margin to form rows.
+    padding-top: 0;
+    background-color: $color-editor-chrome;
+    color: $color-editor-chrome-text;
+
+    z-index: $toolbar-z-index;
+
+    .editor--readonly & > * {
+        @include disabled;
+    }
+
+    .editor--focus & {
+        position: sticky;
+        top: 0;
+    }
+}

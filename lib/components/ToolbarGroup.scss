@@ -1,0 +1,9 @@
+.toolbar-group {
+    display: inline;
+    padding-right: $controls-spacing / 2;
+
+    & + & {
+        border-left: 1px solid $color-editor-chrome-accent;
+        padding-left: $controls-spacing / 2;
+    }
+}
