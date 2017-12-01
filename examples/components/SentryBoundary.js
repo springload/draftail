@@ -42,20 +42,9 @@ class SentryBoundary extends Component {
                                     us with more information if you want to.
                                 </p>
                                 <div>
-                                    <button
-                                        type="button"
-                                        className="RichEditor-tooltip__button"
-                                        onClick={() =>
-                                            window.location.reload(false)
-                                        }
-                                    >
-                                        Reload the page
-                                    </button>
-                                    <span> or </span>
                                     {isRavenAvailable ? (
                                         <button
                                             type="button"
-                                            className="RichEditor-tooltip__button"
                                             onClick={() =>
                                                 Raven.lastEventId() &&
                                                 Raven.showReportDialog()
@@ -75,6 +64,16 @@ class SentryBoundary extends Component {
                                             Open a GitHub issue
                                         </a>
                                     )}
+                                    <span> or </span>
+                                    <button
+                                        type="button"
+                                        className="RichEditor-tooltip__button"
+                                        onClick={() =>
+                                            window.location.reload(false)
+                                        }
+                                    >
+                                        Reload the page
+                                    </button>
                                 </div>
                             </div>
                         </div>

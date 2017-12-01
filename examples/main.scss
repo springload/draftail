@@ -89,6 +89,22 @@ h4:hover .anchor {
     white-space: nowrap;
 }
 
+.list-inline {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    > li {
+        display: inline;
+        margin: 0;
+        padding: 0;
+
+        + li {
+            margin-left: 0.5rem;
+        }
+    }
+}
+
 // TODO Continue code block styles.
 // http://prismjs.com/index.html#plugins
 // https://github.com/PrismJS/prism-themes

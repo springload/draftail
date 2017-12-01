@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import DraftailEditor, { ENTITY_TYPE, BLOCK_TYPE, INLINE_STYLE } from '../lib';
+import { ENTITY_TYPE, BLOCK_TYPE, INLINE_STYLE } from '../lib';
 
 import DocumentSource from './sources/DocumentSource';
 import LinkSource from './sources/LinkSource';
@@ -11,7 +11,7 @@ import EmbedSource from './sources/EmbedSource';
 import Link from './entities/Link';
 import Document from './entities/Document';
 
-import SentryBoundary from './components/SentryBoundary';
+import EditorWrapper from './components/EditorWrapper';
 
 import PrismDecorator from './components/PrismDecorator';
 
@@ -19,12 +19,7 @@ import allContentState from './utils/allContentState';
 
 import './simple';
 
-/* global PKG_VERSION */
-const DRAFTAIL_VERSION = PKG_VERSION;
-
 const initCustom = () => {
-    const mount = document.querySelector('[data-mount-custom]');
-
     const rawContentState = {
         entityMap: {},
         blocks: [
@@ -81,17 +76,10 @@ const initCustom = () => {
         ],
     };
 
-    const onSave = contentState => {
-        sessionStorage.setItem(
-            'custom:contentState',
-            JSON.stringify(contentState),
-        );
-    };
-
     const editor = (
-        <DraftailEditor
+        <EditorWrapper
+            id="custom"
             rawContentState={rawContentState}
-            onSave={onSave}
             stripPastedStyles={false}
             spellCheck={true}
             blockTypes={[
@@ -137,19 +125,10 @@ const initCustom = () => {
         />
     );
 
-    ReactDOM.render(editor, mount);
+    ReactDOM.render(editor, document.querySelector('[data-mount-custom]'));
 };
 
 const initAll = () => {
-    const mount = document.querySelector('[data-mount-all]');
-
-    const onSave = contentState => {
-        sessionStorage.setItem(
-            'all:contentState',
-            JSON.stringify(contentState),
-        );
-    };
-
     const allBlockTypes = Object.keys(BLOCK_TYPE)
         .filter(t => t !== 'ATOMIC')
         .map(type => ({
@@ -166,9 +145,9 @@ const initAll = () => {
     }));
 
     const editor = (
-        <DraftailEditor
+        <EditorWrapper
+            id="all"
             rawContentState={allContentState}
-            onSave={onSave}
             stripPastedStyles={false}
             enableHorizontalRule={true}
             enableLineBreak={true}
@@ -178,148 +157,104 @@ const initAll = () => {
         />
     );
 
-    ReactDOM.render(editor, mount);
+    ReactDOM.render(editor, document.querySelector('[data-mount-all]'));
 };
 
 const initWagtail = () => {
-    const initialContentState =
-        JSON.parse(sessionStorage.getItem('wagtail:contentState')) || null;
-
-    const onSave = contentState => {
-        sessionStorage.setItem(
-            'wagtail:contentState',
-            JSON.stringify(contentState),
-        );
-    };
-
-    const onCopy = () => {
-        const hidden = document.createElement('textarea');
-        hidden.value = JSON.stringify(
-            JSON.parse(sessionStorage.getItem('wagtail:contentState') || ''),
-            null,
-            2,
-        );
-        document.body.appendChild(hidden);
-        hidden.select();
-        document.execCommand('copy');
-        document.body.removeChild(hidden);
-    };
-
     const editor = (
-        <div>
-            <SentryBoundary>
-                <DraftailEditor
-                    rawContentState={initialContentState}
-                    onSave={onSave}
-                    placeholder="Write here…"
-                    enableHorizontalRule={true}
-                    enableLineBreak={true}
-                    showUndoRedoControls={true}
-                    stripPastedStyles={false}
-                    maxListNesting={9}
-                    spellCheck={true}
-                    entityTypes={[
-                        {
-                            type: ENTITY_TYPE.IMAGE,
-                            description: 'Image',
-                            icon: 'icon-image',
-                            source: ImageSource,
-                            imageFormats: [],
-                        },
-                        {
-                            type: ENTITY_TYPE.EMBED,
-                            description: 'Embed',
-                            icon: 'icon-media',
-                            source: EmbedSource,
-                        },
-                        {
-                            type: ENTITY_TYPE.LINK,
-                            description: 'Link',
-                            icon: 'icon-link',
-                            source: LinkSource,
-                            decorator: Link,
-                        },
-                        {
-                            type: ENTITY_TYPE.DOCUMENT,
-                            description: 'Document',
-                            icon: 'icon-doc-full',
-                            source: DocumentSource,
-                            decorator: Document,
-                        },
-                    ]}
-                    blockTypes={[
-                        {
-                            type: BLOCK_TYPE.HEADER_TWO,
-                            label: 'H2',
-                            description: 'Heading 2',
-                        },
-                        {
-                            type: BLOCK_TYPE.HEADER_THREE,
-                            label: 'H3',
-                            description: 'Heading 3',
-                        },
-                        {
-                            type: BLOCK_TYPE.HEADER_FOUR,
-                            label: 'H4',
-                            description: 'Heading 4',
-                        },
-                        {
-                            type: BLOCK_TYPE.HEADER_FIVE,
-                            label: 'H5',
-                            description: 'Heading 5',
-                        },
-                        {
-                            type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
-                            description: 'Bulleted list',
-                            icon: 'icon-list-ul',
-                        },
-                        {
-                            type: BLOCK_TYPE.ORDERED_LIST_ITEM,
-                            description: 'Numbered list',
-                            icon: 'icon-list-ol',
-                        },
-                    ]}
-                    inlineStyles={[
-                        {
-                            type: INLINE_STYLE.BOLD,
-                            description: 'Bold',
-                            icon: 'icon-bold',
-                        },
-                        {
-                            type: INLINE_STYLE.ITALIC,
-                            description: 'Italic',
-                            icon: 'icon-italic',
-                        },
-                    ]}
-                />
-            </SentryBoundary>
-            <details>
-                <summary>Debug</summary>
-                <button onClick={onCopy}>Copy editor content</button>
-                <span>Draftail version: {DRAFTAIL_VERSION}</span>
-            </details>
-        </div>
+        <EditorWrapper
+            id="wagtail"
+            placeholder="Write here…"
+            enableHorizontalRule={true}
+            enableLineBreak={true}
+            showUndoRedoControls={true}
+            stripPastedStyles={false}
+            maxListNesting={9}
+            spellCheck={true}
+            entityTypes={[
+                {
+                    type: ENTITY_TYPE.IMAGE,
+                    description: 'Image',
+                    icon: 'icon-image',
+                    source: ImageSource,
+                    imageFormats: [],
+                },
+                {
+                    type: ENTITY_TYPE.EMBED,
+                    description: 'Embed',
+                    icon: 'icon-media',
+                    source: EmbedSource,
+                },
+                {
+                    type: ENTITY_TYPE.LINK,
+                    description: 'Link',
+                    icon: 'icon-link',
+                    source: LinkSource,
+                    decorator: Link,
+                },
+                {
+                    type: ENTITY_TYPE.DOCUMENT,
+                    description: 'Document',
+                    icon: 'icon-doc-full',
+                    source: DocumentSource,
+                    decorator: Document,
+                },
+            ]}
+            blockTypes={[
+                {
+                    type: BLOCK_TYPE.HEADER_TWO,
+                    label: 'H2',
+                    description: 'Heading 2',
+                },
+                {
+                    type: BLOCK_TYPE.HEADER_THREE,
+                    label: 'H3',
+                    description: 'Heading 3',
+                },
+                {
+                    type: BLOCK_TYPE.HEADER_FOUR,
+                    label: 'H4',
+                    description: 'Heading 4',
+                },
+                {
+                    type: BLOCK_TYPE.HEADER_FIVE,
+                    label: 'H5',
+                    description: 'Heading 5',
+                },
+                {
+                    type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
+                    description: 'Bulleted list',
+                    icon: 'icon-list-ul',
+                },
+                {
+                    type: BLOCK_TYPE.ORDERED_LIST_ITEM,
+                    description: 'Numbered list',
+                    icon: 'icon-list-ol',
+                },
+            ]}
+            inlineStyles={[
+                {
+                    type: INLINE_STYLE.BOLD,
+                    description: 'Bold',
+                    icon: 'icon-bold',
+                },
+                {
+                    type: INLINE_STYLE.ITALIC,
+                    description: 'Italic',
+                    icon: 'icon-italic',
+                },
+            ]}
+        />
     );
 
     ReactDOM.render(editor, document.querySelector('[data-mount-wagtail]'));
 };
 
 const initTest = () => {
-    const mount = document.querySelector('[data-mount-test]');
-
-    const onSave = (id, rawContentState) => {
-        const serialised = JSON.stringify(rawContentState);
-        sessionStorage.setItem(`test:contentState:${id}`, serialised);
-    };
-
     const editors = (
         <div>
-            <DraftailEditor
-                rawContentState={
-                    JSON.parse(sessionStorage.getItem('test:contentState:1')) ||
-                    null
-                }
-                onSave={onSave.bind(null, 1)}
+            <EditorWrapper
+                id="test:1"
                 enableHorizontalRule={true}
                 enableLineBreak={true}
                 stripPastedStyles={false}
@@ -424,12 +359,8 @@ const initTest = () => {
                 ]}
             />
             <hr />
-            <DraftailEditor
-                rawContentState={
-                    JSON.parse(sessionStorage.getItem('test:contentState:2')) ||
-                    null
-                }
-                onSave={onSave.bind(null, 2)}
+            <EditorWrapper
+                id="test:2"
                 enableHorizontalRule={true}
                 enableLineBreak={true}
                 stripPastedStyles={false}
@@ -477,10 +408,10 @@ const initTest = () => {
         </div>
     );
 
-    ReactDOM.render(editors, mount);
+    ReactDOM.render(editors, document.querySelector('[data-mount-test]'));
 };
 
+initWagtail();
 initCustom();
 initAll();
-initWagtail();
 initTest();
