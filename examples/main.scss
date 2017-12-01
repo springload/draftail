@@ -11,6 +11,8 @@ $TEXT_COLOR: $GREY_333;
 @import './utils/layout';
 @import './utils/forms';
 
+@import './components/header';
+
 p,
 .public-DraftStyleDefault-block {
     margin: 0 0 0.5rem;
@@ -119,8 +121,18 @@ h4:hover .anchor {
 //     }
 // }
 
+// $color-editor-chrome: $GREY_333;
+// $color-editor-chrome-text: $WHITE;
+// $color-editor-chrome-accent: lighten($color-editor-chrome, 20%);
+// $color-editor-chrome-active: lighten($color-editor-chrome, 50%);
+
 @import '../lib/index';
 
 @import '../node_modules/prismjs/themes/prism';
+
+[name='PrismDecorator'] {
+    display: none;
+}
+
 @import './components/Modal';
 @import './sources/LinkSource';

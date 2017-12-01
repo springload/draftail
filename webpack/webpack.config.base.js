@@ -84,7 +84,7 @@ const webpackConfig = environment => {
             ],
             // Stylesheet shipped with the package.
             draftail: ['./lib/index.scss'],
-            intro: './examples/intro',
+            index: './examples/index',
             basic: './examples/basic',
             entities: './examples/entities',
             all: './examples/all',
@@ -102,7 +102,7 @@ const webpackConfig = environment => {
             new HtmlWebpackPlugin(
                 Object.assign({}, htmlPluginConfig, {
                     filename: 'index.html',
-                    chunks: ['vendor', 'intro'],
+                    chunks: ['vendor', 'index'],
                 }),
             ),
             new HtmlWebpackPlugin(

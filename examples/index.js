@@ -9,19 +9,19 @@ import EmbedSource from './sources/EmbedSource';
 
 import Link from './entities/Link';
 
-import introContentState from './utils/introContentState';
+import indexContentState from './utils/indexContentState';
 
 import PrismDecorator from './components/PrismDecorator';
 
-const mount = document.querySelector('[data-mount-intro]');
+const mount = document.querySelector('[data-mount-index]');
 
 const onSave = contentState => {
-    sessionStorage.setItem('intro:contentState', JSON.stringify(contentState));
+    sessionStorage.setItem('index:contentState', JSON.stringify(contentState));
 };
 
 const editor = (
     <DraftailEditor
-        rawContentState={introContentState}
+        rawContentState={indexContentState}
         onSave={onSave}
         placeholder="Write here…"
         enableHorizontalRule={true}
