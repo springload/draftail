@@ -61,6 +61,40 @@ We support keyboard shortcuts inspired by the ones used in [Google Docs](https:/
 * Blocks starting with "- ", "\* ", "1. " are automatically converted to list items.
 * Pasting content with block nesting above the configured maxium should reduce the depth up to the maximum.
 
+## Upgrade considerations
+
+### Draft.js
+
+Draft.js is relatively stable but also historically slow to address bugs. Draftail sometimes has to override behavior in a way that may be problematic if the Draft.js API is updated.
+
+When upgrading to a more recent Draft.js version, always review the full [CHANGELOG](https://github.com/facebook/draft-js/blob/master/CHANGELOG.md) as well as individual changes.
+
+Here are specific parts of the code that may need thorough review, and updating, or that we may be able to remove:
+
+* https://github.com/springload/draftail/blob/df903f86c882bd5101eb05e152e8b8a8b9a4915e/lib/blocks/MediaBlock.js#L60-L71
+* https://github.com/springload/draftail/commit/431c3fd09c4cfc043c8b334544b05b9f580b75d2
+* https://github.com/springload/draftail/blob/df903f86c882bd5101eb05e152e8b8a8b9a4915e/lib/api/behavior.js#L100-L110
+* https://github.com/springload/draftail/commit/8d9de77349cd2f7ee1cba36b03f2946a21039dde
+* https://github.com/springload/draftail/blob/df903f86c882bd5101eb05e152e8b8a8b9a4915e/lib/api/behavior.js#L23:L26
+
+### DraftJS utils
+
+Always pinned to an exact version so we can review individual changes when deciding to upgrade. Look at the [package.json](https://github.com/jpuri/draftjs-utils/blob/master/package.json) for version compatibility with other dependencies.
+
+### Immutable
+
+Always use the same version range as that of Draft.js: [package.json](https://github.com/facebook/draft-js/blob/master/package.json).
+
+### Jest
+
+* For Jest 21.3.0: https://github.com/springload/draftail/blob/df903f86c882bd5101eb05e152e8b8a8b9a4915e/lib/tests/polyfills.js#L3:L8
+
+### Webpack
+
+We generally follow the configuration of [create-react-app](https://github.com/facebookincubator/create-react-app);
+
+* UglifyJS issues: https://github.com/springload/draftail/blob/df903f86c882bd5101eb05e152e8b8a8b9a4915e/webpack/webpack.config.prod.js#L15-L31
+
 ## Demo site
 
 Website favicons generated with [RealFaviconGenerator](https://realfavicongenerator.net/).
