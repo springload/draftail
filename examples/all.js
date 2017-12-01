@@ -11,13 +11,15 @@ const onSave = contentState => {
     sessionStorage.setItem('all:contentState', JSON.stringify(contentState));
 };
 
-const allBlockTypes = Object.keys(BLOCK_TYPE).map(type => ({
-    label: `${type.charAt(0).toUpperCase()}${type
-        .slice(1)
-        .toLowerCase()
-        .replace(/_/g, ' ')}`,
-    type: BLOCK_TYPE[type],
-}));
+const allBlockTypes = Object.keys(BLOCK_TYPE)
+    .filter(t => t !== 'ATOMIC')
+    .map(type => ({
+        label: `${type.charAt(0).toUpperCase()}${type
+            .slice(1)
+            .toLowerCase()
+            .replace(/_/g, ' ')}`,
+        type: BLOCK_TYPE[type],
+    }));
 
 const allInlineStyles = Object.keys(INLINE_STYLE).map(type => ({
     label: `${type.charAt(0).toUpperCase()}${type.slice(1).toLowerCase()}`,
