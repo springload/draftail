@@ -298,7 +298,7 @@ It is possible to create Draft.js text decorators via the entity API, by providi
 | Chrome        | Android    | latest  |
 | IE            | Desktop    | 11      |
 | Chrome        | Desktop    | latest  |
-| MS Edge       | Desktop    | latest  |
+| MS Edge       | Windows    | latest  |
 | Firefox       | Desktop    | latest  |
 | Safari        | OSX        | latest  |
 
