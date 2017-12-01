@@ -98,14 +98,22 @@ export default {
         '19': {
             type: 'LINK',
             mutability: 'MUTABLE',
-            data: { url: 'https://github.com/springload/' },
+            data: {
+                url:
+                    'https://www.springload.co.nz/blog/draftail-next-generation-rich-text-editor-wagtail/',
+            },
         },
         '20': {
             type: 'LINK',
             mutability: 'MUTABLE',
-            data: { url: 'https://wagtail.io/' },
+            data: { url: 'https://github.com/springload/' },
         },
         '21': {
+            type: 'LINK',
+            mutability: 'MUTABLE',
+            data: { url: 'https://wagtail.io/' },
+        },
+        '22': {
             type: 'LINK',
             mutability: 'MUTABLE',
             data: { url: 'https://twitter.com/thibaud_colas' },
@@ -827,6 +835,15 @@ export default {
             data: {},
         },
         {
+            key: 'decj0',
+            text: 'Draftail – a next generation rich text editor for Wagtail',
+            type: 'unordered-list-item',
+            depth: 0,
+            inlineStyleRanges: [],
+            entityRanges: [{ offset: 0, length: 57, key: 19 }],
+            data: {},
+        },
+        {
             key: '8258a',
             text: '',
             type: 'unstyled',
@@ -852,9 +869,9 @@ export default {
             depth: 0,
             inlineStyleRanges: [{ offset: 130, length: 9, style: 'ITALIC' }],
             entityRanges: [
-                { offset: 41, length: 10, key: 19 },
-                { offset: 112, length: 7, key: 20 },
-                { offset: 165, length: 14, key: 21 },
+                { offset: 41, length: 10, key: 20 },
+                { offset: 112, length: 7, key: 21 },
+                { offset: 165, length: 14, key: 22 },
             ],
             data: {},
         },

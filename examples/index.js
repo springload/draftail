@@ -13,8 +13,6 @@ import indexContentState from './utils/indexContentState';
 
 import PrismDecorator from './components/PrismDecorator';
 
-export const THIN_SPACE = '\u2009';
-
 const mount = document.querySelector('[data-mount-index]');
 
 const onSave = contentState => {
@@ -71,7 +69,7 @@ const editor = (
                 icon: 'icon-openquote',
             },
             {
-                label: `{${THIN_SPACE}}`,
+                label: '{\u2009}',
                 type: BLOCK_TYPE.CODE,
                 description: 'Code',
                 // className: 'language-unknown',

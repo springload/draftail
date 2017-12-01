@@ -13,6 +13,8 @@ import Document from './entities/Document';
 
 import SentryBoundary from './components/SentryBoundary';
 
+import PrismDecorator from './components/PrismDecorator';
+
 import allContentState from './utils/allContentState';
 
 import './simple';
@@ -33,6 +35,48 @@ const initCustom = () => {
                 depth: 0,
                 inlineStyleRanges: [],
                 entityRanges: [],
+                data: {},
+            },
+            {
+                key: 'bldpo',
+                text:
+                    'And also inline styles. Or abuse the entity API to make text decorators.',
+                type: 'unstyled',
+                depth: 0,
+                inlineStyleRanges: [
+                    { offset: 9, length: 13, style: 'REDACTED' },
+                    { offset: 27, length: 5, style: 'REDACTED' },
+                    { offset: 56, length: 15, style: 'REDACTED' },
+                ],
+                entityRanges: [],
+                data: {},
+            },
+            {
+                key: '2uo5o',
+                text: '.media .img {',
+                type: 'code-block',
+                depth: 0,
+                inlineStyleRanges: [],
+                entityRanges: [],
+                data: {},
+            },
+            {
+                key: '9cgaa',
+                text: '    margin-right: 10px;',
+                type: 'code-block',
+                depth: 0,
+                inlineStyleRanges: [],
+                entityRanges: [],
+                data: {},
+            },
+            {
+                key: '3dhtn',
+                text: '}',
+                type: 'code-block',
+                depth: 0,
+                inlineStyleRanges: [],
+                entityRanges: [],
+                data: {},
             },
         ],
     };
@@ -57,6 +101,11 @@ const initCustom = () => {
                     description: 'Heading 2',
                 },
                 {
+                    label: '{\u2009}',
+                    type: BLOCK_TYPE.CODE,
+                    description: 'Code',
+                },
+                {
                     label: 'Tiny',
                     type: 'tiny-text',
                     element: 'div',
@@ -79,6 +128,11 @@ const initCustom = () => {
                     description: 'Redacted',
                     style: { backgroundColor: 'currentcolor' },
                 },
+            ]}
+            entityTypes={[
+                new PrismDecorator({
+                    defaultLanguage: 'css',
+                }),
             ]}
         />
     );
