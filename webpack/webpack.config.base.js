@@ -113,7 +113,7 @@ const webpackConfig = environment => {
             ),
             new HtmlWebpackPlugin(
                 Object.assign({}, htmlPluginConfig, {
-                    filename: 'examples.html',
+                    filename: 'examples/index.html',
                     chunks: [
                         'vendor',
                         'basic',

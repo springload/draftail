@@ -1,0 +1,24 @@
+.page-nav {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+
+    > li {
+        display: inline;
+        margin: 0;
+        padding: 0;
+
+        + li {
+            margin-left: 1rem;
+
+            @include xsmall {
+                margin-left: 0.5rem;
+            }
+        }
+    }
+
+    @include xsmall {
+        text-align: left;
+    }
+}

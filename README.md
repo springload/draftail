@@ -302,6 +302,8 @@ It is possible to create Draft.js text decorators via the entity API, by providi
 | Firefox       | Desktop    | latest  |
 | Safari        | OSX        | latest  |
 
+#### Polyfills
+
 Draft.js and Draftail build upon ES6 language features. If targeting browsers that do not support them, have a look at:
 
 * [Draft.js required polyfills](https://facebook.github.io/draft-js/docs/advanced-topics-issues-and-pitfalls.html#polyfills).

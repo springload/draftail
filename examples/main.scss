@@ -2,6 +2,7 @@
 
 $WHITE: #fff;
 $GREY_333: #333;
+$TEAL_WAGTAIL: #43b1b0;
 
 $TEXT_COLOR: $GREY_333;
 
@@ -12,6 +13,7 @@ $TEXT_COLOR: $GREY_333;
 @import './utils/forms';
 
 @import './components/header';
+@import './components/page-nav';
 
 p,
 .public-DraftStyleDefault-block {
@@ -23,25 +25,18 @@ code .public-DraftStyleDefault-block {
     margin-bottom: 0.25rem;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-
-    &:hover {
-        color: #069;
-    }
-
-    small {
-        font-size: 11px;
-        color: #777;
-        margin-top: -0.3em;
-        display: block;
-    }
-
-    &:hover small {
-        color: #777;
-    }
+.link {
+    border-bottom: 1px dotted #43b1b0;
 }
+
+// a {
+//     color: inherit;
+//     text-decoration: none;
+
+//     &:hover {
+//         color: #069;
+//     }
+// }
 
 blockquote {
     border-left: 1px solid #e5e5e5;
@@ -62,13 +57,13 @@ hr {
     margin: 0 0 20px;
 }
 
+.example {
+    margin-top: 2rem;
+}
+
 /*
  * Styles of the examples
  */
-
-.example {
-    padding: 2rem 0;
-}
 
 .anchor {
     display: none;
@@ -96,6 +91,10 @@ h4:hover .anchor {
 
 .u-text-center {
     text-align: center;
+}
+
+.u-color-teal-wagtail {
+    color: $TEAL_WAGTAIL;
 }
 
 // TODO Continue code block styles.
@@ -127,6 +126,12 @@ h4:hover .anchor {
 // $color-editor-chrome-active: lighten($color-editor-chrome, 50%);
 
 @import '../lib/index';
+
+.public-DraftEditor-content {
+    @include medium {
+        padding: 1.5rem;
+    }
+}
 
 @import '../node_modules/prismjs/themes/prism';
 

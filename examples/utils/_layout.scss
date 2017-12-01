@@ -1,13 +1,15 @@
 .page-wrapper {
     max-width: 960px;
-    padding: 10vh 5rem;
+    padding: 10vh 5vw;
     margin: 0 auto;
-}
 
-.page-header {
-    text-align: center;
+    @include medium {
+        padding: 10vh 5rem;
+    }
 }
 
 .page-section {
-    padding: 0 2rem;
+    & + & {
+        margin-top: 2rem;
+    }
 }

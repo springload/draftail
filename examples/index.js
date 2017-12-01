@@ -13,6 +13,8 @@ import indexContentState from './utils/indexContentState';
 
 import PrismDecorator from './components/PrismDecorator';
 
+export const THIN_SPACE = '\u2009';
+
 const mount = document.querySelector('[data-mount-index]');
 
 const onSave = contentState => {
@@ -26,7 +28,6 @@ const editor = (
         placeholder="Write here…"
         enableHorizontalRule={true}
         enableLineBreak={true}
-        showUndoRedoControls={true}
         stripPastedStyles={false}
         entityTypes={[
             new PrismDecorator({
@@ -65,7 +66,12 @@ const editor = (
                 description: 'Heading 3',
             },
             {
-                label: '</>',
+                type: BLOCK_TYPE.BLOCKQUOTE,
+                description: 'Blockquote',
+                icon: 'icon-openquote',
+            },
+            {
+                label: `{${THIN_SPACE}}`,
                 type: BLOCK_TYPE.CODE,
                 description: 'Code',
                 // className: 'language-unknown',
