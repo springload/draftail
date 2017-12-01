@@ -4,14 +4,23 @@
 
 ## Unreleased
 
-### added
+### Added
 
 * Add new `DraftUtils.getEntitySelection(editorState, entityKey)` method, returning the selection corresponding to a given entity. Note: only works if the entity is in the currently selected block.
+
+### Changed
 
 ### Removed
 
 * Remove Save and Cancel buttons from image block, thanks to [@allcaps](https://github.com/allcaps) ([#102](https://github.com/springload/draftail/pull/102))
 * Remove `DraftUtils.getSelectedEntitySelection(editorState)`. It can be replaced by `DraftUtils.getEntitySelection(editorState, DraftUtils.getSelectionEntity(editorState))`.
+
+### Fixed
+
+* Update handleNewLine to defer breakout in code-block. Fix [#104](https://github.com/springload/draftail/issues/104).
+* Fix toolbar entity edit and remove not working on selection pre first char. Fix [#109](https://github.com/springload/draftail/issues/109).
+* Fix wrong `PropTypes` definition for entity `imageFormat`.
+* Fix block type transformations moving selection to the wrong block.
 
 ## [[v0.9.0]](https://github.com/springload/draftail/releases/tag/v0.9.0)
 
