@@ -28,6 +28,8 @@
     <meta name="twitter:image:alt" content="Screenshot of the editor, with its toolbar and text area, and sample content">
     <meta name="twitter:label1" value="WYSIWYG?">
     <meta name="twitter:data1" value="Close enough">
+
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
 </head>
 <body>
     <a href="https://github.com/springload/draftail" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#43b1b0; color:#fff; position: absolute; top: 0; border: 0; right: 0;"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="#f3f3f3" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="#ffffff" class="octo-body"></path></svg></a>
@@ -49,38 +51,28 @@
 
                 <div id="example-index" class="example">
                     <div data-mount-index>
-                        <div class="loading">
-                            <!-- Editor content exported with draftjs_exporter. Here for SEO. -->
-                            <h2>Draftail is a rich text editor built with Draft.js</h2>
-                            <blockquote><em>Try it out by editing </em><em><strong>this text</strong></em><em>!</em></blockquote>
-                            <h3>Features 📝🍸</h3>
-                            <p>Draftail aims for a mouse-free, keyboard-centric experience. Most formatting can be done by using common keyboard shortcuts, inspired by Google Docs and Markdown. Here are important features worth highlighting:</p>
-                            <ul class="bullet-list">
-                                <li>Support for keyboard shortcuts.</li>
-                                <li>Autolists – start a line with - , * , 1. to create a list item.</li>
-                                <li>Undo / redo – until the end of times.</li>
-                                <li>Common text types: headings, paragraphs, quotes, lists.</li>
-                                <li>Common text styles: <strong>Bold</strong>, <em>Italic</em>, <span style="text-decoration: underline;">Underline</span>, Monospace, <span style="text-decoration: line-through;">Strikethrough</span> </li>
-                                <li>Built-in Link and Document controls.</li>
-                                <li>Built-in Image and Embed blocks.</li>
-                            </ul>
-                            <p>The Embeds in this example are powered by Embedly:</p>
-                            <p>Try out some keyboard shortcuts:</p>
-                            <ul class="bullet-list">
-                                <li><em>&lt;Put a list of common shortcuts here&gt;</em></li>
-                            </ul>
-                            <h3>For developers 🚀</h3>
-                            <p>Draftail is meant to be used in scenarios where not all formatting should be available, and where custom formatting can be necessary. Available formats, built-in and custom, can be specificed declaratively for each editor instance.</p>
-                            <h4>Built-in</h4>
-                            <ul class="bullet-list">
-                                <li>Block types: H1, H2, H3, H4, H5, H6, Blockquote, Code, UL, OL, P</li>
-                                <li>Inline styles: <strong>Bold</strong>, <em>Italic</em>, <span style="text-decoration: underline;">Underline</span>, Monospace, <span style="text-decoration: line-through;">Strikethrough</span></li>
-                                <li>Entities: Images, Embeds, (Links, Documents)</li>
-                                <li>And HR, BR as special cases</li>
-                            </ul>
-                            <h4>Custom block types</h4>
-                            <p>New block types can be created by giving them a unique type, a label and an icon (for the toolbar), and element and className attributes:</p>
-                            <pre>{ label: 'Tiny', type: 'tiny-text', element: 'div', className: 'u-tinytext' },</pre>
+                        <noscript class="u-text-center">
+                            <p><strong>For full functionality of this site it is necessary to enable JavaScript.</strong></p>
+                            <p>Here are the <a href="http://www.enable-javascript.com/" class="link" target="_blank" rel="noopener noreferrer">instructions how to enable JavaScript in your web browser</a>.</p>
+                        </noscript>
+                        <div class="editor loading">
+                            <div class="editor__toolbar">
+                                <div class="toolbar-group">
+                                    <button class="toolbar-button" disabled>
+                                        &nbsp;
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="DraftEditor-root">
+                                <div class="DraftEditor-editorContainer">
+                                    <div class="public-DraftEditor-content">
+                                    <!-- Insert content here -->
+<h2>Draftail is an editor built with <a href="https://github.com/facebook/draft-js">Draft.js</a></h2><p>Try it out by editing this text!</p><h3>Features 📝🍸</h3><p>Draftail aims for a mouse-free experience. Most formatting can be done with keyboard shortcuts only, inspired by <a href="https://support.google.com/docs/answer/179738">Google Docs</a> and <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>.</p><hr><p>Here are important features worth highlighting:</p><ul class="bullet-list"><li>Support for <a href="https://github.com/springload/draftail/tree/master/docs#keyboard-shortcuts">keyboard shortcuts</a>. Lots of them!</li><li>Autolists – start a line with <kbd>-</kbd>, <kbd>*</kbd>, <kbd>1.</kbd> to create a list item.</li><li>Shortcuts for heading levels <kbd>##</kbd>, code blocks <kbd>```</kbd>, and more.</li><li>Undo / redo – until the end of times.</li><li>Common text types: headings, paragraphs, quotes, lists.</li><li>Common text styles: <strong>Bold</strong>, <em class="u-font-italic">Italic</em>, and many more.</li><li>Built-in controls for <a href="https://www.springload.co.nz/">links</a> and documents.</li><li>Built-in image and embed blocks.</li></ul><img src="static/example-image.png"><p>The embeds in this example are powered by <a href="http://embed.ly/">Embedly</a>:</p><span class="missing-inline"> </span><p>Try out some of the shortcuts:</p><ul class="bullet-list"><li>Apply <strong>H3</strong> heading style: <kbd>###</kbd> and <kbd>Space</kbd>.</li><li>Make a list item: <kbd>-</kbd> and <kbd>Space</kbd>.</li><li>Use traditional combinations if that's your thing: <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>8</kbd>, or <kbd>⌘</kbd> +  +  on Mac.<ul class="bullet-list"><li>Increase list indentation: <kbd>tab</kbd>.</li></ul></li><li>Insert or edit a link: <kbd>ctrl</kbd> + <kbd>K</kbd> or <kbd>⌘</kbd> + .</li><li>Open a link or document: <kbd>alt</kbd> + <kbd>enter</kbd> or <kbd>option</kbd> + .</li></ul><h2>Using Draftail 🚀</h2><p>Draftail is meant to be used in scenarios where not all formatting should be available, and where custom formatting can be necessary.</p><p>Available formats, built-in and custom, can be specificed declaratively for each editor instance.</p><h3>Built-in formats</h3><ul class="bullet-list"><li>Block types: H1, H2, H3, H4, H5, H6, Blockquote, Code, UL, OL, P</li><li>Inline styles: Bold, Italic, Underline, Code, Strikethrough, Mark, Keyboard, Superscript, Subscript</li><li>Entities (things with data): Images, Embeds, Links, Documents</li><li>And HR, BR</li></ul><h3>Custom formats</h3><p>Your mileage may vary! There is good support for custom block-level and inline formatting. Custom entities or decorators require knowledge of the Draft.js API, which is very low-level.</p><p>Be sure to check out the full documentation <a href="https://github.com/springload/draftail">on GitHub</a> for API details, and if you are having trouble please open an issue.</p><h2>Getting started</h2><p>Make sure to first <a href="https://github.com/springload/draftail#getting-started">install the editor</a>, and check out <a href="https://github.com/springload/draftail#polyfills">required polyfills</a>.</p><pre><code>import React from 'react';</code></pre><pre><code>import ReactDOM from 'react-dom';</code></pre><pre><code>import DraftailEditor, { BLOCK_TYPE, INLINE_STYLE } from 'draftail';</code></pre><pre><code></code></pre><pre><code><em class="u-font-italic">const</em> initial = <em class="u-font-italic">JSON</em>.parse(sessionStorage.getItem('draftail:content'));</code></pre><pre><code><em class="u-font-italic">const</em> onSave = content <em class="u-font-italic">=&gt;</em> {</code></pre><pre><code>    <em class="u-font-italic">console</em>.log('saving', content);</code></pre><pre><code>    sessionStorage.setItem('draftail:content', <em class="u-font-italic">JSON</em>.stringify(content));
+};</code></pre><p>The above code imports required dependencies and saves / retrieves the content to sessionStorage.</p><p>Then, we declare the editor with its configuration:</p><pre><code><em class="u-font-italic">const</em> editor = (</code></pre><pre><code>    &lt;<em class="u-font-italic">DraftailEditor</em></code></pre><pre><code>        rawContentState={initial || null}</code></pre><pre><code>        onSave={onSave}</code></pre><pre><code>        blockTypes={[</code></pre><pre><code>            { type: BLOCK_TYPE.HEADER_THREE, label: 'H3' },</code></pre><pre><code>            { type: BLOCK_TYPE.UNORDERED_LIST_ITEM, label: 'UL' },</code></pre><pre><code>        ]}</code></pre><pre><code>        inlineStyles={[</code></pre><pre><code>            { type: INLINE_STYLE.BOLD, label: 'B' },</code></pre><pre><code>            { type: INLINE_STYLE.ITALIC, label: 'I' },</code></pre><pre><code>    /&gt;
+);</code></pre><pre><code>ReactDOM.render(editor, document.querySelector('[data-mount]'));</code></pre><p>This just scratches the surface, head to the <a href="https://github.com/springload/draftail">project repository</a> to check out all of the options.</p><h2>Contributing</h2><p>See anything you like in here? Anything missing? We welcome all support, whether on bug reports, feature requests, code, design, reviews, tests, documentation, and more. Have a look at our <a href="https://github.com/springload/draftail/issues">issue tracker</a> and start the conversation.</p><p>If you want to learn more about how we are using this, check out:</p><ul class="bullet-list"><li><a href="https://github.com/springload/draftjs_exporter">draftjs_exporter</a>, the Python Draft.js to HTML exporter.</li><li><a href="https://github.com/springload/wagtaildraftail">WagtailDraftail</a>, an integration of Draftail into Wagtail.</li><li><a href="https://www.springload.co.nz/blog/draftail-next-generation-rich-text-editor-wagtail/">Draftail – a next generation rich text editor for Wagtail</a></li></ul><p></p><h2>Credits</h2><p>Draftail is made possible by the work of <a href="https://github.com/springload/">Springload</a>, a New Zealand digital agency, and core contributors to the <a href="https://wagtail.io/">Wagtail</a> CMS. This <em class="u-font-italic">beautiful</em> demo site is the work of <a href="https://twitter.com/thibaud_colas">@thibaud_colas</a>.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

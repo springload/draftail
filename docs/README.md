@@ -97,6 +97,14 @@ We generally follow the configuration of [create-react-app](https://github.com/f
 
 ## Demo site
 
-Website favicons generated with [RealFaviconGenerator](https://realfavicongenerator.net/).
+### Favicons
+
+Favicons generated with [RealFaviconGenerator](https://realfavicongenerator.net/).
 
 Original pencil icon is the [Noun project crayon](https://commons.wikimedia.org/wiki/File:Noun_project_-_crayon.svg) dedicated to the public domain (CC0) by D. Charbonnier.
+
+### Static editor content
+
+The demo site contains static content exported with [draftjs_exporter](https://github.com/springload/draftjs_exporter). It is placed there for SEO, and also to make the loading experience nicer.
+
+To regenerate it, get the serialised ContentState for the index page's editor (in `sessionStorage`), go to [the exporter demo](https://draftjs-exporter.herokuapp.com), and place the ContentState in the `sessionStorage` value of that editor.
