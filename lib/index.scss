@@ -14,12 +14,13 @@ $color-black: #000;
 $color-grey: #333;
 $color-light-grey: #eee;
 
-$color-editor-chrome: $color-light-grey;
-$color-editor-chrome-accent: darken($color-editor-chrome, 10%);
-$color-editor-chrome-active: darken($color-editor-chrome, 30%);
-$color-editor-chrome-active-accent: $color-teal;
+$color-editor-chrome: $color-light-grey !default;
+$color-editor-chrome-accent: darken($color-editor-chrome, 10%) !default;
+$color-editor-chrome-active: darken($color-editor-chrome, 30%) !default;
+$color-editor-chrome-active-accent: $color-teal !default;
+$color-editor-chrome-text: $color-grey !default;
 
-$editor-z-index: 1;
+$editor-z-index: 1 !default;
 $tooltip-z-index: $editor-z-index + 1;
 $overlay-z-index: $tooltip-z-index + 1;
 $activeblock-z-index: $overlay-z-index + 1;
@@ -45,6 +46,7 @@ $toolbar-tooltip-z-index: $toolbar-z-index + 1;
     // Offset the button's top margin to form rows.
     padding-top: 0;
     background-color: $color-editor-chrome;
+    color: $color-editor-chrome-text;
 
     z-index: $toolbar-z-index;
 
