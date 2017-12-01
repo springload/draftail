@@ -91,6 +91,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
+    "autotrack": "^2.4.1",
     "babel-cli": "^6.24.1",
     "babel-jest": "^21.2.0",
     "babel-loader": "^7.1.1",
