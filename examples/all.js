@@ -29,6 +29,9 @@ const editor = (
         rawContentState={allContentState}
         onSave={onSave}
         stripPastedStyles={false}
+        enableHorizontalRule={true}
+        enableLineBreak={true}
+        showUndoRedoControls={true}
         blockTypes={allBlockTypes}
         inlineStyles={allInlineStyles}
     />

@@ -1,6 +1,7 @@
-/* eslint-disable */
 export default {
-    entityMap: {},
+    entityMap: {
+        '0': { type: 'HORIZONTAL_RULE', mutability: 'IMMUTABLE', data: {} },
+    },
     blocks: [
         {
             key: 'b4b1l',
@@ -102,7 +103,25 @@ export default {
             data: {},
         },
         {
-            key: 'bsahk',
+            key: 'epoas',
+            text: ' ',
+            type: 'atomic',
+            depth: 0,
+            inlineStyleRanges: [],
+            entityRanges: [{ offset: 0, length: 1, key: 0 }],
+            data: {},
+        },
+        {
+            key: '988fv',
+            text: 'Soft line\nbreak',
+            type: 'unordered-list-item',
+            depth: 0,
+            inlineStyleRanges: [],
+            entityRanges: [],
+            data: {},
+        },
+        {
+            key: '47te2',
             text: 'Bold: Bold',
             type: 'unstyled',
             depth: 0,
