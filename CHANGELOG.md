@@ -7,6 +7,7 @@
 ### Added
 
 * Add new `DraftUtils.getEntitySelection(editorState, entityKey)` method, returning the selection corresponding to a given entity. Note: only works if the entity is in the currently selected block.
+* Add shortcuts for blockquote and code block to toolbar tooltips.
 
 ### Changed
 
