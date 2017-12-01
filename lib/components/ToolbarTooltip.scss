@@ -8,7 +8,7 @@ $balloon-bg: fade-out(#111, 0.1) !default;
 $ballon-text-color: $color-white;
 $balloon-base-size: 10px !default;
 $balloon-arrow-height: 6px;
-$balloon-arrow-offset: -1px;
+$balloon-arrow-offset: 1px;
 $ballon-border-radius: 4px;
 $ballon-transition-duration: 0;
 $ballon-transition-delay: 0;
@@ -41,13 +41,7 @@ $ballon-transition-delay: 0;
     height: $height;
 }
 
-@mixin base-effects() {
-    opacity: 0;
-    transition: all $ballon-transition-duration ease-out
-        $ballon-transition-delay;
-}
-
-@mixin ballon-position-down() {
+@mixin ballon-position-down {
     &::after {
         left: 50%;
         margin-top: $balloon-arrow-offset + $balloon-arrow-height;
@@ -93,9 +87,9 @@ button[data-balloon] {
 
     &::before,
     &::after {
-        @include base-effects();
         position: absolute;
         z-index: $toolbar-tooltip-z-index;
+        opacity: 0;
         pointer-events: none;
     }
 

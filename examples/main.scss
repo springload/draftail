@@ -29,15 +29,6 @@ code .public-DraftStyleDefault-block {
     border-bottom: 1px dotted #43b1b0;
 }
 
-// a {
-//     color: inherit;
-//     text-decoration: none;
-
-//     &:hover {
-//         color: #069;
-//     }
-// }
-
 blockquote {
     border-left: 1px solid #e5e5e5;
     padding: 0 0 0 20px;
@@ -93,8 +84,9 @@ h4:hover .anchor {
     text-align: center;
 }
 
-.u-color-teal-wagtail {
+.u-wagtail {
     color: $TEAL_WAGTAIL;
+    white-space: nowrap;
 }
 
 // TODO Continue code block styles.
@@ -126,12 +118,6 @@ h4:hover .anchor {
 // $color-editor-chrome-active: lighten($color-editor-chrome, 50%);
 
 @import '../lib/index';
-
-.public-DraftEditor-content {
-    @include medium {
-        padding: 1.5rem;
-    }
-}
 
 @import '../node_modules/prismjs/themes/prism';
 
