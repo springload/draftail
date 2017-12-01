@@ -21,7 +21,8 @@ class LinkSource extends Component {
             url: url,
         };
 
-        this.onClose = this.onClose.bind(this);
+        this.onRequestClose = this.onRequestClose.bind(this);
+        this.onAfterOpen = this.onAfterOpen.bind(this);
         this.onConfirm = this.onConfirm.bind(this);
         this.onChangeURL = this.onChangeURL.bind(this);
     }
@@ -52,11 +53,18 @@ class LinkSource extends Component {
         onUpdate(nextState);
     }
 
-    onClose(e) {
+    onRequestClose(e) {
         const { onClose } = this.props;
         e.preventDefault();
 
         onClose();
+    }
+
+    onAfterOpen() {
+        if (this.inputRef) {
+            this.inputRef.focus();
+            this.inputRef.select();
+        }
     }
 
     onChangeURL(e) {
@@ -68,7 +76,8 @@ class LinkSource extends Component {
         const { url } = this.state;
         return (
             <Modal
-                onRequestClose={this.onClose}
+                onRequestClose={this.onRequestClose}
+                onAfterOpen={this.onAfterOpen}
                 isOpen={true}
                 contentLabel="Link chooser"
             >
@@ -76,6 +85,9 @@ class LinkSource extends Component {
                     <label className={`form-field`}>
                         <span className="form-field__label">Link URL</span>
                         <input
+                            ref={inputRef => {
+                                this.inputRef = inputRef;
+                            }}
                             type="text"
                             onChange={this.onChangeURL}
                             value={url}
