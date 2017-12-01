@@ -1,12 +1,15 @@
 @import '../node_modules/normalize.css';
+
+$WHITE: #fff;
+$GREY_333: #333;
+
+$TEXT_COLOR: $GREY_333;
+
 @import './utils/breakpoints';
 @import './utils/elements';
 @import './utils/typography';
+@import './utils/layout';
 @import './utils/forms';
-
-body {
-    padding: 50px;
-}
 
 p,
 .public-DraftStyleDefault-block {
@@ -38,11 +41,6 @@ a {
     }
 }
 
-.wrapper {
-    width: 960px;
-    margin: 0 auto;
-}
-
 blockquote {
     border-left: 1px solid #e5e5e5;
     padding: 0 0 0 20px;
@@ -50,61 +48,16 @@ blockquote {
     font-style: italic;
 }
 
-.wrapper > header {
-    -webkit-font-smoothing: subpixel-antialiased;
-}
-
 strong {
     color: #222;
     font-weight: 700;
 }
 
-.wrapper > section {
-    padding-bottom: 25px;
-    background-color: #fff;
-    padding: 0 2rem;
-}
-
 hr {
     border: 0;
-    background: #e5e5e5;
+    background: hsl(0, 0%, 90%);
     height: 1px;
     margin: 0 0 20px;
-}
-
-@media print, screen and (max-width: 960px) {
-    .wrapper {
-        width: auto;
-        margin: 0;
-    }
-
-    header,
-    section,
-    footer {
-        float: none;
-        position: static;
-        width: auto;
-    }
-
-    header {
-        padding-right: 320px;
-    }
-}
-
-@media print, screen and (max-width: 720px) {
-    body {
-        word-wrap: break-word;
-    }
-
-    header {
-        padding: 0;
-    }
-}
-
-@media print, screen and (max-width: 480px) {
-    body {
-        padding: 15px;
-    }
 }
 
 /*
