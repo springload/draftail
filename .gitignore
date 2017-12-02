@@ -33,6 +33,7 @@ public/*.css
 public/*.map
 public/*.html
 public/*.js
+public/examples
 
 # Dependency directories
 node_modules
