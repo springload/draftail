@@ -10,23 +10,16 @@
     font-weight: 600;
     cursor: pointer;
 
-    &:hover,
-    &:focus {
+    &:hover {
         color: inherit;
         background-color: rgba(0, 0, 0, 0.05);
-    }
-
-    &:focus {
-        border: 1px solid $color-editor-chrome-active;
-        outline: 0;
     }
 
     &--active {
         background-color: rgba(0, 0, 0, 0.1);
         border: 1px solid rgba(0, 0, 0, 0.2);
 
-        &:hover,
-        &:focus {
+        &:hover {
             background-color: rgba(0, 0, 0, 0.1);
         }
     }

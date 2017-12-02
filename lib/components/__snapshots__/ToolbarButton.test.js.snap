@@ -8,6 +8,7 @@ exports[`ToolbarButton #active 1`] = `
   name={null}
   onMouseDown={[Function]}
   onMouseLeave={[Function]}
+  tabIndex={-1}
   type="button"
 />
 `;
@@ -20,6 +21,7 @@ exports[`ToolbarButton #icon 1`] = `
   name={null}
   onMouseDown={[Function]}
   onMouseLeave={[Function]}
+  tabIndex={-1}
   type="button"
 >
   <Icon
@@ -38,6 +40,7 @@ exports[`ToolbarButton #label 1`] = `
   name={null}
   onMouseDown={[Function]}
   onMouseLeave={[Function]}
+  tabIndex={-1}
   type="button"
 >
   Test label
@@ -52,6 +55,7 @@ exports[`ToolbarButton #name 1`] = `
   name="TEST"
   onMouseDown={[Function]}
   onMouseLeave={[Function]}
+  tabIndex={-1}
   type="button"
 />
 `;
@@ -64,6 +68,7 @@ exports[`ToolbarButton #title 1`] = `
   name={null}
   onMouseDown={[Function]}
   onMouseLeave={[Function]}
+  tabIndex={-1}
   type="button"
 />
 `;
@@ -76,6 +81,7 @@ exports[`ToolbarButton empty 1`] = `
   name={null}
   onMouseDown={[Function]}
   onMouseLeave={[Function]}
+  tabIndex={-1}
   type="button"
 />
 `;

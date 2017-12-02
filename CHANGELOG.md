@@ -11,6 +11,8 @@
 
 ### Changed
 
+* Exclude toolbar buttons from default focus navigation flow.
+
 ### Removed
 
 * Remove Save and Cancel buttons from image block, thanks to [@allcaps](https://github.com/allcaps) ([#102](https://github.com/springload/draftail/pull/102))
