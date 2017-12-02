@@ -253,164 +253,218 @@ const initWagtail = () => {
 const initTest = () => {
     const editors = (
         <div>
-            <EditorWrapper
-                id="test:1"
-                enableHorizontalRule={true}
-                enableLineBreak={true}
-                stripPastedStyles={false}
-                entityTypes={[
-                    {
-                        type: ENTITY_TYPE.IMAGE,
-                        description: 'Image',
-                        icon: 'icon-image',
-                        source: ImageSource,
-                        imageFormats: [],
-                    },
-                    {
-                        type: ENTITY_TYPE.EMBED,
-                        description: 'Embed',
-                        icon: 'icon-media',
-                        source: EmbedSource,
-                    },
-                    {
-                        type: ENTITY_TYPE.LINK,
-                        description: 'Link',
-                        icon: 'icon-link',
-                        source: LinkSource,
-                        decorator: Link,
-                    },
-                    {
-                        type: ENTITY_TYPE.DOCUMENT,
-                        description: 'Document',
-                        icon: 'icon-doc-full',
-                        source: DocumentSource,
-                        decorator: Document,
-                    },
-                ]}
-                blockTypes={[
-                    {
-                        label: 'H2',
-                        type: BLOCK_TYPE.HEADER_TWO,
-                        description: 'Heading 2',
-                    },
-                    {
-                        label: 'H3',
-                        type: BLOCK_TYPE.HEADER_THREE,
-                        description: 'Heading 3',
-                    },
-                    {
-                        label: 'H4',
-                        type: BLOCK_TYPE.HEADER_FOUR,
-                        description: 'Heading 4',
-                    },
-                    {
-                        label: 'H5',
-                        type: BLOCK_TYPE.HEADER_FIVE,
-                        description: 'Heading 5',
-                    },
-                    {
-                        type: BLOCK_TYPE.BLOCKQUOTE,
-                        description: 'Blockquote',
-                        icon: 'icon-openquote',
-                    },
-                    {
-                        type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
-                        description: 'Bulleted list',
-                        icon: 'icon-list-ul',
-                    },
-                    {
-                        type: BLOCK_TYPE.ORDERED_LIST_ITEM,
-                        description: 'Numbered list',
-                        icon: 'icon-list-ol',
-                    },
-                    {
-                        label: 'Tiny',
-                        type: 'tiny-text',
-                        element: 'div',
-                        className: 'u-tinytext',
-                    },
-                ]}
-                inlineStyles={[
-                    {
-                        type: INLINE_STYLE.BOLD,
-                        description: 'Bold',
-                        icon: 'icon-bold',
-                    },
-                    {
-                        type: INLINE_STYLE.ITALIC,
-                        description: 'Italic',
-                        icon: 'icon-italic',
-                    },
-                    {
-                        type: INLINE_STYLE.UNDERLINE,
-                        description: 'Underline',
-                        icon: 'icon-underline',
-                    },
-                    {
-                        type: INLINE_STYLE.CODE,
-                        label: '</>',
-                        description: 'Code',
-                    },
-                    {
-                        type: INLINE_STYLE.STRIKETHROUGH,
-                        description: 'Strikethrough',
-                        icon: 'icon-strikethrough',
-                    },
-                    {
-                        label: '█',
-                        type: 'REDACTED',
-                        description: 'Redacted',
-                        style: { backgroundColor: 'currentcolor' },
-                    },
-                ]}
-            />
-            <hr />
-            <EditorWrapper
-                id="test:2"
-                enableHorizontalRule={true}
-                enableLineBreak={true}
-                stripPastedStyles={false}
-                entityTypes={[
-                    {
-                        type: ENTITY_TYPE.IMAGE,
-                        description: 'Image',
-                        icon: 'icon-image',
-                        source: ImageSource,
-                        imageFormats: [],
-                    },
-                    {
-                        type: ENTITY_TYPE.LINK,
-                        description: 'Link',
-                        icon: 'icon-link',
-                        source: LinkSource,
-                        decorator: Link,
-                    },
-                ]}
-                blockTypes={[
-                    {
-                        label: 'H4',
-                        type: BLOCK_TYPE.HEADER_FOUR,
-                        description: 'Heading 4',
-                    },
-                    {
-                        type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
-                        description: 'Bulleted list',
-                        icon: 'icon-list-ul',
-                    },
-                ]}
-                inlineStyles={[
-                    {
-                        type: INLINE_STYLE.BOLD,
-                        description: 'Bold',
-                        icon: 'icon-bold',
-                    },
-                    {
-                        type: INLINE_STYLE.ITALIC,
-                        description: 'Italic',
-                        icon: 'icon-italic',
-                    },
-                ]}
-            />
+            <div className="example">
+                <h3>Keep everything</h3>
+                <EditorWrapper
+                    id="test:1"
+                    enableHorizontalRule={true}
+                    enableLineBreak={true}
+                    stripPastedStyles={false}
+                    entityTypes={[
+                        {
+                            type: ENTITY_TYPE.IMAGE,
+                            description: 'Image',
+                            icon: 'icon-image',
+                            source: ImageSource,
+                            imageFormats: [],
+                        },
+                        {
+                            type: ENTITY_TYPE.EMBED,
+                            description: 'Embed',
+                            icon: 'icon-media',
+                            source: EmbedSource,
+                        },
+                        {
+                            type: ENTITY_TYPE.LINK,
+                            description: 'Link',
+                            icon: 'icon-link',
+                            source: LinkSource,
+                            decorator: Link,
+                        },
+                        {
+                            type: ENTITY_TYPE.DOCUMENT,
+                            description: 'Document',
+                            icon: 'icon-doc-full',
+                            source: DocumentSource,
+                            decorator: Document,
+                        },
+                    ]}
+                    blockTypes={[
+                        {
+                            label: 'H2',
+                            type: BLOCK_TYPE.HEADER_TWO,
+                            description: 'Heading 2',
+                        },
+                        {
+                            label: 'H3',
+                            type: BLOCK_TYPE.HEADER_THREE,
+                            description: 'Heading 3',
+                        },
+                        {
+                            label: 'H4',
+                            type: BLOCK_TYPE.HEADER_FOUR,
+                            description: 'Heading 4',
+                        },
+                        {
+                            label: 'H5',
+                            type: BLOCK_TYPE.HEADER_FIVE,
+                            description: 'Heading 5',
+                        },
+                        {
+                            type: BLOCK_TYPE.BLOCKQUOTE,
+                            description: 'Blockquote',
+                            icon: 'icon-openquote',
+                        },
+                        {
+                            type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
+                            description: 'Bulleted list',
+                            icon: 'icon-list-ul',
+                        },
+                        {
+                            type: BLOCK_TYPE.ORDERED_LIST_ITEM,
+                            description: 'Numbered list',
+                            icon: 'icon-list-ol',
+                        },
+                        {
+                            label: 'Tiny',
+                            type: 'tiny-text',
+                            element: 'div',
+                            className: 'u-tinytext',
+                        },
+                    ]}
+                    inlineStyles={[
+                        {
+                            type: INLINE_STYLE.BOLD,
+                            description: 'Bold',
+                            icon: 'icon-bold',
+                        },
+                        {
+                            type: INLINE_STYLE.ITALIC,
+                            description: 'Italic',
+                            icon: 'icon-italic',
+                        },
+                        {
+                            type: INLINE_STYLE.UNDERLINE,
+                            description: 'Underline',
+                            icon: 'icon-underline',
+                        },
+                        {
+                            type: INLINE_STYLE.CODE,
+                            label: '</>',
+                            description: 'Code',
+                        },
+                        {
+                            type: INLINE_STYLE.STRIKETHROUGH,
+                            description: 'Strikethrough',
+                            icon: 'icon-strikethrough',
+                        },
+                        {
+                            label: '█',
+                            type: 'REDACTED',
+                            description: 'Redacted',
+                            style: { backgroundColor: 'currentcolor' },
+                        },
+                    ]}
+                />
+            </div>
+            <div className="example">
+                <h3>Keep everything, with less enabled formats</h3>
+                <EditorWrapper
+                    id="test:2"
+                    enableHorizontalRule={true}
+                    enableLineBreak={true}
+                    stripPastedStyles={false}
+                    entityTypes={[
+                        {
+                            type: ENTITY_TYPE.IMAGE,
+                            description: 'Image',
+                            icon: 'icon-image',
+                            source: ImageSource,
+                            imageFormats: [],
+                        },
+                        {
+                            type: ENTITY_TYPE.LINK,
+                            description: 'Link',
+                            icon: 'icon-link',
+                            source: LinkSource,
+                            decorator: Link,
+                        },
+                    ]}
+                    blockTypes={[
+                        {
+                            label: 'H4',
+                            type: BLOCK_TYPE.HEADER_FOUR,
+                            description: 'Heading 4',
+                        },
+                        {
+                            type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
+                            description: 'Bulleted list',
+                            icon: 'icon-list-ul',
+                        },
+                    ]}
+                    inlineStyles={[
+                        {
+                            type: INLINE_STYLE.BOLD,
+                            description: 'Bold',
+                            icon: 'icon-bold',
+                        },
+                        {
+                            type: INLINE_STYLE.ITALIC,
+                            description: 'Italic',
+                            icon: 'icon-italic',
+                        },
+                    ]}
+                />
+            </div>
+            <div className="example">
+                <h3>Strip all formatting on paste</h3>
+                <EditorWrapper
+                    id="test:3"
+                    enableHorizontalRule={true}
+                    enableLineBreak={true}
+                    stripPastedStyles={true}
+                    entityTypes={[
+                        {
+                            type: ENTITY_TYPE.IMAGE,
+                            description: 'Image',
+                            icon: 'icon-image',
+                            source: ImageSource,
+                            imageFormats: [],
+                        },
+                        {
+                            type: ENTITY_TYPE.LINK,
+                            description: 'Link',
+                            icon: 'icon-link',
+                            source: LinkSource,
+                            decorator: Link,
+                        },
+                    ]}
+                    blockTypes={[
+                        {
+                            label: 'H4',
+                            type: BLOCK_TYPE.HEADER_FOUR,
+                            description: 'Heading 4',
+                        },
+                        {
+                            type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
+                            description: 'Bulleted list',
+                            icon: 'icon-list-ul',
+                        },
+                    ]}
+                    inlineStyles={[
+                        {
+                            type: INLINE_STYLE.BOLD,
+                            description: 'Bold',
+                            icon: 'icon-bold',
+                        },
+                        {
+                            type: INLINE_STYLE.ITALIC,
+                            description: 'Italic',
+                            icon: 'icon-italic',
+                        },
+                    ]}
+                />
+            </div>
         </div>
     );
 
