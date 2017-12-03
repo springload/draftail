@@ -7,7 +7,9 @@ install:
 - npm install -g coveralls
 script:
 - npm run test:ci
+# Move build artefacts to public folder so they are published on the demo site.
 - mv webpack/webpack-stats.html public || true
+- mv coverage/lcov-report public || true
 after_success:
 - cat ./coverage/lcov.info | coveralls
 branches:
