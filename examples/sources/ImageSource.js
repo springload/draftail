@@ -12,7 +12,7 @@ class ImageSource extends React.Component {
             const contentState = editorState.getCurrentContent();
             const contentStateWithEntity = contentState.createEntity(
                 options.type,
-                'IMMUTABLE',
+                'MUTABLE',
                 {
                     alt: '',
                     alignment: 'left',
