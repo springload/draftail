@@ -35,7 +35,7 @@ export default {
             data: {
                 alt: 'Test image alt text',
                 alignment: 'left',
-                src: 'static/example-image.png',
+                src: 'static/example-lowres-image.jpg',
             },
         },
         '7': {

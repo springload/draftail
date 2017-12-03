@@ -47,7 +47,9 @@ class EditorWrapper extends Component {
                     />
                 </SentryBoundary>
                 <details>
-                    <summary>Debug</summary>
+                    <summary>
+                        <span className="link">Debug</span>
+                    </summary>
                     <ul className="list-inline">
                         <li>
                             <span>Version: {DRAFTAIL_VERSION}</span>

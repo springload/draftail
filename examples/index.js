@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import DraftailEditor, { ENTITY_TYPE, BLOCK_TYPE, INLINE_STYLE } from '../lib';
+import { ENTITY_TYPE, BLOCK_TYPE, INLINE_STYLE } from '../lib';
 
 import LinkSource from './sources/LinkSource';
 import ImageSource from './sources/ImageSource';
@@ -12,17 +12,12 @@ import Link from './entities/Link';
 import indexContentState from './utils/indexContentState';
 
 import PrismDecorator from './components/PrismDecorator';
-
-const mount = document.querySelector('[data-mount-index]');
-
-const onSave = contentState => {
-    sessionStorage.setItem('index:contentState', JSON.stringify(contentState));
-};
+import EditorWrapper from './components/EditorWrapper';
 
 const editor = (
-    <DraftailEditor
+    <EditorWrapper
+        id="index"
         rawContentState={indexContentState}
-        onSave={onSave}
         placeholder="Write here…"
         enableHorizontalRule={true}
         enableLineBreak={true}
@@ -96,4 +91,4 @@ const editor = (
     />
 );
 
-ReactDOM.render(editor, mount);
+ReactDOM.render(editor, document.querySelector('[data-mount-index]'));
