@@ -45,7 +45,7 @@
                 <nav>
                     <ul class="page-nav list-inline">
                         <li><a href="https://github.com/springload/draftail" class="link">View it on GitHub</a></li>
-                        <li><a href="/examples/" class="link">Try more examples</a></li>
+                        <li><a href="<%= htmlWebpackPlugin.options.data.publicPath %>examples/" class="link">Try more examples</a></li>
                     </ul>
                 </nav>
 
@@ -83,7 +83,7 @@
                 <h2>More examples of Draftail usage</h2>
 
                 <div class="example">
-                    <h3>Simple editor (<a href="https://github.com/springload/draftail/blob/master/examples/simple.js" class="link">simple.js</a>) <a class="anchor" id="simple" href="#simple">#</a></h3>
+                    <h3>Simple editor (<a href="https://github.com/springload/draftail/blob/maste<%= htmlWebpackPlugin.options.data.publicPath %>/examples/simple.js" class="link">simple.js</a>) <a class="anchor" id="simple" href="#simple">#</a></h3>
                     <div data-mount></div>
                 </div>
 
