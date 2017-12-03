@@ -63,11 +63,11 @@ We support keyboard shortcuts inspired by the ones used in [Google Docs](https:/
 
 #### Cut-copy-pasting test plan
 
-Use the [Draft.js Cut/Copy/Paste testing plan](https://github.com/facebook/draft-js/wiki/Manual-Testing#cutcopypaste). We target specific exterrnal sources, and have ready-made test documents available to test them:
+Use the [Draft.js Cut/Copy/Paste testing plan](https://github.com/facebook/draft-js/wiki/Manual-Testing#cutcopypaste). We target specific external sources, and have ready-made test documents available to test them:
 
 ##### External sources
 
-Here are specific external sources we want to pay special attention too, and for which we have ready-made test documents with all of the possible rich content.
+Here are external sources we want to pay special attention to, and for which we have ready-made test documents with diverse rich content.
 
 * [ ] [Microsoft Word](https://products.office.com/en/word): TODO
 * [ ] [Microsoft Word Online](https://office.live.com/start/Word.aspx): [Test document](https://1drv.ms/w/s!AuGin45FpiF5hjzm9QdWHYGqPrqm)
