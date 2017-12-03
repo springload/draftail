@@ -15,7 +15,6 @@ The behavior of this editor is heavily inspired by prior art. If you want to dis
 * [ ] [Google Docs](https://docs.google.com/)
 * [ ] [Apple Pages](https://www.apple.com/lae/pages/)
 * [ ] [Dropbox Paper](https://www.dropbox.com/paper)
-* [ ] [Open Office Writer](https://www.openoffice.org/product/writer.html)
 * [ ] [Gmail](https://www.google.com/gmail/)
 * [ ] [TinyMCE](https://www.tinymce.com/)
 * [ ] [CKEditor](https://ckeditor.com)
