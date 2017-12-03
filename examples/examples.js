@@ -19,6 +19,96 @@ import allContentState from './utils/allContentState';
 
 import './simple';
 
+const initWagtail = () => {
+    const editor = (
+        <EditorWrapper
+            id="wagtail"
+            placeholder="Write here…"
+            enableHorizontalRule={true}
+            enableLineBreak={true}
+            showUndoRedoControls={true}
+            stripPastedStyles={false}
+            maxListNesting={9}
+            spellCheck={true}
+            entityTypes={[
+                {
+                    type: ENTITY_TYPE.IMAGE,
+                    description: 'Image',
+                    icon: 'icon-image',
+                    source: ImageSource,
+                    imageFormats: [],
+                },
+                {
+                    type: ENTITY_TYPE.EMBED,
+                    description: 'Embed',
+                    icon: 'icon-media',
+                    source: EmbedSource,
+                },
+                {
+                    type: ENTITY_TYPE.LINK,
+                    description: 'Link',
+                    icon: 'icon-link',
+                    source: LinkSource,
+                    decorator: Link,
+                },
+                {
+                    type: ENTITY_TYPE.DOCUMENT,
+                    description: 'Document',
+                    icon: 'icon-doc-full',
+                    source: DocumentSource,
+                    decorator: Document,
+                },
+            ]}
+            blockTypes={[
+                {
+                    type: BLOCK_TYPE.HEADER_TWO,
+                    label: 'H2',
+                    description: 'Heading 2',
+                },
+                {
+                    type: BLOCK_TYPE.HEADER_THREE,
+                    label: 'H3',
+                    description: 'Heading 3',
+                },
+                {
+                    type: BLOCK_TYPE.HEADER_FOUR,
+                    label: 'H4',
+                    description: 'Heading 4',
+                },
+                {
+                    type: BLOCK_TYPE.HEADER_FIVE,
+                    label: 'H5',
+                    description: 'Heading 5',
+                },
+                {
+                    type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
+                    description: 'Bulleted list',
+                    icon: 'icon-list-ul',
+                },
+                {
+                    type: BLOCK_TYPE.ORDERED_LIST_ITEM,
+                    description: 'Numbered list',
+                    icon: 'icon-list-ol',
+                },
+            ]}
+            inlineStyles={[
+                {
+                    type: INLINE_STYLE.BOLD,
+                    description: 'Bold',
+                    icon: 'icon-bold',
+                },
+                {
+                    type: INLINE_STYLE.ITALIC,
+                    description: 'Italic',
+                    icon: 'icon-italic',
+                },
+            ]}
+        />
+    );
+
+    ReactDOM.render(editor, document.querySelector('[data-mount-wagtail]'));
+};
+
 const initCustom = () => {
     const rawContentState = {
         entityMap: {},
@@ -154,23 +244,6 @@ const initAll = () => {
             showUndoRedoControls={true}
             blockTypes={allBlockTypes}
             inlineStyles={allInlineStyles}
-        />
-    );
-
-    ReactDOM.render(editor, document.querySelector('[data-mount-all]'));
-};
-
-const initWagtail = () => {
-    const editor = (
-        <EditorWrapper
-            id="wagtail"
-            placeholder="Write here…"
-            enableHorizontalRule={true}
-            enableLineBreak={true}
-            showUndoRedoControls={true}
-            stripPastedStyles={false}
-            maxListNesting={9}
-            spellCheck={true}
             entityTypes={[
                 {
                     type: ENTITY_TYPE.IMAGE,
@@ -200,59 +273,16 @@ const initWagtail = () => {
                     decorator: Document,
                 },
             ]}
-            blockTypes={[
-                {
-                    type: BLOCK_TYPE.HEADER_TWO,
-                    label: 'H2',
-                    description: 'Heading 2',
-                },
-                {
-                    type: BLOCK_TYPE.HEADER_THREE,
-                    label: 'H3',
-                    description: 'Heading 3',
-                },
-                {
-                    type: BLOCK_TYPE.HEADER_FOUR,
-                    label: 'H4',
-                    description: 'Heading 4',
-                },
-                {
-                    type: BLOCK_TYPE.HEADER_FIVE,
-                    label: 'H5',
-                    description: 'Heading 5',
-                },
-                {
-                    type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
-                    description: 'Bulleted list',
-                    icon: 'icon-list-ul',
-                },
-                {
-                    type: BLOCK_TYPE.ORDERED_LIST_ITEM,
-                    description: 'Numbered list',
-                    icon: 'icon-list-ol',
-                },
-            ]}
-            inlineStyles={[
-                {
-                    type: INLINE_STYLE.BOLD,
-                    description: 'Bold',
-                    icon: 'icon-bold',
-                },
-                {
-                    type: INLINE_STYLE.ITALIC,
-                    description: 'Italic',
-                    icon: 'icon-italic',
-                },
-            ]}
         />
     );
 
-    ReactDOM.render(editor, document.querySelector('[data-mount-wagtail]'));
+    ReactDOM.render(editor, document.querySelector('[data-mount-all]'));
 };
 
 const initTest = () => {
     const editors = (
         <div>
+            <h2>Test editors</h2>
             <div className="example">
                 <h3>Keep everything</h3>
                 <EditorWrapper
@@ -417,9 +447,28 @@ const initTest = () => {
                 />
             </div>
             <div className="example">
-                <h3>Strip all formatting on paste</h3>
+                <h3>Keep basic styles</h3>
                 <EditorWrapper
                     id="test:3"
+                    stripPastedStyles={false}
+                    inlineStyles={[
+                        {
+                            type: INLINE_STYLE.BOLD,
+                            description: 'Bold',
+                            icon: 'icon-bold',
+                        },
+                        {
+                            type: INLINE_STYLE.ITALIC,
+                            description: 'Italic',
+                            icon: 'icon-italic',
+                        },
+                    ]}
+                />
+            </div>
+            <div className="example">
+                <h3>Strip all formatting on paste</h3>
+                <EditorWrapper
+                    id="test:4"
                     enableHorizontalRule={true}
                     enableLineBreak={true}
                     stripPastedStyles={true}
