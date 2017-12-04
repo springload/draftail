@@ -4,78 +4,91 @@
 
 [![Screenshot of Draftail](https://springload.github.io/draftail/static/draftail-ui-screenshot.png)](https://springload.github.io/draftail/)
 
-It is developed alongside our Python [Draft.js exporter](https://github.com/springload/draftjs_exporter), for integration into [Wagtail](https://wagtail.io/). Check out [WagtailDraftail](https://github.com/springload/wagtaildraftail), and the [online demo](https://springload.github.io/draftail/)!
+It’s developed alongside our Python [Draft.js exporter](https://github.com/springload/draftjs_exporter), for integration into [Wagtail](https://wagtail.io/). Check out [WagtailDraftail](https://github.com/springload/wagtaildraftail), and the [editor’s online demo](https://springload.github.io/draftail/)!
 
 ## Features
 
 > This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html), and measures performance and [code coverage](https://coveralls.io/github/springload/draftail).
 
-Draftail aims for a mouse-free, keyboard-centric experience. Most formatting can be done by using common keyboard shortcuts, inspired by [Google Docs](https://support.google.com/docs/answer/179738).
+Draftail aims for a mouse-free, keyboard-centric experience. Most formatting can be done by using common keyboard shortcuts, inspired by [Google Docs](https://support.google.com/docs/answer/179738) and [Markdown](https://en.wikipedia.org/wiki/Markdown).
 
 Here are important features worth highlighting:
 
-* Support for [keyboard shortcuts](https://github.com/springload/draftail/tree/master/docs#keyboard-shortcuts).
+* Support for [keyboard shortcuts](https://github.com/springload/draftail/tree/master/docs#keyboard-shortcuts). Lots of them!
+* Paste from Word. Or any other editor.
 * Autolists – start a line with `-` , `*` , `1.` to create a list item.
+* Shortcuts for heading levels `##`, code blocks ` ``` `, and more.
 * Undo / redo – until the end of times.
 * Common text types: headings, paragraphs, quotes, lists.
-* Common text styles: Bold, Italic, Underline, Monospace, Strikethrough.
-* Built-in `Link` and `Document` controls.
-* Built-in `Image` and `Embed` blocks.
+* Common text styles: Bold, italic, and many more.
+* Built-in controls for links and documents.
+* Built-in image and embed blocks.
 
-## Getting started
+## Using Draftail
 
 Draftail is meant to be used in scenarios where not all formatting should be available, and where custom formatting can be necessary. Available formats, built-in and custom, can be specificed declaratively for each editor instance.
+
+### Built-in formats
+
+* Block types: H1, H2, H3, H4, H5, H6, Blockquote, Code, UL, OL, P
+* Inline styles: Bold, Italic, Underline, Code, Strikethrough, Mark, Keyboard, Superscript, Subscript
+* Entities (things with data): Images, Embeds, Links, Documents
+* And HR, BR
+
+### Custom formats
+
+Your mileage may vary! There is good support for custom block-level and inline formatting. Custom entities or decorators require knowledge of the Draft.js API, which is very low-level.
+
+### Getting started
 
 First, grab the package from npm:
 
 ```sh
-npm install --save draftail
 # Draftail's peerDependencies:
-npm install --save draft-js@^0.10.4 react@^15.5.0 react-dom@^15.5.0 prop-types@^15.5.0
+npm install --save draft-js@^0.10.4 react react-dom prop-types
+npm install --save draftail
 ```
 
-Then, import the editor and use it in your code. Here is a [basic example](https://springload.github.io/draftail/example.html):
+Import the editor's styles:
+
+```scss
+@import 'draftail/dist/draftail.css';
+```
+
+Then, import the editor and use it in your code. Here is a [simple example](https://springload.github.io/draftail/examples/):
 
 ```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import DraftailEditor, { BLOCK_TYPE, INLINE_STYLE } from 'draftail';
+import DraftailEditor, { BLOCK_TYPE, INLINE_STYLE } from '../lib';
 
-const initialContentState =
-    JSON.parse(sessionStorage.getItem('basic:contentState')) || null;
+const initial = JSON.parse(sessionStorage.getItem('draftail:content'));
 
-const onSave = contentState => {
-    sessionStorage.setItem('basic:contentState', JSON.stringify(contentState));
+const onSave = content => {
+    console.log('saving', content);
+    sessionStorage.setItem('draftail:content', JSON.stringify(content));
 };
 
 const editor = (
     <DraftailEditor
-        rawContentState={initialContentState}
+        rawContentState={initial || null}
         onSave={onSave}
         blockTypes={[
-            { label: 'H3', type: BLOCK_TYPE.HEADER_THREE },
-            {
-                label: 'UL',
-                type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
-                icon: 'icon-list-ul',
-            },
+            { type: BLOCK_TYPE.HEADER_THREE, label: 'H3' },
+            { type: BLOCK_TYPE.UNORDERED_LIST_ITEM, label: 'UL' },
         ]}
         inlineStyles={[
-            { label: 'Bold', type: INLINE_STYLE.BOLD, icon: 'icon-bold' },
-            { label: 'Italic', type: INLINE_STYLE.ITALIC, icon: 'icon-italic' },
+            { type: INLINE_STYLE.BOLD, label: 'B' },
+            { type: INLINE_STYLE.ITALIC, label: 'I' },
         ]}
     />
 );
 
-ReactDOM.render(editor, document.querySelector('[data-mount-basic]'));
+ReactDOM.render(editor, document.querySelector('[data-mount]'));
 ```
 
-Also import the editor's styles:
-
-```scss
-@import 'draftail/dist/draftail.css';
-```
+Finally, be sure to check out the [required polyfills](#polyfills).
 
 ## Options and configuration
 
@@ -118,15 +131,6 @@ Draftail, like Draft.js, distinguishes between 3 content formats:
 * Inline styles, providing inline formatting for text. Styles can overlap: a piece of text can be both bold and italic.
 * Entities, annotating content with metadata to represent rich content beyond text. Entities can be inline (eg. a link applied on a portion of text), or block-based (eg. an embedded video).
 
-### Built-in formats
-
-Common formatting options are available out of the box:
-
-* Block types: `H1`, `H2`, `H3`, `H4`, `H5`, `H6`, `Blockquote`, `Code`, `UL`, `OL`, `P`
-* Inline styles: `Bold`, `Italic`, `Code`, `Underline`, `Strikethrough`, `Mark`, `Keyboard`, `Superscript`, `Subscript`
-* Entities: `Images`, `Embeds`, (`Links`, `Documents`)
-* And `HR`, `BR` as special cases
-
 ### Configuring available formats
 
 By default, the editor provides the least amount of rich text features. Formats have to be explicitly enabled by the developer, so they have as much control over what rich content is available as possible.
@@ -145,10 +149,12 @@ entityTypes: [],
 #### Blocks
 
 ```jsx
-// Describes the block in the editor UI.
-label: PropTypes.string.isRequired,
 // Unique type shared between block instances.
 type: PropTypes.string.isRequired,
+// Describes the block in the editor UI, concisely.
+label: PropTypes.string,
+// Describes the block in the editor UI.
+description: PropTypes.string,
 // Represents the block in the editor UI.
 icon: PropTypes.string,
 // DOM element used to display the block within the editor area.
@@ -160,10 +166,12 @@ className: PropTypes.string,
 #### Inline styles
 
 ```jsx
-// Describes the inline style in the editor UI.
-label: PropTypes.string.isRequired,
 // Unique type shared between inline style instances.
 type: PropTypes.string.isRequired,
+// Describes the inline style in the editor UI, concisely.
+label: PropTypes.string,
+// Describes the inline style in the editor UI.
+description: PropTypes.string,
 // Represents the inline style in the editor UI.
 icon: PropTypes.string,
 // CSS properties (in JS format) to apply for styling within the editor area.
@@ -173,10 +181,12 @@ style: PropTypes.Object,
 #### Entities
 
 ```jsx
-// Describes the entity in the editor UI.
-label: PropTypes.string.isRequired,
 // Unique type shared between entity instances.
 type: PropTypes.string.isRequired,
+// Describes the entity in the editor UI, concisely.
+label: PropTypes.string,
+// Describes the entity in the editor UI.
+description: PropTypes.string,
 // Represents the entity in the editor UI.
 icon: PropTypes.string,
 // React component providing the UI to manage entities of this type.
@@ -312,63 +322,14 @@ Draft.js and Draftail build upon ES6 language features. If targeting browsers th
 
 The Draftail demo site lists minimum polyfills for IE11 support: [`examples/utils/polyfills.js`](examples/utils/polyfills.js).
 
-## Development
+## Contributing
 
-### Install
+See anything you like in here? Anything missing? We welcome all support, whether on bug reports, feature requests, code, design, reviews, tests, documentation, and more. Please have a look at our [contribution guidelines](CONTRIBUTING.md).
 
-> Clone the project on your computer, and install [Node](https://nodejs.org). This project also uses [nvm](https://github.com/creationix/nvm).
+If you just want to set up the project on your own computer, the contribution guidelines also contain all of the setup commands.
 
-```sh
-nvm install
-# Then, install all project dependencies.
-npm install
-# Install the git hooks.
-./.githooks/deploy
-# Set up a `.env` file with the appropriate secrets.
-touch .env
-```
+## Credits
 
-### Working on the project
+Draftail is made possible by the work of [Springload](https://github.com/springload/), a New Zealand digital agency, and core contributors to the [Wagtail](https://wagtail.io/) CMS. The _beautiful_ demo site is the work of [@thibaudcolas](https://github.com/thibaudcolas).
 
-> Everything mentioned in the installation process should already be done.
-
-```sh
-# Make sure you use the right node version.
-nvm use
-# Start the server and the development tools.
-npm run start
-# Runs linting.
-npm run lint
-# Re-formats all of the files in the project (with Prettier).
-npm run format
-# Run tests in a watcher.
-npm run test:watch
-# Run test coverage
-npm run test:coverage
-# Open the coverage report with:
-npm run report:coverage
-# Open the build report with:
-npm run report:build
-# View other available commands with:
-npm run
-```
-
-### Releases
-
-* Make a new branch for the release of the new version.
-* Update the [CHANGELOG](CHANGELOG.md).
-* Update the version number in `package.json`, following semver.
-* Make a PR and squash merge it.
-* Back on master with the PR merged, follow the instructions below.
-
-```sh
-npm run dist
-# Use irish-pub to check the package content. Install w/ npm install -g first.
-irish-pub
-npm publish
-```
-
-* Finally, go to GitHub and create a release and a tag for the new version.
-* Done!
-
-> As a last step, you may want to go update our [Draft.js exporter demo](https://github.com/springload/draftjs_exporter_demo) to this new release to check that all is well in a fully separate project.
+View the full list of [contributors](https://github.com/springload/draftail/graphs/contributors). [MIT](LICENSE) licensed. Website content available as [CC0](https://creativecommons.org/publicdomain/zero/1.0/).

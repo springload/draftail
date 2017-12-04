@@ -116,7 +116,7 @@ export default {
         '22': {
             type: 'LINK',
             mutability: 'MUTABLE',
-            data: { url: 'https://twitter.com/thibaud_colas' },
+            data: { url: 'https://github.com/thibaudcolas' },
         },
     },
     blocks: [
@@ -185,6 +185,15 @@ export default {
             depth: 0,
             inlineStyleRanges: [],
             entityRanges: [{ offset: 12, length: 18, key: 4 }],
+            data: {},
+        },
+        {
+            key: 'fisb1',
+            text: 'Paste from Word. Or any other editor.',
+            type: 'unordered-list-item',
+            depth: 0,
+            inlineStyleRanges: [],
+            entityRanges: [],
             data: {},
         },
         {
@@ -864,14 +873,14 @@ export default {
         {
             key: 'blo0j',
             text:
-                'Draftail is made possible by the work of Springload, a New Zealand digital agency, and core contributors to the Wagtail CMS. This beautiful demo site is the work of @thibaud_colas.',
+                'Draftail is made possible by the work of Springload, a New Zealand digital agency, and core contributors to the Wagtail CMS. This beautiful demo site is the work of Thibaud Colas.',
             type: 'unstyled',
             depth: 0,
             inlineStyleRanges: [{ offset: 130, length: 9, style: 'ITALIC' }],
             entityRanges: [
                 { offset: 41, length: 10, key: 20 },
                 { offset: 112, length: 7, key: 21 },
-                { offset: 165, length: 14, key: 22 },
+                { offset: 165, length: 13, key: 22 },
             ],
             data: {},
         },
