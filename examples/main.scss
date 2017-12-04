@@ -140,10 +140,10 @@ h4:hover .anchor {
 //     }
 // }
 
-// $color-editor-chrome: $GREY_333;
-// $color-editor-chrome-text: $WHITE;
-// $color-editor-chrome-accent: lighten($color-editor-chrome, 20%);
-// $color-editor-chrome-active: lighten($color-editor-chrome, 50%);
+$color-editor-chrome: $GREY_333;
+$color-editor-chrome-text: $WHITE;
+$color-editor-chrome-active: $WHITE;
+$color-editor-chrome-accent: lighten($color-editor-chrome, 20%);
 
 @import '../lib/index';
 
