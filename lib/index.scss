@@ -15,10 +15,9 @@ $color-grey: #333;
 $color-light-grey: #ddd;
 
 $color-editor-chrome: $color-light-grey !default;
-$color-editor-chrome-accent: darken($color-editor-chrome, 10%) !default;
-$color-editor-chrome-active: darken($color-editor-chrome, 30%) !default;
-$color-editor-chrome-active-accent: $color-teal !default;
 $color-editor-chrome-text: $color-grey !default;
+$color-editor-chrome-active: $color-black !default;
+$color-editor-chrome-accent: darken($color-editor-chrome, 10%) !default;
 
 $editor-z-index: 1 !default;
 $tooltip-z-index: $editor-z-index + 1;

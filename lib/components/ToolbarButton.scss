@@ -1,3 +1,6 @@
+$button-active-color: transparentize($color-editor-chrome-active, 0.9);
+$button-active-border-color: transparentize($color-editor-chrome-active, 0.8);
+
 .toolbar-button {
     display: inline-block;
     margin-top: $controls-spacing;
@@ -9,19 +12,11 @@
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-
-    &:hover {
-        color: inherit;
-        background-color: rgba(0, 0, 0, 0.05);
-    }
+    -webkit-font-smoothing: antialiased;
 
     &--active {
-        background-color: rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(0, 0, 0, 0.2);
-
-        &:hover {
-            background-color: rgba(0, 0, 0, 0.1);
-        }
+        background-color: $button-active-color;
+        border: 1px solid $button-active-border-color;
     }
 
     &[disabled] {
