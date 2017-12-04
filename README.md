@@ -2,7 +2,7 @@
 
 > :memo::cocktail: A configurable rich text editor based on [Draft.js](https://facebook.github.io/draft-js/), built for [Wagtail](https://github.com/wagtail/wagtail).
 
-[![Screenshot of Draftail](https://cdn.rawgit.com/springload/draftail/afecf23/docs/draftail-ui-screenshot.png)](https://springload.github.io/draftail/)
+[![Screenshot of Draftail](https://springload.github.io/draftail/static/draftail-ui-screenshot.png)](https://springload.github.io/draftail/)
 
 It is developed alongside our Python [Draft.js exporter](https://github.com/springload/draftjs_exporter), for integration into [Wagtail](https://wagtail.io/). Check out [WagtailDraftail](https://github.com/springload/wagtaildraftail), and the [online demo](https://springload.github.io/draftail/)!
 
