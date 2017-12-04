@@ -26,7 +26,7 @@ class PrismDecorator {
     // Renders the decorated tokens.
     renderToken({ children, offsetKey }) {
         const type = this.getTokenTypeForKey(offsetKey);
-        return <span className={`prism-token token ${type}`}>{children}</span>;
+        return <span className={`token ${type}`}>{children}</span>;
     }
 
     getTokenTypeForKey(key) {

@@ -1,6 +1,7 @@
 @import '../node_modules/normalize.css';
 
 $WHITE: #fff;
+$BLACK: #000;
 $GREY_333: #333;
 $TEAL_WAGTAIL: #43b1b0;
 
@@ -117,29 +118,6 @@ h4:hover .anchor {
     }
 }
 
-// TODO Continue code block styles.
-// http://prismjs.com/index.html#plugins
-// https://github.com/PrismJS/prism-themes
-// .public-DraftStyleDefault-pre {
-//     counter-reset: lineNumber;
-
-//     > code {
-//         display: block;
-//         counter-increment: lineNumber 1;
-
-//         &:before {
-//             content: counter(lineNumber);
-//             background-color: white;
-//             padding: 4px;
-//             min-width: 20px;
-//         }
-
-//         > div {
-//             display: inline;
-//         }
-//     }
-// }
-
 $color-editor-chrome: $GREY_333;
 $color-editor-chrome-text: $WHITE;
 $color-editor-chrome-active: $WHITE;
@@ -147,11 +125,6 @@ $color-editor-chrome-accent: lighten($color-editor-chrome, 20%);
 
 @import '../lib/index';
 
-@import '../node_modules/prismjs/themes/prism';
-
-[name='PrismDecorator'] {
-    display: none;
-}
-
 @import './components/Modal';
+@import './components/PrismDecorator';
 @import './sources/LinkSource';
