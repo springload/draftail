@@ -8,6 +8,10 @@ body {
     font-family: $FONT_FAMILY_SANS;
 }
 
+code {
+    font-family: $FONT_FAMILY_MONOSPACE;
+}
+
 h1,
 h2,
 h3,
@@ -36,27 +40,4 @@ h4,
 h5,
 h6 {
     color: #494949;
-}
-
-code,
-pre {
-    font-family: $FONT_FAMILY_MONOSPACE;
-}
-
-pre {
-    font-size: 14px;
-    padding: 1em;
-    margin: 0.5em 0;
-    overflow: auto;
-    background: #f5f2f0;
-    color: black;
-    text-shadow: 0 1px white;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
-    line-height: 1.5;
-    tab-size: 4;
-    hyphens: none;
-    overflow-x: auto;
 }

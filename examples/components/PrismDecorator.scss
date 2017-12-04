@@ -1,0 +1,32 @@
+@import '../node_modules/prismjs/themes/prism';
+
+$PRISM_BACKGROUND: #f5f2f0;
+
+// Add the default Prettier styles on all code blocks.
+// https://github.com/PrismJS/prism/blob/f41c5cd53b975b413f18cf31cf0299204132302c/themes/prism.css
+.public-DraftStyleDefault-pre {
+    font-size: 0.8em;
+    padding: 1em;
+    margin: 0.5em 0;
+    overflow: auto;
+    background: $PRISM_BACKGROUND;
+    color: $BLACK;
+    text-shadow: 0 1px $WHITE;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    tab-size: 4;
+    hyphens: none;
+
+    @media print {
+        text-shadow: none;
+    }
+}
+
+// Hack to hide the corresponding button in the toolbar.
+// See https://github.com/springload/draftail/issues/121.
+[name='PrismDecorator'] {
+    display: none;
+}
