@@ -2,7 +2,15 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { EditorState, Modifier, SelectionState } from 'draft-js';
 
-import NullBlock from '../blocks/NullBlock';
+import { ENTITY_TYPE } from '../../lib';
+
+import ImageBlock from '../blocks/ImageBlock';
+import EmbedBlock from '../blocks/EmbedBlock';
+
+const BLOCKS = {
+    [ENTITY_TYPE.IMAGE]: ImageBlock,
+    [ENTITY_TYPE.EMBED]: EmbedBlock,
+};
 
 /**
  * Editor block to display media and edit content.
@@ -73,7 +81,8 @@ class MediaBlock extends Component {
     render() {
         const { blockProps } = this.props;
         const { isActive } = this.state;
-        const Block = blockProps.entityConfig.block || NullBlock;
+
+        const Block = BLOCKS[blockProps.entityConfig.type];
 
         return (
             <div

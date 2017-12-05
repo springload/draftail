@@ -35,6 +35,11 @@
     }
 }
 
+// Remove default margins on atomic blocks because of the figure element.
+.public-DraftEditor-content > * > figure {
+    margin: 0;
+}
+
 .RichEditor-link {
     background: $color-light-blue;
     border-bottom: 1px dotted $color-teal;

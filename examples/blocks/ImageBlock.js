@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import { ICONS, ENTITY_TYPE } from '../api/constants';
-
-import Icon from '../components/Icon';
+import { ICONS, ENTITY_TYPE, Icon } from '../../lib';
 
 /**
  * Editor block to preview and edit images.
