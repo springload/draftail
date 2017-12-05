@@ -32,6 +32,7 @@ $toolbar-tooltip-z-index: $toolbar-z-index + 1;
     cursor: not-allowed;
 }
 
+@import './components/Icon';
 @import './components/DraftailEditor';
 @import './components/Toolbar';
 @import './components/ToolbarGroup';

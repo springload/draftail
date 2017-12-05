@@ -156,7 +156,7 @@ label: PropTypes.string,
 // Describes the block in the editor UI.
 description: PropTypes.string,
 // Represents the block in the editor UI.
-icon: PropTypes.string,
+icon: iconPropType,
 // DOM element used to display the block within the editor area.
 element: PropTypes.string,
 // CSS class(es) added to the block for styling within the editor area.
@@ -173,7 +173,7 @@ label: PropTypes.string,
 // Describes the inline style in the editor UI.
 description: PropTypes.string,
 // Represents the inline style in the editor UI.
-icon: PropTypes.string,
+icon: iconPropType,
 // CSS properties (in JS format) to apply for styling within the editor area.
 style: PropTypes.Object,
 ```
@@ -188,7 +188,7 @@ label: PropTypes.string,
 // Describes the entity in the editor UI.
 description: PropTypes.string,
 // Represents the entity in the editor UI.
-icon: PropTypes.string,
+icon: iconPropType,
 // React component providing the UI to manage entities of this type.
 source: PropTypes.func.isRequired,
 // Determines which pieces of content correspond to this entity.
