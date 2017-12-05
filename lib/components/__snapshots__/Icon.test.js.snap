@@ -1,28 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Icon #className 1`] = `
-<span
+<svg
   aria-hidden={true}
-  className="icon icon-test u-test"
+  aria-label={null}
+  className="icon u-test"
+  height="16"
+  role={null}
+  viewBox="0 0 1024 1024"
+  width="16"
+>
+  <path
+    d="M10 10 H 90 V 90 H 10 Z"
+  />
+</svg>
+`;
+
+exports[`Icon #icon custom 1`] = `
+<CustomIcon
+  icon="square"
 />
 `;
 
-exports[`Icon #name 1`] = `
-<span
+exports[`Icon #icon svg path 1`] = `
+<svg
   aria-hidden={true}
-  className="icon icon-test "
-/>
+  aria-label={null}
+  className="icon "
+  height="16"
+  role={null}
+  viewBox="0 0 1024 1024"
+  width="16"
+>
+  <path
+    d="M10 10 H 90 V 90 H 10 Z"
+  />
+</svg>
+`;
+
+exports[`Icon #icon svg path array 1`] = `
+<svg
+  aria-hidden={true}
+  aria-label={null}
+  className="icon "
+  height="16"
+  role={null}
+  viewBox="0 0 1024 1024"
+  width="16"
+>
+  <path
+    d="M10 10 H 90 V 90 H 10 Z"
+    key="0"
+  />
+  <path
+    d="M10 10 H 90 V 90 H 10 Z"
+    key="1"
+  />
+</svg>
+`;
+
+exports[`Icon #icon svg ref 1`] = `
+<svg
+  aria-hidden={true}
+  aria-label={null}
+  className="icon "
+  height="16"
+  role={null}
+  viewBox="0 0 1024 1024"
+  width="16"
+>
+  <use
+    xlinkHref="#icon-square"
+  />
+</svg>
 `;
 
 exports[`Icon #title 1`] = `
-<span
-  aria-hidden={false}
-  className="icon icon-test "
+<svg
+  aria-hidden={null}
+  aria-label="Test title"
+  className="icon "
+  height="16"
+  role="img"
+  viewBox="0 0 1024 1024"
+  width="16"
 >
-  <span
-    role="presentation"
-  >
-    Test title
-  </span>
-</span>
+  <path
+    d="M10 10 H 90 V 90 H 10 Z"
+  />
+</svg>
 `;
