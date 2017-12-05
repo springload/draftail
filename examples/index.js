@@ -23,69 +23,33 @@ const editor = (
         enableLineBreak={true}
         stripPastedStyles={false}
         entityTypes={[
-            new PrismDecorator({
-                defaultLanguage: 'javascript',
-            }),
+            new PrismDecorator({ defaultLanguage: 'javascript' }),
             {
                 type: ENTITY_TYPE.LINK,
-                description: 'Link',
-                icon: 'icon-link',
                 source: LinkSource,
                 decorator: Link,
             },
             {
                 type: ENTITY_TYPE.IMAGE,
-                description: 'Image',
-                icon: 'icon-image',
                 source: ImageSource,
                 imageFormats: [],
             },
             {
                 type: ENTITY_TYPE.EMBED,
-                description: 'Embed',
-                icon: 'icon-media',
                 source: EmbedSource,
             },
         ]}
         blockTypes={[
-            {
-                type: BLOCK_TYPE.HEADER_TWO,
-                label: 'H2',
-                description: 'Heading 2',
-            },
-            {
-                type: BLOCK_TYPE.HEADER_THREE,
-                label: 'H3',
-                description: 'Heading 3',
-            },
-            {
-                type: BLOCK_TYPE.BLOCKQUOTE,
-                description: 'Blockquote',
-                icon: 'icon-openquote',
-            },
-            {
-                label: '{\u2009}',
-                type: BLOCK_TYPE.CODE,
-                description: 'Code',
-            },
-            {
-                type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
-                description: 'Bulleted list',
-                icon: 'icon-list-ul',
-            },
+            { type: BLOCK_TYPE.HEADER_TWO },
+            { type: BLOCK_TYPE.HEADER_THREE },
+            { type: BLOCK_TYPE.BLOCKQUOTE },
+            { type: BLOCK_TYPE.CODE },
+            { type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
         ]}
         inlineStyles={[
-            { type: INLINE_STYLE.BOLD, description: 'Bold', icon: 'icon-bold' },
-            {
-                type: INLINE_STYLE.ITALIC,
-                description: 'Italic',
-                icon: 'icon-italic',
-            },
-            {
-                type: INLINE_STYLE.KEYBOARD,
-                description: 'Keyboard shortcut',
-                label: '⌘',
-            },
+            { type: INLINE_STYLE.BOLD },
+            { type: INLINE_STYLE.ITALIC },
+            { type: INLINE_STYLE.KEYBOARD },
         ]}
     />
 );
