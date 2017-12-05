@@ -72,7 +72,6 @@
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/dist/",
-      "/examples/",
       "/es/"
     ],
     "coveragePathIgnorePatterns": [

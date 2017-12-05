@@ -1,14 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { convertFromRaw, EditorState } from 'draft-js';
-import { ENTITY_TYPE } from '../api/constants';
+
+import { ENTITY_TYPE } from '../../lib';
 
 import MediaBlock from '../blocks/MediaBlock';
 
 const contentState = convertFromRaw({
     entityMap: {
         '0': {
-            type: 'IMAGE',
+            type: ENTITY_TYPE.IMAGE,
             mutability: 'IMMUTABLE',
             data: {
                 src:
@@ -40,10 +41,11 @@ const mockProps = {
     blockProps: {
         editorState: EditorState.createWithContent(contentState),
         entity: {
-            type: 'TEST',
-            getType: () => 'TEST',
+            getType: () => ENTITY_TYPE.IMAGE,
         },
-        entityConfig: {},
+        entityConfig: {
+            type: ENTITY_TYPE.IMAGE,
+        },
         onChange: jest.fn(),
         lockEditor: jest.fn(),
         unlockEditor: jest.fn(),
@@ -63,10 +65,8 @@ describe('MediaBlock', () => {
                     {...mockProps}
                     blockProps={Object.assign({}, mockProps.blockProps, {
                         entity: {
-                            type: ENTITY_TYPE.IMAGE,
-                            getType: () => 'TEST',
+                            getType: () => ENTITY_TYPE.IMAGE,
                         },
-                        entityConfig: {},
                     })}
                 />,
             ),
@@ -80,10 +80,11 @@ describe('MediaBlock', () => {
                     {...mockProps}
                     blockProps={Object.assign({}, mockProps.blockProps, {
                         entity: {
-                            type: ENTITY_TYPE.EMBED,
-                            getType: () => 'TEST',
+                            getType: () => ENTITY_TYPE.EMBED,
                         },
-                        entityConfig: {},
+                        entityConfig: {
+                            type: ENTITY_TYPE.EMBED,
+                        },
                     })}
                 />,
             ),

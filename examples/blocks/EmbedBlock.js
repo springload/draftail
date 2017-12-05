@@ -45,7 +45,7 @@ const EmbedBlock = ({ entity, isActive, onClick }) => {
                             </a>
                         </span>
                         <br />
-                        <span>{`Provider: ${{ providerName }}`}</span>
+                        <span>{`Provider: ${providerName}`}</span>
                         <br />
                         <span>{`Author: ${authorName}`}</span>
                     </p>
