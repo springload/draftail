@@ -21,12 +21,12 @@ const editor = (
         rawContentState={initial || null}
         onSave={onSave}
         blockTypes={[
-            { type: BLOCK_TYPE.HEADER_THREE, label: 'H3' },
-            { type: BLOCK_TYPE.UNORDERED_LIST_ITEM, label: 'UL' },
+            { type: BLOCK_TYPE.HEADER_THREE },
+            { type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
         ]}
         inlineStyles={[
-            { type: INLINE_STYLE.BOLD, label: 'B' },
-            { type: INLINE_STYLE.ITALIC, label: 'I' },
+            { type: INLINE_STYLE.BOLD },
+            { type: INLINE_STYLE.ITALIC },
         ]}
     />
 );

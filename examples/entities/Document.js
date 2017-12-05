@@ -10,7 +10,7 @@ const Document = ({ entityKey, contentState, children }) => {
             className="RichEditor-link"
             title={title}
         >
-            <Icon name="icon-doc-full" />
+            <Icon icon="icon-doc-full" />
             {children}
         </span>
     );

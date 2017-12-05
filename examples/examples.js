@@ -19,6 +19,13 @@ import allContentState from './utils/allContentState';
 
 import './simple';
 
+const ICON_DOCUMENT = [
+    'M917.806 229.076c-22.212-30.292-53.174-65.7-87.178-99.704s-69.412-64.964-99.704-87.178c-51.574-37.82-76.592-42.194-90.924-42.194h-496c-44.112 0-80 35.888-80 80v864c0 44.112 35.888 80 80 80h736c44.112 0 80-35.888 80-80v-624c0-14.332-4.372-39.35-42.194-90.924zM785.374 174.626c30.7 30.7 54.8 58.398 72.58 81.374h-153.954v-153.946c22.984 17.78 50.678 41.878 81.374 72.572zM896 944c0 8.672-7.328 16-16 16h-736c-8.672 0-16-7.328-16-16v-864c0-8.672 7.328-16 16-16 0 0 495.956-0.002 496 0v224c0 17.672 14.326 32 32 32h224v624z',
+    'M736 832h-448c-17.672 0-32-14.326-32-32s14.328-32 32-32h448c17.674 0 32 14.326 32 32s-14.326 32-32 32z',
+    'M736 704h-448c-17.672 0-32-14.326-32-32s14.328-32 32-32h448c17.674 0 32 14.326 32 32s-14.326 32-32 32z',
+    'M736 576h-448c-17.672 0-32-14.326-32-32s14.328-32 32-32h448c17.674 0 32 14.326 32 32s-14.326 32-32 32z',
+];
+
 const initWagtail = () => {
     const editor = (
         <EditorWrapper
@@ -33,75 +40,37 @@ const initWagtail = () => {
             entityTypes={[
                 {
                     type: ENTITY_TYPE.IMAGE,
-                    description: 'Image',
-                    icon: 'icon-image',
                     source: ImageSource,
                     imageFormats: [],
                 },
                 {
                     type: ENTITY_TYPE.EMBED,
-                    description: 'Embed',
-                    icon: 'icon-media',
                     source: EmbedSource,
                 },
                 {
                     type: ENTITY_TYPE.LINK,
-                    description: 'Link',
-                    icon: 'icon-link',
                     source: LinkSource,
                     decorator: Link,
                 },
                 {
                     type: ENTITY_TYPE.DOCUMENT,
+                    icon: ICON_DOCUMENT,
                     description: 'Document',
-                    icon: 'icon-doc-full',
                     source: DocumentSource,
                     decorator: Document,
                 },
             ]}
             blockTypes={[
-                {
-                    type: BLOCK_TYPE.HEADER_TWO,
-                    label: 'H2',
-                    description: 'Heading 2',
-                },
-                {
-                    type: BLOCK_TYPE.HEADER_THREE,
-                    label: 'H3',
-                    description: 'Heading 3',
-                },
-                {
-                    type: BLOCK_TYPE.HEADER_FOUR,
-                    label: 'H4',
-                    description: 'Heading 4',
-                },
-                {
-                    type: BLOCK_TYPE.HEADER_FIVE,
-                    label: 'H5',
-                    description: 'Heading 5',
-                },
-                {
-                    type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
-                    description: 'Bulleted list',
-                    icon: 'icon-list-ul',
-                },
-                {
-                    type: BLOCK_TYPE.ORDERED_LIST_ITEM,
-                    description: 'Numbered list',
-                    icon: 'icon-list-ol',
-                },
+                { type: BLOCK_TYPE.HEADER_TWO },
+                { type: BLOCK_TYPE.HEADER_THREE },
+                { type: BLOCK_TYPE.HEADER_FOUR },
+                { type: BLOCK_TYPE.HEADER_FIVE },
+                { type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
+                { type: BLOCK_TYPE.ORDERED_LIST_ITEM },
             ]}
             inlineStyles={[
-                {
-                    type: INLINE_STYLE.BOLD,
-                    description: 'Bold',
-                    icon: 'icon-bold',
-                },
-                {
-                    type: INLINE_STYLE.ITALIC,
-                    description: 'Italic',
-                    icon: 'icon-italic',
-                },
+                { type: INLINE_STYLE.BOLD },
+                { type: INLINE_STYLE.ITALIC },
             ]}
         />
     );
@@ -174,14 +143,10 @@ const initCustom = () => {
             spellCheck={true}
             blockTypes={[
                 {
-                    label: 'H2',
                     type: BLOCK_TYPE.HEADER_TWO,
-                    description: 'Heading 2',
                 },
                 {
-                    label: '{\u2009}',
                     type: BLOCK_TYPE.CODE,
-                    description: 'Code',
                 },
                 {
                     label: 'Tiny',
@@ -193,8 +158,6 @@ const initCustom = () => {
             inlineStyles={[
                 {
                     type: INLINE_STYLE.BOLD,
-                    icon: 'icon-bold',
-                    description: 'Bold',
                     style: {
                         fontWeight: 'bold',
                         textShadow: '1px 1px 1px black',
@@ -211,6 +174,13 @@ const initCustom = () => {
                 new PrismDecorator({
                     defaultLanguage: 'css',
                 }),
+                {
+                    type: ENTITY_TYPE.DOCUMENT,
+                    description: 'Document',
+                    icon: ICON_DOCUMENT,
+                    source: DocumentSource,
+                    decorator: Document,
+                },
             ]}
         />
     );
@@ -219,20 +189,11 @@ const initCustom = () => {
 };
 
 const initAll = () => {
-    const allBlockTypes = Object.keys(BLOCK_TYPE)
-        .filter(t => t !== 'ATOMIC')
-        .map(type => ({
-            label: `${type.charAt(0).toUpperCase()}${type
-                .slice(1)
-                .toLowerCase()
-                .replace(/_/g, ' ')}`,
-            type: BLOCK_TYPE[type],
-        }));
+    const allBlockTypes = Object.values(BLOCK_TYPE)
+        .filter(t => t !== BLOCK_TYPE.ATOMIC)
+        .map(type => ({ type }));
 
-    const allInlineStyles = Object.keys(INLINE_STYLE).map(type => ({
-        label: `${type.charAt(0).toUpperCase()}${type.slice(1).toLowerCase()}`,
-        type: INLINE_STYLE[type],
-    }));
+    const allInlineStyles = Object.values(INLINE_STYLE).map(type => ({ type }));
 
     const editor = (
         <EditorWrapper
@@ -247,30 +208,17 @@ const initAll = () => {
             entityTypes={[
                 {
                     type: ENTITY_TYPE.IMAGE,
-                    description: 'Image',
-                    icon: 'icon-image',
                     source: ImageSource,
                     imageFormats: [],
                 },
                 {
                     type: ENTITY_TYPE.EMBED,
-                    description: 'Embed',
-                    icon: 'icon-media',
                     source: EmbedSource,
                 },
                 {
                     type: ENTITY_TYPE.LINK,
-                    description: 'Link',
-                    icon: 'icon-link',
                     source: LinkSource,
                     decorator: Link,
-                },
-                {
-                    type: ENTITY_TYPE.DOCUMENT,
-                    description: 'Document',
-                    icon: 'icon-doc-full',
-                    source: DocumentSource,
-                    decorator: Document,
                 },
             ]}
         />
@@ -293,68 +241,27 @@ const initTest = () => {
                     entityTypes={[
                         {
                             type: ENTITY_TYPE.IMAGE,
-                            description: 'Image',
-                            icon: 'icon-image',
                             source: ImageSource,
                             imageFormats: [],
                         },
                         {
                             type: ENTITY_TYPE.EMBED,
-                            description: 'Embed',
-                            icon: 'icon-media',
                             source: EmbedSource,
                         },
                         {
                             type: ENTITY_TYPE.LINK,
-                            description: 'Link',
-                            icon: 'icon-link',
                             source: LinkSource,
                             decorator: Link,
                         },
-                        {
-                            type: ENTITY_TYPE.DOCUMENT,
-                            description: 'Document',
-                            icon: 'icon-doc-full',
-                            source: DocumentSource,
-                            decorator: Document,
-                        },
                     ]}
                     blockTypes={[
-                        {
-                            label: 'H2',
-                            type: BLOCK_TYPE.HEADER_TWO,
-                            description: 'Heading 2',
-                        },
-                        {
-                            label: 'H3',
-                            type: BLOCK_TYPE.HEADER_THREE,
-                            description: 'Heading 3',
-                        },
-                        {
-                            label: 'H4',
-                            type: BLOCK_TYPE.HEADER_FOUR,
-                            description: 'Heading 4',
-                        },
-                        {
-                            label: 'H5',
-                            type: BLOCK_TYPE.HEADER_FIVE,
-                            description: 'Heading 5',
-                        },
-                        {
-                            type: BLOCK_TYPE.BLOCKQUOTE,
-                            description: 'Blockquote',
-                            icon: 'icon-openquote',
-                        },
-                        {
-                            type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
-                            description: 'Bulleted list',
-                            icon: 'icon-list-ul',
-                        },
-                        {
-                            type: BLOCK_TYPE.ORDERED_LIST_ITEM,
-                            description: 'Numbered list',
-                            icon: 'icon-list-ol',
-                        },
+                        { type: BLOCK_TYPE.HEADER_TWO },
+                        { type: BLOCK_TYPE.HEADER_THREE },
+                        { type: BLOCK_TYPE.HEADER_FOUR },
+                        { type: BLOCK_TYPE.HEADER_FIVE },
+                        { type: BLOCK_TYPE.BLOCKQUOTE },
+                        { type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
+                        { type: BLOCK_TYPE.ORDERED_LIST_ITEM },
                         {
                             label: 'Tiny',
                             type: 'tiny-text',
@@ -363,31 +270,11 @@ const initTest = () => {
                         },
                     ]}
                     inlineStyles={[
-                        {
-                            type: INLINE_STYLE.BOLD,
-                            description: 'Bold',
-                            icon: 'icon-bold',
-                        },
-                        {
-                            type: INLINE_STYLE.ITALIC,
-                            description: 'Italic',
-                            icon: 'icon-italic',
-                        },
-                        {
-                            type: INLINE_STYLE.UNDERLINE,
-                            description: 'Underline',
-                            icon: 'icon-underline',
-                        },
-                        {
-                            type: INLINE_STYLE.CODE,
-                            label: '</>',
-                            description: 'Code',
-                        },
-                        {
-                            type: INLINE_STYLE.STRIKETHROUGH,
-                            description: 'Strikethrough',
-                            icon: 'icon-strikethrough',
-                        },
+                        { type: INLINE_STYLE.BOLD },
+                        { type: INLINE_STYLE.ITALIC },
+                        { type: INLINE_STYLE.UNDERLINE },
+                        { type: INLINE_STYLE.CODE, label: '</>' },
+                        { type: INLINE_STYLE.STRIKETHROUGH },
                         {
                             label: '█',
                             type: 'REDACTED',
@@ -407,42 +294,22 @@ const initTest = () => {
                     entityTypes={[
                         {
                             type: ENTITY_TYPE.IMAGE,
-                            description: 'Image',
-                            icon: 'icon-image',
                             source: ImageSource,
                             imageFormats: [],
                         },
                         {
                             type: ENTITY_TYPE.LINK,
-                            description: 'Link',
-                            icon: 'icon-link',
                             source: LinkSource,
                             decorator: Link,
                         },
                     ]}
                     blockTypes={[
-                        {
-                            label: 'H4',
-                            type: BLOCK_TYPE.HEADER_FOUR,
-                            description: 'Heading 4',
-                        },
-                        {
-                            type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
-                            description: 'Bulleted list',
-                            icon: 'icon-list-ul',
-                        },
+                        { type: BLOCK_TYPE.HEADER_FOUR },
+                        { type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
                     ]}
                     inlineStyles={[
-                        {
-                            type: INLINE_STYLE.BOLD,
-                            description: 'Bold',
-                            icon: 'icon-bold',
-                        },
-                        {
-                            type: INLINE_STYLE.ITALIC,
-                            description: 'Italic',
-                            icon: 'icon-italic',
-                        },
+                        { type: INLINE_STYLE.BOLD },
+                        { type: INLINE_STYLE.ITALIC },
                     ]}
                 />
             </div>
@@ -452,16 +319,8 @@ const initTest = () => {
                     id="test:3"
                     stripPastedStyles={false}
                     inlineStyles={[
-                        {
-                            type: INLINE_STYLE.BOLD,
-                            description: 'Bold',
-                            icon: 'icon-bold',
-                        },
-                        {
-                            type: INLINE_STYLE.ITALIC,
-                            description: 'Italic',
-                            icon: 'icon-italic',
-                        },
+                        { type: INLINE_STYLE.BOLD },
+                        { type: INLINE_STYLE.ITALIC },
                     ]}
                 />
             </div>
@@ -475,42 +334,22 @@ const initTest = () => {
                     entityTypes={[
                         {
                             type: ENTITY_TYPE.IMAGE,
-                            description: 'Image',
-                            icon: 'icon-image',
                             source: ImageSource,
                             imageFormats: [],
                         },
                         {
                             type: ENTITY_TYPE.LINK,
-                            description: 'Link',
-                            icon: 'icon-link',
                             source: LinkSource,
                             decorator: Link,
                         },
                     ]}
                     blockTypes={[
-                        {
-                            label: 'H4',
-                            type: BLOCK_TYPE.HEADER_FOUR,
-                            description: 'Heading 4',
-                        },
-                        {
-                            type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
-                            description: 'Bulleted list',
-                            icon: 'icon-list-ul',
-                        },
+                        { type: BLOCK_TYPE.HEADER_FOUR },
+                        { type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
                     ]}
                     inlineStyles={[
-                        {
-                            type: INLINE_STYLE.BOLD,
-                            description: 'Bold',
-                            icon: 'icon-bold',
-                        },
-                        {
-                            type: INLINE_STYLE.ITALIC,
-                            description: 'Italic',
-                            icon: 'icon-italic',
-                        },
+                        { type: INLINE_STYLE.BOLD },
+                        { type: INLINE_STYLE.ITALIC },
                     ]}
                 />
             </div>
