@@ -81,10 +81,9 @@ class ImageBlock extends Component {
         /* eslint-disable springload/jsx-a11y/no-static-element-interactions */
         return (
             <div>
-                <Icon
-                    icon={ICONS[ENTITY_TYPE.IMAGE]}
-                    className="RichEditor-media-icon"
-                />
+                <span className="RichEditor-media-icon">
+                    <Icon icon={ICONS[ENTITY_TYPE.IMAGE]} />
+                </span>
 
                 <div onClick={onClick} className="RichEditor-media-container">
                     <span className="RichEditor-media-preview">

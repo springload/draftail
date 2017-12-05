@@ -18,10 +18,9 @@ const EmbedBlock = ({ entity, isActive, onClick }) => {
     /* eslint-disable springload/jsx-a11y/no-static-element-interactions */
     return (
         <div>
-            <Icon
-                icon={ICONS[ENTITY_TYPE.EMBED]}
-                className="RichEditor-media-icon"
-            />
+            <span className="RichEditor-media-icon">
+                <Icon icon={ICONS[ENTITY_TYPE.IMAGE]} />
+            </span>
 
             <div className="RichEditor-media-container" onClick={onClick}>
                 <span className="RichEditor-media-preview">
