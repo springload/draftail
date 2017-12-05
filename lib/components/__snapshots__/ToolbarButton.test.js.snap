@@ -26,7 +26,7 @@ exports[`ToolbarButton #icon 1`] = `
 >
   <Icon
     className=""
-    name="icon-test"
+    icon="icon-test"
     title={null}
   />
 </button>

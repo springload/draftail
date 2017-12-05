@@ -18,7 +18,7 @@ exports[`Toolbar #blockTypes 1`] = `
     />
     <ToolbarButton
       active={false}
-      icon="icon-test-2"
+      icon={null}
       key="TEST_2"
       label="Test 2"
       name="TEST_2"
@@ -27,7 +27,7 @@ exports[`Toolbar #blockTypes 1`] = `
     />
     <ToolbarButton
       active={false}
-      icon="icon-test-3"
+      icon={null}
       key="TEST_3"
       label="Test 3"
       name="TEST_3"
@@ -107,7 +107,7 @@ exports[`Toolbar #entityTypes 1`] = `
     />
     <ToolbarButton
       active={false}
-      icon="icon-test-2"
+      icon={null}
       key="TEST_2"
       label="Test 2"
       name="TEST_2"
@@ -116,7 +116,7 @@ exports[`Toolbar #entityTypes 1`] = `
     />
     <ToolbarButton
       active={false}
-      icon="icon-test-3"
+      icon={null}
       key="TEST_3"
       label="Test 3"
       name="TEST_3"
@@ -145,7 +145,7 @@ exports[`Toolbar #inlineStyles 1`] = `
     />
     <ToolbarButton
       active={false}
-      icon="icon-test-2"
+      icon={null}
       key="TEST_2"
       label="Test 2"
       name="TEST_2"
@@ -154,7 +154,7 @@ exports[`Toolbar #inlineStyles 1`] = `
     />
     <ToolbarButton
       active={false}
-      icon="icon-test-3"
+      icon={null}
       key="TEST_3"
       label="Test 3"
       name="TEST_3"
