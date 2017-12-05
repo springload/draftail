@@ -4,7 +4,7 @@ exports[`EmbedBlock #isActive 1`] = `
 <div>
   <Icon
     className="RichEditor-media-icon"
-    name="icon-media"
+    icon="EMBED"
     title={null}
   />
   <div
@@ -61,7 +61,7 @@ exports[`EmbedBlock basic 1`] = `
 <div>
   <Icon
     className="RichEditor-media-icon"
-    name="icon-media"
+    icon="EMBED"
     title={null}
   />
   <div
