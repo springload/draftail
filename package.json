@@ -135,7 +135,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --config=webpack/webpack.config.dev.js",
-    "js": "babel lib -d es && BABEL_ENV=test babel lib -d dist",
+    "js": "babel lib -d es --ignore __mocks__,tests,test.js && BABEL_ENV=test babel lib -d dist --ignore __mocks__,tests,test.js",
     "build:autotrack": "autotrack -o public/autotrack.bundle.js -p maxScrollTracker,outboundLinkTracker",
     "build": "npm run js -s && npm run build:autotrack -s && webpack --config=webpack/webpack.config.prod.js --display-optimization-bailout && cp public/draftail.css dist",
     "dist": "NODE_ENV=production npm run build -s",

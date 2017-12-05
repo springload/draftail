@@ -1,6 +1,7 @@
 coverage
 .babelrc
 examples
+public
 docs
 webpack
 lib
@@ -18,6 +19,7 @@ bin
 npm-debug.log*
 *.test.js
 */tests/
+__mocks__
 __snapshots__
 prettier.config.js
 .prettierignore
