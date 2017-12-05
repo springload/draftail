@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`NullBlock basic 1`] = `
-<div>
-  Invalid component
-</div>
-`;
