@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { NBSP, ICONS, ENTITY_TYPE } from '../api/constants';
-
-import Icon from '../components/Icon';
+import { ICONS, ENTITY_TYPE, Icon } from '../../lib';
 
 /**
  * Editor block to preview and edit embedded content.
@@ -38,7 +36,7 @@ const EmbedBlock = ({ entity, isActive, onClick }) => {
                     </h3>
                     <p>
                         <span>
-                            URL:{NBSP}
+                            URL:
                             <a
                                 href={url}
                                 target="_blank"
@@ -48,11 +46,9 @@ const EmbedBlock = ({ entity, isActive, onClick }) => {
                             </a>
                         </span>
                         <br />
-                        <span>Provider:{NBSP}</span>
-                        {providerName}
+                        <span>{`Provider: ${{ providerName }}`}</span>
                         <br />
-                        <span>Author:{NBSP}</span>
-                        {authorName}
+                        <span>{`Author: ${authorName}`}</span>
                     </p>
                 </div>
             ) : null}

@@ -7,6 +7,8 @@ import LinkSource from './sources/LinkSource';
 import ImageSource from './sources/ImageSource';
 import EmbedSource from './sources/EmbedSource';
 
+import MediaBlock from './blocks/MediaBlock';
+
 import Link from './entities/Link';
 
 import indexContentState from './utils/indexContentState';
@@ -32,11 +34,13 @@ const editor = (
             {
                 type: ENTITY_TYPE.IMAGE,
                 source: ImageSource,
+                block: MediaBlock,
                 imageFormats: [],
             },
             {
                 type: ENTITY_TYPE.EMBED,
                 source: EmbedSource,
+                block: MediaBlock,
             },
         ]}
         blockTypes={[
