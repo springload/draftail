@@ -4,14 +4,17 @@ exports[`MediaBlock #isActive 1`] = `
 <div
   className="RichEditor-media RichEditor-media--open"
 >
-  <NullBlock
+  <ImageBlock
     entity={
       Object {
         "getType": [Function],
-        "type": "TEST",
       }
     }
-    entityConfig={Object {}}
+    entityConfig={
+      Object {
+        "type": "IMAGE",
+      }
+    }
     isActive={true}
     onCancel={[Function]}
     onClick={[Function]}
@@ -24,14 +27,17 @@ exports[`MediaBlock basic 1`] = `
 <div
   className="RichEditor-media"
 >
-  <NullBlock
+  <ImageBlock
     entity={
       Object {
         "getType": [Function],
-        "type": "TEST",
       }
     }
-    entityConfig={Object {}}
+    entityConfig={
+      Object {
+        "type": "IMAGE",
+      }
+    }
     isActive={false}
     onCancel={[Function]}
     onClick={[Function]}
@@ -44,14 +50,17 @@ exports[`MediaBlock embed 1`] = `
 <div
   className="RichEditor-media"
 >
-  <NullBlock
+  <EmbedBlock
     entity={
       Object {
         "getType": [Function],
+      }
+    }
+    entityConfig={
+      Object {
         "type": "EMBED",
       }
     }
-    entityConfig={Object {}}
     isActive={false}
     onCancel={[Function]}
     onClick={[Function]}
@@ -64,14 +73,17 @@ exports[`MediaBlock image 1`] = `
 <div
   className="RichEditor-media"
 >
-  <NullBlock
+  <ImageBlock
     entity={
       Object {
         "getType": [Function],
+      }
+    }
+    entityConfig={
+      Object {
         "type": "IMAGE",
       }
     }
-    entityConfig={Object {}}
     isActive={false}
     onCancel={[Function]}
     onClick={[Function]}

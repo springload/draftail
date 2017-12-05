@@ -2,11 +2,15 @@
 
 exports[`EmbedBlock #isActive 1`] = `
 <div>
-  <Icon
+  <span
     className="RichEditor-media-icon"
-    icon="EMBED"
-    title={null}
-  />
+  >
+    <Icon
+      className={null}
+      icon="IMAGE"
+      title={null}
+    />
+  </span>
   <div
     className="RichEditor-media-container"
     onClick={[Function]}
@@ -31,7 +35,6 @@ exports[`EmbedBlock #isActive 1`] = `
     <p>
       <span>
         URL:
-         
         <a
           href="http://www.example.com/"
           rel="noopener noreferrer"
@@ -42,16 +45,12 @@ exports[`EmbedBlock #isActive 1`] = `
       </span>
       <br />
       <span>
-        Provider:
-         
+        Provider: Test provider
       </span>
-      Test provider
       <br />
       <span>
-        Author:
-         
+        Author: Test author
       </span>
-      Test author
     </p>
   </div>
 </div>
@@ -59,11 +58,15 @@ exports[`EmbedBlock #isActive 1`] = `
 
 exports[`EmbedBlock basic 1`] = `
 <div>
-  <Icon
+  <span
     className="RichEditor-media-icon"
-    icon="EMBED"
-    title={null}
-  />
+  >
+    <Icon
+      className={null}
+      icon="IMAGE"
+      title={null}
+    />
+  </span>
   <div
     className="RichEditor-media-container"
     onClick={[Function]}

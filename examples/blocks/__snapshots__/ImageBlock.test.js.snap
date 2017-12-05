@@ -2,11 +2,15 @@
 
 exports[`ImageBlock #alignment 1`] = `
 <div>
-  <Icon
+  <span
     className="RichEditor-media-icon"
-    icon="IMAGE"
-    title={null}
-  />
+  >
+    <Icon
+      className={null}
+      icon="IMAGE"
+      title={null}
+    />
+  </span>
   <div
     className="RichEditor-media-container"
     onClick={[MockFunction]}
@@ -82,11 +86,15 @@ exports[`ImageBlock #alignment 1`] = `
 
 exports[`ImageBlock #entityConfig.imageFormats 1`] = `
 <div>
-  <Icon
+  <span
     className="RichEditor-media-icon"
-    icon="IMAGE"
-    title={null}
-  />
+  >
+    <Icon
+      className={null}
+      icon="IMAGE"
+      title={null}
+    />
+  </span>
   <div
     className="RichEditor-media-container"
     onClick={[MockFunction]}
@@ -162,11 +170,15 @@ exports[`ImageBlock #entityConfig.imageFormats 1`] = `
 
 exports[`ImageBlock #isActive 1`] = `
 <div>
-  <Icon
+  <span
     className="RichEditor-media-icon"
-    icon="IMAGE"
-    title={null}
-  />
+  >
+    <Icon
+      className={null}
+      icon="IMAGE"
+      title={null}
+    />
+  </span>
   <div
     className="RichEditor-media-container"
     onClick={[MockFunction]}
@@ -219,11 +231,15 @@ exports[`ImageBlock #isActive 1`] = `
 
 exports[`ImageBlock basic 1`] = `
 <div>
-  <Icon
+  <span
     className="RichEditor-media-icon"
-    icon="IMAGE"
-    title={null}
-  />
+  >
+    <Icon
+      className={null}
+      icon="IMAGE"
+      title={null}
+    />
+  </span>
   <div
     className="RichEditor-media-container"
     onClick={[MockFunction]}
@@ -242,11 +258,15 @@ exports[`ImageBlock basic 1`] = `
 
 exports[`ImageBlock empty #isActive 1`] = `
 <div>
-  <Icon
+  <span
     className="RichEditor-media-icon"
-    icon="IMAGE"
-    title={null}
-  />
+  >
+    <Icon
+      className={null}
+      icon="IMAGE"
+      title={null}
+    />
+  </span>
   <div
     className="RichEditor-media-container"
     onClick={[MockFunction]}
@@ -298,11 +318,15 @@ exports[`ImageBlock empty #isActive 1`] = `
 
 exports[`ImageBlock empty 1`] = `
 <div>
-  <Icon
+  <span
     className="RichEditor-media-icon"
-    icon="IMAGE"
-    title={null}
-  />
+  >
+    <Icon
+      className={null}
+      icon="IMAGE"
+      title={null}
+    />
+  </span>
   <div
     className="RichEditor-media-container"
     onClick={[MockFunction]}
