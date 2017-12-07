@@ -38,6 +38,19 @@ describe('ImageBlock', () => {
         expect(shallow(<ImageBlock {...mockProps} />)).toMatchSnapshot();
     });
 
+    it('#entityConfig.icon', () => {
+        expect(
+            shallow(
+                <ImageBlock
+                    {...mockProps}
+                    entityConfig={{
+                        icon: '#icon-image',
+                    }}
+                />,
+            ),
+        ).toMatchSnapshot();
+    });
+
     it('#isActive', () => {
         expect(
             shallow(<ImageBlock {...mockProps} isActive={true} />),

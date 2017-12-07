@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { ICONS, ENTITY_TYPE, Icon } from '../../lib';
+import { Icon } from '../../lib';
 
 /**
  * Editor block to preview and edit embedded content.
  */
-const EmbedBlock = ({ entity, isActive, onClick }) => {
+const EmbedBlock = ({ entity, entityConfig, isActive, onClick }) => {
     const {
         url,
         title,
@@ -18,9 +18,11 @@ const EmbedBlock = ({ entity, isActive, onClick }) => {
     /* eslint-disable springload/jsx-a11y/no-static-element-interactions */
     return (
         <div>
-            <span className="RichEditor-media-icon">
-                <Icon icon={ICONS[ENTITY_TYPE.IMAGE]} />
-            </span>
+            {entityConfig.icon && (
+                <span className="RichEditor-media-icon">
+                    <Icon icon={entityConfig.icon} />
+                </span>
+            )}
 
             <div className="RichEditor-media-container" onClick={onClick}>
                 <span className="RichEditor-media-preview">
@@ -56,6 +58,7 @@ const EmbedBlock = ({ entity, isActive, onClick }) => {
 };
 
 EmbedBlock.propTypes = {
+    entityConfig: PropTypes.object.isRequired,
     entity: PropTypes.object.isRequired,
     isActive: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired,

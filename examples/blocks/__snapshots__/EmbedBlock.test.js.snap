@@ -1,16 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EmbedBlock #isActive 1`] = `
+exports[`EmbedBlock #entityConfig.icon 1`] = `
 <div>
   <span
     className="RichEditor-media-icon"
   >
     <Icon
       className={null}
-      icon="IMAGE"
+      icon="#icon-embed"
       title={null}
     />
   </span>
+  <div
+    className="RichEditor-media-container"
+    onClick={[Function]}
+  >
+    <span
+      className="RichEditor-media-preview"
+    >
+      <img
+        alt="Test title"
+        src="http://www.example.com/example.png"
+      />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`EmbedBlock #isActive 1`] = `
+<div>
   <div
     className="RichEditor-media-container"
     onClick={[Function]}
@@ -58,15 +76,6 @@ exports[`EmbedBlock #isActive 1`] = `
 
 exports[`EmbedBlock basic 1`] = `
 <div>
-  <span
-    className="RichEditor-media-icon"
-  >
-    <Icon
-      className={null}
-      icon="IMAGE"
-      title={null}
-    />
-  </span>
   <div
     className="RichEditor-media-container"
     onClick={[Function]}
