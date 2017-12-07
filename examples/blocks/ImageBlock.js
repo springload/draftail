@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import { ICONS, ENTITY_TYPE, Icon } from '../../lib';
+import { Icon } from '../../lib';
 
 /**
  * Editor block to preview and edit images.
@@ -75,15 +75,17 @@ class ImageBlock extends Component {
     }
 
     render() {
-        const { entity, isActive, onClick } = this.props;
+        const { entity, entityConfig, isActive, onClick } = this.props;
         const { src, alt } = entity.getData();
 
         /* eslint-disable springload/jsx-a11y/no-static-element-interactions */
         return (
             <div>
-                <span className="RichEditor-media-icon">
-                    <Icon icon={ICONS[ENTITY_TYPE.IMAGE]} />
-                </span>
+                {entityConfig.icon && (
+                    <span className="RichEditor-media-icon">
+                        <Icon icon={entityConfig.icon} />
+                    </span>
+                )}
 
                 <div onClick={onClick} className="RichEditor-media-container">
                     <span className="RichEditor-media-preview">

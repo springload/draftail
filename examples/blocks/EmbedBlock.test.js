@@ -14,6 +14,7 @@ const mockProps = {
             };
         },
     },
+    entityConfig: {},
     isActive: false,
     onClick: () => {},
 };
@@ -21,6 +22,19 @@ const mockProps = {
 describe('EmbedBlock', () => {
     it('basic', () => {
         expect(shallow(<EmbedBlock {...mockProps} />)).toMatchSnapshot();
+    });
+
+    it('#entityConfig.icon', () => {
+        expect(
+            shallow(
+                <EmbedBlock
+                    {...mockProps}
+                    entityConfig={{
+                        icon: '#icon-embed',
+                    }}
+                />,
+            ),
+        ).toMatchSnapshot();
     });
 
     it('#isActive', () => {

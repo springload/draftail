@@ -2,15 +2,6 @@
 
 exports[`ImageBlock #alignment 1`] = `
 <div>
-  <span
-    className="RichEditor-media-icon"
-  >
-    <Icon
-      className={null}
-      icon="IMAGE"
-      title={null}
-    />
-  </span>
   <div
     className="RichEditor-media-container"
     onClick={[MockFunction]}
@@ -84,20 +75,38 @@ exports[`ImageBlock #alignment 1`] = `
 </div>
 `;
 
-exports[`ImageBlock #entityConfig.imageFormats 1`] = `
+exports[`ImageBlock #entityConfig.icon 1`] = `
 <div>
   <span
     className="RichEditor-media-icon"
   >
     <Icon
       className={null}
-      icon="IMAGE"
+      icon="#icon-image"
       title={null}
     />
   </span>
   <div
     className="RichEditor-media-container"
     onClick={[MockFunction]}
+  >
+    <span
+      className="RichEditor-media-preview"
+    >
+      <img
+        alt="Test alt"
+        src="http://www.example.com/example.png"
+      />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`ImageBlock #entityConfig.imageFormats 1`] = `
+<div>
+  <div
+    className="RichEditor-media-container"
+    onClick={[Function]}
   >
     <span
       className="RichEditor-media-preview"
@@ -170,15 +179,6 @@ exports[`ImageBlock #entityConfig.imageFormats 1`] = `
 
 exports[`ImageBlock #isActive 1`] = `
 <div>
-  <span
-    className="RichEditor-media-icon"
-  >
-    <Icon
-      className={null}
-      icon="IMAGE"
-      title={null}
-    />
-  </span>
   <div
     className="RichEditor-media-container"
     onClick={[MockFunction]}
@@ -231,15 +231,6 @@ exports[`ImageBlock #isActive 1`] = `
 
 exports[`ImageBlock basic 1`] = `
 <div>
-  <span
-    className="RichEditor-media-icon"
-  >
-    <Icon
-      className={null}
-      icon="IMAGE"
-      title={null}
-    />
-  </span>
   <div
     className="RichEditor-media-container"
     onClick={[MockFunction]}
@@ -258,15 +249,6 @@ exports[`ImageBlock basic 1`] = `
 
 exports[`ImageBlock empty #isActive 1`] = `
 <div>
-  <span
-    className="RichEditor-media-icon"
-  >
-    <Icon
-      className={null}
-      icon="IMAGE"
-      title={null}
-    />
-  </span>
   <div
     className="RichEditor-media-container"
     onClick={[MockFunction]}
@@ -318,15 +300,6 @@ exports[`ImageBlock empty #isActive 1`] = `
 
 exports[`ImageBlock empty 1`] = `
 <div>
-  <span
-    className="RichEditor-media-icon"
-  >
-    <Icon
-      className={null}
-      icon="IMAGE"
-      title={null}
-    />
-  </span>
   <div
     className="RichEditor-media-container"
     onClick={[MockFunction]}
