@@ -68,6 +68,7 @@ export const ENTITY_CONTROL = {
         type: ENTITY_TYPE.IMAGE,
         icon: '#icon-image',
         source: ImageSource,
+        block: MediaBlock,
         imageFormats: [],
     },
     EMBED: {
