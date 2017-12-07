@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { INLINE_CONTROL, BLOCK_CONTROL, ENTITY_CONTROL } from './constants/ui';
 
-import indexContentState from './utils/indexContentState';
+import indexContentState from './constants/indexContentState';
 
 import PrismDecorator from './components/PrismDecorator';
 import EditorWrapper from './components/EditorWrapper';
