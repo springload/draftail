@@ -107,6 +107,7 @@ button[data-balloon] {
         font-size: 0.875em;
         // Light text on dark background.
         -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 
     &:hover,
