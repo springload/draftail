@@ -5,11 +5,6 @@ export default {
             mutability: 'MUTABLE',
             data: { url: 'www.example.com' },
         },
-        '1': {
-            type: 'DOCUMENT',
-            mutability: 'MUTABLE',
-            data: { url: 'doc.pdf', title: 'Kritik der reinen Vernunft' },
-        },
         '2': {
             type: 'LINK',
             mutability: 'MUTABLE',
@@ -23,17 +18,6 @@ export default {
                 alt: '',
                 alignment: 'left',
                 src: '../static/example-lowres-image.jpg',
-            },
-        },
-        '5': {
-            type: 'EMBED',
-            mutability: 'IMMUTABLE',
-            data: {
-                url: 'http://www.youtube.com/watch?v=y8Kyi0WNg40',
-                title: 'Dramatic Look',
-                providerName: 'YouTube',
-                authorName: 'magnets99',
-                thumbnail: 'https://i.ytimg.com/vi/y8Kyi0WNg40/hqdefault.jpg',
             },
         },
     },
@@ -179,14 +163,11 @@ export default {
         },
         {
             key: '6i47q',
-            text: 'Unstyled link, document',
+            text: 'Unstyled link',
             type: 'unstyled',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [
-                { offset: 9, length: 4, key: 0 },
-                { offset: 15, length: 8, key: 1 },
-            ],
+            entityRanges: [{ offset: 9, length: 4, key: 0 }],
             data: {},
         },
         {
@@ -345,24 +326,6 @@ export default {
             depth: 0,
             inlineStyleRanges: [],
             entityRanges: [{ offset: 0, length: 1, key: 4 }],
-            data: {},
-        },
-        {
-            key: 'eokgu',
-            text: 'Embed',
-            type: 'unstyled',
-            depth: 0,
-            inlineStyleRanges: [],
-            entityRanges: [],
-            data: {},
-        },
-        {
-            key: 'affm4',
-            text: ' ',
-            type: 'atomic',
-            depth: 0,
-            inlineStyleRanges: [],
-            entityRanges: [{ offset: 0, length: 1, key: 5 }],
             data: {},
         },
         {

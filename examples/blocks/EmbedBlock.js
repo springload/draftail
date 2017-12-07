@@ -3,6 +3,8 @@ import React from 'react';
 
 import { Icon } from '../../lib';
 
+import { EMBED_ICON } from '../constants/ui';
+
 /**
  * Editor block to preview and edit embedded content.
  */
@@ -20,7 +22,7 @@ const EmbedBlock = ({ entity, entityConfig, isActive, onClick }) => {
         <div>
             {entityConfig.icon && (
                 <span className="RichEditor-media-icon">
-                    <Icon icon={entityConfig.icon} />
+                    <Icon icon={EMBED_ICON} />
                 </span>
             )}
 

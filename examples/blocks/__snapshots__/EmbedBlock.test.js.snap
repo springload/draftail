@@ -7,7 +7,11 @@ exports[`EmbedBlock #entityConfig.icon 1`] = `
   >
     <Icon
       className={null}
-      icon="#icon-embed"
+      icon={
+        <FontIcon
+          icon="media"
+        />
+      }
       title={null}
     />
   </span>

@@ -21,8 +21,7 @@ Here are important features worth highlighting:
 * Undo / redo – until the end of times.
 * Common text types: headings, paragraphs, quotes, lists.
 * Common text styles: Bold, italic, and many more.
-* Built-in controls for links and documents.
-* Built-in image and embed blocks.
+* Built-in controls for links and images.
 
 ## Using Draftail
 

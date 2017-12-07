@@ -9,7 +9,7 @@ import EmbedBlock from '../blocks/EmbedBlock';
 
 const BLOCKS = {
     [ENTITY_TYPE.IMAGE]: ImageBlock,
-    [ENTITY_TYPE.EMBED]: EmbedBlock,
+    EMBED: EmbedBlock,
 };
 
 /**
