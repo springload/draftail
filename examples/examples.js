@@ -40,6 +40,7 @@ const initWagtail = () => {
                 },
                 {
                     type: 'EMBED',
+                    description: 'Embed',
                     icon: EMBED_ICON,
                     source: EmbedSource,
                     block: MediaBlock,
@@ -234,6 +235,7 @@ const initCustom = () => {
                 },
                 {
                     type: 'EMBED',
+                    description: 'Embed',
                     icon: EMBED_ICON,
                     source: EmbedSource,
                     block: MediaBlock,
@@ -299,6 +301,8 @@ const initTest = () => {
                         },
                         {
                             type: 'EMBED',
+                            description: 'Embed',
+                            icon: EMBED_ICON,
                             source: EmbedSource,
                             block: MediaBlock,
                         },

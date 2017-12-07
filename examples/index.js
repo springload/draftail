@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 import { ENTITY_TYPE, BLOCK_TYPE, INLINE_STYLE } from '../lib';
 
+import { EMBED_ICON } from './constants/ui';
+
 import LinkSource from './sources/LinkSource';
 import ImageSource from './sources/ImageSource';
 import EmbedSource from './sources/EmbedSource';
@@ -39,6 +41,8 @@ const editor = (
             },
             {
                 type: 'EMBED',
+                description: 'Embed',
+                icon: EMBED_ICON,
                 source: EmbedSource,
                 block: MediaBlock,
             },
