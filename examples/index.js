@@ -1,17 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { ENTITY_TYPE, BLOCK_TYPE, INLINE_STYLE } from '../lib';
-
-import { EMBED_ICON } from './constants/ui';
-
-import LinkSource from './sources/LinkSource';
-import ImageSource from './sources/ImageSource';
-import EmbedSource from './sources/EmbedSource';
-
-import MediaBlock from './blocks/MediaBlock';
-
-import Link from './entities/Link';
+import { INLINE_CONTROL, BLOCK_CONTROL, ENTITY_CONTROL } from './constants/ui';
 
 import indexContentState from './utils/indexContentState';
 
@@ -28,36 +18,21 @@ const editor = (
         stripPastedStyles={false}
         entityTypes={[
             new PrismDecorator({ defaultLanguage: 'javascript' }),
-            {
-                type: ENTITY_TYPE.LINK,
-                source: LinkSource,
-                decorator: Link,
-            },
-            {
-                type: ENTITY_TYPE.IMAGE,
-                source: ImageSource,
-                block: MediaBlock,
-                imageFormats: [],
-            },
-            {
-                type: 'EMBED',
-                description: 'Embed',
-                icon: EMBED_ICON,
-                source: EmbedSource,
-                block: MediaBlock,
-            },
+            ENTITY_CONTROL.LINK,
+            ENTITY_CONTROL.IMAGE,
+            ENTITY_CONTROL.EMBED,
         ]}
         blockTypes={[
-            { type: BLOCK_TYPE.HEADER_TWO },
-            { type: BLOCK_TYPE.HEADER_THREE },
-            { type: BLOCK_TYPE.BLOCKQUOTE },
-            { type: BLOCK_TYPE.CODE },
-            { type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
+            BLOCK_CONTROL.HEADER_TWO,
+            BLOCK_CONTROL.HEADER_THREE,
+            BLOCK_CONTROL.BLOCKQUOTE,
+            BLOCK_CONTROL.CODE,
+            BLOCK_CONTROL.UNORDERED_LIST_ITEM,
         ]}
         inlineStyles={[
-            { type: INLINE_STYLE.BOLD },
-            { type: INLINE_STYLE.ITALIC },
-            { type: INLINE_STYLE.KEYBOARD },
+            INLINE_CONTROL.BOLD,
+            INLINE_CONTROL.ITALIC,
+            INLINE_CONTROL.KEYBOARD,
         ]}
     />
 );
