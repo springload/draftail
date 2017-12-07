@@ -13,6 +13,7 @@ $button-active-border-color: transparentize($color-editor-chrome-active, 0.8);
     font-weight: 600;
     cursor: pointer;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
     &--active {
         background-color: $button-active-color;
