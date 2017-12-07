@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-
+const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
@@ -58,14 +58,21 @@ const webpackConfig = environment => {
 
     const publicPath = isProduction ? '/draftail/' : '/';
 
+    const examplesPath = path.join(__dirname, '..', 'examples');
+    const icons = fs.readFileSync(
+        path.join(examplesPath, 'constants', 'icons.svg'),
+        'utf-8',
+    );
+
     const htmlPluginConfig = {
-        template: path.join(__dirname, '..', 'examples', 'index.html'),
+        template: path.join(examplesPath, 'index.html'),
         hash: true,
         data: {
-            GOOGLE_ANALYTICS: isProduction ? GOOGLE_ANALYTICS_PROD : null,
-            SENTRY_DSN: isProduction ? SENTRY_DSN_PROD : null,
-            SENTRY_RELEASE: pkg.version,
             publicPath: publicPath,
+            icons: icons,
+            PKG_VERSION: pkg.version,
+            SENTRY_DSN: isProduction ? SENTRY_DSN_PROD : null,
+            GOOGLE_ANALYTICS: isProduction ? GOOGLE_ANALYTICS_PROD : null,
         },
     };
 

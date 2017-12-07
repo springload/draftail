@@ -1,25 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { ENTITY_TYPE, BLOCK_TYPE, INLINE_STYLE } from '../lib';
-
-import { DOCUMENT_ICON, EMBED_ICON } from './constants/ui';
-
-import DocumentSource from './sources/DocumentSource';
-import LinkSource from './sources/LinkSource';
-import ImageSource from './sources/ImageSource';
-import EmbedSource from './sources/EmbedSource';
-
-import Link from './entities/Link';
-import Document from './entities/Document';
-
-import MediaBlock from './blocks/MediaBlock';
+import { INLINE_CONTROL, BLOCK_CONTROL, ENTITY_CONTROL } from './constants/ui';
 
 import EditorWrapper from './components/EditorWrapper';
 import PrismDecorator from './components/PrismDecorator';
 import allContentState from './utils/allContentState';
 
 import './simple';
+
+const TINY_TEXT_BLOCK = {
+    type: 'tiny-text',
+    label: 'Tiny',
+    description: 'Legal print',
+    element: 'div',
+    className: 'u-tinytext',
+};
+
+const REDACTED_STYLE = {
+    type: 'REDACTED',
+    icon:
+        'M592 448h-16v-192c0-105.87-86.13-192-192-192h-128c-105.87 0-192 86.13-192 192v192h-16c-26.4 0-48 21.6-48 48v480c0 26.4 21.6 48 48 48h544c26.4 0 48-21.6 48-48v-480c0-26.4-21.6-48-48-48zM192 256c0-35.29 28.71-64 64-64h128c35.29 0 64 28.71 64 64v192h-256v-192z',
+    description: 'Redacted',
+    style: { backgroundColor: 'currentcolor' },
+};
 
 const initWagtail = () => {
     const editor = (
@@ -33,43 +37,20 @@ const initWagtail = () => {
             maxListNesting={9}
             spellCheck={true}
             entityTypes={[
-                {
-                    type: ENTITY_TYPE.IMAGE,
-                    source: ImageSource,
-                    imageFormats: [],
-                },
-                {
-                    type: 'EMBED',
-                    description: 'Embed',
-                    icon: EMBED_ICON,
-                    source: EmbedSource,
-                    block: MediaBlock,
-                },
-                {
-                    type: ENTITY_TYPE.LINK,
-                    source: LinkSource,
-                    decorator: Link,
-                },
-                {
-                    type: 'DOCUMENT',
-                    icon: DOCUMENT_ICON,
-                    description: 'Document',
-                    source: DocumentSource,
-                    decorator: Document,
-                },
+                ENTITY_CONTROL.IMAGE,
+                ENTITY_CONTROL.EMBED,
+                ENTITY_CONTROL.LINK,
+                ENTITY_CONTROL.DOCUMENT,
             ]}
             blockTypes={[
-                { type: BLOCK_TYPE.HEADER_TWO },
-                { type: BLOCK_TYPE.HEADER_THREE },
-                { type: BLOCK_TYPE.HEADER_FOUR },
-                { type: BLOCK_TYPE.HEADER_FIVE },
-                { type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
-                { type: BLOCK_TYPE.ORDERED_LIST_ITEM },
+                BLOCK_CONTROL.HEADER_TWO,
+                BLOCK_CONTROL.HEADER_THREE,
+                BLOCK_CONTROL.HEADER_FOUR,
+                BLOCK_CONTROL.HEADER_FIVE,
+                BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+                BLOCK_CONTROL.ORDERED_LIST_ITEM,
             ]}
-            inlineStyles={[
-                { type: INLINE_STYLE.BOLD },
-                { type: INLINE_STYLE.ITALIC },
-            ]}
+            inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
         />
     );
 
@@ -194,52 +175,26 @@ const initCustom = () => {
             stripPastedStyles={false}
             spellCheck={true}
             blockTypes={[
-                {
-                    type: BLOCK_TYPE.HEADER_TWO,
-                },
-                {
-                    type: BLOCK_TYPE.CODE,
-                },
-                {
-                    label: 'Tiny',
-                    type: 'tiny-text',
-                    element: 'div',
-                    className: 'u-tinytext',
-                },
+                BLOCK_CONTROL.HEADER_TWO,
+                BLOCK_CONTROL.CODE,
+                TINY_TEXT_BLOCK,
             ]}
             inlineStyles={[
-                {
-                    type: INLINE_STYLE.BOLD,
-                    style: {
-                        fontWeight: 'bold',
-                        textShadow: '1px 1px 1px black',
+                Object.assign(
+                    {
+                        style: {
+                            fontWeight: 'bold',
+                            textShadow: '1px 1px 1px black',
+                        },
                     },
-                },
-                {
-                    label: '█',
-                    type: 'REDACTED',
-                    description: 'Redacted',
-                    style: { backgroundColor: 'currentcolor' },
-                },
+                    INLINE_CONTROL.BOLD,
+                ),
+                REDACTED_STYLE,
             ]}
             entityTypes={[
-                new PrismDecorator({
-                    defaultLanguage: 'css',
-                }),
-                {
-                    type: 'DOCUMENT',
-                    description: 'Document',
-                    icon: DOCUMENT_ICON,
-                    source: DocumentSource,
-                    decorator: Document,
-                },
-                {
-                    type: 'EMBED',
-                    description: 'Embed',
-                    icon: EMBED_ICON,
-                    source: EmbedSource,
-                    block: MediaBlock,
-                },
+                new PrismDecorator({ defaultLanguage: 'css' }),
+                ENTITY_CONTROL.EMBED,
+                ENTITY_CONTROL.DOCUMENT,
             ]}
         />
     );
@@ -248,12 +203,6 @@ const initCustom = () => {
 };
 
 const initAll = () => {
-    const allBlockTypes = Object.values(BLOCK_TYPE)
-        .filter(t => t !== BLOCK_TYPE.ATOMIC)
-        .map(type => ({ type }));
-
-    const allInlineStyles = Object.values(INLINE_STYLE).map(type => ({ type }));
-
     const editor = (
         <EditorWrapper
             id="all"
@@ -262,20 +211,9 @@ const initAll = () => {
             enableHorizontalRule={true}
             enableLineBreak={true}
             showUndoRedoControls={true}
-            blockTypes={allBlockTypes}
-            inlineStyles={allInlineStyles}
-            entityTypes={[
-                {
-                    type: ENTITY_TYPE.IMAGE,
-                    source: ImageSource,
-                    imageFormats: [],
-                },
-                {
-                    type: ENTITY_TYPE.LINK,
-                    source: LinkSource,
-                    decorator: Link,
-                },
-            ]}
+            blockTypes={Object.values(BLOCK_CONTROL)}
+            inlineStyles={Object.values(INLINE_CONTROL)}
+            entityTypes={[ENTITY_CONTROL.IMAGE, ENTITY_CONTROL.LINK]}
         />
     );
 
@@ -294,51 +232,24 @@ const initTest = () => {
                     enableLineBreak={true}
                     stripPastedStyles={false}
                     entityTypes={[
-                        {
-                            type: ENTITY_TYPE.IMAGE,
-                            source: ImageSource,
-                            imageFormats: [],
-                        },
-                        {
-                            type: 'EMBED',
-                            description: 'Embed',
-                            icon: EMBED_ICON,
-                            source: EmbedSource,
-                            block: MediaBlock,
-                        },
-                        {
-                            type: ENTITY_TYPE.LINK,
-                            source: LinkSource,
-                            decorator: Link,
-                        },
+                        ENTITY_CONTROL.IMAGE,
+                        ENTITY_CONTROL.EMBED,
+                        ENTITY_CONTROL.LINK,
                     ]}
                     blockTypes={[
-                        { type: BLOCK_TYPE.HEADER_TWO },
-                        { type: BLOCK_TYPE.HEADER_THREE },
-                        { type: BLOCK_TYPE.HEADER_FOUR },
-                        { type: BLOCK_TYPE.HEADER_FIVE },
-                        { type: BLOCK_TYPE.BLOCKQUOTE },
-                        { type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
-                        { type: BLOCK_TYPE.ORDERED_LIST_ITEM },
-                        {
-                            label: 'Tiny',
-                            type: 'tiny-text',
-                            element: 'div',
-                            className: 'u-tinytext',
-                        },
+                        BLOCK_CONTROL.HEADER_TWO,
+                        BLOCK_CONTROL.HEADER_THREE,
+                        BLOCK_CONTROL.HEADER_FOUR,
+                        BLOCK_CONTROL.HEADER_FIVE,
+                        BLOCK_CONTROL.BLOCKQUOTE,
+                        BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+                        BLOCK_CONTROL.ORDERED_LIST_ITEM,
+                        TINY_TEXT_BLOCK,
                     ]}
                     inlineStyles={[
-                        { type: INLINE_STYLE.BOLD },
-                        { type: INLINE_STYLE.ITALIC },
-                        { type: INLINE_STYLE.UNDERLINE },
-                        { type: INLINE_STYLE.CODE, label: '</>' },
-                        { type: INLINE_STYLE.STRIKETHROUGH },
-                        {
-                            label: '█',
-                            type: 'REDACTED',
-                            description: 'Redacted',
-                            style: { backgroundColor: 'currentcolor' },
-                        },
+                        INLINE_CONTROL.BOLD,
+                        INLINE_CONTROL.ITALIC,
+                        REDACTED_STYLE,
                     ]}
                 />
             </div>
@@ -349,26 +260,12 @@ const initTest = () => {
                     enableHorizontalRule={true}
                     enableLineBreak={true}
                     stripPastedStyles={false}
-                    entityTypes={[
-                        {
-                            type: ENTITY_TYPE.IMAGE,
-                            source: ImageSource,
-                            imageFormats: [],
-                        },
-                        {
-                            type: ENTITY_TYPE.LINK,
-                            source: LinkSource,
-                            decorator: Link,
-                        },
-                    ]}
+                    entityTypes={[ENTITY_CONTROL.IMAGE, ENTITY_CONTROL.LINK]}
                     blockTypes={[
-                        { type: BLOCK_TYPE.HEADER_FOUR },
-                        { type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
+                        BLOCK_CONTROL.HEADER_FOUR,
+                        BLOCK_CONTROL.UNORDERED_LIST_ITEM,
                     ]}
-                    inlineStyles={[
-                        { type: INLINE_STYLE.BOLD },
-                        { type: INLINE_STYLE.ITALIC },
-                    ]}
+                    inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
                 />
             </div>
             <div className="example">
@@ -376,10 +273,7 @@ const initTest = () => {
                 <EditorWrapper
                     id="test:3"
                     stripPastedStyles={false}
-                    inlineStyles={[
-                        { type: INLINE_STYLE.BOLD },
-                        { type: INLINE_STYLE.ITALIC },
-                    ]}
+                    inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
                 />
             </div>
             <div className="example">
@@ -389,26 +283,12 @@ const initTest = () => {
                     enableHorizontalRule={true}
                     enableLineBreak={true}
                     stripPastedStyles={true}
-                    entityTypes={[
-                        {
-                            type: ENTITY_TYPE.IMAGE,
-                            source: ImageSource,
-                            imageFormats: [],
-                        },
-                        {
-                            type: ENTITY_TYPE.LINK,
-                            source: LinkSource,
-                            decorator: Link,
-                        },
-                    ]}
+                    entityTypes={[ENTITY_CONTROL.IMAGE, ENTITY_CONTROL.LINK]}
                     blockTypes={[
-                        { type: BLOCK_TYPE.HEADER_FOUR },
-                        { type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
+                        BLOCK_CONTROL.HEADER_FOUR,
+                        BLOCK_CONTROL.UNORDERED_LIST_ITEM,
                     ]}
-                    inlineStyles={[
-                        { type: INLINE_STYLE.BOLD },
-                        { type: INLINE_STYLE.ITALIC },
-                    ]}
+                    inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
                 />
             </div>
         </div>
