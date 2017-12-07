@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 import { ENTITY_TYPE, BLOCK_TYPE, INLINE_STYLE } from '../lib';
 
+import { DOCUMENT_ICON, EMBED_ICON } from './constants/ui';
+
 import DocumentSource from './sources/DocumentSource';
 import LinkSource from './sources/LinkSource';
 import ImageSource from './sources/ImageSource';
@@ -11,20 +13,13 @@ import EmbedSource from './sources/EmbedSource';
 import Link from './entities/Link';
 import Document from './entities/Document';
 
+import MediaBlock from './blocks/MediaBlock';
+
 import EditorWrapper from './components/EditorWrapper';
-
 import PrismDecorator from './components/PrismDecorator';
-
 import allContentState from './utils/allContentState';
 
 import './simple';
-
-const ICON_DOCUMENT = [
-    'M917.806 229.076c-22.212-30.292-53.174-65.7-87.178-99.704s-69.412-64.964-99.704-87.178c-51.574-37.82-76.592-42.194-90.924-42.194h-496c-44.112 0-80 35.888-80 80v864c0 44.112 35.888 80 80 80h736c44.112 0 80-35.888 80-80v-624c0-14.332-4.372-39.35-42.194-90.924zM785.374 174.626c30.7 30.7 54.8 58.398 72.58 81.374h-153.954v-153.946c22.984 17.78 50.678 41.878 81.374 72.572zM896 944c0 8.672-7.328 16-16 16h-736c-8.672 0-16-7.328-16-16v-864c0-8.672 7.328-16 16-16 0 0 495.956-0.002 496 0v224c0 17.672 14.326 32 32 32h224v624z',
-    'M736 832h-448c-17.672 0-32-14.326-32-32s14.328-32 32-32h448c17.674 0 32 14.326 32 32s-14.326 32-32 32z',
-    'M736 704h-448c-17.672 0-32-14.326-32-32s14.328-32 32-32h448c17.674 0 32 14.326 32 32s-14.326 32-32 32z',
-    'M736 576h-448c-17.672 0-32-14.326-32-32s14.328-32 32-32h448c17.674 0 32 14.326 32 32s-14.326 32-32 32z',
-];
 
 const initWagtail = () => {
     const editor = (
@@ -44,8 +39,10 @@ const initWagtail = () => {
                     imageFormats: [],
                 },
                 {
-                    type: ENTITY_TYPE.EMBED,
+                    type: 'EMBED',
+                    icon: EMBED_ICON,
                     source: EmbedSource,
+                    block: MediaBlock,
                 },
                 {
                     type: ENTITY_TYPE.LINK,
@@ -53,8 +50,8 @@ const initWagtail = () => {
                     decorator: Link,
                 },
                 {
-                    type: ENTITY_TYPE.DOCUMENT,
-                    icon: ICON_DOCUMENT,
+                    type: 'DOCUMENT',
+                    icon: DOCUMENT_ICON,
                     description: 'Document',
                     source: DocumentSource,
                     decorator: Document,
@@ -80,7 +77,28 @@ const initWagtail = () => {
 
 const initCustom = () => {
     const rawContentState = {
-        entityMap: {},
+        entityMap: {
+            '0': {
+                type: 'DOCUMENT',
+                mutability: 'MUTABLE',
+                data: {
+                    url: 'doc.pdf',
+                    title: 'Kritik der reinen Vernunft',
+                },
+            },
+            '1': {
+                type: 'EMBED',
+                mutability: 'IMMUTABLE',
+                data: {
+                    url: 'http://www.youtube.com/watch?v=y8Kyi0WNg40',
+                    title: 'Dramatic Look',
+                    providerName: 'YouTube',
+                    authorName: 'magnets99',
+                    thumbnail:
+                        'https://i.ytimg.com/vi/y8Kyi0WNg40/hqdefault.jpg',
+                },
+            },
+        },
         blocks: [
             {
                 key: 'c1gc9',
@@ -98,11 +116,44 @@ const initCustom = () => {
                 type: 'unstyled',
                 depth: 0,
                 inlineStyleRanges: [
-                    { offset: 9, length: 13, style: 'REDACTED' },
-                    { offset: 27, length: 5, style: 'REDACTED' },
-                    { offset: 56, length: 15, style: 'REDACTED' },
+                    {
+                        offset: 9,
+                        length: 13,
+                        style: 'REDACTED',
+                    },
+                    {
+                        offset: 27,
+                        length: 5,
+                        style: 'REDACTED',
+                    },
+                    {
+                        offset: 56,
+                        length: 15,
+                        style: 'REDACTED',
+                    },
                 ],
-                entityRanges: [],
+                entityRanges: [
+                    {
+                        offset: 44,
+                        length: 3,
+                        key: 0,
+                    },
+                ],
+                data: {},
+            },
+            {
+                key: 'affm4',
+                text: ' ',
+                type: 'atomic',
+                depth: 0,
+                inlineStyleRanges: [],
+                entityRanges: [
+                    {
+                        offset: 0,
+                        length: 1,
+                        key: 1,
+                    },
+                ],
                 data: {},
             },
             {
@@ -175,11 +226,17 @@ const initCustom = () => {
                     defaultLanguage: 'css',
                 }),
                 {
-                    type: ENTITY_TYPE.DOCUMENT,
+                    type: 'DOCUMENT',
                     description: 'Document',
-                    icon: ICON_DOCUMENT,
+                    icon: DOCUMENT_ICON,
                     source: DocumentSource,
                     decorator: Document,
+                },
+                {
+                    type: 'EMBED',
+                    icon: EMBED_ICON,
+                    source: EmbedSource,
+                    block: MediaBlock,
                 },
             ]}
         />
@@ -212,10 +269,6 @@ const initAll = () => {
                     imageFormats: [],
                 },
                 {
-                    type: ENTITY_TYPE.EMBED,
-                    source: EmbedSource,
-                },
-                {
                     type: ENTITY_TYPE.LINK,
                     source: LinkSource,
                     decorator: Link,
@@ -245,8 +298,9 @@ const initTest = () => {
                             imageFormats: [],
                         },
                         {
-                            type: ENTITY_TYPE.EMBED,
+                            type: 'EMBED',
                             source: EmbedSource,
+                            block: MediaBlock,
                         },
                         {
                             type: ENTITY_TYPE.LINK,

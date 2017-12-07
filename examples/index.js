@@ -38,7 +38,7 @@ const editor = (
                 imageFormats: [],
             },
             {
-                type: ENTITY_TYPE.EMBED,
+                type: 'EMBED',
                 source: EmbedSource,
                 block: MediaBlock,
             },

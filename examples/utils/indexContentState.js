@@ -254,20 +254,11 @@ export default {
         },
         {
             key: '8br3k',
-            text: 'Built-in controls for links and documents.',
+            text: 'Built-in controls for links and images.',
             type: 'unordered-list-item',
             depth: 0,
             inlineStyleRanges: [],
             entityRanges: [{ offset: 22, length: 5, key: 5 }],
-            data: {},
-        },
-        {
-            key: '2j2hl',
-            text: 'Built-in image and embed blocks.',
-            type: 'unordered-list-item',
-            depth: 0,
-            inlineStyleRanges: [],
-            entityRanges: [],
             data: {},
         },
         {

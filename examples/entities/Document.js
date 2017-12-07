@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Icon } from '../../lib';
+import { DOCUMENT_ICON } from '../constants/ui';
 
 const Document = ({ entityKey, contentState, children }) => {
     const { title } = contentState.getEntity(entityKey).getData();
@@ -10,7 +11,7 @@ const Document = ({ entityKey, contentState, children }) => {
             className="RichEditor-link"
             title={title}
         >
-            <Icon icon="icon-doc-full" />
+            <Icon icon={DOCUMENT_ICON} />
             {children}
         </span>
     );

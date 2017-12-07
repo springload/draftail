@@ -80,10 +80,10 @@ describe('MediaBlock', () => {
                     {...mockProps}
                     blockProps={Object.assign({}, mockProps.blockProps, {
                         entity: {
-                            getType: () => ENTITY_TYPE.EMBED,
+                            getType: () => 'EMBED',
                         },
                         entityConfig: {
-                            type: ENTITY_TYPE.EMBED,
+                            type: 'EMBED',
                         },
                     })}
                 />,
