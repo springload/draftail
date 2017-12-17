@@ -1,7 +1,21 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { EditorState, Modifier, SelectionState } from 'draft-js';
 
 import { Icon } from '../../lib';
+
+const propTypes = {
+    block: PropTypes.object.isRequired,
+    contentState: PropTypes.object.isRequired,
+    blockProps: PropTypes.shape({
+        editorState: PropTypes.instanceOf(EditorState).isRequired,
+        entity: PropTypes.object,
+        entityConfig: PropTypes.object.isRequired,
+        lockEditor: PropTypes.func.isRequired,
+        unlockEditor: PropTypes.func.isRequired,
+        onChange: PropTypes.func.isRequired,
+    }).isRequired,
+};
 
 /**
  * Editor block to preview and edit images.
@@ -10,34 +24,63 @@ class ImageBlock extends Component {
     constructor(props) {
         super(props);
 
+        this.onSave = this.onSave.bind(this);
         this.changeText = this.changeText.bind(this);
         this.changeAlignment = this.changeAlignment.bind(this);
         this.renderMediaOptions = this.renderMediaOptions.bind(this);
     }
 
-    changeText(e) {
-        const { onSave } = this.props;
+    onSave(nextData) {
+        const { block, blockProps, contentState } = this.props;
+        const { editorState, onChange } = blockProps;
 
-        onSave({
+        let nextContentState = contentState.mergeEntityData(
+            block.getEntityAt(0),
+            nextData,
+        );
+
+        // To remove in Draft.js 0.11.
+        // This is necessary because entity data is still using a mutable, global store.
+        nextContentState = Modifier.mergeBlockData(
+            nextContentState,
+            new SelectionState({
+                anchorKey: block.getKey(),
+                anchorOffset: 0,
+                focusKey: block.getKey(),
+                focusOffset: block.getLength(),
+            }),
+            {},
+        );
+
+        onChange(
+            EditorState.push(
+                editorState,
+                nextContentState,
+                'insert-characters',
+            ),
+        );
+    }
+
+    changeText(e) {
+        this.onSave({
             alt: e.currentTarget.value,
         });
     }
 
     changeAlignment(e) {
-        const { onSave } = this.props;
-
-        onSave({
+        this.onSave({
             alignment: e.currentTarget.value,
         });
     }
 
     renderMediaOptions() {
-        const { entity, entityConfig } = this.props;
+        const { blockProps } = this.props;
+        const { entity, entityConfig } = blockProps;
         const { alt, alignment } = entity.getData();
         const imageFormats = entityConfig.imageFormats || [];
 
         return (
-            <div className="RichEditor-media-options">
+            <div className="ImageBlock-options">
                 <div className="RichEditor-grid">
                     <div className="RichEditor-col">
                         <label className="u-block">
@@ -75,36 +118,32 @@ class ImageBlock extends Component {
     }
 
     render() {
-        const { entity, entityConfig, isActive, onClick } = this.props;
-        const { src, alt } = entity.getData();
+        const { block, blockProps } = this.props;
+        const { entity, entityKey, entityConfig } = blockProps;
+        const { src } = entity.getData();
 
-        /* eslint-disable springload/jsx-a11y/no-static-element-interactions */
         return (
-            <div>
-                {entityConfig.icon && (
-                    <span className="RichEditor-media-icon">
-                        <Icon icon={entityConfig.icon} />
-                    </span>
-                )}
+            <div
+                className="ImageBlock"
+                data-tooltip={entityKey}
+                data-block={block.getKey()}
+            >
+                <span className="ImageBlock-icon">
+                    <Icon icon={entityConfig.icon} />
+                </span>
 
-                <div onClick={onClick} className="RichEditor-media-container">
-                    <span className="RichEditor-media-preview">
-                        <img src={src} alt={alt || ''} />
+                <div className="ImageBlock-container">
+                    <span className="ImageBlock-preview">
+                        <img src={src} alt="" />
                     </span>
                 </div>
 
-                {isActive ? this.renderMediaOptions() : null}
+                {false ? this.renderMediaOptions() : null}
             </div>
         );
     }
 }
 
-ImageBlock.propTypes = {
-    entityConfig: PropTypes.object.isRequired,
-    entity: PropTypes.object.isRequired,
-    isActive: PropTypes.bool.isRequired,
-    onClick: PropTypes.func.isRequired,
-    onSave: PropTypes.func.isRequired,
-};
+ImageBlock.propTypes = propTypes;
 
 export default ImageBlock;

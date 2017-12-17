@@ -10,7 +10,8 @@ import EmbedSource from '../sources/EmbedSource';
 import Link from '../entities/Link';
 import Document from '../entities/Document';
 
-import MediaBlock from '../blocks/MediaBlock';
+import EmbedBlock from '../blocks/EmbedBlock';
+import ImageBlock from '../blocks/ImageBlock';
 
 import FontIcon from '../components/FontIcon';
 
@@ -68,7 +69,7 @@ export const ENTITY_CONTROL = {
         type: ENTITY_TYPE.IMAGE,
         icon: '#icon-image',
         source: ImageSource,
-        block: MediaBlock,
+        block: ImageBlock,
         imageFormats: [],
     },
     EMBED: {
@@ -76,7 +77,7 @@ export const ENTITY_CONTROL = {
         description: 'Embed',
         icon: EMBED_ICON,
         source: EmbedSource,
-        block: MediaBlock,
+        block: EmbedBlock,
     },
 
     DOCUMENT: {
