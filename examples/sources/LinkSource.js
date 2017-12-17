@@ -95,7 +95,7 @@ class LinkSource extends Component {
                         />
                     </label>
 
-                    <button className="RichEditor-tooltip__button">Save</button>
+                    <button className="Tooltip__button">Save</button>
                 </form>
             </Modal>
         );
