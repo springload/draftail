@@ -59,8 +59,8 @@ class EmbedBlock extends Component {
     }
 
     render() {
-        const { blockProps } = this.props;
-        const { entity, entityConfig } = blockProps;
+        const { block, blockProps } = this.props;
+        const { entity, entityKey, entityConfig } = blockProps;
         const {
             url,
             title,
@@ -70,14 +70,18 @@ class EmbedBlock extends Component {
         } = entity.getData();
 
         return (
-            <div className="EmbedBlock">
+            <div
+                className="EmbedBlock"
+                data-tooltip={entityKey}
+                data-block={block.getKey()}
+            >
                 <span className="EmbedBlock-icon">
                     <Icon icon={entityConfig.icon} />
                 </span>
 
                 <div className="EmbedBlock-container">
                     <span className="EmbedBlock-preview">
-                        <img src={thumbnail} alt="" />
+                        <img src={thumbnail} alt={`Embed: ${title}`} />
                     </span>
                 </div>
 
