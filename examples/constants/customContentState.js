@@ -16,7 +16,7 @@ export default {
                 title: 'Dramatic Look',
                 providerName: 'YouTube',
                 authorName: 'magnets99',
-                thumbnail: 'https://i.ytimg.com/vi/y8Kyi0WNg40/hqdefault.jpg',
+                thumbnail: '../static/example-lowres-image2.jpg',
             },
         },
     },

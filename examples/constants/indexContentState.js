@@ -52,7 +52,7 @@ export default {
                     'React.js Conf 2016 - Isaac Salier-Hellendag - Rich Text Editing with React',
                 providerName: 'YouTube',
                 authorName: 'Facebook Developers',
-                thumbnail: 'https://i.ytimg.com/vi/feUYwoLhE_4/hqdefault.jpg',
+                thumbnail: 'static/example-lowres-image2.jpg',
             },
         },
         '9': { type: 'HORIZONTAL_RULE', mutability: 'IMMUTABLE', data: {} },
