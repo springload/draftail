@@ -1,39 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tooltip #entityData.label 1`] = `
-<div
-  className="RichEditor-tooltip"
-  role="tooltip"
-  style={
-    Object {
-      "left": 0,
-      "top": 0,
-    }
-  }
->
-  <span
-    className="RichEditor-tooltip__text"
-  >
-    Test label
-  </span>
-  <button
-    className="RichEditor-tooltip__button"
-    onClick={[MockFunction]}
-  >
-    Edit
-  </button>
-  <button
-    className="RichEditor-tooltip__button"
-    onClick={[MockFunction]}
-  >
-    Remove
-  </button>
-</div>
-`;
-
 exports[`Tooltip #entityData.url 1`] = `
 <div
-  className="RichEditor-tooltip"
+  className="Tooltip"
   role="tooltip"
   style={
     Object {
@@ -43,7 +12,7 @@ exports[`Tooltip #entityData.url 1`] = `
   }
 >
   <a
-    className="RichEditor-tooltip__link"
+    className="Tooltip__link"
     href="http://www.example.com/"
     rel="noopener noreferrer"
     target="_blank"
@@ -51,13 +20,13 @@ exports[`Tooltip #entityData.url 1`] = `
     www.example.com/
   </a>
   <button
-    className="RichEditor-tooltip__button"
+    className="Tooltip__button"
     onClick={[MockFunction]}
   >
     Edit
   </button>
   <button
-    className="RichEditor-tooltip__button"
+    className="Tooltip__button"
     onClick={[MockFunction]}
   >
     Remove
@@ -67,7 +36,7 @@ exports[`Tooltip #entityData.url 1`] = `
 
 exports[`Tooltip basic 1`] = `
 <div
-  className="RichEditor-tooltip"
+  className="Tooltip"
   role="tooltip"
   style={
     Object {
@@ -77,13 +46,13 @@ exports[`Tooltip basic 1`] = `
   }
 >
   <button
-    className="RichEditor-tooltip__button"
+    className="Tooltip__button"
     onClick={[MockFunction]}
   >
     Edit
   </button>
   <button
-    className="RichEditor-tooltip__button"
+    className="Tooltip__button"
     onClick={[MockFunction]}
   >
     Remove

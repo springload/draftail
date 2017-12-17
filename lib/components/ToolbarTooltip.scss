@@ -5,13 +5,13 @@
 // -----------------------------------------
 
 $balloon-bg: fade-out(#111, 0.1) !default;
-$ballon-text-color: $color-white;
+$balloon-text-color: $color-white;
 $balloon-base-size: 10px !default;
 $balloon-arrow-height: 6px;
 $balloon-arrow-offset: 1px;
-$ballon-border-radius: 4px;
-$ballon-transition-duration: 0;
-$ballon-transition-delay: 0;
+$balloon-border-radius: 4px;
+$balloon-transition-duration: 0;
+$balloon-transition-delay: 0;
 
 //
 // Mixins
@@ -41,7 +41,7 @@ $ballon-transition-delay: 0;
     height: $height;
 }
 
-@mixin ballon-position-down {
+@mixin balloon-position-down {
     &::after {
         left: 50%;
         margin-top: $balloon-arrow-offset + $balloon-arrow-height;
@@ -99,8 +99,8 @@ button[data-balloon] {
 
     &::after {
         background: $balloon-bg;
-        border-radius: $ballon-border-radius;
-        color: $ballon-text-color;
+        border-radius: $balloon-border-radius;
+        color: $balloon-text-color;
         content: attr(aria-label);
         padding: 0.5em 1em;
         white-space: pre;
@@ -119,5 +119,5 @@ button[data-balloon] {
         }
     }
 
-    @include ballon-position-down;
+    @include balloon-position-down;
 }
