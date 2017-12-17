@@ -1,46 +1,132 @@
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
-import { AtomicBlockUtils } from 'draft-js';
 
-class ImageSource extends React.Component {
-    componentDidMount() {
-        const { editorState, options, onUpdate } = this.props;
+import { AtomicBlockUtils, EditorState } from 'draft-js';
 
-        const url = window.prompt('Link URL');
+import Modal from '../components/Modal';
 
-        if (url) {
-            const contentState = editorState.getCurrentContent();
-            const contentStateWithEntity = contentState.createEntity(
+class ImageSource extends Component {
+    constructor(props) {
+        super(props);
+
+        const { entity } = this.props;
+        let src = '';
+
+        if (entity) {
+            const data = entity.getData();
+            src = data.src;
+        }
+
+        this.state = {
+            src: src,
+        };
+
+        this.onRequestClose = this.onRequestClose.bind(this);
+        this.onAfterOpen = this.onAfterOpen.bind(this);
+        this.onConfirm = this.onConfirm.bind(this);
+        this.onChangeSource = this.onChangeSource.bind(this);
+    }
+
+    onConfirm(e) {
+        const {
+            editorState,
+            entity,
+            entityKey,
+            options,
+            onUpdate,
+        } = this.props;
+        const { src } = this.state;
+        const content = editorState.getCurrentContent();
+        let nextState;
+
+        e.preventDefault();
+
+        if (entity) {
+            const nextContent = content.mergeEntityData(entityKey, { src });
+            nextState = EditorState.push(
+                editorState,
+                nextContent,
+                'apply-entity',
+            );
+        } else {
+            const contentWithEntity = content.createEntity(
                 options.type,
                 'MUTABLE',
                 {
                     alt: '',
                     alignment: 'left',
-                    src: url,
+                    src,
                 },
             );
-            const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-            const nextState = AtomicBlockUtils.insertAtomicBlock(
+            nextState = AtomicBlockUtils.insertAtomicBlock(
                 editorState,
-                entityKey,
+                contentWithEntity.getLastCreatedEntityKey(),
                 ' ',
             );
+        }
 
-            onUpdate(nextState);
-        } else {
-            onUpdate(editorState);
+        onUpdate(nextState);
+    }
+
+    onRequestClose(e) {
+        const { onClose } = this.props;
+        e.preventDefault();
+
+        onClose();
+    }
+
+    onAfterOpen() {
+        if (this.inputRef) {
+            this.inputRef.focus();
+            this.inputRef.select();
         }
     }
 
+    onChangeSource(e) {
+        const src = e.target.value;
+        this.setState({ src });
+    }
+
     render() {
-        return null;
+        const { src } = this.state;
+        return (
+            <Modal
+                onRequestClose={this.onRequestClose}
+                onAfterOpen={this.onAfterOpen}
+                isOpen={true}
+                contentLabel="Image chooser"
+            >
+                <form className="ImageSource" onSubmit={this.onConfirm}>
+                    <label className={`form-field`}>
+                        <span className="form-field__label">Image src</span>
+                        <input
+                            ref={inputRef => {
+                                this.inputRef = inputRef;
+                            }}
+                            type="text"
+                            onChange={this.onChangeSource}
+                            value={src}
+                            placeholder="/media/image.png"
+                        />
+                    </label>
+
+                    <button className="RichEditor-tooltip__button">Save</button>
+                </form>
+            </Modal>
+        );
     }
 }
 
 ImageSource.propTypes = {
     editorState: PropTypes.object.isRequired,
     options: PropTypes.object.isRequired,
+    entity: PropTypes.object,
     onUpdate: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
+};
+
+ImageSource.defaultProps = {
+    entity: null,
 };
 
 export default ImageSource;
