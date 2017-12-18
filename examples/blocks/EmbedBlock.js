@@ -75,18 +75,14 @@ class EmbedBlock extends Component {
                 data-tooltip={entityKey}
                 data-block={block.getKey()}
             >
-                <span className="EmbedBlock-icon">
+                <span className="EmbedBlock__icon">
                     <Icon icon={entityConfig.icon} />
                 </span>
 
-                <div className="EmbedBlock-container">
-                    <span className="EmbedBlock-preview">
-                        <img src={thumbnail} alt={`Embed: ${title}`} />
-                    </span>
-                </div>
+                <img src={thumbnail} alt={`Embed: ${title}`} />
 
                 {false ? (
-                    <div className="EmbedBlock-options">
+                    <div className="EmbedBlock__options">
                         <h3>
                             <strong>{title}</strong>
                         </h3>

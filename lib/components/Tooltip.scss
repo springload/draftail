@@ -1,24 +1,32 @@
-.Tooltip {
-    position: absolute;
-    padding: 0.375rem $controls-spacing;
-    margin-top: $controls-spacing;
-    background-color: $color-tooltip-chrome;
-    color: $color-tooltip-chrome-text;
-    z-index: $tooltip-z-index;
-    border-radius: $tooltip-border-radius;
+$tooltip-arrow-height: 15px;
 
+@mixin tooltip-arrow {
     &:before {
         content: '';
         position: absolute;
         bottom: 100%;
-        left: 1rem;
-        border: solid transparent 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        border: solid transparent $tooltip-arrow-height;
         border-bottom-color: $color-tooltip-chrome;
     }
 }
 
+.Tooltip {
+    @include tooltip-arrow;
+
+    position: absolute;
+    padding: $tooltip-spacing;
+    margin-top: $controls-spacing * 4;
+    transform: translateX(-50%);
+    background-color: $color-tooltip-chrome;
+    color: $color-tooltip-chrome-text;
+    z-index: $tooltip-z-index;
+    border-radius: $tooltip-border-radius;
+}
+
 .Tooltip__link {
-    margin-right: $controls-spacing;
+    margin-right: $controls-spacing * 4;
     display: inline-block;
 
     &:last-child {
