@@ -1,24 +1,3 @@
-.EmbedBlock {
-    position: relative;
-    cursor: pointer;
-}
-
-.EmbedBlock img {
-    max-width: 260px;
-    min-height: 170px;
-}
-
-.EmbedBlock__icon {
-    position: absolute;
-    top: $controls-spacing;
-    left: $controls-spacing;
-    background: rgba(255, 255, 255, 0.9);
-    line-height: 1;
-    padding-left: $button-spacing;
-    padding-bottom: 0.125rem;
-    pointer-events: none;
-}
-
 .EmbedBlock__options {
     background: #f3f3f3;
     border-top: solid 1px #e2e2e2;

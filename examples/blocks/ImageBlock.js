@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { EditorState, Modifier, SelectionState } from 'draft-js';
 
-import { Icon, Portal } from '../../lib';
+import MediaBlock from '../blocks/MediaBlock';
 
 const propTypes = {
     block: PropTypes.object.isRequired,
@@ -24,32 +24,9 @@ class ImageBlock extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            showTooltipAt: null,
-        };
-
         this.onSave = this.onSave.bind(this);
         this.changeText = this.changeText.bind(this);
         this.changeAlignment = this.changeAlignment.bind(this);
-        this.openTooltip = this.openTooltip.bind(this);
-        this.closeTooltip = this.closeTooltip.bind(this);
-        this.renderTooltip = this.renderTooltip.bind(this);
-    }
-
-    openTooltip(e) {
-        const trigger = e.target;
-        const pos = trigger.getBoundingClientRect();
-
-        this.setState({
-            showTooltipAt: {
-                top: window.pageYOffset + pos.top + trigger.offsetHeight,
-                left: window.pageXOffset + pos.left + trigger.offsetWidth / 2,
-            },
-        });
-    }
-
-    closeTooltip() {
-        this.setState({ showTooltipAt: null });
     }
 
     onSave(nextData) {
@@ -91,9 +68,8 @@ class ImageBlock extends Component {
         });
     }
 
-    renderTooltip() {
-        const { blockProps } = this.props;
-        const { showTooltipAt } = this.state;
+    render() {
+        const { block, blockProps } = this.props;
         const {
             entity,
             entityKey,
@@ -103,70 +79,51 @@ class ImageBlock extends Component {
         } = blockProps;
         const { alt, alignment } = entity.getData();
         const imageFormats = entityConfig.imageFormats || [];
-
-        return (
-            <Portal clickOutsideClose={this.closeTooltip}>
-                <div style={showTooltipAt} className="Tooltip" role="tooltip">
-                    <div className="ImageBlock__options">
-                        <div className="RichEditor-grid">
-                            <div className="RichEditor-col">
-                                <label className="u-block">
-                                    <h4>Alt text</h4>
-                                    <p>
-                                        <input
-                                            type="text"
-                                            value={alt || ''}
-                                            onChange={this.changeText}
-                                        />
-                                    </p>
-                                </label>
-                            </div>
-                            <div className="RichEditor-col">
-                                <h4>Image alignment</h4>
-                                <p>
-                                    {imageFormats.map(format => {
-                                        return (
-                                            <label key={format.value}>
-                                                <input
-                                                    type="radio"
-                                                    value={format.value}
-                                                    onChange={
-                                                        this.changeAlignment
-                                                    }
-                                                    checked={
-                                                        format.value ===
-                                                        alignment
-                                                    }
-                                                />
-                                                {format.label}
-                                            </label>
-                                        );
-                                    })}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </Portal>
-        );
-    }
-
-    render() {
-        const { block, blockProps } = this.props;
-        const { showTooltipAt } = this.state;
-        const { entity, entityKey, entityConfig } = blockProps;
         const { src } = entity.getData();
 
         return (
-            <div className="ImageBlock" onMouseUp={this.openTooltip}>
-                <span className="ImageBlock__icon">
-                    <Icon icon={entityConfig.icon} />
-                </span>
+            <MediaBlock {...this.props} src={src} alt="">
+                <div className="ImageBlock__options">
+                    <label className="u-block">
+                        <h4>Alt text</h4>
+                        <p>
+                            <input
+                                type="text"
+                                value={alt || ''}
+                                onChange={this.changeText}
+                            />
+                        </p>
+                    </label>
+                    <div>
+                        <h4>Image alignment</h4>
+                        <p>
+                            {imageFormats.map(format => {
+                                return (
+                                    <label key={format.value}>
+                                        <input
+                                            type="radio"
+                                            value={format.value}
+                                            onChange={this.changeAlignment}
+                                            checked={format.value === alignment}
+                                        />
+                                        {format.label}
+                                    </label>
+                                );
+                            })}
+                        </p>
+                    </div>
+                    <button className="Tooltip__button" onClick={onEditEntity}>
+                        Edit
+                    </button>
 
-                <img src={src} alt="" />
-
-                {showTooltipAt && this.renderTooltip()}
-            </div>
+                    <button
+                        className="Tooltip__button"
+                        onClick={onRemoveEntity}
+                    >
+                        Remove
+                    </button>
+                </div>
+            </MediaBlock>
         );
     }
 }

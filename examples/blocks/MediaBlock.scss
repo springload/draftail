@@ -1,0 +1,21 @@
+.MediaBlock {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.MediaBlock img {
+    max-width: 260px;
+    min-height: 170px;
+}
+
+.MediaBlock__icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: $color-editor-chrome;
+    color: $color-editor-chrome-text;
+    line-height: 1;
+    padding: $controls-spacing * 2;
+    pointer-events: none;
+}

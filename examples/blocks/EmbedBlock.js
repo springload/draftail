@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { EditorState, Modifier, SelectionState } from 'draft-js';
 
-import { Icon } from '../../lib';
+import MediaBlock from '../blocks/MediaBlock';
 
 const propTypes = {
     block: PropTypes.object.isRequired,
@@ -70,41 +70,29 @@ class EmbedBlock extends Component {
         } = entity.getData();
 
         return (
-            <div
-                className="EmbedBlock"
-                data-tooltip={entityKey}
-                data-block={block.getKey()}
-            >
-                <span className="EmbedBlock__icon">
-                    <Icon icon={entityConfig.icon} />
-                </span>
-
-                <img src={thumbnail} alt={`Embed: ${title}`} />
-
-                {false ? (
-                    <div className="EmbedBlock__options">
-                        <h3>
-                            <strong>{title}</strong>
-                        </h3>
-                        <p>
-                            <span>
-                                URL:
-                                <a
-                                    href={url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    {url}
-                                </a>
-                            </span>
-                            <br />
-                            <span>{`Provider: ${providerName}`}</span>
-                            <br />
-                            <span>{`Author: ${authorName}`}</span>
-                        </p>
-                    </div>
-                ) : null}
-            </div>
+            <MediaBlock {...this.props} src={thumbnail} alt={`Embed: ${title}`}>
+                <div className="EmbedBlock__options">
+                    <h3>
+                        <strong>{title}</strong>
+                    </h3>
+                    <p>
+                        <span>
+                            URL:
+                            <a
+                                href={url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {url}
+                            </a>
+                        </span>
+                        <br />
+                        <span>{`Provider: ${providerName}`}</span>
+                        <br />
+                        <span>{`Author: ${authorName}`}</span>
+                    </p>
+                </div>
+            </MediaBlock>
         );
     }
 }
