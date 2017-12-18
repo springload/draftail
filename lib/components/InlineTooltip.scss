@@ -1,0 +1,26 @@
+.Tooltip__link {
+    margin-right: $controls-spacing * 4;
+    display: inline-block;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &:hover {
+        color: $color-white;
+    }
+}
+
+.Tooltip__button {
+    appearance: none;
+    background: #808080;
+    color: $color-white;
+    padding: $button-spacing $controls-spacing;
+    border: 0;
+    border-radius: 1px;
+    cursor: pointer;
+
+    + .Tooltip__button {
+        margin-left: $button-spacing;
+    }
+}
