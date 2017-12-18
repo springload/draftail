@@ -1,16 +1,14 @@
-.EmbedBlock-container {
+.EmbedBlock {
+    position: relative;
     cursor: pointer;
 }
 
-.EmbedBlock {
-    position: relative;
-}
-
 .EmbedBlock img {
-    max-width: 100%;
+    max-width: 260px;
+    min-height: 170px;
 }
 
-.EmbedBlock-icon {
+.EmbedBlock__icon {
     position: absolute;
     top: $controls-spacing;
     left: $controls-spacing;
@@ -21,13 +19,7 @@
     pointer-events: none;
 }
 
-.EmbedBlock-preview {
-    max-width: 260px;
-    min-height: 170px;
-    display: inline-block;
-}
-
-.EmbedBlock-options {
+.EmbedBlock__options {
     background: #f3f3f3;
     border-top: solid 1px #e2e2e2;
     font-size: 13px;

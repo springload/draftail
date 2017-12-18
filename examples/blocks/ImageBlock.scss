@@ -1,11 +1,3 @@
-.ImageBlock-container {
-    cursor: pointer;
-}
-
-.ImageBlock {
-    position: relative;
-}
-
 .RichEditor-grid {
     margin-left: -2rem;
 }
@@ -23,8 +15,14 @@
     box-sizing: border-box;
 }
 
+.ImageBlock {
+    position: relative;
+    cursor: pointer;
+}
+
 .ImageBlock img {
-    max-width: 100%;
+    max-width: 260px;
+    min-height: 170px;
 }
 
 .ImageBlock-icon {
@@ -36,12 +34,6 @@
     padding-left: $button-spacing;
     padding-bottom: 0.125rem;
     pointer-events: none;
-}
-
-.ImageBlock-preview {
-    max-width: 260px;
-    min-height: 170px;
-    display: inline-block;
 }
 
 .ImageBlock-options {

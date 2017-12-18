@@ -80,7 +80,7 @@ class ImageBlock extends Component {
         const imageFormats = entityConfig.imageFormats || [];
 
         return (
-            <div className="ImageBlock-options">
+            <div className="ImageBlock__options">
                 <div className="RichEditor-grid">
                     <div className="RichEditor-col">
                         <label className="u-block">
@@ -128,15 +128,11 @@ class ImageBlock extends Component {
                 data-tooltip={entityKey}
                 data-block={block.getKey()}
             >
-                <span className="ImageBlock-icon">
+                <span className="ImageBlock__icon">
                     <Icon icon={entityConfig.icon} />
                 </span>
 
-                <div className="ImageBlock-container">
-                    <span className="ImageBlock-preview">
-                        <img src={src} alt="" />
-                    </span>
-                </div>
+                <img src={src} alt="" />
 
                 {false ? this.renderMediaOptions() : null}
             </div>
