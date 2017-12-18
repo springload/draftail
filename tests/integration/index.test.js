@@ -5,12 +5,12 @@ describe(
     () => {
         let page;
         beforeAll(async () => {
-            page = await global.__BROWSER__.newPage();
+            page = await global.BROWSER.newPage();
             await page.goto('http://localhost:5000/draftail/');
         }, timeout);
 
         it('should load without error', async () => {
-            let text = await page.evaluate(() => document.body.textContent);
+            const text = await page.evaluate(() => document.body.textContent);
             expect(text).toContain('draftail');
         });
     },
