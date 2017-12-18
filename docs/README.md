@@ -100,10 +100,6 @@ Always pinned to an exact version so we can review individual changes when decid
 
 Always use the same version range as that of Draft.js: [package.json](https://github.com/facebook/draft-js/blob/master/package.json).
 
-### Jest
-
-* For Jest 21.3.0: https://github.com/springload/draftail/blob/df903f86c882bd5101eb05e152e8b8a8b9a4915e/lib/tests/polyfills.js#L3:L8
-
 ### Webpack
 
 We generally follow the configuration of [create-react-app](https://github.com/facebookincubator/create-react-app);
