@@ -9,7 +9,7 @@ exports[`ImageBlock #alignment 1`] = `
   />
   <div
     className="RichEditor-media-container"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     <span
       className="RichEditor-media-preview"
@@ -89,7 +89,7 @@ exports[`ImageBlock #entityConfig.imageFormats 1`] = `
   />
   <div
     className="RichEditor-media-container"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     <span
       className="RichEditor-media-preview"
@@ -169,7 +169,7 @@ exports[`ImageBlock #isActive 1`] = `
   />
   <div
     className="RichEditor-media-container"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     <span
       className="RichEditor-media-preview"
@@ -226,7 +226,7 @@ exports[`ImageBlock basic 1`] = `
   />
   <div
     className="RichEditor-media-container"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     <span
       className="RichEditor-media-preview"
@@ -249,7 +249,7 @@ exports[`ImageBlock empty #isActive 1`] = `
   />
   <div
     className="RichEditor-media-container"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     <span
       className="RichEditor-media-preview"
@@ -305,7 +305,7 @@ exports[`ImageBlock empty 1`] = `
   />
   <div
     className="RichEditor-media-container"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     <span
       className="RichEditor-media-preview"

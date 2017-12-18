@@ -18,13 +18,13 @@ exports[`Tooltip #entityData.label 1`] = `
   </span>
   <button
     className="RichEditor-tooltip__button"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     Edit
   </button>
   <button
     className="RichEditor-tooltip__button"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     Remove
   </button>
@@ -52,13 +52,13 @@ exports[`Tooltip #entityData.url 1`] = `
   </a>
   <button
     className="RichEditor-tooltip__button"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     Edit
   </button>
   <button
     className="RichEditor-tooltip__button"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     Remove
   </button>
@@ -78,13 +78,13 @@ exports[`Tooltip basic 1`] = `
 >
   <button
     className="RichEditor-tooltip__button"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     Edit
   </button>
   <button
     className="RichEditor-tooltip__button"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     Remove
   </button>
