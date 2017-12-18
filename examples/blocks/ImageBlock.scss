@@ -17,6 +17,7 @@
 
 .ImageBlock {
     position: relative;
+    display: inline-block;
     cursor: pointer;
 }
 
@@ -25,18 +26,18 @@
     min-height: 170px;
 }
 
-.ImageBlock-icon {
+.ImageBlock__icon {
     position: absolute;
-    top: $controls-spacing;
-    left: $controls-spacing;
-    background: rgba(255, 255, 255, 0.9);
+    top: 0;
+    right: 0;
+    background: $color-editor-chrome;
+    color: $color-editor-chrome-text;
     line-height: 1;
-    padding-left: $button-spacing;
-    padding-bottom: 0.125rem;
+    padding: $controls-spacing * 2;
     pointer-events: none;
 }
 
-.ImageBlock-options {
+.ImageBlock__options {
     background: #f3f3f3;
     border-top: solid 1px #e2e2e2;
     font-size: 13px;
