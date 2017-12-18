@@ -67,7 +67,7 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "\\.scss$": "<rootDir>/lib/tests/styleMock.js"
+      "\\.scss$": "<rootDir>/tests/styleMock.js"
     },
     "testPathIgnorePatterns": [
       "/node_modules/",
@@ -76,15 +76,15 @@
       "/es/"
     ],
     "coveragePathIgnorePatterns": [
-      "<rootDir>/lib/tests"
+      "<rootDir>/tests"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
     "setupFiles": [
-      "<rootDir>/lib/tests/polyfills.js"
+      "<rootDir>/tests/polyfills.js"
     ],
-    "setupTestFrameworkScriptFile": "<rootDir>/lib/tests/setupTest.js"
+    "setupTestFrameworkScriptFile": "<rootDir>/tests/setupTest.js"
   },
   "dependencies": {
     "draftjs-utils": "0.8.8"
