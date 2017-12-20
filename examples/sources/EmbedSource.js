@@ -92,10 +92,10 @@ class EmbedSource extends React.Component {
                         ' ',
                     );
                 }
+
+                onUpdate(nextState);
             },
         );
-
-        onUpdate(nextState);
     }
 
     onRequestClose(e) {
