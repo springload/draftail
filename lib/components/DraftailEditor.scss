@@ -27,6 +27,8 @@
     font-size: 1rem;
     line-height: 1.5;
     font-family: sans-serif;
+    // Ligatures can make cursor behavior harder to understand.
+    font-variant-ligatures: none;
 }
 
 .public-DraftEditorPlaceholder-root {
