@@ -1,12 +1,15 @@
+// Defined in both CSS and JS to constraint the maximum size of the tooltip.
+$OPTIONS_MAX_WIDTH: 300px;
+
 .MediaBlock {
     position: relative;
     display: inline-block;
     cursor: pointer;
 }
 
-.MediaBlock img {
-    max-width: 260px;
-    min-height: 170px;
+.MediaBlock > img {
+    width: 256px;
+    height: auto;
 }
 
 .MediaBlock__icon {
@@ -16,6 +19,18 @@
     background: $color-editor-chrome;
     color: $color-editor-chrome-text;
     line-height: 1;
-    padding: $controls-spacing * 2;
+    padding: $controls-spacing * 2 $controls-spacing * 3;
     pointer-events: none;
+
+    .icon {
+        // SVG icons.
+        width: 1.5rem;
+        height: 1.5rem;
+        // Font icons.
+        font-size: 1.5rem;
+    }
+}
+
+.MediaBlock__options {
+    max-width: $OPTIONS_MAX_WIDTH;
 }

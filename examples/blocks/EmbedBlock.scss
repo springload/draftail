@@ -1,12 +1,4 @@
-.EmbedBlock__options {
-    background: #f3f3f3;
-    border-top: solid 1px #e2e2e2;
-    font-size: 13px;
-    font-family: Open Sans, sans-serif;
-    padding: 1rem;
-
-    h3,
-    h4 {
-        margin-top: 0;
-    }
+.EmbedBlock__link {
+    display: block;
+    margin-bottom: $button-spacing;
 }
