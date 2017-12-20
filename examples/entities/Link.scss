@@ -1,0 +1,13 @@
+.Link,
+.Document {
+    background: $color-light-blue;
+    border-bottom: 1px dotted $color-teal;
+    cursor: pointer;
+
+    .icon {
+        color: $color-teal;
+        margin-right: 0.2em;
+        width: 1em;
+        height: 1em;
+    }
+}

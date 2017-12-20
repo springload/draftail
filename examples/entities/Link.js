@@ -7,7 +7,7 @@ const Link = ({ entityKey, contentState, children }) => {
     const icon = `#icon-${url.startsWith('mailto:') ? 'mail' : 'link'}`;
 
     return (
-        <span data-tooltip={entityKey} className="RichEditor-link">
+        <span data-tooltip={entityKey} className="Link">
             <Icon icon={icon} />
             {children}
         </span>
