@@ -82,7 +82,7 @@ class ImageBlock extends Component {
         const { src } = entity.getData();
 
         return (
-            <MediaBlock {...this.props} src={src} alt="">
+            <MediaBlock {...this.props} src={src} alt="" direction="left">
                 <div className="ImageBlock__options">
                     <label className="u-block">
                         <h4>Alt text</h4>

@@ -60,38 +60,39 @@ class EmbedBlock extends Component {
 
     render() {
         const { block, blockProps } = this.props;
-        const { entity, entityKey, entityConfig } = blockProps;
         const {
-            url,
-            title,
-            providerName,
-            authorName,
-            thumbnail,
-        } = entity.getData();
+            entity,
+            entityKey,
+            entityConfig,
+            onEditEntity,
+            onRemoveEntity,
+        } = blockProps;
+        const { url, title, thumbnail } = entity.getData();
 
         return (
-            <MediaBlock {...this.props} src={thumbnail} alt={`Embed: ${title}`}>
-                <div className="EmbedBlock__options">
-                    <h3>
-                        <strong>{title}</strong>
-                    </h3>
-                    <p>
-                        <span>
-                            URL:
-                            <a
-                                href={url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                {url}
-                            </a>
-                        </span>
-                        <br />
-                        <span>{`Provider: ${providerName}`}</span>
-                        <br />
-                        <span>{`Author: ${authorName}`}</span>
-                    </p>
-                </div>
+            <MediaBlock
+                {...this.props}
+                src={thumbnail}
+                alt={`Embed: ${title}`}
+                direction="left"
+            >
+                <a
+                    className="EmbedBlock__link"
+                    href={url}
+                    title={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    {title}
+                </a>
+
+                <button className="Tooltip__button" onClick={onEditEntity}>
+                    Edit
+                </button>
+
+                <button className="Tooltip__button" onClick={onRemoveEntity}>
+                    Remove
+                </button>
             </MediaBlock>
         );
     }
