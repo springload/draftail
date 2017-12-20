@@ -1,26 +1,63 @@
 $tooltip-arrow-height: 15px;
+$tooltip-arrow-spacing: 25px;
 
-@mixin tooltip-arrow {
-    &:before {
-        content: '';
-        position: absolute;
+@mixin arrow--top {
+    margin-top: $tooltip-arrow-spacing;
+    transform: translateX(-50%);
+
+    &::before {
         bottom: 100%;
         left: 50%;
         transform: translateX(-50%);
-        border: solid transparent $tooltip-arrow-height;
+        border-bottom-color: $color-tooltip-chrome;
+    }
+}
+
+@mixin arrow--left {
+    margin-left: $tooltip-arrow-spacing;
+    transform: translateY(-50%);
+
+    &::before {
+        top: 50%;
+        right: 100%;
+        transform: translateY(-50%);
+        border-right-color: $color-tooltip-chrome;
+    }
+}
+
+@mixin arrow--top-left {
+    margin-top: $tooltip-arrow-spacing;
+
+    &::before {
+        bottom: 100%;
+        left: $tooltip-arrow-spacing;
         border-bottom-color: $color-tooltip-chrome;
     }
 }
 
 .Tooltip {
-    @include tooltip-arrow;
-
     position: absolute;
     padding: $tooltip-spacing;
-    margin-top: $controls-spacing * 4;
-    transform: translateX(-50%);
     background-color: $color-tooltip-chrome;
     color: $color-tooltip-chrome-text;
     z-index: $tooltip-z-index;
     border-radius: $tooltip-border-radius;
+
+    &::before {
+        content: '';
+        position: absolute;
+        border: $tooltip-arrow-height solid transparent;
+    }
+
+    &--top {
+        @include arrow--top;
+    }
+
+    &--left {
+        @include arrow--left;
+    }
+
+    &--top-left {
+        @include arrow--top-left;
+    }
 }
