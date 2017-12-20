@@ -4,6 +4,11 @@ import { EditorState, Modifier, SelectionState } from 'draft-js';
 
 import { Icon, Portal, Tooltip } from '../../lib';
 
+// Defined in both CSS and JS to constraint the maximum size of the tooltip.
+const OPTIONS_MAX_WIDTH = 300;
+const OPTIONS_SPACING = 70;
+const TOOLTIP_MAX_WIDTH = OPTIONS_MAX_WIDTH + OPTIONS_SPACING;
+
 const propTypes = {
     block: PropTypes.object.isRequired,
     contentState: PropTypes.object.isRequired,
@@ -26,6 +31,7 @@ class MediaBlock extends Component {
 
         this.state = {
             showTooltipAt: null,
+            direction: null,
         };
 
         this.openTooltip = this.openTooltip.bind(this);
@@ -34,28 +40,39 @@ class MediaBlock extends Component {
     }
 
     openTooltip(e) {
+        const { direction } = this.props;
         const trigger = e.target;
-        const pos = trigger.getBoundingClientRect();
+        const rect = trigger.getBoundingClientRect();
+
+        const editor = trigger.closest('[contenteditable="true"]').parentNode;
+        const tooltipMaxWidth = editor.offsetWidth - rect.width;
+        const tooltipDirection =
+            tooltipMaxWidth >= TOOLTIP_MAX_WIDTH ? direction : 'top-left';
 
         this.setState({
-            showTooltipAt: {
-                top: window.pageYOffset + pos.top + trigger.offsetHeight,
-                left: window.pageXOffset + pos.left + trigger.offsetWidth / 2,
-            },
+            showTooltipAt: rect,
+            direction: tooltipDirection,
         });
     }
 
     closeTooltip() {
-        this.setState({ showTooltipAt: null });
+        this.setState({ showTooltipAt: null, direction: null });
     }
 
     renderTooltip() {
         const { children } = this.props;
-        const { showTooltipAt } = this.state;
+        const { showTooltipAt, direction } = this.state;
 
         return (
-            <Portal clickOutsideClose={this.closeTooltip}>
-                <Tooltip position={showTooltipAt}>{children}</Tooltip>
+            <Portal
+                onClose={this.closeTooltip}
+                closeOnClick
+                closeOnType
+                closeOnResize
+            >
+                <Tooltip target={showTooltipAt} direction={direction}>
+                    <div className="MediaBlock__options">{children}</div>
+                </Tooltip>
             </Portal>
         );
     }
@@ -67,11 +84,11 @@ class MediaBlock extends Component {
 
         return (
             <div className="MediaBlock" onMouseUp={this.openTooltip}>
-                <span className="MediaBlock__icon">
+                <span className="MediaBlock__icon" aria-hidden>
                     <Icon icon={entityConfig.icon} />
                 </span>
 
-                <img src={src} alt={alt} />
+                <img src={src} alt={alt} width="256" />
 
                 {showTooltipAt && this.renderTooltip()}
             </div>
