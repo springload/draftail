@@ -41,13 +41,3 @@
 .public-DraftEditor-content > * > figure {
     margin: 0;
 }
-
-.RichEditor-link {
-    background: $color-light-blue;
-    border-bottom: 1px dotted $color-teal;
-    cursor: pointer;
-
-    .icon {
-        color: $color-teal;
-    }
-}

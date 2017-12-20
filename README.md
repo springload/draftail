@@ -282,10 +282,7 @@ const Link = ({ entityKey, contentState, children }) => {
     const { url } = contentState.getEntity(entityKey).getData();
 
     return (
-        <span data-tooltip={entityKey} className="RichEditor-link">
-            <Icon
-                name={`icon-${url.indexOf('mailto:') !== -1 ? 'mail' : 'link'}`}
-            />
+        <span title={url} className="Link">
             {children}
         </span>
     );
