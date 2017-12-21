@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`DraftailEditor tooltip renderTooltip works 1`] = `"<div><div></div></div><div><div></div></div><div><div><div style=\\"top: 0px; left: 0px;\\" class=\\"Tooltip\\" role=\\"tooltip\\"><a href=\\"test\\" target=\\"_blank\\" rel=\\"noopener noreferrer\\" class=\\"Tooltip__link\\">test</a><button class=\\"Tooltip__button\\">Edit</button><button class=\\"Tooltip__button\\">Remove</button></div></div></div>"`;
