@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import { Icon, Portal } from '../../lib';
+import { Icon } from '../../lib';
 
-import Tooltip from '../components/Tooltip';
 import { truncateURL } from '../utils/format';
 import { DOCUMENT_ICON } from '../constants/ui';
+
+import Tooltip from '../components/Tooltip';
+import Portal from '../components/Portal';
 
 class Document extends Component {
     constructor(props) {
