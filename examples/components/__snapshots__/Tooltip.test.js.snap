@@ -1,61 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tooltip #entityData.url 1`] = `
+exports[`Tooltip #direction left 1`] = `
 <div
-  className="Tooltip"
+  className="Tooltip Tooltip--left"
   role="tooltip"
   style={
     Object {
-      "left": 0,
-      "top": 0,
+      "left": 13,
+      "top": 601,
     }
   }
 >
-  <a
-    className="Tooltip__link"
-    href="http://www.example.com/"
-    rel="noopener noreferrer"
-    target="_blank"
-  >
-    www.example.com/
-  </a>
-  <button
-    className="Tooltip__button"
-    onClick={[MockFunction]}
-  >
-    Edit
-  </button>
-  <button
-    className="Tooltip__button"
-    onClick={[MockFunction]}
-  >
-    Remove
-  </button>
+  Test
 </div>
 `;
 
-exports[`Tooltip basic 1`] = `
+exports[`Tooltip #direction top 1`] = `
 <div
-  className="Tooltip"
+  className="Tooltip Tooltip--top"
   role="tooltip"
   style={
     Object {
-      "left": 0,
-      "top": 0,
+      "left": 7,
+      "top": 1201,
     }
   }
 >
-  <button
-    className="Tooltip__button"
-    onClick={[MockFunction]}
-  >
-    Edit
-  </button>
-  <button
-    className="Tooltip__button"
-    onClick={[MockFunction]}
-  >
-    Remove
-  </button>
+  Test
+</div>
+`;
+
+exports[`Tooltip #direction top-left 1`] = `
+<div
+  className="Tooltip Tooltip--top-left"
+  role="tooltip"
+  style={
+    Object {
+      "left": 1,
+      "top": 1201,
+    }
+  }
+>
+  Test
 </div>
 `;
