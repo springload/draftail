@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 
 import { Icon } from '../../lib';
 
-import { truncateURL } from '../utils/format';
 import { DOCUMENT_ICON } from '../constants/ui';
 
 import Tooltip from '../components/Tooltip';
@@ -44,6 +43,7 @@ class Document extends Component {
         } = this.props;
         const { showTooltipAt } = this.state;
         const { url } = contentState.getEntity(entityKey).getData();
+        const label = url.replace(/(^\w+:|^)\/\//, '').split('/')[0];
 
         return (
             <span onMouseUp={this.openTooltip} className="Document">
@@ -65,7 +65,7 @@ class Document extends Component {
                                     rel="noopener noreferrer"
                                     className="Tooltip__Link"
                                 >
-                                    {truncateURL(url)}
+                                    {label}
                                 </a>
                             ) : null}
 
