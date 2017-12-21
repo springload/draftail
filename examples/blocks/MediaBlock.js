@@ -2,7 +2,9 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { EditorState, Modifier, SelectionState } from 'draft-js';
 
-import { Icon, Portal, Tooltip } from '../../lib';
+import { Icon, Portal } from '../../lib';
+
+import Tooltip from '../components/Tooltip';
 
 // Defined in both CSS and JS to constraint the maximum size of the tooltip.
 const OPTIONS_MAX_WIDTH = 300;

@@ -116,6 +116,7 @@ $color-editor-chrome-accent: lighten($color-editor-chrome, 20%);
 @import '../lib/index';
 
 @import './components/Modal';
+@import './components/Tooltip';
 @import './components/InlineTooltip';
 @import './components/PrismDecorator';
 @import './entities/Link';
