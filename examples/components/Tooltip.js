@@ -20,12 +20,11 @@ const getTooltipStyles = (target, direction) => {
                 left: left + target.width,
             };
         case TOP_LEFT:
+        default:
             return {
                 top: top + target.height,
                 left: left,
             };
-        default:
-            return {};
     }
 };
 
@@ -51,12 +50,8 @@ Tooltip.propTypes = {
         width: PropTypes.number.isRequired,
         height: PropTypes.number.isRequired,
     }).isRequired,
-    direction: PropTypes.oneOf([TOP, LEFT, TOP_LEFT]),
+    direction: PropTypes.oneOf([TOP, LEFT, TOP_LEFT]).isRequired,
     children: PropTypes.node.isRequired,
-};
-
-Tooltip.defaultProps = {
-    direction: TOP,
 };
 
 export default Tooltip;

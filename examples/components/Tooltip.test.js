@@ -3,47 +3,41 @@ import { shallow } from 'enzyme';
 
 import Tooltip from '../components/Tooltip';
 
-const mockProps = {
-    position: {
-        top: 0,
-        left: 0,
-    },
-    entityData: {},
-    onEdit: jest.fn(),
-    onRemove: jest.fn(),
+const target = {
+    top: 1,
+    left: 1,
+    width: 12,
+    height: 1200,
 };
 
 describe('Tooltip', () => {
-    it('basic', () => {
-        expect(shallow(<Tooltip {...mockProps} />)).toMatchSnapshot();
-    });
-
-    it('#entityData.url', () => {
+    it('#direction top', () => {
         expect(
             shallow(
-                <Tooltip
-                    {...mockProps}
-                    entityData={{
-                        url: 'http://www.example.com/',
-                    }}
-                />,
+                <Tooltip target={target} direction="top">
+                    Test
+                </Tooltip>,
             ),
         ).toMatchSnapshot();
     });
 
-    it('#onEdit', () => {
-        shallow(<Tooltip {...mockProps} />)
-            .find('button')
-            .first()
-            .simulate('click');
-        expect(mockProps.onEdit).toHaveBeenCalledTimes(1);
+    it('#direction left', () => {
+        expect(
+            shallow(
+                <Tooltip target={target} direction="left">
+                    Test
+                </Tooltip>,
+            ),
+        ).toMatchSnapshot();
     });
 
-    it('#onRemove', () => {
-        shallow(<Tooltip {...mockProps} />)
-            .find('button')
-            .last()
-            .simulate('click');
-        expect(mockProps.onRemove).toHaveBeenCalledTimes(1);
+    it('#direction top-left', () => {
+        expect(
+            shallow(
+                <Tooltip target={target} direction="top-left">
+                    Test
+                </Tooltip>,
+            ),
+        ).toMatchSnapshot();
     });
 });

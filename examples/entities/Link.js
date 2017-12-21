@@ -60,7 +60,7 @@ class Link extends Component {
                         closeOnType
                         closeOnResize
                     >
-                        <Tooltip target={showTooltipAt}>
+                        <Tooltip target={showTooltipAt} direction="top">
                             {url ? (
                                 <a
                                     href={url}
