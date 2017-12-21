@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { EditorState } from 'draft-js';
 
 import { Icon } from '../../lib';
 
@@ -14,16 +13,11 @@ const TOOLTIP_MAX_WIDTH = OPTIONS_MAX_WIDTH + OPTIONS_SPACING;
 
 const propTypes = {
     blockProps: PropTypes.shape({
-        editorState: PropTypes.instanceOf(EditorState).isRequired,
         entity: PropTypes.object,
         entityConfig: PropTypes.object.isRequired,
-        lockEditor: PropTypes.func.isRequired,
-        unlockEditor: PropTypes.func.isRequired,
-        onChange: PropTypes.func.isRequired,
     }).isRequired,
     src: PropTypes.string.isRequired,
     alt: PropTypes.string.isRequired,
-    direction: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
 };
 
@@ -45,18 +39,16 @@ class MediaBlock extends Component {
     }
 
     openTooltip(e) {
-        const { direction } = this.props;
         const trigger = e.target;
         const rect = trigger.getBoundingClientRect();
 
         const editor = trigger.closest('[contenteditable="true"]').parentNode;
         const tooltipMaxWidth = editor.offsetWidth - rect.width;
-        const tooltipDirection =
-            tooltipMaxWidth >= TOOLTIP_MAX_WIDTH ? direction : 'top-left';
 
         this.setState({
             showTooltipAt: rect,
-            direction: tooltipDirection,
+            direction:
+                tooltipMaxWidth >= TOOLTIP_MAX_WIDTH ? 'left' : 'top-left',
         });
     }
 
