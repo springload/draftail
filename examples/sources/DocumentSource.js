@@ -16,7 +16,6 @@ class DocumentSource extends React.Component {
             const selection = editorState.getSelection();
             const entityData = {
                 url: url,
-                title: 'Kritik der reinen Vernunft',
             };
 
             const hasText = !selection.isCollapsed();

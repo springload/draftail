@@ -76,15 +76,13 @@ class ImageBlock extends Component {
         return (
             <MediaBlock {...this.props} src={src} alt="" direction="left">
                 <div className="ImageBlock__options">
-                    <label className="u-block">
-                        <h4>Alt text</h4>
-                        <p>
-                            <input
-                                type="text"
-                                value={alt || ''}
-                                onChange={this.changeAlt}
-                            />
-                        </p>
+                    <label className="ImageBlock__field">
+                        <p>Alt text</p>
+                        <input
+                            type="text"
+                            value={alt || ''}
+                            onChange={this.changeAlt}
+                        />
                     </label>
                     <button className="Tooltip__button" onClick={onEditEntity}>
                         Edit

@@ -124,9 +124,9 @@ class EmbedSource extends React.Component {
                 onRequestClose={this.onRequestClose}
                 onAfterOpen={this.onAfterOpen}
                 isOpen={true}
-                contentLabel="Image chooser"
+                contentLabel="Embed chooser"
             >
-                <form className="ImageSource" onSubmit={this.onConfirm}>
+                <form className="EmbedSource" onSubmit={this.onConfirm}>
                     <label className={`form-field`}>
                         <span className="form-field__label">Embed URL</span>
                         <input
