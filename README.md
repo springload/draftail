@@ -48,10 +48,11 @@ npm install --save draft-js@^0.10.4 react react-dom prop-types
 npm install --save draftail
 ```
 
-Import the editor's styles:
+Import the styles for Draft.js, and the editor:
 
 ```scss
-@import 'draftail/dist/draftail.css';
+@import 'draft-js/dist/Draft';
+@import 'draftail/dist/draftail';
 ```
 
 Then, import the editor and use it in your code. Here is a [simple example](https://springload.github.io/draftail/examples/):
