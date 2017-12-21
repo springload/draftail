@@ -15,8 +15,8 @@ import ImageBlock from '../blocks/ImageBlock';
 
 import FontIcon from '../components/FontIcon';
 
-export const DOCUMENT_ICON = <FontIcon icon="doc-full" />;
-export const EMBED_ICON = <FontIcon icon="media" />;
+export const DOCUMENT_ICON = <FontIcon icon="document" />;
+export const EMBED_ICON = <FontIcon icon="embed" />;
 
 export const INLINE_CONTROL = {
     BOLD: { type: INLINE_STYLE.BOLD, icon: '#icon-bold' },

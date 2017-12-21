@@ -6,9 +6,6 @@
     <title>Draftail – A configurable rich text editor based on Draft.js, built for Wagtail</title>
     <meta name="description" content="Draftail offers a mouse-free, keyboard-first experience. Most formatting can be done with shortcuts inspired by Google Docs and Markdown." />
 
-    <!-- TODO Get rid of icon font. -->
-    <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.data.publicPath %>static/icomoon/style.css" />
-
     <link rel="shortcut icon" href="<%= htmlWebpackPlugin.options.data.publicPath %>static/favicons/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="<%= htmlWebpackPlugin.options.data.publicPath %>static/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="<%= htmlWebpackPlugin.options.data.publicPath %>static/favicons/favicon-32x32.png">
@@ -30,6 +27,8 @@
     <meta name="twitter:data1" value="Close enough">
     <meta name="twitter:label2" value="Paste from Word?">
     <meta name="twitter:data2" value="Yep">
+
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.data.publicPath %>static/icomoon/icomoon.css" />
 
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
 </head>
