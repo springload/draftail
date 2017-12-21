@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 
 import { Icon } from '../../lib';
 
-import { truncateURL } from '../utils/format';
-
 import Tooltip from '../components/Tooltip';
 import Portal from '../components/Portal';
 
@@ -43,6 +41,7 @@ class Link extends Component {
         } = this.props;
         const { showTooltipAt } = this.state;
         const { url } = contentState.getEntity(entityKey).getData();
+        const label = url.replace(/(^\w+:|^)\/\//, '').split('/')[0];
         const icon = `#icon-${url.startsWith('mailto:') ? 'mail' : 'link'}`;
 
         return (
@@ -65,7 +64,7 @@ class Link extends Component {
                                     rel="noopener noreferrer"
                                     className="Tooltip__link"
                                 >
-                                    {truncateURL(url)}
+                                    {label}
                                 </a>
                             ) : null}
 
