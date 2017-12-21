@@ -11,12 +11,8 @@ class Portal extends Component {
 
     onCloseEvent(e) {
         const { onClose } = this.props;
-        const shouldClose =
-            this.portal &&
-            e.target !== this.portal &&
-            !this.portal.contains(e.target);
 
-        if (shouldClose) {
+        if (!this.portal.contains(e.target)) {
             onClose();
         }
     }
