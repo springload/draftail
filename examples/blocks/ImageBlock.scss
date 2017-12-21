@@ -1,33 +1,10 @@
-.ImageBlock__options {
-    border-top: solid 1px #e2e2e2;
-    font-size: 13px;
-    font-family: Open Sans, sans-serif;
-    padding: 1rem;
+.ImageBlock__field {
+    display: block;
+    cursor: pointer;
+    margin-bottom: $button-spacing;
 
-    h3,
-    h4 {
-        margin-top: 0;
-    }
-
-    label {
-        width: auto;
-        padding: 0;
-        display: inline-block;
-        float: none;
-        margin-right: 1rem;
-        cursor: pointer;
-    }
-
-    input[type='radio']:before,
-    input[type='radio']:after {
-        display: none;
-    }
-
-    input[type='radio'] {
-        margin-right: 8px;
-    }
-
-    input[type='text'] {
-        font-size: 14px;
+    > [type='text'] {
+        background-color: $WHITE;
+        color: $TEXT_COLOR;
     }
 }

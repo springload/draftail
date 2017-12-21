@@ -1,5 +1,3 @@
-$color-field-border: #999;
-
 fieldset {
     padding: 0;
     margin: 0;
@@ -27,7 +25,8 @@ fieldset {
 
     background-color: transparent;
     border-radius: 3px;
-    border: 1px solid $color-field-border;
+    border: 1px solid currentColor;
+    color: inherit;
     outline: none;
     appearance: none;
 
