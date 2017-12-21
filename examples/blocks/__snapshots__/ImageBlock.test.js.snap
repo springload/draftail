@@ -1,166 +1,83 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ImageBlock #entityConfig.icon 1`] = `
-<div>
-  <span
-    className="RichEditor-media-icon"
+exports[`ImageBlock alt 1`] = `
+<MediaBlock
+  alt=""
+  block={Object {}}
+  blockProps={
+    Object {
+      "editorState": Object {},
+      "entity": Object {
+        "getData": [Function],
+      },
+      "entityConfig": Object {},
+      "onChange": [Function],
+    }
+  }
+  src="example.png"
+>
+  <label
+    className="ImageBlock__field"
   >
-    <Icon
-      className={null}
-      icon="#icon-image"
-      title={null}
+    <p>
+      Alt text
+    </p>
+    <input
+      onChange={[Function]}
+      type="text"
+      value="Test"
     />
-  </span>
-  <div
-    className="RichEditor-media-container"
-    onClick={[MockFunction]}
+  </label>
+  <button
+    className="Tooltip__button"
   >
-    <span
-      className="RichEditor-media-preview"
-    >
-      <img
-        alt="Test alt"
-        src="http://www.example.com/example.png"
-      />
-    </span>
-  </div>
-</div>
+    Edit
+  </button>
+  <button
+    className="Tooltip__button"
+  >
+    Remove
+  </button>
+</MediaBlock>
 `;
 
-exports[`ImageBlock #isActive 1`] = `
-<div>
-  <div
-    className="RichEditor-media-container"
-    onClick={[MockFunction]}
+exports[`ImageBlock renders 1`] = `
+<MediaBlock
+  alt=""
+  block={Object {}}
+  blockProps={
+    Object {
+      "editorState": Object {},
+      "entity": Object {
+        "getData": [Function],
+      },
+      "entityConfig": Object {},
+      "onChange": [Function],
+    }
+  }
+  src="example.png"
+>
+  <label
+    className="ImageBlock__field"
   >
-    <span
-      className="RichEditor-media-preview"
-    >
-      <img
-        alt="Test alt"
-        src="http://www.example.com/example.png"
-      />
-    </span>
-  </div>
-  <div
-    className="RichEditor-media-options"
+    <p>
+      Alt text
+    </p>
+    <input
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </label>
+  <button
+    className="Tooltip__button"
   >
-    <div
-      className="RichEditor-grid"
-    >
-      <div
-        className="RichEditor-col"
-      >
-        <label
-          className="u-block"
-        >
-          <h4>
-            Alt text
-          </h4>
-          <p>
-            <input
-              onChange={[Function]}
-              type="text"
-              value="Test alt"
-            />
-          </p>
-        </label>
-      </div>
-      <div
-        className="RichEditor-col"
-      >
-        <h4>
-          Image alignment
-        </h4>
-        <p />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`ImageBlock basic 1`] = `
-<div>
-  <div
-    className="RichEditor-media-container"
-    onClick={[MockFunction]}
+    Edit
+  </button>
+  <button
+    className="Tooltip__button"
   >
-    <span
-      className="RichEditor-media-preview"
-    >
-      <img
-        alt="Test alt"
-        src="http://www.example.com/example.png"
-      />
-    </span>
-  </div>
-</div>
-`;
-
-exports[`ImageBlock empty #isActive 1`] = `
-<div>
-  <div
-    className="RichEditor-media-container"
-    onClick={[MockFunction]}
-  >
-    <span
-      className="RichEditor-media-preview"
-    >
-      <img
-        alt=""
-      />
-    </span>
-  </div>
-  <div
-    className="RichEditor-media-options"
-  >
-    <div
-      className="RichEditor-grid"
-    >
-      <div
-        className="RichEditor-col"
-      >
-        <label
-          className="u-block"
-        >
-          <h4>
-            Alt text
-          </h4>
-          <p>
-            <input
-              onChange={[Function]}
-              type="text"
-              value=""
-            />
-          </p>
-        </label>
-      </div>
-      <div
-        className="RichEditor-col"
-      >
-        <h4>
-          Image alignment
-        </h4>
-        <p />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`ImageBlock empty 1`] = `
-<div>
-  <div
-    className="RichEditor-media-container"
-    onClick={[MockFunction]}
-  >
-    <span
-      className="RichEditor-media-preview"
-    >
-      <img
-        alt=""
-      />
-    </span>
-  </div>
-</div>
+    Remove
+  </button>
+</MediaBlock>
 `;

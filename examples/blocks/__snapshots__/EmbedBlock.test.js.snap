@@ -1,97 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EmbedBlock #entityConfig.icon 1`] = `
-<div>
-  <span
-    className="RichEditor-media-icon"
+exports[`EmbedBlock renders 1`] = `
+<MediaBlock
+  alt="Embed: Test title"
+  blockProps={
+    Object {
+      "entity": Object {
+        "getData": [Function],
+      },
+      "entityConfig": Object {},
+    }
+  }
+  src="http://www.example.com/example.png"
+>
+  <a
+    className="EmbedBlock__link"
+    href="http://www.example.com/"
+    rel="noopener noreferrer"
+    target="_blank"
+    title="http://www.example.com/"
   >
-    <Icon
-      className={null}
-      icon={
-        <FontIcon
-          icon="media"
-        />
-      }
-      title={null}
-    />
-  </span>
-  <div
-    className="RichEditor-media-container"
-    onClick={[Function]}
+    Test title
+  </a>
+  <button
+    className="Tooltip__button"
   >
-    <span
-      className="RichEditor-media-preview"
-    >
-      <img
-        alt="Test title"
-        src="http://www.example.com/example.png"
-      />
-    </span>
-  </div>
-</div>
-`;
-
-exports[`EmbedBlock #isActive 1`] = `
-<div>
-  <div
-    className="RichEditor-media-container"
-    onClick={[Function]}
+    Edit
+  </button>
+  <button
+    className="Tooltip__button"
   >
-    <span
-      className="RichEditor-media-preview"
-    >
-      <img
-        alt="Test title"
-        src="http://www.example.com/example.png"
-      />
-    </span>
-  </div>
-  <div
-    className="RichEditor-media-options"
-  >
-    <h3>
-      <strong>
-        Test title
-      </strong>
-    </h3>
-    <p>
-      <span>
-        URL:
-        <a
-          href="http://www.example.com/"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          http://www.example.com/
-        </a>
-      </span>
-      <br />
-      <span>
-        Provider: Test provider
-      </span>
-      <br />
-      <span>
-        Author: Test author
-      </span>
-    </p>
-  </div>
-</div>
-`;
-
-exports[`EmbedBlock basic 1`] = `
-<div>
-  <div
-    className="RichEditor-media-container"
-    onClick={[Function]}
-  >
-    <span
-      className="RichEditor-media-preview"
-    >
-      <img
-        alt="Test title"
-        src="http://www.example.com/example.png"
-      />
-    </span>
-  </div>
-</div>
+    Remove
+  </button>
+</MediaBlock>
 `;
