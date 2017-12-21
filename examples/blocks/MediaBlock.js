@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { EditorState, Modifier, SelectionState } from 'draft-js';
+import { EditorState } from 'draft-js';
 
 import { Icon } from '../../lib';
 
@@ -13,8 +13,6 @@ const OPTIONS_SPACING = 70;
 const TOOLTIP_MAX_WIDTH = OPTIONS_MAX_WIDTH + OPTIONS_SPACING;
 
 const propTypes = {
-    block: PropTypes.object.isRequired,
-    contentState: PropTypes.object.isRequired,
     blockProps: PropTypes.shape({
         editorState: PropTypes.instanceOf(EditorState).isRequired,
         entity: PropTypes.object,
@@ -23,6 +21,10 @@ const propTypes = {
         unlockEditor: PropTypes.func.isRequired,
         onChange: PropTypes.func.isRequired,
     }).isRequired,
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+    direction: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
 };
 
 /**
@@ -81,12 +83,17 @@ class MediaBlock extends Component {
     }
 
     render() {
-        const { block, blockProps, src, alt } = this.props;
+        const { blockProps, src, alt } = this.props;
         const { showTooltipAt } = this.state;
-        const { entity, entityKey, entityConfig } = blockProps;
+        const { entityConfig } = blockProps;
 
         return (
-            <div className="MediaBlock" onMouseUp={this.openTooltip}>
+            <button
+                type="button"
+                tabIndex={-1}
+                className="MediaBlock"
+                onMouseUp={this.openTooltip}
+            >
                 <span className="MediaBlock__icon" aria-hidden>
                     <Icon icon={entityConfig.icon} />
                 </span>
@@ -94,7 +101,7 @@ class MediaBlock extends Component {
                 <img src={src} alt={alt} width="256" />
 
                 {showTooltipAt && this.renderTooltip()}
-            </div>
+            </button>
         );
     }
 }

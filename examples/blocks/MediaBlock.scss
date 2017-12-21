@@ -2,9 +2,15 @@
 $OPTIONS_MAX_WIDTH: 300px;
 
 .MediaBlock {
-    position: relative;
     display: inline-block;
+    position: relative;
+    border: 0;
+    padding: 0;
     cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
 }
 
 .MediaBlock > img {

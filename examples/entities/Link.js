@@ -45,7 +45,12 @@ class Link extends Component {
         const icon = `#icon-${url.startsWith('mailto:') ? 'mail' : 'link'}`;
 
         return (
-            <span onMouseUp={this.openTooltip} className="Link">
+            <a
+                role="button"
+                tabIndex={-1}
+                onMouseUp={this.openTooltip}
+                className="Link"
+            >
                 <Icon icon={icon} />
                 {children}
                 {showTooltipAt && (
@@ -84,7 +89,7 @@ class Link extends Component {
                         </Tooltip>
                     </Portal>
                 )}
-            </span>
+            </a>
         );
     }
 }

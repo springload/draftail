@@ -46,7 +46,12 @@ class Document extends Component {
         const label = url.replace(/(^\w+:|^)\/\//, '').split('/')[0];
 
         return (
-            <span onMouseUp={this.openTooltip} className="Document">
+            <a
+                role="button"
+                tabIndex={-1}
+                onMouseUp={this.openTooltip}
+                className="Document"
+            >
                 <Icon icon={DOCUMENT_ICON} />
                 {children}
                 {showTooltipAt && (
@@ -85,7 +90,7 @@ class Document extends Component {
                         </Tooltip>
                     </Portal>
                 )}
-            </span>
+            </a>
         );
     }
 }
