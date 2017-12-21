@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { Icon, Portal, Tooltip } from '../../lib';
+
+import { Icon, Portal } from '../../lib';
+
+import Tooltip from '../components/Tooltip';
 import { truncateURL } from '../utils/format';
 import { DOCUMENT_ICON } from '../constants/ui';
 
