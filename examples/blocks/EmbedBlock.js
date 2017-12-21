@@ -59,14 +59,8 @@ class EmbedBlock extends Component {
     }
 
     render() {
-        const { block, blockProps } = this.props;
-        const {
-            entity,
-            entityKey,
-            entityConfig,
-            onEditEntity,
-            onRemoveEntity,
-        } = blockProps;
+        const { blockProps } = this.props;
+        const { entity, onEditEntity, onRemoveEntity } = blockProps;
         const { url, title, thumbnail } = entity.getData();
 
         return (

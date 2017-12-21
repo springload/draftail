@@ -151,12 +151,14 @@ EmbedSource.propTypes = {
     editorState: PropTypes.object.isRequired,
     options: PropTypes.object.isRequired,
     entity: PropTypes.object,
+    entityKey: PropTypes.string,
     onUpdate: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
 };
 
 EmbedSource.defaultProps = {
     entity: null,
+    entityKey: null,
 };
 
 export default EmbedSource;
