@@ -54,7 +54,6 @@ class ImageSource extends Component {
                 'MUTABLE',
                 {
                     alt: '',
-                    alignment: 'left',
                     src,
                 },
             );

@@ -45,7 +45,6 @@ const mockProps = {
             getData: () => ({
                 src: 'http://www.example.com/example.png',
                 alt: 'Test alt',
-                alignment: 'right',
             }),
         },
         entityConfig: {
@@ -113,40 +112,6 @@ describe('ImageBlock', () => {
         ).toMatchSnapshot();
     });
 
-    it('#entityConfig.imageFormats', () => {
-        expect(
-            shallow(
-                <ImageBlock
-                    {...mockProps}
-                    entityConfig={{
-                        imageFormats: [
-                            { label: 'Left', value: 'left' },
-                            { label: 'Right', value: 'right' },
-                        ],
-                    }}
-                    isActive={true}
-                />,
-            ),
-        ).toMatchSnapshot();
-    });
-
-    it('#alignment', () => {
-        expect(
-            shallow(
-                <ImageBlock
-                    {...mockProps}
-                    entityConfig={{
-                        imageFormats: [
-                            { label: 'Left', value: 'left' },
-                            { label: 'Right', value: 'right' },
-                        ],
-                    }}
-                    isActive={true}
-                />,
-            ).setState({ alignment: 'left' }),
-        ).toMatchSnapshot();
-    });
-
     it('changeText', () => {
         const wrapper = shallow(<ImageBlock {...mockProps} isActive={true} />);
 
@@ -158,37 +123,6 @@ describe('ImageBlock', () => {
 
         expect(mockProps.onSave).toHaveBeenCalledWith(
             expect.objectContaining({ alt: 'new alt' }),
-        );
-    });
-
-    it('changeAlignment', () => {
-        const wrapper = shallow(
-            <ImageBlock
-                {...mockProps}
-                isActive={true}
-                entityConfig={{
-                    imageFormats: [
-                        {
-                            value: 'left',
-                            label: 'Left',
-                        },
-                        { value: 'center', label: 'Center' },
-                    ],
-                }}
-            />,
-        );
-
-        wrapper
-            .find('[type="radio"]')
-            .at(1)
-            .simulate('change', {
-                currentTarget: {
-                    value: 'center',
-                },
-            });
-
-        expect(mockProps.onSave).toHaveBeenCalledWith(
-            expect.objectContaining({ alignment: 'center' }),
         );
     });
 });
