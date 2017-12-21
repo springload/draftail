@@ -70,7 +70,6 @@ export const ENTITY_CONTROL = {
         icon: '#icon-image',
         source: ImageSource,
         block: ImageBlock,
-        imageFormats: [],
     },
     EMBED: {
         type: 'EMBED',

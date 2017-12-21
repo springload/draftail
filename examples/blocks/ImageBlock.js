@@ -25,8 +25,7 @@ class ImageBlock extends Component {
         super(props);
 
         this.onSave = this.onSave.bind(this);
-        this.changeText = this.changeText.bind(this);
-        this.changeAlignment = this.changeAlignment.bind(this);
+        this.changeAlt = this.changeAlt.bind(this);
     }
 
     onSave(nextData) {
@@ -56,15 +55,9 @@ class ImageBlock extends Component {
         );
     }
 
-    changeText(e) {
+    changeAlt(e) {
         this.onSave({
             alt: e.currentTarget.value,
-        });
-    }
-
-    changeAlignment(e) {
-        this.onSave({
-            alignment: e.currentTarget.value,
         });
     }
 
@@ -77,8 +70,7 @@ class ImageBlock extends Component {
             onEditEntity,
             onRemoveEntity,
         } = blockProps;
-        const { alt, alignment } = entity.getData();
-        const imageFormats = entityConfig.imageFormats || [];
+        const { alt } = entity.getData();
         const { src } = entity.getData();
 
         return (
@@ -90,28 +82,10 @@ class ImageBlock extends Component {
                             <input
                                 type="text"
                                 value={alt || ''}
-                                onChange={this.changeText}
+                                onChange={this.changeAlt}
                             />
                         </p>
                     </label>
-                    <div>
-                        <h4>Image alignment</h4>
-                        <p>
-                            {imageFormats.map(format => {
-                                return (
-                                    <label key={format.value}>
-                                        <input
-                                            type="radio"
-                                            value={format.value}
-                                            onChange={this.changeAlignment}
-                                            checked={format.value === alignment}
-                                        />
-                                        {format.label}
-                                    </label>
-                                );
-                            })}
-                        </p>
-                    </div>
                     <button className="Tooltip__button" onClick={onEditEntity}>
                         Edit
                     </button>

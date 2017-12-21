@@ -34,7 +34,6 @@ export default {
             mutability: 'IMMUTABLE',
             data: {
                 alt: 'Test image alt text',
-                alignment: 'left',
                 src: 'static/example-lowres-image.jpg',
             },
         },
