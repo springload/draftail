@@ -121,6 +121,7 @@ $color-editor-chrome-accent: lighten($color-editor-chrome, 20%);
 @import './components/PrismDecorator';
 @import './entities/TooltipEntity';
 @import './sources/LinkSource';
+@import './sources/DocumentSource';
 @import './sources/ImageSource';
 @import './sources/EmbedSource';
 @import './blocks/MediaBlock';
