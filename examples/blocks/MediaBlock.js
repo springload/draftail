@@ -30,7 +30,6 @@ class MediaBlock extends Component {
 
         this.state = {
             showTooltipAt: null,
-            direction: null,
         };
 
         this.openTooltip = this.openTooltip.bind(this);
@@ -40,25 +39,23 @@ class MediaBlock extends Component {
 
     openTooltip(e) {
         const trigger = e.target;
-        const rect = trigger.getBoundingClientRect();
-
-        const editor = trigger.closest('[contenteditable="true"]').parentNode;
-        const tooltipMaxWidth = editor.offsetWidth - rect.width;
 
         this.setState({
-            showTooltipAt: rect,
-            direction:
-                tooltipMaxWidth >= TOOLTIP_MAX_WIDTH ? 'left' : 'top-left',
+            showTooltipAt: Object.assign(trigger.getBoundingClientRect(), {
+                containerWidth: trigger.parentNode.offsetWidth,
+            }),
         });
     }
 
     closeTooltip() {
-        this.setState({ showTooltipAt: null, direction: null });
+        this.setState({ showTooltipAt: null });
     }
 
     renderTooltip() {
         const { children } = this.props;
-        const { showTooltipAt, direction } = this.state;
+        const { showTooltipAt } = this.state;
+        const maxWidth = showTooltipAt.containerWidth - showTooltipAt.width;
+        const direction = maxWidth >= TOOLTIP_MAX_WIDTH ? 'left' : 'top-left';
 
         return (
             <Portal
@@ -68,7 +65,9 @@ class MediaBlock extends Component {
                 closeOnResize
             >
                 <Tooltip target={showTooltipAt} direction={direction}>
-                    <div className="MediaBlock__options">{children}</div>
+                    <div style={{ maxWidth: OPTIONS_MAX_WIDTH }}>
+                        {children}
+                    </div>
                 </Tooltip>
             </Portal>
         );

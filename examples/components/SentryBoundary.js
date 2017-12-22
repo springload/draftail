@@ -67,7 +67,6 @@ class SentryBoundary extends Component {
                                     <span> or </span>
                                     <button
                                         type="button"
-                                        className="Tooltip__button"
                                         onClick={() =>
                                             window.location.reload(false)
                                         }

@@ -1,6 +1,3 @@
-// Defined in both CSS and JS to constraint the maximum size of the tooltip.
-$OPTIONS_MAX_WIDTH: 300px;
-
 .MediaBlock {
     display: inline-block;
     position: relative;
@@ -20,6 +17,7 @@ $OPTIONS_MAX_WIDTH: 300px;
     min-width: 256px;
     min-height: 100px;
     background-color: $GREY_333;
+    pointer-events: none;
 }
 
 .MediaBlock__icon {
@@ -39,8 +37,4 @@ $OPTIONS_MAX_WIDTH: 300px;
         // Font icons.
         font-size: 1.5rem;
     }
-}
-
-.MediaBlock__options {
-    max-width: $OPTIONS_MAX_WIDTH;
 }

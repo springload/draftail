@@ -95,7 +95,7 @@ class LinkSource extends Component {
                         />
                     </label>
 
-                    <button className="Tooltip__button">Save</button>
+                    <button>Save</button>
                 </form>
             </Modal>
         );
