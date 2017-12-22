@@ -1,8 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { DraftUtils } from '../../lib';
-
 import MediaBlock from '../blocks/MediaBlock';
 
 describe('MediaBlock', () => {
