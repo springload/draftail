@@ -44,10 +44,10 @@ class TooltipEntity extends Component {
         const { showTooltipAt } = this.state;
         const { url } = contentState.getEntity(entityKey).getData();
 
+        /* eslint-disable springload/jsx-a11y/interactive-supports-focus */
         return (
             <a
                 role="button"
-                tabIndex={-1}
                 onMouseUp={this.openTooltip}
                 className="TooltipEntity"
             >
