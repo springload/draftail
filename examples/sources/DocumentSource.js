@@ -1,55 +1,104 @@
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
+
 import { RichUtils } from 'draft-js';
-import { DraftUtils } from '../../lib';
 
-class DocumentSource extends React.Component {
-    componentDidMount() {
-        const { editorState, entity, options, onUpdate } = this.props;
-        const url = window.prompt(
-            'Document URL',
-            entity ? entity.getData().url : '',
-        );
-        let nextState = editorState;
+import Modal from '../components/Modal';
 
-        if (url) {
-            const selection = editorState.getSelection();
-            const entityData = {
-                url: url,
-            };
+class DocumentSource extends Component {
+    constructor(props) {
+        super(props);
 
-            const hasText = !selection.isCollapsed();
+        const { entity } = this.props;
+        let url = '';
 
-            if (hasText) {
-                const contentState = editorState.getCurrentContent();
-                const contentStateWithEntity = contentState.createEntity(
-                    options.type,
-                    'MUTABLE',
-                    entityData,
-                );
-
-                const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-                nextState = RichUtils.toggleLink(
-                    editorState,
-                    selection,
-                    entityKey,
-                );
-            } else {
-                nextState = DraftUtils.createEntity(
-                    editorState,
-                    options.type,
-                    entityData,
-                    url,
-                    'MUTABLE',
-                );
-            }
+        if (entity) {
+            const data = entity.getData();
+            url = data.url;
         }
+
+        this.state = {
+            url: url,
+        };
+
+        this.onRequestClose = this.onRequestClose.bind(this);
+        this.onAfterOpen = this.onAfterOpen.bind(this);
+        this.onConfirm = this.onConfirm.bind(this);
+        this.onChangeURL = this.onChangeURL.bind(this);
+    }
+
+    onConfirm(e) {
+        const { editorState, options, onUpdate } = this.props;
+        const { url } = this.state;
+
+        e.preventDefault();
+
+        const contentState = editorState.getCurrentContent();
+
+        const data = {
+            url: url.replace(/\s/g, ''),
+        };
+        const contentStateWithEntity = contentState.createEntity(
+            options.type,
+            'MUTABLE',
+            data,
+        );
+        const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+        const nextState = RichUtils.toggleLink(
+            editorState,
+            editorState.getSelection(),
+            entityKey,
+        );
 
         onUpdate(nextState);
     }
 
+    onRequestClose(e) {
+        const { onClose } = this.props;
+        e.preventDefault();
+
+        onClose();
+    }
+
+    onAfterOpen() {
+        if (this.inputRef) {
+            this.inputRef.focus();
+            this.inputRef.select();
+        }
+    }
+
+    onChangeURL(e) {
+        const url = e.target.value;
+        this.setState({ url });
+    }
+
     render() {
-        return null;
+        const { url } = this.state;
+        return (
+            <Modal
+                onRequestClose={this.onRequestClose}
+                onAfterOpen={this.onAfterOpen}
+                isOpen={true}
+                contentLabel="Document chooser"
+            >
+                <form className="DocumentSource" onSubmit={this.onConfirm}>
+                    <label className={`form-field`}>
+                        <span className="form-field__label">Document URL</span>
+                        <input
+                            ref={inputRef => {
+                                this.inputRef = inputRef;
+                            }}
+                            type="text"
+                            onChange={this.onChangeURL}
+                            value={url}
+                            placeholder="www.example.com"
+                        />
+                    </label>
+
+                    <button>Save</button>
+                </form>
+            </Modal>
+        );
     }
 }
 
@@ -58,6 +107,7 @@ DocumentSource.propTypes = {
     options: PropTypes.object.isRequired,
     entity: PropTypes.object,
     onUpdate: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
 };
 
 DocumentSource.defaultProps = {
