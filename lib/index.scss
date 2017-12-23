@@ -36,6 +36,11 @@ $toolbar-tooltip-z-index: $toolbar-z-index + 1;
     cursor: not-allowed;
 }
 
+@mixin font-smoothing {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 @import './components/Icon';
 @import './components/DraftailEditor';
 @import './components/Toolbar';
