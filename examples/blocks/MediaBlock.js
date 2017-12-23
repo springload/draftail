@@ -6,7 +6,7 @@ import { Icon } from '../../lib';
 import Tooltip from '../components/Tooltip';
 import Portal from '../components/Portal';
 
-// Defined in both CSS and JS to constraint the maximum size of the tooltip.
+// Constraints the maximum size of the tooltip.
 const OPTIONS_MAX_WIDTH = 300;
 const OPTIONS_SPACING = 70;
 const TOOLTIP_MAX_WIDTH = OPTIONS_MAX_WIDTH + OPTIONS_SPACING;
