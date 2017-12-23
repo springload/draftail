@@ -65,8 +65,6 @@ class EmbedSource extends React.Component {
                     const nextContent = content.mergeEntityData(entityKey, {
                         url: embed.url,
                         title: embed.title,
-                        providerName: embed.provider_name,
-                        authorName: embed.author_name,
                         thumbnail: embed.thumbnail_url,
                     });
                     nextState = EditorState.push(
@@ -81,7 +79,6 @@ class EmbedSource extends React.Component {
                         {
                             url: embed.url,
                             title: embed.title,
-                            providerName: embed.provider_name,
                             authorName: embed.author_name,
                             thumbnail: embed.thumbnail_url,
                         },
