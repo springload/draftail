@@ -78,6 +78,7 @@ blockTypes={[
         // The icon is enough – but use the new prop to help screen reader users.
 -        label: 'UL',
 +        description: 'Bulleted list',
+        icon: 'icon-list-ul',
     },
 ]}
 ```
