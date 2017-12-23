@@ -10,13 +10,16 @@
     }
 }
 
-.MediaBlock > img {
-    width: 256px;
-    height: auto;
-    // Make sure the image renders even if its URL is invalid.
+@mixin invalid-image-fallback {
     min-width: 256px;
     min-height: 100px;
     background-color: $GREY_333;
+}
+
+.MediaBlock > img {
+    @include invalid-image-fallback;
+    width: 256px;
+    height: auto;
     pointer-events: none;
 }
 
@@ -31,10 +34,9 @@
     pointer-events: none;
 
     .icon {
-        // SVG icons.
-        width: 1.5rem;
-        height: 1.5rem;
-        // Font icons.
-        font-size: 1.5rem;
+        $icon-size: 1.5rem;
+        width: $icon-size;
+        height: $icon-size;
+        font-size: $icon-size;
     }
 }
