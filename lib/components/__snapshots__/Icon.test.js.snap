@@ -22,6 +22,38 @@ exports[`Icon #icon custom 1`] = `
 />
 `;
 
+exports[`Icon #icon external svg ref 1`] = `
+<svg
+  aria-hidden={true}
+  aria-label={null}
+  className="icon "
+  height="16"
+  role={null}
+  viewBox="0 0 1024 1024"
+  width="16"
+>
+  <use
+    xlinkHref="test.svg#square"
+  />
+</svg>
+`;
+
+exports[`Icon #icon inline svg ref 1`] = `
+<svg
+  aria-hidden={true}
+  aria-label={null}
+  className="icon "
+  height="16"
+  role={null}
+  viewBox="0 0 1024 1024"
+  width="16"
+>
+  <use
+    xlinkHref="#square"
+  />
+</svg>
+`;
+
 exports[`Icon #icon svg path 1`] = `
 <svg
   aria-hidden={true}
@@ -55,22 +87,6 @@ exports[`Icon #icon svg path array 1`] = `
   <path
     d="M10 10 H 90 V 90 H 10 Z"
     key="1"
-  />
-</svg>
-`;
-
-exports[`Icon #icon svg ref 1`] = `
-<svg
-  aria-hidden={true}
-  aria-label={null}
-  className="icon "
-  height="16"
-  role={null}
-  viewBox="0 0 1024 1024"
-  width="16"
->
-  <use
-    xlinkHref="#icon-square"
   />
 </svg>
 `;
