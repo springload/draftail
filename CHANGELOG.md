@@ -7,22 +7,41 @@
 ### Added
 
 * Add new `DraftUtils.getEntitySelection(editorState, entityKey)` method, returning the selection corresponding to a given entity. Note: only works if the entity is in the currently selected block.
+* Add `DraftUtils.updateBlockEntity` method, with workaround for Draft.s 0.10 entity data update bug.
 * Add shortcuts for blockquote and code block to toolbar tooltips.
+* Use alternative keyboard shortcuts for more formats.
+* Add default labels & descriptions for built-in formats ([#122](https://github.com/springload/draftail/issues/122)).
+* Process, whitelist, blacklist, migrate available blocks, styles and entities when pasting rich text ([#50](https://github.com/springload/draftail/pull/50) & [#103](https://github.com/springload/draftail/pull/103) thanks to [@inostia](https://github.com/inostia), see [#123](https://github.com/springload/draftail/issues/123) for next steps).
 
 ### Changed
 
 * Exclude toolbar buttons from default focus navigation flow.
+* Ddisable ligatures in the editor, to simplify cursor behaviour.
+* Stop bundling the Draft.js styles. They now have to be manually included. The previous approach was prone to version mismatches.
+* Configure text antialiasing for Firefox.
+* Change `Icon` implementation to use SVG by default. Supports symbol references, SVG path(s), and arbitrary React components ([#119](https://github.com/springload/draftail/issues/119)).
+* Disable pointer events on all icons by default.
+* Remove toolbar hover styles.
+* Make more of the editor styling overridable.
+* Move `Tooltip` outside of Draftail package.
+* Refactor tooltip for inline entities to be defined directly in decorators. They should now define their own tooltip (or other control), rather than rely on `data-tooltip`.
+* Move `Portal` component outside of Draftail.
+* Add `block` prop to entityTypes, and move `IMAGE` and `EMBED` blocks outside of Draftail ([#121](https://github.com/springload/draftail/issues/121)).
+* Provide methods for `entityTypes`' `block` to edit, remove entity.
 
 ### Removed
 
 * Remove Save and Cancel buttons from image block, thanks to [@allcaps](https://github.com/allcaps) ([#102](https://github.com/springload/draftail/pull/102))
-* Remove `DraftUtils.getSelectedEntitySelection(editorState)`. It can be replaced by `DraftUtils.getEntitySelection(editorState, DraftUtils.getSelectionEntity(editorState))`.
+* Remove `DraftUtils.getSelectedEntitySelection`. It can be replaced by `DraftUtils.getEntitySelection(editorState, DraftUtils.getSelectionEntity(editorState))`.
+* Remove built-in support for `MODEL` entities.
+* Remove built-in support for `EMBED` entities.
+* Remove built-in support for `DOCUMENT` entities.
+* Remove support for `entityTypes`' `imageFormats`.
 
 ### Fixed
 
 * Update handleNewLine to defer breakout in code-block. Fix [#104](https://github.com/springload/draftail/issues/104).
 * Fix toolbar entity edit and remove not working on selection pre first char. Fix [#109](https://github.com/springload/draftail/issues/109).
-* Fix wrong `PropTypes` definition for entity `imageFormat`.
 * Fix block type transformations moving selection to the wrong block.
 
 ## [[v0.9.0]](https://github.com/springload/draftail/releases/tag/v0.9.0)
