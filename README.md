@@ -193,10 +193,10 @@ description: PropTypes.string,
 icon: iconPropType,
 // React component providing the UI to manage entities of this type.
 source: PropTypes.func.isRequired,
-// Determines which pieces of content correspond to this entity.
-strategy: PropTypes.func,
-// React component to display the entity within the editor area.
+// React component to display inline entities.
 decorator: PropTypes.func,
+// React component to display block-level entities.
+block: PropTypes.func,
 ```
 
 #### Decorators

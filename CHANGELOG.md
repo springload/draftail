@@ -38,6 +38,7 @@
 * Remove built-in support for `EMBED` entities.
 * Remove built-in support for `DOCUMENT` entities.
 * Remove support for `entityTypes`' `imageFormats`.
+* Remove support for custom `entityTypes` `strategy`.
 
 ### Fixed
 
