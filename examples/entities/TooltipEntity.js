@@ -11,7 +11,7 @@ class TooltipEntity extends Component {
         super(props);
 
         this.state = {
-            showTooltipAt: false,
+            showTooltipAt: null,
         };
 
         this.openTooltip = this.openTooltip.bind(this);
@@ -20,11 +20,7 @@ class TooltipEntity extends Component {
 
     openTooltip(e) {
         const trigger = e.target;
-        const rect = trigger.getBoundingClientRect();
-
-        this.setState({
-            showTooltipAt: rect,
-        });
+        this.setState({ showTooltipAt: trigger.getBoundingClientRect() });
     }
 
     closeTooltip() {
@@ -44,6 +40,7 @@ class TooltipEntity extends Component {
         const { showTooltipAt } = this.state;
         const { url } = contentState.getEntity(entityKey).getData();
 
+        // Contrary to what JSX A11Y says, this should be a button but it shouldn't be focusable.
         /* eslint-disable springload/jsx-a11y/interactive-supports-focus */
         return (
             <a
@@ -61,17 +58,15 @@ class TooltipEntity extends Component {
                         closeOnResize
                     >
                         <Tooltip target={showTooltipAt} direction="top">
-                            {url ? (
-                                <a
-                                    href={url}
-                                    title={url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="Tooltip__link"
-                                >
-                                    {label}
-                                </a>
-                            ) : null}
+                            <a
+                                href={url}
+                                title={url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="Tooltip__link"
+                            >
+                                {label}
+                            </a>
 
                             <button
                                 className="Tooltip__button"
