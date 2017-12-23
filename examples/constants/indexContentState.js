@@ -24,11 +24,6 @@ export default {
                     'https://github.com/springload/draftail/tree/master/docs#keyboard-shortcuts',
             },
         },
-        '5': {
-            type: 'LINK',
-            mutability: 'MUTABLE',
-            data: { url: 'https://www.springload.co.nz/' },
-        },
         '6': {
             type: 'IMAGE',
             mutability: 'IMMUTABLE',
@@ -251,11 +246,11 @@ export default {
         },
         {
             key: '8br3k',
-            text: 'Built-in controls for links and images.',
+            text: 'API to build custom controls for links, images, and more.',
             type: 'unordered-list-item',
             depth: 0,
             inlineStyleRanges: [],
-            entityRanges: [{ offset: 22, length: 5, key: 5 }],
+            entityRanges: [],
             data: {},
         },
         {
