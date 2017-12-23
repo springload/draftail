@@ -16,8 +16,8 @@ const editor = (
         enableHorizontalRule={true}
         enableLineBreak={true}
         stripPastedStyles={false}
+        decorators={[new PrismDecorator({ defaultLanguage: 'javascript' })]}
         entityTypes={[
-            new PrismDecorator({ defaultLanguage: 'javascript' }),
             ENTITY_CONTROL.LINK,
             ENTITY_CONTROL.IMAGE,
             ENTITY_CONTROL.EMBED,

@@ -117,6 +117,8 @@ blockTypes: [],
 inlineStyles: [],
 // List of the available entity types.
 entityTypes: [],
+// List of active decorators.
+decorators: [],
 // Max level of nesting for unordered and ordered lists. 0 = no nesting.
 maxListNesting: 1,
 // Frequency at which the save callback is triggered (ms).
@@ -195,6 +197,15 @@ source: PropTypes.func.isRequired,
 strategy: PropTypes.func,
 // React component to display the entity within the editor area.
 decorator: PropTypes.func,
+```
+
+#### Decorators
+
+```jsx
+// Determines which pieces of content are to be decorated.
+strategy: PropTypes.func,
+// React component to display the decoration.
+component: PropTypes.func,
 ```
 
 ### Custom formats
@@ -292,7 +303,7 @@ const Link = ({ entityKey, contentState, children }) => {
 
 #### Custom text decorators
 
-It is possible to create Draft.js text decorators via the entity API, by providing the appropriate `strategy`. This isn't explicitly supported at the moment - if you need this, feel free to [create an issue](https://github.com/springload/draftail/issues/new).
+Custom decorators follow the Draft.js [CompositeDecorator](https://draftjs.org/docs/advanced-topics-decorators.html#compositedecorator) API.
 
 ### Browser support and polyfills
 

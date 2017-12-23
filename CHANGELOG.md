@@ -12,6 +12,7 @@
 * Use alternative keyboard shortcuts for more formats.
 * Add default labels & descriptions for built-in formats ([#122](https://github.com/springload/draftail/issues/122)).
 * Process, whitelist, blacklist, migrate available blocks, styles and entities when pasting rich text ([#50](https://github.com/springload/draftail/pull/50) & [#103](https://github.com/springload/draftail/pull/103) thanks to [@inostia](https://github.com/inostia), see [#123](https://github.com/springload/draftail/issues/123) for next steps).
+* Add support for custom text decorators ([#121](https://github.com/springload/draftail/issues/121)).
 
 ### Changed
 

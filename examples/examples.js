@@ -82,11 +82,8 @@ const initCustom = () => {
                 ),
                 REDACTED_STYLE,
             ]}
-            entityTypes={[
-                new PrismDecorator({ defaultLanguage: 'css' }),
-                ENTITY_CONTROL.EMBED,
-                ENTITY_CONTROL.DOCUMENT,
-            ]}
+            entityTypes={[ENTITY_CONTROL.EMBED, ENTITY_CONTROL.DOCUMENT]}
+            decorators={[new PrismDecorator({ defaultLanguage: 'css' })]}
         />
     );
 

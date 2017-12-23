@@ -7,19 +7,13 @@ import { BLOCK_TYPE } from '../../lib';
  * Syntax highlighting with Prism as a Draft.js decorator.
  * This code is an adaptation of https://github.com/SamyPesse/draft-js-prism
  * to use the CompositeDecorator strategy API.
- * It also contains some hacks to make it work with the Draftail entityType API.
  */
 class PrismDecorator {
     constructor(options) {
         this.options = options;
         this.highlighted = {};
 
-        // Required by Draftail PropTypes.
-        this.source = () => {};
-        // Required by Draftail PropTypes.
-        this.type = 'PrismDecorator';
-
-        this.decorator = this.renderToken.bind(this);
+        this.component = this.renderToken.bind(this);
         this.strategy = this.getDecorations.bind(this);
     }
 
