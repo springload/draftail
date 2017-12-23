@@ -49,8 +49,6 @@ export default {
                 url: 'http://www.youtube.com/watch?v=feUYwoLhE_4',
                 title:
                     'React.js Conf 2016 - Isaac Salier-Hellendag - Rich Text Editing with React',
-                providerName: 'YouTube',
-                authorName: 'Facebook Developers',
                 thumbnail: 'static/example-lowres-image2.jpg',
             },
         },

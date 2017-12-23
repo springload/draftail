@@ -14,8 +14,6 @@ describe('EmbedBlock', () => {
                             getData: () => ({
                                 url: 'http://www.example.com/',
                                 title: 'Test title',
-                                providerName: 'Test provider',
-                                authorName: 'Test author',
                                 thumbnail: 'http://www.example.com/example.png',
                             }),
                         },

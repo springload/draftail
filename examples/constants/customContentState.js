@@ -14,8 +14,6 @@ export default {
             data: {
                 url: 'http://www.youtube.com/watch?v=y8Kyi0WNg40',
                 title: 'Dramatic Look',
-                providerName: 'YouTube',
-                authorName: 'magnets99',
                 thumbnail: '../static/example-lowres-image2.jpg',
             },
         },
