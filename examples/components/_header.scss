@@ -13,8 +13,7 @@
 }
 
 .page-title {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    @include font-smoothing;
     font-size: 3.5rem;
     letter-spacing: 2px;
 

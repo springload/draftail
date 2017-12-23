@@ -13,9 +13,6 @@ $TEXT_COLOR: $GREY_333;
 @import './utils/layout';
 @import './utils/forms';
 
-@import './components/header';
-@import './components/page-nav';
-
 p,
 .public-DraftStyleDefault-block {
     margin: 0 0 0.5rem;
@@ -116,6 +113,8 @@ $color-editor-chrome-accent: lighten($color-editor-chrome, 20%);
 @import '../node_modules/draft-js/dist/Draft';
 @import '../lib/index';
 
+@import './components/header';
+@import './components/page-nav';
 @import './components/Modal';
 @import './components/Tooltip';
 @import './components/PrismDecorator';

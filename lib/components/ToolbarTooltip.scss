@@ -98,6 +98,7 @@ button[data-balloon] {
     }
 
     &::after {
+        @include font-smoothing;
         background: $balloon-bg;
         border-radius: $balloon-border-radius;
         color: $balloon-text-color;
@@ -105,9 +106,6 @@ button[data-balloon] {
         padding: 0.5em 1em;
         white-space: pre;
         font-size: 0.875em;
-        // Light text on dark background.
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
     }
 
     &:hover,

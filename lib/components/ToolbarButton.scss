@@ -2,6 +2,7 @@ $button-active-color: transparentize($color-editor-chrome-active, 0.9);
 $button-active-border-color: transparentize($color-editor-chrome-active, 0.8);
 
 .toolbar-button {
+    @include font-smoothing;
     display: inline-block;
     margin-top: $controls-spacing;
     padding: $button-spacing;
@@ -12,8 +13,6 @@ $button-active-border-color: transparentize($color-editor-chrome-active, 0.8);
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 
     &--active {
         background-color: $button-active-color;
