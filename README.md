@@ -120,6 +120,8 @@ entityTypes: [],
 // List of active decorators.
 decorators: [],
 // Max level of nesting for unordered and ordered lists. 0 = no nesting.
+// Note: Draft.js only provides styles for list nesting up to a depth of 4.
+// Please refer to the documentation to add styles for further nesting levels.
 maxListNesting: 1,
 // Frequency at which the save callback is triggered (ms).
 stateSaveInterval: 250,
@@ -304,6 +306,19 @@ const Link = ({ entityKey, contentState, children }) => {
 #### Custom text decorators
 
 Custom decorators follow the Draft.js [CompositeDecorator](https://draftjs.org/docs/advanced-topics-decorators.html#compositedecorator) API.
+
+### List nesting levels
+
+Draft.js only provides [default styles](https://github.com/facebook/draft-js/blob/3689a93c85786b6a3fb8a3434e9c700661a8ba02/src/component/utils/DraftStyleDefault.css#L46) for list nesting up to five levels (depth 0 to 4). If you want to allow more nesting, you will need to add the list styles.
+
+Draftail provides a helper Sass mixin which adds OL counters and indentation, and can be used like:
+
+```scss
+// Add nesting support up to 7 levels.
+@for $depth from 5 through 6 {
+    @include nested-list-item($depth);
+}
+```
 
 ### Browser support and polyfills
 
