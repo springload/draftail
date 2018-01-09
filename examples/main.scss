@@ -13,16 +13,6 @@ $TEXT_COLOR: $GREY_333;
 @import './utils/layout';
 @import './utils/forms';
 
-p,
-.public-DraftStyleDefault-block {
-    margin: 0 0 0.5rem;
-}
-
-li .public-DraftStyleDefault-block,
-code .public-DraftStyleDefault-block {
-    margin-bottom: 0.25rem;
-}
-
 .link {
     border-bottom: 1px dotted #43b1b0;
 }
@@ -113,6 +103,7 @@ $color-editor-chrome-accent: lighten($color-editor-chrome, 20%);
 @import '../node_modules/draft-js/dist/Draft';
 @import '../lib/index';
 
+@import './components/editor';
 @import './components/header';
 @import './components/page-nav';
 @import './components/Modal';
