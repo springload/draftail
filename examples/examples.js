@@ -35,7 +35,7 @@ const initWagtail = () => {
             enableLineBreak={true}
             showUndoRedoControls={true}
             stripPastedStyles={false}
-            maxListNesting={9}
+            maxListNesting={6}
             spellCheck={true}
             entityTypes={[
                 ENTITY_CONTROL.IMAGE,
@@ -99,6 +99,7 @@ const initAll = () => {
             enableHorizontalRule={true}
             enableLineBreak={true}
             showUndoRedoControls={true}
+            maxListNesting={6}
             blockTypes={Object.values(BLOCK_CONTROL)}
             inlineStyles={Object.values(INLINE_CONTROL)}
             entityTypes={[ENTITY_CONTROL.IMAGE, ENTITY_CONTROL.LINK]}

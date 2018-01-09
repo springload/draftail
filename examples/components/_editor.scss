@@ -8,6 +8,6 @@ code .public-DraftStyleDefault-block {
     margin-bottom: 0.25rem;
 }
 
-@for $depth from 5 through 9 {
+@for $depth from 5 through 6 {
     @include nested-list-item($depth);
 }
