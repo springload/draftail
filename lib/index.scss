@@ -41,6 +41,8 @@ $toolbar-tooltip-z-index: $toolbar-z-index + 1;
     -moz-osx-font-smoothing: grayscale;
 }
 
+@import './utils/nested-list-item';
+
 @import './components/Icon';
 @import './components/DraftailEditor';
 @import './components/Toolbar';
