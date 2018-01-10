@@ -4,7 +4,7 @@ examples
 public
 docs
 webpack
-lib
+lib/**/*.js
 .npmignore
 .nvmrc
 .travis.yml
@@ -18,7 +18,7 @@ bin
 .env
 npm-debug.log*
 *.test.js
-*/tests/
+tests
 __mocks__
 __snapshots__
 prettier.config.js
