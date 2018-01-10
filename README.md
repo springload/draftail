@@ -347,7 +347,7 @@ The Draftail demo site lists minimum polyfills for IE11 support: [`examples/util
 
 ## Contributing
 
-See anything you like in here? Anything missing? We welcome all support, whether on bug reports, feature requests, code, design, reviews, tests, documentation, and more. Please have a look at our [contribution guidelines](CONTRIBUTING.md).
+See anything you like in here? Anything missing? We welcome all support, whether on bug reports, feature requests, code, design, reviews, tests, documentation, and more. Please have a look at our [contribution guidelines](.github/CONTRIBUTING.md).
 
 If you just want to set up the project on your own computer, the contribution guidelines also contain all of the setup commands.
 
