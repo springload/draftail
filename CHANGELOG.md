@@ -15,6 +15,8 @@
 * Add support for custom text decorators ([#121](https://github.com/springload/draftail/issues/121)).
 * Add predefined classes for block depth levels above 4, of the format `public-DraftStyleDefault-depth${depth}`.
 * Add `nested-list-item($depth)` Sass mixin to generate styles for arbitrary list item nesting.
+* Introduce new `Draftail-` class namespace for all styles ([#63](https://github.com/springload/draftail/issues/63)).
+* Expose Sass stylesheets to Draftail users, for extension.
 
 ### Changed
 
@@ -47,6 +49,7 @@
 * Update handleNewLine to defer breakout in code-block. Fix [#104](https://github.com/springload/draftail/issues/104).
 * Fix toolbar entity edit and remove not working on selection pre first char. Fix [#109](https://github.com/springload/draftail/issues/109).
 * Fix block type transformations moving selection to the wrong block.
+* Fix editor scrolling in the wrong position when breaking a big block (https://github.com/facebook/draft-js/issues/304#issuecomment-327606596).
 
 ## [[v0.9.0]](https://github.com/springload/draftail/releases/tag/v0.9.0)
 
