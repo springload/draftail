@@ -3,7 +3,7 @@
     border-bottom: 1px dotted $color-teal;
     cursor: pointer;
 
-    > .icon {
+    &__icon {
         color: $color-teal;
         margin-right: 0.2em;
         width: 1em;

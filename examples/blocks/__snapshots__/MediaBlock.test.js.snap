@@ -9,16 +9,17 @@ exports[`MediaBlock renders 1`] = `
 >
   <span
     aria-hidden={true}
-    className="MediaBlock__icon"
+    className="MediaBlock__icon-wrapper"
   >
     <Icon
-      className={null}
+      className="MediaBlock__icon"
       icon="#icon-test"
       title={null}
     />
   </span>
   <img
     alt=""
+    className="MediaBlock__img"
     src="example.png"
     width="256"
   />
