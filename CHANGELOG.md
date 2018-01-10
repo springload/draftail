@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+## [[v0.10.0]](https://github.com/springload/draftail/releases/tag/v0.10.0)
+
 ### Added
 
 * Add new `DraftUtils.getEntitySelection(editorState, entityKey)` method, returning the selection corresponding to a given entity. Note: only works if the entity is in the currently selected block.
