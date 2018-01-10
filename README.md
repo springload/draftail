@@ -51,8 +51,8 @@ npm install --save draftail
 Import the styles for Draft.js, and the editor:
 
 ```scss
-@import 'draft-js/dist/Draft.css';
-@import 'draftail/dist/draftail.css';
+@import 'draft-js/dist/Draft';
+@import 'draftail/dist/draftail';
 ```
 
 Then, import the editor and use it in your code. Here is a [simple example](https://springload.github.io/draftail/examples/):
