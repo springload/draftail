@@ -23,6 +23,12 @@
     }
 }
 
+// Fix editor scrolling in the wrong position when breaking a big block.
+// See https://github.com/facebook/draft-js/issues/304#issuecomment-327606596.
+.DraftEditor-root {
+    overflow: auto;
+}
+
 .public-DraftEditor-content,
 .public-DraftEditorPlaceholder-root {
     padding: $editor-spacing;
