@@ -57,8 +57,7 @@ $balloon-transition-delay: 0;
         transform: translate(-50%, -10px);
     }
 
-    &:hover,
-    &[data-balloon-visible] {
+    &:hover {
         &::after {
             transform: translate(-50%, 0);
         }
@@ -74,11 +73,11 @@ $balloon-transition-delay: 0;
 // -----------------------------------------
 
 // IE 11 button bugfix.
-button[data-balloon] {
+button[data-draftail-balloon] {
     overflow: visible;
 }
 
-[data-balloon] {
+[data-draftail-balloon] {
     position: relative;
 
     // Fixing iOS Safari event issue.
@@ -108,8 +107,7 @@ button[data-balloon] {
         font-size: 0.875em;
     }
 
-    &:hover,
-    &[data-balloon-visible] {
+    &:hover {
         &::before,
         &::after {
             opacity: 1;
