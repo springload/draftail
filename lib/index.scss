@@ -1,49 +1,5 @@
-$NS: 'Draftail-';
-
-$button-spacing: 0.5rem;
-$controls-spacing: $button-spacing / 2;
-$editor-spacing: $button-spacing + $controls-spacing;
-$tooltip-spacing: 0.625rem;
-
-$color-teal: #43b1b0;
-$color-dark-teal: #246060;
-$color-bright-teal: #54d0d0;
-$color-light-teal: #f4fcfc;
-$color-light-blue: #eef8ff;
-$color-white: #fff;
-$color-black: #000;
-$color-grey: #333;
-$color-light-grey: #ddd;
-
-$color-editor-chrome: $color-light-grey !default;
-$color-editor-chrome-text: $color-grey !default;
-$color-editor-chrome-active: $color-black !default;
-$color-editor-chrome-accent: darken($color-editor-chrome, 10%) !default;
-$color-tooltip-chrome: $color-grey !default;
-$color-tooltip-chrome-text: $color-white !default;
-
-$editor-border-radius: 5px !default;
-$tooltip-border-radius: $editor-border-radius !default;
-
-$editor-z-index: 1 !default;
-$tooltip-z-index: $editor-z-index + 1;
-$overlay-z-index: $tooltip-z-index + 1;
-$activeblock-z-index: $overlay-z-index + 1;
-$toolbar-z-index: $activeblock-z-index + 1;
-$toolbar-tooltip-z-index: $toolbar-z-index + 1;
-
-@mixin disabled {
-    opacity: 0.5;
-    pointer-events: none;
-    cursor: not-allowed;
-}
-
-@mixin font-smoothing {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-@import './utils/nested-list-item';
+@import './api/constants';
+@import './api/nested-list-item';
 
 @import './components/Icon';
 @import './components/DraftailEditor';
@@ -51,4 +7,5 @@ $toolbar-tooltip-z-index: $toolbar-z-index + 1;
 @import './components/ToolbarGroup';
 @import './components/ToolbarButton';
 @import './components/ToolbarTooltip';
+
 @import './blocks/DividerBlock';

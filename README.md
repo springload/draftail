@@ -51,8 +51,8 @@ npm install --save draftail
 Import the styles for Draft.js, and the editor:
 
 ```scss
-@import 'draft-js/dist/Draft';
-@import 'draftail/dist/draftail';
+@import 'draft-js/dist/Draft.css';
+@import 'draftail/dist/draftail.css';
 ```
 
 Then, import the editor and use it in your code. Here is a [simple example](https://springload.github.io/draftail/examples/):
@@ -313,6 +313,19 @@ Without custom controls, the editor has a very simple UI and its styles are rela
 
 To tweak the editor UI, Draftail uses old-fashioned stable, namespaced class names that you are free to add more styles to. For example, the toolbar uses `.Draftail-Toolbar`.
 
+Draftail also makes its Sass stylesheets available for extension:
+
+```scss
+// Increase the default editor z-index.
+$editor-z-index: 100;
+
+// Import all of the styles in your build.
+@import 'draftail/lib/index';
+
+// Alternatively, only import the constants to reuse them elsewhere in your project.
+@import 'draftail/lib/api/constants';
+```
+
 ### List nesting levels
 
 Draft.js only provides [default styles](https://github.com/facebook/draft-js/blob/3689a93c85786b6a3fb8a3434e9c700661a8ba02/src/component/utils/DraftStyleDefault.css#L46) for list nesting up to five levels (depth 0 to 4). If you want to allow more nesting, you will need to add the list styles.
@@ -320,6 +333,8 @@ Draft.js only provides [default styles](https://github.com/facebook/draft-js/blo
 Draftail provides a helper Sass mixin which adds OL counters and indentation, and can be used like:
 
 ```scss
+@import 'draftail/lib/api/nested-list-item';
+
 // Add nesting support up to 7 levels.
 @for $depth from 5 through 6 {
     @include nested-list-item($depth);
