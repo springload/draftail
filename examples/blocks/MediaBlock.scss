@@ -8,35 +8,35 @@
     &:focus {
         outline: none;
     }
-}
 
-@mixin invalid-image-fallback {
-    min-width: 256px;
-    min-height: 100px;
-    background-color: $GREY_333;
-}
+    &__icon-wrapper {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: $color-editor-chrome;
+        color: $color-editor-chrome-text;
+        line-height: 1;
+        padding: $controls-spacing * 2 $controls-spacing * 3;
+        pointer-events: none;
+    }
 
-.MediaBlock > img {
-    @include invalid-image-fallback;
-    width: 256px;
-    height: auto;
-    pointer-events: none;
-}
-
-.MediaBlock__icon {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: $color-editor-chrome;
-    color: $color-editor-chrome-text;
-    line-height: 1;
-    padding: $controls-spacing * 2 $controls-spacing * 3;
-    pointer-events: none;
-
-    .icon {
+    &__icon {
         $icon-size: 1.5rem;
         width: $icon-size;
         height: $icon-size;
         font-size: $icon-size;
+    }
+
+    @mixin invalid-image-fallback {
+        min-width: 256px;
+        min-height: 100px;
+        background-color: $GREY_333;
+    }
+
+    &__img {
+        @include invalid-image-fallback;
+        width: 256px;
+        height: auto;
+        pointer-events: none;
     }
 }

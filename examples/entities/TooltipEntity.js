@@ -48,7 +48,7 @@ class TooltipEntity extends Component {
                 onMouseUp={this.openTooltip}
                 className="TooltipEntity"
             >
-                <Icon icon={icon} />
+                <Icon icon={icon} className="TooltipEntity__icon" />
                 {children}
                 {showTooltipAt && (
                     <Portal

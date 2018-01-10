@@ -85,11 +85,19 @@ class MediaBlock extends Component {
                 className="MediaBlock"
                 onMouseUp={this.openTooltip}
             >
-                <span className="MediaBlock__icon" aria-hidden>
-                    <Icon icon={entityConfig.icon} />
+                <span className="MediaBlock__icon-wrapper" aria-hidden>
+                    <Icon
+                        icon={entityConfig.icon}
+                        className="MediaBlock__icon"
+                    />
                 </span>
 
-                <img src={src} alt={alt} width="256" />
+                <img
+                    className="MediaBlock__img"
+                    src={src}
+                    alt={alt}
+                    width="256"
+                />
 
                 {showTooltipAt && this.renderTooltip()}
             </button>
