@@ -2,7 +2,7 @@
 
 exports[`Toolbar #blockTypes 1`] = `
 <div
-  className="editor__toolbar"
+  className="Draftail-Toolbar"
   role="toolbar"
 >
   <ToolbarGroup />
@@ -43,7 +43,7 @@ exports[`Toolbar #blockTypes 1`] = `
 
 exports[`Toolbar #enableHorizontalRule 1`] = `
 <div
-  className="editor__toolbar"
+  className="Draftail-Toolbar"
   role="toolbar"
 >
   <ToolbarGroup />
@@ -66,7 +66,7 @@ exports[`Toolbar #enableHorizontalRule 1`] = `
 
 exports[`Toolbar #enableLineBreak 1`] = `
 <div
-  className="editor__toolbar"
+  className="Draftail-Toolbar"
   role="toolbar"
 >
   <ToolbarGroup />
@@ -89,7 +89,7 @@ Shift+Enter"
 
 exports[`Toolbar #entityTypes 1`] = `
 <div
-  className="editor__toolbar"
+  className="Draftail-Toolbar"
   role="toolbar"
 >
   <ToolbarGroup />
@@ -130,7 +130,7 @@ exports[`Toolbar #entityTypes 1`] = `
 
 exports[`Toolbar #inlineStyles 1`] = `
 <div
-  className="editor__toolbar"
+  className="Draftail-Toolbar"
   role="toolbar"
 >
   <ToolbarGroup>
@@ -171,7 +171,7 @@ exports[`Toolbar #inlineStyles 1`] = `
 
 exports[`Toolbar #showUndoRedoControls 1`] = `
 <div
-  className="editor__toolbar"
+  className="Draftail-Toolbar"
   role="toolbar"
 >
   <ToolbarGroup />
@@ -203,7 +203,7 @@ Ctrl+Shift+Z"
 
 exports[`Toolbar empty 1`] = `
 <div
-  className="editor__toolbar"
+  className="Draftail-Toolbar"
   role="toolbar"
 >
   <ToolbarGroup />
