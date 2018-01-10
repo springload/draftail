@@ -23,7 +23,7 @@
 ### Changed
 
 * Exclude toolbar buttons from default focus navigation flow.
-* Ddisable ligatures in the editor, to simplify cursor behaviour.
+* Disable ligatures in the editor, to simplify cursor behaviour.
 * Stop bundling the Draft.js styles. They now have to be manually included. The previous approach was prone to version mismatches.
 * Configure text antialiasing for Firefox.
 * Change `Icon` implementation to use SVG by default. Supports symbol references, SVG path(s), and arbitrary React components ([#119](https://github.com/springload/draftail/issues/119)).
