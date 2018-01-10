@@ -307,6 +307,12 @@ const Link = ({ entityKey, contentState, children }) => {
 
 Custom decorators follow the Draft.js [CompositeDecorator](https://draftjs.org/docs/advanced-topics-decorators.html#compositedecorator) API.
 
+## UI and styling
+
+Without custom controls, the editor has a very simple UI and its styles are relatively straightforward. To make sure everything works, use a CSS reset, like [Normalize.css](https://necolas.github.io/normalize.css/).
+
+To tweak the editor UI, Draftail uses old-fashioned stable, namespaced class names that you are free to add more styles to. For example, the toolbar uses `.Draftail-Toolbar`.
+
 ### List nesting levels
 
 Draft.js only provides [default styles](https://github.com/facebook/draft-js/blob/3689a93c85786b6a3fb8a3434e9c700661a8ba02/src/component/utils/DraftStyleDefault.css#L46) for list nesting up to five levels (depth 0 to 4). If you want to allow more nesting, you will need to add the list styles.
@@ -320,7 +326,7 @@ Draftail provides a helper Sass mixin which adds OL counters and indentation, an
 }
 ```
 
-### Browser support and polyfills
+## Browser support and polyfills
 
 **Supported browser / device versions:**
 
@@ -335,7 +341,7 @@ Draftail provides a helper Sass mixin which adds OL counters and indentation, an
 | Firefox       | Desktop    | latest  |
 | Safari        | OSX        | latest  |
 
-#### Polyfills
+### Polyfills
 
 Draft.js and Draftail build upon ES6 language features. If targeting browsers that do not support them, have a look at:
 
