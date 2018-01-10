@@ -1,7 +1,7 @@
 $button-active-color: transparentize($color-editor-chrome-active, 0.9);
 $button-active-border-color: transparentize($color-editor-chrome-active, 0.8);
 
-.toolbar-button {
+.#{$NS}ToolbarButton {
     @include font-smoothing;
     display: inline-block;
     margin-top: $controls-spacing;
@@ -17,10 +17,5 @@ $button-active-border-color: transparentize($color-editor-chrome-active, 0.8);
     &--active {
         background-color: $button-active-color;
         border: 1px solid $button-active-border-color;
-    }
-
-    &[disabled] {
-        pointer-events: none;
-        user-select: none;
     }
 }

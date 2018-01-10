@@ -1,4 +1,4 @@
-.editor__toolbar {
+.#{$NS}Toolbar {
     position: relative;
     padding: $controls-spacing;
     // Offset the button's top margin to form rows.
@@ -8,11 +8,11 @@
 
     z-index: $toolbar-z-index;
 
-    .editor--readonly & > * {
+    .#{$NS}Editor--readonly & > * {
         @include disabled;
     }
 
-    .editor--focus & {
+    .#{$NS}Editor--focus & {
         position: sticky;
         top: 0;
     }
