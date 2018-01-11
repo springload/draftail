@@ -160,7 +160,7 @@ label: PropTypes.string,
 // Describes the block in the editor UI.
 description: PropTypes.string,
 // Represents the block in the editor UI.
-icon: iconPropType,
+icon: [...], // see documentation.
 // DOM element used to display the block within the editor area.
 element: PropTypes.string,
 // CSS class(es) added to the block for styling within the editor area.
@@ -177,7 +177,7 @@ label: PropTypes.string,
 // Describes the inline style in the editor UI.
 description: PropTypes.string,
 // Represents the inline style in the editor UI.
-icon: iconPropType,
+icon: [...], // see documentation.
 // CSS properties (in JS format) to apply for styling within the editor area.
 style: PropTypes.Object,
 ```
@@ -192,7 +192,7 @@ label: PropTypes.string,
 // Describes the entity in the editor UI.
 description: PropTypes.string,
 // Represents the entity in the editor UI.
-icon: iconPropType,
+icon: [...], // see documentation.
 // React component providing the UI to manage entities of this type.
 source: PropTypes.func.isRequired,
 // React component to display inline entities.
@@ -325,6 +325,18 @@ $editor-z-index: 100;
 // Alternatively, only import the constants to reuse them elsewhere in your project.
 @import 'draftail/lib/api/constants';
 ```
+
+### Icons
+
+Draftail can use icons to display each format in the toolbar. There are multiple possible formats:
+
+* A `<path />` data string (the `d` attribute), eg `'M10 10 H 90 V 90 H 10 Z'`.
+* An array of paths, eg. `['M10 10 H 90 V 90 H 10 Z', 'M10 10 H 90 V 90 H 10 Z']`.
+* An SVG symbol reference, inline or external eg. `#square` / `test.svg#square`.
+
+The SVG has to use a 1024x1024 viewbox that will be downscaled to 16x16.
+
+To deal with more complex requirements, the `icon` can be an arbitrary React component: `<Icon icon={<CustomIcon icon="square" />`.
 
 ### List nesting levels
 
