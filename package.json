@@ -28,6 +28,12 @@
   },
   "homepage": "https://springload.github.io/draftail/",
   "babel": {
+    "plugins": [
+      ["transform-react-remove-prop-types", {
+        "mode": "unsafe-wrap",
+        "ignoreFilenames": ["node_modules"]
+      }]
+    ],
     "presets": [
       [
         "env",
@@ -95,6 +101,7 @@
     "babel-jest": "^22.0.0",
     "babel-loader": "^7.1.1",
     "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.12",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "core-js": "^2.5.1",
