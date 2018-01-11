@@ -14,7 +14,7 @@ const TINY_TEXT_BLOCK = {
     type: 'tiny-text',
     label: 'Tiny',
     description: 'Legal print',
-    element: 'div',
+    element: 'blockquote',
     className: 'u-tinytext',
 };
 
