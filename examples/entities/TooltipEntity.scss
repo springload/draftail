@@ -1,10 +1,10 @@
 .TooltipEntity {
-    background: $color-light-blue;
-    border-bottom: 1px dotted $color-teal;
+    background: $LIGHT_BLUE_EEF8FF;
+    border-bottom: 1px dotted $TEAL_WAGTAIL;
     cursor: pointer;
 
     &__icon {
-        color: $color-teal;
+        color: $TEAL_WAGTAIL;
         margin-right: 0.2em;
         width: 1em;
         height: 1em;
