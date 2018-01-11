@@ -15,7 +15,7 @@ export default [
             babel(
                 Object.assign({}, pkg.babel, {
                     babelrc: false,
-                    plugins: ['external-helpers'],
+                    plugins: pkg.babel.plugins.concat(['external-helpers']),
                     exclude: ['node_modules/**'],
                 }),
             ),
