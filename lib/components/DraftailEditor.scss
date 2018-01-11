@@ -1,8 +1,7 @@
 .#{$DRAFTAIL}Editor {
     background-color: $color-white;
-    border: 1px solid $draftail-editor-chrome;
+    border: $draftail-editor-border;
     border-radius: $draftail-editor-radius;
-    color: $color-grey;
 
     &--hide-placeholder .public-DraftEditorPlaceholder-root {
         display: none;
@@ -23,19 +22,20 @@
     }
 
     .DraftEditor-root {
-        // Fix editor scrolling in the wrong position when breaking a big block.
-        // See https://github.com/facebook/draft-js/issues/304#issuecomment-327606596.
-        font-size: 1rem;
-        line-height: 1.5;
-        font-family: sans-serif;
-        overflow: auto;
+        color: $draftail-editor-text;
+        font-size: $draftail-editor-font-size;
+        line-height: $draftail-editor-line-height;
+        font-family: $draftail-editor-font-family;
         // Ligatures can make cursor behavior harder to understand.
         font-variant-ligatures: none;
+        // Fix editor scrolling in the wrong position when breaking a big block.
+        // See https://github.com/facebook/draft-js/issues/304#issuecomment-327606596.
+        overflow: auto;
     }
 
     .public-DraftEditor-content,
     .public-DraftEditorPlaceholder-root {
-        padding: $editor-spacing;
+        padding: $draftail-editor-padding;
     }
 
     // Remove default margins on atomic blocks because of the figure element.
