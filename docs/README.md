@@ -94,10 +94,6 @@ Here are specific parts of the code that **should always be reviewed before upgr
 * https://github.com/springload/draftail/commit/88ae9adcda1929c92f065655a03c1b33fcfe6c2d
 * https://github.com/springload/draftail/commit/e05df07f8ed6c5df65c79824bbb1dcd6e8800bdd
 
-### DraftJS utils
-
-Always pinned to an exact version so we can review individual changes when deciding to upgrade. Look at the [package.json](https://github.com/jpuri/draftjs-utils/blob/master/package.json) for version compatibility with other dependencies.
-
 ### Immutable
 
 Always use the same version range as that of Draft.js: [package.json](https://github.com/facebook/draft-js/blob/master/package.json).

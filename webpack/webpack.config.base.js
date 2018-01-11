@@ -84,7 +84,6 @@ const webpackConfig = environment => {
                 'react-dom',
                 'immutable',
                 'draft-js',
-                'draftjs-utils',
                 'react-modal',
                 'prismjs',
                 './examples/main.scss',

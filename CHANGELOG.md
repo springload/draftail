@@ -24,7 +24,8 @@
 ### Removed
 
 * Remove all unused variables from Sass constants.
-* Remove immutable `peerDependency`.
+* Remove `immutable` from `peerDependencies`.
+* Remove `draftjs-utils` from `dependencies`.
 
 ## [[v0.10.0]](https://github.com/springload/draftail/releases/tag/v0.10.0)
 
