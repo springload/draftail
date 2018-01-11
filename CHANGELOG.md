@@ -4,12 +4,18 @@
 
 ## Unreleased
 
+### Added
+
+* Add new Sass constants to make the editor more themable: `$draftail-editor-padding, $draftail-editor-text, $draftail-editor-font-family, $draftail-editor-font-size, $draftail-editor-line-height, $draftail-toolbar-radius, $draftail-editor-border, $draftail-toolbar-tooltip-radius, $draftail-toolbar-tooltip-duration, $draftail-toolbar-tooltip-delay`.
+* Delay toolbar tooltip opening on hover by 0.5s, animated over 0.1s.
+
 ### Changed
 
 * Switch to rollup for package compilation.
 * Move `DraftailEditor` from default export of draftail to named export (`import { DraftailEditor } from 'draftail';`).
 * Wrap `propTypes` in env check so they only appear in dev build.
 * Rename / namespace all overridable Sass constants.
+* Stop defining `$draftail-tooltip-radius` based on `$draftail-editor-radius`.
 
 ### Fixed
 
