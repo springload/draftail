@@ -6,12 +6,11 @@
 
 $balloon-bg: fade-out(#111, 0.1) !default;
 $balloon-text-color: $color-white;
-$balloon-base-size: 10px !default;
 $balloon-arrow-height: 6px;
 $balloon-arrow-offset: 1px;
-$balloon-radius: 4px;
-$balloon-transition-duration: 0;
-$balloon-transition-delay: 0;
+$balloon-radius: $draftail-toolbar-tooltip-radius;
+$balloon-transition-duration: $draftail-toolbar-tooltip-duration;
+$balloon-transition-delay: $draftail-toolbar-tooltip-delay;
 
 //
 // Mixins
@@ -90,6 +89,8 @@ button[data-draftail-balloon] {
         z-index: $draftail-toolbar-tooltip-z-index;
         opacity: 0;
         pointer-events: none;
+        transition: all $balloon-transition-duration ease-out
+            $balloon-transition-delay;
     }
 
     &::before {
