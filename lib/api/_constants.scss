@@ -7,13 +7,14 @@ $draftail-base-spacing: 0.25rem !default;
 
 $button-spacing: $draftail-base-spacing * 2;
 $controls-spacing: $draftail-base-spacing;
-$editor-spacing: $button-spacing + $controls-spacing;
+$draftail-editor-padding: $button-spacing + $controls-spacing !default;
 
 $color-white: #fff;
 $color-black: #000;
 $color-grey: #333;
 $color-light-grey: #ddd;
 
+$draftail-editor-text: $color-grey !default;
 $draftail-editor-chrome: $color-light-grey !default;
 $draftail-editor-chrome-text: $color-grey !default;
 $draftail-editor-chrome-active: $color-black !default;
@@ -21,8 +22,15 @@ $draftail-editor-chrome-accent: darken($draftail-editor-chrome, 10%) !default;
 $draftail-tooltip-chrome: $color-grey !default;
 $draftail-tooltip-chrome-text: $color-white !default;
 
+$draftail-editor-font-family: sans-serif !default;
+$draftail-editor-font-size: 1rem !default;
+$draftail-editor-line-height: 1.5 !default;
+
 $draftail-editor-radius: 5px !default;
-$draftail-tooltip-radius: $draftail-editor-radius !default;
+$draftail-tooltip-radius: 5px !default;
+$draftail-toolbar-radius: 0 !default;
+
+$draftail-editor-border: 1px solid $draftail-editor-chrome !default;
 
 $draftail-editor-z-index: 1 !default;
 $draftail-tooltip-z-index: $draftail-editor-z-index + 1 !default;
