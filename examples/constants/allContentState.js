@@ -254,7 +254,7 @@ export default {
         },
         {
             key: 'ct6kt',
-            text: 'Ordered list istem',
+            text: 'Ordered list item',
             type: 'ordered-list-item',
             depth: 0,
             inlineStyleRanges: [],
