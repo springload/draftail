@@ -27,6 +27,10 @@
     "url": "https://github.com/springload/draftail/issues"
   },
   "homepage": "https://springload.github.io/draftail/",
+  "files": [
+    "dist",
+    "lib/**/*.scss"
+  ],
   "babel": {
     "plugins": [
       ["transform-react-remove-prop-types", {
