@@ -9,7 +9,7 @@ $balloon-text-color: $color-white;
 $balloon-base-size: 10px !default;
 $balloon-arrow-height: 6px;
 $balloon-arrow-offset: 1px;
-$balloon-border-radius: 4px;
+$balloon-radius: 4px;
 $balloon-transition-duration: 0;
 $balloon-transition-delay: 0;
 
@@ -87,7 +87,7 @@ button[data-draftail-balloon] {
     &::before,
     &::after {
         position: absolute;
-        z-index: $toolbar-tooltip-z-index;
+        z-index: $draftail-toolbar-tooltip-z-index;
         opacity: 0;
         pointer-events: none;
     }
@@ -99,7 +99,7 @@ button[data-draftail-balloon] {
     &::after {
         @include font-smoothing;
         background: $balloon-bg;
-        border-radius: $balloon-border-radius;
+        border-radius: $balloon-radius;
         color: $balloon-text-color;
         content: attr(aria-label);
         padding: 0.5em 1em;

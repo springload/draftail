@@ -1,7 +1,10 @@
-$button-active-color: transparentize($color-editor-chrome-active, 0.9);
-$button-active-border-color: transparentize($color-editor-chrome-active, 0.8);
+$button-active-color: transparentize($draftail-editor-chrome-active, 0.9);
+$button-active-border-color: transparentize(
+    $draftail-editor-chrome-active,
+    0.8
+);
 
-.#{$NS}ToolbarButton {
+.#{$DRAFTAIL}ToolbarButton {
     @include font-smoothing;
     display: inline-block;
     margin-top: $controls-spacing;

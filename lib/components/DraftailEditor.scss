@@ -1,7 +1,7 @@
-.#{$NS}Editor {
+.#{$DRAFTAIL}Editor {
     background-color: $color-white;
-    border: 1px solid $color-editor-chrome;
-    border-radius: $editor-border-radius;
+    border: 1px solid $draftail-editor-chrome;
+    border-radius: $draftail-editor-radius;
     color: $color-grey;
 
     &--hide-placeholder .public-DraftEditorPlaceholder-root {
@@ -17,7 +17,7 @@
             left: 0;
             height: 100%;
             width: 100%;
-            z-index: $overlay-z-index;
+            z-index: $draftail-overlay-z-index;
             background-color: rgba(255, 255, 255, 0.8);
         }
     }

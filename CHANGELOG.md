@@ -9,10 +9,15 @@
 * Switch to rollup for package compilation.
 * Move `DraftailEditor` from default export of draftail to named export (`import { DraftailEditor } from 'draftail';`).
 * Wrap `propTypes` in env check so they only appear in dev build.
+* Rename / namespace all overridable Sass constants.
 
 ### Fixed
 
 * Prevent toolbar button labels from being selected.
+
+### Removed
+
+* Remove all unused variables from Sass constants.
 
 ## [[v0.10.0]](https://github.com/springload/draftail/releases/tag/v0.10.0)
 

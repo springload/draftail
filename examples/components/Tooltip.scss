@@ -9,7 +9,7 @@ $tooltip-arrow-spacing: 25px;
         bottom: 100%;
         left: 50%;
         transform: translateX(-50%);
-        border-bottom-color: $color-tooltip-chrome;
+        border-bottom-color: $draftail-tooltip-chrome;
     }
 }
 
@@ -21,7 +21,7 @@ $tooltip-arrow-spacing: 25px;
         top: 50%;
         right: 100%;
         transform: translateY(-50%);
-        border-right-color: $color-tooltip-chrome;
+        border-right-color: $draftail-tooltip-chrome;
     }
 }
 
@@ -31,17 +31,17 @@ $tooltip-arrow-spacing: 25px;
     &::before {
         bottom: 100%;
         left: $tooltip-arrow-spacing;
-        border-bottom-color: $color-tooltip-chrome;
+        border-bottom-color: $draftail-tooltip-chrome;
     }
 }
 
 .Tooltip {
     position: absolute;
     padding: $tooltip-spacing;
-    background-color: $color-tooltip-chrome;
-    color: $color-tooltip-chrome-text;
-    z-index: $tooltip-z-index;
-    border-radius: $tooltip-border-radius;
+    background-color: $draftail-tooltip-chrome;
+    color: $draftail-tooltip-chrome-text;
+    z-index: $draftail-tooltip-z-index;
+    border-radius: $draftail-tooltip-radius;
 
     &::before {
         content: '';
