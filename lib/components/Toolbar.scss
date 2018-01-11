@@ -1,18 +1,18 @@
-.#{$NS}Toolbar {
+.#{$DRAFTAIL}Toolbar {
     position: relative;
     padding: $controls-spacing;
     // Offset the button's top margin to form rows.
     padding-top: 0;
-    background-color: $color-editor-chrome;
-    color: $color-editor-chrome-text;
+    background-color: $draftail-editor-chrome;
+    color: $draftail-editor-chrome-text;
 
-    z-index: $toolbar-z-index;
+    z-index: $draftail-toolbar-z-index;
 
-    .#{$NS}Editor--readonly & > * {
+    .#{$DRAFTAIL}Editor--readonly & > * {
         @include disabled;
     }
 
-    .#{$NS}Editor--focus & {
+    .#{$DRAFTAIL}Editor--focus & {
         position: sticky;
         top: 0;
     }

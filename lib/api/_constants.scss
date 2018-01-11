@@ -1,7 +1,12 @@
-$NS: 'Draftail-';
+// Namespace for all classes, reduces the risk of style clashes.
+$DRAFTAIL: 'Draftail-';
 
-$button-spacing: 0.5rem !default;
-$controls-spacing: $button-spacing / 2;
+// Overridable variables meant to be used for theming, and easier integration.
+
+$draftail-base-spacing: 0.25rem !default;
+
+$button-spacing: $draftail-base-spacing * 2;
+$controls-spacing: $draftail-base-spacing;
 $editor-spacing: $button-spacing + $controls-spacing;
 
 $color-white: #fff;
@@ -9,22 +14,21 @@ $color-black: #000;
 $color-grey: #333;
 $color-light-grey: #ddd;
 
-$color-editor-chrome: $color-light-grey !default;
-$color-editor-chrome-text: $color-grey !default;
-$color-editor-chrome-active: $color-black !default;
-$color-editor-chrome-accent: darken($color-editor-chrome, 10%) !default;
-$color-tooltip-chrome: $color-grey !default;
-$color-tooltip-chrome-text: $color-white !default;
+$draftail-editor-chrome: $color-light-grey !default;
+$draftail-editor-chrome-text: $color-grey !default;
+$draftail-editor-chrome-active: $color-black !default;
+$draftail-editor-chrome-accent: darken($draftail-editor-chrome, 10%) !default;
+$draftail-tooltip-chrome: $color-grey !default;
+$draftail-tooltip-chrome-text: $color-white !default;
 
-$editor-border-radius: 5px !default;
-$tooltip-border-radius: $editor-border-radius !default;
+$draftail-editor-radius: 5px !default;
+$draftail-tooltip-radius: $draftail-editor-radius !default;
 
-$editor-z-index: 1 !default;
-$tooltip-z-index: $editor-z-index + 1 !default;
-$overlay-z-index: $tooltip-z-index + 1 !default;
-$activeblock-z-index: $overlay-z-index + 1 !default;
-$toolbar-z-index: $activeblock-z-index + 1 !default;
-$toolbar-tooltip-z-index: $toolbar-z-index + 1 !default;
+$draftail-editor-z-index: 1 !default;
+$draftail-tooltip-z-index: $draftail-editor-z-index + 1 !default;
+$draftail-overlay-z-index: $draftail-tooltip-z-index + 1 !default;
+$draftail-toolbar-z-index: $draftail-overlay-z-index + 1 !default;
+$draftail-toolbar-tooltip-z-index: $draftail-toolbar-z-index + 1 !default;
 
 @mixin disabled {
     opacity: 0.5;
