@@ -29,8 +29,12 @@ $draftail-editor-line-height: 1.5 !default;
 $draftail-editor-radius: 5px !default;
 $draftail-tooltip-radius: 5px !default;
 $draftail-toolbar-radius: 0 !default;
+$draftail-toolbar-tooltip-radius: 4px !default;
 
 $draftail-editor-border: 1px solid $draftail-editor-chrome !default;
+
+$draftail-toolbar-tooltip-duration: 0.1s !default;
+$draftail-toolbar-tooltip-delay: 0.5s !default;
 
 $draftail-editor-z-index: 1 !default;
 $draftail-tooltip-z-index: $draftail-editor-z-index + 1 !default;
