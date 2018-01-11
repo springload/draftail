@@ -21,25 +21,25 @@
             background-color: rgba(255, 255, 255, 0.8);
         }
     }
-}
 
-.DraftEditor-root {
-    // Fix editor scrolling in the wrong position when breaking a big block.
-    // See https://github.com/facebook/draft-js/issues/304#issuecomment-327606596.
-    font-size: 1rem;
-    line-height: 1.5;
-    font-family: sans-serif;
-    overflow: auto;
-    // Ligatures can make cursor behavior harder to understand.
-    font-variant-ligatures: none;
-}
+    .DraftEditor-root {
+        // Fix editor scrolling in the wrong position when breaking a big block.
+        // See https://github.com/facebook/draft-js/issues/304#issuecomment-327606596.
+        font-size: 1rem;
+        line-height: 1.5;
+        font-family: sans-serif;
+        overflow: auto;
+        // Ligatures can make cursor behavior harder to understand.
+        font-variant-ligatures: none;
+    }
 
-.public-DraftEditor-content,
-.public-DraftEditorPlaceholder-root {
-    padding: $editor-spacing;
-}
+    .public-DraftEditor-content,
+    .public-DraftEditorPlaceholder-root {
+        padding: $editor-spacing;
+    }
 
-// Remove default margins on atomic blocks because of the figure element.
-.public-DraftEditor-content > * > figure {
-    margin: 0;
+    // Remove default margins on atomic blocks because of the figure element.
+    .public-DraftEditor-content > * > figure {
+        margin: 0;
+    }
 }
