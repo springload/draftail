@@ -1,15 +1,9 @@
 $NS: 'Draftail-';
 
-$button-spacing: 0.5rem;
+$button-spacing: 0.5rem !default;
 $controls-spacing: $button-spacing / 2;
 $editor-spacing: $button-spacing + $controls-spacing;
-$tooltip-spacing: 0.625rem;
 
-$color-teal: #43b1b0;
-$color-dark-teal: #246060;
-$color-bright-teal: #54d0d0;
-$color-light-teal: #f4fcfc;
-$color-light-blue: #eef8ff;
 $color-white: #fff;
 $color-black: #000;
 $color-grey: #333;
@@ -26,11 +20,11 @@ $editor-border-radius: 5px !default;
 $tooltip-border-radius: $editor-border-radius !default;
 
 $editor-z-index: 1 !default;
-$tooltip-z-index: $editor-z-index + 1;
-$overlay-z-index: $tooltip-z-index + 1;
-$activeblock-z-index: $overlay-z-index + 1;
-$toolbar-z-index: $activeblock-z-index + 1;
-$toolbar-tooltip-z-index: $toolbar-z-index + 1;
+$tooltip-z-index: $editor-z-index + 1 !default;
+$overlay-z-index: $tooltip-z-index + 1 !default;
+$activeblock-z-index: $overlay-z-index + 1 !default;
+$toolbar-z-index: $activeblock-z-index + 1 !default;
+$toolbar-tooltip-z-index: $toolbar-z-index + 1 !default;
 
 @mixin disabled {
     opacity: 0.5;
