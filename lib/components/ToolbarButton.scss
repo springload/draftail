@@ -13,6 +13,7 @@ $button-active-border-color: transparentize($color-editor-chrome-active, 0.8);
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
+    user-select: none;
 
     &--active {
         background-color: $button-active-color;
