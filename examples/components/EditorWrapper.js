@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import DraftailEditor from '../../lib';
+import { DraftailEditor } from '../../lib';
 
 import SentryBoundary from '../components/SentryBoundary';
 import Highlight from '../components/Highlight';

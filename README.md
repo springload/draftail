@@ -61,7 +61,7 @@ Then, import the editor and use it in your code. Here is a [simple example](http
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import DraftailEditor, { BLOCK_TYPE, INLINE_STYLE } from '../lib';
+import { DraftailEditor, BLOCK_TYPE, INLINE_STYLE } from 'draftail';
 
 const initial = JSON.parse(sessionStorage.getItem('draftail:content'));
 

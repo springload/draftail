@@ -535,7 +535,7 @@ export default {
         {
             key: 'avp7v',
             text:
-                "import DraftailEditor, { BLOCK_TYPE, INLINE_STYLE } from 'draftail';",
+                "import { DraftailEditor, BLOCK_TYPE, INLINE_STYLE } from 'draftail';",
             type: 'code-block',
             depth: 0,
             inlineStyleRanges: [],

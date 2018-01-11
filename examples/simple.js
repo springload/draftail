@@ -7,7 +7,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import DraftailEditor, { BLOCK_TYPE, INLINE_STYLE } from '../lib';
+import { DraftailEditor, BLOCK_TYPE, INLINE_STYLE } from '../lib';
 
 const initial = JSON.parse(sessionStorage.getItem('draftail:content'));
 
