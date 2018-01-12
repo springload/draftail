@@ -98,9 +98,9 @@ To change the behavior of the editor, pass props to `DraftailEditor`. Here are t
 // Initial content of the editor. Use this to edit pre-existing content.
 rawContentState: null,
 // Called when changes occured. Use this to persist editor content.
+onSave: () => {},
 // Displayed when the editor is empty. Hidden if the user changes styling.
 placeholder: null,
-onSave: () => {},
 // Enable the use of horizontal rules in the editor.
 enableHorizontalRule: false,
 // Enable the use of line breaks in the editor.
