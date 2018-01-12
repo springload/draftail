@@ -48,7 +48,7 @@ class EmbedSource extends React.Component {
             editorState,
             entity,
             entityKey,
-            options,
+            entityType,
             onUpdate,
         } = this.props;
         const { url } = this.state;
@@ -74,7 +74,7 @@ class EmbedSource extends React.Component {
                     );
                 } else {
                     const contentWithEntity = content.createEntity(
-                        options.type,
+                        entityType.type,
                         'IMMUTABLE',
                         {
                             url: embed.url,
@@ -146,7 +146,7 @@ class EmbedSource extends React.Component {
 
 EmbedSource.propTypes = {
     editorState: PropTypes.object.isRequired,
-    options: PropTypes.object.isRequired,
+    entityType: PropTypes.object.isRequired,
     entity: PropTypes.object,
     entityKey: PropTypes.string,
     onUpdate: PropTypes.func.isRequired,

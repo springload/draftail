@@ -18,6 +18,7 @@
 * Rename `nested-list-item($depth)` to `draftail-nested-list-item($depth)`.
 * Stop defining `$draftail-tooltip-radius` based on `$draftail-editor-radius`.
 * Simplify `DraftUtils.getSelectedBlock()` implementation.
+* Rename `options` prop to `entityType` for entity sources.
 
 ### Fixed
 

@@ -28,7 +28,7 @@ class LinkSource extends Component {
     }
 
     onConfirm(e) {
-        const { editorState, options, onUpdate } = this.props;
+        const { editorState, entityType, onUpdate } = this.props;
         const { url } = this.state;
 
         e.preventDefault();
@@ -39,7 +39,7 @@ class LinkSource extends Component {
             url: url.replace(/\s/g, ''),
         };
         const contentStateWithEntity = contentState.createEntity(
-            options.type,
+            entityType.type,
             'MUTABLE',
             data,
         );
@@ -104,7 +104,7 @@ class LinkSource extends Component {
 
 LinkSource.propTypes = {
     editorState: PropTypes.object.isRequired,
-    options: PropTypes.object.isRequired,
+    entityType: PropTypes.object.isRequired,
     entity: PropTypes.object,
     onUpdate: PropTypes.func.isRequired,
 };

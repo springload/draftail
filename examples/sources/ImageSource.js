@@ -32,7 +32,7 @@ class ImageSource extends Component {
             editorState,
             entity,
             entityKey,
-            options,
+            entityType,
             onUpdate,
         } = this.props;
         const { src } = this.state;
@@ -50,7 +50,7 @@ class ImageSource extends Component {
             );
         } else {
             const contentWithEntity = content.createEntity(
-                options.type,
+                entityType.type,
                 'MUTABLE',
                 {
                     alt: '',
@@ -118,7 +118,7 @@ class ImageSource extends Component {
 
 ImageSource.propTypes = {
     editorState: PropTypes.object.isRequired,
-    options: PropTypes.object.isRequired,
+    entityType: PropTypes.object.isRequired,
     entity: PropTypes.object,
     entityKey: PropTypes.string,
     onUpdate: PropTypes.func.isRequired,
