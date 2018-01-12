@@ -90,10 +90,15 @@ class TooltipEntity extends Component {
 }
 
 TooltipEntity.propTypes = {
+    // Key of the entity being decorated.
     entityKey: PropTypes.string.isRequired,
+    // Full contentState, read-only.
     contentState: PropTypes.object.isRequired,
+    // The decorated nodes / entity text.
     children: PropTypes.node.isRequired,
+    // Call with the entityKey to trigger the entity source.
     onEdit: PropTypes.func.isRequired,
+    // Call with the entityKey to remove the entity.
     onRemove: PropTypes.func.isRequired,
     icon: PropTypes.oneOfType([
         PropTypes.string.isRequired,

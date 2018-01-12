@@ -286,13 +286,13 @@ Apart from the usual type/label/description/icon options, entities need:
 
 ##### Sources
 
-Here is a [simple image source](https://github.com/springload/draftjs_exporter_demo/blob/master/src/entities/ImageSource.js) which uses `window.prompt` to ask the user for an image's `src`, then creates an entity and its atomic block:
+Sources are responsible for creating and editing entities, and are toggled when requested from the toolbar, or from a decorator or block. Here is a [simple image source](https://github.com/springload/draftjs_exporter_demo/blob/master/src/entities/ImageSource.js) which uses `window.prompt` to ask the user for an image's `src`, then creates an entity and its atomic block:
 
 ```js
-import React from 'react';
+import { Component } from 'react';
 import { AtomicBlockUtils } from 'draft-js';
 
-class ImageSource extends React.Component {
+class ImageSource extends Component {
     componentDidMount() {
         const { editorState, entityType, onComplete } = this.props;
 
@@ -322,8 +322,6 @@ class ImageSource extends React.Component {
         return null;
     }
 }
-
-export default ImageSource;
 ```
 
 The source component is given the following props:
@@ -343,7 +341,7 @@ entity: PropTypes.object,
 
 ##### Decorators
 
-Decorators receive the current textual content as `children`, as well as the entity key and content state. They can then render the entity based on its data:
+Decorators render inline entities based on their data.
 
 ```jsx
 const Link = ({ entityKey, contentState, children }) => {
@@ -355,6 +353,41 @@ const Link = ({ entityKey, contentState, children }) => {
         </span>
     );
 };
+```
+
+They are given the following props:
+
+```jsx
+// Key of the entity being decorated.
+entityKey: PropTypes.string.isRequired,
+// Full contentState, read-only.
+contentState: PropTypes.object.isRequired,
+// The decorated nodes / entity text.
+children: PropTypes.node.isRequired,
+// Call with the entityKey to trigger the entity source.
+onEdit: PropTypes.func.isRequired,
+// Call with the entityKey to remove the entity.
+onRemove: PropTypes.func.isRequired,
+```
+
+The `onEdit` and `onRemove` props are meant so decorators can also serve in managing entities, eg. to build tooltips to edit links.
+
+##### Blocks
+
+Blocks render block-level entities based on their data, and can contain editing controls. Here is a [simple image block](https://github.com/springload/draftjs_exporter_demo/blob/master/src/entities/ImageBlock.js), rendering images with `src` and `alt` attributes:
+
+```jsx
+import React, { Component } from 'react';
+
+class ImageBlock extends Component {
+    render() {
+        const { blockProps } = this.props;
+        const { entity } = blockProps;
+        const { src, alt } = entity.getData();
+
+        return <img className="ImageBlock" src={src} alt={alt} width="256" />;
+    }
+}
 ```
 
 #### Custom text decorators
