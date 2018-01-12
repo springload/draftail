@@ -32,6 +32,7 @@
 * Remove `DraftUtils.createEntity()`.
 * Remove `DraftUtils.getAllBlocks()`.
 * Remove `DraftUtils.getEntityRange()`.
+* Remove `onClose` prop for entity sources.
 
 ## [[v0.10.0]](https://github.com/springload/draftail/releases/tag/v0.10.0)
 

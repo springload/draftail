@@ -68,10 +68,10 @@ class ImageSource extends Component {
     }
 
     onRequestClose(e) {
-        const { onClose } = this.props;
+        const { onUpdate } = this.props;
         e.preventDefault();
 
-        onClose();
+        onUpdate();
     }
 
     onAfterOpen() {
@@ -122,7 +122,6 @@ ImageSource.propTypes = {
     entity: PropTypes.object,
     entityKey: PropTypes.string,
     onUpdate: PropTypes.func.isRequired,
-    onClose: PropTypes.func.isRequired,
 };
 
 ImageSource.defaultProps = {

@@ -96,10 +96,10 @@ class EmbedSource extends React.Component {
     }
 
     onRequestClose(e) {
-        const { onClose } = this.props;
+        const { onUpdate } = this.props;
         e.preventDefault();
 
-        onClose();
+        onUpdate();
     }
 
     onAfterOpen() {
@@ -150,7 +150,6 @@ EmbedSource.propTypes = {
     entity: PropTypes.object,
     entityKey: PropTypes.string,
     onUpdate: PropTypes.func.isRequired,
-    onClose: PropTypes.func.isRequired,
 };
 
 EmbedSource.defaultProps = {
