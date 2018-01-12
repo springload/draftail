@@ -16,16 +16,21 @@
 * Wrap `propTypes` in env check so they only appear in dev build.
 * Rename / namespace all overridable Sass constants.
 * Stop defining `$draftail-tooltip-radius` based on `$draftail-editor-radius`.
+* Simplify `DraftUtils.getSelectedBlock()` implementation.
 
 ### Fixed
 
 * Prevent toolbar button labels from being selected.
+* Fix newline block insertion & reset creating 2 entries in undo stack ([#105](https://github.com/springload/draftail/issues/105)).
 
 ### Removed
 
 * Remove all unused variables from Sass constants.
 * Remove `immutable` from `peerDependencies`.
 * Remove `draftjs-utils` from `dependencies`.
+* Remove `DraftUtils.createEntity()`.
+* Remove `DraftUtils.getAllBlocks()`.
+* Remove `DraftUtils.getEntityRange()`.
 
 ## [[v0.10.0]](https://github.com/springload/draftail/releases/tag/v0.10.0)
 
