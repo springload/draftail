@@ -9,5 +9,5 @@ code .public-DraftStyleDefault-block {
 }
 
 @for $depth from 5 through 6 {
-    @include nested-list-item($depth);
+    @include draftail-nested-list-item($depth);
 }

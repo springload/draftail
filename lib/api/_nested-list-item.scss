@@ -4,14 +4,14 @@
 // Example usage:
 //
 // @for $depth from 5 through 9 {
-//     @include nested-list-item($depth);
+//     @include draftail-nested-list-item($depth);
 // }
 
 // Base list item indent of Draft.js.
 // See https://github.com/facebook/draft-js/blob/3689a93c85786b6a3fb8a3434e9c700661a8ba02/src/component/utils/DraftStyleDefault.css#L54.
 $default-list-item-indent: 1.5em;
 
-@mixin nested-list-indent($depth, $base-indent) {
+@mixin draftail-nested-list-indent($depth, $base-indent) {
     $indent: ($depth + 1) * $base-indent;
 
     .public-DraftStyleDefault-depth#{$depth} {
@@ -25,7 +25,7 @@ $default-list-item-indent: 1.5em;
     }
 }
 
-@mixin nested-list-counter($depth) {
+@mixin draftail-nested-list-counter($depth) {
     $counter: ol#{$depth};
 
     .public-DraftStyleDefault-depth#{$depth} {
@@ -40,7 +40,7 @@ $default-list-item-indent: 1.5em;
     }
 }
 
-@mixin nested-list-item($depth) {
-    @include nested-list-counter($depth);
-    @include nested-list-indent($depth, $default-list-item-indent);
+@mixin draftail-nested-list-item($depth) {
+    @include draftail-nested-list-counter($depth);
+    @include draftail-nested-list-indent($depth, $default-list-item-indent);
 }

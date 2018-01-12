@@ -349,7 +349,7 @@ Draftail provides a helper Sass mixin which adds OL counters and indentation, an
 
 // Add nesting support up to 7 levels.
 @for $depth from 5 through 6 {
-    @include nested-list-item($depth);
+    @include draftail-nested-list-item($depth);
 }
 ```
 

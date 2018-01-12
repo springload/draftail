@@ -15,6 +15,7 @@
 * Move `DraftailEditor` from default export of draftail to named export (`import { DraftailEditor } from 'draftail';`).
 * Wrap `propTypes` in env check so they only appear in dev build.
 * Rename / namespace all overridable Sass constants.
+* Rename `nested-list-item($depth)` to `draftail-nested-list-item($depth)`.
 * Stop defining `$draftail-tooltip-radius` based on `$draftail-editor-radius`.
 * Simplify `DraftUtils.getSelectedBlock()` implementation.
 
