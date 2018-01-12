@@ -49,7 +49,7 @@ class EmbedSource extends React.Component {
             entity,
             entityKey,
             entityType,
-            onUpdate,
+            onComplete,
         } = this.props;
         const { url } = this.state;
         const content = editorState.getCurrentContent();
@@ -90,16 +90,16 @@ class EmbedSource extends React.Component {
                     );
                 }
 
-                onUpdate(nextState);
+                onComplete(nextState);
             },
         );
     }
 
     onRequestClose(e) {
-        const { onUpdate } = this.props;
+        const { onComplete } = this.props;
         e.preventDefault();
 
-        onUpdate();
+        onComplete();
     }
 
     onAfterOpen() {
@@ -149,7 +149,7 @@ EmbedSource.propTypes = {
     entityType: PropTypes.object.isRequired,
     entity: PropTypes.object,
     entityKey: PropTypes.string,
-    onUpdate: PropTypes.func.isRequired,
+    onComplete: PropTypes.func.isRequired,
 };
 
 EmbedSource.defaultProps = {

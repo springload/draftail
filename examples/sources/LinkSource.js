@@ -28,7 +28,7 @@ class LinkSource extends Component {
     }
 
     onConfirm(e) {
-        const { editorState, entityType, onUpdate } = this.props;
+        const { editorState, entityType, onComplete } = this.props;
         const { url } = this.state;
 
         e.preventDefault();
@@ -50,14 +50,14 @@ class LinkSource extends Component {
             entityKey,
         );
 
-        onUpdate(nextState);
+        onComplete(nextState);
     }
 
     onRequestClose(e) {
-        const { onUpdate } = this.props;
+        const { onComplete } = this.props;
         e.preventDefault();
 
-        onUpdate();
+        onComplete();
     }
 
     onAfterOpen() {
@@ -106,7 +106,7 @@ LinkSource.propTypes = {
     editorState: PropTypes.object.isRequired,
     entityType: PropTypes.object.isRequired,
     entity: PropTypes.object,
-    onUpdate: PropTypes.func.isRequired,
+    onComplete: PropTypes.func.isRequired,
 };
 
 LinkSource.defaultProps = {

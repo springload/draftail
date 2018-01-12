@@ -33,7 +33,7 @@ class ImageSource extends Component {
             entity,
             entityKey,
             entityType,
-            onUpdate,
+            onComplete,
         } = this.props;
         const { src } = this.state;
         const content = editorState.getCurrentContent();
@@ -64,14 +64,14 @@ class ImageSource extends Component {
             );
         }
 
-        onUpdate(nextState);
+        onComplete(nextState);
     }
 
     onRequestClose(e) {
-        const { onUpdate } = this.props;
+        const { onComplete } = this.props;
         e.preventDefault();
 
-        onUpdate();
+        onComplete();
     }
 
     onAfterOpen() {
@@ -121,7 +121,7 @@ ImageSource.propTypes = {
     entityType: PropTypes.object.isRequired,
     entity: PropTypes.object,
     entityKey: PropTypes.string,
-    onUpdate: PropTypes.func.isRequired,
+    onComplete: PropTypes.func.isRequired,
 };
 
 ImageSource.defaultProps = {
