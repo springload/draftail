@@ -276,16 +276,70 @@ inlineStyles={[
 
 #### Custom entity types
 
-Creating custom entity types is a bit more involved because entities aren't simply on/off: they often need additional data (thus a UI to enter this data), and can be edited.
+Creating custom entity types is a bit more involved because entities aren't simply on/off: they often need additional data (thus a UI to enter this data), and can be edited. The entity API is at a much lower level of abstraction than that of blocks and styles, and knowledge of the [Draft.js API](https://draftjs.org/docs/overview.html#content) is expected.
 
-Apart from the usual label/type/icon options, entities need:
+Apart from the usual type/label/description/icon options, entities need:
 
-* A `source`, a React component that will be used to create/edit the entity from a specific data source (could be an API, or a form inside of a modal).
-* A `decorator`, a React component to display the entity within the editor area.
+* A `source`, a React component that will be rendered to display the UI when creating or editing an entity. This could involve a modal window, API calls, a tooltip, or any other mean of gathering entity data.
+* A `decorator`, a React component to display the entity within the editor area for inline entities (eg. links).
+* Finally, the `block` is for block-level entities (think: image block, embed) to supply their React component.
 
 ##### Sources
 
-For now, please refer to the examples available with the project.
+Here is a [simple image source](https://github.com/springload/draftjs_exporter_demo/blob/master/src/entities/ImageSource.js) which uses `window.prompt` to ask the user for an image's `src`, then creates an entity and its atomic block:
+
+```js
+import React from 'react';
+import { AtomicBlockUtils } from 'draft-js';
+
+class ImageSource extends React.Component {
+    componentDidMount() {
+        const { editorState, entityType, onComplete } = this.props;
+
+        const src = window.prompt('Image URL');
+
+        if (src) {
+            const content = editorState.getCurrentContent();
+            const contentWithEntity = content.createEntity(
+                entityType.type,
+                'IMMUTABLE',
+                { src },
+            );
+            const entityKey = contentWithEntity.getLastCreatedEntityKey();
+            const nextState = AtomicBlockUtils.insertAtomicBlock(
+                editorState,
+                entityKey,
+                ' ',
+            );
+
+            onComplete(nextState);
+        } else {
+            onComplete(editorState);
+        }
+    }
+
+    render() {
+        return null;
+    }
+}
+
+export default ImageSource;
+```
+
+The source component is given the following props:
+
+```jsx
+// The editorState is available for arbitrary content manipulation.
+editorState: PropTypes.object.isRequired,
+// Takes the updated editorState, or null if there are no changes.
+onComplete: PropTypes.func.isRequired,
+// Whole entityType configuration, as provided to the editor.
+entityType: PropTypes.object.isRequired,
+// Current entityKey to edit, if any.
+entityKey: PropTypes.string,
+// Current entity to edit, if any.
+entity: PropTypes.object,
+```
 
 ##### Decorators
 

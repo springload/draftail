@@ -104,9 +104,9 @@ class LinkSource extends Component {
 
 LinkSource.propTypes = {
     editorState: PropTypes.object.isRequired,
+    onComplete: PropTypes.func.isRequired,
     entityType: PropTypes.object.isRequired,
     entity: PropTypes.object,
-    onComplete: PropTypes.func.isRequired,
 };
 
 LinkSource.defaultProps = {

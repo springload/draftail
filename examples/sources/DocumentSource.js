@@ -104,9 +104,9 @@ class DocumentSource extends Component {
 
 DocumentSource.propTypes = {
     editorState: PropTypes.object.isRequired,
+    onComplete: PropTypes.func.isRequired,
     entityType: PropTypes.object.isRequired,
     entity: PropTypes.object,
-    onComplete: PropTypes.func.isRequired,
 };
 
 DocumentSource.defaultProps = {

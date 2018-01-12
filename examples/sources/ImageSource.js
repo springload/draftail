@@ -118,10 +118,10 @@ class ImageSource extends Component {
 
 ImageSource.propTypes = {
     editorState: PropTypes.object.isRequired,
-    entityType: PropTypes.object.isRequired,
-    entity: PropTypes.object,
-    entityKey: PropTypes.string,
     onComplete: PropTypes.func.isRequired,
+    entityType: PropTypes.object.isRequired,
+    entityKey: PropTypes.string,
+    entity: PropTypes.object,
 };
 
 ImageSource.defaultProps = {
