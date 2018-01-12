@@ -19,6 +19,7 @@
 * Stop defining `$draftail-tooltip-radius` based on `$draftail-editor-radius`.
 * Simplify `DraftUtils.getSelectedBlock()` implementation.
 * Rename `options` prop to `entityType` for entity sources.
+* Rename `entityConfig` prop to `entityType` for entity blocks.
 
 ### Fixed
 

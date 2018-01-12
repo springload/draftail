@@ -14,7 +14,7 @@ const TOOLTIP_MAX_WIDTH = OPTIONS_MAX_WIDTH + OPTIONS_SPACING;
 const propTypes = {
     blockProps: PropTypes.shape({
         entity: PropTypes.object,
-        entityConfig: PropTypes.object.isRequired,
+        entityType: PropTypes.object.isRequired,
     }).isRequired,
     src: PropTypes.string.isRequired,
     alt: PropTypes.string.isRequired,
@@ -76,7 +76,7 @@ class MediaBlock extends Component {
     render() {
         const { blockProps, src, alt } = this.props;
         const { showTooltipAt } = this.state;
-        const { entityConfig } = blockProps;
+        const { entityType } = blockProps;
 
         return (
             <button
@@ -86,10 +86,7 @@ class MediaBlock extends Component {
                 onMouseUp={this.openTooltip}
             >
                 <span className="MediaBlock__icon-wrapper" aria-hidden>
-                    <Icon
-                        icon={entityConfig.icon}
-                        className="MediaBlock__icon"
-                    />
+                    <Icon icon={entityType.icon} className="MediaBlock__icon" />
                 </span>
 
                 <img
