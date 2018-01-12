@@ -199,7 +199,7 @@
     <%= htmlWebpackPlugin.options.data.icons %>
 
     <% if (htmlWebpackPlugin.options.data.SENTRY_DSN) { %>
-        <script src="https://cdn.ravenjs.com/3.20.1/raven.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.ravenjs.com/3.22.0/raven.min.js" crossorigin="anonymous"></script>
         <script>
             Raven.config('<%= htmlWebpackPlugin.options.data.SENTRY_DSN %>', {
                 release: '<%= htmlWebpackPlugin.options.data.PKG_VERSION %>'
