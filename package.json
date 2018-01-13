@@ -33,10 +33,15 @@
   ],
   "babel": {
     "plugins": [
-      ["transform-react-remove-prop-types", {
-        "mode": "unsafe-wrap",
-        "ignoreFilenames": ["node_modules"]
-      }]
+      [
+        "transform-react-remove-prop-types",
+        {
+          "mode": "unsafe-wrap",
+          "ignoreFilenames": [
+            "node_modules"
+          ]
+        }
+      ]
     ],
     "presets": [
       [
@@ -110,7 +115,6 @@
     "css-loader": "^0.28.4",
     "dotenv": "^4.0.0",
     "draft-js": "^0.10.4",
-    "element-closest": "^2.0.2",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "enzyme-to-json": "^3.2.2",
