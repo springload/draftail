@@ -355,7 +355,7 @@ const Link = ({ entityKey, contentState, children }) => {
 };
 ```
 
-They are given the following props:
+They receive the following props:
 
 ```jsx
 // Key of the entity being decorated.
@@ -388,6 +388,33 @@ class ImageBlock extends Component {
         return <img className="ImageBlock" src={src} alt={alt} width="256" />;
     }
 }
+```
+
+They receive the following props:
+
+```jsx
+// The current atomic block.
+block: PropTypes.object.isRequired,
+blockProps: PropTypes.shape({
+    // The editorState is available for arbitrary content manipulation.
+    editorState: PropTypes.object.isRequired,
+    // Current entity to manage.
+    entity: PropTypes.object.isRequired,
+    // Current entityKey to manage.
+    entityKey: PropTypes.string.isRequired,
+    // Whole entityType configuration, as provided to the editor.
+    entityType: PropTypes.object.isRequired,
+    // Make the whole editor read-only, except for the block.
+    lockEditor: PropTypes.func.isRequired,
+    // Make the editor editable again.
+    unlockEditor: PropTypes.func.isRequired,
+    // Shorthand to edit entity data.
+    onEditEntity: PropTypes.func.isRequired,
+    // Shorthand to remove an entity, and the related block.
+    onRemoveEntity: PropTypes.func.isRequired,
+    // Update the editorState with arbitrary changes.
+    onChange: PropTypes.func.isRequired,
+}).isRequired,
 ```
 
 #### Custom text decorators
