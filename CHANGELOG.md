@@ -8,6 +8,7 @@
 
 * Add new Sass constants to make the editor more themable: `$draftail-editor-padding, $draftail-editor-text, $draftail-editor-font-family, $draftail-editor-font-size, $draftail-editor-line-height, $draftail-toolbar-radius, $draftail-editor-border, $draftail-toolbar-tooltip-radius, $draftail-toolbar-tooltip-duration, $draftail-toolbar-tooltip-delay`.
 * Delay toolbar tooltip opening on hover by 0.5s, animated over 0.1s.
+* Make Markdown-style markers work on non-empty blocks ([#53](https://github.com/springload/draftail/issues/53)).
 
 ### Changed
 
