@@ -1,13 +1,12 @@
-p,
-.public-DraftStyleDefault-block {
-    margin: 0 0 0.5rem;
-}
-
-li .public-DraftStyleDefault-block,
-code .public-DraftStyleDefault-block {
-    margin-bottom: 0.25rem;
-}
-
 @for $depth from 5 through 6 {
     @include draftail-nested-list-item($depth);
+}
+
+@include draftail-richtext-styles {
+    blockquote {
+        border-left: 1px solid #e5e5e5;
+        padding: 0 0 0 20px;
+        margin-left: 0;
+        font-style: italic;
+    }
 }

@@ -43,3 +43,11 @@
         margin: 0;
     }
 }
+
+// This makes it possible to add styles to rich text content within the editor,
+// without Draftail users having to know exactly which Draft.js class to use.
+@mixin draftail-richtext-styles {
+    .DraftEditor-editorContainer {
+        @content;
+    }
+}
