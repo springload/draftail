@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+## [[v0.11.0]](https://github.com/springload/draftail/releases/tag/v0.11.0)
+
 ### Added
 
 * Add new Sass constants to make the editor more themable: `$draftail-editor-padding, $draftail-editor-text, $draftail-editor-font-family, $draftail-editor-font-size, $draftail-editor-line-height, $draftail-toolbar-radius, $draftail-editor-border, $draftail-toolbar-tooltip-radius, $draftail-toolbar-tooltip-duration, $draftail-toolbar-tooltip-delay`.
