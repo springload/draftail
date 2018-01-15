@@ -64,12 +64,20 @@ export const ENTITY_CONTROL = {
         icon: '#icon-link',
         source: LinkSource,
         decorator: Link,
+        attributes: ['url'],
+        whitelist: {
+            href: '^(?!#)',
+        },
     },
     IMAGE: {
         type: ENTITY_TYPE.IMAGE,
         icon: '#icon-image',
         source: ImageSource,
         block: ImageBlock,
+        attributes: ['src', 'alt'],
+        whitelist: {
+            src: '^http',
+        },
     },
     EMBED: {
         type: 'EMBED',
@@ -77,6 +85,7 @@ export const ENTITY_CONTROL = {
         icon: EMBED_ICON,
         source: EmbedSource,
         block: EmbedBlock,
+        attributes: ['url', 'title', 'thumbnail'],
     },
 
     DOCUMENT: {
@@ -85,5 +94,6 @@ export const ENTITY_CONTROL = {
         description: 'Document',
         source: DocumentSource,
         decorator: Document,
+        attributes: ['url'],
     },
 };

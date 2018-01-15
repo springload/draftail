@@ -100,7 +100,9 @@
     ],
     "setupTestFrameworkScriptFile": "<rootDir>/tests/setupTest.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "draftjs-filters": "^0.3.0"
+  },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "autotrack": "^2.4.1",
