@@ -431,7 +431,7 @@ Draftail also makes its Sass stylesheets available for extension:
 
 ```scss
 // Increase the default editor z-index.
-$editor-z-index: 100;
+$draftail-editor-z-index: 100;
 
 // Import all of the styles in your build.
 @import 'draftail/lib/index';
@@ -451,6 +451,35 @@ Draftail can use icons to display each format in the toolbar. There are multiple
 The SVG has to use a 1024x1024 viewbox that will be downscaled to 16x16.
 
 To deal with more complex requirements, the `icon` can be an arbitrary React component: `<Icon icon={<CustomIcon icon="square" />`.
+
+### Theming
+
+If using Sass, you can get very far by adding new default values for the variables in [`_constants.scss`](/lib/api/_constants.scss). For example,
+
+```scss
+// Remove the editor's border and make the toolbar free-floating
+$draftail-editor-border: 0;
+$draftail-editor-padding: 0;
+$draftail-toolbar-radius: 5px;
+
+@import 'draftail/lib/index';
+```
+
+Draftail also has a `draftail-richtext-styles` mixin you can use to make sure styles on rich text content don't leak to other parts of your site:
+
+```scss
+@include draftail-richtext-styles {
+    // Style Draft.js blockquotes.
+    blockquote {
+        border-left: 1px solid #e5e5e5;
+        padding: 0 0 0 20px;
+        margin-left: 0;
+        font-style: italic;
+    }
+}
+```
+
+Without Sass, refer to class names starting with `Draftail-` or `Draft` / `public-Draft` (Draft.js).
 
 ### List nesting levels
 
