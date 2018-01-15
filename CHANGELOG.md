@@ -23,6 +23,7 @@
 * Rename `onUpdate` prop to `onComplete` for entity sources.
 * Rename `entityConfig` prop to `entityType` for entity blocks.
 * Replace normalize API with `draftjs-filters` ([#123](https://github.com/springload/draftail/issues/123)).
+* Update toolbar tooltips to show markdown markers for all blocks.
 
 ### Fixed
 
