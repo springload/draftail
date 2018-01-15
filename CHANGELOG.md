@@ -7,6 +7,7 @@
 ### Added
 
 * Add `Draftail-unstyled` class to unstyled block, makes it easy to style unstyled blocks.
+* Add `$draftail-editor-background` variable to override editor bg.
 
 ## [[v0.11.0]](https://github.com/springload/draftail/releases/tag/v0.11.0)
 
