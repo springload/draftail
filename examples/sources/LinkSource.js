@@ -54,10 +54,10 @@ class LinkSource extends Component {
     }
 
     onRequestClose(e) {
-        const { onComplete } = this.props;
+        const { onClose } = this.props;
         e.preventDefault();
 
-        onComplete();
+        onClose();
     }
 
     onAfterOpen() {
@@ -105,6 +105,7 @@ class LinkSource extends Component {
 LinkSource.propTypes = {
     editorState: PropTypes.object.isRequired,
     onComplete: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
     entityType: PropTypes.object.isRequired,
     entity: PropTypes.object,
 };

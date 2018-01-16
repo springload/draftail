@@ -331,6 +331,8 @@ The source component is given the following props:
 editorState: PropTypes.object.isRequired,
 // Takes the updated editorState, or null if there are no changes.
 onComplete: PropTypes.func.isRequired,
+// Closes the source, without focusing the editor again.
+onClose: PropTypes.func.isRequired,
 // Whole entityType configuration, as provided to the editor.
 entityType: PropTypes.object.isRequired,
 // Current entityKey to edit, if any.

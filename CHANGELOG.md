@@ -10,6 +10,7 @@
 * Add `$draftail-editor-background` variable to override editor bg.
 * Add `draftail-richtext-styles` mixin to style rich text content within the editor.
 * Add imperative `focus()` API to the editor, like that of Draft.js.
+* Add `onClose` prop to sources, to close the source without focusing the editor again.
 
 ## [[v0.11.0]](https://github.com/springload/draftail/releases/tag/v0.11.0)
 
