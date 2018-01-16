@@ -496,6 +496,12 @@ Draftail provides a helper Sass mixin which adds OL counters and indentation, an
 }
 ```
 
+## Other APIs
+
+### Managing focus
+
+Draftail has a `focus()` API [like that of Draft.js](https://draftjs.org/docs/advanced-topics-managing-focus.html#content). Use it to imperatively move focus to the editor.
+
 ## Browser support and polyfills
 
 **Supported browser / device versions:**

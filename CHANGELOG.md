@@ -9,6 +9,7 @@
 * Add `Draftail-unstyled` class to unstyled block, makes it easy to style unstyled blocks.
 * Add `$draftail-editor-background` variable to override editor bg.
 * Add `draftail-richtext-styles` mixin to style rich text content within the editor.
+* Add imperative `focus()` API to the editor, like that of Draft.js.
 
 ## [[v0.11.0]](https://github.com/springload/draftail/releases/tag/v0.11.0)
 
