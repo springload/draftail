@@ -199,6 +199,12 @@ source: PropTypes.func.isRequired,
 decorator: PropTypes.func,
 // React component to display block-level entities.
 block: PropTypes.func,
+// Array of attributes the entity uses, to preserve when filtering entities on paste.
+// If undefined, all entity data is preserved.
+attributes: PropTypes.arrayOf(PropTypes.string),
+// Attribute - regex mapping, to whitelist entities based on their data on paste.
+// For example, { url: '^https:' } will only preserve links that point to HTTPS URLs.
+whitelist: PropTypes.object,
 ```
 
 #### Decorators
@@ -283,6 +289,21 @@ Apart from the usual type/label/description/icon options, entities need:
 * A `source`, a React component that will be rendered to display the UI when creating or editing an entity. This could involve a modal window, API calls, a tooltip, or any other mean of gathering entity data.
 * A `decorator`, a React component to display the entity within the editor area for inline entities (eg. links).
 * Finally, the `block` is for block-level entities (think: image block, embed) to supply their React component.
+
+Optionally, entities can also take an `attributes` and `whitelist` props. These can be used to determine whitelisting rules when pasting content into the editor, to only keep the entities considered valid. If undefined, all entities are always preserved with all of their data.
+
+```jsx
+{
+    type: ENTITY_TYPE.IMAGE,
+    icon: '#icon-image',
+    // Preserve the src and alt attributes and no other.
+    attributes: ['src', 'alt'],
+    // Preserve images for which the src starts with "http".
+    whitelist: {
+        src: '^http',
+    },
+}
+```
 
 ##### Sources
 
