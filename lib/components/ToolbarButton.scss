@@ -22,4 +22,8 @@ $button-active-border-color: transparentize(
         background-color: $button-active-color;
         border: 1px solid $button-active-border-color;
     }
+
+    &__label {
+        vertical-align: middle;
+    }
 }

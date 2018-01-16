@@ -43,7 +43,11 @@ exports[`ToolbarButton #label 1`] = `
   tabIndex={-1}
   type="button"
 >
-  Test label
+  <span
+    className="Draftail-ToolbarButton__label"
+  >
+    Test label
+  </span>
 </button>
 `;
 

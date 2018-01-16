@@ -14,67 +14,8 @@ $tooltip-spacing: 0.625rem;
 @import './utils/elements';
 @import './utils/typography';
 @import './utils/layout';
+@import './utils/objects';
 @import './utils/forms';
-
-.link {
-    border-bottom: 1px dotted $TEAL_WAGTAIL;
-}
-
-.example {
-    margin-top: 2rem;
-}
-
-/*
- * Styles of the examples
- */
-
-.anchor {
-    display: none;
-
-    h4:hover & {
-        display: inline;
-    }
-}
-
-.u-tinytext {
-    font-size: 11px;
-    font-style: italic;
-}
-
-.loading {
-    opacity: 0.7;
-
-    .js & {
-        opacity: 0.3;
-        user-select: none;
-        cursor: not-allowed;
-    }
-}
-
-.u-text-center {
-    text-align: center;
-}
-
-.u-wagtail {
-    color: $TEAL_WAGTAIL;
-    white-space: nowrap;
-}
-
-.list-inline {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-
-    > li {
-        display: inline;
-        margin: 0;
-        padding: 0;
-
-        + li {
-            margin-left: 0.5rem;
-        }
-    }
-}
 
 $draftail-editor-chrome: $GREY_333;
 $draftail-editor-chrome-text: $WHITE;
@@ -100,3 +41,5 @@ $draftail-editor-font-family: $FONT_FAMILY_SANS;
 @import './blocks/MediaBlock';
 @import './blocks/EmbedBlock';
 @import './blocks/ImageBlock';
+
+@import './utils/utilities';

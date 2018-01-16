@@ -1,0 +1,47 @@
+.link {
+    border-bottom: 1px dotted $TEAL_WAGTAIL;
+}
+
+.example {
+    margin-top: 2rem;
+}
+
+.anchor {
+    display: none;
+
+    h4:hover & {
+        display: inline;
+    }
+}
+
+.loading {
+    opacity: 0.7;
+
+    .js & {
+        opacity: 0.3;
+        user-select: none;
+        cursor: not-allowed;
+    }
+}
+
+.list-inline {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    > li {
+        display: inline;
+        margin: 0;
+        padding: 0;
+
+        + li {
+            margin-left: 0.5rem;
+        }
+    }
+}
+
+// Icomoon icons.
+[class^='icon-'],
+[class*=' icon-'] {
+    vertical-align: middle;
+}

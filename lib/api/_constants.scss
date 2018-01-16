@@ -27,12 +27,13 @@ $draftail-editor-font-family: sans-serif !default;
 $draftail-editor-font-size: 1rem !default;
 $draftail-editor-line-height: 1.5 !default;
 
+$draftail-editor-border: 1px solid $draftail-editor-chrome !default;
+
 $draftail-editor-radius: 5px !default;
 $draftail-tooltip-radius: 5px !default;
 $draftail-toolbar-radius: 0 !default;
 $draftail-toolbar-tooltip-radius: 4px !default;
-
-$draftail-editor-border: 1px solid $draftail-editor-chrome !default;
+$draftail-toolbar-border-bottom: $draftail-editor-border !default;
 
 $draftail-toolbar-tooltip-duration: 0.1s !default;
 $draftail-toolbar-tooltip-delay: 0.5s !default;
