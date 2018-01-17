@@ -110,7 +110,6 @@ button[data-draftail-balloon] {
         &::before,
         &::after {
             opacity: 1;
-            pointer-events: auto;
             transition: all $balloon-transition-duration ease-out
                 $balloon-transition-delay;
         }

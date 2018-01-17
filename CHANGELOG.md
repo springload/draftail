@@ -16,6 +16,7 @@
 ### Fixed
 
 * Prevent toolbar tooltip from having a transition delay on close.
+* Prevent toolbar tooltip from staying open when hovered.
 
 ## [[v0.12.0]](https://github.com/springload/draftail/releases/tag/v0.12.0)
 
