@@ -15,6 +15,7 @@
 ### Changed
 
 * Make all icons `vertical-align: middle;` by default.
+* Update to `draftjs-filters@0.4.0` to allow filtering on [undefined attributes](https://github.com/thibaudcolas/draftjs-filters/commit/a4af845).
 
 ### Fixed
 
