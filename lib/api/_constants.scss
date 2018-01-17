@@ -38,6 +38,8 @@ $draftail-toolbar-border-bottom: $draftail-editor-border !default;
 $draftail-toolbar-tooltip-duration: 0.1s !default;
 $draftail-toolbar-tooltip-delay: 0.5s !default;
 
+$draftail-block-spacing: $draftail-base-spacing * 2 !default;
+
 $draftail-editor-z-index: 1 !default;
 $draftail-tooltip-z-index: $draftail-editor-z-index + 1 !default;
 $draftail-overlay-z-index: $draftail-tooltip-z-index + 1 !default;
