@@ -11,6 +11,11 @@
 ### Changed
 
 * Make rich text styles specific to Draftail.
+* Update to `draftjs-filters@0.5.0` to improve filtering on [undefined attributes](https://github.com/thibaudcolas/draftjs-filters/commit/f836563).
+
+### Fixed
+
+* Prevent toolbar tooltip from having a transition delay on close.
 
 ## [[v0.12.0]](https://github.com/springload/draftail/releases/tag/v0.12.0)
 
