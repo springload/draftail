@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+## [[v0.12.0]](https://github.com/springload/draftail/releases/tag/v0.12.0)
+
 ### Added
 
 * Add `Draftail-unstyled` class to unstyled block, makes it easy to style unstyled blocks.
