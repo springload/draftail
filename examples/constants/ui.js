@@ -66,7 +66,7 @@ export const ENTITY_CONTROL = {
         decorator: Link,
         attributes: ['url'],
         whitelist: {
-            href: '^(?!#)',
+            href: '^(?![#/])',
         },
     },
     IMAGE: {
