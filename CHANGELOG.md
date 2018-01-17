@@ -4,6 +4,14 @@
 
 ## Unreleased
 
+### Added
+
+* Add default block spacing to make it easier to distinguish empty blocks.
+
+### Changed
+
+* Make rich text styles specific to Draftail.
+
 ## [[v0.12.0]](https://github.com/springload/draftail/releases/tag/v0.12.0)
 
 ### Added
