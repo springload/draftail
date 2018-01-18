@@ -539,6 +539,15 @@ Draftail provides a helper Sass mixin which adds OL counters and indentation, an
 
 ## Other APIs
 
+### i18n - Internationalization
+
+The editor comes with default labels in english, but all are overridable.
+
+* For blocks, styles, and entities, use the `label` and-or `description` prop to set text in the right language.
+* For boolean controls (`enableLineBreak`, etc), set instead an object with `icon`, `label`, `description` props (all optional).
+
+Depending on the target language, you may also need to use the `textDirectionality` prop (`LTR` or `RTL`). See the full [Draft.js documentation](https://draftjs.org/docs/api-reference-editor.html#textdirectionality) for more details.
+
 ### Managing focus
 
 Draftail has a `focus()` API [like that of Draft.js](https://draftjs.org/docs/advanced-topics-managing-focus.html#content). Use it to imperatively move focus to the editor.
