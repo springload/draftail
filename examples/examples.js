@@ -33,7 +33,8 @@ const initWagtail = () => {
             placeholder="Write here…"
             enableHorizontalRule={true}
             enableLineBreak={true}
-            showUndoRedoControls={true}
+            showUndoControl={true}
+            showRedoControl={true}
             stripPastedStyles={false}
             maxListNesting={6}
             spellCheck={true}
@@ -104,7 +105,14 @@ const initAll = () => {
                 label: 'BR',
                 description: 'Soft line break',
             }}
-            showUndoRedoControls={true}
+            showUndoControl={{
+                label: 'Undo',
+                description: 'Undo last change',
+            }}
+            showRedoControl={{
+                label: 'Redo',
+                description: 'Redo last change',
+            }}
             maxListNesting={6}
             blockTypes={Object.values(BLOCK_CONTROL)}
             inlineStyles={Object.values(INLINE_CONTROL)}

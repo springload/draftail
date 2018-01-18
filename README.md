@@ -105,8 +105,10 @@ placeholder: null,
 enableHorizontalRule: false,
 // Enable the use of line breaks in the editor.
 enableLineBreak: false,
-// Show undo/redo controls in the toolbar.
-showUndoRedoControls: false,
+// Show undo control in the toolbar.
+showUndoControl: false,
+// Show redo control in the toolbar.
+showRedoControl: false,
 // Disable copy/paste of rich text in the editor.
 stripPastedStyles: true,
 // Set whether spellcheck is turned on for your editor.

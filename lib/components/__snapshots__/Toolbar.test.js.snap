@@ -41,29 +41,6 @@ exports[`Toolbar #blockTypes 1`] = `
 </div>
 `;
 
-exports[`Toolbar #enableHorizontalRule 1`] = `
-<div
-  className="Draftail-Toolbar"
-  role="toolbar"
->
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup>
-    <ToolbarButton
-      active={false}
-      icon={null}
-      label="―"
-      name="HORIZONTAL_RULE"
-      onClick={[Function]}
-      title="Horizontal line
-- - -"
-    />
-  </ToolbarGroup>
-  <ToolbarGroup />
-  <ToolbarGroup />
-</div>
-`;
-
 exports[`Toolbar #enableHorizontalRule control overrides 1`] = `
 <div
   className="Draftail-Toolbar"
@@ -110,29 +87,6 @@ exports[`Toolbar #enableHorizontalRule works 1`] = `
 </div>
 `;
 
-exports[`Toolbar #enableLineBreak 1`] = `
-<div
-  className="Draftail-Toolbar"
-  role="toolbar"
->
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup>
-    <ToolbarButton
-      active={false}
-      icon={null}
-      label="↵"
-      name="BR"
-      onClick={[Function]}
-      title="Line break
-Shift+Enter"
-    />
-  </ToolbarGroup>
-  <ToolbarGroup />
-  <ToolbarGroup />
-</div>
-`;
-
 exports[`Toolbar #enableLineBreak control overrides 1`] = `
 <div
   className="Draftail-Toolbar"
@@ -145,10 +99,10 @@ exports[`Toolbar #enableLineBreak control overrides 1`] = `
       active={false}
       icon="#icon-br"
       label="BR"
-      name="HORIZONTAL_RULE"
+      name="BR"
       onClick={[Function]}
       title="Soft line break
-- - -"
+Shift+Enter"
     />
   </ToolbarGroup>
   <ToolbarGroup />
@@ -261,7 +215,76 @@ exports[`Toolbar #inlineStyles 1`] = `
 </div>
 `;
 
-exports[`Toolbar #showUndoRedoControls 1`] = `
+exports[`Toolbar #showRedoControl control overrides 1`] = `
+<div
+  className="Draftail-Toolbar"
+  role="toolbar"
+>
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup>
+    <ToolbarButton
+      active={false}
+      icon={null}
+      label="Redo"
+      name="redo"
+      onClick={[Function]}
+      title="Redo last change
+Ctrl+Shift+Z"
+    />
+  </ToolbarGroup>
+</div>
+`;
+
+exports[`Toolbar #showRedoControl works 1`] = `
+<div
+  className="Draftail-Toolbar"
+  role="toolbar"
+>
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup>
+    <ToolbarButton
+      active={false}
+      icon={null}
+      label="↻"
+      name="redo"
+      onClick={[Function]}
+      title="Redo
+Ctrl+Shift+Z"
+    />
+  </ToolbarGroup>
+</div>
+`;
+
+exports[`Toolbar #showUndoControl control overrides 1`] = `
+<div
+  className="Draftail-Toolbar"
+  role="toolbar"
+>
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup>
+    <ToolbarButton
+      active={false}
+      icon={null}
+      label="Undo"
+      name="undo"
+      onClick={[Function]}
+      title="Undo last change
+Ctrl+Z"
+    />
+  </ToolbarGroup>
+</div>
+`;
+
+exports[`Toolbar #showUndoControl works 1`] = `
 <div
   className="Draftail-Toolbar"
   role="toolbar"
@@ -279,15 +302,6 @@ exports[`Toolbar #showUndoRedoControls 1`] = `
       onClick={[Function]}
       title="Undo
 Ctrl+Z"
-    />
-    <ToolbarButton
-      active={false}
-      icon={null}
-      label="↻"
-      name="redo"
-      onClick={[Function]}
-      title="Redo
-Ctrl+Shift+Z"
     />
   </ToolbarGroup>
 </div>
