@@ -112,7 +112,23 @@ showRedoControl: false,
 // Disable copy/paste of rich text in the editor.
 stripPastedStyles: true,
 // Set whether spellcheck is turned on for your editor.
+// See https://draftjs.org/docs/api-reference-editor.html#spellcheck.
 spellCheck: false,
+// Optionally set the overriding text alignment for this editor.
+// See https://draftjs.org/docs/api-reference-editor.html#textalignment.
+textAlignment: null,
+// Optionally set the overriding text directionality for this editor.
+// See https://draftjs.org/docs/api-reference-editor.html#textdirectionality.
+textDirectionality: null,
+// Set if auto capitalization is turned on and how it behaves.
+// See https://draftjs.org/docs/api-reference-editor.html#autocapitalize-string.
+autoCapitalize: null,
+// Set if auto complete is turned on and how it behaves.
+// See https://draftjs.org/docs/api-reference-editor.html#autocomplete-string.
+autoComplete: null,
+// Set if auto correct is turned on and how it behaves.
+// See https://draftjs.org/docs/api-reference-editor.html#autocorrect-string.
+autoCorrect: null,
 // List of the available block types.
 blockTypes: [],
 // List of the available inline styles.

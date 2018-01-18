@@ -7,6 +7,7 @@
 ### Added
 
 * Make line break and horizontal line controls configurable, by passing an object with `icon`, `label`, `description` props.
+* Add ability to set `textAlignment`, `textDirectionality`, `autoCapitalize`, `autoComplete`, `autoCorrect` props of Draft.js.
 
 ### Changed
 
