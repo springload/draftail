@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+## [[v0.13.0]](https://github.com/springload/draftail/releases/tag/v0.13.0)
+
 ### Added
 
 * Add default block spacing to make it easier to distinguish empty blocks.
