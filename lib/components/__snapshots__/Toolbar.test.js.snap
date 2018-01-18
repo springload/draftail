@@ -64,7 +64,99 @@ exports[`Toolbar #enableHorizontalRule 1`] = `
 </div>
 `;
 
+exports[`Toolbar #enableHorizontalRule control overrides 1`] = `
+<div
+  className="Draftail-Toolbar"
+  role="toolbar"
+>
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup>
+    <ToolbarButton
+      active={false}
+      icon="#icon-hr"
+      label="HR"
+      name="HORIZONTAL_RULE"
+      onClick={[Function]}
+      title="Horizontal rule
+- - -"
+    />
+  </ToolbarGroup>
+  <ToolbarGroup />
+  <ToolbarGroup />
+</div>
+`;
+
+exports[`Toolbar #enableHorizontalRule works 1`] = `
+<div
+  className="Draftail-Toolbar"
+  role="toolbar"
+>
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup>
+    <ToolbarButton
+      active={false}
+      icon={null}
+      label="―"
+      name="HORIZONTAL_RULE"
+      onClick={[Function]}
+      title="Horizontal line
+- - -"
+    />
+  </ToolbarGroup>
+  <ToolbarGroup />
+  <ToolbarGroup />
+</div>
+`;
+
 exports[`Toolbar #enableLineBreak 1`] = `
+<div
+  className="Draftail-Toolbar"
+  role="toolbar"
+>
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup>
+    <ToolbarButton
+      active={false}
+      icon={null}
+      label="↵"
+      name="BR"
+      onClick={[Function]}
+      title="Line break
+Shift+Enter"
+    />
+  </ToolbarGroup>
+  <ToolbarGroup />
+  <ToolbarGroup />
+</div>
+`;
+
+exports[`Toolbar #enableLineBreak control overrides 1`] = `
+<div
+  className="Draftail-Toolbar"
+  role="toolbar"
+>
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup>
+    <ToolbarButton
+      active={false}
+      icon="#icon-br"
+      label="BR"
+      name="HORIZONTAL_RULE"
+      onClick={[Function]}
+      title="Soft line break
+- - -"
+    />
+  </ToolbarGroup>
+  <ToolbarGroup />
+  <ToolbarGroup />
+</div>
+`;
+
+exports[`Toolbar #enableLineBreak works 1`] = `
 <div
   className="Draftail-Toolbar"
   role="toolbar"

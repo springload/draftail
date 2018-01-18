@@ -96,8 +96,14 @@ const initAll = () => {
             id="all"
             rawContentState={allContentState}
             stripPastedStyles={false}
-            enableHorizontalRule={true}
-            enableLineBreak={true}
+            enableHorizontalRule={{
+                label: 'HR',
+                description: 'Horizontal rule',
+            }}
+            enableLineBreak={{
+                label: 'BR',
+                description: 'Soft line break',
+            }}
             showUndoRedoControls={true}
             maxListNesting={6}
             blockTypes={Object.values(BLOCK_CONTROL)}

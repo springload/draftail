@@ -4,6 +4,10 @@
 
 ## Unreleased
 
+### Added
+
+* Make line break and horizontal line controls configurable, by passing an object with `icon`, `label`, `description` props.
+
 ### Changed
 
 * Rename `DraftUtils.addLineBreakRemovingSelection` to `DraftUtils.addLineBreak`.
