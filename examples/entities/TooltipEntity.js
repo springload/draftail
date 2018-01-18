@@ -49,7 +49,7 @@ class TooltipEntity extends Component {
                 className="TooltipEntity"
             >
                 <Icon icon={icon} className="TooltipEntity__icon" />
-                {children}
+                <span className="TooltipEntity__text">{children}</span>
                 {showTooltipAt && (
                     <Portal
                         onClose={this.closeTooltip}
