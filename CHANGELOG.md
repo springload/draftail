@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+## [[v0.14.0]](https://github.com/springload/draftail/releases/tag/v0.14.0)
+
 ### Added
 
 * Make line break and horizontal line controls configurable, by passing an object with `icon`, `label`, `description` props.
