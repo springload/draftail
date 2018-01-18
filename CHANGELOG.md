@@ -13,6 +13,7 @@
 
 * Rename `DraftUtils.addLineBreakRemovingSelection` to `DraftUtils.addLineBreak`.
 * Replace `showUndoRedoControls` with separate props `showUndoControl` and `showRedoControl` for which control UI can be overriden.
+* Make all keyboard shortcut labels language agnostic.
 
 ### Fixed
 

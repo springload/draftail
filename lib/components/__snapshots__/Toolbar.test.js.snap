@@ -56,7 +56,7 @@ exports[`Toolbar #enableHorizontalRule control overrides 1`] = `
       name="HORIZONTAL_RULE"
       onClick={[Function]}
       title="Horizontal rule
-- - -"
+- - -"
     />
   </ToolbarGroup>
   <ToolbarGroup />
@@ -79,7 +79,7 @@ exports[`Toolbar #enableHorizontalRule works 1`] = `
       name="HORIZONTAL_RULE"
       onClick={[Function]}
       title="Horizontal line
-- - -"
+- - -"
     />
   </ToolbarGroup>
   <ToolbarGroup />
@@ -102,7 +102,7 @@ exports[`Toolbar #enableLineBreak control overrides 1`] = `
       name="BR"
       onClick={[Function]}
       title="Soft line break
-Shift+Enter"
+⇧ + ↵"
     />
   </ToolbarGroup>
   <ToolbarGroup />
@@ -125,7 +125,7 @@ exports[`Toolbar #enableLineBreak works 1`] = `
       name="BR"
       onClick={[Function]}
       title="Line break
-Shift+Enter"
+⇧ + ↵"
     />
   </ToolbarGroup>
   <ToolbarGroup />
@@ -232,7 +232,7 @@ exports[`Toolbar #showRedoControl control overrides 1`] = `
       name="redo"
       onClick={[Function]}
       title="Redo last change
-Ctrl+Shift+Z"
+Ctrl + ⇧ + Z"
     />
   </ToolbarGroup>
 </div>
@@ -255,7 +255,7 @@ exports[`Toolbar #showRedoControl works 1`] = `
       name="redo"
       onClick={[Function]}
       title="Redo
-Ctrl+Shift+Z"
+Ctrl + ⇧ + Z"
     />
   </ToolbarGroup>
 </div>
@@ -278,7 +278,7 @@ exports[`Toolbar #showUndoControl control overrides 1`] = `
       name="undo"
       onClick={[Function]}
       title="Undo last change
-Ctrl+Z"
+Ctrl + Z"
     />
   </ToolbarGroup>
 </div>
@@ -301,7 +301,7 @@ exports[`Toolbar #showUndoControl works 1`] = `
       name="undo"
       onClick={[Function]}
       title="Undo
-Ctrl+Z"
+Ctrl + Z"
     />
   </ToolbarGroup>
 </div>
