@@ -4,6 +4,14 @@
 
 ## Unreleased
 
+### Changed
+
+* Rename `DraftUtils.addLineBreakRemovingSelection` to `DraftUtils.addLineBreak`.
+
+### Fixed
+
+* Fix `DraftUtils.addLineBreak` adding line breaks in the wrong place when selection is collapsed.
+
 ## [[v0.13.0]](https://github.com/springload/draftail/releases/tag/v0.13.0)
 
 ### Added
