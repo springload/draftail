@@ -6,4 +6,8 @@
         border-left: 1px solid $draftail-editor-chrome-accent;
         padding-left: $controls-spacing / 2;
     }
+
+    .#{$DRAFTAIL}Editor--readonly & {
+        opacity: $draftail-editor-readonly-opacity;
+    }
 }

@@ -7,17 +7,22 @@
         display: none;
     }
 
-    &--readonly .DraftEditor-editorContainer {
-        &:before {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            z-index: $draftail-overlay-z-index;
-            background-color: rgba(255, 255, 255, 0.8);
+    &--readonly {
+        pointer-events: none;
+
+        .DraftEditor-editorContainer {
+            opacity: $draftail-editor-readonly-opacity;
+
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                z-index: $draftail-overlay-z-index;
+            }
         }
     }
 

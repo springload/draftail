@@ -12,6 +12,7 @@
 
 * Make rich text styles specific to Draftail.
 * Update to `draftjs-filters@0.5.0` to improve filtering on [undefined attributes](https://github.com/thibaudcolas/draftjs-filters/commit/f836563).
+* Update editor read-only styles to integrate better with any background color.
 
 ### Fixed
 

@@ -10,10 +10,6 @@
 
     z-index: $draftail-toolbar-z-index;
 
-    .#{$DRAFTAIL}Editor--readonly & > * {
-        @include disabled;
-    }
-
     .#{$DRAFTAIL}Editor--focus & {
         position: sticky;
         top: 0;

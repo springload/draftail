@@ -16,6 +16,7 @@ $color-light-grey: #ddd;
 
 $draftail-editor-text: $color-grey !default;
 $draftail-editor-background: $color-white !default;
+$draftail-editor-readonly-opacity: 0.5 !default;
 $draftail-editor-chrome: $color-light-grey !default;
 $draftail-editor-chrome-text: $color-grey !default;
 $draftail-editor-chrome-active: $color-black !default;
@@ -45,12 +46,6 @@ $draftail-tooltip-z-index: $draftail-editor-z-index + 1 !default;
 $draftail-overlay-z-index: $draftail-tooltip-z-index + 1 !default;
 $draftail-toolbar-z-index: $draftail-overlay-z-index + 1 !default;
 $draftail-toolbar-tooltip-z-index: $draftail-toolbar-z-index + 1 !default;
-
-@mixin disabled {
-    opacity: 0.5;
-    pointer-events: none;
-    cursor: not-allowed;
-}
 
 @mixin font-smoothing {
     -webkit-font-smoothing: antialiased;
