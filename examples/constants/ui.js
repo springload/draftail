@@ -76,7 +76,7 @@ export const ENTITY_CONTROL = {
         block: ImageBlock,
         attributes: ['src', 'alt'],
         whitelist: {
-            src: '^http',
+            src: '^(?!(data:|file:))',
         },
     },
     EMBED: {
