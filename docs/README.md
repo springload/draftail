@@ -61,20 +61,6 @@ We support keyboard shortcuts inspired by the ones used in [Google Docs](https:/
 * Blocks starting with "- ", "\* ", "1. " are automatically converted to list items.
 * Pasting content with block nesting above the configured maxium should reduce the depth up to the maximum.
 
-#### Cut-copy-pasting test plan
-
-Use the [Draft.js Cut/Copy/Paste testing plan](https://github.com/facebook/draft-js/wiki/Manual-Testing#cutcopypaste). We target specific external sources, and have ready-made test documents available to test them:
-
-##### External sources
-
-Here are external sources we want to pay special attention to, and for which we have ready-made test documents with diverse rich content.
-
-* [ ] [Microsoft Word](https://products.office.com/en/word): [Test document](https://drive.google.com/open?id=13JGWTFIFk5gjD0g3sEcZJhBKKXaq9SEC)
-* [ ] [Microsoft Word Online](https://office.live.com/start/Word.aspx): [Test document](https://1drv.ms/w/s!AuGin45FpiF5hjzm9QdWHYGqPrqm)
-* [ ] [Google Docs](https://docs.google.com/): [Test document](https://docs.google.com/document/d/1YjqkIMC3q4jAzy__-S4fb6mC_w9EssmA6aZbGYWFv80/edit)
-* [ ] [Apple Pages](https://www.apple.com/lae/pages/): [Test document](https://drive.google.com/open?id=12jCB-l6MOYsNjN-NWXNsen8ThGupX_g4)
-* [ ] [Dropbox Paper](https://www.dropbox.com/paper): [Test document](https://paper.dropbox.com/doc/Draft.js-paste-test-document-njfdkwmkeGQ9KICjVwLmU)
-
 ## Upgrade considerations
 
 ### Draft.js
