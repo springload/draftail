@@ -4,6 +4,14 @@
 
 ## Unreleased
 
+### Changed
+
+* Replace nested-list-items Sass helper with new auto-generated CSS in JS.
+
+### Removed
+
+* Remove support for `maxListNesting` greater than 10.
+
 ## [[v0.14.0]](https://github.com/springload/draftail/releases/tag/v0.14.0)
 
 ### Added

@@ -1,5 +1,275 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DraftailEditor #maxListNesting 1`] = `
+<div
+  className="Draftail-Editor"
+>
+  <Toolbar
+    addBR={[Function]}
+    addHR={[Function]}
+    blockTypes={Array []}
+    editorState={
+      EditorState {
+        "_immutable": Immutable.Record {
+          "allowUndo": true,
+          "currentContent": Immutable.Record {
+            "entityMap": Object {
+              "__add": [Function],
+              "__create": [Function],
+              "__get": [Function],
+              "__getLastCreatedEntityKey": [Function],
+              "__mergeData": [Function],
+              "__replaceData": [Function],
+              "add": [Function],
+              "create": [Function],
+              "get": [Function],
+              "getLastCreatedEntityKey": [Function],
+              "mergeData": [Function],
+              "replaceData": [Function],
+            },
+            "blockMap": Immutable.OrderedMap {
+              "a": Immutable.Record {
+                "key": "a",
+                "type": "unstyled",
+                "text": "",
+                "characterList": Immutable.List [],
+                "depth": 0,
+                "data": Immutable.Map {},
+              },
+            },
+            "selectionBefore": Immutable.Record {
+              "anchorKey": "a",
+              "anchorOffset": 0,
+              "focusKey": "a",
+              "focusOffset": 0,
+              "isBackward": false,
+              "hasFocus": false,
+            },
+            "selectionAfter": Immutable.Record {
+              "anchorKey": "a",
+              "anchorOffset": 0,
+              "focusKey": "a",
+              "focusOffset": 0,
+              "isBackward": false,
+              "hasFocus": false,
+            },
+          },
+          "decorator": CompositeDraftDecorator {
+            "_decorators": Array [],
+          },
+          "directionMap": Immutable.OrderedMap {
+            "a": "LTR",
+          },
+          "forceSelection": false,
+          "inCompositionMode": false,
+          "inlineStyleOverride": null,
+          "lastChangeType": null,
+          "nativelyRenderedContent": null,
+          "redoStack": Immutable.Stack [],
+          "selection": Immutable.Record {
+            "anchorKey": "a",
+            "anchorOffset": 0,
+            "focusKey": "a",
+            "focusOffset": 0,
+            "isBackward": false,
+            "hasFocus": false,
+          },
+          "treeMap": Immutable.OrderedMap {
+            "a": Immutable.List [
+              Immutable.Record {
+                "start": 0,
+                "end": 0,
+                "decoratorKey": null,
+                "leaves": Immutable.List [
+                  Immutable.Record {
+                    "start": 0,
+                    "end": 0,
+                  },
+                ],
+              },
+            ],
+          },
+          "undoStack": Immutable.Stack [],
+        },
+      }
+    }
+    enableHorizontalRule={false}
+    enableLineBreak={false}
+    entityTypes={Array []}
+    inlineStyles={Array []}
+    onRequestSource={[Function]}
+    onUndoRedo={[Function]}
+    readOnly={false}
+    showRedoControl={false}
+    showUndoControl={false}
+    toggleBlockType={[Function]}
+    toggleInlineStyle={[Function]}
+  />
+  <DraftEditor
+    autoCapitalize={null}
+    autoComplete={null}
+    autoCorrect={null}
+    blockRenderMap={
+      Immutable.Map {
+        "ordered-list-item": Object {
+          "element": "li",
+          "wrapper": <ol
+            className="public-DraftStyleDefault-ol"
+          />,
+        },
+        "header-six": Object {
+          "element": "h6",
+        },
+        "header-four": Object {
+          "element": "h4",
+        },
+        "header-one": Object {
+          "element": "h1",
+        },
+        "unordered-list-item": Object {
+          "element": "li",
+          "wrapper": <ul
+            className="public-DraftStyleDefault-ul"
+          />,
+        },
+        "atomic": Object {
+          "element": "figure",
+        },
+        "unstyled": Object {
+          "aliasedElements": Array [
+            "p",
+          ],
+          "element": "div",
+        },
+        "header-two": Object {
+          "element": "h2",
+        },
+        "code-block": Object {
+          "element": "pre",
+          "wrapper": <pre
+            className="public-DraftStyleDefault-pre"
+          />,
+        },
+        "blockquote": Object {
+          "element": "blockquote",
+        },
+        "header-five": Object {
+          "element": "h5",
+        },
+        "header-three": Object {
+          "element": "h3",
+        },
+      }
+    }
+    blockRendererFn={[Function]}
+    blockStyleFn={[Function]}
+    customStyleMap={Object {}}
+    editorState={
+      EditorState {
+        "_immutable": Immutable.Record {
+          "allowUndo": true,
+          "currentContent": Immutable.Record {
+            "entityMap": Object {
+              "__add": [Function],
+              "__create": [Function],
+              "__get": [Function],
+              "__getLastCreatedEntityKey": [Function],
+              "__mergeData": [Function],
+              "__replaceData": [Function],
+              "add": [Function],
+              "create": [Function],
+              "get": [Function],
+              "getLastCreatedEntityKey": [Function],
+              "mergeData": [Function],
+              "replaceData": [Function],
+            },
+            "blockMap": Immutable.OrderedMap {
+              "a": Immutable.Record {
+                "key": "a",
+                "type": "unstyled",
+                "text": "",
+                "characterList": Immutable.List [],
+                "depth": 0,
+                "data": Immutable.Map {},
+              },
+            },
+            "selectionBefore": Immutable.Record {
+              "anchorKey": "a",
+              "anchorOffset": 0,
+              "focusKey": "a",
+              "focusOffset": 0,
+              "isBackward": false,
+              "hasFocus": false,
+            },
+            "selectionAfter": Immutable.Record {
+              "anchorKey": "a",
+              "anchorOffset": 0,
+              "focusKey": "a",
+              "focusOffset": 0,
+              "isBackward": false,
+              "hasFocus": false,
+            },
+          },
+          "decorator": CompositeDraftDecorator {
+            "_decorators": Array [],
+          },
+          "directionMap": Immutable.OrderedMap {
+            "a": "LTR",
+          },
+          "forceSelection": false,
+          "inCompositionMode": false,
+          "inlineStyleOverride": null,
+          "lastChangeType": null,
+          "nativelyRenderedContent": null,
+          "redoStack": Immutable.Stack [],
+          "selection": Immutable.Record {
+            "anchorKey": "a",
+            "anchorOffset": 0,
+            "focusKey": "a",
+            "focusOffset": 0,
+            "isBackward": false,
+            "hasFocus": false,
+          },
+          "treeMap": Immutable.OrderedMap {
+            "a": Immutable.List [
+              Immutable.Record {
+                "start": 0,
+                "end": 0,
+                "decoratorKey": null,
+                "leaves": Immutable.List [
+                  Immutable.Record {
+                    "start": 0,
+                    "end": 0,
+                  },
+                ],
+              },
+            ],
+          },
+          "undoStack": Immutable.Stack [],
+        },
+      }
+    }
+    handleBeforeInput={[Function]}
+    handleKeyCommand={[Function]}
+    handleReturn={[Function]}
+    keyBindingFn={[Function]}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onTab={[Function]}
+    placeholder={null}
+    readOnly={false}
+    spellCheck={false}
+    stripPastedStyles={true}
+    textAlignment={null}
+    textDirectionality={null}
+  />
+  <style>
+    .t { fill: red; }
+  </style>
+</div>
+`;
+
 exports[`DraftailEditor empty 1`] = `
 <div
   className="Draftail-Editor"

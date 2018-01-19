@@ -137,11 +137,9 @@ inlineStyles: [],
 entityTypes: [],
 // List of active decorators.
 decorators: [],
-// Max level of nesting for unordered and ordered lists. 0 = no nesting.
-// Note: Draft.js only provides styles for list nesting up to a depth of 4.
-// Please refer to the documentation to add styles for further nesting levels.
+// Max level of nesting for list items. 0 = no nesting. Maximum = 10.
 maxListNesting: 1,
-// Frequency at which the save callback is triggered (ms).
+// Frequency at which to call the save callback (ms).
 stateSaveInterval: 250,
 ```
 
@@ -520,22 +518,7 @@ Draftail also has a `draftail-richtext-styles` mixin you can use to make sure st
 }
 ```
 
-Without Sass, refer to class names starting with `Draftail-` or `Draft` / `public-Draft` (Draft.js).
-
-### List nesting levels
-
-Draft.js only provides [default styles](https://github.com/facebook/draft-js/blob/3689a93c85786b6a3fb8a3434e9c700661a8ba02/src/component/utils/DraftStyleDefault.css#L46) for list nesting up to five levels (depth 0 to 4). If you want to allow more nesting, you will need to add the list styles.
-
-Draftail provides a helper Sass mixin which adds OL counters and indentation, and can be used like:
-
-```scss
-@import 'draftail/lib/api/nested-list-item';
-
-// Add nesting support up to 7 levels.
-@for $depth from 5 through 6 {
-    @include draftail-nested-list-item($depth);
-}
-```
+Without Sass, refer to class names starting with `Draftail-` or `Draft` / `public-Draft` (Draft.js)..
 
 ## Other APIs
 
