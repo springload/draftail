@@ -4,7 +4,7 @@
 
 [![Screenshot of Draftail](https://springload.github.io/draftail/static/draftail-ui-screenshot.png)](https://springload.github.io/draftail/)
 
-It’s developed alongside our Python [Draft.js exporter](https://github.com/springload/draftjs_exporter), for integration into [Wagtail](https://wagtail.io/). Check out [WagtailDraftail](https://github.com/springload/wagtaildraftail), and the [editor’s online demo](https://springload.github.io/draftail/)!
+It’s developed alongside our Python [Draft.js exporter](https://github.com/springload/draftjs_exporter), for integration into [Wagtail](https://wagtail.io/). Check out the [online demo](https://springload.github.io/draftail/)!
 
 ## Features
 
