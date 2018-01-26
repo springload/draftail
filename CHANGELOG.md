@@ -4,9 +4,12 @@
 
 ## Unreleased
 
+## [[v0.15.0]](https://github.com/springload/draftail/releases/tag/v0.15.0)
+
 ### Changed
 
 * Replace nested-list-items Sass helper with new auto-generated CSS in JS.
+* Update to `draftjs-filters@0.6.1` to fix entities not being cloned on paste.
 
 ### Removed
 
