@@ -21,7 +21,7 @@ export default {
             mutability: 'MUTABLE',
             data: {
                 url:
-                    'https://github.com/springload/draftail/tree/master/docs#keyboard-shortcuts',
+                    'https://github.com/springload/draftail/tree/master/docs/user-guide/README.md',
             },
         },
         '6': {

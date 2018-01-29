@@ -10,11 +10,11 @@ It’s developed alongside our Python [Draft.js exporter](https://github.com/spr
 
 > This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html), and measures performance and [code coverage](https://coveralls.io/github/springload/draftail).
 
-Draftail aims for a mouse-free, keyboard-centric experience. Most formatting can be done by using common keyboard shortcuts, inspired by [Google Docs](https://support.google.com/docs/answer/179738) and [Markdown](https://en.wikipedia.org/wiki/Markdown).
+Draftail aims for a mouse-free, keyboard-centric experience. Most formatting can be done by using common keyboard shortcuts, inspired by Google Docs and [Markdown](https://en.wikipedia.org/wiki/Markdown).
 
 Here are important features worth highlighting:
 
-* Support for [keyboard shortcuts](https://github.com/springload/draftail/tree/master/docs#keyboard-shortcuts). Lots of them!
+* Support for [keyboard shortcuts](/docs/user-guide/README.md). Lots of them!
 * Paste from Word. Or any other editor.
 * Autolists – start a line with `-` , `*` , `1.` to create a list item.
 * Shortcuts for heading levels `##`, code blocks ` ``` `, and more.
@@ -24,6 +24,8 @@ Here are important features worth highlighting:
 * API to build custom controls for links, images, and more.
 
 ## Using Draftail
+
+> :warning: Have a look at the [user guide](/docs/user-guide/README.md).
 
 Draftail is meant to be used in scenarios where not all formatting should be available, and where custom formatting can be necessary. Available formats, built-in and custom, can be specificed declaratively for each editor instance.
 
