@@ -31,8 +31,9 @@ Draftail is meant to be used in scenarios where not all formatting should be ava
 
 * Block types: H1, H2, H3, H4, H5, H6, Blockquote, Code, UL, OL, P
 * Inline styles: Bold, Italic, Underline, Code, Strikethrough, Mark, Keyboard, Superscript, Subscript
-* Entities (things with data): Images, Embeds, Links, Documents
 * And HR, BR
+
+Draftail does not come with built-in controls for things like images and links, so you can build your own exactly as you wish. This is particularly useful when integrating with content sources, like a CMS, an API, or other tools with a fixed schema.
 
 ### Custom formats
 
