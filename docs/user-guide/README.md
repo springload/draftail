@@ -53,7 +53,35 @@ If you forget the shortcut for a given control, it’ll be in the tooltip unless
 
 Those shortcuts are extra convenient on mobile devices, where it can be annoying to move back and forth between the keyboard and the buttons. You can find the [full list of supported shortcuts](#keyboard-shortcuts) below, but bear in mind that they won’t be active unless the editor has the corresponding formatting enabled.
 
-### Keyboard shortcuts
+### Copy-pasting content in the editor
+
+When pasting rich text into a Draftail editor, the editor will remove all formatting that’s not allowed. This depends on how the editor is set up of course – it can remove all formatting:
+
+![Editor screenshot with a demo of copy-pasting from Word, removing all formatting](/docs/user-guide/copy-paste-filter.gif)
+
+Or it can keep preserve what's enabled in the editor (bold and italic here).
+
+![Editor screenshot with a demo of copy-pasting from Word, preserving italics and bold](/docs/user-guide/copy-paste-preserve.gif)
+
+The editor may not preserve all formatting as-is, but it will always filter out unallowed formats. Pasting works well from Google Docs, Dropbox Paper, Word, and more.
+
+## Links, images, and more
+
+> :warning: Links and images aren't default features of Draftail – their behavior may differ a lot depending on how the editor is configured.
+
+It's also possible to add links within text – and manage the links with their own tooltips:
+
+![Editor screenshot with a demo of rich text links](/docs/user-guide/rich-text-link.gif)
+
+Some editors may also contain images if configured. Images always take up a whole block, with empty space above and below to make it easier to select the image.
+
+![Editor screenshot with a demo of an image block](/docs/user-guide/rich-text-image.gif)
+
+## Feedback
+
+See anything you like in here? Anything missing? We welcome all support, whether on bug reports, feature requests, code, design, reviews, tests, documentation, and more. Please have a look at our issue tracker [https://github.com/springload/draftail/issues], and consider commenting or suggesting improvements.
+
+## Keyboard shortcuts
 
 | Function                                          | Shortcut              | Shortcut (macOS)      | Alternative |
 | ------------------------------------------------- | --------------------- | --------------------- | ----------- |
