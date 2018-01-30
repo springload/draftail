@@ -100,49 +100,49 @@ Appréciez-vous ce guide ? Manque-t’il quelque chose ? Nous apprécions tout s
 
 ## Raccourcis clavier
 
-| Fonction                                          | Raccourci             | Raccourci (macOS)     | Alternative |
-| ------------------------------------------------- | --------------------- | --------------------- | ----------- |
-| **Common actions**                                |                       |                       |             |
-| Copy                                              | `Ctrl + C`            | `⌘ + C`               |             |
-| Cut                                               | `Ctrl + X`            | `⌘ + X`               |             |
-| Paste                                             | `Ctrl + V`            | `⌘ + V`               |             |
-| Paste without formatting                          | `Ctrl + ⇧ + V`        | `⌘ + ⇧ + V`           |             |
-| Undo                                              | `Ctrl + Z`            | `⌘ + Z`               |             |
-| Redo                                              | `Ctrl + ⇧ + Z`        | `⌘ + ⇧ + Z`           |             |
-| Insert or edit link                               | `Ctrl + K`            | `⌘ + K`               |             |
-| Open link                                         | `Alt + ↵`             | `⌥ + ↵`               |             |
-| Insert horizontal rule                            |                       |                       | `---`       |
-| **Text formatting (if enabled)**                  |                       |                       |             |
-| Bold                                              | `Ctrl + B`            | `⌘ + B`               |             |
-| Italic                                            | `Ctrl + I`            | `⌘ + I`               |             |
-| Underline                                         | `Ctrl + U`            | `⌘ + U`               |             |
-| Monospace (code)                                  | `Ctrl + J`            | `⌘ + J`               |             |
-| Strikethrough                                     | `Ctrl + ⇧ + X`        | `⌘ + ⇧ + X`           |             |
-| Superscript                                       | `Ctrl + .`            | `⌘ + .`               |             |
-| Subscript                                         | `Ctrl + ,`            | `⌘ + ,`               |             |
-| **Paragraph formatting (if enabled)**             |                       |                       |             |
-| Increase list indentation                         | `↹`                   | `↹`                   |             |
-| Decrease list indentation                         | `⇧ + ↹`               | `⇧ + ↹`               |             |
-| Apply normal text style                           | `Ctrl + Alt + 0`      | `⌘ + ⌥ + 0`           | `⌫`         |
-| Apply heading style [1-6]                         | `Ctrl + Alt + [1-6]`  | `⌘ + ⌥ + [1-6]`       | `##`        |
-| Numbered list                                     | `Ctrl + ⇧ + 7`        | `⌘ + ⇧ + 7`           | `1.`        |
-| Bulleted list                                     | `Ctrl + ⇧ + 8`        | `⌘ + ⇧ + 8`           | `-`         |
-| Blockquote                                        |                       |                       | `>`         |
-| Code block                                        |                       |                       | ` ``` `     |
-| Go to new line                                    | `↵`                   | `↵`                   |             |
-| Insert soft new line                              | `⇧ + ↵`               | `⇧ + ↵`               |             |
-| Insert soft new line                              | `Ctrl + ↵`            | `⌘ + ↵`               |             |
-| **Text selection with keyboard**                  |                       |                       |             |
-| Select all                                        | `Ctrl + A`            | `⌘ + A`               |             |
-| Extend selection one character                    | `⇧ + ← or →`          | `⇧ + ← or →`          |             |
-| Extend selection one line                         | `⇧ + ↑ or ↓`          | `⇧ + ↑ or ↓`          |             |
-| Extend selection one word                         | `Alt + ⇧ + ← or →`    | `⌥ + ⇧ + ← or →`      |             |
-| Extend selection to the beginning of the line     | `Ctrl + ⇧ + ←`        | `⌘ + ⇧ + ←`           |             |
-| Extend selection to the end of the line           | `Ctrl + ⇧ + →`        | `⌘ + ⇧ + →`           |             |
-| Extend selection to the beginning of the document | `⇧ + ⇱`               | `⇧ + ⇱`               |             |
-| Extend selection to the end of the document       | `⇧ + ⇲`               | `⇧ + ⇲`               |             |
-| **Text selection with mouse**                     |                       |                       |             |
-| Select word                                       | `Double-click`        | `Double-click`        |             |
-| Extend selection one word at a time               | `Double-click + Drag` | `Double-click + Drag` |             |
-| Select paragraph                                  | `Triple-click`        | `Triple-click`        |             |
-| Extend selection one paragraph at a time          | `Triple-click + Drag` | `Triple-click + Drag` |             |
+| Fonction                                        | Raccourci             | Raccourci (macOS)     | Alternative |
+| ----------------------------------------------- | --------------------- | --------------------- | ----------- |
+| **Actions de base**                             |                       |                       |             |
+| Copier                                          | `Ctrl + C`            | `⌘ + C`               |             |
+| Couper                                          | `Ctrl + X`            | `⌘ + X`               |             |
+| Coller                                          | `Ctrl + V`            | `⌘ + V`               |             |
+| Coller sans formattage                          | `Ctrl + ⇧ + V`        | `⌘ + ⇧ + V`           |             |
+| Défaire                                         | `Ctrl + Z`            | `⌘ + Z`               |             |
+| Refaire                                         | `Ctrl + ⇧ + Z`        | `⌘ + ⇧ + Z`           |             |
+| Insérer ou éditer un lien                       | `Ctrl + K`            | `⌘ + K`               |             |
+| Ouvrir un lien                                  | `Alt + ↵`             | `⌥ + ↵`               |             |
+| Insérer une règle horizontale                   |                       |                       | `---`       |
+| **Styles de texte (si actif)**                  |                       |                       |             |
+| Gras                                            | `Ctrl + B`            | `⌘ + B`               |             |
+| Italique                                        | `Ctrl + I`            | `⌘ + I`               |             |
+| Sousligné                                       | `Ctrl + U`            | `⌘ + U`               |             |
+| Chasse fixe (code)                              | `Ctrl + J`            | `⌘ + J`               |             |
+| Barré                                           | `Ctrl + ⇧ + X`        | `⌘ + ⇧ + X`           |             |
+| Exposant                                        | `Ctrl + .`            | `⌘ + .`               |             |
+| Souscrit                                        | `Ctrl + ,`            | `⌘ + ,`               |             |
+| **Formattage de bloc (si actif)**               |                       |                       |             |
+| Augmenter l’indentation de liste                | `↹`                   | `↹`                   |             |
+| Diminuer l’indentation de liste                 | `⇧ + ↹`               | `⇧ + ↹`               |             |
+| Appliquer le style de paragraphe normal         | `Ctrl + Alt + 0`      | `⌘ + ⌥ + 0`           | `⌫`         |
+| Appliquer un niveau de titre [1-6]              | `Ctrl + Alt + [1-6]`  | `⌘ + ⌥ + [1-6]`       | `##`        |
+| Liste numérotée                                 | `Ctrl + ⇧ + 7`        | `⌘ + ⇧ + 7`           | `1.`        |
+| Liste à puce                                    | `Ctrl + ⇧ + 8`        | `⌘ + ⇧ + 8`           | `-`         |
+| Citation                                        |                       |                       | `>`         |
+| Bloc de code                                    |                       |                       | ` ``` `     |
+| Aller à la ligne                                | `↵`                   | `↵`                   |             |
+| Insérer un saut de ligne                        | `⇧ + ↵`               | `⇧ + ↵`               |             |
+| Insérer un saut de ligne                        | `Ctrl + ↵`            | `⌘ + ↵`               |             |
+| **Sélection du texte avec le clavier**          |                       |                       |             |
+| Sélectionner tout                               | `Ctrl + A`            | `⌘ + A`               |             |
+| Étendre la sélection d’un caractère             | `⇧ + ← or →`          | `⇧ + ← or →`          |             |
+| Étendre la sélection d’une ligne                | `⇧ + ↑ or ↓`          | `⇧ + ↑ or ↓`          |             |
+| Étendre la sélection d’un mot                   | `Alt + ⇧ + ← or →`    | `⌥ + ⇧ + ← or →`      |             |
+| Étendre la sélection jusqu’au début de la ligne | `Ctrl + ⇧ + ←`        | `⌘ + ⇧ + ←`           |             |
+| Étendre la sélection jusqu’à la fin de la ligne | `Ctrl + ⇧ + →`        | `⌘ + ⇧ + →`           |             |
+| Étendre la sélection jusqu’au début du document | `⇧ + ⇱`               | `⇧ + ⇱`               |             |
+| Étendre la sélection jusqu’à la fin du document | `⇧ + ⇲`               | `⇧ + ⇲`               |             |
+| **Sélection du texte à la souris**              |                       |                       |             |
+| Sélectionner un mot                             | `Double-click`        | `Double-click`        |             |
+| Étendre la sélection un mot à la fois           | `Double-click + Drag` | `Double-click + Drag` |             |
+| Sélectionner un paragraphe                      | `Triple-click`        | `Triple-click`        |             |
+| Étendre la sélection un paragraphe à la fois    | `Triple-click + Drag` | `Triple-click + Drag` |             |
