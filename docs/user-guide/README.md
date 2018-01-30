@@ -1,16 +1,16 @@
 # Draftail user guide
 
-Draftail is a rich text editor built for websites of all shapes and sizes. It aims for a mouse-free, keyboard-centric experience. Most formatting can be done by using common keyboard shortcuts, inspired by [Google Docs](https://support.google.com/docs/answer/179738) and [Markdown](https://en.wikipedia.org/wiki/Markdown).
+Draftail is a rich text editor built for sites and apps of all shapes and sizes. It aims for a mouse-free, keyboard-centric experience. Most formatting can be done by using common keyboard shortcuts, inspired by [Google Docs](https://support.google.com/docs/answer/179738) and [Markdown](https://en.wikipedia.org/wiki/Markdown).
 
 ## Online demo
 
-[![Screenshot of Draftail](https://springload.github.io/draftail/static/draftail-ui-screenshot.png)](https://springload.github.io/draftail/)
-
-The Draftail website has a [nice demo](https://springload.github.io/draftail/) with many features. Go have a look and try things out over there!
+| [![Screenshot of Draftail](https://springload.github.io/draftail/static/draftail-ui-screenshot.png)](https://springload.github.io/draftail/)       |
+| -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The Draftail website has a nice demo with most built-in features. [Go have a look and try out the editor!](https://springload.github.io/draftail/) |
 
 ## Browser and device support
 
-Draftail supports all modern **desktop** browsers. There are [known issues](https://github.com/springload/draftail/issues/138) in Internet Explorer - your mileage may vary.
+Draftail supports all modern **desktop** browsers.
 
 **Supported browsers:**
 
@@ -21,6 +21,8 @@ Draftail supports all modern **desktop** browsers. There are [known issues](http
 | MS Edge | Windows        | latest  |
 | Safari  | macOS          | latest  |
 
+If your browser is not on this list, your mileage may vary. Have a look at the [list of known issues](https://github.com/springload/draftail/issues/138), or use one of the supported browsers.
+
 For mobile devices, Draftail is tested on the latest versions of iOS and Android. Support is limited - there are many known issues there as well, especially with custom keyboards like [Google's GBoard keyboard](https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin&hl=en) or [SwiftKey](https://swiftkey.com/).
 
 ## The editor
@@ -29,13 +31,15 @@ Draftail is a simple editor. The toolbar contains all of the formatting options 
 
 ![Editor screenshot with toolbar](/docs/user-guide/editor.png)
 
-### Toolbar controls and keyboard shortcuts
-
-Each control in the toolbar comes with its own tooltip, so you can see exactly what the button is for, as well as the related keyboard shortcuts. Here, the "H3" button is for _Heading level 3_.
+Each control in the toolbar comes with its own tooltip, so you can see exactly what the button is for, as well as the related keyboard shortcuts. Here, the "H3" button is for **Heading level 3**.
 
 ![Editor screenshot showing the toolbar’s tooltips to view keyboard shortcuts](/docs/user-guide/toolbar-tooltip.png)
 
-That H3 control, heading level 3, uses the `###` [Markdown](https://en.wikipedia.org/wiki/Markdown)-style shortcut. You can activate H3 formatting by typing `###` followed by a space at the start of a line:
+---
+
+### Using keyboard shortcuts
+
+That H3 control uses the `###` [Markdown](https://en.wikipedia.org/wiki/Markdown)-style shortcut. You can activate H3 formatting by typing `###` followed by a space at the start of a line:
 
 ![Editor screenshot showing basic keyboard shortcuts for styles and blocks](/docs/user-guide/keyboard-shortcuts.gif)
 
@@ -53,6 +57,8 @@ If you forget the shortcut for a given control, it’ll be in the tooltip unless
 
 Those shortcuts are extra convenient on mobile devices, where it can be annoying to move back and forth between the keyboard and the buttons. You can find the [full list of supported shortcuts](#keyboard-shortcuts) below, but bear in mind that they won’t be active unless the editor has the corresponding formatting enabled.
 
+---
+
 ### Copy-pasting content in the editor
 
 When pasting rich text into a Draftail editor, the editor will remove all formatting that’s not allowed. This depends on how the editor is set up of course – it can remove all formatting:
@@ -64,6 +70,8 @@ Or it can keep preserve what's enabled in the editor (bold and italic here).
 ![Editor screenshot with a demo of copy-pasting from Word, preserving italics and bold](/docs/user-guide/copy-paste-preserve.gif)
 
 The editor may not preserve all formatting as-is, but it will always filter out unallowed formats. Pasting works well from Google Docs, Dropbox Paper, Word, and more.
+
+---
 
 ## Links, images, and more
 
@@ -77,9 +85,13 @@ Some editors may also contain images if configured. Images always take up a whol
 
 ![Editor screenshot with a demo of an image block](/docs/user-guide/rich-text-image.gif)
 
+---
+
 ## Feedback
 
 See anything you like in here? Anything missing? We welcome all support, whether on bug reports, feature requests, code, design, reviews, tests, documentation, and more. Please have a look at our issue tracker [https://github.com/springload/draftail/issues], and consider commenting or suggesting improvements.
+
+---
 
 ## Keyboard shortcuts
 
