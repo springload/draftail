@@ -243,32 +243,13 @@ Here are quick questions to help you determine which formatting to use, dependin
 
 | In order to...                        | Use           |
 | ------------------------------------- | ------------- |
+| Format a portion of a line            | Inline styles |
 | Indicate the structure of the content | Blocks        |
 | Enter additional data/metadata        | Entities      |
-| Format a portion of a line            | Inline styles |
-
-#### Custom blocks
-
-Simple blocks are very easy to create. Add a new block type to `blockTypes`, specifying which `element` and `className` to display the block as.
-
-Here is an example, creating a "Tiny text" block:
-
-```jsx
-blockTypes={[
-    {
-        type: 'tiny-text',
-        label: 'Tiny',
-        element: 'div',
-        className: 'u-tinytext',
-    },
-]}
-```
-
-More advanced blocks, requiring custom React components, aren't supported at the moment. If you need this, feel free to [create an issue](https://github.com/springload/draftail/issues/new).
 
 #### Custom inline styles
 
-Custom inline styles only require a `style` prop, defining which CSS properties to apply when the format is active.
+Custom inline styles only require a `style` prop, defining which [CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference) to apply when the format is active.
 
 Here is a basic example:
 
@@ -298,6 +279,25 @@ inlineStyles={[
     },
 ]}
 ```
+
+#### Custom blocks
+
+Simple blocks are very easy to create. Add a new block type to `blockTypes`, specifying which `element` and `className` to display the block as.
+
+Here is an example, creating a "Tiny text" block:
+
+```jsx
+blockTypes={[
+    {
+        type: 'tiny-text',
+        label: 'Tiny',
+        element: 'div',
+        className: 'u-tinytext',
+    },
+]}
+```
+
+More advanced blocks, requiring custom React components, aren't supported at the moment. If you need this, feel free to [create an issue](https://github.com/springload/draftail/issues/new).
 
 #### Custom entity types
 
