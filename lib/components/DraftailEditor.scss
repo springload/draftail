@@ -52,7 +52,7 @@
 // Give each block some spacing so we don't end up with empty paragraphs
 // in code when user double enters because they think there are no paragraphs.
 // Also add the same styles to the placeholder for alignment.
-.#{$DRAFTAIL}unstyled,
+.#{$DRAFTAIL}block--unstyled,
 .#{$DRAFTAIL}Editor .public-DraftEditorPlaceholder-inner {
     margin: $draftail-block-spacing 0;
 }

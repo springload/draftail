@@ -20,7 +20,6 @@ const TINY_TEXT_BLOCK = {
     label: 'Tiny',
     description: 'Legal print',
     element: 'blockquote',
-    className: 'u-tinytext',
 };
 
 const REDACTED_STYLE = {
