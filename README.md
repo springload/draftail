@@ -571,4 +571,6 @@ If you just want to set up the project on your own computer, the contribution gu
 
 Draftail is made possible by the work of [Springload](https://github.com/springload/), a New Zealand digital agency, and core contributors to the [Wagtail](https://wagtail.io/) CMS. The _beautiful_ demo site is the work of [@thibaudcolas](https://github.com/thibaudcolas).
 
+The demo site’s icons come from [IcoMoon](https://icomoon.io/).
+
 View the full list of [contributors](https://github.com/springload/draftail/graphs/contributors). [MIT](LICENSE) licensed. Website content available as [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
