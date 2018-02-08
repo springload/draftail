@@ -25,7 +25,7 @@ Here are important features worth highlighting:
 
 ## Using Draftail
 
-> :warning: Have a look at the [user guide](/docs/user-guide/README.md).
+> Have a look at the [user guide](/docs/user-guide/README.md).
 
 Draftail is meant to be used in scenarios where not all formatting should be available, and where custom formatting can be necessary. Available formats, built-in and custom, can be specificed declaratively for each editor instance.
 
