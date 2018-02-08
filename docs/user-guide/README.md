@@ -54,19 +54,25 @@ Each control in the toolbar comes with its own tooltip, so you can see exactly w
 
 ### Using keyboard shortcuts
 
+> Have a look at the [full list of keyboard shortcuts](#keyboard-shortcuts).
+
 That H3 control uses the `###` [Markdown](https://en.wikipedia.org/wiki/Markdown)-style shortcut. You can activate H3 formatting by typing `###` followed by a space at the start of a line:
 
-![Editor screenshot showing basic keyboard shortcuts for styles and blocks](/docs/user-guide/keyboard-shortcuts.gif)
+![Editor screenshot showing Markdown shortcuts](/docs/user-guide/markdown-shortcuts.gif)
 
-And of course, normal shortcuts for common controls like bold, undo/redo are available as well. Here is another example shortcut, `-` or `*` for list items:
+And of course, normal shortcuts for common controls like bold, undo/redo are available as well:
+
+![Editor screenshot showing classic shortcuts](/docs/user-guide/classic-shortcuts.gif)
+
+Here is another example shortcut, `-` or `*` for list items:
 
 ![Editor screenshot with shortcuts to toggle list items, and indent/de-indent or stop the list](/docs/user-guide/list-item-shortcuts.gif)
 
-If numbered lists were available in this editor, you could also use `1.`. In the editor below, we’ve also enabled line breaks and horizontal rules, which also have their own buttons and shortcuts:
+If numbered lists were available in this editor, you could use `1.`. In the editor below, we’ve enabled line breaks and horizontal rules, which also have their own buttons and shortcuts:
 
 ![Editor screenshot showing support for line breaks and horizontal rules with their corresponding shortcuts](/docs/user-guide/line-breaks-horizontal-rules.gif)
 
-If you forget the shortcut for a given control, it’ll be in the tooltip unless there is no defined shortcut.
+If you forget the shortcut for a given control, it’s displayed in the tooltip.
 
 ![Editor screenshot with a demo of undo/redo buttons and keyboard shortcuts](/docs/user-guide/undo-redo.gif)
 
@@ -76,11 +82,11 @@ Those shortcuts are extra convenient on touch screens, where it can be hard to m
 
 ### Copy-pasting content in the editor
 
-When pasting content into a Draftail editor, the editor will remove all formatting that’s not allowed. This depends on how the editor is set up of course – it can remove all formatting:
+When pasting content into a Draftail editor, the editor will only keep the formatting that is enabled. This depends on how the editor is set up of course – here are two examples. It can remove all formatting:
 
 ![Editor screenshot with a demo of copy-pasting from Word, removing all formatting](/docs/user-guide/copy-paste-filter.gif)
 
-Or it can keep preserve what’s enabled in the editor (bold and italic here).
+It can preserve what’s enabled in the editor (bold and italic here).
 
 ![Editor screenshot with a demo of copy-pasting from Word, preserving italics and bold](/docs/user-guide/copy-paste-preserve.gif)
 
@@ -96,7 +102,7 @@ It’s also possible to add links within text – and manage the links with thei
 
 ![Editor screenshot with a demo of rich text links](/docs/user-guide/rich-text-link.gif)
 
-Some editors may also contain images if configured. Images always take up a whole block, inserted with empty lines (that can be removed) above and below to make it easier to select the image.
+Some editors may also contain images if configured. They are inserted with empty lines (that can be removed) above and below to make it easier to select the image.
 
 ![Editor screenshot with a demo of an image block](/docs/user-guide/rich-text-image.gif)
 

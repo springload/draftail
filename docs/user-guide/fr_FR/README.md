@@ -53,11 +53,17 @@ Chaque contrôle dans la barre d’outils vient avec sa propre tooltip, pour sav
 
 ### Utiliser les raccourcis clavier
 
+> Prenez un moment pour consulter la [liste complète des raccourcis clavier](#raccourcis-clavier).
+
 Ce contrôle H3 utilise un raccourci similaire au [Markdown](https://en.wikipedia.org/wiki/Markdown) `###`. Vous pouvez activer le style de text H3 en tapant `###` suivi d’un espace au début d’une ligne:
 
-![Capture d’écran de l’éditeur montrant les raccourcis basiques pour formattages dans le text et par bloc](/docs/user-guide/keyboard-shortcuts.gif)
+![Capture d’écran de l’éditeur montrant les raccourcis Markdown](/docs/user-guide/markdown-shortcuts.gif)
 
-Et biensûr, les raccourcis habituels pour des contrôles communs comme gras, undo/redo sont aussi disponibles. Voici un autre exemple de raccourci, `-` ou `*` pour listes à puce:
+Et biensûr, les raccourcis habituels pour des contrôles communs comme gras, undo/redo sont aussi disponibles:
+
+![Capture d’écran de l’éditeur montrant les raccourcis communs](/docs/user-guide/classic-shortcuts.gif)
+
+Voici un autre exemple de raccourci, `-` ou `*` pour listes à puce:
 
 ![Capture d’écran de l’éditeur avec raccourcis pour appliquer les listes à puce, et indenté/dé-indenter ou arrêter la liste](/docs/user-guide/list-item-shortcuts.gif)
 
@@ -65,21 +71,21 @@ Si les listes numérotées étaient disponibles dans cet éditeur, vous pourriez
 
 ![Capture d’écran de l’éditeur montrant le support pour les sauts de lignes et règles horiontales avec les raccourcis correspondants](/docs/user-guide/line-breaks-horizontal-rules.gif)
 
-Si vous oubliez le raccourci pour un contrôle donné, il sera dans la tooltip à moins qu’il n’y en ait pas de défini.
+Si vous oubliez le raccourci pour un contrôle donné, il est affiché dans la tooltip.
 
 ![Capture d’écran de l’éditeur avec une démo des boutons undo/redo et raccourcis clavier](/docs/user-guide/undo-redo.gif)
 
-Ces raccourcis sont vraiment pratiques sur écrans tactiles, où il peut être difficile d’aller et venir entre la saisie de texte et la barre d’outils. Vous pouvez trouver la [liste complète des raccourcis supportés](#keyboard-shortcuts) ci-dessous, qui seront disponibles à condition que le contrôle correspondant soit activé dans l’éditeur.
+Ces raccourcis sont vraiment pratiques sur écrans tactiles, où il peut être difficile d’aller et venir entre la saisie de texte et la barre d’outils. Vous pouvez trouver la [liste complète des raccourcis supportés](#raccourcis-clavier) ci-dessous, qui seront disponibles à condition que le contrôle correspondant soit activé dans l’éditeur.
 
 ---
 
 ### Copier-coller du contenu dans l’éditeur
 
-En collant du contenu dans un éditeur Draftail, l’éditeur va enlever tous les styles de texte qui ne sont pas autorisés. Évidemment cela dépend de la configuration de l’éditeur – il peut enlever tout formattage:
+En collant du contenu dans un éditeur Draftail, l’éditeur ne préservera que le contenu autorisé. Évidemment cela dépend de la configuration de l’éditeur – voici deux exemples. Il peut enlever tous les styles:
 
 ![Capture d’écran de l’éditeur avec une démo du copier-coller depuis Word, et enlevant tout le formattage](/docs/user-guide/copy-paste-filter.gif)
 
-Ou bien il peut préserver les styles activés dans l’éditeur (gras et italique ici).
+Il peut préserver les styles activés dans l’éditeur (gras et italique ici).
 
 ![Capture d’écran de l’éditeur avec une démo du copier-coller depuis Word, préservant gras et italique](/docs/user-guide/copy-paste-preserve.gif)
 
@@ -95,7 +101,7 @@ Il est aussi possible d’ajouter des liens dans le text – et gérer les liens
 
 ![Capture d’écran de l’éditeur avec une démo de liens dans le texte riche](/docs/user-guide/rich-text-link.gif)
 
-Certains éditeurs peuvent aussi contenir des images, si configuré ainsi. Les images occupent toujours un bloc entier, inséré encadré de lignes vides (pouvant être enlevées) pour faciliter la sélection de l’image.
+Certains éditeurs peuvent aussi contenir des images, si configuré ainsi. Les images sont insérées encadrées de lignes vides (pouvant être enlevées) pour faciliter la sélection de l’image.
 
 ![Capture d’écran de l’éditeur avec une démo de bloc image](/docs/user-guide/rich-text-image.gif)
 
