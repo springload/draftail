@@ -8,10 +8,9 @@
     border-radius: $draftail-toolbar-radius;
     border-bottom: $draftail-toolbar-border-bottom;
 
-    z-index: $draftail-toolbar-z-index;
-
     .#{$DRAFTAIL}Editor--focus & {
         position: sticky;
         top: 0;
+        z-index: $draftail-toolbar-z-index;
     }
 }
