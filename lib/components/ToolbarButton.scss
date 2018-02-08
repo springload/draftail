@@ -7,7 +7,6 @@ $button-active-border-color: transparentize(
 .#{$DRAFTAIL}ToolbarButton {
     @include font-smoothing;
     display: inline-block;
-    margin-top: $controls-spacing;
     padding: $button-spacing;
     border-radius: 0;
     background: transparent;
@@ -24,6 +23,8 @@ $button-active-border-color: transparentize(
     }
 
     &__label {
+        display: inline-block;
         vertical-align: middle;
+        height: 1em;
     }
 }

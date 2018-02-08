@@ -1,10 +1,16 @@
 .#{$DRAFTAIL}ToolbarGroup {
-    display: inline;
-    padding-right: $controls-spacing / 2;
+    display: inline-block;
 
     & + & {
-        border-left: 1px solid $draftail-editor-chrome-accent;
-        padding-left: $controls-spacing / 2;
+        &:before {
+            content: '';
+            display: inline-block;
+            width: 1px;
+            height: 1rem;
+            vertical-align: middle;
+            margin: 0 $controls-spacing / 2;
+            background-color: $draftail-editor-chrome-accent;
+        }
     }
 
     .#{$DRAFTAIL}Editor--readonly & {
