@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { INLINE_CONTROL, BLOCK_CONTROL, ENTITY_CONTROL } from './constants/ui';
+import {
+    INLINE_CONTROL,
+    BLOCK_CONTROL,
+    ENTITY_CONTROL,
+    BR_ICON,
+} from './constants/ui';
 
 import indexContentState from './constants/indexContentState';
 
@@ -14,7 +19,9 @@ const editor = (
         rawContentState={indexContentState}
         placeholder="Write here…"
         enableHorizontalRule={true}
-        enableLineBreak={true}
+        enableLineBreak={{
+            icon: BR_ICON,
+        }}
         stripPastedStyles={false}
         decorators={[new PrismDecorator({ defaultLanguage: 'javascript' })]}
         entityTypes={[

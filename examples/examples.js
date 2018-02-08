@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { INLINE_CONTROL, BLOCK_CONTROL, ENTITY_CONTROL } from './constants/ui';
+import {
+    INLINE_CONTROL,
+    BLOCK_CONTROL,
+    ENTITY_CONTROL,
+    BR_ICON,
+} from './constants/ui';
 
 import EditorWrapper from './components/EditorWrapper';
 import PrismDecorator from './components/PrismDecorator';
@@ -98,19 +103,16 @@ const initAll = () => {
             rawContentState={allContentState}
             stripPastedStyles={false}
             enableHorizontalRule={{
-                label: 'HR',
                 description: 'Horizontal rule',
             }}
             enableLineBreak={{
-                label: 'BR',
                 description: 'Soft line break',
+                icon: BR_ICON,
             }}
             showUndoControl={{
-                label: 'Undo',
                 description: 'Undo last change',
             }}
             showRedoControl={{
-                label: 'Redo',
                 description: 'Redo last change',
             }}
             maxListNesting={6}

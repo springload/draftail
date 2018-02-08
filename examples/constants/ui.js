@@ -18,6 +18,9 @@ import FontIcon from '../components/FontIcon';
 export const DOCUMENT_ICON = <FontIcon icon="document" />;
 export const EMBED_ICON = <FontIcon icon="embed" />;
 
+export const BR_ICON =
+    'M.436 633.471l296.897-296.898v241.823h616.586V94.117h109.517v593.796H297.333v242.456z';
+
 export const INLINE_CONTROL = {
     BOLD: { type: INLINE_STYLE.BOLD, icon: '#icon-bold' },
     ITALIC: { type: INLINE_STYLE.ITALIC, icon: '#icon-italic' },
