@@ -9,6 +9,10 @@
 * Remove toolbar z-index when the editor is not focused, to reduce chances of interferring with other components.
 * Adjust toolbar button alignment for text-only buttons.
 
+### Fixed
+
+* Fix Markdown shortcuts for blocks removing styles and entities at the end of the block text.
+
 ## [[v0.15.0]](https://github.com/springload/draftail/releases/tag/v0.15.0)
 
 ### Changed
