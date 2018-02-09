@@ -10,6 +10,7 @@
 * Adjust toolbar button alignment for text-only buttons.
 * Replace `className` prop for blocks by dynamically adding a class based on block type.
 * Update to `draftjs-filters@0.7.0` to preserve list items in Word.
+* Update `draft-js` peerDependency version to 0.10.5.
 
 ### Fixed
 
