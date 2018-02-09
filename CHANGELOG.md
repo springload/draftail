@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+## [[v0.16.0]](https://github.com/springload/draftail/releases/tag/v0.16.0)
+
 ### Changed
 
 * Remove toolbar z-index when the editor is not focused, to reduce chances of interferring with other components.
