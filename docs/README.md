@@ -25,7 +25,6 @@ Here are specific parts of the code that **should always be reviewed before upgr
 * https://github.com/springload/draftail/blob/df903f86c882bd5101eb05e152e8b8a8b9a4915e/lib/blocks/MediaBlock.js#L60-L71
 * https://github.com/springload/draftail/commit/431c3fd09c4cfc043c8b334544b05b9f580b75d2
 * https://github.com/springload/draftail/blob/df903f86c882bd5101eb05e152e8b8a8b9a4915e/lib/api/behavior.js#L100-L110
-* https://github.com/springload/draftail/commit/8d9de77349cd2f7ee1cba36b03f2946a21039dde
 * https://github.com/springload/draftail/blob/df903f86c882bd5101eb05e152e8b8a8b9a4915e/lib/api/behavior.js#L23:L26
 * https://github.com/springload/draftail/commit/162fc13e193ac581f662de393151efde477183b9
 * https://github.com/springload/draftail/commit/88ae9adcda1929c92f065655a03c1b33fcfe6c2d
