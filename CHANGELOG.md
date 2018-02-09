@@ -16,6 +16,10 @@
 
 * Fix Markdown shortcuts for blocks removing styles and entities at the end of the block text.
 
+### Removed
+
+* Remove React 15 from peerDependencies.
+
 ## [[v0.15.0]](https://github.com/springload/draftail/releases/tag/v0.15.0)
 
 ### Changed
