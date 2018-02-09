@@ -7,6 +7,8 @@
 
 Draftail est un éditeur prévu pour toutes sortes de sites et d’apps. Il vise une expérience utilisateur centrée sur l’usage du clavier, sans besoin d’utiliser la souris. La plupart des styles de texte peuvent être appliqués avec des raccourcis claviers standard, inspirés par [Google Docs](https://support.google.com/docs/answer/179738) et [Markdown](https://fr.wikipedia.org/wiki/Markdown).
 
+Une caractéristique qui distingue Draftail des autres éditeurs est sa configurabilité: **les options de formattage disponibles peuvent différer d’une instance de l’éditeur à l’autre**, selon la configuration de chaque éditeur. Un pourrait n’autoriser que les liens. Un autre pourrait avoir les niveaux de titres, listes, et images.
+
 ## Table des matières
 
 * [Démo en ligne](#d%C3%A9mo-en-ligne)
