@@ -4,6 +4,10 @@
 
 ## Unreleased
 
+### Fixed
+
+* Fix copy-paste filter running more often than necessary.
+
 ## [[v0.16.0]](https://github.com/springload/draftail/releases/tag/v0.16.0)
 
 ### Changed
