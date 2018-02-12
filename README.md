@@ -475,6 +475,8 @@ Custom decorators follow the Draft.js [CompositeDecorator](https://draftjs.org/d
 
 Finally, Draftail also has an API to add arbitrary controls in the toolbar, via the `controls` prop. This prop takes an array of React components, which will be given the `editorState` and the `onChange` handler as props.
 
+Those controls can import the `Icon` and `ToolbarButton` components from Draftail if necessary.
+
 ## UI and styling
 
 Without custom controls, the editor has a very simple UI and its styles are relatively straightforward. To make sure everything works, use a CSS reset, like [Normalize.css](https://necolas.github.io/normalize.css/).
