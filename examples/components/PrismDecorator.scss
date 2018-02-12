@@ -24,9 +24,3 @@ $PRISM_BACKGROUND: #f5f2f0;
         text-shadow: none;
     }
 }
-
-// Hack to hide the corresponding button in the toolbar.
-// See https://github.com/springload/draftail/issues/121.
-[name='PrismDecorator'] {
-    display: none;
-}
