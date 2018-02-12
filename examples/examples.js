@@ -10,6 +10,7 @@ import {
 
 import EditorWrapper from './components/EditorWrapper';
 import PrismDecorator from './components/PrismDecorator';
+import ReadingTime from './components/ReadingTime';
 import customContentState from './constants/customContentState';
 import allContentState from './constants/allContentState';
 
@@ -89,6 +90,7 @@ const initCustom = () => {
             ]}
             entityTypes={[ENTITY_CONTROL.EMBED, ENTITY_CONTROL.DOCUMENT]}
             decorators={[new PrismDecorator({ defaultLanguage: 'css' })]}
+            controls={[ReadingTime]}
         />
     );
 
