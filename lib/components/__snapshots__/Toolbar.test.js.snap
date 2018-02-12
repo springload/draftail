@@ -41,6 +41,25 @@ exports[`Toolbar #blockTypes 1`] = `
 </div>
 `;
 
+exports[`Toolbar #controls 1`] = `
+<div
+  className="Draftail-Toolbar"
+  role="toolbar"
+>
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup />
+  <ToolbarGroup>
+    <Component
+      editorState={Object {}}
+      key="0"
+      onChange={[Function]}
+    />
+  </ToolbarGroup>
+</div>
+`;
+
 exports[`Toolbar #enableHorizontalRule control overrides 1`] = `
 <div
   className="Draftail-Toolbar"

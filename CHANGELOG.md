@@ -4,6 +4,10 @@
 
 ## Unreleased
 
+### Added
+
+* Add basic API for arbitrary controls in the toolbar.
+
 ### Fixed
 
 * Fix copy-paste filter running more often than necessary.

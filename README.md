@@ -140,6 +140,8 @@ inlineStyles: [],
 entityTypes: [],
 // List of active decorators.
 decorators: [],
+// Additional React components to render in the toolbar.
+controls: [],
 // Max level of nesting for list items. 0 = no nesting. Maximum = 10.
 maxListNesting: 1,
 // Frequency at which to call the save callback (ms).
@@ -468,6 +470,10 @@ blockProps: PropTypes.shape({
 #### Custom text decorators
 
 Custom decorators follow the Draft.js [CompositeDecorator](https://draftjs.org/docs/advanced-topics-decorators.html#compositedecorator) API.
+
+#### Other controls
+
+Finally, Draftail also has an API to add arbitrary controls in the toolbar, via the `controls` prop. This prop takes an array of React components, which will be given the `editorState` and the `onChange` handler as props.
 
 ## UI and styling
 
