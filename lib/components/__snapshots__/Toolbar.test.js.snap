@@ -1,55 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Toolbar #blockTypes 1`] = `
-<div
-  className="Draftail-Toolbar"
-  role="toolbar"
->
-  <ToolbarGroup />
-  <ToolbarGroup>
-    <ToolbarButton
-      active={false}
-      icon={null}
-      key="TEST_1"
-      label="Test 1"
-      name="TEST_1"
-      onClick={[Function]}
-      title={null}
-    />
-    <ToolbarButton
-      active={false}
-      icon={null}
-      key="TEST_2"
-      label="Test 2"
-      name="TEST_2"
-      onClick={[Function]}
-      title={null}
-    />
-    <ToolbarButton
-      active={false}
-      icon={null}
-      key="TEST_3"
-      label="Test 3"
-      name="TEST_3"
-      onClick={[Function]}
-      title={null}
-    />
-  </ToolbarGroup>
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup />
-</div>
-`;
-
 exports[`Toolbar #controls 1`] = `
 <div
   className="Draftail-Toolbar"
   role="toolbar"
 >
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup />
+  <ToolbarDefaults
+    addBR={[Function]}
+    addHR={[Function]}
+    blockTypes={Array []}
+    controls={
+      Array [
+        [Function],
+      ]
+    }
+    currentBlock="unstyled"
+    currentStyles={Immutable.OrderedSet []}
+    enableHorizontalRule={false}
+    enableLineBreak={false}
+    entityTypes={Array []}
+    getEditorState={[Function]}
+    inlineStyles={Array []}
+    onChange={[Function]}
+    onRequestSource={[Function]}
+    onUndoRedo={[Function]}
+    showRedoControl={false}
+    showUndoControl={false}
+    toggleBlockType={[Function]}
+    toggleInlineStyle={[Function]}
+  />
   <ToolbarGroup>
     <Component
       getEditorState={[Function]}
@@ -60,281 +39,31 @@ exports[`Toolbar #controls 1`] = `
 </div>
 `;
 
-exports[`Toolbar #enableHorizontalRule control overrides 1`] = `
-<div
-  className="Draftail-Toolbar"
-  role="toolbar"
->
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup>
-    <ToolbarButton
-      active={false}
-      icon="#icon-hr"
-      label="HR"
-      name="HORIZONTAL_RULE"
-      onClick={[Function]}
-      title="Horizontal rule
-- - -"
-    />
-  </ToolbarGroup>
-  <ToolbarGroup />
-  <ToolbarGroup />
-</div>
-`;
-
-exports[`Toolbar #enableHorizontalRule works 1`] = `
-<div
-  className="Draftail-Toolbar"
-  role="toolbar"
->
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup>
-    <ToolbarButton
-      active={false}
-      icon={null}
-      label="―"
-      name="HORIZONTAL_RULE"
-      onClick={[Function]}
-      title="Horizontal line
-- - -"
-    />
-  </ToolbarGroup>
-  <ToolbarGroup />
-  <ToolbarGroup />
-</div>
-`;
-
-exports[`Toolbar #enableLineBreak control overrides 1`] = `
-<div
-  className="Draftail-Toolbar"
-  role="toolbar"
->
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup>
-    <ToolbarButton
-      active={false}
-      icon="#icon-br"
-      label="BR"
-      name="BR"
-      onClick={[Function]}
-      title="Soft line break
-⇧ + ↵"
-    />
-  </ToolbarGroup>
-  <ToolbarGroup />
-  <ToolbarGroup />
-</div>
-`;
-
-exports[`Toolbar #enableLineBreak works 1`] = `
-<div
-  className="Draftail-Toolbar"
-  role="toolbar"
->
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup>
-    <ToolbarButton
-      active={false}
-      icon={null}
-      label="↵"
-      name="BR"
-      onClick={[Function]}
-      title="Line break
-⇧ + ↵"
-    />
-  </ToolbarGroup>
-  <ToolbarGroup />
-  <ToolbarGroup />
-</div>
-`;
-
-exports[`Toolbar #entityTypes 1`] = `
-<div
-  className="Draftail-Toolbar"
-  role="toolbar"
->
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup>
-    <ToolbarButton
-      active={false}
-      icon={null}
-      key="TEST_1"
-      label="Test 1"
-      name="TEST_1"
-      onClick={[Function]}
-      title={null}
-    />
-    <ToolbarButton
-      active={false}
-      icon={null}
-      key="TEST_2"
-      label="Test 2"
-      name="TEST_2"
-      onClick={[Function]}
-      title={null}
-    />
-    <ToolbarButton
-      active={false}
-      icon={null}
-      key="TEST_3"
-      label="Test 3"
-      name="TEST_3"
-      onClick={[Function]}
-      title={null}
-    />
-  </ToolbarGroup>
-  <ToolbarGroup />
-</div>
-`;
-
-exports[`Toolbar #inlineStyles 1`] = `
-<div
-  className="Draftail-Toolbar"
-  role="toolbar"
->
-  <ToolbarGroup>
-    <ToolbarButton
-      active={false}
-      icon={null}
-      key="TEST_1"
-      label="Test 1"
-      name="TEST_1"
-      onClick={[Function]}
-      title={null}
-    />
-    <ToolbarButton
-      active={false}
-      icon={null}
-      key="TEST_2"
-      label="Test 2"
-      name="TEST_2"
-      onClick={[Function]}
-      title={null}
-    />
-    <ToolbarButton
-      active={false}
-      icon={null}
-      key="TEST_3"
-      label="Test 3"
-      name="TEST_3"
-      onClick={[Function]}
-      title={null}
-    />
-  </ToolbarGroup>
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup />
-</div>
-`;
-
-exports[`Toolbar #showRedoControl control overrides 1`] = `
-<div
-  className="Draftail-Toolbar"
-  role="toolbar"
->
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup>
-    <ToolbarButton
-      active={false}
-      icon={null}
-      label="Redo"
-      name="redo"
-      onClick={[Function]}
-      title="Redo last change
-Ctrl + ⇧ + Z"
-    />
-  </ToolbarGroup>
-</div>
-`;
-
-exports[`Toolbar #showRedoControl works 1`] = `
-<div
-  className="Draftail-Toolbar"
-  role="toolbar"
->
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup>
-    <ToolbarButton
-      active={false}
-      icon={null}
-      label="↻"
-      name="redo"
-      onClick={[Function]}
-      title="Redo
-Ctrl + ⇧ + Z"
-    />
-  </ToolbarGroup>
-</div>
-`;
-
-exports[`Toolbar #showUndoControl control overrides 1`] = `
-<div
-  className="Draftail-Toolbar"
-  role="toolbar"
->
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup>
-    <ToolbarButton
-      active={false}
-      icon={null}
-      label="Undo"
-      name="undo"
-      onClick={[Function]}
-      title="Undo last change
-Ctrl + Z"
-    />
-  </ToolbarGroup>
-</div>
-`;
-
-exports[`Toolbar #showUndoControl works 1`] = `
-<div
-  className="Draftail-Toolbar"
-  role="toolbar"
->
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup>
-    <ToolbarButton
-      active={false}
-      icon={null}
-      label="↺"
-      name="undo"
-      onClick={[Function]}
-      title="Undo
-Ctrl + Z"
-    />
-  </ToolbarGroup>
-</div>
-`;
-
 exports[`Toolbar empty 1`] = `
 <div
   className="Draftail-Toolbar"
   role="toolbar"
 >
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup />
-  <ToolbarGroup />
+  <ToolbarDefaults
+    addBR={[Function]}
+    addHR={[Function]}
+    blockTypes={Array []}
+    controls={Array []}
+    currentBlock="unstyled"
+    currentStyles={Immutable.OrderedSet []}
+    enableHorizontalRule={false}
+    enableLineBreak={false}
+    entityTypes={Array []}
+    getEditorState={[Function]}
+    inlineStyles={Array []}
+    onChange={[Function]}
+    onRequestSource={[Function]}
+    onUndoRedo={[Function]}
+    showRedoControl={false}
+    showUndoControl={false}
+    toggleBlockType={[Function]}
+    toggleInlineStyle={[Function]}
+  />
   <ToolbarGroup />
 </div>
 `;
