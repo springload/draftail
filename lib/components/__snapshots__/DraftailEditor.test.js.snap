@@ -9,94 +9,12 @@ exports[`DraftailEditor #maxListNesting 1`] = `
     addHR={[Function]}
     blockTypes={Array []}
     controls={Array []}
-    editorState={
-      EditorState {
-        "_immutable": Immutable.Record {
-          "allowUndo": true,
-          "currentContent": Immutable.Record {
-            "entityMap": Object {
-              "__add": [Function],
-              "__create": [Function],
-              "__get": [Function],
-              "__getLastCreatedEntityKey": [Function],
-              "__mergeData": [Function],
-              "__replaceData": [Function],
-              "add": [Function],
-              "create": [Function],
-              "get": [Function],
-              "getLastCreatedEntityKey": [Function],
-              "mergeData": [Function],
-              "replaceData": [Function],
-            },
-            "blockMap": Immutable.OrderedMap {
-              "a": Immutable.Record {
-                "key": "a",
-                "type": "unstyled",
-                "text": "",
-                "characterList": Immutable.List [],
-                "depth": 0,
-                "data": Immutable.Map {},
-              },
-            },
-            "selectionBefore": Immutable.Record {
-              "anchorKey": "a",
-              "anchorOffset": 0,
-              "focusKey": "a",
-              "focusOffset": 0,
-              "isBackward": false,
-              "hasFocus": false,
-            },
-            "selectionAfter": Immutable.Record {
-              "anchorKey": "a",
-              "anchorOffset": 0,
-              "focusKey": "a",
-              "focusOffset": 0,
-              "isBackward": false,
-              "hasFocus": false,
-            },
-          },
-          "decorator": CompositeDraftDecorator {
-            "_decorators": Array [],
-          },
-          "directionMap": Immutable.OrderedMap {
-            "a": "LTR",
-          },
-          "forceSelection": false,
-          "inCompositionMode": false,
-          "inlineStyleOverride": null,
-          "lastChangeType": null,
-          "nativelyRenderedContent": null,
-          "redoStack": Immutable.Stack [],
-          "selection": Immutable.Record {
-            "anchorKey": "a",
-            "anchorOffset": 0,
-            "focusKey": "a",
-            "focusOffset": 0,
-            "isBackward": false,
-            "hasFocus": false,
-          },
-          "treeMap": Immutable.OrderedMap {
-            "a": Immutable.List [
-              Immutable.Record {
-                "start": 0,
-                "end": 0,
-                "decoratorKey": null,
-                "leaves": Immutable.List [
-                  Immutable.Record {
-                    "start": 0,
-                    "end": 0,
-                  },
-                ],
-              },
-            ],
-          },
-          "undoStack": Immutable.Stack [],
-        },
-      }
-    }
+    currentBlock="unstyled"
+    currentStyles={Immutable.OrderedSet []}
     enableHorizontalRule={false}
     enableLineBreak={false}
     entityTypes={Array []}
+    getEditorState={[Function]}
     inlineStyles={Array []}
     onChange={[Function]}
     onRequestSource={[Function]}
@@ -266,9 +184,9 @@ exports[`DraftailEditor #maxListNesting 1`] = `
     textAlignment={null}
     textDirectionality={null}
   />
-  <style>
-    .t { fill: red; }
-  </style>
+  <ListNesting
+    max={6}
+  />
 </div>
 `;
 
@@ -281,94 +199,12 @@ exports[`DraftailEditor empty 1`] = `
     addHR={[Function]}
     blockTypes={Array []}
     controls={Array []}
-    editorState={
-      EditorState {
-        "_immutable": Immutable.Record {
-          "allowUndo": true,
-          "currentContent": Immutable.Record {
-            "entityMap": Object {
-              "__add": [Function],
-              "__create": [Function],
-              "__get": [Function],
-              "__getLastCreatedEntityKey": [Function],
-              "__mergeData": [Function],
-              "__replaceData": [Function],
-              "add": [Function],
-              "create": [Function],
-              "get": [Function],
-              "getLastCreatedEntityKey": [Function],
-              "mergeData": [Function],
-              "replaceData": [Function],
-            },
-            "blockMap": Immutable.OrderedMap {
-              "a": Immutable.Record {
-                "key": "a",
-                "type": "unstyled",
-                "text": "",
-                "characterList": Immutable.List [],
-                "depth": 0,
-                "data": Immutable.Map {},
-              },
-            },
-            "selectionBefore": Immutable.Record {
-              "anchorKey": "a",
-              "anchorOffset": 0,
-              "focusKey": "a",
-              "focusOffset": 0,
-              "isBackward": false,
-              "hasFocus": false,
-            },
-            "selectionAfter": Immutable.Record {
-              "anchorKey": "a",
-              "anchorOffset": 0,
-              "focusKey": "a",
-              "focusOffset": 0,
-              "isBackward": false,
-              "hasFocus": false,
-            },
-          },
-          "decorator": CompositeDraftDecorator {
-            "_decorators": Array [],
-          },
-          "directionMap": Immutable.OrderedMap {
-            "a": "LTR",
-          },
-          "forceSelection": false,
-          "inCompositionMode": false,
-          "inlineStyleOverride": null,
-          "lastChangeType": null,
-          "nativelyRenderedContent": null,
-          "redoStack": Immutable.Stack [],
-          "selection": Immutable.Record {
-            "anchorKey": "a",
-            "anchorOffset": 0,
-            "focusKey": "a",
-            "focusOffset": 0,
-            "isBackward": false,
-            "hasFocus": false,
-          },
-          "treeMap": Immutable.OrderedMap {
-            "a": Immutable.List [
-              Immutable.Record {
-                "start": 0,
-                "end": 0,
-                "decoratorKey": null,
-                "leaves": Immutable.List [
-                  Immutable.Record {
-                    "start": 0,
-                    "end": 0,
-                  },
-                ],
-              },
-            ],
-          },
-          "undoStack": Immutable.Stack [],
-        },
-      }
-    }
+    currentBlock="unstyled"
+    currentStyles={Immutable.OrderedSet []}
     enableHorizontalRule={false}
     enableLineBreak={false}
     entityTypes={Array []}
+    getEditorState={[Function]}
     inlineStyles={Array []}
     onChange={[Function]}
     onRequestSource={[Function]}
@@ -537,6 +373,9 @@ exports[`DraftailEditor empty 1`] = `
     stripPastedStyles={true}
     textAlignment={null}
     textDirectionality={null}
+  />
+  <ListNesting
+    max={1}
   />
 </div>
 `;

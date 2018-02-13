@@ -52,7 +52,7 @@ exports[`Toolbar #controls 1`] = `
   <ToolbarGroup />
   <ToolbarGroup>
     <Component
-      editorState={Object {}}
+      getEditorState={[Function]}
       key="0"
       onChange={[Function]}
     />

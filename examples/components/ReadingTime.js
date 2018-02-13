@@ -10,7 +10,8 @@ const CLOCK_ICON =
 /**
  * A basic control showing the reading time / content length for the editor’s content.
  */
-const ReadingTime = ({ editorState }) => {
+const ReadingTime = ({ getEditorState }) => {
+    const editorState = getEditorState();
     const content = editorState.getCurrentContent();
     const text = content.getPlainText();
     const stats = readingTime(text);
@@ -18,7 +19,7 @@ const ReadingTime = ({ editorState }) => {
         <ToolbarButton
             name="READING_TIME"
             icon={CLOCK_ICON}
-            label={`${stats.text}`}
+            label={`${stats.text} (${text.length})`}
             onClick={() => {
                 // eslint-disable-next-line no-alert
                 window.alert(`${text.length} characters, ${stats.words} words`);
@@ -28,7 +29,7 @@ const ReadingTime = ({ editorState }) => {
 };
 
 ReadingTime.propTypes = {
-    editorState: PropTypes.object.isRequired,
+    getEditorState: PropTypes.func.isRequired,
 };
 
 export default ReadingTime;
