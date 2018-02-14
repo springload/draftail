@@ -171,6 +171,7 @@
     "format": "npm run formatter -s -- '**/*.scss' '**/*.md' lib/**/*.js examples/**/*.js webpack/*.js",
     "test": "jest",
     "test:integration": "jest --config tests/integration/jest.config.js",
+    "test:integration:watch": "jest --config tests/integration/jest.config.js --watch",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "test:watch:coverage": "jest --watch --coverage",

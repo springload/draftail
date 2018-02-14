@@ -6,7 +6,7 @@ describe(
         let page;
         beforeAll(async () => {
             page = await global.BROWSER.newPage();
-            await page.goto('http://localhost:5000/draftail/');
+            await page.goto(global.ROOT);
         }, timeout);
 
         it('should load without error', async () => {
