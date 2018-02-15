@@ -1,6 +1,8 @@
 import { toHaveNoViolations } from 'jest-axe';
+import { toMatchImageSnapshot } from 'jest-image-snapshot';
 
 expect.extend(toHaveNoViolations);
+expect.extend({ toMatchImageSnapshot });
 
 describe('/', () => {
     let page;
@@ -9,7 +11,7 @@ describe('/', () => {
         await page.goto(global.ROOT);
     });
 
-    it('should load without error', async () => {
+    it('loads', async () => {
         const text = await page.evaluate(() => document.body.textContent);
         expect(text).toContain('draftail');
     });
