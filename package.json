@@ -130,6 +130,7 @@
     "jest": "^22.2.2",
     "jest-axe": "^2.1.1",
     "jest-environment-node": "^22.2.2",
+    "jest-image-snapshot": "^2.3.0",
     "mkdirp": "^0.5.1",
     "node-sass": "^4.5.3",
     "normalize.css": "^7.0.0",

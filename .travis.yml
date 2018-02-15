@@ -7,6 +7,10 @@ install:
 - npm install -g coveralls
 script:
 - npm run test:ci
+# Display image snapshot differences, if any.
+# This is cheap, will require people to copy-paste base64 strings all the time,
+# but otherwise we would have to upload those artefacts to a service like S3 or imgur, which requires infrastructure.
+- base64 < ./tests/integration/__image_snapshots__/__diff_output__/* || true
 # Move build artefacts to public folder so they are published on the demo site.
 - mv webpack/webpack-stats.html public || true
 - mv coverage/lcov-report public || true
