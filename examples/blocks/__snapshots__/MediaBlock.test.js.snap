@@ -2,6 +2,7 @@
 
 exports[`MediaBlock renders 1`] = `
 <button
+  aria-label="Test: test"
   className="MediaBlock"
   onMouseUp={[Function]}
   tabIndex={-1}

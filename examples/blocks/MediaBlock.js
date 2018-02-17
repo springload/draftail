@@ -17,7 +17,7 @@ const propTypes = {
         entityType: PropTypes.object.isRequired,
     }).isRequired,
     src: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
 };
 
@@ -74,7 +74,7 @@ class MediaBlock extends Component {
     }
 
     render() {
-        const { blockProps, src, alt } = this.props;
+        const { blockProps, src, label } = this.props;
         const { showTooltipAt } = this.state;
         const { entityType } = blockProps;
 
@@ -83,18 +83,16 @@ class MediaBlock extends Component {
                 type="button"
                 tabIndex={-1}
                 className="MediaBlock"
+                aria-label={`${entityType.description}${label ? ': ' : ''}${
+                    label
+                }`}
                 onMouseUp={this.openTooltip}
             >
                 <span className="MediaBlock__icon-wrapper" aria-hidden>
                     <Icon icon={entityType.icon} className="MediaBlock__icon" />
                 </span>
 
-                <img
-                    className="MediaBlock__img"
-                    src={src}
-                    alt={alt}
-                    width="256"
-                />
+                <img className="MediaBlock__img" src={src} alt="" width="256" />
 
                 {showTooltipAt && this.renderTooltip()}
             </button>

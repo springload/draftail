@@ -2,7 +2,6 @@
 
 exports[`EmbedBlock renders 1`] = `
 <MediaBlock
-  alt="Embed: Test title"
   blockProps={
     Object {
       "entity": Object {
@@ -11,6 +10,7 @@ exports[`EmbedBlock renders 1`] = `
       "entityType": Object {},
     }
   }
+  label="Test title"
   src="http://www.example.com/example.png"
 >
   <a

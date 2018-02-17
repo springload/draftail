@@ -17,7 +17,7 @@ const EmbedBlock = props => {
     const { url, title, thumbnail } = entity.getData();
 
     return (
-        <MediaBlock {...props} src={thumbnail} alt={`Embed: ${title}`}>
+        <MediaBlock {...props} src={thumbnail} label={title}>
             <a
                 className="EmbedBlock__link"
                 href={url}
