@@ -8,6 +8,7 @@
 
 * Add basic API for arbitrary controls in the toolbar.
 * Expose `ToolbarButton` component in the API.
+* Add ability to set `ariaDescribedBy` prop of Draft.js.
 
 ### Fixed
 

@@ -132,6 +132,8 @@ autoComplete: null,
 // Set if auto correct is turned on and how it behaves.
 // See https://draftjs.org/docs/api-reference-editor.html#autocorrect-string.
 autoCorrect: null,
+// See https://draftjs.org/docs/api-reference-editor.html#aria-props.
+ariaDescribedBy: null,
 // List of the available block types.
 blockTypes: [],
 // List of the available inline styles.
