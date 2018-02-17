@@ -76,7 +76,7 @@ then
     npm run test:coverage -s
 fi
 
-if [ -n "$JS_STAGED" ] || [ -n "$HTML_STAGED" ];
+if [ -n "$JS_STAGED" ] || [ -n "$SCSS_STAGED" ] || [ -n "$HTML_STAGED" ];
 then
     npm run dist -s
     npm run test:integration -s
