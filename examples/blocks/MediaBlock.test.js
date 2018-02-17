@@ -9,10 +9,11 @@ describe('MediaBlock', () => {
             shallow(
                 <MediaBlock
                     src="example.png"
-                    alt=""
+                    label="test"
                     blockProps={{
                         entityType: {
                             icon: '#icon-test',
+                            description: 'Test',
                         },
                         entity: {
                             getData: () => ({
@@ -34,10 +35,11 @@ describe('MediaBlock', () => {
             wrapper = shallow(
                 <MediaBlock
                     src="example.png"
-                    alt=""
+                    label=""
                     blockProps={{
                         entityType: {
                             icon: '#icon-test',
+                            description: 'Test',
                         },
                         entity: {
                             getData: () => ({

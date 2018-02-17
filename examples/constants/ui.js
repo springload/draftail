@@ -74,6 +74,7 @@ export const ENTITY_CONTROL = {
     },
     IMAGE: {
         type: ENTITY_TYPE.IMAGE,
+        description: 'Image',
         icon: '#icon-image',
         source: ImageSource,
         block: ImageBlock,

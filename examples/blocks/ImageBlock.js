@@ -40,7 +40,7 @@ class ImageBlock extends Component {
         const { src, alt } = entity.getData();
 
         return (
-            <MediaBlock {...this.props} src={src} alt="">
+            <MediaBlock {...this.props} src={src} label={alt || ''}>
                 <label className="ImageBlock__field">
                     <p>Alt text</p>
                     <input

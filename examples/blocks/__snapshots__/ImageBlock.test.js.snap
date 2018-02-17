@@ -2,7 +2,6 @@
 
 exports[`ImageBlock alt 1`] = `
 <MediaBlock
-  alt=""
   block={Object {}}
   blockProps={
     Object {
@@ -14,6 +13,7 @@ exports[`ImageBlock alt 1`] = `
       "onChange": [Function],
     }
   }
+  label="Test"
   src="example.png"
 >
   <label
@@ -43,7 +43,6 @@ exports[`ImageBlock alt 1`] = `
 
 exports[`ImageBlock renders 1`] = `
 <MediaBlock
-  alt=""
   block={Object {}}
   blockProps={
     Object {
@@ -55,6 +54,7 @@ exports[`ImageBlock renders 1`] = `
       "onChange": [Function],
     }
   }
+  label=""
   src="example.png"
 >
   <label
