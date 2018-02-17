@@ -37,6 +37,8 @@ const initWagtail = () => {
             id="wagtail"
             ariaDescribedBy="wagtail-editor"
             placeholder="Write here…"
+            // Makes it easier to write automated tests retrieving the content.
+            stateSaveInterval={50}
             enableHorizontalRule={true}
             enableLineBreak={true}
             showUndoControl={true}

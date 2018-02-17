@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/examples/ Wagtail features BOLD 1`] = `
+Array [
+  Object {
+    "data": Object {},
+    "depth": 0,
+    "entityRanges": Array [],
+    "inlineStyleRanges": Array [
+      Object {
+        "length": 4,
+        "offset": 0,
+        "style": "BOLD",
+      },
+    ],
+    "text": "Bold",
+    "type": "unstyled",
+  },
+]
+`;
+
+exports[`/examples/ Wagtail features BR 1`] = `
+Object {
+  "blocks": Array [
+    Object {
+      "data": Object {},
+      "depth": 0,
+      "entityRanges": Array [],
+      "inlineStyleRanges": Array [],
+      "text": "Hel
+lo",
+      "type": "unstyled",
+    },
+  ],
+  "entityMap": Object {},
+}
+`;
+
+exports[`/examples/ Wagtail features HORIZONTAL_RULE 1`] = `
+Object {
+  "blocks": Array [
+    Object {
+      "data": Object {},
+      "depth": 0,
+      "entityRanges": Array [
+        Object {
+          "key": 0,
+          "length": 1,
+          "offset": 0,
+        },
+      ],
+      "inlineStyleRanges": Array [],
+      "text": " ",
+      "type": "atomic",
+    },
+    Object {
+      "data": Object {},
+      "depth": 0,
+      "entityRanges": Array [],
+      "inlineStyleRanges": Array [],
+      "text": "",
+      "type": "unstyled",
+    },
+  ],
+  "entityMap": Object {
+    "0": Object {
+      "data": Object {},
+      "mutability": "IMMUTABLE",
+      "type": "HORIZONTAL_RULE",
+    },
+  },
+}
+`;
+
+exports[`/examples/ Wagtail features IMAGE 1`] = `
+Object {
+  "blocks": Array [
+    Object {
+      "data": Object {},
+      "depth": 0,
+      "entityRanges": Array [],
+      "inlineStyleRanges": Array [],
+      "text": "",
+      "type": "unstyled",
+    },
+    Object {
+      "data": Object {},
+      "depth": 0,
+      "entityRanges": Array [
+        Object {
+          "key": 0,
+          "length": 1,
+          "offset": 0,
+        },
+      ],
+      "inlineStyleRanges": Array [],
+      "text": " ",
+      "type": "atomic",
+    },
+    Object {
+      "data": Object {},
+      "depth": 0,
+      "entityRanges": Array [],
+      "inlineStyleRanges": Array [],
+      "text": "",
+      "type": "unstyled",
+    },
+  ],
+  "entityMap": Object {
+    "0": Object {
+      "data": Object {
+        "alt": "",
+        "src": "../static/example-lowres-image.jpg",
+      },
+      "mutability": "MUTABLE",
+      "type": "IMAGE",
+    },
+  },
+}
+`;
+
+exports[`/examples/ Wagtail features LINK 1`] = `
+Object {
+  "blocks": Array [
+    Object {
+      "data": Object {},
+      "depth": 0,
+      "entityRanges": Array [
+        Object {
+          "key": 0,
+          "length": 4,
+          "offset": 0,
+        },
+      ],
+      "inlineStyleRanges": Array [],
+      "text": "Link",
+      "type": "unstyled",
+    },
+  ],
+  "entityMap": Object {
+    "0": Object {
+      "data": Object {
+        "url": "http://www.example.com/",
+      },
+      "mutability": "MUTABLE",
+      "type": "LINK",
+    },
+  },
+}
+`;
+
+exports[`/examples/ Wagtail features header-three 1`] = `
+Array [
+  Object {
+    "data": Object {},
+    "depth": 0,
+    "entityRanges": Array [],
+    "inlineStyleRanges": Array [],
+    "text": "H3",
+    "type": "header-three",
+  },
+]
+`;
+
+exports[`/examples/ Wagtail features unordered-list-item 1`] = `
+Array [
+  Object {
+    "data": Object {},
+    "depth": 0,
+    "entityRanges": Array [],
+    "inlineStyleRanges": Array [],
+    "text": "UL",
+    "type": "unordered-list-item",
+  },
+]
+`;
