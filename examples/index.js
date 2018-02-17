@@ -17,6 +17,7 @@ const editor = (
     <EditorWrapper
         id="index"
         rawContentState={indexContentState}
+        ariaDescribedBy="demo-editor-index"
         placeholder="Write here…"
         enableHorizontalRule={true}
         enableLineBreak={{

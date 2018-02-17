@@ -35,6 +35,7 @@ const initWagtail = () => {
     const editor = (
         <EditorWrapper
             id="wagtail"
+            ariaDescribedBy="wagtail-editor"
             placeholder="Write here…"
             enableHorizontalRule={true}
             enableLineBreak={true}
@@ -68,6 +69,7 @@ const initCustom = () => {
     const editor = (
         <EditorWrapper
             id="custom"
+            ariaDescribedBy="custom-editor"
             rawContentState={customContentState}
             stripPastedStyles={false}
             spellCheck={true}
@@ -101,6 +103,7 @@ const initAll = () => {
     const editor = (
         <EditorWrapper
             id="all"
+            ariaDescribedBy="all-editor"
             rawContentState={allContentState}
             stripPastedStyles={false}
             enableHorizontalRule={{
@@ -131,9 +134,10 @@ const initTest = () => {
         <div>
             <h2>Test editors</h2>
             <div className="example">
-                <h3>Keep everything</h3>
+                <h3 id="test:1-editor">Keep everything</h3>
                 <EditorWrapper
                     id="test:1"
+                    ariaDescribedBy="test:1-editor"
                     enableHorizontalRule={true}
                     enableLineBreak={true}
                     stripPastedStyles={false}
@@ -160,9 +164,12 @@ const initTest = () => {
                 />
             </div>
             <div className="example">
-                <h3>Keep everything, with less enabled formats</h3>
+                <h3 id="test:2-editor">
+                    Keep everything, with less enabled formats
+                </h3>
                 <EditorWrapper
                     id="test:2"
+                    ariaDescribedBy="test:2-editor"
                     enableHorizontalRule={true}
                     enableLineBreak={true}
                     stripPastedStyles={false}
@@ -175,17 +182,19 @@ const initTest = () => {
                 />
             </div>
             <div className="example">
-                <h3>Keep basic styles</h3>
+                <h3 id="test:3-editor">Keep basic styles</h3>
                 <EditorWrapper
                     id="test:3"
+                    ariaDescribedBy="test:3-editor"
                     stripPastedStyles={false}
                     inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
                 />
             </div>
             <div className="example">
-                <h3>Strip all formatting on paste</h3>
+                <h3 id="test:4-editor">Strip all formatting on paste</h3>
                 <EditorWrapper
                     id="test:4"
+                    ariaDescribedBy="test:4-editor"
                     enableHorizontalRule={true}
                     enableLineBreak={true}
                     stripPastedStyles={true}

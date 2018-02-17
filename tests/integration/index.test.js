@@ -9,6 +9,10 @@ describe('/', () => {
     beforeAll(async () => {
         page = await global.BROWSER.newPage();
         await page.goto(global.ROOT);
+
+        await page.addScriptTag({
+            path: require.resolve('axe-core'),
+        });
     });
 
     it('loads', async () => {
@@ -16,11 +20,7 @@ describe('/', () => {
         expect(text).toContain('draftail');
     });
 
-    it.skip('axe', async () => {
-        await page.addScriptTag({
-            path: require.resolve('axe-core'),
-        });
-
+    it('a11y', async () => {
         const text = await page.evaluate(() => {
             return new Promise((resolve, reject) => {
                 window.axe.run((err, results) => {
