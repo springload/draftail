@@ -15,7 +15,7 @@ describe('/examples/', () => {
         page = await global.BROWSER.newPage();
         await page.goto(`${global.ROOT}examples/`);
 
-        await page.addStyleTag({ content: normalizeRendering });
+        await page.addScriptTag({ path: require.resolve('axe-core') });
     });
 
     it('loads', async () => {
@@ -23,11 +23,7 @@ describe('/examples/', () => {
         expect(text).toContain('Write here…');
     });
 
-    it.skip('axe', async () => {
-        await page.addScriptTag({
-            path: require.resolve('axe-core'),
-        });
-
+    it('axe', async () => {
         const text = await page.evaluate(() => {
             return new Promise((resolve, reject) => {
                 window.axe.run((err, results) => {
@@ -41,6 +37,8 @@ describe('/examples/', () => {
 
     describe('simple editor', () => {
         it('renders', async () => {
+            await page.addStyleTag({ content: normalizeRendering });
+
             await page.type('[data-mount] [role="textbox"]', 'Hello');
             await page.keyboard.press('Enter');
             await page.type('[data-mount] [role="textbox"]', '- ');
