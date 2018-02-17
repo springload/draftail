@@ -26,6 +26,7 @@ exports[`DraftailEditor #maxListNesting 1`] = `
     toggleInlineStyle={[Function]}
   />
   <DraftEditor
+    ariaDescribedBy={null}
     autoCapitalize={null}
     autoComplete={null}
     autoCorrect={null}
@@ -216,6 +217,7 @@ exports[`DraftailEditor empty 1`] = `
     toggleInlineStyle={[Function]}
   />
   <DraftEditor
+    ariaDescribedBy={null}
     autoCapitalize={null}
     autoComplete={null}
     autoCorrect={null}
