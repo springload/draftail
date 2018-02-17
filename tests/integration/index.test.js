@@ -4,15 +4,15 @@ import { toMatchImageSnapshot } from 'jest-image-snapshot';
 expect.extend(toHaveNoViolations);
 expect.extend({ toMatchImageSnapshot });
 
+jest.setTimeout(10000);
+
 describe('/', () => {
     let page;
     beforeAll(async () => {
         page = await global.BROWSER.newPage();
         await page.goto(global.ROOT);
 
-        await page.addScriptTag({
-            path: require.resolve('axe-core'),
-        });
+        await page.addScriptTag({ path: require.resolve('axe-core') });
     });
 
     it('loads', async () => {
@@ -22,9 +22,9 @@ describe('/', () => {
 
     it('a11y', async () => {
         const text = await page.evaluate(() => {
-            return new Promise((resolve, reject) => {
+            return new Promise(resolve => {
                 window.axe.run((err, results) => {
-                    if (err) reject(err);
+                    if (err) resolve(err);
                     resolve(results);
                 });
             });
