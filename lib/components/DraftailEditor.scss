@@ -47,6 +47,10 @@
     .public-DraftEditor-content > * > figure {
         margin: 0;
     }
+
+    .public-DraftEditorPlaceholder-inner {
+        color: $draftail-placeholder-text;
+    }
 }
 
 // Give each block some spacing so we don't end up with empty paragraphs
