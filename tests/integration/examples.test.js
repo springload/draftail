@@ -2,6 +2,8 @@ import { toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 
+jest.setTimeout(10000);
+
 describe('/examples/', () => {
     let page;
     beforeAll(async () => {
@@ -16,11 +18,11 @@ describe('/examples/', () => {
         expect(text).toContain('Write here…');
     });
 
-    it('axe', async () => {
+    it('a11y', async () => {
         const text = await page.evaluate(() => {
-            return new Promise((resolve, reject) => {
+            return new Promise(resolve => {
                 window.axe.run((err, results) => {
-                    if (err) reject(err);
+                    if (err) resolve(err);
                     resolve(results);
                 });
             });
