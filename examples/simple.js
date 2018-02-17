@@ -20,6 +20,7 @@ const editor = (
     <DraftailEditor
         rawContentState={initial || null}
         onSave={onSave}
+        ariaDescribedBy="simple-editor"
         blockTypes={[
             { type: BLOCK_TYPE.HEADER_THREE },
             { type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
