@@ -31,25 +31,23 @@ describe('/examples/', () => {
     });
 
     describe('Wagtail features', () => {
+        /* eslint-disable no-await-in-loop */
         beforeEach(async () => {
             // Single-word removal.
             await page.type('[data-mount-wagtail] [role="textbox"]', '');
-            await page.keyboard.down('ShiftLeft');
-            await page.keyboard.down('AltLeft');
-            await page.keyboard.press('ArrowLeft');
-            await page.keyboard.up('ShiftLeft');
-            await page.keyboard.up('AltLeft');
-            await page.keyboard.press('Backspace');
+            for (let i = 0; i < 10; i++) {
+                await page.keyboard.press('Backspace');
+            }
         });
 
         it('BOLD', async () => {
             await page.type('[data-mount-wagtail] [role="textbox"]', 'Bold');
             await page.keyboard.down('ShiftLeft');
-            await page.keyboard.down('AltLeft');
-            await page.keyboard.press('ArrowLeft');
+            for (let i = 0; i < 'Bold'.length; i++) {
+                await page.keyboard.press('ArrowLeft');
+            }
             await page.click('[data-mount-wagtail] [name="BOLD"]');
             await page.keyboard.up('ShiftLeft');
-            await page.keyboard.up('AltLeft');
             await page.keyboard.press('ArrowRight');
             await page.waitFor(100);
             const content = await page.evaluate(() =>
@@ -102,8 +100,6 @@ describe('/examples/', () => {
             );
             content.blocks.forEach(b => delete b.key);
             expect(content).toMatchSnapshot();
-            await page.keyboard.press('Backspace');
-            await page.keyboard.press('Backspace');
         });
 
         it('IMAGE', async () => {
@@ -119,16 +115,15 @@ describe('/examples/', () => {
             );
             content.blocks.forEach(b => delete b.key);
             expect(content).toMatchSnapshot();
-            await page.keyboard.press('Backspace');
         });
 
         it('LINK', async () => {
             await page.type('[data-mount-wagtail] [role="textbox"]', 'Link');
             await page.keyboard.down('ShiftLeft');
-            await page.keyboard.down('AltLeft');
-            await page.keyboard.press('ArrowLeft');
+            for (let i = 0; i < 'Link'.length; i++) {
+                await page.keyboard.press('ArrowLeft');
+            }
             await page.keyboard.up('ShiftLeft');
-            await page.keyboard.up('AltLeft');
             await page.click('[data-mount-wagtail] [name="LINK"]');
             await page.type('.modal input', 'http://www.example.com/');
             await page.keyboard.press('Enter');
