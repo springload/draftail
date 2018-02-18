@@ -18,6 +18,7 @@
 ### Removed
 
 * Remove `DraftUtils.isSelectedBlockType()`.
+* Remove `DraftUtils.hasCurrentInlineStyle()`.
 
 ## [[v0.16.0]](https://github.com/springload/draftail/releases/tag/v0.16.0)
 
