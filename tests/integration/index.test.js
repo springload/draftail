@@ -1,8 +1,6 @@
 import { toHaveNoViolations } from 'jest-axe';
-import { toMatchImageSnapshot } from 'jest-image-snapshot';
 
 expect.extend(toHaveNoViolations);
-expect.extend({ toMatchImageSnapshot });
 
 jest.setTimeout(10000);
 
@@ -21,14 +19,14 @@ describe('/', () => {
     });
 
     it('a11y', async () => {
-        const text = await page.evaluate(() => {
+        const result = await page.evaluate(() => {
             return new Promise(resolve => {
                 window.axe.run((err, results) => {
-                    if (err) resolve(err);
+                    if (err) throw err;
                     resolve(results);
                 });
             });
         });
-        expect(text).toHaveNoViolations();
+        expect(result).toHaveNoViolations();
     });
 });

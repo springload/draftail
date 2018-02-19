@@ -19,15 +19,15 @@ describe('/examples/', () => {
     });
 
     it('a11y', async () => {
-        const text = await page.evaluate(() => {
+        const result = await page.evaluate(() => {
             return new Promise(resolve => {
                 window.axe.run((err, results) => {
-                    if (err) resolve(err);
+                    if (err) throw err;
                     resolve(results);
                 });
             });
         });
-        expect(text).toHaveNoViolations();
+        expect(result).toHaveNoViolations();
     });
 
     describe('Wagtail features', () => {
