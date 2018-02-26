@@ -10,6 +10,10 @@
 * Expose `ToolbarButton` component in the API.
 * Add ability to set `ariaDescribedBy` prop of Draft.js.
 
+### Changed
+
+* Replace block entities by a paragraph when using `onRemoveEntity`.
+
 ### Fixed
 
 * Fix copy-paste filter running more often than necessary.
