@@ -13,6 +13,7 @@
 ### Changed
 
 * Replace block entities by a paragraph when using `onRemoveEntity`.
+* Replace `ListNesting` implementation with the one from `draftjs-conductor`.
 
 ### Fixed
 

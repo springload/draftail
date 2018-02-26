@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`ListNesting max > DRAFT_MAX_DEPTH 1`] = `
-<style>
-  .Draftail-depth5.public-DraftStyleDefault-listLTR{margin-left:9em;}.Draftail-depth5.public-DraftStyleDefault-listRTL{margin-right:9em;}.Draftail-depth5.public-DraftStyleDefault-orderedListItem::before{content:counter(ol5)'.';counter-increment:ol5;}.Draftail-depth5.public-DraftStyleDefault-reset{counter-reset:ol5;}.Draftail-depth6.public-DraftStyleDefault-listLTR{margin-left:10.5em;}.Draftail-depth6.public-DraftStyleDefault-listRTL{margin-right:10.5em;}.Draftail-depth6.public-DraftStyleDefault-orderedListItem::before{content:counter(ol6)'.';counter-increment:ol6;}.Draftail-depth6.public-DraftStyleDefault-reset{counter-reset:ol6;}
-</style>
-`;
-
-exports[`ListNesting works 1`] = `""`;

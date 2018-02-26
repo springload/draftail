@@ -185,8 +185,9 @@ exports[`DraftailEditor #maxListNesting 1`] = `
     textAlignment={null}
     textDirectionality={null}
   />
-  <ListNesting
+  <ListNestingStyles
     max={6}
+    prefix="public-DraftStyleDefault-depth"
   />
 </div>
 `;
@@ -376,8 +377,9 @@ exports[`DraftailEditor empty 1`] = `
     textAlignment={null}
     textDirectionality={null}
   />
-  <ListNesting
+  <ListNestingStyles
     max={1}
+    prefix="public-DraftStyleDefault-depth"
   />
 </div>
 `;
