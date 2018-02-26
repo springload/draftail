@@ -14,6 +14,7 @@
 
 * Fix copy-paste filter running more often than necessary.
 * Use darker placeholder text color to pass WCAG2.0 AAA level contrast ratio. Overridable via `$draftail-placeholder-text`.
+* Fix HR block spacing at the top of the editor.
 
 ### Removed
 
