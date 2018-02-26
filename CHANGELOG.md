@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+## [[v0.17.0]](https://github.com/springload/draftail/releases/tag/v0.17.0)
+
 ### Added
 
 * Add basic API for arbitrary controls in the toolbar.
