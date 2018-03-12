@@ -49,3 +49,7 @@ Original pencil icon is the [Noun project crayon](https://commons.wikimedia.org/
 The demo site contains static content exported with [draftjs_exporter](https://github.com/springload/draftjs_exporter). It is placed there for SEO, and also to make the loading experience nicer.
 
 To regenerate it, get the serialised ContentState for the index page's editor (in `sessionStorage`), go to [the exporter demo](https://draftjs-exporter.herokuapp.com), and place the ContentState in the `sessionStorage` value of that editor.
+
+## Troubleshooting
+
+* In Firefox, the [`dom.event.clipboardevents.enabled`](https://developer.mozilla.org/en-US/docs/Mozilla/Preferences/Preference_reference/dom.event.clipboardevents.enabled) setting must be turned on, otherwise the editor will crash on copy-paste. This could be off in [Iceweasel](https://wiki.debian.org/Iceweasel). See [wagtail/wagtail#4346](https://github.com/wagtail/wagtail/issues/4346).
