@@ -7,7 +7,12 @@ const isRavenAvailable = !!Raven;
 class SentryBoundary extends Component {
     constructor(props) {
         super(props);
-        this.state = { error: null };
+        this.state = {
+            error: null,
+            reloads: 0,
+        };
+
+        this.onAttemptReload = this.onAttemptReload.bind(this);
     }
 
     componentDidCatch(error, errorInfo) {
@@ -18,9 +23,22 @@ class SentryBoundary extends Component {
         }
     }
 
+    onAttemptReload() {
+        const { reloads } = this.state;
+
+        if (reloads > 2) {
+            window.location.reload(false);
+        } else {
+            this.setState({
+                error: null,
+                reloads: reloads + 1,
+            });
+        }
+    }
+
     render() {
         const { children } = this.props;
-        const { error } = this.state;
+        const { reloads, error } = this.state;
 
         return error ? (
             <div className="editor">
@@ -67,11 +85,11 @@ class SentryBoundary extends Component {
                                     <span> or </span>
                                     <button
                                         type="button"
-                                        onClick={() =>
-                                            window.location.reload(false)
-                                        }
+                                        onClick={this.onAttemptReload}
                                     >
-                                        Reload the page
+                                        {reloads > 2
+                                            ? 'Reload the page'
+                                            : 'Reload the editor'}
                                     </button>
                                 </div>
                             </div>
