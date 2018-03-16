@@ -208,6 +208,14 @@ const initTest = () => {
                     inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
                 />
             </div>
+            <label className="example">
+                <h3>Textarea</h3>
+                <textarea rows="5" placeholder="A plain-HTML textarea 😄" />
+            </label>
+            <label className="example">
+                <h3>Input</h3>
+                <input type="text" placeholder="A plain-HTML input 😄" />
+            </label>
         </div>
     );
 
