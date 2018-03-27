@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+## [[v0.17.1]](https://github.com/springload/draftail/releases/tag/v0.17.1)
+
 ### Changed
 
 * Unsupported actions causing an atomic block to be without entity now soft-fail with an un-editable atomic block instead of hard-fail [wagtail/wagtail#4370](https://github.com/wagtail/wagtail/issues/4370).
