@@ -8,7 +8,7 @@ It’s developed alongside our Python [Draft.js exporter](https://github.com/spr
 
 ## Features
 
-> This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html), and measures performance and [code coverage](https://coveralls.io/github/springload/draftail).
+> This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html), and measures performance and [code coverage](https://coveralls.io/github/springload/draftail). We also try to follow accessibility best practices (tested with [aXe](https://www.axe-core.org/)) – please [get in touch](https://github.com/springload/draftail/issues/149#issuecomment-389476151) if you can help us do better in this area.
 
 Draftail aims for a mouse-free, keyboard-centric experience. Most formatting can be done by using common keyboard shortcuts, inspired by Google Docs and [Markdown](https://en.wikipedia.org/wiki/Markdown).
 
