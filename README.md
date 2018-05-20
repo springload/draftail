@@ -336,7 +336,7 @@ Optionally, entities can also take an `attributes` and `whitelist` props. These 
 
 ##### Sources
 
-Sources are responsible for creating and editing entities, and are toggled when requested from the toolbar, or from a decorator or block. Here is a [simple image source](https://github.com/springload/draftjs_exporter_demo/blob/master/src/entities/ImageSource.js) which uses `window.prompt` to ask the user for an image's `src`, then creates an entity and its atomic block:
+Sources are responsible for creating and editing entities, and are toggled when requested from the toolbar, or from a decorator or block. Here is a [simple image source](https://github.com/thibaudcolas/draftail-playground/blob/master/src/entities/ImageSource.js) which uses `window.prompt` to ask the user for an image's `src`, then creates an entity and its atomic block:
 
 ```js
 import { Component } from 'react';
@@ -426,7 +426,7 @@ The `onEdit` and `onRemove` props are meant so decorators can also serve in mana
 
 ##### Blocks
 
-Blocks render block-level entities based on their data, and can contain editing controls. Here is a [simple image block](https://github.com/springload/draftjs_exporter_demo/blob/master/src/entities/ImageBlock.js), rendering images with `src` and `alt` attributes:
+Blocks render block-level entities based on their data, and can contain editing controls. Here is a [simple image block](https://github.com/thibaudcolas/draftail-playground/blob/master/src/entities/ImageBlock.js), rendering images with `src` and `alt` attributes:
 
 ```jsx
 import React, { Component } from 'react';
