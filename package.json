@@ -116,6 +116,8 @@
     "babel-preset-react": "^6.24.1",
     "core-js": "^2.5.1",
     "css-loader": "^0.28.4",
+    "danger": "^3.7.4",
+    "danger-plugin-jest": "^1.1.0",
     "dotenv": "^4.0.0",
     "draft-js": "0.10.5",
     "enzyme": "^3.2.0",
@@ -165,12 +167,13 @@
     "build:webpack": "webpack --config=webpack/webpack.config.prod.js --display-optimization-bailout",
     "build": "npm run build:rollup -s && npm run build:autotrack -s && npm run build:webpack -s && cp public/draftail.css dist",
     "dist": "NODE_ENV=production npm run build -s",
+    "danger": "danger ci --verbose",
     "linter:js": "eslint",
     "linter:css": "prettier --list-different",
     "linter:md": "prettier --list-different",
     "formatter": "prettier --write",
     "lint": "npm run linter:js -s -- . && npm run linter:css -s -- '**/*.scss' && npm run linter:md -s -- '**/*.md'",
-    "format": "npm run formatter -s -- '**/*.scss' '**/*.md' lib/**/*.js examples/**/*.js webpack/*.js",
+    "format": "npm run formatter -s -- '**/*.{scss,md,js}'",
     "test": "jest",
     "test:integration": "jest --config tests/integration/jest.config.js",
     "test:integration:watch": "jest --config tests/integration/jest.config.js --watch",
@@ -180,7 +183,7 @@
     "report:coverage": "open coverage/lcov-report/index.html",
     "report:build": "open webpack/webpack-stats.html",
     "report:size": "uglifyjs --compress --mangle -- dist/draftail.cjs.js > dist/draftail.cjs.min.js && gzip --keep dist/* && wc -c dist/* && rm dist/*.gz",
-    "test:ci": "npm run lint -s && npm run test:coverage -s && npm run dist -s && npm run test:integration -s",
+    "test:ci": "npm run lint -s && npm run test:coverage -s -- --outputFile public/test-results.json --json && npm run dist -s && npm run test:integration -s",
     "prepublishOnly": "npm run dist -s"
   }
 }
