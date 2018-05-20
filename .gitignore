@@ -34,6 +34,7 @@ public/*.map
 public/*.html
 public/*.js
 public/examples
+public/test-results.json
 
 # Dependency directories
 node_modules
