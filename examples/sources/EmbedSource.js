@@ -5,9 +5,7 @@ import { AtomicBlockUtils, EditorState } from 'draft-js';
 import Modal from '../components/Modal';
 
 /* global EMBEDLY_API_KEY */
-const EMBEDLY_ENDPOINT = `https://api.embedly.com/1/oembed?key=${
-    EMBEDLY_API_KEY
-}`;
+const EMBEDLY_ENDPOINT = `https://api.embedly.com/1/oembed?key=${EMBEDLY_API_KEY}`;
 
 const getJSON = (endpoint, data, successCallback) => {
     const request = new XMLHttpRequest();
