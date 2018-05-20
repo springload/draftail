@@ -83,9 +83,9 @@ class MediaBlock extends Component {
                 type="button"
                 tabIndex={-1}
                 className="MediaBlock"
-                aria-label={`${entityType.description}${label ? ': ' : ''}${
-                    label
-                }`}
+                aria-label={`${entityType.description}${
+                    label ? ': ' : ''
+                }${label}`}
                 onMouseUp={this.openTooltip}
             >
                 <span className="MediaBlock__icon-wrapper" aria-hidden>
