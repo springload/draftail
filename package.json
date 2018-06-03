@@ -103,7 +103,7 @@
   },
   "dependencies": {
     "draftjs-conductor": "^0.1.0",
-    "draftjs-filters": "^0.7.0"
+    "draftjs-filters": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
