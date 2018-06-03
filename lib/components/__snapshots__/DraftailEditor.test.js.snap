@@ -172,6 +172,7 @@ exports[`DraftailEditor #maxListNesting 1`] = `
     }
     handleBeforeInput={[Function]}
     handleKeyCommand={[Function]}
+    handlePastedText={[Function]}
     handleReturn={[Function]}
     keyBindingFn={[Function]}
     onBlur={[Function]}
@@ -364,6 +365,7 @@ exports[`DraftailEditor empty 1`] = `
     }
     handleBeforeInput={[Function]}
     handleKeyCommand={[Function]}
+    handlePastedText={[Function]}
     handleReturn={[Function]}
     keyBindingFn={[Function]}
     onBlur={[Function]}
