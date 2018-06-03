@@ -4,6 +4,10 @@
 
 ## Unreleased
 
+### Added
+
+*   Add Draft.js copy-paste handling overrides from `draftjs-conductor`. This makes Draftail always preserve the full content as-is when copy-pasting between editors. Fix [#147](https://github.com/springload/draftail/issues/147) ([thibaudcolas/draftjs-conductor#2](https://github.com/thibaudcolas/draftjs-conductor/pull/2)).
+
 ## [[v0.17.1]](https://github.com/springload/draftail/releases/tag/v0.17.1)
 
 ### Changed
