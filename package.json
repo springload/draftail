@@ -102,7 +102,7 @@
     "setupTestFrameworkScriptFile": "<rootDir>/tests/setupTest.js"
   },
   "dependencies": {
-    "draftjs-conductor": "^0.2.0",
+    "draftjs-conductor": "^0.2.1",
     "draftjs-filters": "^1.0.0"
   },
   "devDependencies": {
