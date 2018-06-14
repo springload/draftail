@@ -48,7 +48,7 @@ Original pencil icon is the [Noun project crayon](https://commons.wikimedia.org/
 
 The demo site contains static content exported with [draftjs_exporter](https://github.com/springload/draftjs_exporter). It is placed there for SEO, and also to make the loading experience nicer.
 
-To regenerate it, get the serialised ContentState for the index page's editor (in `sessionStorage`), go to [the exporter demo](https://draftjs-exporter.herokuapp.com), and place the ContentState in the `sessionStorage` value of that editor.
+To regenerate it, get the serialised ContentState for the index page's editor (in `sessionStorage`), go to [the Draftail playground](https://draftail-playground.herokuapp.com), and place the ContentState in the `sessionStorage` value of that editor.
 
 ## Troubleshooting
 
