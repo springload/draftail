@@ -10,7 +10,7 @@
 *   Pressing return at the end of a block should create an empty unstyled block.
 *   Atomic blocks (images, embeds, `hr`) are always preceded and followed by a block (empty if no other block is present). See [facebook/draft-js#327](https://github.com/facebook/draft-js/issues/327).
 *   Blocks starting with "- ", "\* ", "1. " are automatically converted to list items.
-*   Pasting content with block nesting above the configured maxium should reduce the depth up to the maximum.
+*   Pasting content with block nesting above the configured maximum should reduce the depth up to the maximum.
 
 ## Upgrade considerations
 
