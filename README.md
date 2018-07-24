@@ -47,7 +47,7 @@ First, grab the package from npm:
 
 ```sh
 # Draftail's peerDependencies:
-npm install --save draft-js@^0.10.4 react react-dom prop-types
+npm install --save draft-js@^0.10.5 react react-dom prop-types
 npm install --save draftail
 ```
 
