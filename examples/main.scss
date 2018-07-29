@@ -25,6 +25,7 @@ $draftail-editor-chrome-accent: lighten($draftail-editor-chrome, 20%);
 
 $draftail-editor-font-family: $FONT_FAMILY_SANS;
 
+// TODO Fix deprecation warning from node-sass, without breaking the source order.
 @import '../node_modules/draft-js/dist/Draft';
 @import '../lib/index';
 
