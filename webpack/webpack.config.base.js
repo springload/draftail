@@ -21,10 +21,6 @@ const GOOGLE_ANALYTICS_PROD = 'UA-79835767-5';
 const SENTRY_DSN_PROD =
     'https://ab23e9a1442c46f296a2527cdbe73a0e@sentry.io/251576';
 
-const autoprefixerConfig = {
-    browsers: ['> 1%', 'ie 11'],
-};
-
 // Some libraries import Node modules but don't use them in the browser.
 // Tell Webpack to provide empty mocks for them so importing them works.
 const node = {
@@ -155,20 +151,14 @@ const webpackConfig = environment => {
                                 loader: 'css-loader',
                                 options: {
                                     sourceMap: !isProduction,
-                                    minimize: isProduction
-                                        ? {
-                                              autoprefixer: autoprefixerConfig,
-                                          }
-                                        : false,
+                                    minimize: isProduction,
                                 },
                             },
                             {
                                 loader: 'postcss-loader',
                                 options: {
                                     sourceMap: !isProduction,
-                                    plugins: () => [
-                                        autoprefixer(autoprefixerConfig),
-                                    ],
+                                    plugins: () => [autoprefixer()],
                                 },
                             },
                             {
