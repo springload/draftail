@@ -122,7 +122,7 @@
     "jest-environment-node": "^22.2.2",
     "jest-image-snapshot": "^2.3.0",
     "mkdirp": "^0.5.1",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.9.2",
     "normalize.css": "^7.0.0",
     "postcss-loader": "^2.0.6",
     "prettier": "^1.12.1",
