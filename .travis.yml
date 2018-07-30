@@ -7,6 +7,7 @@ script:
     - base64 < ./tests/integration/__image_snapshots__/__diff_output__/* || true
     - npm run danger
     - npm run report:size
+    - npm run report:package
     - mv webpack/webpack-stats.html public || true
     - mv coverage/lcov-report public || true
 after_success:

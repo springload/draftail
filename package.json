@@ -171,6 +171,7 @@
     "report:coverage": "open coverage/lcov-report/index.html",
     "report:build": "open webpack/webpack-stats.html",
     "report:size": "uglifyjs --compress --mangle -- dist/draftail.cjs.js > dist/draftail.cjs.min.js && gzip --keep dist/* && wc -c dist/* && rm dist/*.gz && rm dist/*.min.js",
+    "report:package": "npm pack --loglevel notice 2>&1 >/dev/null | sed -e 's/^npm notice //' | tee public/package.txt && rm *.tgz",
     "test:ci": "npm run lint -s && npm run test:coverage -s -- --outputFile public/test-results.json --json && npm run dist -s && npm run test:integration -s",
     "prepublishOnly": "npm run dist -s"
   }
