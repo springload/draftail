@@ -103,6 +103,7 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "core-js": "^2.5.1",
+    "coveralls": "^3.0.2",
     "css-loader": "^0.28.4",
     "danger": "^3.7.4",
     "danger-plugin-jest": "^1.1.0",
