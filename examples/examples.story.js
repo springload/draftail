@@ -1,5 +1,6 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
+import createHashtagPlugin from "draft-js-hashtag-plugin";
 
 import {
   INLINE_CONTROL,
@@ -15,6 +16,8 @@ import PrismDecorator from "./components/PrismDecorator";
 import ReadingTime from "./components/ReadingTime";
 import customContentState from "./constants/customContentState";
 import allContentState from "./constants/allContentState";
+
+const hashtagPlugin = createHashtagPlugin();
 
 storiesOf("Examples", module)
   .add("Wagtail features", () => (
@@ -80,6 +83,7 @@ storiesOf("Examples", module)
       entityTypes={[ENTITY_CONTROL.EMBED, ENTITY_CONTROL.DOCUMENT]}
       decorators={[new PrismDecorator({ defaultLanguage: "css" })]}
       controls={[ReadingTime]}
+      plugins={[hashtagPlugin]}
     />
   ))
   .add("All built-in formats", () => (
