@@ -11,15 +11,15 @@ One thing that sets Draftail apart from other editors is its configurability: **
 
 ## Contents
 
-*   [Online demo](#online-demo)
-*   [Browser support](#browser-support)
-*   [The editor](#the-editor)
-    *   [Using keyboard shortcuts](#using-keyboard-shortcuts)
-    *   [Copy-pasting content in the editor](#copy-pasting-content-in-the-editor)
-*   [Links, images, and more](#links-images-and-more)
-*   [Feedback](#feedback)
-*   [Keyboard shortcuts](#keyboard-shortcuts)
-*   [Credits](#credits)
+-   [Online demo](#online-demo)
+-   [Browser support](#browser-support)
+-   [The editor](#the-editor)
+    -   [Using keyboard shortcuts](#using-keyboard-shortcuts)
+    -   [Copy-pasting content in the editor](#copy-pasting-content-in-the-editor)
+-   [Links, images, and more](#links-images-and-more)
+-   [Feedback](#feedback)
+-   [Keyboard shortcuts](#keyboard-shortcuts)
+-   [Credits](#credits)
 
 ## Online demo
 

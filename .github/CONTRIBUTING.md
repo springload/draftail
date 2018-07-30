@@ -10,17 +10,17 @@ Please note that this project is released with a [Contributor Code of Conduct](/
 
 The behavior of this editor is heavily inspired by prior art. If you want to discuss changing how the editor behaves, please take some time to consider how other editors operate. We specifically refer to:
 
-*   [ ] [Microsoft Word](https://products.office.com/en/word)
-*   [ ] [Microsoft Word Online](https://office.live.com/start/Word.aspx)
-*   [ ] [Google Docs](https://docs.google.com/)
-*   [ ] [Apple Pages](https://www.apple.com/lae/pages/)
-*   [ ] [Dropbox Paper](https://www.dropbox.com/paper)
-*   [ ] [Gmail](https://www.google.com/gmail/)
-*   [ ] [TinyMCE](https://www.tinymce.com/)
-*   [ ] [CKEditor](https://ckeditor.com)
-*   [ ] [Quill](https://quilljs.com/)
-*   [ ] [Slate](http://slatejs.org/)
-*   [ ] Other [Draft.js editors](https://github.com/nikgraf/awesome-draft-js)
+-   [ ] [Microsoft Word](https://products.office.com/en/word)
+-   [ ] [Microsoft Word Online](https://office.live.com/start/Word.aspx)
+-   [ ] [Google Docs](https://docs.google.com/)
+-   [ ] [Apple Pages](https://www.apple.com/lae/pages/)
+-   [ ] [Dropbox Paper](https://www.dropbox.com/paper)
+-   [ ] [Gmail](https://www.google.com/gmail/)
+-   [ ] [TinyMCE](https://www.tinymce.com/)
+-   [ ] [CKEditor](https://ckeditor.com)
+-   [ ] [Quill](https://quilljs.com/)
+-   [ ] [Slate](http://slatejs.org/)
+-   [ ] Other [Draft.js editors](https://github.com/nikgraf/awesome-draft-js)
 
 ## Development
 
@@ -67,11 +67,11 @@ npm run
 
 ### Releases
 
-*   Make a new branch for the release of the new version.
-*   Update the [CHANGELOG](CHANGELOG.md).
-*   Update the version number in `package.json`, following semver.
-*   Make a PR and squash merge it.
-*   Back on master with the PR merged, follow the instructions below.
+-   Make a new branch for the release of the new version.
+-   Update the [CHANGELOG](CHANGELOG.md).
+-   Update the version number in `package.json`, following semver.
+-   Make a PR and squash merge it.
+-   Back on master with the PR merged, follow the instructions below.
 
 ```sh
 npm run dist
@@ -80,7 +80,7 @@ irish-pub
 npm publish
 ```
 
-*   Finally, go to GitHub and create a release and a tag for the new version.
-*   Done!
+-   Finally, go to GitHub and create a release and a tag for the new version.
+-   Done!
 
 > As a last step, you may want to go update the [Draftail Playground](https://github.com/thibaudcolas/draftail-playground) to this new release to check that all is well in a fully separate project.

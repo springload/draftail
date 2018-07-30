@@ -14,14 +14,14 @@ Draftail aims for a mouse-free, keyboard-centric experience. Most formatting can
 
 Here are important features worth highlighting:
 
-*   Support for [keyboard shortcuts](/docs/user-guide/README.md). Lots of them!
-*   Paste from Word. Or any other editor.
-*   Autolists – start a line with `-` , `*` , `1.` to create a list item.
-*   Shortcuts for heading levels `##`, code blocks ` ``` `, and more.
-*   Undo / redo – until the end of times.
-*   Common text types: headings, paragraphs, quotes, lists.
-*   Common text styles: Bold, italic, and many more.
-*   API to build custom controls for links, images, and more.
+-   Support for [keyboard shortcuts](/docs/user-guide/README.md). Lots of them!
+-   Paste from Word. Or any other editor.
+-   Autolists – start a line with `-` , `*` , `1.` to create a list item.
+-   Shortcuts for heading levels `##`, code blocks ` ``` `, and more.
+-   Undo / redo – until the end of times.
+-   Common text types: headings, paragraphs, quotes, lists.
+-   Common text styles: Bold, italic, and many more.
+-   API to build custom controls for links, images, and more.
 
 ## Using Draftail
 
@@ -31,9 +31,9 @@ Draftail is meant to be used in scenarios where not all formatting should be ava
 
 ### Built-in formats
 
-*   Block types: H1, H2, H3, H4, H5, H6, Blockquote, Code, UL, OL, P
-*   Inline styles: Bold, Italic, Underline, Code, Strikethrough, Mark, Keyboard, Superscript, Subscript
-*   And HR, BR
+-   Block types: H1, H2, H3, H4, H5, H6, Blockquote, Code, UL, OL, P
+-   Inline styles: Bold, Italic, Underline, Code, Strikethrough, Mark, Keyboard, Superscript, Subscript
+-   And HR, BR
 
 Draftail does not come with built-in controls for things like images and links, so you can build your own exactly as you wish. This is particularly useful when integrating with content sources, like a CMS, an API, or other tools with a fixed schema.
 
@@ -154,9 +154,9 @@ stateSaveInterval: 250,
 
 Draftail, like Draft.js, distinguishes between 3 content formats:
 
-*   Blocks, that provide structure to the content. Blocks do not overlap – no content can be both a paragraph and a title.
-*   Inline styles, providing inline formatting for text. Styles can overlap: a piece of text can be both bold and italic.
-*   Entities, annotating content with metadata to represent rich content beyond text. Entities can be inline (eg. a link applied on a portion of text), or block-based (eg. an embedded video).
+-   Blocks, that provide structure to the content. Blocks do not overlap – no content can be both a paragraph and a title.
+-   Inline styles, providing inline formatting for text. Styles can overlap: a piece of text can be both bold and italic.
+-   Entities, annotating content with metadata to represent rich content beyond text. Entities can be inline (eg. a link applied on a portion of text), or block-based (eg. an embedded video).
 
 ### Configuring available formats
 
@@ -315,9 +315,9 @@ Creating custom entity types is a bit more involved because entities aren't simp
 
 Apart from the usual type/label/description/icon options, entities need:
 
-*   A `source`, a React component that will be rendered to display the UI when creating or editing an entity. This could involve a modal window, API calls, a tooltip, or any other mean of gathering entity data.
-*   A `decorator`, a React component to display the entity within the editor area for inline entities (eg. links).
-*   Finally, the `block` is for block-level entities (think: image block, embed) to supply their React component.
+-   A `source`, a React component that will be rendered to display the UI when creating or editing an entity. This could involve a modal window, API calls, a tooltip, or any other mean of gathering entity data.
+-   A `decorator`, a React component to display the entity within the editor area for inline entities (eg. links).
+-   Finally, the `block` is for block-level entities (think: image block, embed) to supply their React component.
 
 Optionally, entities can also take an `attributes` and `whitelist` props. These can be used to determine whitelisting rules when pasting content into the editor, to only keep the entities considered valid. If undefined, all entities are always preserved with all of their data.
 
@@ -502,9 +502,9 @@ $draftail-editor-z-index: 100;
 
 Draftail can use icons to display each format in the toolbar. There are multiple possible formats:
 
-*   A `<path />` data string (the `d` attribute), eg `'M10 10 H 90 V 90 H 10 Z'`.
-*   An array of paths, eg. `['M10 10 H 90 V 90 H 10 Z', 'M10 10 H 90 V 90 H 10 Z']`.
-*   An SVG symbol reference, inline or external eg. `#square` / `test.svg#square`.
+-   A `<path />` data string (the `d` attribute), eg `'M10 10 H 90 V 90 H 10 Z'`.
+-   An array of paths, eg. `['M10 10 H 90 V 90 H 10 Z', 'M10 10 H 90 V 90 H 10 Z']`.
+-   An SVG symbol reference, inline or external eg. `#square` / `test.svg#square`.
 
 The SVG has to use a 1024x1024 viewbox that will be downscaled to 16x16.
 
@@ -545,8 +545,8 @@ Without Sass, refer to class names starting with `Draftail-` or `Draft` / `publi
 
 The editor comes with default labels in english, but all are overridable.
 
-*   For blocks, styles, and entities, use the `label` and-or `description` prop to set text in the right language.
-*   For boolean controls (`enableLineBreak`, etc), set instead an object with `icon`, `label`, `description` props (all optional).
+-   For blocks, styles, and entities, use the `label` and-or `description` prop to set text in the right language.
+-   For boolean controls (`enableLineBreak`, etc), set instead an object with `icon`, `label`, `description` props (all optional).
 
 Depending on the target language, you may also need to use the `textDirectionality` prop (`LTR` or `RTL`). See the full [Draft.js documentation](https://draftjs.org/docs/api-reference-editor.html#textdirectionality) for more details.
 
@@ -572,8 +572,8 @@ Draftail has a `focus()` API [like that of Draft.js](https://draftjs.org/docs/ad
 
 Draft.js and Draftail build upon ES6 language features. If targeting browsers that do not support them, have a look at:
 
-*   [Draft.js required polyfills](https://facebook.github.io/draft-js/docs/advanced-topics-issues-and-pitfalls.html#polyfills).
-*   [`position: sticky` support](https://caniuse.com/#feat=css-sticky), and [`stickyfill` polyfill](https://github.com/wilddeer/stickyfill).
+-   [Draft.js required polyfills](https://facebook.github.io/draft-js/docs/advanced-topics-issues-and-pitfalls.html#polyfills).
+-   [`position: sticky` support](https://caniuse.com/#feat=css-sticky), and [`stickyfill` polyfill](https://github.com/wilddeer/stickyfill).
 
 The Draftail demo site lists minimum polyfills for IE11 support: [`examples/utils/polyfills.js`](examples/utils/polyfills.js).
 
