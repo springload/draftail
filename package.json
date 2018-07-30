@@ -68,6 +68,16 @@
   "eslintConfig": {
     "extends": "plugin:springload/prettier"
   },
+  "stylelint": {
+    "plugins": [
+      "stylelint-scss"
+    ],
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-recommended-scss",
+      "stylelint-prettier/recommended"
+    ]
+  },
   "jest": {
     "moduleNameMapper": {
       "\\.scss$": "<rootDir>/tests/styleMock.js"
@@ -139,6 +149,12 @@
     "rollup": "^0.53.4",
     "rollup-plugin-babel": "^3.0.3",
     "sass-loader": "^6.0.6",
+    "stylelint": "^9.4.0",
+    "stylelint-config-prettier": "^3.3.0",
+    "stylelint-config-recommended-scss": "^3.2.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-prettier": "^0.2.2",
+    "stylelint-scss": "^3.2.0",
     "webpack": "^3.8.1",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "2.7.1"
@@ -158,6 +174,7 @@
     "dist": "NODE_ENV=production npm run build -s",
     "danger": "danger ci --verbose",
     "linter:js": "eslint",
+    "linter:css": "stylelint",
     "linter": "prettier --list-different",
     "formatter": "prettier --write",
     "lint": "npm run linter:js -s -- . && npm run linter -s -- '**/*.{scss,md,yml,yaml}'",
