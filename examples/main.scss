@@ -36,6 +36,7 @@ $draftail-editor-chrome-accent: lighten(
 $draftail-editor-font-family: $FONT_FAMILY_SANS;
 
 @import "../node_modules/draft-js/dist/Draft";
+@import "../node_modules/draft-js-hashtag-plugin/lib/plugin";
 @import "../lib/index";
 
 @import "./components/editor";

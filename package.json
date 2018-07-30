@@ -38,6 +38,8 @@
     "not OperaMini all"
   ],
   "dependencies": {
+    "decorate-component-with-props": "^1.0.2",
+    "draft-js-plugins-editor": "^2.1.1",
     "draftjs-conductor": "^0.4.1",
     "draftjs-filters": "^2.2.3"
   },
@@ -60,6 +62,7 @@
     "dotenv": "^6.0.0",
     "draft-convert": "^2.1.4",
     "draft-js": "0.10.5",
+    "draft-js-hashtag-plugin": "^2.0.3",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "enzyme-to-json": "^3.3.4",
