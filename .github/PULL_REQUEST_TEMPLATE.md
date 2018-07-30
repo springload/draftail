@@ -5,7 +5,7 @@ _Before_ submitting a pull request, please make sure to:
 3.  If you've changed APIs, update the documentation.
 4.  Ensure that:
 
-*   The test suite passes, with 100% coverage (`npm run test:coverage`)
-*   The linting passes (`npm run lint`).
+-   The test suite passes, with 100% coverage (`npm run test:coverage`)
+-   The linting passes (`npm run lint`).
 
 Thanks for contributing to Draftail!

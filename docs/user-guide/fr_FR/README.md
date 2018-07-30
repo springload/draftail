@@ -11,14 +11,14 @@ Une caractéristique qui distingue Draftail des autres éditeurs est sa configur
 
 ## Table des matières
 
-*   [Démo en ligne](#d%C3%A9mo-en-ligne)
-*   [Support des navigateurs](#support-des-navigateurs)
-*   [L’éditeur](#l%C3%A9diteur)
-    *   [Utiliser les raccourcis clavier](#utiliser-les-raccourcis-clavier)
-    *   [Copier-coller du contenu dans l’éditeur](#copier-coller-du-contenu-dans-l%C3%A9diteur)
-*   [Liens, images, et plus](#liens-images-et-plus)
-*   [Feedback](#feedback)
-*   [Raccourcis clavier](#raccourcis-clavier)
+-   [Démo en ligne](#d%C3%A9mo-en-ligne)
+-   [Support des navigateurs](#support-des-navigateurs)
+-   [L’éditeur](#l%C3%A9diteur)
+    -   [Utiliser les raccourcis clavier](#utiliser-les-raccourcis-clavier)
+    -   [Copier-coller du contenu dans l’éditeur](#copier-coller-du-contenu-dans-l%C3%A9diteur)
+-   [Liens, images, et plus](#liens-images-et-plus)
+-   [Feedback](#feedback)
+-   [Raccourcis clavier](#raccourcis-clavier)
 
 ## Démo en ligne
 

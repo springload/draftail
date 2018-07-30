@@ -31,6 +31,10 @@ SCSS_STAGED=$(grep .scss$ <<< "$STAGED" || true)
 SCSS_FULLY_STAGED=$(grep .scss$ <<< "$FULLY_STAGED" || true)
 MD_STAGED=$(grep .md$ <<< "$STAGED" || true)
 MD_FULLY_STAGED=$(grep .md$ <<< "$FULLY_STAGED" || true)
+YML_STAGED=$(grep .yml$ <<< "$STAGED" || true)
+YML_FULLY_STAGED=$(grep .yml$ <<< "$FULLY_STAGED" || true)
+YAML_STAGED=$(grep .yaml$ <<< "$STAGED" || true)
+YAML_FULLY_STAGED=$(grep .yaml$ <<< "$FULLY_STAGED" || true)
 SNAPSHOT_STAGED=$(grep .snap$ <<< "$STAGED" || true)
 HTML_STAGED=$(grep .html$ <<< "$STAGED" || true)
 
@@ -57,7 +61,7 @@ fi
 
 if [ -n "$SCSS_STAGED" ];
 then
-    npm run linter:css -s -- $SCSS_STAGED
+    npm run linter -s -- $SCSS_STAGED
 fi
 
 if [ -n "$MD_FULLY_STAGED" ];
@@ -68,7 +72,29 @@ fi
 
 if [ -n "$MD_STAGED" ];
 then
-    npm run linter:md -s -- $MD_STAGED
+    npm run linter -s -- $MD_STAGED
+fi
+
+if [ -n "$YML_FULLY_STAGED" ];
+then
+    npm run formatter -s -- $YML_FULLY_STAGED
+    git add $YML_FULLY_STAGED
+fi
+
+if [ -n "$YML_STAGED" ];
+then
+    npm run linter -s -- $YML_STAGED
+fi
+
+if [ -n "$YAML_FULLY_STAGED" ];
+then
+    npm run formatter -s -- $YAML_FULLY_STAGED
+    git add $YAML_FULLY_STAGED
+fi
+
+if [ -n "$YAML_STAGED" ];
+then
+    npm run linter -s -- $YAML_STAGED
 fi
 
 if [ -n "$JS_STAGED" ] || [ -n "$SNAPSHOT_STAGED" ];
