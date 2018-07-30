@@ -13,7 +13,7 @@
         .DraftEditor-editorContainer {
             opacity: $draftail-editor-readonly-opacity;
 
-            &:before {
+            &::before {
                 content: '';
                 display: block;
                 position: absolute;

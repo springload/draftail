@@ -2,7 +2,7 @@
     display: inline-block;
 
     & + & {
-        &:before {
+        &::before {
             content: '';
             display: inline-block;
             width: 1px;

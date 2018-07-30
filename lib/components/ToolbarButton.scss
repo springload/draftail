@@ -6,6 +6,7 @@ $button-active-border-color: transparentize(
 
 .#{$DRAFTAIL}ToolbarButton {
     @include font-smoothing;
+
     display: inline-block;
     padding: $button-spacing;
     border-radius: 0;
