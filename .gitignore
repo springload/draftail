@@ -35,6 +35,7 @@ public/*.html
 public/*.js
 public/examples
 public/test-results.json
+public/package.txt
 
 # Dependency directories
 node_modules

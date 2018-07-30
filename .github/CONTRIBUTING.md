@@ -61,6 +61,8 @@ npm run report:coverage
 npm run report:build
 # Open the file size report with:
 npm run report:size
+# Open the package contents report with:
+npm run report:package
 # View other available commands with:
 npm run
 ```
