@@ -1,11 +1,7 @@
 sudo: false
 language: node_js
-cache:
-  directories:
-  - node_modules
 install:
-- npm install
-- npm install -g coveralls
+- npm ci
 script:
 - npm run test:ci
 - base64 < ./tests/integration/__image_snapshots__/__diff_output__/* || true
@@ -14,7 +10,7 @@ script:
 - mv webpack/webpack-stats.html public || true
 - mv coverage/lcov-report public || true
 after_success:
-- cat ./coverage/lcov.info | coveralls
+- cat ./coverage/lcov.info | npx coveralls
 branches:
   except:
   - gh-pages
