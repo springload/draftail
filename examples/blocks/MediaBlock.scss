@@ -22,6 +22,7 @@
 
     &__icon {
         $icon-size: 1.5rem;
+
         width: $icon-size;
         height: $icon-size;
         font-size: $icon-size;
@@ -35,6 +36,7 @@
 
     &__img {
         @include invalid-image-fallback;
+
         display: block;
         width: 256px;
         height: auto;

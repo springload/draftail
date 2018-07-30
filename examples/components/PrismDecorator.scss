@@ -12,7 +12,6 @@
     word-break: normal;
     font-size: 0.9em;
     line-height: 1.2em;
-
     tab-size: 4;
     hyphens: none;
 }
@@ -22,12 +21,8 @@
     padding: 1em;
     margin: 0.5em 0;
     overflow: auto;
-    border: 1px solid #dddddd;
+    border: 1px solid #ddd;
     background-color: white;
-}
-
-:not(pre) > .Draftail-block--code-block,
-.public-DraftStyleDefault-pre {
 }
 
 /* Inline code */
@@ -36,14 +31,14 @@
     padding-top: 1px;
     padding-bottom: 1px;
     background: #f8f8f8;
-    border: 1px solid #dddddd;
+    border: 1px solid #ddd;
 }
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-    color: #999988;
+    color: #998;
     font-style: italic;
 }
 
@@ -76,19 +71,19 @@
 .token.atrule,
 .token.keyword,
 .token.attr-name,
-.language-autohotkey .token.selector {
+.token.selector {
     color: #007da7;
 }
 
 .token.function,
 .token.deleted,
-.language-autohotkey .token.tag {
+.token.tag {
     color: #9a050f;
 }
 
 .token.tag,
 .token.selector,
-.language-autohotkey .token.keyword {
+.token.keyword {
     color: #00009f;
 }
 

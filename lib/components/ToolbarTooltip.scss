@@ -50,6 +50,7 @@ $balloon-transition-delay: $draftail-toolbar-tooltip-delay;
 
     &::before {
         @include svg-arrow($balloon-bg, 'down');
+
         left: 50%;
         margin-top: $balloon-arrow-offset;
         top: 100%;
@@ -97,6 +98,7 @@ button[data-draftail-balloon] {
 
     &::after {
         @include font-smoothing;
+
         background: $balloon-bg;
         border-radius: $balloon-radius;
         color: $balloon-text-color;
