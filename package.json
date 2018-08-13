@@ -69,9 +69,6 @@
     "extends": "plugin:springload/prettier"
   },
   "stylelint": {
-    "plugins": [
-      "stylelint-scss"
-    ],
     "extends": [
       "stylelint-config-standard",
       "stylelint-config-recommended-scss",
