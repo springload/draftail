@@ -73,6 +73,8 @@ $balloon-transition-delay: $draftail-toolbar-tooltip-delay;
 // -----------------------------------------
 
 // IE 11 button bugfix.
+// See https://stackoverflow.com/questions/30176560/css-after-pseudo-element-doesnt-work-inside-button-in-any-ie-version.
+// stylelint-disable-next-line selector-no-qualifying-type
 button[data-draftail-balloon] {
     overflow: visible;
 }

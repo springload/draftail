@@ -85,7 +85,7 @@
       "selector-max-type": 1,
       "selector-no-qualifying-type": true,
       "max-nesting-depth": 3,
-      "selector-max-specificity": "0,2,0",
+      "selector-max-specificity": "0,3,0",
       "value-no-vendor-prefix": true,
       "property-no-vendor-prefix": true,
       "selector-no-vendor-prefix": true,
