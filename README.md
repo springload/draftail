@@ -562,6 +562,7 @@ Draftail has a `focus()` API [like that of Draft.js](https://draftjs.org/docs/ad
 | ------------- | -------------- | ------- |
 | Chrome        | Windows, macOS | latest  |
 | Firefox       | Windows, macOS | latest  |
+| Firefox       | Windows, macOS | ESR     |
 | MS Edge       | Windows        | latest  |
 | Safari        | macOS          | latest  |
 | Mobile Safari | iOS Phone      | latest  |

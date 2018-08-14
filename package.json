@@ -33,7 +33,9 @@
   ],
   "browserslist": [
     "> 1%",
-    "IE 11"
+    "IE 11",
+    "Firefox ESR",
+    "not OperaMini all"
   ],
   "babel": {
     "plugins": [
