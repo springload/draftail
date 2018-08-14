@@ -8,7 +8,9 @@
 }
 
 .Draftail-block--tiny-text {
-    font-size: 11px;
+    $tiny-text: 11px;
+
+    font-size: $tiny-text;
     font-style: italic;
 }
 

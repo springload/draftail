@@ -15,18 +15,18 @@
 .page-title {
     @include font-smoothing;
 
-    font-size: 3.5rem;
+    font-size: $FONT_SIZE_H1;
     letter-spacing: 2px;
 
     @include medium {
-        font-size: 5rem;
+        font-size: $FONT_SIZE_H1_MEDIUM;
     }
 }
 
 .page-description {
     margin-top: 1.5rem;
     margin-bottom: 0;
-    font-size: 1.5rem;
+    font-size: $FONT_SIZE_H3;
 
     img {
         vertical-align: middle;
