@@ -78,7 +78,8 @@
     "plugins": [
       "stylelint-scss",
       "stylelint-declaration-block-no-ignored-properties",
-      "stylelint-declaration-strict-value"
+      "stylelint-declaration-strict-value",
+      "stylelint-no-unsupported-browser-features"
     ],
     "rules": {
       "color-named": "never",
@@ -101,11 +102,22 @@
       "scss/selector-no-redundant-nesting-selector": true,
       "plugin/declaration-block-no-ignored-properties": true,
       "scale-unlimited/declaration-strict-value": [
-        ["/color/", "z-index", "font-size"],
+        [
+          "/color/",
+          "z-index",
+          "font-size"
+        ],
         {
-          "ignoreKeywords": ["currentColor", "inherit", "transparent"]
+          "ignoreKeywords": [
+            "currentColor",
+            "inherit",
+            "transparent"
+          ]
         }
-      ]
+      ],
+      "plugin/no-unsupported-browser-features": [true, {
+        "ignore": ["user-select-none", "css3-cursors", "viewport-units", "outline", "css-appearance"]
+      }]
     }
   },
   "jest": {
@@ -184,6 +196,7 @@
     "stylelint-config-standard": "^18.2.0",
     "stylelint-declaration-block-no-ignored-properties": "^1.1.0",
     "stylelint-declaration-strict-value": "^1.0.4",
+    "stylelint-no-unsupported-browser-features": "^3.0.1",
     "stylelint-prettier": "^0.2.2",
     "stylelint-scss": "^3.2.0",
     "webpack": "^3.8.1",
