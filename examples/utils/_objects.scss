@@ -35,6 +35,7 @@
         margin: 0;
         padding: 0;
 
+        // stylelint-disable-next-line selector-max-type
         + li {
             margin-left: 0.5rem;
         }
