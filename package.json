@@ -71,9 +71,31 @@
   "stylelint": {
     "extends": [
       "stylelint-config-standard",
-      "stylelint-config-recommended-scss",
       "stylelint-prettier/recommended"
-    ]
+    ],
+    "plugins": [
+      "stylelint-scss"
+    ],
+    "rules": {
+      "color-named": "never",
+      "declaration-block-no-shorthand-property-overrides": true,
+      "shorthand-property-no-redundant-values": true,
+      "declaration-no-important": true,
+      "selector-max-id": 0,
+      "selector-max-type": 1,
+      "selector-no-qualifying-type": true,
+      "max-nesting-depth": 3,
+      "selector-max-specificity": "0,2,0",
+      "value-no-vendor-prefix": true,
+      "property-no-vendor-prefix": true,
+      "selector-no-vendor-prefix": true,
+      "media-feature-name-no-vendor-prefix": true,
+      "at-rule-no-vendor-prefix": true,
+      "at-rule-no-unknown": null,
+      "scss/at-rule-no-unknown": true,
+      "scss/declaration-nested-properties": "never",
+      "scss/selector-no-redundant-nesting-selector": true
+    }
   },
   "jest": {
     "moduleNameMapper": {
@@ -148,7 +170,6 @@
     "sass-loader": "^6.0.6",
     "stylelint": "^9.4.0",
     "stylelint-config-prettier": "^3.3.0",
-    "stylelint-config-recommended-scss": "^3.2.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-prettier": "^0.2.2",
     "stylelint-scss": "^3.2.0",
