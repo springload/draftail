@@ -74,7 +74,8 @@
       "stylelint-prettier/recommended"
     ],
     "plugins": [
-      "stylelint-scss"
+      "stylelint-scss",
+      "stylelint-declaration-block-no-ignored-properties"
     ],
     "rules": {
       "color-named": "never",
@@ -94,7 +95,8 @@
       "at-rule-no-unknown": null,
       "scss/at-rule-no-unknown": true,
       "scss/declaration-nested-properties": "never",
-      "scss/selector-no-redundant-nesting-selector": true
+      "scss/selector-no-redundant-nesting-selector": true,
+      "plugin/declaration-block-no-ignored-properties": true
     }
   },
   "jest": {
@@ -171,6 +173,7 @@
     "stylelint": "^9.4.0",
     "stylelint-config-prettier": "^3.3.0",
     "stylelint-config-standard": "^18.2.0",
+    "stylelint-declaration-block-no-ignored-properties": "^1.1.0",
     "stylelint-prettier": "^0.2.2",
     "stylelint-scss": "^3.2.0",
     "webpack": "^3.8.1",
