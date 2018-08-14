@@ -68,7 +68,15 @@
     }
   },
   "eslintConfig": {
-    "extends": "plugin:springload/prettier"
+    "extends": [
+      "plugin:springload/prettier",
+      "plugin:compat/recommended"
+    ],
+    "settings": {
+      "polyfills": [
+        "promises"
+      ]
+    }
   },
   "stylelint": {
     "extends": [
@@ -115,9 +123,18 @@
           ]
         }
       ],
-      "plugin/no-unsupported-browser-features": [true, {
-        "ignore": ["user-select-none", "css3-cursors", "viewport-units", "outline", "css-appearance"]
-      }]
+      "plugin/no-unsupported-browser-features": [
+        true,
+        {
+          "ignore": [
+            "user-select-none",
+            "css3-cursors",
+            "viewport-units",
+            "outline",
+            "css-appearance"
+          ]
+        }
+      ]
     }
   },
   "jest": {
@@ -146,6 +163,7 @@
     "draftjs-filters": "^1.0.0"
   },
   "devDependencies": {
+    "@thibaudcolas/stylelint-config-cookbook": "^0.1.0",
     "autoprefixer": "^7.1.2",
     "autotrack": "^2.4.1",
     "babel-jest": "^23.4.2",
@@ -165,6 +183,7 @@
     "enzyme-adapter-react-16": "^1.1.0",
     "enzyme-to-json": "^3.2.2",
     "eslint": "^3.19.0",
+    "eslint-plugin-compat": "^2.5.1",
     "eslint-plugin-springload": "^2.2.0",
     "express": "^4.15.5",
     "extract-text-webpack-plugin": "^3.0.0",
@@ -191,14 +210,7 @@
     "rollup": "^0.53.4",
     "rollup-plugin-babel": "^3.0.3",
     "sass-loader": "^6.0.6",
-    "stylelint": "^9.4.0",
-    "stylelint-config-prettier": "^3.3.0",
-    "stylelint-config-standard": "^18.2.0",
-    "stylelint-declaration-block-no-ignored-properties": "^1.1.0",
-    "stylelint-declaration-strict-value": "^1.0.4",
-    "stylelint-no-unsupported-browser-features": "^3.0.1",
-    "stylelint-prettier": "^0.2.2",
-    "stylelint-scss": "^3.2.0",
+    "stylelint": "^9.5.0",
     "webpack": "^3.8.1",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "2.7.1"
