@@ -11,6 +11,7 @@ $balloon-arrow-offset: 1px;
 $balloon-radius: $draftail-toolbar-tooltip-radius;
 $balloon-transition-duration: $draftail-toolbar-tooltip-duration;
 $balloon-transition-delay: $draftail-toolbar-tooltip-delay;
+$balloon-font-size: 0.875em;
 
 //
 // Mixins
@@ -107,7 +108,7 @@ button[data-draftail-balloon] {
         content: attr(aria-label);
         padding: 0.5em 1em;
         white-space: pre;
-        font-size: 0.875em;
+        font-size: $balloon-font-size;
     }
 
     &:hover {

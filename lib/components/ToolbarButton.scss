@@ -3,6 +3,7 @@ $button-active-border-color: transparentize(
     $draftail-editor-chrome-active,
     0.8
 );
+$button-font-size: 1rem;
 
 .#{$DRAFTAIL}ToolbarButton {
     @include font-smoothing;
@@ -13,7 +14,7 @@ $button-active-border-color: transparentize(
     background: transparent;
     color: inherit;
     border: 1px solid transparent;
-    font-size: 1rem;
+    font-size: $button-font-size;
     font-weight: 600;
     cursor: pointer;
     user-select: none;
