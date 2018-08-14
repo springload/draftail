@@ -174,7 +174,7 @@
     "linter:css": "stylelint",
     "linter": "prettier --list-different",
     "formatter": "prettier --write",
-    "lint": "npm run linter:js -s -- . && npm run linter -s -- '**/*.{scss,md,yml,yaml}'",
+    "lint": "npm run linter:js -s -- . && npm run linter:css -s -- '**/*.scss' npm run linter -s -- '**/*.{md,yml,yaml}'",
     "format": "npm run formatter -s -- '**/*.{scss,md,js,yml,yaml}'",
     "test": "jest",
     "test:integration": "jest --config tests/integration/jest.config.js",
