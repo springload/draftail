@@ -4,6 +4,12 @@
 
 ## Unreleased
 
+## [[v1.0.0]](https://github.com/springload/draftail/releases/tag/v1.0.0)
+
+> This release is functionally identical to the last one, `v0.17.2`.
+
+The project has reached a high-enough level of stability to be used in production, and breaking changes will now be reflected via major version changes.
+
 ## [[v0.17.2]](https://github.com/springload/draftail/releases/tag/v0.17.2)
 
 ### Changed
