@@ -67,17 +67,6 @@
       }
     }
   },
-  "eslintConfig": {
-    "extends": [
-      "plugin:springload/prettier",
-      "plugin:compat/recommended"
-    ],
-    "settings": {
-      "polyfills": [
-        "promises"
-      ]
-    }
-  },
   "jest": {
     "moduleNameMapper": {
       "\\.scss$": "<rootDir>/tests/styleMock.js"
@@ -104,6 +93,7 @@
     "draftjs-filters": "^1.0.0"
   },
   "devDependencies": {
+    "@thibaudcolas/eslint-plugin-cookbook": "^3.0.3",
     "@thibaudcolas/stylelint-config-cookbook": "^0.1.0",
     "autoprefixer": "^7.1.2",
     "autotrack": "^2.4.1",
@@ -123,9 +113,8 @@
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "enzyme-to-json": "^3.2.2",
-    "eslint": "^3.19.0",
+    "eslint": "^5.6.0",
     "eslint-plugin-compat": "^2.5.1",
-    "eslint-plugin-springload": "^2.2.0",
     "express": "^4.15.5",
     "extract-text-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^2.30.1",
