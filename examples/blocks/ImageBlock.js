@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import MediaBlock from '../blocks/MediaBlock';
+import MediaBlock from './MediaBlock';
 import { DraftUtils } from '../../lib/index';
 
 const propTypes = {
@@ -49,11 +49,19 @@ class ImageBlock extends Component {
                         onChange={this.changeAlt}
                     />
                 </label>
-                <button className="Tooltip__button" onClick={onEditEntity}>
+                <button
+                    type="button"
+                    className="Tooltip__button"
+                    onClick={onEditEntity}
+                >
                     Edit
                 </button>
 
-                <button className="Tooltip__button" onClick={onRemoveEntity}>
+                <button
+                    type="button"
+                    className="Tooltip__button"
+                    onClick={onRemoveEntity}
+                >
                     Remove
                 </button>
             </MediaBlock>

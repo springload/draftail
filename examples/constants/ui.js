@@ -8,14 +8,13 @@ import ImageSource from '../sources/ImageSource';
 import EmbedSource from '../sources/EmbedSource';
 
 import Link from '../entities/Link';
-import Document from '../entities/Document';
+import Document, { DOCUMENT_ICON } from '../entities/Document';
 
 import EmbedBlock from '../blocks/EmbedBlock';
 import ImageBlock from '../blocks/ImageBlock';
 
 import FontIcon from '../components/FontIcon';
 
-export const DOCUMENT_ICON = <FontIcon icon="document" />;
 export const EMBED_ICON = <FontIcon icon="embed" />;
 
 export const BR_ICON =

@@ -1,11 +1,9 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-    .BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 require('dotenv').config();
@@ -47,7 +45,7 @@ const stats = {
 /**
  * Base Webpack config, defining how our code should compile.
  */
-const webpackConfig = environment => {
+const webpackConfig = (environment) => {
     const extractSass = new ExtractTextPlugin('[name].css');
 
     const isProduction = environment === 'production';
@@ -64,8 +62,8 @@ const webpackConfig = environment => {
         template: path.join(examplesPath, 'index.html'),
         hash: true,
         data: {
-            publicPath: publicPath,
-            icons: icons,
+            publicPath,
+            icons,
             PKG_VERSION: pkg.version,
             SENTRY_DSN: isProduction ? SENTRY_DSN_PROD : null,
             GOOGLE_ANALYTICS: isProduction ? GOOGLE_ANALYTICS_PROD : null,
@@ -92,7 +90,7 @@ const webpackConfig = environment => {
         output: {
             path: path.join(__dirname, '..', 'public'),
             filename: '[name].bundle.js',
-            publicPath: publicPath,
+            publicPath,
         },
         plugins: [
             new webpack.NoEmitOnErrorsPlugin(),
@@ -173,9 +171,9 @@ const webpackConfig = environment => {
             ],
         },
 
-        stats: stats,
+        stats,
 
-        node: node,
+        node,
     };
 
     return compiler;

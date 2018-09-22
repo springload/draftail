@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import { DraftUtils } from '../../lib';
 
-import ImageBlock from '../blocks/ImageBlock';
+import ImageBlock from './ImageBlock';
 
 describe('ImageBlock', () => {
     it('renders', () => {
@@ -49,7 +49,7 @@ describe('ImageBlock', () => {
 
     it('changeAlt', () => {
         jest.spyOn(DraftUtils, 'updateBlockEntity');
-        DraftUtils.updateBlockEntity.mockImplementation(e => e);
+        DraftUtils.updateBlockEntity.mockImplementation((e) => e);
 
         const onChange = jest.fn();
         const wrapper = shallow(

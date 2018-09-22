@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { DOCUMENT_ICON } from '../constants/ui';
+import FontIcon from '../components/FontIcon';
+import TooltipEntity from './TooltipEntity';
 
-import TooltipEntity from '../entities/TooltipEntity';
+export const DOCUMENT_ICON = <FontIcon icon="document" />;
 
-const Document = props => {
+const Document = (props) => {
     const { entityKey, contentState } = props;
     const { url } = contentState.getEntity(entityKey).getData();
     return (

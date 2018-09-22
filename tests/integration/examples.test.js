@@ -19,14 +19,15 @@ describe('/examples/', () => {
     });
 
     it('a11y', async () => {
-        const result = await page.evaluate(() => {
-            return new Promise(resolve => {
-                window.axe.run((err, results) => {
-                    if (err) throw err;
-                    resolve(results);
-                });
-            });
-        });
+        const result = await page.evaluate(
+            () =>
+                new Promise((resolve) => {
+                    window.axe.run((err, results) => {
+                        if (err) throw err;
+                        resolve(results);
+                    });
+                }),
+        );
         expect(result).toHaveNoViolations();
     });
 
@@ -35,7 +36,7 @@ describe('/examples/', () => {
         beforeEach(async () => {
             // Single-word removal.
             await page.type('[data-mount-wagtail] [role="textbox"]', '');
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 10; i += 1) {
                 await page.keyboard.press('Backspace');
             }
         });
@@ -43,7 +44,7 @@ describe('/examples/', () => {
         it('BOLD', async () => {
             await page.type('[data-mount-wagtail] [role="textbox"]', 'Bold');
             await page.keyboard.down('ShiftLeft');
-            for (let i = 0; i < 'Bold'.length; i++) {
+            for (let i = 0; i < 'Bold'.length; i += 1) {
                 await page.keyboard.press('ArrowLeft');
             }
             await page.click('[data-mount-wagtail] [name="BOLD"]');
@@ -53,7 +54,7 @@ describe('/examples/', () => {
             const content = await page.evaluate(() =>
                 JSON.parse(window.sessionStorage.getItem('wagtail:content')),
             );
-            content.blocks.forEach(b => delete b.key);
+            content.blocks.forEach((b) => delete b.key);
             expect(content.blocks).toMatchSnapshot();
         });
 
@@ -63,7 +64,7 @@ describe('/examples/', () => {
             const content = await page.evaluate(() =>
                 JSON.parse(window.sessionStorage.getItem('wagtail:content')),
             );
-            content.blocks.forEach(b => delete b.key);
+            content.blocks.forEach((b) => delete b.key);
             expect(content.blocks).toMatchSnapshot();
         });
 
@@ -73,7 +74,7 @@ describe('/examples/', () => {
             const content = await page.evaluate(() =>
                 JSON.parse(window.sessionStorage.getItem('wagtail:content')),
             );
-            content.blocks.forEach(b => delete b.key);
+            content.blocks.forEach((b) => delete b.key);
             expect(content.blocks).toMatchSnapshot();
         });
 
@@ -83,7 +84,7 @@ describe('/examples/', () => {
             const content = await page.evaluate(() =>
                 JSON.parse(window.sessionStorage.getItem('wagtail:content')),
             );
-            content.blocks.forEach(b => delete b.key);
+            content.blocks.forEach((b) => delete b.key);
             expect(content).toMatchSnapshot();
             await page.keyboard.press('Backspace');
         });
@@ -98,7 +99,7 @@ describe('/examples/', () => {
             const content = await page.evaluate(() =>
                 JSON.parse(window.sessionStorage.getItem('wagtail:content')),
             );
-            content.blocks.forEach(b => delete b.key);
+            content.blocks.forEach((b) => delete b.key);
             expect(content).toMatchSnapshot();
         });
 
@@ -113,14 +114,14 @@ describe('/examples/', () => {
             const content = await page.evaluate(() =>
                 JSON.parse(window.sessionStorage.getItem('wagtail:content')),
             );
-            content.blocks.forEach(b => delete b.key);
+            content.blocks.forEach((b) => delete b.key);
             expect(content).toMatchSnapshot();
         });
 
         it('LINK', async () => {
             await page.type('[data-mount-wagtail] [role="textbox"]', 'Link');
             await page.keyboard.down('ShiftLeft');
-            for (let i = 0; i < 'Link'.length; i++) {
+            for (let i = 0; i < 'Link'.length; i += 1) {
                 await page.keyboard.press('ArrowLeft');
             }
             await page.keyboard.up('ShiftLeft');
@@ -131,7 +132,7 @@ describe('/examples/', () => {
             const content = await page.evaluate(() =>
                 JSON.parse(window.sessionStorage.getItem('wagtail:content')),
             );
-            content.blocks.forEach(b => delete b.key);
+            content.blocks.forEach((b) => delete b.key);
             expect(content).toMatchSnapshot();
         });
     });

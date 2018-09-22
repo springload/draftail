@@ -23,7 +23,7 @@ const getTooltipStyles = (target, direction) => {
         default:
             return {
                 top: top + target.height,
-                left: left,
+                left,
             };
     }
 };
@@ -31,17 +31,15 @@ const getTooltipStyles = (target, direction) => {
 /**
  * A tooltip, with arbitrary content.
  */
-const Tooltip = ({ target, children, direction }) => {
-    return (
-        <div
-            style={getTooltipStyles(target, direction)}
-            className={`Tooltip Tooltip--${direction}`}
-            role="tooltip"
-        >
-            {children}
-        </div>
-    );
-};
+const Tooltip = ({ target, children, direction }) => (
+    <div
+        style={getTooltipStyles(target, direction)}
+        className={`Tooltip Tooltip--${direction}`}
+        role="tooltip"
+    >
+        {children}
+    </div>
+);
 
 Tooltip.propTypes = {
     target: PropTypes.shape({

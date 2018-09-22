@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Tooltip from '../components/Tooltip';
+import Tooltip from './Tooltip';
 
 const target = {
     top: 1,

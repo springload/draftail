@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import TooltipEntity from '../entities/TooltipEntity';
+import TooltipEntity from './TooltipEntity';
 
-const Link = props => {
+const Link = (props) => {
     const { entityKey, contentState } = props;
     const { url } = contentState.getEntity(entityKey).getData();
     const icon = `#icon-${url.startsWith('mailto:') ? 'mail' : 'link'}`;

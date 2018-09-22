@@ -19,14 +19,15 @@ describe('/', () => {
     });
 
     it('a11y', async () => {
-        const result = await page.evaluate(() => {
-            return new Promise(resolve => {
-                window.axe.run((err, results) => {
-                    if (err) throw err;
-                    resolve(results);
-                });
-            });
-        });
+        const result = await page.evaluate(
+            () =>
+                new Promise((resolve) => {
+                    window.axe.run((err, results) => {
+                        if (err) throw err;
+                        resolve(results);
+                    });
+                }),
+        );
         expect(result).toHaveNoViolations();
     });
 });

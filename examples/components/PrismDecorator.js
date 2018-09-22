@@ -53,6 +53,7 @@ class PrismDecorator {
         try {
             tokens = Prism.tokenize(blockText, Prism.languages[language]);
         } catch (e) {
+            // eslint-disable-next-line no-console
             console.error(e);
             return;
         }

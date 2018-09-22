@@ -19,7 +19,7 @@ const editor = (
         rawContentState={indexContentState}
         ariaDescribedBy="demo-editor-index"
         placeholder="Write here…"
-        enableHorizontalRule={true}
+        enableHorizontalRule
         enableLineBreak={{
             icon: BR_ICON,
         }}

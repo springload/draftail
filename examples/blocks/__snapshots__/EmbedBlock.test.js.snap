@@ -24,11 +24,13 @@ exports[`EmbedBlock renders 1`] = `
   </a>
   <button
     className="Tooltip__button"
+    type="button"
   >
     Edit
   </button>
   <button
     className="Tooltip__button"
+    type="button"
   >
     Remove
   </button>

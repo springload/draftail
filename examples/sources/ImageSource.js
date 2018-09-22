@@ -10,16 +10,16 @@ class ImageSource extends Component {
         super(props);
 
         const { entity } = this.props;
-        let src = '';
+        const state = {
+            src: '',
+        };
 
         if (entity) {
             const data = entity.getData();
-            src = data.src;
+            state.src = data.src;
         }
 
-        this.state = {
-            src: src,
-        };
+        this.state = state;
 
         this.onRequestClose = this.onRequestClose.bind(this);
         this.onAfterOpen = this.onAfterOpen.bind(this);
@@ -92,14 +92,14 @@ class ImageSource extends Component {
             <Modal
                 onRequestClose={this.onRequestClose}
                 onAfterOpen={this.onAfterOpen}
-                isOpen={true}
+                isOpen
                 contentLabel="Image chooser"
             >
                 <form className="ImageSource" onSubmit={this.onConfirm}>
-                    <label className={`form-field`}>
+                    <label className="form-field">
                         <span className="form-field__label">Image src</span>
                         <input
-                            ref={inputRef => {
+                            ref={(inputRef) => {
                                 this.inputRef = inputRef;
                             }}
                             type="text"
@@ -109,7 +109,9 @@ class ImageSource extends Component {
                         />
                     </label>
 
-                    <button className="Tooltip__button">Save</button>
+                    <button type="button" className="Tooltip__button">
+                        Save
+                    </button>
                 </form>
             </Modal>
         );
