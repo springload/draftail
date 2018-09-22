@@ -39,13 +39,13 @@ const initWagtail = () => {
             placeholder="Write here…"
             // Makes it easier to write automated tests retrieving the content.
             stateSaveInterval={50}
-            enableHorizontalRule={true}
-            enableLineBreak={true}
-            showUndoControl={true}
-            showRedoControl={true}
+            enableHorizontalRule
+            enableLineBreak
+            showUndoControl
+            showRedoControl
             stripPastedStyles={false}
             maxListNesting={6}
-            spellCheck={true}
+            spellCheck
             entityTypes={[
                 ENTITY_CONTROL.IMAGE,
                 ENTITY_CONTROL.EMBED,
@@ -74,7 +74,7 @@ const initCustom = () => {
             ariaDescribedBy="custom-editor"
             rawContentState={customContentState}
             stripPastedStyles={false}
-            spellCheck={true}
+            spellCheck
             blockTypes={[
                 BLOCK_CONTROL.HEADER_TWO,
                 BLOCK_CONTROL.CODE,
@@ -140,8 +140,8 @@ const initTest = () => {
                 <EditorWrapper
                     id="test:1"
                     ariaDescribedBy="test:1-editor"
-                    enableHorizontalRule={true}
-                    enableLineBreak={true}
+                    enableHorizontalRule
+                    enableLineBreak
                     stripPastedStyles={false}
                     entityTypes={[
                         ENTITY_CONTROL.IMAGE,
@@ -172,8 +172,8 @@ const initTest = () => {
                 <EditorWrapper
                     id="test:2"
                     ariaDescribedBy="test:2-editor"
-                    enableHorizontalRule={true}
-                    enableLineBreak={true}
+                    enableHorizontalRule
+                    enableLineBreak
                     stripPastedStyles={false}
                     entityTypes={[ENTITY_CONTROL.IMAGE, ENTITY_CONTROL.LINK]}
                     blockTypes={[
@@ -197,9 +197,9 @@ const initTest = () => {
                 <EditorWrapper
                     id="test:4"
                     ariaDescribedBy="test:4-editor"
-                    enableHorizontalRule={true}
-                    enableLineBreak={true}
-                    stripPastedStyles={true}
+                    enableHorizontalRule
+                    enableLineBreak
+                    stripPastedStyles
                     entityTypes={[ENTITY_CONTROL.IMAGE, ENTITY_CONTROL.LINK]}
                     blockTypes={[
                         BLOCK_CONTROL.HEADER_FOUR,

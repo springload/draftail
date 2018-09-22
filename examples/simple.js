@@ -3,7 +3,6 @@
  * It is meant to be mirrored as-is (except for this comment)
  * inside the editor documentation.
  */
-/* eslint-disable no-console */
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -11,7 +10,8 @@ import { DraftailEditor, BLOCK_TYPE, INLINE_STYLE } from '../lib';
 
 const initial = JSON.parse(sessionStorage.getItem('draftail:content'));
 
-const onSave = content => {
+const onSave = (content) => {
+    // eslint-disable-next-line no-console
     console.log('saving', content);
     sessionStorage.setItem('draftail:content', JSON.stringify(content));
 };

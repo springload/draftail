@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Portal from '../components/Portal';
+import Portal from './Portal';
 
 const f = expect.any(Function);
 

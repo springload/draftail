@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import MediaBlock from '../blocks/MediaBlock';
+import MediaBlock from './MediaBlock';
 
 const propTypes = {
     blockProps: PropTypes.shape({
@@ -12,8 +12,9 @@ const propTypes = {
 /**
  * Editor block to display media and edit content.
  */
-const EmbedBlock = props => {
-    const { entity, onEditEntity, onRemoveEntity } = props.blockProps;
+const EmbedBlock = (props) => {
+    const { blockProps } = props;
+    const { entity, onEditEntity, onRemoveEntity } = blockProps;
     const { url, title, thumbnail } = entity.getData();
 
     return (
@@ -28,11 +29,19 @@ const EmbedBlock = props => {
                 {title}
             </a>
 
-            <button className="Tooltip__button" onClick={onEditEntity}>
+            <button
+                type="button"
+                className="Tooltip__button"
+                onClick={onEditEntity}
+            >
                 Edit
             </button>
 
-            <button className="Tooltip__button" onClick={onRemoveEntity}>
+            <button
+                type="button"
+                className="Tooltip__button"
+                onClick={onRemoveEntity}
+            >
                 Remove
             </button>
         </MediaBlock>

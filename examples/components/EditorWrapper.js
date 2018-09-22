@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 
 import { DraftailEditor } from '../../lib';
 
-import SentryBoundary from '../components/SentryBoundary';
-import Highlight from '../components/Highlight';
+import SentryBoundary from './SentryBoundary';
+import Highlight from './Highlight';
 
 /* global PKG_VERSION */
 const DRAFTAIL_VERSION = PKG_VERSION;

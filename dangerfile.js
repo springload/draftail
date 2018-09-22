@@ -3,14 +3,14 @@ const { danger, message, warn, fail, schedule } = require('danger');
 const jest = require('danger-plugin-jest').default;
 
 const libModifiedFiles = danger.git.modified_files.filter(
-    filepath => filepath.startsWith('lib') && filepath.endsWith('js'),
+    (filepath) => filepath.startsWith('lib') && filepath.endsWith('js'),
 );
 const hasLibChanges =
-    libModifiedFiles.filter(filepath => !filepath.endsWith('test.js')).length >
-    0;
+    libModifiedFiles.filter((filepath) => !filepath.endsWith('test.js'))
+        .length > 0;
 const hasREADMEChanges = danger.git.modified_files.includes('README.md');
 const hasCHANGELOGChanges = danger.git.modified_files.includes('CHANGELOG.md');
-const hasUserguideChanges = danger.git.modified_files.some(filepath =>
+const hasUserguideChanges = danger.git.modified_files.some((filepath) =>
     filepath.includes('docs/user-guide'),
 );
 
@@ -36,10 +36,10 @@ if (hasLibChanges && !(hasREADMEChanges || hasUserguideChanges)) {
 
 const hasLabels = danger.github.issue.labels.length !== 0;
 const isEnhancement =
-    danger.github.issue.labels.some(l => l.name === 'enhancement') ||
+    danger.github.issue.labels.some((l) => l.name === 'enhancement') ||
     danger.github.pr.title.includes('feature');
 const isBug =
-    danger.github.issue.labels.some(l => l.name === 'bug') ||
+    danger.github.issue.labels.some((l) => l.name === 'bug') ||
     danger.github.pr.title.includes('fix') ||
     danger.github.pr.title.includes('bug');
 
@@ -70,23 +70,22 @@ if (hasPackageChanges && !hasLockfileChanges) {
     );
 }
 
-const linkDep = dep =>
+const linkDep = (dep) =>
     danger.utils.href(`https://www.npmjs.com/package/${dep}`, dep);
 
 schedule(async () => {
     const packageDiff = await danger.git.JSONDiffForFile('package.json');
 
     if (packageDiff.dependencies) {
-        const added = packageDiff.dependencies.added;
-        const removed = packageDiff.dependencies.removed;
+        const { added, removed } = packageDiff.dependencies;
 
         if (added.length) {
-            const deps = danger.utils.sentence(added.map(d => linkDep(d)));
+            const deps = danger.utils.sentence(added.map((d) => linkDep(d)));
             message(`Adding new dependencies: ${deps}`);
         }
 
         if (removed.length) {
-            const deps = danger.utils.sentence(removed.map(d => linkDep(d)));
+            const deps = danger.utils.sentence(removed.map((d) => linkDep(d)));
             message(`:tada:, removing dependencies: ${deps}`);
         }
 

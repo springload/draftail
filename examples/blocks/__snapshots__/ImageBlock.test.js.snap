@@ -30,11 +30,13 @@ exports[`ImageBlock alt 1`] = `
   </label>
   <button
     className="Tooltip__button"
+    type="button"
   >
     Edit
   </button>
   <button
     className="Tooltip__button"
+    type="button"
   >
     Remove
   </button>
@@ -71,11 +73,13 @@ exports[`ImageBlock renders 1`] = `
   </label>
   <button
     className="Tooltip__button"
+    type="button"
   >
     Edit
   </button>
   <button
     className="Tooltip__button"
+    type="button"
   >
     Remove
   </button>

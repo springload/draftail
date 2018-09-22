@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-const Raven = window.Raven;
+const { Raven } = window;
 const isRavenAvailable = !!Raven;
 
 class SentryBoundary extends Component {
@@ -13,14 +13,6 @@ class SentryBoundary extends Component {
         };
 
         this.onAttemptReload = this.onAttemptReload.bind(this);
-    }
-
-    componentDidCatch(error, errorInfo) {
-        this.setState({ error });
-
-        if (isRavenAvailable) {
-            Raven.captureException(error, { extra: errorInfo });
-        }
     }
 
     onAttemptReload() {
@@ -36,6 +28,14 @@ class SentryBoundary extends Component {
         }
     }
 
+    componentDidCatch(error, errorInfo) {
+        this.setState({ error });
+
+        if (isRavenAvailable) {
+            Raven.captureException(error, { extra: errorInfo });
+        }
+    }
+
     render() {
         const { children } = this.props;
         const { reloads, error } = this.state;
@@ -44,7 +44,11 @@ class SentryBoundary extends Component {
             <div className="editor">
                 <div className="editor__toolbar">
                     <div className="toolbar-group">
-                        <button className="toolbar-button" disabled>
+                        <button
+                            type="button"
+                            className="toolbar-button"
+                            disabled
+                        >
                             &nbsp;
                         </button>
                     </div>

@@ -9,14 +9,6 @@ class Portal extends Component {
         this.onCloseEvent = this.onCloseEvent.bind(this);
     }
 
-    onCloseEvent(e) {
-        const { onClose } = this.props;
-
-        if (!this.portal.contains(e.target)) {
-            onClose();
-        }
-    }
-
     componentDidMount() {
         const {
             onClose,
@@ -61,6 +53,14 @@ class Portal extends Component {
         document.removeEventListener('mouseup', this.onCloseEvent);
         document.removeEventListener('keyup', this.onCloseEvent);
         window.removeEventListener('resize', onClose);
+    }
+
+    onCloseEvent(e) {
+        const { onClose } = this.props;
+
+        if (!this.portal.contains(e.target)) {
+            onClose();
+        }
     }
 
     render() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import MediaBlock from '../blocks/MediaBlock';
+import MediaBlock from './MediaBlock';
 
 describe('MediaBlock', () => {
     it('renders', () => {

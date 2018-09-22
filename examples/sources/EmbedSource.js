@@ -24,16 +24,16 @@ class EmbedSource extends React.Component {
         super(props);
 
         const { entity } = this.props;
-        let url = '';
+        const state = {
+            url: '',
+        };
 
         if (entity) {
             const data = entity.getData();
-            url = data.url;
+            state.url = data.url;
         }
 
-        this.state = {
-            url: url,
-        };
+        this.state = state;
 
         this.onRequestClose = this.onRequestClose.bind(this);
         this.onAfterOpen = this.onAfterOpen.bind(this);
@@ -58,7 +58,7 @@ class EmbedSource extends React.Component {
         getJSON(
             `${EMBEDLY_ENDPOINT}&url=${encodeURIComponent(url)}`,
             null,
-            embed => {
+            (embed) => {
                 if (entity) {
                     const nextContent = content.mergeEntityData(entityKey, {
                         url: embed.url,
@@ -118,14 +118,14 @@ class EmbedSource extends React.Component {
             <Modal
                 onRequestClose={this.onRequestClose}
                 onAfterOpen={this.onAfterOpen}
-                isOpen={true}
+                isOpen
                 contentLabel="Embed chooser"
             >
                 <form className="EmbedSource" onSubmit={this.onConfirm}>
-                    <label className={`form-field`}>
+                    <label className="form-field">
                         <span className="form-field__label">Embed URL</span>
                         <input
-                            ref={inputRef => {
+                            ref={(inputRef) => {
                                 this.inputRef = inputRef;
                             }}
                             type="text"
@@ -135,7 +135,9 @@ class EmbedSource extends React.Component {
                         />
                     </label>
 
-                    <button className="Tooltip__button">Save</button>
+                    <button type="button" className="Tooltip__button">
+                        Save
+                    </button>
                 </form>
             </Modal>
         );

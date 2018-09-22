@@ -10,16 +10,16 @@ class DocumentSource extends Component {
         super(props);
 
         const { entity } = this.props;
-        let url = '';
+        const state = {
+            url: '',
+        };
 
         if (entity) {
             const data = entity.getData();
-            url = data.url;
+            state.url = data.url;
         }
 
-        this.state = {
-            url: url,
-        };
+        this.state = state;
 
         this.onRequestClose = this.onRequestClose.bind(this);
         this.onAfterOpen = this.onAfterOpen.bind(this);
@@ -78,14 +78,14 @@ class DocumentSource extends Component {
             <Modal
                 onRequestClose={this.onRequestClose}
                 onAfterOpen={this.onAfterOpen}
-                isOpen={true}
+                isOpen
                 contentLabel="Document chooser"
             >
                 <form className="DocumentSource" onSubmit={this.onConfirm}>
-                    <label className={`form-field`}>
+                    <label className="form-field">
                         <span className="form-field__label">Document URL</span>
                         <input
-                            ref={inputRef => {
+                            ref={(inputRef) => {
                                 this.inputRef = inputRef;
                             }}
                             type="text"
@@ -95,7 +95,7 @@ class DocumentSource extends Component {
                         />
                     </label>
 
-                    <button>Save</button>
+                    <button type="button">Save</button>
                 </form>
             </Modal>
         );

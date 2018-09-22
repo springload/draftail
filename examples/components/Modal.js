@@ -13,7 +13,7 @@ const overlayClassName = {
     beforeClose: 'modal__overlay--before-close',
 };
 
-const Modal = props => (
+const Modal = (props) => (
     <ReactModal
         className={className}
         overlayClassName={overlayClassName}
