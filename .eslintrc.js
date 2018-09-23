@@ -1,11 +1,8 @@
 module.exports = {
     extends: [
-        'plugin:@thibaudcolas/eslint-plugin-cookbook/prettier',
+        'plugin:@thibaudcolas/eslint-plugin-cookbook/recommended',
         'plugin:compat/recommended',
     ],
-    rules: {
-        '@thibaudcolas/cookbook/prettier/prettier': 0,
-    },
     settings: {
         polyfills: ['promises'],
     },
