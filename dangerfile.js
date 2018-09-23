@@ -1,6 +1,4 @@
-const path = require('path');
 const { danger, message, warn, fail, schedule } = require('danger');
-const jest = require('danger-plugin-jest').default;
 
 const libModifiedFiles = danger.git.modified_files.filter(
     (filepath) => filepath.startsWith('lib') && filepath.endsWith('js'),
@@ -95,8 +93,4 @@ schedule(async () => {
             );
         }
     }
-});
-
-jest({
-    testResultsJsonPath: path.resolve(__dirname, 'public/test-results.json'),
 });
