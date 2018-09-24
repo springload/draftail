@@ -22,7 +22,10 @@ $draftail-editor-readonly-opacity: 0.5 !default;
 $draftail-editor-chrome: $color-light-grey !default;
 $draftail-editor-chrome-text: $color-grey !default;
 $draftail-editor-chrome-active: $color-black !default;
-$draftail-editor-chrome-accent: darken($draftail-editor-chrome, 10%) !default;
+$draftail-editor-chrome-accent: darken(
+    $color: $draftail-editor-chrome,
+    $amount: 10%,
+) !default;
 $draftail-tooltip-chrome: $color-grey !default;
 $draftail-tooltip-chrome-text: $color-white !default;
 

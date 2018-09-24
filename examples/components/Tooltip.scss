@@ -50,15 +50,15 @@ $tooltip-arrow-spacing: 25px;
     }
 
     &--top {
-        @include arrow--top;
+        @include arrow--top();
     }
 
     &--left {
-        @include arrow--left;
+        @include arrow--left();
     }
 
     &--top-left {
-        @include arrow--top-left;
+        @include arrow--top-left();
     }
 }
 

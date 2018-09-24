@@ -27,7 +27,10 @@ $tooltip-spacing: 0.625rem;
 $draftail-editor-chrome: $GREY_333;
 $draftail-editor-chrome-text: $WHITE;
 $draftail-editor-chrome-active: $WHITE;
-$draftail-editor-chrome-accent: lighten($draftail-editor-chrome, 20%);
+$draftail-editor-chrome-accent: lighten(
+    $color: $draftail-editor-chrome,
+    $amount: 20%,
+);
 
 $draftail-editor-font-family: $FONT_FAMILY_SANS;
 
