@@ -1,4 +1,4 @@
-@include draftail-richtext-styles {
+@include draftail-richtext-styles() {
     blockquote {
         border-left: 1px solid #e5e5e5;
         padding: 0 0 0 20px;

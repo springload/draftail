@@ -14,38 +14,57 @@ $breakpoint-xxlarge: 1380;
     @return $em-size * 1em;
 }
 
+$width-xsmall: em(
+    $size: $breakpoint-xsmall,
+);
+$width-small: em(
+    $size: $breakpoint-small,
+);
+$width-medium: em(
+    $size: $breakpoint-medium,
+);
+$width-large: em(
+    $size: $breakpoint-large,
+);
+$width-xlarge: em(
+    $size: $breakpoint-xlarge,
+);
+$width-xxlarge: em(
+    $size: $breakpoint-xxlarge,
+);
+
 @mixin xsmall {
-    @media only screen and (max-width: em($breakpoint-xsmall)) {
+    @media only screen and (max-width: $width-xsmall) {
         @content;
     }
 }
 
 @mixin small {
-    @media only screen and (max-width: em($breakpoint-small)) {
+    @media only screen and (max-width: $width-small) {
         @content;
     }
 }
 
 @mixin medium {
-    @media only screen and (min-width: em($breakpoint-medium)) {
+    @media only screen and (min-width: $width-medium) {
         @content;
     }
 }
 
 @mixin large {
-    @media only screen and (min-width: em($breakpoint-large)) {
+    @media only screen and (min-width: $width-large) {
         @content;
     }
 }
 
 @mixin xlarge {
-    @media only screen and (min-width: em($breakpoint-xlarge)) {
+    @media only screen and (min-width: $width-xlarge) {
         @content;
     }
 }
 
 @mixin xxlarge {
-    @media only screen and (min-width: em($breakpoint-xxlarge)) {
+    @media only screen and (min-width: $width-xxlarge) {
         @content;
     }
 }

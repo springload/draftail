@@ -7,18 +7,18 @@
     margin-bottom: 5vh;
     text-align: center;
 
-    @include xsmall {
+    @include xsmall() {
         text-align: left;
     }
 }
 
 .page-title {
-    @include font-smoothing;
+    @include font-smoothing();
 
     font-size: $FONT_SIZE_H1;
     letter-spacing: 2px;
 
-    @include medium {
+    @include medium() {
         font-size: $FONT_SIZE_H1_MEDIUM;
     }
 }

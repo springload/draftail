@@ -3,7 +3,7 @@
     padding: 10vh 5vw;
     margin: 0 auto;
 
-    @include medium {
+    @include medium() {
         padding: 10vh 5rem;
     }
 }

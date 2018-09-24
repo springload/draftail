@@ -35,7 +35,7 @@
     }
 
     &__img {
-        @include invalid-image-fallback;
+        @include invalid-image-fallback();
 
         display: block;
         width: 256px;

@@ -1,12 +1,15 @@
-$button-active-color: transparentize($draftail-editor-chrome-active, 0.9);
+$button-active-color: transparentize(
+    $color: $draftail-editor-chrome-active,
+    $amount: 0.9,
+);
 $button-active-border-color: transparentize(
-    $draftail-editor-chrome-active,
-    0.8
+    $color: $draftail-editor-chrome-active,
+    $amount: 0.8,
 );
 $button-font-size: 1rem;
 
 .#{$DRAFTAIL}ToolbarButton {
-    @include font-smoothing;
+    @include font-smoothing();
 
     display: inline-block;
     padding: $button-spacing;
