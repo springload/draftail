@@ -94,7 +94,7 @@
   },
   "devDependencies": {
     "@thibaudcolas/eslint-plugin-cookbook": "^4.0.1",
-    "@thibaudcolas/stylelint-config-cookbook": "^0.1.0",
+    "@thibaudcolas/stylelint-config-cookbook": "^2.0.1",
     "autoprefixer": "^7.1.2",
     "autotrack": "^2.4.1",
     "babel-jest": "^23.6.0",
