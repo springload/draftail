@@ -68,7 +68,7 @@ import { DraftailEditor, BLOCK_TYPE, INLINE_STYLE } from 'draftail';
 
 const initial = JSON.parse(sessionStorage.getItem('draftail:content'));
 
-const onSave = content => {
+const onSave = (content) => {
     console.log('saving', content);
     sessionStorage.setItem('draftail:content', JSON.stringify(content));
 };
