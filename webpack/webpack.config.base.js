@@ -5,6 +5,7 @@ const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const sass = require('sass');
 
 require('dotenv').config();
 
@@ -163,6 +164,7 @@ const webpackConfig = (environment) => {
                                 loader: 'sass-loader',
                                 options: {
                                     sourceMap: !isProduction,
+                                    implementation: sass,
                                 },
                             },
                         ],
