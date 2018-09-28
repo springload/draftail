@@ -96,7 +96,6 @@
     "@thibaudcolas/eslint-plugin-cookbook": "^4.0.1",
     "@thibaudcolas/stylelint-config-cookbook": "^2.0.1",
     "autoprefixer": "^7.1.2",
-    "autotrack": "^2.4.1",
     "babel-jest": "^23.6.0",
     "babel-loader": "^7.1.1",
     "babel-plugin-external-helpers": "^6.22.0",
@@ -153,9 +152,8 @@
   "scripts": {
     "start": "webpack-dev-server --config=webpack/webpack.config.dev.js",
     "build:rollup": "rollup --config=webpack/rollup.config.js",
-    "build:autotrack": "autotrack -o public/autotrack.bundle.js -p maxScrollTracker,outboundLinkTracker",
     "build:webpack": "webpack --config=webpack/webpack.config.prod.js --display-optimization-bailout",
-    "build": "npm run build:rollup -s && npm run build:autotrack -s && npm run build:webpack -s && cp public/draftail.css dist",
+    "build": "npm run build:rollup -s && npm run build:webpack -s && cp public/draftail.css dist",
     "dist": "NODE_ENV=production npm run build -s",
     "danger": "danger ci --verbose",
     "linter:js": "eslint",

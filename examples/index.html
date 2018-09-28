@@ -141,16 +141,8 @@
             window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
             ga('create', '<%= htmlWebpackPlugin.options.data.GOOGLE_ANALYTICS %>', 'auto');
             ga('send', 'pageview');
-            ga('require', 'outboundLinkTracker', {
-                events: ['click', 'contextmenu'],
-            });
-            ga('require', 'maxScrollTracker', {
-                maxScrollMetricIndex: 1,
-                timeZone: 'Pacific/Auckland',
-            });
         </script>
         <script src="https://www.google-analytics.com/analytics.js" async defer></script>
-        <script src="<%= htmlWebpackPlugin.options.data.publicPath %>autotrack.bundle.js" async defer></script>
     <% } %>
 </body>
 </html>
