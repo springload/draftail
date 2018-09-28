@@ -152,9 +152,9 @@
     "react-dom": "^16.0.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --config=webpack/webpack.config.dev.js",
-    "build:rollup": "rollup --config=webpack/rollup.config.js",
-    "build:webpack": "webpack --config=webpack/webpack.config.prod.js --display-optimization-bailout",
+    "start": "webpack-dev-server --env development",
+    "build:rollup": "rollup -c",
+    "build:webpack": "webpack --env production --display-optimization-bailout",
     "build": "npm run build:rollup -s && npm run build:webpack -s && cp public/draftail.css dist",
     "dist": "NODE_ENV=production npm run build -s",
     "danger": "danger ci --verbose",
@@ -171,7 +171,7 @@
     "test:watch": "jest --watch",
     "test:watch:coverage": "jest --watch --coverage",
     "report:coverage": "open coverage/lcov-report/index.html",
-    "report:build": "open webpack/webpack-stats.html",
+    "report:build": "open public/webpack-stats.html",
     "report:size": "uglifyjs --compress --mangle -- dist/draftail.cjs.js > dist/draftail.cjs.min.js && gzip --keep dist/* && wc -c dist/* && rm dist/*.gz && rm dist/*.min.js",
     "report:package": "npm pack --loglevel notice 2>&1 >/dev/null | sed -e 's/^npm notice //' | tee public/package.txt && rm *.tgz",
     "test:ci": "npm run lint -s && npm run test:coverage -s -- --outputFile public/test-results.json --json && npm run dist -s && npm run test:integration -s",
