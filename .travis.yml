@@ -8,7 +8,6 @@ script:
     - npm run danger
     - npm run report:size
     - npm run report:package
-    - mv webpack/webpack-stats.html public || true
     - mv coverage/lcov-report public || true
 after_success:
     - cat ./coverage/lcov.info | npx coveralls

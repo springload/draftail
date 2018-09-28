@@ -10,7 +10,7 @@ const sass = require('sass');
 
 require('dotenv').config();
 
-const pkg = require('../package.json');
+const pkg = require('./package.json');
 
 // Key is hard-coded because it will be public on the demo site anyway.
 // Key usage is limited to whitelisted Referrers.
@@ -52,7 +52,7 @@ const webpackConfig = (environment) => {
 
     const publicPath = isProduction ? '/draftail/' : '/';
 
-    const examplesPath = path.join(__dirname, '..', 'examples');
+    const examplesPath = path.join(__dirname, 'examples');
     const icons = fs.readFileSync(
         path.join(examplesPath, 'constants', 'icons.svg'),
         'utf-8',
@@ -93,7 +93,7 @@ const webpackConfig = (environment) => {
             examples: './examples/examples',
         },
         output: {
-            path: path.join(__dirname, '..', 'public'),
+            path: path.join(__dirname, 'public'),
             filename: '[name].bundle.js',
             publicPath,
         },
@@ -115,7 +115,11 @@ const webpackConfig = (environment) => {
                 // Can be `server`, `static` or `disabled`.
                 analyzerMode: 'static',
                 // Path to bundle report file that will be generated in `static` mode.
-                reportFilename: path.join(__dirname, 'webpack-stats.html'),
+                reportFilename: path.join(
+                    __dirname,
+                    'public',
+                    'webpack-stats.html',
+                ),
                 // Automatically open report in default browser
                 openAnalyzer: false,
                 logLevel: environment === 'production' ? 'info' : 'warn',
@@ -223,7 +227,7 @@ const webpackConfig = (environment) => {
 
         // https://webpack.js.org/configuration/dev-server/#devserver
         devServer: {
-            contentBase: path.join(__dirname, '..', 'public'),
+            contentBase: path.join(__dirname, 'public'),
             watchContentBase: true,
             compress: true,
             hot: true,
