@@ -14,6 +14,8 @@ import ReadingTime from './components/ReadingTime';
 import customContentState from './constants/customContentState';
 import allContentState from './constants/allContentState';
 
+import './main.scss';
+
 import './simple';
 
 const TINY_TEXT_BLOCK = {

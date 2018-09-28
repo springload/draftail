@@ -13,6 +13,8 @@ import indexContentState from './constants/indexContentState';
 import PrismDecorator from './components/PrismDecorator';
 import EditorWrapper from './components/EditorWrapper';
 
+import './main.scss';
+
 const editor = (
     <EditorWrapper
         id="index"

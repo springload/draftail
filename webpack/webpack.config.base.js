@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const sass = require('sass');
@@ -47,8 +48,6 @@ const stats = {
  * Base Webpack config, defining how our code should compile.
  */
 const webpackConfig = (environment) => {
-    const extractSass = new ExtractTextPlugin('[name].css');
-
     const isProduction = environment === 'production';
 
     const publicPath = isProduction ? '/draftail/' : '/';
@@ -72,6 +71,8 @@ const webpackConfig = (environment) => {
     };
 
     const compiler = {
+        // Disable Webpack mode to use our own optimisations.
+        mode: 'none',
         entry: {
             vendor: [
                 './examples/utils/polyfills.js',
@@ -81,7 +82,6 @@ const webpackConfig = (environment) => {
                 'draft-js',
                 'react-modal',
                 'prismjs',
-                './examples/main.scss',
             ],
             // Stylesheet shipped with the package.
             draftail: ['./lib/index.scss'],
@@ -116,21 +116,17 @@ const webpackConfig = (environment) => {
                 openAnalyzer: false,
                 logLevel: environment === 'production' ? 'info' : 'warn',
             }),
-            new webpack.optimize.CommonsChunkPlugin({
-                name: 'vendor',
-                filename: 'vendor.bundle.js',
-                minChunks: 2,
+
+            new MiniCssExtractPlugin({
+                filename: '[name].css',
             }),
-            extractSass,
-            new webpack.optimize.ModuleConcatenationPlugin(),
+
             new webpack.HotModuleReplacementPlugin(),
             new webpack.DefinePlugin({
                 EMBEDLY_API_KEY: JSON.stringify(
                     isProduction ? EMBEDLY_API_KEY_PROD : EMBEDLY_API_KEY,
                 ),
-                'process.env': {
-                    NODE_ENV: JSON.stringify(environment),
-                },
+                'process.env.NODE_ENV': JSON.stringify(environment),
                 PKG_VERSION: JSON.stringify(pkg.version),
             }),
         ],
@@ -143,34 +139,71 @@ const webpackConfig = (environment) => {
                 },
 
                 {
-                    test: /\.scss$/,
-                    use: extractSass.extract({
-                        use: [
-                            {
-                                loader: 'css-loader',
-                                options: {
-                                    sourceMap: !isProduction,
-                                    minimize: isProduction,
-                                },
+                    test: /\.(scss|css)$/,
+                    use: [
+                        isProduction
+                            ? MiniCssExtractPlugin.loader
+                            : 'style-loader',
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                sourceMap: !isProduction,
+                                minimize: isProduction,
                             },
-                            {
-                                loader: 'postcss-loader',
-                                options: {
-                                    sourceMap: !isProduction,
-                                    plugins: () => [autoprefixer()],
-                                },
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                sourceMap: !isProduction,
+                                plugins: () => [autoprefixer()],
                             },
-                            {
-                                loader: 'sass-loader',
-                                options: {
-                                    sourceMap: !isProduction,
-                                    implementation: sass,
-                                },
+                        },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: !isProduction,
+                                implementation: sass,
                             },
-                        ],
-                    }),
+                        },
+                    ],
                 },
             ],
+        },
+
+        optimization: {
+            minimize: isProduction,
+            minimizer: [
+                new UglifyJsPlugin({
+                    sourceMap: true,
+
+                    uglifyOptions: {
+                        compress: {
+                            warnings: false,
+                            // Disabled because of an issue with Uglify breaking seemingly valid code:
+                            // https://github.com/facebookincubator/create-react-app/issues/2376
+                            // Pending further investigation:
+                            // https://github.com/mishoo/UglifyJS2/issues/2011
+                            comparisons: false,
+                        },
+                        output: {
+                            comments: false,
+                            // Turned on because emoji and regex is not minified properly using default
+                            // https://github.com/facebookincubator/create-react-app/issues/2488
+                            ascii_only: true,
+                        },
+                    },
+                }),
+            ],
+            splitChunks: {
+                cacheGroups: {
+                    vendor: {
+                        name: 'vendor',
+                        chunks: 'initial',
+                        minChunks: 2,
+                        reuseExistingChunk: true,
+                    },
+                },
+            },
         },
 
         stats,
