@@ -73,6 +73,10 @@ const webpackConfig = (environment) => {
     const compiler = {
         // Disable Webpack mode to use our own optimisations.
         mode: 'none',
+
+        // See http://webpack.github.io/docs/configuration.html#devtool
+        devtool: 'source-map',
+
         entry: {
             vendor: [
                 './examples/utils/polyfills.js',
@@ -206,9 +210,29 @@ const webpackConfig = (environment) => {
             },
         },
 
+        // Turn off performance hints during development because we don't do any
+        // splitting or minification in interest of speed. These warnings become
+        // cumbersome.
+        performance: {
+            hints: isProduction && 'warning',
+        },
+
         stats,
 
         node,
+
+        // https://webpack.js.org/configuration/dev-server/#devserver
+        devServer: {
+            contentBase: path.join(__dirname, '..', 'public'),
+            watchContentBase: true,
+            compress: true,
+            hot: true,
+            port: 4000,
+            overlay: true,
+            clientLogLevel: 'none',
+            stats,
+            disableHostCheck: true,
+        },
     };
 
     return compiler;
