@@ -1,12 +1,12 @@
-const NodeEnvironment = require("jest-environment-node")
-const puppeteer = require("puppeteer")
-const fs = require("fs")
-const os = require("os")
-const path = require("path")
+const NodeEnvironment = require("jest-environment-node");
+const puppeteer = require("puppeteer");
+const fs = require("fs");
+const os = require("os");
+const path = require("path");
 
-const DIR = path.join(os.tmpdir(), "jest_puppeteer_global_setup")
+const DIR = path.join(os.tmpdir(), "jest_puppeteer_global_setup");
 
-const IS_WATCH = process.argv.includes("--watch")
+const IS_WATCH = process.argv.includes("--watch");
 
 /**
  * Automated end to end integration tests built with Puppeteer.
@@ -14,34 +14,34 @@ const IS_WATCH = process.argv.includes("--watch")
  */
 class PuppeteerEnvironment extends NodeEnvironment {
   constructor(config, options) {
-    super(config, options)
+    super(config, options);
 
     // Look at what Webpack serves when in watch mode.
-    const port = IS_WATCH ? 4000 : 5000
-    this.global.ROOT = `http://localhost:${port}/`
+    const port = IS_WATCH ? 4000 : 5000;
+    this.global.ROOT = `http://localhost:${port}/`;
   }
 
   async setup() {
-    await super.setup()
+    await super.setup();
 
-    const wsEndpoint = fs.readFileSync(path.join(DIR, "wsEndpoint"), "utf8")
+    const wsEndpoint = fs.readFileSync(path.join(DIR, "wsEndpoint"), "utf8");
 
     if (!wsEndpoint) {
-      throw new Error("wsEndpoint not found")
+      throw new Error("wsEndpoint not found");
     }
 
     this.global.BROWSER = await puppeteer.connect({
       browserWSEndpoint: wsEndpoint,
-    })
+    });
   }
 
   async teardown() {
-    await super.teardown()
+    await super.teardown();
   }
 
   runScript(script) {
-    return super.runScript(script)
+    return super.runScript(script);
   }
 }
 
-module.exports = PuppeteerEnvironment
+module.exports = PuppeteerEnvironment;

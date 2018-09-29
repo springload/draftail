@@ -14,10 +14,10 @@ const pkg = require("./package.json");
 
 // Key is hard-coded because it will be public on the demo site anyway.
 // Key usage is limited to whitelisted Referrers.
-const EMBEDLY_API_KEY_PROD = "fd2d6a8502b54524a58f62d1ad8d8550";
+const EMBEDLY_API_KEY_PROD = "d23c29a928fe4d89bda46b0291914c9c";
 const EMBEDLY_API_KEY = process.env.EMBEDLY_API_KEY || EMBEDLY_API_KEY_PROD;
 
-const GOOGLE_ANALYTICS_PROD = "UA-79835767-5";
+const GOOGLE_ANALYTICS_PROD = "UA-126695868-1";
 const SENTRY_DSN_PROD =
   "https://ab23e9a1442c46f296a2527cdbe73a0e@sentry.io/251576";
 
