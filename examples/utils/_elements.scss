@@ -1,30 +1,30 @@
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 body {
-    box-sizing: border-box;
-    font-size: $FONT_SIZE_TEXT;
-    color: $TEXT_COLOR;
-    font-weight: normal;
+  box-sizing: border-box;
+  font-size: $FONT_SIZE_TEXT;
+  color: $TEXT_COLOR;
+  font-weight: normal;
 }
 
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 summary {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 button {
-    cursor: pointer;
-    font-family: inherit;
+  cursor: pointer;
+  font-family: inherit;
 }

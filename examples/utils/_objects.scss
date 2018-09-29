@@ -1,49 +1,49 @@
 .link {
-    border-bottom: 1px dotted $TEAL_WAGTAIL;
+  border-bottom: 1px dotted $TEAL_WAGTAIL;
 }
 
 .example {
-    display: block;
-    margin-top: 2rem;
+  display: block;
+  margin-top: 2rem;
 }
 
 .anchor {
-    display: none;
+  display: none;
 
-    h4:hover & {
-        display: inline;
-    }
+  h4:hover & {
+    display: inline;
+  }
 }
 
 .loading {
-    opacity: 0.7;
+  opacity: 0.7;
 
-    .js & {
-        opacity: 0.3;
-        user-select: none;
-        cursor: not-allowed;
-    }
+  .js & {
+    opacity: 0.3;
+    user-select: none;
+    cursor: not-allowed;
+  }
 }
 
 .list-inline {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  > li {
+    display: inline-block;
     margin: 0;
     padding: 0;
-    list-style-type: none;
 
-    > li {
-        display: inline-block;
-        margin: 0;
-        padding: 0;
-
-        // stylelint-disable-next-line selector-max-type
-        + li {
-            margin-left: 0.5rem;
-        }
+    // stylelint-disable-next-line selector-max-type
+    + li {
+      margin-left: 0.5rem;
     }
+  }
 }
 
 // Icomoon icons.
-[class^='icon-'],
-[class*=' icon-'] {
-    vertical-align: middle;
+[class^="icon-"],
+[class*=" icon-"] {
+  vertical-align: middle;
 }

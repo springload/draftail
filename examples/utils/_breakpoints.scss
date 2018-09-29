@@ -10,61 +10,61 @@ $breakpoint-xlarge: 1280;
 $breakpoint-xxlarge: 1380;
 
 @function em($size, $em-base: 16) {
-    $em-size: $size / $em-base;
-    @return $em-size * 1em;
+  $em-size: $size / $em-base;
+  @return $em-size * 1em;
 }
 
 $width-xsmall: em(
-    $size: $breakpoint-xsmall,
+  $size: $breakpoint-xsmall,
 );
 $width-small: em(
-    $size: $breakpoint-small,
+  $size: $breakpoint-small,
 );
 $width-medium: em(
-    $size: $breakpoint-medium,
+  $size: $breakpoint-medium,
 );
 $width-large: em(
-    $size: $breakpoint-large,
+  $size: $breakpoint-large,
 );
 $width-xlarge: em(
-    $size: $breakpoint-xlarge,
+  $size: $breakpoint-xlarge,
 );
 $width-xxlarge: em(
-    $size: $breakpoint-xxlarge,
+  $size: $breakpoint-xxlarge,
 );
 
 @mixin xsmall {
-    @media only screen and (max-width: $width-xsmall) {
-        @content;
-    }
+  @media only screen and (max-width: $width-xsmall) {
+    @content;
+  }
 }
 
 @mixin small {
-    @media only screen and (max-width: $width-small) {
-        @content;
-    }
+  @media only screen and (max-width: $width-small) {
+    @content;
+  }
 }
 
 @mixin medium {
-    @media only screen and (min-width: $width-medium) {
-        @content;
-    }
+  @media only screen and (min-width: $width-medium) {
+    @content;
+  }
 }
 
 @mixin large {
-    @media only screen and (min-width: $width-large) {
-        @content;
-    }
+  @media only screen and (min-width: $width-large) {
+    @content;
+  }
 }
 
 @mixin xlarge {
-    @media only screen and (min-width: $width-xlarge) {
-        @content;
-    }
+  @media only screen and (min-width: $width-xlarge) {
+    @content;
+  }
 }
 
 @mixin xxlarge {
-    @media only screen and (min-width: $width-xxlarge) {
-        @content;
-    }
+  @media only screen and (min-width: $width-xxlarge) {
+    @content;
+  }
 }

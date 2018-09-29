@@ -5,8 +5,8 @@
 // -----------------------------------------
 
 $balloon-bg: transparentize(
-    $color: #111,
-    $amount: 0.1,
+  $color: #111,
+  $amount: 0.1,
 ) !default;
 $balloon-text-color: $color-white;
 $balloon-arrow-height: 6px;
@@ -21,43 +21,43 @@ $balloon-font-size: 0.875em;
 // -----------------------------------------
 
 @mixin svg-arrow-down($color) {
-    $degrees: 180 18 6;
-    $height: 6px;
-    $width: 18px;
+  $degrees: 180 18 6;
+  $height: 6px;
+  $width: 18px;
 
-    background: no-repeat
-        url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%22#{$width * 2}%22%20height%3D%22#{$height * 2}%22%3E%3Cpath%20fill%3D%22#{$color}%22%20transform%3D%22rotate(#{$degrees})%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E');
-    background-size: 100% auto;
-    width: $width;
-    height: $height;
+  background: no-repeat
+    url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%22#{$width * 2}%22%20height%3D%22#{$height * 2}%22%3E%3Cpath%20fill%3D%22#{$color}%22%20transform%3D%22rotate(#{$degrees})%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E");
+  background-size: 100% auto;
+  width: $width;
+  height: $height;
 }
 
 @mixin balloon-position-down {
+  &::after {
+    left: 50%;
+    margin-top: $balloon-arrow-offset + $balloon-arrow-height;
+    top: 100%;
+    transform: translate(-50%, -10px);
+  }
+
+  &::before {
+    @include svg-arrow-down($color: $balloon-bg);
+
+    left: 50%;
+    margin-top: $balloon-arrow-offset;
+    top: 100%;
+    transform: translate(-50%, -10px);
+  }
+
+  &:hover {
     &::after {
-        left: 50%;
-        margin-top: $balloon-arrow-offset + $balloon-arrow-height;
-        top: 100%;
-        transform: translate(-50%, -10px);
+      transform: translate(-50%, 0);
     }
 
     &::before {
-        @include svg-arrow-down($color: $balloon-bg);
-
-        left: 50%;
-        margin-top: $balloon-arrow-offset;
-        top: 100%;
-        transform: translate(-50%, -10px);
+      transform: translate(-50%, 0);
     }
-
-    &:hover {
-        &::after {
-            transform: translate(-50%, 0);
-        }
-
-        &::before {
-            transform: translate(-50%, 0);
-        }
-    }
+  }
 }
 
 //
@@ -68,48 +68,48 @@ $balloon-font-size: 0.875em;
 // See https://stackoverflow.com/questions/30176560/css-after-pseudo-element-doesnt-work-inside-button-in-any-ie-version.
 // stylelint-disable-next-line selector-no-qualifying-type
 button[data-draftail-balloon] {
-    overflow: visible;
+  overflow: visible;
 }
 
 [data-draftail-balloon] {
-    position: relative;
+  position: relative;
 
-    // Fixing iOS Safari event issue.
-    // More info at: https://goo.gl/w8JF4W
-    cursor: pointer;
+  // Fixing iOS Safari event issue.
+  // More info at: https://goo.gl/w8JF4W
+  cursor: pointer;
 
+  &::before,
+  &::after {
+    position: absolute;
+    z-index: $draftail-toolbar-tooltip-z-index;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &::before {
+    content: "";
+  }
+
+  &::after {
+    @include font-smoothing();
+
+    background: $balloon-bg;
+    border-radius: $balloon-radius;
+    color: $balloon-text-color;
+    content: attr(aria-label);
+    padding: 0.5em 1em;
+    white-space: pre;
+    font-size: $balloon-font-size;
+  }
+
+  &:hover {
     &::before,
     &::after {
-        position: absolute;
-        z-index: $draftail-toolbar-tooltip-z-index;
-        opacity: 0;
-        pointer-events: none;
+      opacity: 1;
+      transition: all $balloon-transition-duration ease-out
+        $balloon-transition-delay;
     }
+  }
 
-    &::before {
-        content: '';
-    }
-
-    &::after {
-        @include font-smoothing();
-
-        background: $balloon-bg;
-        border-radius: $balloon-radius;
-        color: $balloon-text-color;
-        content: attr(aria-label);
-        padding: 0.5em 1em;
-        white-space: pre;
-        font-size: $balloon-font-size;
-    }
-
-    &:hover {
-        &::before,
-        &::after {
-            opacity: 1;
-            transition: all $balloon-transition-duration ease-out
-                $balloon-transition-delay;
-        }
-    }
-
-    @include balloon-position-down();
+  @include balloon-position-down();
 }

@@ -1,5 +1,5 @@
 // Namespace for all classes, reduces the risk of style clashes.
-$DRAFTAIL: 'Draftail-';
+$DRAFTAIL: "Draftail-";
 
 // Overridable variables meant to be used for theming, and easier integration.
 
@@ -23,8 +23,8 @@ $draftail-editor-chrome: $color-light-grey !default;
 $draftail-editor-chrome-text: $color-grey !default;
 $draftail-editor-chrome-active: $color-black !default;
 $draftail-editor-chrome-accent: darken(
-    $color: $draftail-editor-chrome,
-    $amount: 10%,
+  $color: $draftail-editor-chrome,
+  $amount: 10%,
 ) !default;
 $draftail-tooltip-chrome: $color-grey !default;
 $draftail-tooltip-chrome-text: $color-white !default;
@@ -55,6 +55,6 @@ $draftail-toolbar-z-index: $draftail-overlay-z-index + 1 !default;
 $draftail-toolbar-tooltip-z-index: $draftail-toolbar-z-index + 1 !default;
 
 @mixin font-smoothing {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

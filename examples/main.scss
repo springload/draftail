@@ -1,4 +1,4 @@
-@import '../node_modules/normalize.css';
+@import "../node_modules/normalize.css";
 
 $WHITE: #fff;
 $BLACK: #000;
@@ -17,39 +17,39 @@ $FONT_SIZE_TEXT: 1rem;
 
 $tooltip-spacing: 0.625rem;
 
-@import './utils/breakpoints';
-@import './utils/elements';
-@import './utils/typography';
-@import './utils/layout';
-@import './utils/objects';
-@import './utils/forms';
+@import "./utils/breakpoints";
+@import "./utils/elements";
+@import "./utils/typography";
+@import "./utils/layout";
+@import "./utils/objects";
+@import "./utils/forms";
 
 $draftail-editor-chrome: $GREY_333;
 $draftail-editor-chrome-text: $WHITE;
 $draftail-editor-chrome-active: $WHITE;
 $draftail-editor-chrome-accent: lighten(
-    $color: $draftail-editor-chrome,
-    $amount: 20%,
+  $color: $draftail-editor-chrome,
+  $amount: 20%,
 );
 
 $draftail-editor-font-family: $FONT_FAMILY_SANS;
 
-@import '../node_modules/draft-js/dist/Draft';
-@import '../lib/index';
+@import "../node_modules/draft-js/dist/Draft";
+@import "../lib/index";
 
-@import './components/editor';
-@import './components/header';
-@import './components/page-nav';
-@import './components/Modal';
-@import './components/Tooltip';
-@import './components/PrismDecorator';
-@import './entities/TooltipEntity';
-@import './sources/LinkSource';
-@import './sources/DocumentSource';
-@import './sources/ImageSource';
-@import './sources/EmbedSource';
-@import './blocks/MediaBlock';
-@import './blocks/EmbedBlock';
-@import './blocks/ImageBlock';
+@import "./components/editor";
+@import "./components/header";
+@import "./components/page-nav";
+@import "./components/Modal";
+@import "./components/Tooltip";
+@import "./components/PrismDecorator";
+@import "./entities/TooltipEntity";
+@import "./sources/LinkSource";
+@import "./sources/DocumentSource";
+@import "./sources/ImageSource";
+@import "./sources/EmbedSource";
+@import "./blocks/MediaBlock";
+@import "./blocks/EmbedBlock";
+@import "./blocks/ImageBlock";
 
-@import './utils/utilities';
+@import "./utils/utilities";

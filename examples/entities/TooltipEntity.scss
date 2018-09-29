@@ -1,15 +1,15 @@
 .TooltipEntity {
-    cursor: pointer;
+  cursor: pointer;
 
-    &__icon {
-        color: $TEAL_WAGTAIL;
-        margin-right: 0.2em;
-        width: 1em;
-        height: 1em;
-    }
+  &__icon {
+    color: $TEAL_WAGTAIL;
+    margin-right: 0.2em;
+    width: 1em;
+    height: 1em;
+  }
 
-    &__text {
-        background: $LIGHT_BLUE_EEF8FF;
-        border-bottom: 1px dotted $TEAL_WAGTAIL;
-    }
+  &__text {
+    background: $LIGHT_BLUE_EEF8FF;
+    border-bottom: 1px dotted $TEAL_WAGTAIL;
+  }
 }
