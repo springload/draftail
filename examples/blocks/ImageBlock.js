@@ -4,15 +4,6 @@ import React, { Component } from 'react';
 import MediaBlock from './MediaBlock';
 import { DraftUtils } from '../../lib/index';
 
-const propTypes = {
-    block: PropTypes.object.isRequired,
-    blockProps: PropTypes.shape({
-        editorState: PropTypes.object.isRequired,
-        entity: PropTypes.object,
-        onChange: PropTypes.func.isRequired,
-    }).isRequired,
-};
-
 /**
  * Editor block to preview and edit images.
  */
@@ -69,6 +60,13 @@ class ImageBlock extends Component {
     }
 }
 
-ImageBlock.propTypes = propTypes;
+ImageBlock.propTypes = {
+    block: PropTypes.object.isRequired,
+    blockProps: PropTypes.shape({
+        editorState: PropTypes.object.isRequired,
+        entity: PropTypes.object,
+        onChange: PropTypes.func.isRequired,
+    }).isRequired,
+};
 
 export default ImageBlock;

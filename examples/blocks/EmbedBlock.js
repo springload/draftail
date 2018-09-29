@@ -3,12 +3,6 @@ import React from 'react';
 
 import MediaBlock from './MediaBlock';
 
-const propTypes = {
-    blockProps: PropTypes.shape({
-        entity: PropTypes.object,
-    }).isRequired,
-};
-
 /**
  * Editor block to display media and edit content.
  */
@@ -48,6 +42,10 @@ const EmbedBlock = (props) => {
     );
 };
 
-EmbedBlock.propTypes = propTypes;
+EmbedBlock.propTypes = {
+    blockProps: PropTypes.shape({
+        entity: PropTypes.object,
+    }).isRequired,
+};
 
 export default EmbedBlock;
