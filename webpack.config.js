@@ -78,19 +78,10 @@ const webpackConfig = (environment) => {
         devtool: 'source-map',
 
         entry: {
-            vendor: [
-                './examples/utils/polyfills.js',
-                'react',
-                'react-dom',
-                'immutable',
-                'draft-js',
-                'react-modal',
-                'prismjs',
-            ],
             // Stylesheet shipped with the package.
             draftail: ['./lib/index.scss'],
-            index: './examples/index',
-            examples: './examples/examples',
+            index: ['./examples/utils/polyfills', './examples/index'],
+            examples: ['./examples/utils/polyfills', './examples/examples'],
         },
         output: {
             path: path.join(__dirname, 'public'),
