@@ -32,8 +32,6 @@ The behavior of this editor is heavily inspired by prior art. If you want to dis
 nvm install
 # Then, install all project dependencies.
 npm install
-# Install the git hooks.
-./.githooks/deploy.sh
 # Set up a `.env` file with the appropriate secrets.
 touch .env
 ```
