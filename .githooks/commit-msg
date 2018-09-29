@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+COMMIT_EDITMSG="$1"
+MESSAGE=$(cat $COMMIT_EDITMSG)
+
+npx commitlint -e "$COMMIT_EDITMSG"
