@@ -50,7 +50,7 @@ const stats = {
 const webpackConfig = (environment) => {
   const isProduction = environment === "production";
 
-  const publicPath = isProduction ? "/draftail/" : "/";
+  const publicPath = "/";
 
   const examplesPath = path.join(__dirname, "examples");
   const icons = fs.readFileSync(
