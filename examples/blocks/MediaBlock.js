@@ -11,16 +11,6 @@ const OPTIONS_MAX_WIDTH = 300;
 const OPTIONS_SPACING = 70;
 const TOOLTIP_MAX_WIDTH = OPTIONS_MAX_WIDTH + OPTIONS_SPACING;
 
-const propTypes = {
-    blockProps: PropTypes.shape({
-        entity: PropTypes.object,
-        entityType: PropTypes.object.isRequired,
-    }).isRequired,
-    src: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    children: PropTypes.node.isRequired,
-};
-
 /**
  * Editor block to preview and edit images.
  */
@@ -100,6 +90,14 @@ class MediaBlock extends Component {
     }
 }
 
-MediaBlock.propTypes = propTypes;
+MediaBlock.propTypes = {
+    blockProps: PropTypes.shape({
+        entity: PropTypes.object,
+        entityType: PropTypes.object.isRequired,
+    }).isRequired,
+    src: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
+};
 
 export default MediaBlock;
