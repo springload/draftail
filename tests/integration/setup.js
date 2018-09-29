@@ -21,7 +21,7 @@ module.exports = async () => {
   if (!IS_WATCH) {
     const app = express();
 
-    app.use("/draftail", express.static(path.join("public")));
+    app.use("/", express.static(path.join("public")));
 
     global.SERVER = app.listen(5000);
   }
