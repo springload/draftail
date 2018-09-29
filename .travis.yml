@@ -18,18 +18,18 @@ deploy:
     provider: pages
     skip_cleanup: true
     local_dir: public
-    github_token: '$GITHUB_TOKEN'
+    github_token: '$PAGES_GITHUB_API_TOKEN'
     on:
         branch: master
 notifications:
     email: false
-    slack:
-        rooms:
-            secure:
-                YnWcwBDnn2fXLsQ9692oC6+Ep10ZDurqnyNhwdFyAaOHAG+CynRGG3pCdRcr8kpPqicCC056xHMXWfY+K5LB4HwjOud7ztJzjTsvs+gvacNDUq9U41JHwxsMHk5Ei37OslbXMFlI4jPXB1lt32+T43nxt9FwEwDPqZDdiaJ639jElm3Dj5KoojCBLrw2Iyi0nRDod5QPviu/VMIC5A+nN7cXdxR8QTKV5M3YDVhKK7k2ofI+UwzcpfJOY7sl0kJBL+mbOLWyISrVKmYVq4THem2ipO4ImO+r0FGZUkNRH4qHsMhv7ERiGHYIcALOV7kY5sKgJk6xGTJExcV+dh5DH9xVz13lvriRLZSzTBlbQHtAFZV/qEUSAcazzhYGguFqPKglQwNPGPNGb0Jzzd7a+B88mY+sye2N14rij0B/gKRDBm95tP1WtLpSIaNjoiuKStMCoMn+V+WaAUb1H3HSd45DElvce6SHVOCvx0+ppXsET1m7u3WRIn8V+aYOliWw/cLnpUi+ad1eAW2ltxOa7ei0LqT7oxvK6ca7JZrCgAReYHApgUrMWZhLz53VpGnDuMXSgfGLiimH2OzSv2+nq2l1pjOTd3dGFsShhqa+PxKIe0U2vle8YXYPRvk3K2Twen5bcV1HkWw/jCt9X6KpuyjDbtK+twMMWMYTnpgQG3E=
 env:
     global:
+        # Permissions: public_repo
+        # travis encrypt --org DANGER_GITHUB_API_TOKEN=<value>
         - secure:
-              JmsnY0Q7HK15mJMOmIBvbcQngXoEwr9emssotKDo1IYctPe2k9X/0bRR1cR11aHSQh+Vf6oI0isbf4+Ic6O1tKjrF/PUeqeLR2euiAZoeUn7hlcZTgoAfQgSXhM7VAQ5uprc6kMP5ox7k1sBmLf4XnmggGvAd71OKa5ej5bddH4LTcb9VpKBKpJU9c2HmYgFlDVMHnQWxh25mWU/wqHD2gMkzz9O5vfQVYShqd2QMBeU/maowH5n5eeozYIkzOBdOtlNM60Hm0PsN4KTVj8iNax8/OnhZpArdF0QXAgSnx9dVMp6ggXlA34oHi+ASvVD+0c0S5ZD8tERw73OKeXG5IOQDVyxl5n2jbBJ2bYxtge/xHlgyNmUjmeZJVSXuUSwFSqK5BuhrRq+UP6gq8ccggwzvetg6JD2SyewAD5kmfObmF2ifJZd7jpZ+CGD9OLiXeCP501FyUIxGxJHj0vwcWUN9kJRcL/TOC4Oad6ljmH7Ygi5erZkyLK9crGyd7YwC59ZBeJ1tMtZcGi9yXL2cklDj9T3elQf5PkFqD+D+GfwpsK8oc/6kS9Qk/TxMVzPIlT1lXBQMgN/fOTWUVAs7XoXjtpcgWXuh1AwJEZHvqO2es0axRzTcSeSJuZf77v6koexTnfkWjD5HFvqAe2Mv8Glykjeyh3d8U00DT17Kvw=
+              'LYb6EEDscuvM3WOCv/pdo3UtdWIdlgzYzo1gXz1T+zMQ+dYLg4wthWrQToBE+Ewon6J0+lA1rdAk3vhmYqObRZcCc6Z8sLNGooxwufAYmeMet0IKwmOqUJhKbVcmxUdhlmo8ksFhGm0A3s3MVnmEy1OO7no0scS1CWPI/SX2KuwMTTYCnoundsvUsbNRFROJXtn4Ra1Ibdzg+iEAt+ROejSRV+Mdd0w0ggRd07v0R+fcje0oEMMD6w4w0AFQha3f+DNpVxVX9FYVS2lLJeKfSeTHWg6GJY+tuzPAmHvDBxBN9w3K2uj8iBcnkD7tEU0yYFCw5gE8r0BTn+0P9EpDQUQilR6BZ84gpbpFl7xoxEef9k7hqWUqTX390cVEl6x0n3FFDO7dl1ZrF/Lavd6K1zMp4swGJEa56c+UNCxymNAfofyNzYDJp/okdvbl0ptz2/riMYjB8dE20B2e/xlspvYE4Icp+LyohEQJQ1+3Hdt7c+3p21qFRIfwWnd7Rpff2awCO37G+CHBwcCCp3GlRLRbtkIdFfKu7/ApHGdF8/1B7Gmae0BD8c/mDCk57pdRn6TvbLekkB/YrpsX+IhWDH0+tgl74V4RYPju80h7FIZMYqOhNOuAtw15SRbIFXCKMeSLuNYYMj7at18Gy7YI699n7aV7PFqY87vxGAWvp7w='
+        # Permissions: public_repo
+        # travis encrypt --org PAGES_GITHUB_API_TOKEN=<value>
         - secure:
-              JPuBagp3GGwLOJ7zoRzStFC0HMGTunO9CgCzmmBiIz16Uj3L3zhL5LDDnlaQcBkgwFqMdu3+0Mm9B3XUDf0UqYoJi+ZLRkbXRmacTpWGWvPq5sByb9+oJ31CDfvbmwi8K4B4qupcKGEgNTtdVo2fjKKtemZo/ytboFkOusSySVrf2apqLHOrNYZa2UPtrCcwpZUzGXND9VDXiWsC3xqC5N680Ri9iHBta+uQ2IMnhJQkAszrhXgEbk18qzkhaPzWMT7f0ERXk+aAVhfz/e7VCG2fD14a7a96KHUe/K4Q4SVAh2caDwLydINbzfWkCcDvjcaVFVP5I+Xjsk3Kcdp/+oR2QgP1qSKpY6WD9TRKMFIaJ4oCGLX3Ka78fYD9LxgJRIk4pFt8xbgwU09rYrsO1k2WvKntz7e8vhciXbTMwyhgkeVs3Ojz8qMgAtyWXFrNmiKtIcQdXFKBE6LbKhZIUMM75h4g61bc4CLjqWP3OS+kI3XqxiirxOotZl8J8cjBr8qjd+u2Q5G5o8J6JZXps39MxkNxlzRKuexSM2yeOnzA4ofqu7cAHNkHIvUYNuX8TQTmZ5XXQgugRUOGoEACeTUIcVjSTWZCQng3tfR+mFZ99GXCbwfyd1gGbYhAh8wtafk/jFFRA3euqSFTHrRuzQg3Vg9FZCRie11ltNk0yuo=
+              'k6h4/xH4iF2dn/CCdLk1xkW1T+ZmtdylMZE4WvaAZ9KwLzz7+5V/ra26df6DFZrqk7wRMHWxWwJa5hRMJfA1wkC5x1/HuDY1KmuEhe75q8edBl1+t+22bI+ESgsRFEh+8KARApRTrJZ06wmZAhreele7rfpV/gVAUyrHz0bkE28oGWVc2PBie7Ygcmz3gHHvYeqGDBWTmoDwADQNgycTgQkUuodM6A2vccOafOhRaguBxizZiIhmJSv0bsViw3QbmpDMC3wenuSjxHs4rKK+N1wv98n7H+6djx8NG//qJdodwUJtD2GXUbTBwPZ+LLMDWJQV2rCpah5b9le75XXm1H1AwDqH32tj8UJENRcNYtRF2rYQOpBDVaYOW6/cMOalY3kl980ACCWpqFPgKNzEBC7z6KXp1BxO1ucciUh3KZ3SY9dpXll+KUm9VRUdkplRuSqc8wDBUmlFn1loMmn17kd4BVLAnB6cd3PpNHbEYYPCH52BRruYHb39gNmJsFvBo9VW03NU/quBxxlC+iqZ7pRgALSGHQgN9UwGpmxGVal5WKXJtBWMijopMD5qktHCHX1mERQBYlVRRTPxz9RZNB/zHBpfptAgKySeEgHWSf4TvaMmC552hGZ0doJ/sqkB8U98ZQ/dVXNTnrXfGEQwynbflVetznXnpMP0VX1hyHo='
