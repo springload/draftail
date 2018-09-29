@@ -22,9 +22,9 @@ Une caractéristique qui distingue Draftail des autres éditeurs est sa configur
 
 ## Démo en ligne
 
-| [![Capture d’écran de Draftail](https://springload.github.io/draftail/static/draftail-ui-screenshot.png)](https://springload.github.io/draftail/)                   |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Le site Draftail a une chouette démo avec la plupart des fonctions par défaut. [Allez y jeter un œil et essayer l’éditeur!](https://springload.github.io/draftail/) |
+| [![Capture d’écran de Draftail](https://www.draftail.org/static/draftail-ui-screenshot.png)](https://www.draftail.org/)                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Le site Draftail a une chouette démo avec la plupart des fonctions par défaut. [Allez y jeter un œil et essayer l’éditeur!](https://www.draftail.org/) |
 
 ## Support des navigateurs
 

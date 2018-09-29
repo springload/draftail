@@ -23,9 +23,9 @@ One thing that sets Draftail apart from other editors is its configurability: **
 
 ## Online demo
 
-| [![Screenshot of Draftail](https://springload.github.io/draftail/static/draftail-ui-screenshot.png)](https://springload.github.io/draftail/)       |
-| -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| The Draftail website has a nice demo with most built-in features. [Go have a look and try out the editor!](https://springload.github.io/draftail/) |
+| [![Screenshot of Draftail](https://www.draftail.org/static/draftail-ui-screenshot.png)](https://www.draftail.org/)                    |
+| ------------------------------------------------------------------------------------------------------------------------------------- |
+| The Draftail website has a nice demo with most built-in features. [Go have a look and try out the editor!](https://www.draftail.org/) |
 
 ## Browser support
 
