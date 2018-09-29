@@ -12,13 +12,9 @@ export default [
             { file: pkg.module, format: 'es' },
         ],
         plugins: [
-            babel(
-                Object.assign({}, pkg.babel, {
-                    babelrc: false,
-                    plugins: pkg.babel.plugins.concat(['external-helpers']),
-                    exclude: ['node_modules/**'],
-                }),
-            ),
+            babel({
+                exclude: ['node_modules/**'],
+            }),
         ],
     },
 ];
