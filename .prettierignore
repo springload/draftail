@@ -2,5 +2,10 @@ node_modules
 *.min.js
 coverage/
 dist/
-*.bundle.js
-*.html
+
+webpack-stats.json
+public/*.css
+public/*.html
+public/*.js
+public/examples
+public/test-results.json
