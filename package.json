@@ -37,36 +37,6 @@
     "Firefox ESR",
     "not OperaMini all"
   ],
-  "babel": {
-    "plugins": [
-      [
-        "transform-react-remove-prop-types",
-        {
-          "mode": "unsafe-wrap",
-          "ignoreFilenames": [
-            "node_modules"
-          ]
-        }
-      ]
-    ],
-    "presets": [
-      [
-        "env",
-        {
-          "modules": false
-        }
-      ],
-      "react"
-    ],
-    "env": {
-      "test": {
-        "presets": [
-          "env",
-          "react"
-        ]
-      }
-    }
-  },
   "jest": {
     "moduleNameMapper": {
       "\\.scss$": "<rootDir>/tests/styleMock.js"
@@ -93,15 +63,17 @@
     "draftjs-filters": "^1.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-external-helpers": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
     "@thibaudcolas/eslint-plugin-cookbook": "^4.0.1",
     "@thibaudcolas/stylelint-config-cookbook": "^2.0.1",
     "autoprefixer": "^7.1.2",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
-    "babel-loader": "^7.1.5",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.12",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.18",
     "core-js": "^2.5.1",
     "css-loader": "^1.0.0",
     "danger": "^3.7.4",
@@ -134,7 +106,7 @@
     "reading-time": "^1.1.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.66.2",
-    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-babel": "^4.0.3",
     "sass": "^1.14.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
