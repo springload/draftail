@@ -1,151 +1,151 @@
 {
-  "name": "draftail",
-  "version": "1.0.0",
-  "description": "📝🍸 A configurable rich text editor based on Draft.js, built for Wagtail",
-  "author": "Springload",
-  "license": "MIT",
-  "main": "dist/draftail.cjs.js",
-  "module": "dist/draftail.esm.js",
-  "keywords": [
-    "draftjs",
-    "draft.js",
-    "draft",
-    "draft-js",
-    "editor",
-    "wysiwyg",
-    "rich text",
-    "rte",
-    "react",
-    "react-component",
-    "react-components"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/springload/draftail"
-  },
-  "bugs": {
-    "url": "https://github.com/springload/draftail/issues"
-  },
-  "homepage": "https://www.draftail.org/",
-  "files": [
-    "dist",
-    "lib/**/*.scss"
-  ],
-  "browserslist": [
-    "> 1%",
-    "IE 11",
-    "Firefox ESR",
-    "not OperaMini all"
-  ],
-  "jest": {
-    "moduleNameMapper": {
-      "\\.scss$": "<rootDir>/tests/styleMock.js"
+    "name": "draftail",
+    "version": "1.0.0",
+    "description": "📝🍸 A configurable rich text editor based on Draft.js, built for Wagtail",
+    "author": "Springload",
+    "license": "MIT",
+    "main": "dist/draftail.cjs.js",
+    "module": "dist/draftail.esm.js",
+    "keywords": [
+        "draftjs",
+        "draft.js",
+        "draft",
+        "draft-js",
+        "editor",
+        "wysiwyg",
+        "rich text",
+        "rte",
+        "react",
+        "react-component",
+        "react-components"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/springload/draftail.git"
     },
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/dist/",
-      "/es/",
-      "/integration/"
+    "bugs": {
+        "url": "https://github.com/springload/draftail/issues"
+    },
+    "homepage": "https://www.draftail.org/",
+    "files": [
+        "dist",
+        "lib/**/*.scss"
     ],
-    "coveragePathIgnorePatterns": [
-      "<rootDir>/tests"
+    "browserslist": [
+        "> 1%",
+        "IE 11",
+        "Firefox ESR",
+        "not OperaMini all"
     ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "setupFiles": [
-      "<rootDir>/tests/polyfills.js"
-    ],
-    "setupTestFrameworkScriptFile": "<rootDir>/tests/setupTest.js"
-  },
-  "dependencies": {
-    "draftjs-conductor": "^0.2.1",
-    "draftjs-filters": "^1.0.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
-    "@thibaudcolas/eslint-plugin-cookbook": "^4.0.1",
-    "@thibaudcolas/stylelint-config-cookbook": "^2.0.1",
-    "autoprefixer": "^7.1.2",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.6.0",
-    "babel-loader": "^8.0.4",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.18",
-    "core-js": "^2.5.1",
-    "css-loader": "^1.0.0",
-    "danger": "^3.7.4",
-    "dotenv": "^6.0.0",
-    "draft-js": "0.10.5",
-    "enzyme": "^3.6.0",
-    "enzyme-adapter-react-16": "^1.5.0",
-    "enzyme-to-json": "^3.3.4",
-    "eslint": "^5.6.0",
-    "eslint-plugin-compat": "^2.5.1",
-    "express": "^4.16.3",
-    "html-webpack-plugin": "^3.2.0",
-    "immutable": "~3.7.4",
-    "jest": "^23.6.0",
-    "jest-axe": "^3.1.0",
-    "jest-environment-node": "^23.4.0",
-    "jest-image-snapshot": "^2.5.0",
-    "mini-css-extract-plugin": "^0.4.3",
-    "mkdirp": "^0.5.1",
-    "normalize.css": "^7.0.0",
-    "postcss-loader": "^2.0.6",
-    "prettier": "^1.14.0",
-    "prismjs": "^1.8.4",
-    "prop-types": "^15.6.0",
-    "puppeteer": "^1.6.1",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1",
-    "react-modal": "^3.1.5",
-    "react-test-renderer": "^16.1.1",
-    "reading-time": "^1.1.0",
-    "rimraf": "^2.6.2",
-    "rollup": "^0.66.2",
-    "rollup-plugin-babel": "^4.0.3",
-    "sass": "^1.14.1",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.0",
-    "stylelint": "^9.6.0",
-    "uglifyjs-webpack-plugin": "^2.0.1",
-    "webpack": "^4.20.2",
-    "webpack-bundle-analyzer": "^3.0.2",
-    "webpack-cli": "^3.1.1",
-    "webpack-dev-server": "^3.1.9"
-  },
-  "peerDependencies": {
-    "draft-js": "^0.10.5",
-    "prop-types": "^15.5.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0"
-  },
-  "scripts": {
-    "start": "webpack-dev-server --env development",
-    "build:rollup": "rollup -c",
-    "build:webpack": "webpack --env production --display-optimization-bailout",
-    "build": "npm run build:rollup -s && npm run build:webpack -s && cp public/draftail.css dist",
-    "dist": "NODE_ENV=production npm run build -s",
-    "danger": "danger ci --verbose",
-    "linter:js": "eslint",
-    "linter:css": "stylelint",
-    "linter": "prettier --list-different",
-    "formatter": "prettier --write",
-    "lint": "npm run linter:js -s -- . && npm run linter:css -s -- '**/*.scss' && npm run linter -s -- '**/*.{js,scss,css,json,md,yml,yaml}'",
-    "format": "npm run formatter -s -- '**/*.{js,scss,css,json,md,yml,yaml}'",
-    "test": "jest",
-    "test:integration": "jest --config tests/integration/jest.config.js",
-    "test:integration:watch": "jest --config tests/integration/jest.config.js --watch",
-    "test:coverage": "jest --coverage",
-    "test:watch": "jest --watch",
-    "test:watch:coverage": "jest --watch --coverage",
-    "report:coverage": "open coverage/lcov-report/index.html",
-    "report:build": "open public/webpack-stats.html",
-    "report:size": "uglifyjs --compress --mangle -- dist/draftail.cjs.js > dist/draftail.cjs.min.js && gzip --keep dist/* && wc -c dist/* && rm dist/*.gz && rm dist/*.min.js",
-    "report:package": "npm pack --loglevel notice 2>&1 >/dev/null | sed -e 's/^npm notice //' | tee public/package.txt && rm *.tgz",
-    "test:ci": "npm run lint -s && npm run test:coverage -s -- --outputFile public/test-results.json --json && npm run dist -s && npm run test:integration -s",
-    "prepublishOnly": "npm run dist -s"
-  }
+    "jest": {
+        "moduleNameMapper": {
+            "\\.scss$": "<rootDir>/tests/styleMock.js"
+        },
+        "testPathIgnorePatterns": [
+            "/node_modules/",
+            "/dist/",
+            "/es/",
+            "/integration/"
+        ],
+        "coveragePathIgnorePatterns": [
+            "<rootDir>/tests"
+        ],
+        "snapshotSerializers": [
+            "enzyme-to-json/serializer"
+        ],
+        "setupFiles": [
+            "<rootDir>/tests/polyfills.js"
+        ],
+        "setupTestFrameworkScriptFile": "<rootDir>/tests/setupTest.js"
+    },
+    "dependencies": {
+        "draftjs-conductor": "^0.2.1",
+        "draftjs-filters": "^1.0.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.1.2",
+        "@babel/preset-env": "^7.1.0",
+        "@babel/preset-react": "^7.0.0",
+        "@thibaudcolas/eslint-plugin-cookbook": "^4.0.1",
+        "@thibaudcolas/stylelint-config-cookbook": "^2.0.1",
+        "autoprefixer": "^7.1.2",
+        "babel-core": "^7.0.0-bridge.0",
+        "babel-jest": "^23.6.0",
+        "babel-loader": "^8.0.4",
+        "babel-plugin-transform-react-remove-prop-types": "^0.4.18",
+        "core-js": "^2.5.1",
+        "css-loader": "^1.0.0",
+        "danger": "^3.7.4",
+        "dotenv": "^6.0.0",
+        "draft-js": "0.10.5",
+        "enzyme": "^3.6.0",
+        "enzyme-adapter-react-16": "^1.5.0",
+        "enzyme-to-json": "^3.3.4",
+        "eslint": "^5.6.0",
+        "eslint-plugin-compat": "^2.5.1",
+        "express": "^4.16.3",
+        "html-webpack-plugin": "^3.2.0",
+        "immutable": "~3.7.4",
+        "jest": "^23.6.0",
+        "jest-axe": "^3.1.0",
+        "jest-environment-node": "^23.4.0",
+        "jest-image-snapshot": "^2.5.0",
+        "mini-css-extract-plugin": "^0.4.3",
+        "mkdirp": "^0.5.1",
+        "normalize.css": "^7.0.0",
+        "postcss-loader": "^2.0.6",
+        "prettier": "^1.14.0",
+        "prismjs": "^1.8.4",
+        "prop-types": "^15.6.0",
+        "puppeteer": "^1.6.1",
+        "react": "^16.1.1",
+        "react-dom": "^16.1.1",
+        "react-modal": "^3.1.5",
+        "react-test-renderer": "^16.1.1",
+        "reading-time": "^1.1.0",
+        "rimraf": "^2.6.2",
+        "rollup": "^0.66.2",
+        "rollup-plugin-babel": "^4.0.3",
+        "sass": "^1.14.1",
+        "sass-loader": "^7.1.0",
+        "style-loader": "^0.23.0",
+        "stylelint": "^9.6.0",
+        "uglifyjs-webpack-plugin": "^2.0.1",
+        "webpack": "^4.20.2",
+        "webpack-bundle-analyzer": "^3.0.2",
+        "webpack-cli": "^3.1.1",
+        "webpack-dev-server": "^3.1.9"
+    },
+    "peerDependencies": {
+        "draft-js": "^0.10.5",
+        "prop-types": "^15.5.0",
+        "react": "^16.0.0",
+        "react-dom": "^16.0.0"
+    },
+    "scripts": {
+        "start": "webpack-dev-server --env development",
+        "build:rollup": "rollup -c",
+        "build:webpack": "webpack --env production --display-optimization-bailout",
+        "build": "npm run build:rollup -s && npm run build:webpack -s && cp public/draftail.css dist",
+        "dist": "NODE_ENV=production npm run build -s",
+        "danger": "danger ci --verbose",
+        "linter:js": "eslint",
+        "linter:css": "stylelint",
+        "linter": "prettier --list-different",
+        "formatter": "prettier --write",
+        "lint": "npm run linter:js -s -- . && npm run linter:css -s -- '**/*.scss' && npm run linter -s -- '**/*.{js,scss,css,json,md,yml,yaml}'",
+        "format": "npm run formatter -s -- '**/*.{js,scss,css,json,md,yml,yaml}'",
+        "test": "jest",
+        "test:integration": "jest --config tests/integration/jest.config.js",
+        "test:integration:watch": "jest --config tests/integration/jest.config.js --watch",
+        "test:coverage": "jest --coverage",
+        "test:watch": "jest --watch",
+        "test:watch:coverage": "jest --watch --coverage",
+        "report:coverage": "open coverage/lcov-report/index.html",
+        "report:build": "open public/webpack-stats.html",
+        "report:size": "uglifyjs --compress --mangle -- dist/draftail.cjs.js > dist/draftail.cjs.min.js && gzip --keep dist/* && wc -c dist/* && rm dist/*.gz && rm dist/*.min.js",
+        "report:package": "npm pack --loglevel notice 2>&1 >/dev/null | sed -e 's/^npm notice //' | tee public/package.txt && rm *.tgz",
+        "test:ci": "npm run lint -s && npm run test:coverage -s -- --outputFile public/test-results.json --json && npm run dist -s && npm run test:integration -s",
+        "prepublishOnly": "npm run dist -s"
+    }
 }
