@@ -75,7 +75,7 @@
     "babel-plugin-transform-react-remove-prop-types": "^0.4.18",
     "core-js": "^2.5.1",
     "css-loader": "^1.0.0",
-    "danger": "^3.7.4",
+    "danger": "^4.0.2",
     "dotenv": "^6.0.0",
     "draft-js": "0.10.5",
     "enzyme": "^3.6.0",
