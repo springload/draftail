@@ -1,35 +1,35 @@
 sudo: false
 language: node_js
 install:
-    - npm ci
+  - npm ci
 script:
-    - npm run test:ci
-    - base64 < ./tests/integration/__image_snapshots__/__diff_output__/* || true
-    - npm run danger
-    - npm run report:size
-    - npm run report:package
-    - mv coverage/lcov-report public || true
+  - npm run test:ci
+  - base64 < ./tests/integration/__image_snapshots__/__diff_output__/* || true
+  - npm run danger
+  - npm run report:size
+  - npm run report:package
+  - mv coverage/lcov-report public || true
 after_success:
-    - cat ./coverage/lcov.info | npx coveralls
+  - cat ./coverage/lcov.info | npx coveralls
 branches:
-    except:
-        - gh-pages
+  except:
+    - gh-pages
 deploy:
-    provider: pages
-    skip_cleanup: true
-    local_dir: public
-    github_token: '$PAGES_GITHUB_API_TOKEN'
-    on:
-        branch: master
+  provider: pages
+  skip_cleanup: true
+  local_dir: public
+  github_token: "$PAGES_GITHUB_API_TOKEN"
+  on:
+    branch: master
 notifications:
-    email: false
+  email: false
 env:
-    global:
-        # Permissions: public_repo
-        # travis encrypt --org DANGER_GITHUB_API_TOKEN=<value>
-        - secure:
-              'LYb6EEDscuvM3WOCv/pdo3UtdWIdlgzYzo1gXz1T+zMQ+dYLg4wthWrQToBE+Ewon6J0+lA1rdAk3vhmYqObRZcCc6Z8sLNGooxwufAYmeMet0IKwmOqUJhKbVcmxUdhlmo8ksFhGm0A3s3MVnmEy1OO7no0scS1CWPI/SX2KuwMTTYCnoundsvUsbNRFROJXtn4Ra1Ibdzg+iEAt+ROejSRV+Mdd0w0ggRd07v0R+fcje0oEMMD6w4w0AFQha3f+DNpVxVX9FYVS2lLJeKfSeTHWg6GJY+tuzPAmHvDBxBN9w3K2uj8iBcnkD7tEU0yYFCw5gE8r0BTn+0P9EpDQUQilR6BZ84gpbpFl7xoxEef9k7hqWUqTX390cVEl6x0n3FFDO7dl1ZrF/Lavd6K1zMp4swGJEa56c+UNCxymNAfofyNzYDJp/okdvbl0ptz2/riMYjB8dE20B2e/xlspvYE4Icp+LyohEQJQ1+3Hdt7c+3p21qFRIfwWnd7Rpff2awCO37G+CHBwcCCp3GlRLRbtkIdFfKu7/ApHGdF8/1B7Gmae0BD8c/mDCk57pdRn6TvbLekkB/YrpsX+IhWDH0+tgl74V4RYPju80h7FIZMYqOhNOuAtw15SRbIFXCKMeSLuNYYMj7at18Gy7YI699n7aV7PFqY87vxGAWvp7w='
-        # Permissions: public_repo
-        # travis encrypt --org PAGES_GITHUB_API_TOKEN=<value>
-        - secure:
-              'k6h4/xH4iF2dn/CCdLk1xkW1T+ZmtdylMZE4WvaAZ9KwLzz7+5V/ra26df6DFZrqk7wRMHWxWwJa5hRMJfA1wkC5x1/HuDY1KmuEhe75q8edBl1+t+22bI+ESgsRFEh+8KARApRTrJZ06wmZAhreele7rfpV/gVAUyrHz0bkE28oGWVc2PBie7Ygcmz3gHHvYeqGDBWTmoDwADQNgycTgQkUuodM6A2vccOafOhRaguBxizZiIhmJSv0bsViw3QbmpDMC3wenuSjxHs4rKK+N1wv98n7H+6djx8NG//qJdodwUJtD2GXUbTBwPZ+LLMDWJQV2rCpah5b9le75XXm1H1AwDqH32tj8UJENRcNYtRF2rYQOpBDVaYOW6/cMOalY3kl980ACCWpqFPgKNzEBC7z6KXp1BxO1ucciUh3KZ3SY9dpXll+KUm9VRUdkplRuSqc8wDBUmlFn1loMmn17kd4BVLAnB6cd3PpNHbEYYPCH52BRruYHb39gNmJsFvBo9VW03NU/quBxxlC+iqZ7pRgALSGHQgN9UwGpmxGVal5WKXJtBWMijopMD5qktHCHX1mERQBYlVRRTPxz9RZNB/zHBpfptAgKySeEgHWSf4TvaMmC552hGZ0doJ/sqkB8U98ZQ/dVXNTnrXfGEQwynbflVetznXnpMP0VX1hyHo='
+  global:
+    # Permissions: public_repo
+    # travis encrypt --org DANGER_GITHUB_API_TOKEN=<value>
+    - secure:
+        "LYb6EEDscuvM3WOCv/pdo3UtdWIdlgzYzo1gXz1T+zMQ+dYLg4wthWrQToBE+Ewon6J0+lA1rdAk3vhmYqObRZcCc6Z8sLNGooxwufAYmeMet0IKwmOqUJhKbVcmxUdhlmo8ksFhGm0A3s3MVnmEy1OO7no0scS1CWPI/SX2KuwMTTYCnoundsvUsbNRFROJXtn4Ra1Ibdzg+iEAt+ROejSRV+Mdd0w0ggRd07v0R+fcje0oEMMD6w4w0AFQha3f+DNpVxVX9FYVS2lLJeKfSeTHWg6GJY+tuzPAmHvDBxBN9w3K2uj8iBcnkD7tEU0yYFCw5gE8r0BTn+0P9EpDQUQilR6BZ84gpbpFl7xoxEef9k7hqWUqTX390cVEl6x0n3FFDO7dl1ZrF/Lavd6K1zMp4swGJEa56c+UNCxymNAfofyNzYDJp/okdvbl0ptz2/riMYjB8dE20B2e/xlspvYE4Icp+LyohEQJQ1+3Hdt7c+3p21qFRIfwWnd7Rpff2awCO37G+CHBwcCCp3GlRLRbtkIdFfKu7/ApHGdF8/1B7Gmae0BD8c/mDCk57pdRn6TvbLekkB/YrpsX+IhWDH0+tgl74V4RYPju80h7FIZMYqOhNOuAtw15SRbIFXCKMeSLuNYYMj7at18Gy7YI699n7aV7PFqY87vxGAWvp7w="
+    # Permissions: public_repo
+    # travis encrypt --org PAGES_GITHUB_API_TOKEN=<value>
+    - secure:
+        "k6h4/xH4iF2dn/CCdLk1xkW1T+ZmtdylMZE4WvaAZ9KwLzz7+5V/ra26df6DFZrqk7wRMHWxWwJa5hRMJfA1wkC5x1/HuDY1KmuEhe75q8edBl1+t+22bI+ESgsRFEh+8KARApRTrJZ06wmZAhreele7rfpV/gVAUyrHz0bkE28oGWVc2PBie7Ygcmz3gHHvYeqGDBWTmoDwADQNgycTgQkUuodM6A2vccOafOhRaguBxizZiIhmJSv0bsViw3QbmpDMC3wenuSjxHs4rKK+N1wv98n7H+6djx8NG//qJdodwUJtD2GXUbTBwPZ+LLMDWJQV2rCpah5b9le75XXm1H1AwDqH32tj8UJENRcNYtRF2rYQOpBDVaYOW6/cMOalY3kl980ACCWpqFPgKNzEBC7z6KXp1BxO1ucciUh3KZ3SY9dpXll+KUm9VRUdkplRuSqc8wDBUmlFn1loMmn17kd4BVLAnB6cd3PpNHbEYYPCH52BRruYHb39gNmJsFvBo9VW03NU/quBxxlC+iqZ7pRgALSGHQgN9UwGpmxGVal5WKXJtBWMijopMD5qktHCHX1mERQBYlVRRTPxz9RZNB/zHBpfptAgKySeEgHWSf4TvaMmC552hGZ0doJ/sqkB8U98ZQ/dVXNTnrXfGEQwynbflVetznXnpMP0VX1hyHo="

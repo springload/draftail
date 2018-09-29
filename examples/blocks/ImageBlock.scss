@@ -1,10 +1,10 @@
 .ImageBlock__field {
-    display: block;
-    cursor: pointer;
-    margin-bottom: $button-spacing;
+  display: block;
+  cursor: pointer;
+  margin-bottom: $button-spacing;
 
-    > [type='text'] {
-        background-color: $WHITE;
-        color: $TEXT_COLOR;
-    }
+  > [type="text"] {
+    background-color: $WHITE;
+    color: $TEXT_COLOR;
+  }
 }

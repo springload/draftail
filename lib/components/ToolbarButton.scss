@@ -1,35 +1,35 @@
 $button-active-color: transparentize(
-    $color: $draftail-editor-chrome-active,
-    $amount: 0.9,
+  $color: $draftail-editor-chrome-active,
+  $amount: 0.9,
 );
 $button-active-border-color: transparentize(
-    $color: $draftail-editor-chrome-active,
-    $amount: 0.8,
+  $color: $draftail-editor-chrome-active,
+  $amount: 0.8,
 );
 $button-font-size: 1rem;
 
 .#{$DRAFTAIL}ToolbarButton {
-    @include font-smoothing();
+  @include font-smoothing();
 
+  display: inline-block;
+  padding: $button-spacing;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  border: 1px solid transparent;
+  font-size: $button-font-size;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+
+  &--active {
+    background-color: $button-active-color;
+    border: 1px solid $button-active-border-color;
+  }
+
+  &__label {
     display: inline-block;
-    padding: $button-spacing;
-    border-radius: 0;
-    background: transparent;
-    color: inherit;
-    border: 1px solid transparent;
-    font-size: $button-font-size;
-    font-weight: 600;
-    cursor: pointer;
-    user-select: none;
-
-    &--active {
-        background-color: $button-active-color;
-        border: 1px solid $button-active-border-color;
-    }
-
-    &__label {
-        display: inline-block;
-        vertical-align: middle;
-        height: 1em;
-    }
+    vertical-align: middle;
+    height: 1em;
+  }
 }

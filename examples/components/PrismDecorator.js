@@ -1,7 +1,7 @@
-import React from 'react';
-import Prism from 'prismjs';
+import React from "react";
+import Prism from "prismjs";
 
-import { BLOCK_TYPE } from '../../lib';
+import { BLOCK_TYPE } from "../../lib";
 
 /**
  * Syntax highlighting with Prism as a Draft.js decorator.
@@ -9,70 +9,70 @@ import { BLOCK_TYPE } from '../../lib';
  * to use the CompositeDecorator strategy API.
  */
 class PrismDecorator {
-    constructor(options) {
-        this.options = options;
-        this.highlighted = {};
+  constructor(options) {
+    this.options = options;
+    this.highlighted = {};
 
-        this.component = this.renderToken.bind(this);
-        this.strategy = this.getDecorations.bind(this);
+    this.component = this.renderToken.bind(this);
+    this.strategy = this.getDecorations.bind(this);
+  }
+
+  // Renders the decorated tokens.
+  renderToken({ children, offsetKey }) {
+    const type = this.getTokenTypeForKey(offsetKey);
+    return <span className={`token ${type}`}>{children}</span>;
+  }
+
+  getTokenTypeForKey(key) {
+    const [blockKey, tokId] = key.split("-");
+    const token = this.highlighted[blockKey][tokId];
+
+    return token ? token.type : "";
+  }
+
+  getDecorations(block, callback) {
+    // Only process code blocks.
+    if (block.getType() !== BLOCK_TYPE.CODE) {
+      return;
     }
 
-    // Renders the decorated tokens.
-    renderToken({ children, offsetKey }) {
-        const type = this.getTokenTypeForKey(offsetKey);
-        return <span className={`token ${type}`}>{children}</span>;
+    const language = block
+      .getData()
+      .get("language", this.options.defaultLanguage);
+
+    // Allow for no syntax highlighting
+    if (language == null) {
+      return;
     }
 
-    getTokenTypeForKey(key) {
-        const [blockKey, tokId] = key.split('-');
-        const token = this.highlighted[blockKey][tokId];
+    const blockKey = block.getKey();
+    const blockText = block.getText();
 
-        return token ? token.type : '';
+    let tokens;
+
+    try {
+      tokens = Prism.tokenize(blockText, Prism.languages[language]);
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error(e);
+      return;
     }
 
-    getDecorations(block, callback) {
-        // Only process code blocks.
-        if (block.getType() !== BLOCK_TYPE.CODE) {
-            return;
-        }
+    this.highlighted[blockKey] = {};
 
-        const language = block
-            .getData()
-            .get('language', this.options.defaultLanguage);
+    let tokenCount = 0;
+    tokens.reduce((startOffset, token) => {
+      const endOffset = startOffset + token.length;
 
-        // Allow for no syntax highlighting
-        if (language == null) {
-            return;
-        }
+      if (typeof token !== "string") {
+        tokenCount += 1;
+        this.highlighted[blockKey][tokenCount] = token;
+        callback(startOffset, endOffset);
+      }
 
-        const blockKey = block.getKey();
-        const blockText = block.getText();
-
-        let tokens;
-
-        try {
-            tokens = Prism.tokenize(blockText, Prism.languages[language]);
-        } catch (e) {
-            // eslint-disable-next-line no-console
-            console.error(e);
-            return;
-        }
-
-        this.highlighted[blockKey] = {};
-
-        let tokenCount = 0;
-        tokens.reduce((startOffset, token) => {
-            const endOffset = startOffset + token.length;
-
-            if (typeof token !== 'string') {
-                tokenCount += 1;
-                this.highlighted[blockKey][tokenCount] = token;
-                callback(startOffset, endOffset);
-            }
-
-            return endOffset;
-        }, 0);
-    }
+      return endOffset;
+    }, 0);
+  }
 }
 
 export default PrismDecorator;

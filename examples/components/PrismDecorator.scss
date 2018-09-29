@@ -2,58 +2,58 @@
 /* stylelint-disable scale-unlimited/declaration-strict-value, plugin/no-unsupported-browser-features */
 .Draftail-block--code-block,
 .public-DraftStyleDefault-pre {
-    color: #393a34;
-    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono,
-        DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
-        sans-serif;
-    direction: ltr;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    font-size: 0.9em;
-    line-height: 1.2em;
-    tab-size: 4;
-    hyphens: none;
+  color: #393a34;
+  font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
+    sans-serif;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  font-size: 0.9em;
+  line-height: 1.2em;
+  tab-size: 4;
+  hyphens: none;
 }
 
 /* Code blocks */
 .public-DraftStyleDefault-pre {
-    padding: 1em;
-    margin: 0.5em 0;
-    overflow: auto;
-    border: 1px solid #ddd;
-    background-color: #fff;
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border: 1px solid #ddd;
+  background-color: #fff;
 }
 
 /* Inline code */
 :not(pre) > .Draftail-block--code-block {
-    padding: 0.2em;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    background: #f8f8f8;
-    border: 1px solid #ddd;
+  padding: 0.2em;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  background: #f8f8f8;
+  border: 1px solid #ddd;
 }
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-    color: #998;
-    font-style: italic;
+  color: #998;
+  font-style: italic;
 }
 
 .token.namespace {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .token.string,
 .token.attr-value {
-    color: #e3116c;
+  color: #e3116c;
 }
 .token.punctuation,
 .token.operator {
-    color: #393a34; /* no highlight */
+  color: #393a34; /* no highlight */
 }
 
 .token.entity,
@@ -66,34 +66,34 @@
 .token.property,
 .token.regex,
 .token.inserted {
-    color: #1e6260;
+  color: #1e6260;
 }
 
 .token.atrule,
 .token.keyword,
 .token.attr-name,
 .token.selector {
-    color: #007da7;
+  color: #007da7;
 }
 
 .token.function,
 .token.deleted,
 .token.tag {
-    color: #9a050f;
+  color: #9a050f;
 }
 
 .token.tag,
 .token.selector,
 .token.keyword {
-    color: #00009f;
+  color: #00009f;
 }
 
 .token.important,
 .token.function,
 .token.bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .token.italic {
-    font-style: italic;
+  font-style: italic;
 }

@@ -1,25 +1,25 @@
 .u-text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .u-wagtail {
-    color: $TEAL_WAGTAIL_DARK;
-    white-space: nowrap;
+  color: $TEAL_WAGTAIL_DARK;
+  white-space: nowrap;
 }
 
 .Draftail-block--tiny-text {
-    $tiny-text: 11px;
+  $tiny-text: 11px;
 
-    font-size: $tiny-text;
-    font-style: italic;
+  font-size: $tiny-text;
+  font-style: italic;
 }
 
 // See https://snook.ca/archives/html_and_css/hiding-content-for-accessibility.
 .u-visually-hidden {
-    // stylelint-disable-next-line declaration-no-important
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
+  // stylelint-disable-next-line declaration-no-important
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
 }

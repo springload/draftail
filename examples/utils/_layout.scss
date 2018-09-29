@@ -1,15 +1,15 @@
 .page-wrapper {
-    max-width: 960px;
-    padding: 10vh 5vw;
-    margin: 0 auto;
+  max-width: 960px;
+  padding: 10vh 5vw;
+  margin: 0 auto;
 
-    @include medium() {
-        padding: 10vh 5rem;
-    }
+  @include medium() {
+    padding: 10vh 5rem;
+  }
 }
 
 .page-section {
-    & + & {
-        margin-top: 2rem;
-    }
+  & + & {
+    margin-top: 2rem;
+  }
 }

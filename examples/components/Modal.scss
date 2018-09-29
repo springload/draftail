@@ -8,83 +8,83 @@ $modal-z-index: $modal__overlay-z-index + 1;
 $spacing-modal: 0.5rem;
 
 .modal__container--open {
-    @include small() {
-        overflow: hidden;
-    }
+  @include small() {
+    overflow: hidden;
+  }
 }
 
 .modal {
-    position: absolute;
-    left: 50%;
-    top: 25vh;
-    min-width: 320px;
-    transform: translate(-50%, -50%);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    z-index: $modal-z-index;
-    background-color: $color-bg-modal;
-    animation: modal-in 0.2s $easing-circ 0s backwards;
+  position: absolute;
+  left: 50%;
+  top: 25vh;
+  min-width: 320px;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: $modal-z-index;
+  background-color: $color-bg-modal;
+  animation: modal-in 0.2s $easing-circ 0s backwards;
 }
 
 .modal--exit {
-    animation: modal-out 0.2s $easing-circ 0s forwards;
+  animation: modal-out 0.2s $easing-circ 0s forwards;
 
-    .modal__content {
-        animation: affordance-out 0.2s ease-in 0s forwards;
-    }
+  .modal__content {
+    animation: affordance-out 0.2s ease-in 0s forwards;
+  }
 }
 
 .modal__overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: $color-bg-modal__overlay;
-    z-index: $modal__overlay-z-index;
-    cursor: pointer;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $color-bg-modal__overlay;
+  z-index: $modal__overlay-z-index;
+  cursor: pointer;
 }
 
 @keyframes modal-in {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes modal-out {
-    0% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 1;
+  }
 
-    100% {
-        opacity: 0;
-    }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes affordance-in {
-    0% {
-        opacity: 0;
-        transform: translateY(5%);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(5%);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes affordance-out {
-    0% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-    100% {
-        opacity: 0;
-        transform: translateY(5%);
-    }
+  100% {
+    opacity: 0;
+    transform: translateY(5%);
+  }
 }

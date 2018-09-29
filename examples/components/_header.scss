@@ -1,34 +1,34 @@
 .page-header {
-    > a {
-        color: inherit;
-        text-decoration: none;
-    }
+  > a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-    margin-bottom: 5vh;
-    text-align: center;
+  margin-bottom: 5vh;
+  text-align: center;
 
-    @include xsmall() {
-        text-align: left;
-    }
+  @include xsmall() {
+    text-align: left;
+  }
 }
 
 .page-title {
-    @include font-smoothing();
+  @include font-smoothing();
 
-    font-size: $FONT_SIZE_H1;
-    letter-spacing: 2px;
+  font-size: $FONT_SIZE_H1;
+  letter-spacing: 2px;
 
-    @include medium() {
-        font-size: $FONT_SIZE_H1_MEDIUM;
-    }
+  @include medium() {
+    font-size: $FONT_SIZE_H1_MEDIUM;
+  }
 }
 
 .page-description {
-    margin-top: 1.5rem;
-    margin-bottom: 0;
-    font-size: $FONT_SIZE_H3;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  font-size: $FONT_SIZE_H3;
 
-    img {
-        vertical-align: middle;
-    }
+  img {
+    vertical-align: middle;
+  }
 }

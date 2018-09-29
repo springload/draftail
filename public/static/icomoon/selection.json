@@ -12,14 +12,7 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "tags": [
-          "file-text",
-          "file",
-          "document",
-          "list",
-          "paper",
-          "page"
-        ],
+        "tags": ["file-text", "file", "document", "list", "paper", "page"],
         "defaultCode": 59686,
         "grid": 16
       },
@@ -44,10 +37,7 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "tags": [
-          "play",
-          "player"
-        ],
+        "tags": ["play", "player"],
         "defaultCode": 59925,
         "grid": 16
       },
