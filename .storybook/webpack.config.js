@@ -1,11 +1,23 @@
 const path = require("path");
 const webpack = require("webpack");
+const sass = require("sass");
+
 const pkg = require("../package.json");
 
 module.exports = (baseConfig, env, defaultConfig) => {
   defaultConfig.module.rules.push({
     test: /\.(scss|css)$/,
-    loaders: ["style-loader", "css-loader", "sass-loader"],
+    loaders: [
+      "style-loader",
+      "css-loader",
+      {
+        loader: "sass-loader",
+        options: {
+          sourceMap: true,
+          implementation: sass,
+        },
+      },
+    ],
     include: path.resolve(__dirname, "../"),
   });
   defaultConfig.plugins.push(

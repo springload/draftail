@@ -93,7 +93,6 @@
     "jest-image-snapshot": "^2.5.0",
     "mini-css-extract-plugin": "^0.4.3",
     "mkdirp": "^0.5.1",
-    "node-sass": "^4.9.3",
     "normalize.css": "^7.0.0",
     "postcss-loader": "^2.0.6",
     "prettier": "^1.14.0",
