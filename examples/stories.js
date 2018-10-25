@@ -1,13 +1,13 @@
 // eslint-disable-next-line @thibaudcolas/cookbook/import/no-extraneous-dependencies
 import { storiesOf } from "@storybook/react";
 
-import simple from "../examples/simple.story";
+import simple from "./simple.story";
 import {
   initWagtail,
   initCustom,
   initAll,
   initTest,
-} from "../examples/examples.story";
+} from "./examples.story";
 
 storiesOf("Draftail", module)
   .add("Simple", () => simple)
