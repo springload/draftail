@@ -7,5 +7,7 @@ configure(() => {
 
   require("../examples/main.scss");
 
-  require("../examples/stories");
+  require("../examples/home.story");
+  require("../examples/simple.story");
+  require("../examples/examples.story");
 }, module);

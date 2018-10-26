@@ -1,3 +1,4 @@
+import { storiesOf } from "@storybook/react";
 import React from "react";
 
 import {
@@ -216,3 +217,9 @@ export const initTest = () => {
 
   return editor;
 };
+
+storiesOf("Examples", module)
+  .add("Wagtail", initWagtail)
+  .add("Custom", initCustom)
+  .add("All", initAll)
+  .add("Test", initTest);
