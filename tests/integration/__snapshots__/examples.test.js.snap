@@ -110,7 +110,7 @@ Object {
     "0": Object {
       "data": Object {
         "alt": "",
-        "src": "../static/example-lowres-image.jpg",
+        "src": "/static/example-lowres-image.jpg",
       },
       "mutability": "MUTABLE",
       "type": "IMAGE",

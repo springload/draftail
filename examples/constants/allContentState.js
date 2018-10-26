@@ -14,7 +14,7 @@ export default {
     "3": {
       type: "IMAGE",
       mutability: "IMMUTABLE",
-      data: { alt: "", src: "../static/example-lowres-image.jpg" },
+      data: { alt: "", src: "/static/example-lowres-image.jpg" },
     },
   },
   blocks: [

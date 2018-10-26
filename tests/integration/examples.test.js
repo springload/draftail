@@ -105,7 +105,7 @@ describe("/examples/", () => {
 
     it("IMAGE", async () => {
       await page.click('[data-mount-wagtail] [name="IMAGE"]');
-      await page.type(".modal input", "../static/example-lowres-image.jpg");
+      await page.type(".modal input", "/static/example-lowres-image.jpg");
       await page.keyboard.press("Enter");
       await page.waitFor(100);
       const content = await page.evaluate(() =>

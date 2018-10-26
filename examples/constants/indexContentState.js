@@ -29,7 +29,7 @@ export default {
       mutability: "IMMUTABLE",
       data: {
         alt: "Test image alt text",
-        src: "static/example-lowres-image.jpg",
+        src: "/static/example-lowres-image.jpg",
       },
     },
     "7": {
@@ -44,7 +44,7 @@ export default {
         url: "http://www.youtube.com/watch?v=feUYwoLhE_4",
         title:
           "React.js Conf 2016 - Isaac Salier-Hellendag - Rich Text Editing with React",
-        thumbnail: "static/example-lowres-image2.jpg",
+        thumbnail: "/static/example-lowres-image2.jpg",
       },
     },
     "9": { type: "HORIZONTAL_RULE", mutability: "IMMUTABLE", data: {} },
