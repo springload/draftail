@@ -5,7 +5,7 @@ install:
 script:
   - npm run test:ci
   - base64 < ./tests/integration/__image_snapshots__/__diff_output__/* || true
-  - 'if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then bash npm run danger; fi'
+  - 'if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then npm run danger; fi'
   - npm run report:size
   - npm run report:package
   - mv coverage/lcov-report public || true
