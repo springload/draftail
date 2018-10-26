@@ -81,7 +81,6 @@ const webpackConfig = (environment) => {
       // Stylesheet shipped with the package.
       draftail: ["./lib/index.scss"],
       index: ["./examples/utils/polyfills", "./examples/index"],
-      examples: ["./examples/utils/polyfills", "./examples/examples"],
     },
     output: {
       path: path.join(__dirname, "public"),
@@ -94,12 +93,6 @@ const webpackConfig = (environment) => {
         Object.assign({}, htmlPluginConfig, {
           filename: "index.html",
           chunks: ["vendor", "index"],
-        }),
-      ),
-      new HtmlWebpackPlugin(
-        Object.assign({}, htmlPluginConfig, {
-          filename: "examples/index.html",
-          chunks: ["vendor", "examples"],
         }),
       ),
       new BundleAnalyzerPlugin({

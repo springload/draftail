@@ -219,7 +219,7 @@ export const initTest = () => {
 };
 
 storiesOf("Examples", module)
-  .add("Wagtail", initWagtail)
-  .add("Custom", initCustom)
-  .add("All", initAll)
+  .add("Wagtail features", initWagtail)
+  .add("Custom formats", initCustom)
+  .add("All built-in formats", initAll)
   .add("Test", initTest);
