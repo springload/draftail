@@ -29,42 +29,6 @@ const REDACTED_STYLE = {
   style: { backgroundColor: "currentcolor" },
 };
 
-export const initWagtail = () => {
-  const editor = (
-    <EditorWrapper
-      id="wagtail"
-      ariaDescribedBy="wagtail-editor"
-      placeholder="Write here…"
-      // Makes it easier to write automated tests retrieving the content.
-      stateSaveInterval={50}
-      enableHorizontalRule
-      enableLineBreak
-      showUndoControl
-      showRedoControl
-      stripPastedStyles={false}
-      maxListNesting={6}
-      spellCheck
-      entityTypes={[
-        ENTITY_CONTROL.IMAGE,
-        ENTITY_CONTROL.EMBED,
-        ENTITY_CONTROL.LINK,
-        ENTITY_CONTROL.DOCUMENT,
-      ]}
-      blockTypes={[
-        BLOCK_CONTROL.HEADER_TWO,
-        BLOCK_CONTROL.HEADER_THREE,
-        BLOCK_CONTROL.HEADER_FOUR,
-        BLOCK_CONTROL.HEADER_FIVE,
-        BLOCK_CONTROL.UNORDERED_LIST_ITEM,
-        BLOCK_CONTROL.ORDERED_LIST_ITEM,
-      ]}
-      inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
-    />
-  );
-
-  return editor;
-};
-
 export const initCustom = () => {
   const editor = (
     <EditorWrapper
@@ -219,7 +183,42 @@ export const initTest = () => {
 };
 
 storiesOf("Examples", module)
-  .add("Wagtail features", initWagtail)
+  .add("Wagtail features", () => (
+    <main>
+      <p id="wagtail-editor">
+        This editor demonstrates rich text features available in Wagtail.
+      </p>
+      <EditorWrapper
+        id="wagtail"
+        ariaDescribedBy="wagtail-editor"
+        placeholder="Write here…"
+        // Makes it easier to write automated tests retrieving the content.
+        stateSaveInterval={50}
+        enableHorizontalRule
+        enableLineBreak
+        showUndoControl
+        showRedoControl
+        stripPastedStyles={false}
+        maxListNesting={6}
+        spellCheck
+        entityTypes={[
+          ENTITY_CONTROL.IMAGE,
+          ENTITY_CONTROL.EMBED,
+          ENTITY_CONTROL.LINK,
+          ENTITY_CONTROL.DOCUMENT,
+        ]}
+        blockTypes={[
+          BLOCK_CONTROL.HEADER_TWO,
+          BLOCK_CONTROL.HEADER_THREE,
+          BLOCK_CONTROL.HEADER_FOUR,
+          BLOCK_CONTROL.HEADER_FIVE,
+          BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+          BLOCK_CONTROL.ORDERED_LIST_ITEM,
+        ]}
+        inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
+      />
+    </main>
+  ))
   .add("Custom formats", initCustom)
   .add("All built-in formats", initAll)
   .add("Test", initTest);

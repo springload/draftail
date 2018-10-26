@@ -5,6 +5,8 @@ configure(() => {
   iconWrapper.innerHTML = SVG_ICONS;
   document.body.appendChild(iconWrapper);
 
+  document.querySelector("html").setAttribute("lang", "en");
+
   require("../examples/main.scss");
 
   require("../examples/home.story");
