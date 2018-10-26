@@ -15,7 +15,7 @@ describe("/", () => {
 
   it("loads", async () => {
     const text = await page.evaluate(() => document.body.textContent);
-    expect(text).toContain("draftail");
+    expect(text).toContain("Draftail");
   });
 
   it("a11y", async () => {
