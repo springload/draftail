@@ -1,8 +1,9 @@
 import { configure } from "@storybook/react";
 
-function loadStories() {
-  require("../examples/stories");
-  // You can require as many stories as you need.
-}
+configure(() => {
+  const iconWrapper = document.createElement("div");
+  iconWrapper.innerHTML = SVG_ICONS;
+  document.body.appendChild(iconWrapper);
 
-configure(loadStories, module);
+  require("../examples/stories");
+}, module);

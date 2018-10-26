@@ -14,7 +14,6 @@ import customContentState from "./constants/customContentState";
 import allContentState from "./constants/allContentState";
 
 import "./main.scss";
-import "./constants/icons.svg";
 
 const TINY_TEXT_BLOCK = {
   type: "tiny-text",
