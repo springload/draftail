@@ -1,8 +1,4 @@
-/**
- * This code sample is a basic example of Draftail usage.
- * It is meant to be mirrored as-is (except for this comment)
- * inside the editor documentation.
- */
+import { storiesOf } from "@storybook/react";
 import React from "react";
 
 import { DraftailEditor, BLOCK_TYPE, INLINE_STYLE } from "../lib";
@@ -15,7 +11,7 @@ const onSave = (content) => {
   sessionStorage.setItem("draftail:content", JSON.stringify(content));
 };
 
-const editor = (
+storiesOf("Draftail", module).add("Simple", () => (
   <DraftailEditor
     rawContentState={initial || null}
     onSave={onSave}
@@ -26,6 +22,4 @@ const editor = (
     ]}
     inlineStyles={[{ type: INLINE_STYLE.BOLD }, { type: INLINE_STYLE.ITALIC }]}
   />
-);
-
-export default editor;
+));
