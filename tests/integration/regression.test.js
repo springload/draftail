@@ -11,21 +11,25 @@ describe("regression", () => {
   let page;
   beforeAll(async () => {
     page = await global.BROWSER.newPage();
-    await page.goto(`${global.ROOT}examples/`);
+    await page.goto(
+      `${
+        global.ROOT
+      }examples/iframe.html?selectedKind=Draftail&selectedStory=Simple`,
+    );
 
     await page.addStyleTag({ content: normalizeRendering });
   });
 
   describe("simple editor", () => {
     it("renders", async () => {
-      await page.type('[data-mount] [role="textbox"]', "Hello");
+      await page.type('[role="textbox"]', "Hello");
       await page.keyboard.press("Enter");
-      await page.type('[data-mount] [role="textbox"]', "- ");
-      await page.type('[data-mount] [role="textbox"]', "World");
+      await page.type('[role="textbox"]', "- ");
+      await page.type('[role="textbox"]', "World");
 
       const clip = await page.evaluate(() =>
         document
-          .querySelector("[data-mount]")
+          .querySelector("#root")
           .getBoundingClientRect()
           .toJSON(),
       );
