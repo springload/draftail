@@ -13,8 +13,6 @@ import ReadingTime from "./components/ReadingTime";
 import customContentState from "./constants/customContentState";
 import allContentState from "./constants/allContentState";
 
-import "./main.scss";
-
 const TINY_TEXT_BLOCK = {
   type: "tiny-text",
   label: "Tiny",
