@@ -7,6 +7,14 @@ configure(() => {
 
   document.querySelector("html").setAttribute("lang", "en");
 
+  if (SENTRY_DSN) {
+    const Sentry = require("@sentry/browser");
+    Sentry.init({
+      dsn: SENTRY_DSN,
+      release: PKG_VERSION,
+    });
+  }
+
   require("../examples/main.scss");
 
   require("../examples/utils/polyfills");

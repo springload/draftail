@@ -20,6 +20,9 @@ const SVG_ICONS = fs.readFileSync(
 const EMBEDLY_API_KEY_PROD = "d23c29a928fe4d89bda46b0291914c9c";
 const EMBEDLY_API_KEY = process.env.EMBEDLY_API_KEY || EMBEDLY_API_KEY_PROD;
 
+const SENTRY_DSN_PROD =
+  "https://ab23e9a1442c46f296a2527cdbe73a0e@sentry.io/251576";
+
 module.exports = (baseConfig, env, defaultConfig) => {
   const isProduction = env === "PRODUCTION";
 
@@ -63,6 +66,7 @@ module.exports = (baseConfig, env, defaultConfig) => {
       ),
       PKG_VERSION: JSON.stringify(pkg.version),
       SVG_ICONS: JSON.stringify(SVG_ICONS),
+      SENTRY_DSN: JSON.stringify(isProduction ? SENTRY_DSN_PROD : ""),
     }),
   );
 

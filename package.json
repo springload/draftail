@@ -66,6 +66,7 @@
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@sentry/browser": "^4.2.3",
     "@storybook/react": "^4.0.0-rc.6",
     "@thibaudcolas/eslint-plugin-cookbook": "^4.0.1",
     "@thibaudcolas/stylelint-config-cookbook": "^2.0.1",
