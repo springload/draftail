@@ -14,7 +14,7 @@ Draftail aims for a mouse-free, keyboard-centric experience. Most formatting can
 
 Here are important features worth highlighting:
 
-- Support for [keyboard shortcuts](/docs/user-guide/README.md). Lots of them!
+- Support for [keyboard shortcuts](https://www.draftail.org/docs/keyboard-shortcuts). Lots of them!
 - Paste from Word. Or any other editor.
 - Autolists – start a line with `-` , `*` , `1.` to create a list item.
 - Shortcuts for heading levels `##`, code blocks ` ``` `, and more.
@@ -25,7 +25,7 @@ Here are important features worth highlighting:
 
 ## Using Draftail
 
-> Have a look at the [user guide](/docs/user-guide/README.md).
+> Have a look at the [user guide](https://www.draftail.org/docs/user-guide).
 
 Draftail is meant to be used in scenarios where not all formatting should be available, and where custom formatting can be necessary. Available formats, built-in and custom, can be specificed declaratively for each editor instance.
 

@@ -1,6 +1,6 @@
 # Draftail documentation
 
-> :warning: Have a look at the [user guide](/docs/user-guide/README.md).
+> :warning: Have a look at [draftail.org](https://www.draftail.org/).
 
 ## Editor behavior
 
@@ -34,20 +34,6 @@ Here are specific parts of the code that **should always be reviewed before upgr
 We generally follow the configuration of [create-react-app](https://github.com/facebookincubator/create-react-app);
 
 - UglifyJS issues: https://github.com/springload/draftail/blob/df903f86c882bd5101eb05e152e8b8a8b9a4915e/webpack/webpack.config.prod.js#L15-L31
-
-## Demo site
-
-### Favicons
-
-Favicons generated with [RealFaviconGenerator](https://realfavicongenerator.net/).
-
-Original pencil icon is the [Noun project crayon](https://commons.wikimedia.org/wiki/File:Noun_project_-_crayon.svg) dedicated to the public domain (CC0) by D. Charbonnier.
-
-### Static editor content
-
-The demo site contains static content exported with [draftjs_exporter](https://github.com/springload/draftjs_exporter). It is placed there for SEO, and also to make the loading experience nicer.
-
-To regenerate it, get the serialised ContentState for the index page's editor (in `sessionStorage`), go to [the Draftail playground](https://draftail-playground.herokuapp.com), and place the ContentState in the `sessionStorage` value of that editor.
 
 ## Troubleshooting
 
