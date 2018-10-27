@@ -9,6 +9,8 @@ configure(() => {
 
   require("../examples/main.scss");
 
+  require("../examples/utils/polyfills");
+
   require("../examples/home.story");
   require("../examples/simple.story");
   require("../examples/examples.story");

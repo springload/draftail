@@ -91,7 +91,6 @@ lib64
 # -------------------------------------------------
 
 .env
-webpack-stats.json
 webpack-stats.html
 
 # jest-image-snapshot diffs

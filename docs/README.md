@@ -29,12 +29,6 @@ Here are specific parts of the code that **should always be reviewed before upgr
 - https://github.com/springload/draftail/commit/88ae9adcda1929c92f065655a03c1b33fcfe6c2d
 - https://github.com/springload/draftail/commit/e05df07f8ed6c5df65c79824bbb1dcd6e8800bdd
 
-### Webpack
-
-We generally follow the configuration of [create-react-app](https://github.com/facebookincubator/create-react-app);
-
-- UglifyJS issues: https://github.com/springload/draftail/blob/df903f86c882bd5101eb05e152e8b8a8b9a4915e/webpack/webpack.config.prod.js#L15-L31
-
 ## Troubleshooting
 
 - In Firefox, the [`dom.event.clipboardevents.enabled`](https://developer.mozilla.org/en-US/docs/Mozilla/Preferences/Preference_reference/dom.event.clipboardevents.enabled) setting must be turned on, otherwise the editor will crash on copy-paste. This could be off in [Iceweasel](https://wiki.debian.org/Iceweasel). See [wagtail/wagtail#4346](https://github.com/wagtail/wagtail/issues/4346).

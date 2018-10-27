@@ -3,6 +3,9 @@ const path = require("path");
 const webpack = require("webpack");
 const sass = require("sass");
 const autoprefixer = require("autoprefixer");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+
+require("dotenv").config();
 
 const pkg = require("../package.json");
 
@@ -12,7 +15,14 @@ const SVG_ICONS = fs.readFileSync(
   "utf-8",
 );
 
+// Key is hard-coded because it will be public on the demo site anyway.
+// Key usage is limited to whitelisted Referrers.
+const EMBEDLY_API_KEY_PROD = "d23c29a928fe4d89bda46b0291914c9c";
+const EMBEDLY_API_KEY = process.env.EMBEDLY_API_KEY || EMBEDLY_API_KEY_PROD;
+
 module.exports = (baseConfig, env, defaultConfig) => {
+  const isProduction = env === "PRODUCTION";
+
   // See http://webpack.github.io/docs/configuration.html#devtool
   defaultConfig.devtool = "source-map";
 
@@ -44,11 +54,32 @@ module.exports = (baseConfig, env, defaultConfig) => {
     ],
     include: path.resolve(__dirname, "../"),
   });
+
   defaultConfig.plugins.push(
     new webpack.DefinePlugin({
-      EMBEDLY_API_KEY: JSON.stringify("d23c29a928fe4d89bda46b0291914c9c"),
+      "process.env.NODE_ENV": JSON.stringify(env),
+      EMBEDLY_API_KEY: JSON.stringify(
+        isProduction ? EMBEDLY_API_KEY_PROD : EMBEDLY_API_KEY,
+      ),
       PKG_VERSION: JSON.stringify(pkg.version),
       SVG_ICONS: JSON.stringify(SVG_ICONS),
+    }),
+  );
+
+  defaultConfig.plugins.push(
+    new BundleAnalyzerPlugin({
+      // Can be `server`, `static` or `disabled`.
+      analyzerMode: "static",
+      // Path to bundle report file that will be generated in `static` mode.
+      reportFilename: path.join(
+        __dirname,
+        "..",
+        "public",
+        "webpack-stats.html",
+      ),
+      // Automatically open report in default browser
+      openAnalyzer: false,
+      logLevel: isProduction ? "info" : "warn",
     }),
   );
 
