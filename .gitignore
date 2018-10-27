@@ -84,6 +84,7 @@ eggs
 parts
 lib64
 .sass-cache
+.cache
 
 # -------------------------------------------------
 # Your own project's ignores
