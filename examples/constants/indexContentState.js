@@ -20,8 +20,7 @@ export default {
       type: "LINK",
       mutability: "MUTABLE",
       data: {
-        url:
-          "https://github.com/springload/draftail/tree/master/docs/user-guide/README.md",
+        url: "https://www.draftail.org/docs/keyboard-shortcuts",
       },
     },
     "6": {

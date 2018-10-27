@@ -8,9 +8,6 @@ const hasLibChanges =
   0;
 const hasREADMEChanges = danger.git.modified_files.includes("README.md");
 const hasCHANGELOGChanges = danger.git.modified_files.includes("CHANGELOG.md");
-const hasUserguideChanges = danger.git.modified_files.some((filepath) =>
-  filepath.includes("docs/user-guide"),
-);
 
 // Fails if the description is too short.
 if (!danger.github.pr.body || danger.github.pr.body.length < 10) {
@@ -26,9 +23,9 @@ if (isWIP) {
   warn(`${title} - <i>${idea}</i>`);
 }
 
-if (hasLibChanges && !(hasREADMEChanges || hasUserguideChanges)) {
+if (hasLibChanges && !hasREADMEChanges) {
   warn(
-    "This pull request updates the library. Should the [API reference](https://github.com/springload/draftail/blob/master/README.md) be updated as well? The [User guide](https://github.com/springload/draftail/blob/master/docs/user-guide/README.md)?",
+    "This pull request updates the library. Should the documentation be updated as well?",
   );
 }
 
