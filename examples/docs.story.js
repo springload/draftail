@@ -94,10 +94,10 @@ storiesOf("Docs", module)
       rawContentState={{
         blocks: [
           {
-            text: "Here’s a link! And an image:",
+            text: "Here's an image, and a link:",
             entityRanges: [
               {
-                offset: 9,
+                offset: 23,
                 length: 4,
                 key: 0,
               },
