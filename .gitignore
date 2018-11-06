@@ -99,6 +99,7 @@ __diff_output__
 public/*.css
 public/*.map
 public/*.html
+!public/index.html
 public/*.js
 public/examples
 public/test-results.json
