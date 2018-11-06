@@ -6,6 +6,8 @@ import {
   BLOCK_CONTROL,
   ENTITY_CONTROL,
   BR_ICON,
+  TINY_TEXT_BLOCK,
+  REDACTED_STYLE,
 } from "./constants/ui";
 
 import EditorWrapper from "./components/EditorWrapper";
@@ -14,23 +16,44 @@ import ReadingTime from "./components/ReadingTime";
 import customContentState from "./constants/customContentState";
 import allContentState from "./constants/allContentState";
 
-const TINY_TEXT_BLOCK = {
-  type: "tiny-text",
-  label: "Tiny",
-  description: "Legal print",
-  element: "blockquote",
-};
-
-const REDACTED_STYLE = {
-  type: "REDACTED",
-  icon:
-    "M592 448h-16v-192c0-105.87-86.13-192-192-192h-128c-105.87 0-192 86.13-192 192v192h-16c-26.4 0-48 21.6-48 48v480c0 26.4 21.6 48 48 48h544c26.4 0 48-21.6 48-48v-480c0-26.4-21.6-48-48-48zM192 256c0-35.29 28.71-64 64-64h128c35.29 0 64 28.71 64 64v192h-256v-192z",
-  description: "Redacted",
-  style: { backgroundColor: "currentcolor" },
-};
-
-export const initCustom = () => {
-  const editor = (
+storiesOf("Examples", module)
+  .add("Wagtail features", () => (
+    <main>
+      <p id="wagtail-editor">
+        This editor demonstrates rich text features available in Wagtail.
+      </p>
+      <EditorWrapper
+        id="wagtail"
+        ariaDescribedBy="wagtail-editor"
+        placeholder="Write here…"
+        // Makes it easier to write automated tests retrieving the content.
+        stateSaveInterval={50}
+        enableHorizontalRule
+        enableLineBreak
+        showUndoControl
+        showRedoControl
+        stripPastedStyles={false}
+        maxListNesting={6}
+        spellCheck
+        entityTypes={[
+          ENTITY_CONTROL.IMAGE,
+          ENTITY_CONTROL.EMBED,
+          ENTITY_CONTROL.LINK,
+          ENTITY_CONTROL.DOCUMENT,
+        ]}
+        blockTypes={[
+          BLOCK_CONTROL.HEADER_TWO,
+          BLOCK_CONTROL.HEADER_THREE,
+          BLOCK_CONTROL.HEADER_FOUR,
+          BLOCK_CONTROL.HEADER_FIVE,
+          BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+          BLOCK_CONTROL.ORDERED_LIST_ITEM,
+        ]}
+        inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
+      />
+    </main>
+  ))
+  .add("Custom formats", () => (
     <EditorWrapper
       id="custom"
       ariaDescribedBy="custom-editor"
@@ -58,13 +81,8 @@ export const initCustom = () => {
       decorators={[new PrismDecorator({ defaultLanguage: "css" })]}
       controls={[ReadingTime]}
     />
-  );
-
-  return editor;
-};
-
-export const initAll = () => {
-  const editor = (
+  ))
+  .add("All built-in formats", () => (
     <EditorWrapper
       id="all"
       ariaDescribedBy="all-editor"
@@ -88,13 +106,8 @@ export const initAll = () => {
       inlineStyles={Object.values(INLINE_CONTROL)}
       entityTypes={[ENTITY_CONTROL.IMAGE, ENTITY_CONTROL.LINK]}
     />
-  );
-
-  return editor;
-};
-
-export const initTest = () => {
-  const editor = (
+  ))
+  .add("Test", () => (
     <div>
       <h2>Test editor</h2>
       <div className="example">
@@ -177,48 +190,4 @@ export const initTest = () => {
         <input type="text" placeholder="A plain-HTML input 😄" />
       </label>
     </div>
-  );
-
-  return editor;
-};
-
-storiesOf("Examples", module)
-  .add("Wagtail features", () => (
-    <main>
-      <p id="wagtail-editor">
-        This editor demonstrates rich text features available in Wagtail.
-      </p>
-      <EditorWrapper
-        id="wagtail"
-        ariaDescribedBy="wagtail-editor"
-        placeholder="Write here…"
-        // Makes it easier to write automated tests retrieving the content.
-        stateSaveInterval={50}
-        enableHorizontalRule
-        enableLineBreak
-        showUndoControl
-        showRedoControl
-        stripPastedStyles={false}
-        maxListNesting={6}
-        spellCheck
-        entityTypes={[
-          ENTITY_CONTROL.IMAGE,
-          ENTITY_CONTROL.EMBED,
-          ENTITY_CONTROL.LINK,
-          ENTITY_CONTROL.DOCUMENT,
-        ]}
-        blockTypes={[
-          BLOCK_CONTROL.HEADER_TWO,
-          BLOCK_CONTROL.HEADER_THREE,
-          BLOCK_CONTROL.HEADER_FOUR,
-          BLOCK_CONTROL.HEADER_FIVE,
-          BLOCK_CONTROL.UNORDERED_LIST_ITEM,
-          BLOCK_CONTROL.ORDERED_LIST_ITEM,
-        ]}
-        inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
-      />
-    </main>
-  ))
-  .add("Custom formats", initCustom)
-  .add("All built-in formats", initAll)
-  .add("Test", initTest);
+  ));

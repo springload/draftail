@@ -22,4 +22,5 @@ configure(() => {
   require("../examples/home.story");
   require("../examples/simple.story");
   require("../examples/examples.story");
+  require("../examples/docs.story");
 }, module);
