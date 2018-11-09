@@ -1,6 +1,8 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
+import { INLINE_STYLE } from "../lib";
+
 import {
   INLINE_CONTROL,
   BLOCK_CONTROL,
@@ -9,7 +11,8 @@ import {
 } from "./constants/ui";
 
 import EditorWrapper from "./components/EditorWrapper";
-import { INLINE_STYLE } from "../lib";
+import PrismDecorator from "./components/PrismDecorator";
+import ReadingTime from "./components/ReadingTime";
 
 storiesOf("Docs", module)
   .add("Built-in formats", () => (
@@ -136,5 +139,60 @@ storiesOf("Docs", module)
       }}
       stripPastedStyles={false}
       entityTypes={[ENTITY_CONTROL.LINK, ENTITY_CONTROL.IMAGE]}
+    />
+  ))
+  .add("Decorators", () => (
+    <EditorWrapper
+      id="docs-decorators"
+      rawContentState={{
+        blocks: [
+          {
+            text: "Sometimes #hashtags are useful.",
+          },
+          {
+            text: "console.log('Hello, World!');",
+            type: "code-block",
+          },
+        ],
+        entityMap: {},
+      }}
+      stripPastedStyles={false}
+      blockTypes={[BLOCK_CONTROL.CODE]}
+      decorators={[
+        {
+          strategy: (block, callback) => {
+            const text = block.getText();
+            let matches;
+            // eslint-disable-next-line no-cond-assign
+            while ((matches = /#[\w]+/g.exec(text)) !== null) {
+              callback(matches.index, matches.index + matches[0].length);
+            }
+          },
+          // eslint-disable-next-line @thibaudcolas/cookbook/react/prop-types
+          component: ({ children }) => (
+            <span style={{ color: "#007d7e" }}>{children}</span>
+          ),
+        },
+        new PrismDecorator({ defaultLanguage: "javascript" }),
+      ]}
+    />
+  ))
+  .add("Controls", () => (
+    <EditorWrapper
+      id="docs-controls"
+      rawContentState={{
+        blocks: [
+          {
+            text: "Sometimes #hashtags are useful.",
+          },
+          {
+            text: "console.log('Hello, World!');",
+            type: "code-block",
+          },
+        ],
+        entityMap: {},
+      }}
+      stripPastedStyles={false}
+      controls={[ReadingTime]}
     />
   ));
