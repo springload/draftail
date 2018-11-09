@@ -8,6 +8,7 @@ import {
   BLOCK_CONTROL,
   ENTITY_CONTROL,
   REDACTED_STYLE,
+  BR_ICON,
 } from "./constants/ui";
 
 import EditorWrapper from "./components/EditorWrapper";
@@ -194,5 +195,48 @@ storiesOf("Docs", module)
       }}
       stripPastedStyles={false}
       controls={[ReadingTime]}
+    />
+  ))
+  .add("UI theming", () => (
+    <div className="docs-ui-theming">
+      <EditorWrapper
+        id="docs-ui-theming"
+        rawContentState={{
+          blocks: [
+            {
+              text: "Focus mode editor!",
+              type: "blockquote",
+            },
+          ],
+          entityMap: {},
+        }}
+        stripPastedStyles={false}
+        blockTypes={[
+          BLOCK_CONTROL.BLOCKQUOTE,
+          BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+        ]}
+      />
+    </div>
+  ))
+  .add("Icons", () => (
+    <EditorWrapper
+      id="docs-icons"
+      rawContentState={{
+        blocks: [
+          {
+            text:
+              "Icons can recycle Unicode characters, use SVG, or custom implementations.",
+          },
+        ],
+        entityMap: {},
+      }}
+      enableLineBreak={{ icon: BR_ICON }}
+      stripPastedStyles={false}
+      inlineStyles={[
+        INLINE_CONTROL.BOLD,
+        INLINE_CONTROL.KEYBOARD,
+        REDACTED_STYLE,
+      ]}
+      entityTypes={[ENTITY_CONTROL.EMBED]}
     />
   ));
