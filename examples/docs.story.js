@@ -1,5 +1,6 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
+import { injectIntl } from "react-intl";
 
 import { INLINE_STYLE } from "../lib";
 
@@ -239,4 +240,42 @@ storiesOf("Docs", module)
       ]}
       entityTypes={[ENTITY_CONTROL.EMBED]}
     />
-  ));
+  ))
+  .add("i18n", () => {
+    const WithIntl = injectIntl(({ intl }) => (
+      <EditorWrapper
+        id="docs-i18n"
+        rawContentState={{
+          blocks: [
+            {
+              text:
+                "All of the text displayed in the Draftail UI is translateable",
+            },
+          ],
+          entityMap: {},
+        }}
+        enableLineBreak={{
+          icon: BR_ICON,
+          description: intl.formatMessage({ id: "Line break" }),
+        }}
+        stripPastedStyles={false}
+        inlineStyles={[
+          {
+            type: INLINE_STYLE.BOLD,
+            label: intl.formatMessage({ id: "Bold" }),
+          },
+          {
+            type: INLINE_STYLE.KEYBOARD,
+            label: intl.formatMessage({ id: "Shortcut" }),
+          },
+        ]}
+        entityTypes={[
+          Object.assign({}, ENTITY_CONTROL.LINK, {
+            description: intl.formatMessage({ id: "Link" }),
+          }),
+        ]}
+      />
+    ));
+
+    return <WithIntl />;
+  });
