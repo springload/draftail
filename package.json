@@ -1,7 +1,7 @@
 {
   "name": "draftail",
   "version": "1.0.0",
-  "description": "📝🍸 A configurable rich text editor based on Draft.js, built for Wagtail",
+  "description": "📝🍸 A configurable rich text editor based on Draft.js and React, built for Wagtail",
   "author": "Springload",
   "license": "MIT",
   "main": "dist/draftail.cjs.js",
