@@ -1,8 +1,10 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
 import { injectIntl } from "react-intl";
+import { convertFromHTML, convertToHTML } from "draft-convert";
+import { convertToRaw, convertFromRaw } from "draft-js";
 
-import { INLINE_STYLE } from "../lib";
+import { INLINE_STYLE, ENTITY_TYPE, BLOCK_TYPE } from "../lib";
 
 import {
   INLINE_CONTROL,
@@ -278,4 +280,80 @@ storiesOf("Docs", module)
     ));
 
     return <WithIntl />;
+  })
+  .add("HTML conversion", () => {
+    const content = `
+    <p>This editor demonstrates <strong>HTML import and export</strong>.</p>
+    <hr/>
+    <blockquote>Built with <a href="https://github.com/HubSpot/draft-convert">draft-convert</a></blockquote>
+    `;
+
+    const fromHTML = convertFromHTML({
+      htmlToEntity: (nodeName, node, createEntity) => {
+        // a tags will become LINK entities, marked as mutable, with only the URL as data.
+        if (nodeName === "a") {
+          return createEntity(ENTITY_TYPE.LINK, "MUTABLE", { url: node.href });
+        }
+
+        if (nodeName === "hr") {
+          return createEntity(ENTITY_TYPE.HORIZONTAL_RULE, "IMMUTABLE", {});
+        }
+
+        return null;
+      },
+      htmlToBlock: (nodeName) => {
+        if (nodeName === "hr") {
+          // "atomic" blocks is how Draft.js structures block-level entities.
+          return "atomic";
+        }
+
+        return null;
+      },
+    });
+
+    const toHTML = convertToHTML({
+      blockToHTML: (block) => {
+        if (block.type === BLOCK_TYPE.BLOCKQUOTE) {
+          return <blockquote />;
+        }
+
+        // Discard atomic blocks, as they are converted based on their entity.
+        if (block.type === BLOCK_TYPE.ATOMIC) {
+          return {
+            start: "",
+            end: "",
+          };
+        }
+
+        return null;
+      },
+
+      entityToHTML: (entity, originalText) => {
+        if (entity.type === ENTITY_TYPE.LINK) {
+          return <a href={entity.data.url}>{originalText}</a>;
+        }
+
+        if (entity.type === ENTITY_TYPE.HORIZONTAL_RULE) {
+          return <hr />;
+        }
+
+        return originalText;
+      },
+    });
+
+    return (
+      <EditorWrapper
+        id="docs-html"
+        rawContentState={convertToRaw(fromHTML(content))}
+        onSave={(raw) => {
+          // eslint-disable-next-line no-console
+          console.log(raw ? toHTML(convertFromRaw(raw)) : "empty editor");
+        }}
+        stripPastedStyles={false}
+        enableHorizontalRule
+        inlineStyles={[INLINE_CONTROL.BOLD]}
+        blockTypes={[BLOCK_CONTROL.BLOCKQUOTE]}
+        entityTypes={[ENTITY_CONTROL.LINK]}
+      />
+    );
   });
