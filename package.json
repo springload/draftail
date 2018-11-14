@@ -126,7 +126,7 @@
     "start": "start-storybook -c .storybook -s public -p 9001",
     "build:rollup": "rollup -c",
     "build:styles": "sass lib/index.scss | postcss --use autoprefixer --no-map > dist/draftail.css",
-    "build:storybook": "build-storybook -c .storybook -o public/storybook",
+    "build:storybook": "build-storybook -c .storybook -o public/examples",
     "build": "npm run build:rollup -s && npm run build:storybook -s && npm run build:styles -s",
     "dist": "NODE_ENV=production npm run build -s",
     "danger": "danger ci --verbose",
