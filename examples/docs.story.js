@@ -286,6 +286,8 @@ storiesOf("Docs", module)
     <p>This editor demonstrates <strong>HTML import and export</strong>.</p>
     <hr/>
     <blockquote>Built with <a href="https://github.com/HubSpot/draft-convert">draft-convert</a></blockquote>
+    <img src="static/example-lowres-image2.jpg"/>
+    <p></p>
     `;
 
     const fromHTML = convertFromHTML({
@@ -295,6 +297,12 @@ storiesOf("Docs", module)
           return createEntity(ENTITY_TYPE.LINK, "MUTABLE", { url: node.href });
         }
 
+        if (nodeName === "img") {
+          return createEntity(ENTITY_TYPE.IMAGE, "IMMUTABLE", {
+            src: node.src,
+          });
+        }
+
         if (nodeName === "hr") {
           return createEntity(ENTITY_TYPE.HORIZONTAL_RULE, "IMMUTABLE", {});
         }
@@ -302,7 +310,7 @@ storiesOf("Docs", module)
         return null;
       },
       htmlToBlock: (nodeName) => {
-        if (nodeName === "hr") {
+        if (nodeName === "hr" || nodeName === "img") {
           // "atomic" blocks is how Draft.js structures block-level entities.
           return "atomic";
         }
@@ -333,6 +341,10 @@ storiesOf("Docs", module)
           return <a href={entity.data.url}>{originalText}</a>;
         }
 
+        if (entity.type === ENTITY_TYPE.IMAGE) {
+          return <img src={entity.data.src} alt={entity.data.alt} />;
+        }
+
         if (entity.type === ENTITY_TYPE.HORIZONTAL_RULE) {
           return <hr />;
         }
@@ -353,7 +365,7 @@ storiesOf("Docs", module)
         enableHorizontalRule
         inlineStyles={[INLINE_CONTROL.BOLD]}
         blockTypes={[BLOCK_CONTROL.BLOCKQUOTE]}
-        entityTypes={[ENTITY_CONTROL.LINK]}
+        entityTypes={[ENTITY_CONTROL.LINK, ENTITY_CONTROL.IMAGE]}
       />
     );
   });
