@@ -251,7 +251,7 @@ storiesOf("Docs", module)
           blocks: [
             {
               text:
-                "All of the text displayed in the Draftail UI is translateable",
+                "All of the text displayed in the Draftail UI can be translated",
             },
           ],
           entityMap: {},
