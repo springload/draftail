@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`/examples/ Wagtail features BOLD 1`] = `
+exports[`/storybook/ Wagtail features BOLD 1`] = `
 Array [
   Object {
     "data": Object {},
@@ -19,7 +19,7 @@ Array [
 ]
 `;
 
-exports[`/examples/ Wagtail features BR 1`] = `
+exports[`/storybook/ Wagtail features BR 1`] = `
 Object {
   "blocks": Array [
     Object {
@@ -36,7 +36,7 @@ lo",
 }
 `;
 
-exports[`/examples/ Wagtail features HORIZONTAL_RULE 1`] = `
+exports[`/storybook/ Wagtail features HORIZONTAL_RULE 1`] = `
 Object {
   "blocks": Array [
     Object {
@@ -72,7 +72,7 @@ Object {
 }
 `;
 
-exports[`/examples/ Wagtail features IMAGE 1`] = `
+exports[`/storybook/ Wagtail features IMAGE 1`] = `
 Object {
   "blocks": Array [
     Object {
@@ -119,7 +119,7 @@ Object {
 }
 `;
 
-exports[`/examples/ Wagtail features LINK 1`] = `
+exports[`/storybook/ Wagtail features LINK 1`] = `
 Object {
   "blocks": Array [
     Object {
@@ -149,7 +149,7 @@ Object {
 }
 `;
 
-exports[`/examples/ Wagtail features header-three 1`] = `
+exports[`/storybook/ Wagtail features header-three 1`] = `
 Array [
   Object {
     "data": Object {},
@@ -162,7 +162,7 @@ Array [
 ]
 `;
 
-exports[`/examples/ Wagtail features unordered-list-item 1`] = `
+exports[`/storybook/ Wagtail features unordered-list-item 1`] = `
 Array [
   Object {
     "data": Object {},

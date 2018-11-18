@@ -7,5 +7,5 @@ webpack-stats.json
 public/*.css
 public/*.html
 public/*.js
-public/examples
+public/storybook
 public/test-results.json

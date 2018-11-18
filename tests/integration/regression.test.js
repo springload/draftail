@@ -12,9 +12,7 @@ describe("regression", () => {
   beforeAll(async () => {
     page = await global.BROWSER.newPage();
     await page.goto(
-      `${
-        global.ROOT
-      }examples/iframe.html?selectedKind=Draftail&selectedStory=Simple`,
+      `${global.ROOT}?selectedKind=Draftail&selectedStory=Simple`,
     );
 
     await page.addStyleTag({ content: normalizeRendering });

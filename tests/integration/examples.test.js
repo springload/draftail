@@ -4,14 +4,12 @@ expect.extend(toHaveNoViolations);
 
 jest.setTimeout(10000);
 
-describe("/examples/", () => {
+describe("/storybook/", () => {
   let page;
   beforeAll(async () => {
     page = await global.BROWSER.newPage();
     await page.goto(
-      `${
-        global.ROOT
-      }examples/iframe.html?selectedKind=Examples&selectedStory=Wagtail%20features`,
+      `${global.ROOT}?selectedKind=Examples&selectedStory=Wagtail%20features`,
     );
 
     await page.addScriptTag({ path: require.resolve("axe-core") });

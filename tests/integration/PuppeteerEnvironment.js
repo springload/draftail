@@ -17,8 +17,9 @@ class PuppeteerEnvironment extends NodeEnvironment {
     super(config, options);
 
     // Look at what Webpack serves when in watch mode.
-    const port = IS_WATCH ? 4000 : 5000;
-    this.global.ROOT = `http://localhost:${port}/`;
+    const port = IS_WATCH ? 9001 : 5000;
+    const prefix = IS_WATCH ? "" : "/storybook";
+    this.global.ROOT = `http://localhost:${port}${prefix}/iframe.html`;
   }
 
   async setup() {
