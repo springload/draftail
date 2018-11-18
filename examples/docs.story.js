@@ -286,7 +286,7 @@ storiesOf("Docs", module)
     <p>This editor demonstrates <strong>HTML import and export</strong>.</p>
     <hr/>
     <blockquote>Built with <a href="https://github.com/HubSpot/draft-convert">draft-convert</a></blockquote>
-    <img src="static/example-lowres-image2.jpg"/>
+    <img src="/static/example-lowres-image2.jpg"/>
     <p></p>
     `;
 
