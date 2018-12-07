@@ -105,7 +105,7 @@ class ImageSource extends Component {
             />
           </label>
 
-          <button type="button" className="Tooltip__button">
+          <button type="submit" className="Tooltip__button">
             Save
           </button>
         </form>

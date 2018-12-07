@@ -95,7 +95,7 @@ class DocumentSource extends Component {
             />
           </label>
 
-          <button type="button">Save</button>
+          <button type="submit">Save</button>
         </form>
       </Modal>
     );
