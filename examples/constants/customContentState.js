@@ -1,64 +1,42 @@
 // @flow
 export default {
-  entityMap: {
-    "0": {
-      type: "DOCUMENT",
-      mutability: "MUTABLE",
-      data: {
-        url: "doc.pdf",
-        title: "Kritik der reinen Vernunft",
-      },
-    },
-    "1": {
-      type: "EMBED",
-      mutability: "IMMUTABLE",
-      data: {
-        url: "http://www.youtube.com/watch?v=y8Kyi0WNg40",
-        title: "Dramatic Look",
-        thumbnail: "/static/example-lowres-image2.jpg",
-      },
-    },
-  },
   blocks: [
     {
       key: "c1gc9",
-      text: "You can implement custom block types as required.",
-      type: "tiny-text",
-      depth: 0,
-      inlineStyleRanges: [],
-      entityRanges: [],
-      data: {},
-    },
-    {
-      key: "bldpo",
       text:
-        "And also inline styles. Or abuse the entity API to make text decorators.",
-      type: "unstyled",
+        "You can implement custom block types as required, and inline styles too, or entities.",
+      type: "tiny-text",
       depth: 0,
       inlineStyleRanges: [
         {
-          offset: 9,
+          offset: 54,
           length: 13,
-          style: "REDACTED",
-        },
-        {
-          offset: 27,
-          length: 5,
-          style: "REDACTED",
-        },
-        {
-          offset: 56,
-          length: 15,
           style: "REDACTED",
         },
       ],
       entityRanges: [
         {
-          offset: 44,
-          length: 3,
+          offset: 76,
+          length: 8,
           key: 0,
         },
       ],
+      data: {},
+    },
+    {
+      key: "7dtlg",
+      text:
+        "Draftail also supports the #plugins architecture of draft-js-plugins.",
+      type: "unstyled",
+      depth: 0,
+      inlineStyleRanges: [
+        {
+          offset: 52,
+          length: 16,
+          style: "BOLD",
+        },
+      ],
+      entityRanges: [],
       data: {},
     },
     {
@@ -104,4 +82,22 @@ export default {
       data: {},
     },
   ],
+  entityMap: {
+    "0": {
+      type: "DOCUMENT",
+      mutability: "MUTABLE",
+      data: {
+        url: "docs.pdf",
+      },
+    },
+    "1": {
+      type: "EMBED",
+      mutability: "IMMUTABLE",
+      data: {
+        url: "http://www.youtube.com/watch?v=y8Kyi0WNg40",
+        title: "Dramatic Look",
+        thumbnail: "/static/example-lowres-image2.jpg",
+      },
+    },
+  },
 };
