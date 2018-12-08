@@ -7,7 +7,8 @@ import SentryBoundary from "./SentryBoundary";
 import Highlight from "./Highlight";
 
 /* global PKG_VERSION */
-const DRAFTAIL_VERSION = PKG_VERSION;
+const DRAFTAIL_VERSION =
+  typeof PKG_VERSION === "undefined" ? "dev" : PKG_VERSION;
 
 class EditorWrapper extends Component {
   constructor(props) {
