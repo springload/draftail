@@ -42,4 +42,5 @@ configure(() => {
   require("../examples/simple.story");
   require("../examples/examples.story");
   require("../examples/docs.story");
+  require("../examples/performance.story");
 }, module);
