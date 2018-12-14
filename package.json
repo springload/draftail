@@ -102,6 +102,7 @@
     "prop-types": "^15.6.0",
     "puppeteer": "^1.11.0",
     "react": "^16.6.0",
+    "react-benchmark": "^2.1.0",
     "react-dom": "^16.6.0",
     "react-intl": "^2.7.2",
     "react-modal": "^3.1.5",
@@ -140,11 +141,12 @@
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "test:watch:coverage": "jest --watch --coverage",
+    "test:performance": "react-benchmark tests/performance/benchmark.js",
     "report:coverage": "open coverage/lcov-report/index.html",
     "report:build": "open public/webpack-stats.html",
     "report:size": "uglifyjs --compress --mangle -- dist/draftail.cjs.js > dist/draftail.cjs.min.js && gzip --keep dist/* && wc -c dist/* && rm dist/*.gz && rm dist/*.min.js",
     "report:package": "npm pack --loglevel notice 2>&1 >/dev/null | sed -e 's/^npm notice //' | tee public/package.txt && rm *.tgz",
-    "test:ci": "npm run lint -s && npm run test:coverage -s -- --outputFile public/test-results.json --json --runInBand && npm run dist -s && npm run test:integration -s",
+    "test:ci": "npm run lint -s && npm run test:coverage -s -- --outputFile public/test-results.json --json --runInBand && npm run dist -s && npm run test:integration -s && npm run test:performance -s",
     "prepublishOnly": "npm run dist -s",
     "prepare": "./.githooks/deploy.sh"
   }
