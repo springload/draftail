@@ -24,10 +24,10 @@ describe("performance", () => {
       />,
     );
     component.instance().start();
-    expect(results.mean).toBeLessThan(68);
-    expect(results.min).toBeLessThan(41);
-    expect(results.median).toBeLessThan(53);
-    expect(results.max).toBeLessThan(250);
+    expect(results.mean).toBeLessThan(77);
+    expect(results.min).toBeLessThan(49);
+    expect(results.median).toBeLessThan(61);
+    expect(results.max).toBeLessThan(278);
   });
 
   it("markov_draftjs[41] unmount", () => {
@@ -59,6 +59,6 @@ describe("performance", () => {
     expect(results.mean).toBeLessThan(3);
     expect(results.min).toBeLessThan(1);
     expect(results.median).toBeLessThan(2);
-    expect(results.max).toBeLessThan(41);
+    expect(results.max).toBeLessThan(46);
   });
 });
