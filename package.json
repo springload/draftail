@@ -103,6 +103,7 @@
     "puppeteer": "^1.11.0",
     "react": "^16.6.0",
     "react-benchmark": "^2.1.0",
+    "react-component-benchmark": "0.0.4",
     "react-dom": "^16.6.0",
     "react-intl": "^2.7.2",
     "react-modal": "^3.1.5",
