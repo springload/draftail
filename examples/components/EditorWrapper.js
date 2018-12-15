@@ -82,7 +82,7 @@ class EditorWrapper extends Component {
             ref={(ref) => {
               this.benchmark = ref;
             }}
-            samples={20}
+            samples={25}
             timeout={10000}
             type={BenchmarkType.MOUNT}
           />
