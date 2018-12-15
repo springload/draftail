@@ -46,6 +46,6 @@ describe("performance", () => {
     const mean = await page.$eval('[data-benchmark="mean"]', (elt) =>
       parseFloat(elt.innerHTML),
     );
-    expect(mean).toBeLessThanOrEqual(42);
+    expect(mean).toBeLessThanOrEqual(47 * 1.5);
   });
 });

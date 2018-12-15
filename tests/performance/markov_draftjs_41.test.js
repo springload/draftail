@@ -4,6 +4,11 @@ import Benchmark, { BenchmarkType } from "react-component-benchmark";
 
 import MarkovBenchmark from "./MarkovBenchmark";
 
+const PERFORMANCE_BUFFER = 2;
+
+/**
+ * Performance numbers: highest seen number, multiplied by 1.5 factor.
+ */
 describe("performance", () => {
   let onComplete;
   let results;
@@ -24,10 +29,10 @@ describe("performance", () => {
       />,
     );
     component.instance().start();
-    expect(results.mean).toBeLessThan(77);
-    expect(results.min).toBeLessThan(49);
-    expect(results.median).toBeLessThan(61);
-    expect(results.max).toBeLessThan(278);
+    expect(results.mean).toBeLessThan(77 * PERFORMANCE_BUFFER);
+    expect(results.min).toBeLessThan(49 * PERFORMANCE_BUFFER);
+    expect(results.median).toBeLessThan(61 * PERFORMANCE_BUFFER);
+    expect(results.max).toBeLessThan(278 * PERFORMANCE_BUFFER);
   });
 
   it("markov_draftjs[41] unmount", () => {
@@ -40,10 +45,10 @@ describe("performance", () => {
       />,
     );
     component.instance().start();
-    expect(results.mean).toBeLessThan(2);
-    expect(results.min).toBeLessThan(1);
-    expect(results.median).toBeLessThan(2);
-    expect(results.max).toBeLessThan(8);
+    expect(results.mean).toBeLessThan(2 * PERFORMANCE_BUFFER);
+    expect(results.min).toBeLessThan(1 * PERFORMANCE_BUFFER);
+    expect(results.median).toBeLessThan(2 * PERFORMANCE_BUFFER);
+    expect(results.max).toBeLessThan(8 * PERFORMANCE_BUFFER);
   });
 
   it("markov_draftjs[41] update", () => {
@@ -56,9 +61,9 @@ describe("performance", () => {
       />,
     );
     component.instance().start();
-    expect(results.mean).toBeLessThan(3);
-    expect(results.min).toBeLessThan(1);
-    expect(results.median).toBeLessThan(2);
-    expect(results.max).toBeLessThan(46);
+    expect(results.mean).toBeLessThan(3 * PERFORMANCE_BUFFER);
+    expect(results.min).toBeLessThan(1 * PERFORMANCE_BUFFER);
+    expect(results.median).toBeLessThan(2 * PERFORMANCE_BUFFER);
+    expect(results.max).toBeLessThan(46 * PERFORMANCE_BUFFER);
   });
 });
