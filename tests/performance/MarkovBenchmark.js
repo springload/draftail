@@ -9,9 +9,10 @@ import {
   ENTITY_CONTROL,
 } from "../../examples/constants/ui";
 
-const NB_EDITORS = 5;
-
-const benchmarkProps = {
+/**
+ * These are the props required to correctly render content of markov_draftjs.
+ */
+export const benchmarkProps = {
   enableHorizontalRule: true,
   maxListNesting: 1,
   entityTypes: [
@@ -29,15 +30,8 @@ const benchmarkProps = {
   inlineStyles: [INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC],
 };
 
-export default () => (
-  <>
-    {contentStates.slice(0, NB_EDITORS).map((contentState, i) => (
-      <DraftailEditor
-        // eslint-disable-next-line @thibaudcolas/cookbook/react/no-array-index-key
-        key={i}
-        rawContentState={contentState}
-        {...benchmarkProps}
-      />
-    ))}
-  </>
+const MarkovBenchmark = ({ id }) => (
+  <DraftailEditor rawContentState={contentStates[id]} {...benchmarkProps} />
 );
+
+export default MarkovBenchmark;

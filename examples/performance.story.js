@@ -4,31 +4,13 @@ import contentStates from "markov_draftjs";
 
 import { DraftailEditor } from "../lib";
 
-import { INLINE_CONTROL, BLOCK_CONTROL, ENTITY_CONTROL } from "./constants/ui";
 import StatsGraph from "./components/StatsGraph";
 import EditorBenchmark from "./components/EditorBenchmark";
+import { benchmarkProps } from "../tests/performance/MarkovBenchmark";
 
 const NB_EDITORS = 50;
 const NB_EDITORS_LOW = 5;
 const MAX_EDITORS = contentStates.length;
-
-const benchmarkProps = {
-  enableHorizontalRule: true,
-  maxListNesting: 1,
-  entityTypes: [
-    ENTITY_CONTROL.LINK,
-    ENTITY_CONTROL.IMAGE,
-    ENTITY_CONTROL.DOCUMENT,
-  ],
-  blockTypes: [
-    BLOCK_CONTROL.HEADER_TWO,
-    BLOCK_CONTROL.HEADER_THREE,
-    BLOCK_CONTROL.HEADER_FOUR,
-    BLOCK_CONTROL.UNORDERED_LIST_ITEM,
-    BLOCK_CONTROL.ORDERED_LIST_ITEM,
-  ],
-  inlineStyles: [INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC],
-};
 
 const header = (
   <>
