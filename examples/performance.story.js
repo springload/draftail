@@ -6,6 +6,7 @@ import { DraftailEditor } from "../lib";
 
 import { INLINE_CONTROL, BLOCK_CONTROL, ENTITY_CONTROL } from "./constants/ui";
 import StatsGraph from "./components/StatsGraph";
+import EditorBenchmark from "./components/EditorBenchmark";
 
 const NB_EDITORS = 50;
 const NB_EDITORS_LOW = 5;
@@ -45,6 +46,19 @@ const header = (
 );
 
 storiesOf("Performance", module)
+  .add(`markov_draftjs 41`, () => (
+    <>
+      {header}
+      <EditorBenchmark
+        componentProps={Object.assign(
+          { rawContentState: contentStates[41] },
+          benchmarkProps,
+        )}
+        runOnMount
+      />
+      <DraftailEditor rawContentState={contentStates[41]} {...benchmarkProps} />
+    </>
+  ))
   .add(`markov_draftjs 0-${NB_EDITORS_LOW}`, () => (
     <>
       {header}
