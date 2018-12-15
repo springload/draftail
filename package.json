@@ -142,7 +142,7 @@
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "test:watch:coverage": "jest --watch --coverage",
-    "test:performance": "react-benchmark tests/performance/benchmark.js",
+    "test:performance": "react-benchmark tests/performance/markov_draftjs_41.js",
     "report:coverage": "open coverage/lcov-report/index.html",
     "report:build": "open public/webpack-stats.html",
     "report:size": "uglifyjs --compress --mangle -- dist/draftail.cjs.js > dist/draftail.cjs.min.js && gzip --keep dist/* && wc -c dist/* && rm dist/*.gz && rm dist/*.min.js",
