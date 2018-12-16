@@ -4,7 +4,7 @@ import Benchmark, { BenchmarkType } from "react-component-benchmark";
 
 import MarkovBenchmark from "./MarkovBenchmark";
 
-const PERFORMANCE_BUFFER = 2;
+const PERFORMANCE_BUFFER = 3;
 
 /**
  * Performance numbers: highest seen number, multiplied by 1.5 factor.
