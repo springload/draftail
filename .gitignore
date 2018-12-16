@@ -102,5 +102,4 @@ public/*.html
 !public/index.html
 public/*.js
 public/storybook
-public/test-results.json
 public/package.txt
