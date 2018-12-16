@@ -103,3 +103,5 @@ public/*.html
 public/*.js
 public/storybook
 public/package.txt
+public/benchmark.txt
+public/size.txt
