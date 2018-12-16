@@ -37,27 +37,6 @@
     "Firefox ESR",
     "not OperaMini all"
   ],
-  "jest": {
-    "moduleNameMapper": {
-      "\\.scss$": "<rootDir>/tests/styleMock.js"
-    },
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/dist/",
-      "/es/",
-      "/integration/"
-    ],
-    "coveragePathIgnorePatterns": [
-      "<rootDir>/tests"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "setupFiles": [
-      "<rootDir>/tests/polyfills.js"
-    ],
-    "setupTestFrameworkScriptFile": "<rootDir>/tests/setupTest.js"
-  },
   "dependencies": {
     "draftjs-conductor": "^0.2.1",
     "draftjs-filters": "^1.0.0"
