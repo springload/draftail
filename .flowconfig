@@ -1,0 +1,21 @@
+[ignore]
+# .*/node_modules/draft-js/lib/DraftEditorContents.react.js.flow
+.*/node_modules/draft-js/lib/ContentBlockNode.js.flow
+.*/node_modules/draft-js/lib/ContentBlock.js.flow
+.*/node_modules/draft-js/lib/DraftEditorLeaf.react.js.flow
+.*/node_modules/draft-js/lib/DraftEditorDragHandler.js.flow
+.*/node_modules/draft-js/lib/DraftEditor.react.js.flow
+# .*/node_modules/config-chain
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
+
+[include]
+
+[libs]
+
+[lints]
+all=error
+
+[options]
+module.name_mapper='.*\(.scss\)' -> 'empty/object'
+
+[strict]
