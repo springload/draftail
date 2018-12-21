@@ -1,13 +1,39 @@
-import PropTypes from "prop-types";
+// @flow
 import React, { Component } from "react";
+import type { Node } from "react";
+import { ContentState } from "draft-js";
 
+// $FlowFixMe
 import { Icon } from "../../lib";
 
 import Tooltip from "../components/Tooltip";
+import type { Rect } from "../components/Tooltip";
 import Portal from "../components/Portal";
 
-class TooltipEntity extends Component {
-  constructor(props) {
+type Props = {
+  // Key of the entity being decorated.
+  entityKey: string,
+  // Full contentState, read-only.
+  contentState: ContentState,
+  // The decorated nodes / entity text.
+  children: Node,
+  // Call with the entityKey to trigger the entity source.
+  onEdit: (string) => void,
+  // Call with the entityKey to remove the entity.
+  onRemove: (string) => void,
+  icon: string | Node,
+  label: string,
+};
+
+type State = {
+  showTooltipAt: ?Rect,
+};
+
+class TooltipEntity extends Component<Props, State> {
+  openTooltip: (e: Event) => void;
+  closeTooltip: () => void;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -18,7 +44,7 @@ class TooltipEntity extends Component {
     this.closeTooltip = this.closeTooltip.bind(this);
   }
 
-  openTooltip(e) {
+  openTooltip(e: Event) {
     const trigger = e.target;
     this.setState({ showTooltipAt: trigger.getBoundingClientRect() });
   }
@@ -86,23 +112,5 @@ class TooltipEntity extends Component {
     );
   }
 }
-
-TooltipEntity.propTypes = {
-  // Key of the entity being decorated.
-  entityKey: PropTypes.string.isRequired,
-  // Full contentState, read-only.
-  contentState: PropTypes.object.isRequired,
-  // The decorated nodes / entity text.
-  children: PropTypes.node.isRequired,
-  // Call with the entityKey to trigger the entity source.
-  onEdit: PropTypes.func.isRequired,
-  // Call with the entityKey to remove the entity.
-  onRemove: PropTypes.func.isRequired,
-  icon: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.object.isRequired,
-  ]).isRequired,
-  label: PropTypes.string.isRequired,
-};
 
 export default TooltipEntity;

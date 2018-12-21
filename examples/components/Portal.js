@@ -1,9 +1,22 @@
-import PropTypes from "prop-types";
+// @flow
 import React, { Component } from "react";
+import type { Node } from "react";
 import ReactDOM from "react-dom";
 
-class Portal extends Component {
-  constructor(props) {
+type Props = {
+  onClose: () => void,
+  children: Node,
+  closeOnClick: boolean,
+  closeOnType: boolean,
+  closeOnResize: boolean,
+};
+
+class Portal extends Component<Props, {}> {
+  static defaultProps: Props;
+  portal: Element;
+  onCloseEvent: (e: Event) => void;
+
+  constructor(props: Props) {
     super(props);
 
     this.onCloseEvent = this.onCloseEvent.bind(this);
@@ -14,7 +27,10 @@ class Portal extends Component {
 
     if (!this.portal) {
       this.portal = document.createElement("div");
-      document.body.appendChild(this.portal);
+
+      if (document.body) {
+        document.body.appendChild(this.portal);
+      }
 
       if (onClose) {
         if (closeOnClick) {
@@ -43,14 +59,16 @@ class Portal extends Component {
   componentWillUnmount() {
     const { onClose } = this.props;
 
-    document.body.removeChild(this.portal);
+    if (document.body) {
+      document.body.removeChild(this.portal);
+    }
 
     document.removeEventListener("mouseup", this.onCloseEvent);
     document.removeEventListener("keyup", this.onCloseEvent);
     window.removeEventListener("resize", onClose);
   }
 
-  onCloseEvent(e) {
+  onCloseEvent(e: Event) {
     const { onClose } = this.props;
 
     if (!this.portal.contains(e.target)) {
@@ -63,16 +81,8 @@ class Portal extends Component {
   }
 }
 
-Portal.propTypes = {
-  onClose: PropTypes.func,
-  children: PropTypes.node,
-  closeOnClick: PropTypes.bool,
-  closeOnType: PropTypes.bool,
-  closeOnResize: PropTypes.bool,
-};
-
 Portal.defaultProps = {
-  onClose: null,
+  onClose: () => {},
   children: null,
   closeOnClick: false,
   closeOnType: false,
