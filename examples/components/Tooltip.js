@@ -1,11 +1,21 @@
-import PropTypes from "prop-types";
+// @flow
 import React from "react";
+import type { Node } from "react";
 
 const TOP = "top";
 const LEFT = "left";
 const TOP_LEFT = "top-left";
 
-const getTooltipStyles = (target, direction) => {
+export type Rect = {
+  top: number,
+  left: number,
+  width: number,
+  height: number,
+};
+
+type Direction = "top" | "left" | "top-left";
+
+const getTooltipStyles = (target: Rect, direction: Direction) => {
   const top = window.pageYOffset + target.top;
   const left = window.pageXOffset + target.left;
   switch (direction) {
@@ -31,7 +41,15 @@ const getTooltipStyles = (target, direction) => {
 /**
  * A tooltip, with arbitrary content.
  */
-const Tooltip = ({ target, children, direction }) => (
+const Tooltip = ({
+  target,
+  children,
+  direction,
+}: {
+  target: Rect,
+  children: Node,
+  direction: Direction,
+}) => (
   <div
     style={getTooltipStyles(target, direction)}
     className={`Tooltip Tooltip--${direction}`}
@@ -40,16 +58,5 @@ const Tooltip = ({ target, children, direction }) => (
     {children}
   </div>
 );
-
-Tooltip.propTypes = {
-  target: PropTypes.shape({
-    top: PropTypes.number.isRequired,
-    left: PropTypes.number.isRequired,
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-  }).isRequired,
-  direction: PropTypes.oneOf([TOP, LEFT, TOP_LEFT]).isRequired,
-  children: PropTypes.node.isRequired,
-};
 
 export default Tooltip;

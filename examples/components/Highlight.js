@@ -1,16 +1,18 @@
-import PropTypes from "prop-types";
+// @flow
 import React from "react";
 
 const onCopy = (value) => {
   const hidden = document.createElement("textarea");
   hidden.value = value;
+  // $FlowFixMe
   document.body.appendChild(hidden);
   hidden.select();
   document.execCommand("copy");
+  // $FlowFixMe
   document.body.removeChild(hidden);
 };
 
-const Highlight = ({ value }) => (
+const Highlight = ({ value }: { value: string }) => (
   <pre style={{ position: "relative" }}>
     <button
       type="button"
@@ -22,9 +24,5 @@ const Highlight = ({ value }) => (
     <code>{value}</code>
   </pre>
 );
-
-Highlight.propTypes = {
-  value: PropTypes.string.isRequired,
-};
 
 export default Highlight;
