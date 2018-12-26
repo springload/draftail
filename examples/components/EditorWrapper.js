@@ -17,6 +17,7 @@ class EditorWrapper extends Component {
 
     this.state = {
       content: null,
+      saveCount: 0,
     };
 
     this.onSave = this.onSave.bind(this);
@@ -25,7 +26,7 @@ class EditorWrapper extends Component {
   onSave(content) {
     const { id, onSave } = this.props;
 
-    this.setState({ content });
+    this.setState(({ saveCount }) => ({ content, saveCount: saveCount + 1 }));
 
     sessionStorage.setItem(`${id}:content`, JSON.stringify(content));
 
@@ -36,7 +37,7 @@ class EditorWrapper extends Component {
 
   render() {
     const { id } = this.props;
-    const { content } = this.state;
+    const { content, saveCount } = this.state;
     const initialContent =
       JSON.parse(sessionStorage.getItem(`${id}:content`)) || null;
     return (
@@ -54,7 +55,10 @@ class EditorWrapper extends Component {
           </summary>
           <ul className="list-inline">
             <li>
-              <span>Version: {DRAFTAIL_VERSION}</span>
+              <span>{`Version: ${DRAFTAIL_VERSION}`}</span>
+            </li>
+            <li>
+              <span>{`Saves: ${saveCount}`}</span>
             </li>
           </ul>
           <EditorBenchmark componentProps={this.props} runOnMount />
