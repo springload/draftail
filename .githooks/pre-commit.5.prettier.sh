@@ -9,7 +9,7 @@ fi
 
 if [ -n "$JS_STAGED" ];
 then
-    npx prettier --list-different $JS_STAGED
+  npx prettier --list-different $JS_STAGED
 fi
 
 if [ -n "$SCSS_FULLY_STAGED" ];
@@ -20,7 +20,7 @@ fi
 
 if [ -n "$SCSS_STAGED" ];
 then
-    npx prettier --list-different $SCSS_STAGED
+  npx prettier --list-different $SCSS_STAGED
 fi
 
 if [ -n "$CSS_FULLY_STAGED" ];
@@ -31,7 +31,7 @@ fi
 
 if [ -n "$CSS_STAGED" ];
 then
-    npx prettier --list-different $CSS_STAGED
+  npx prettier --list-different $CSS_STAGED
 fi
 
 if [ -n "$MD_FULLY_STAGED" ];
