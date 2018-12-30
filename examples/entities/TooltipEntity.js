@@ -30,9 +30,6 @@ type State = {
 };
 
 class TooltipEntity extends Component<Props, State> {
-  openTooltip: (e: Event) => void;
-  closeTooltip: () => void;
-
   constructor(props: Props) {
     super(props);
 
@@ -44,10 +41,17 @@ class TooltipEntity extends Component<Props, State> {
     this.closeTooltip = this.closeTooltip.bind(this);
   }
 
+  openTooltip: (e: Event) => void;
+
   openTooltip(e: Event) {
     const trigger = e.target;
-    this.setState({ showTooltipAt: trigger.getBoundingClientRect() });
+
+    if (trigger instanceof Element) {
+      this.setState({ showTooltipAt: trigger.getBoundingClientRect() });
+    }
   }
+
+  closeTooltip: () => void;
 
   closeTooltip() {
     this.setState({ showTooltipAt: null });

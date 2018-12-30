@@ -12,7 +12,9 @@ const onCopy = (value) => {
   document.body.removeChild(hidden);
 };
 
-const Highlight = ({ value }: { value: string }) => (
+type Props = {| value: string |};
+
+const Highlight = ({ value }: Props) => (
   <pre style={{ position: "relative" }}>
     <button
       type="button"

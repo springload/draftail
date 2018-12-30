@@ -5,13 +5,13 @@ import { ContentState } from "draft-js";
 
 import TooltipEntity from "./TooltipEntity";
 
-type Props = {
+type Props = {|
   entityKey: string,
   contentState: ContentState,
   children: Node,
   onEdit: (string) => void,
   onRemove: (string) => void,
-};
+|};
 
 const Link = ({
   entityKey,
@@ -29,12 +29,13 @@ const Link = ({
     <TooltipEntity
       entityKey={entityKey}
       contentState={contentState}
-      children={children}
       onEdit={onEdit}
       onRemove={onRemove}
       icon={icon}
       label={label}
-    />
+    >
+      {children}
+    </TooltipEntity>
   );
 };
 
