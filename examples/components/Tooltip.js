@@ -15,7 +15,10 @@ export type Rect = {
 
 type Direction = "top" | "left" | "top-left";
 
-const getTooltipStyles = (target: Rect, direction: Direction) => {
+const getTooltipStyles = (
+  target: Rect,
+  direction: Direction,
+): {| top: number, left: number |} => {
   const top = window.pageYOffset + target.top;
   const left = window.pageXOffset + target.left;
   switch (direction) {
@@ -38,18 +41,16 @@ const getTooltipStyles = (target: Rect, direction: Direction) => {
   }
 };
 
-/**
- * A tooltip, with arbitrary content.
- */
-const Tooltip = ({
-  target,
-  children,
-  direction,
-}: {
+type Props = {|
   target: Rect,
   children: Node,
   direction: Direction,
-}) => (
+|};
+
+/**
+ * A tooltip, with arbitrary content.
+ */
+const Tooltip = ({ target, children, direction }: Props) => (
   <div
     style={getTooltipStyles(target, direction)}
     className={`Tooltip Tooltip--${direction}`}

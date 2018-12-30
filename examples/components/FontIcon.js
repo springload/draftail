@@ -1,7 +1,9 @@
 // @flow
 import React from "react";
 
-const FontIcon = ({ icon }: { icon: string }) => (
+type Props = {| icon: string |};
+
+const FontIcon = ({ icon }: Props) => (
   <span className={`icon icon-${icon}`} aria-hidden />
 );
 

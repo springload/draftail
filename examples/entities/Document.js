@@ -8,13 +8,13 @@ import TooltipEntity from "./TooltipEntity";
 
 export const DOCUMENT_ICON = <FontIcon icon="document" />;
 
-type Props = {
+type Props = {|
   entityKey: string,
   contentState: ContentState,
   children: Node,
   onEdit: (string) => void,
   onRemove: (string) => void,
-};
+|};
 
 const Document = ({
   entityKey,
@@ -30,12 +30,13 @@ const Document = ({
     <TooltipEntity
       entityKey={entityKey}
       contentState={contentState}
-      children={children}
       onEdit={onEdit}
       onRemove={onRemove}
       icon={DOCUMENT_ICON}
       label={label}
-    />
+    >
+      {children}
+    </TooltipEntity>
   );
 };
 
