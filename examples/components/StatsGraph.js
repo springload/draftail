@@ -1,6 +1,5 @@
 // @flow
 import React, { Component } from "react";
-// $FlowFixMe
 import Stats from "stats-js";
 
 const MB_PANEL = 2;

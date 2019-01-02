@@ -1,11 +1,21 @@
-import PropTypes from "prop-types";
+// @flow
 import React, { Component } from "react";
+import type { Node } from "react";
 
 const { Raven } = window;
 const isRavenAvailable = !!Raven;
 
-class SentryBoundary extends Component {
-  constructor(props) {
+type Props = {|
+  children: Node,
+|};
+
+type State = {|
+  error: ?Error,
+  reloads: number,
+|};
+
+class SentryBoundary extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       error: null,
@@ -14,6 +24,8 @@ class SentryBoundary extends Component {
 
     this.onAttemptReload = this.onAttemptReload.bind(this);
   }
+
+  onAttemptReload: () => void;
 
   onAttemptReload() {
     const { reloads } = this.state;
@@ -28,7 +40,12 @@ class SentryBoundary extends Component {
     }
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(
+    error: Error,
+    errorInfo: {
+      componentStack: string,
+    },
+  ) {
     this.setState({ error });
 
     if (isRavenAvailable) {
@@ -96,9 +113,5 @@ class SentryBoundary extends Component {
     );
   }
 }
-
-SentryBoundary.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default SentryBoundary;
