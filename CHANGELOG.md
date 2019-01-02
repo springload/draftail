@@ -4,6 +4,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- Stop unnecessarily calling `onSave` in the editor’s `onBlur` ([#173](https://github.com/springload/draftail/issues/173)).
+
 ## [[v1.0.0]](https://github.com/springload/draftail/releases/tag/v1.0.0)
 
 > This release is functionally identical to the last one, `v0.17.2`.
