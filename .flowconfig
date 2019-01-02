@@ -10,8 +10,6 @@ suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
 
 [include]
 
-[libs]
-
 [lints]
 all=error
 

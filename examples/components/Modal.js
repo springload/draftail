@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import ReactModal from "react-modal";
 
@@ -13,7 +14,14 @@ const overlayClassName = {
   beforeClose: "modal__overlay--before-close",
 };
 
-const Modal = (props) => (
+type Props = {|
+  onAfterOpen: () => void | Promise<void>,
+  onRequestClose: (SyntheticEvent<>) => void,
+  isOpen: boolean,
+  contentLabel: string,
+|};
+
+const Modal = (props: Props) => (
   <ReactModal
     className={className}
     overlayClassName={overlayClassName}
