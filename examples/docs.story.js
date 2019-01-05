@@ -3,8 +3,9 @@ import React from "react";
 import { injectIntl } from "react-intl";
 import { convertFromHTML, convertToHTML } from "draft-convert";
 import { convertToRaw, convertFromRaw } from "draft-js";
+import { Formik } from "formik";
 
-import { INLINE_STYLE, ENTITY_TYPE, BLOCK_TYPE } from "../lib";
+import { DraftailEditor, INLINE_STYLE, ENTITY_TYPE, BLOCK_TYPE } from "../lib";
 
 import {
   INLINE_CONTROL,
@@ -368,4 +369,46 @@ storiesOf("Docs", module)
         entityTypes={[ENTITY_CONTROL.LINK, ENTITY_CONTROL.IMAGE]}
       />
     );
-  });
+  })
+  .add("Form validation", () => (
+    <Formik
+      initialValues={{ content: null }}
+      onSubmit={window.alert.bind(null, "Success!")}
+      validate={(values) => {
+        const errors = {};
+
+        if (!values.content) {
+          errors.content = "Please enter at least two paragraphs";
+        } else {
+          const { blocks, entityMap } = values.content;
+          if (Object.keys(entityMap).length === 0) {
+            errors.content = "Please use at least one link";
+          }
+
+          // Check there are at least two blocks with non-whitespace text
+          if (blocks.filter((b) => b.text.trim().length > 0).length < 2) {
+            errors.content = "Please enter at least two paragraphs";
+          }
+        }
+
+        return errors;
+      }}
+    >
+      {({ errors, touched, handleSubmit, setFieldTouched, setFieldValue }) => (
+        <form onSubmit={handleSubmit}>
+          <div className="form-field">
+            <DraftailEditor
+              entityTypes={[ENTITY_CONTROL.LINK]}
+              onSave={setFieldValue.bind(null, "content")}
+              onBlur={setFieldTouched.bind(null, "content")}
+              stateSaveInterval={errors.content ? 50 : 250}
+            />
+            <div role="alert">
+              {errors.content && touched.content && errors.content}
+            </div>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      )}
+    </Formik>
+  ));
