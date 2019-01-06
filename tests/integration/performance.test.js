@@ -1,3 +1,5 @@
+const PERFORMANCE_BUFFER = 1.5;
+
 describe("performance", () => {
   let page;
   beforeEach(async () => {
@@ -33,7 +35,7 @@ describe("performance", () => {
       () => window.performance.memory.usedJSHeapSize,
     );
     const heapSizeMB = heapSize / 10 ** 6;
-    expect(heapSizeMB).toBeLessThanOrEqual(19);
+    expect(heapSizeMB).toBeLessThanOrEqual(19 * PERFORMANCE_BUFFER);
   });
 
   it("markov_draftjs 41 speed", async () => {
@@ -46,6 +48,6 @@ describe("performance", () => {
     const mean = await page.$eval('[data-benchmark="mean"]', (elt) =>
       parseFloat(elt.innerHTML),
     );
-    expect(mean).toBeLessThanOrEqual(47 * 1.5);
+    expect(mean).toBeLessThanOrEqual(47 * PERFORMANCE_BUFFER);
   });
 });
