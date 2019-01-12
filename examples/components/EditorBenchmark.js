@@ -1,13 +1,24 @@
-import PropTypes from "prop-types";
+// @flow
 import React, { Component } from "react";
 import Benchmark, { BenchmarkType } from "react-component-benchmark";
+import type { BenchResultsType } from "react-component-benchmark";
 
+// $FlowFixMe
 import { DraftailEditor } from "../../lib";
 
 import BenchmarkResults from "./BenchmarkResults";
 
-class EditorBenchmark extends Component {
-  constructor(props) {
+type Props = {|
+  componentProps: {},
+  runOnMount: boolean,
+|};
+
+type State = {|
+  results: ?BenchResultsType,
+|};
+
+class EditorBenchmark extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -26,10 +37,14 @@ class EditorBenchmark extends Component {
     }
   }
 
-  onBenchmarkComplete(results) {
+  /* :: onBenchmarkComplete: (results: BenchResultsType) => void; */
+  onBenchmarkComplete(results: BenchResultsType) {
     this.setState({ results });
   }
 
+  benchmark: ?Benchmark;
+
+  /* :: startBenchmark: () => void; */
   startBenchmark() {
     if (this.benchmark) {
       this.benchmark.start();
@@ -56,19 +71,10 @@ class EditorBenchmark extends Component {
           timeout={10000}
           type={BenchmarkType.MOUNT}
         />
-        <BenchmarkResults results={results} />
+        {results ? <BenchmarkResults results={results} /> : null}
       </>
     );
   }
 }
-
-EditorBenchmark.propTypes = {
-  componentProps: PropTypes.object.isRequired,
-  runOnMount: PropTypes.bool,
-};
-
-EditorBenchmark.defaultProps = {
-  runOnMount: false,
-};
 
 export default EditorBenchmark;
