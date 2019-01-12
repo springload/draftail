@@ -94,19 +94,21 @@ describe("MediaBlock", () => {
 
       jest.spyOn(target, "getBoundingClientRect");
 
-      expect(wrapper.state("showTooltipAt")).toBe(null);
+      expect(wrapper.state("tooltip")).toBe(null);
 
       wrapper.simulate("mouseup", { target });
 
-      expect(wrapper.state("showTooltipAt")).toMatchObject({
-        top: 0,
-        left: 0,
+      expect(wrapper.state("tooltip")).toMatchObject({
+        target: {
+          top: 0,
+          left: 0,
+        },
       });
       expect(target.getBoundingClientRect).toHaveBeenCalled();
 
       wrapper.instance().closeTooltip();
 
-      expect(wrapper.state("showTooltipAt")).toBe(null);
+      expect(wrapper.state("tooltip")).toBe(null);
     });
   });
 });

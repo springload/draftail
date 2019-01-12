@@ -1,28 +1,39 @@
-import PropTypes from "prop-types";
+// @flow
 import React, { Component } from "react";
+import type { ContentBlock } from "draft-js";
 
 import MediaBlock from "./MediaBlock";
+import type { BlockProps } from "./MediaBlock";
+// $FlowFixMe
 import { DraftUtils } from "../../lib/index";
+
+type Props = {|
+  block: ContentBlock,
+  blockProps: BlockProps,
+|};
 
 /**
  * Editor block to preview and edit images.
  */
-class ImageBlock extends Component {
-  constructor(props) {
+class ImageBlock extends Component<Props> {
+  constructor(props: Props) {
     super(props);
 
     this.changeAlt = this.changeAlt.bind(this);
   }
 
-  changeAlt(e) {
+  /* :: changeAlt: (e: Event) => void; */
+  changeAlt(e: Event) {
     const { block, blockProps } = this.props;
     const { editorState, onChange } = blockProps;
 
-    const data = {
-      alt: e.currentTarget.value,
-    };
+    if (e.currentTarget instanceof HTMLInputElement) {
+      const data = {
+        alt: e.currentTarget.value,
+      };
 
-    onChange(DraftUtils.updateBlockEntity(editorState, block, data));
+      onChange(DraftUtils.updateBlockEntity(editorState, block, data));
+    }
   }
 
   render() {
@@ -55,14 +66,5 @@ class ImageBlock extends Component {
     );
   }
 }
-
-ImageBlock.propTypes = {
-  block: PropTypes.object.isRequired,
-  blockProps: PropTypes.shape({
-    editorState: PropTypes.object.isRequired,
-    entity: PropTypes.object,
-    onChange: PropTypes.func.isRequired,
-  }).isRequired,
-};
 
 export default ImageBlock;
