@@ -25,8 +25,7 @@ class SentryBoundary extends Component<Props, State> {
     this.onAttemptReload = this.onAttemptReload.bind(this);
   }
 
-  onAttemptReload: () => void;
-
+  /* :: onAttemptReload: () => void; */
   onAttemptReload() {
     const { reloads } = this.state;
 

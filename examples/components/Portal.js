@@ -70,8 +70,7 @@ class Portal extends Component<Props, {}> {
     window.removeEventListener("resize", onClose);
   }
 
-  onCloseEvent: (e: Event) => void;
-
+  /* :: onCloseEvent: (e: Event) => void; */
   onCloseEvent(e: Event) {
     const { onClose } = this.props;
 

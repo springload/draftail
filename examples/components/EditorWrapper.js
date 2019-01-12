@@ -1,6 +1,7 @@
-import PropTypes from "prop-types";
+// @flow
 import React, { Component } from "react";
 
+// $FlowFixMe
 import { DraftailEditor } from "../../lib";
 
 import SentryBoundary from "./SentryBoundary";
@@ -11,8 +12,18 @@ import EditorBenchmark from "./EditorBenchmark";
 const DRAFTAIL_VERSION =
   typeof PKG_VERSION === "undefined" ? "dev" : PKG_VERSION;
 
-class EditorWrapper extends Component {
-  constructor(props) {
+type Props = {|
+  id: string,
+  onSave: ?({}) => void,
+|};
+
+type State = {|
+  content: ?{},
+  saveCount: number,
+|};
+
+class EditorWrapper extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -23,7 +34,8 @@ class EditorWrapper extends Component {
     this.onSave = this.onSave.bind(this);
   }
 
-  onSave(content) {
+  /* :: onSave: (content: {}) => void; */
+  onSave(content: {}) {
     const { id, onSave } = this.props;
 
     this.setState(({ saveCount }) => ({ content, saveCount: saveCount + 1 }));
@@ -38,8 +50,8 @@ class EditorWrapper extends Component {
   render() {
     const { id } = this.props;
     const { content, saveCount } = this.state;
-    const initialContent =
-      JSON.parse(sessionStorage.getItem(`${id}:content`)) || null;
+    const storedContent = sessionStorage.getItem(`${id}:content`) || null;
+    const initialContent = storedContent ? JSON.parse(storedContent) : null;
     return (
       <div>
         <SentryBoundary>
@@ -63,7 +75,6 @@ class EditorWrapper extends Component {
           </ul>
           <EditorBenchmark componentProps={this.props} runOnMount />
           <Highlight
-            language="js"
             value={JSON.stringify(content || initialContent, null, 2)}
           />
         </details>
@@ -71,14 +82,5 @@ class EditorWrapper extends Component {
     );
   }
 }
-
-EditorWrapper.propTypes = {
-  id: PropTypes.string.isRequired,
-  onSave: PropTypes.func,
-};
-
-EditorWrapper.defaultProps = {
-  onSave: () => {},
-};
 
 export default EditorWrapper;
