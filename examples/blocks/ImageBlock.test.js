@@ -69,11 +69,10 @@ describe("ImageBlock", () => {
       />,
     );
 
-    wrapper.find('[type="text"]').simulate("change", {
-      currentTarget: {
-        value: "new alt",
-      },
-    });
+    const currentTarget = document.createElement("input");
+    currentTarget.value = "new alt";
+
+    wrapper.find('[type="text"]').simulate("change", { currentTarget });
 
     expect(onChange).toHaveBeenCalled();
     expect(DraftUtils.updateBlockEntity).toHaveBeenCalledWith(

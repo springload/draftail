@@ -1,12 +1,19 @@
-import PropTypes from "prop-types";
+// @flow
 import React from "react";
+import type { ContentBlock } from "draft-js";
 
 import MediaBlock from "./MediaBlock";
+import type { BlockProps } from "./MediaBlock";
+
+type Props = {|
+  block: ContentBlock,
+  blockProps: BlockProps,
+|};
 
 /**
  * Editor block to display media and edit content.
  */
-const EmbedBlock = (props) => {
+const EmbedBlock = (props: Props) => {
   const { blockProps } = props;
   const { entity, onEditEntity, onRemoveEntity } = blockProps;
   const { url, title, thumbnail } = entity.getData();
@@ -36,12 +43,6 @@ const EmbedBlock = (props) => {
       </button>
     </MediaBlock>
   );
-};
-
-EmbedBlock.propTypes = {
-  blockProps: PropTypes.shape({
-    entity: PropTypes.object,
-  }).isRequired,
 };
 
 export default EmbedBlock;
