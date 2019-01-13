@@ -77,7 +77,7 @@ class EmbedSource extends Component<Props, State> {
       `${EMBEDLY_ENDPOINT}&url=${encodeURIComponent(url)}`,
       null,
       (embed) => {
-        if (entity && entityKey !== null && typeof entityKey !== "undefined") {
+        if (entity && entityKey) {
           const nextContent = content.mergeEntityData(entityKey, {
             url: embed.url,
             title: embed.title,

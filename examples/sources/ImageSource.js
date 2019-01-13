@@ -58,7 +58,7 @@ class ImageSource extends Component<Props, State> {
 
     e.preventDefault();
 
-    if (entity && entityKey !== null && typeof entityKey !== "undefined") {
+    if (entity && entityKey) {
       const nextContent = content.mergeEntityData(entityKey, { src });
       nextState = EditorState.push(editorState, nextContent, "apply-entity");
     } else {
