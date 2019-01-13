@@ -1,12 +1,26 @@
+// @flow
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-
-import { RichUtils } from "draft-js";
+import { RichUtils, EditorState } from "draft-js";
+import type { EntityInstance } from "draft-js";
 
 import Modal from "../components/Modal";
 
-class DocumentSource extends Component {
-  constructor(props) {
+type Props = {|
+  editorState: EditorState,
+  onComplete: (EditorState) => void,
+  onClose: () => void,
+  entityType: {
+    type: string,
+  },
+  entity: ?EntityInstance,
+|};
+
+type State = {|
+  url: string,
+|};
+
+class DocumentSource extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     const { entity } = this.props;
@@ -27,7 +41,8 @@ class DocumentSource extends Component {
     this.onChangeURL = this.onChangeURL.bind(this);
   }
 
-  onConfirm(e) {
+  /* :: onConfirm: (e: Event) => void; */
+  onConfirm(e: Event) {
     const { editorState, entityType, onComplete } = this.props;
     const { url } = this.state;
 
@@ -39,6 +54,8 @@ class DocumentSource extends Component {
       url: url.replace(/\s/g, ""),
     };
     const contentStateWithEntity = contentState.createEntity(
+      // Fixed in https://github.com/facebook/draft-js/commit/6ba124cf663b78c41afd6c361a67bd29724fa617, to be released.
+      // $FlowFixMe
       entityType.type,
       "MUTABLE",
       data,
@@ -53,24 +70,33 @@ class DocumentSource extends Component {
     onComplete(nextState);
   }
 
-  onRequestClose(e) {
+  /* :: onRequestClose: (e: SyntheticEvent<>) => void; */
+  onRequestClose(e: SyntheticEvent<>) {
     const { onClose } = this.props;
     e.preventDefault();
 
     onClose();
   }
 
+  /* :: onAfterOpen: () => void; */
   onAfterOpen() {
-    if (this.inputRef) {
-      this.inputRef.focus();
-      this.inputRef.select();
+    const input = this.inputRef;
+
+    if (input) {
+      input.focus();
+      input.select();
     }
   }
 
-  onChangeURL(e) {
-    const url = e.target.value;
-    this.setState({ url });
+  /* :: onChangeURL: (e: Event) => void; */
+  onChangeURL(e: Event) {
+    if (e.target instanceof HTMLInputElement) {
+      const url = e.target.value;
+      this.setState({ url });
+    }
   }
+
+  inputRef: ?HTMLInputElement;
 
   render() {
     const { url } = this.state;
@@ -101,17 +127,5 @@ class DocumentSource extends Component {
     );
   }
 }
-
-DocumentSource.propTypes = {
-  editorState: PropTypes.object.isRequired,
-  onComplete: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-  entityType: PropTypes.object.isRequired,
-  entity: PropTypes.object,
-};
-
-DocumentSource.defaultProps = {
-  entity: null,
-};
 
 export default DocumentSource;

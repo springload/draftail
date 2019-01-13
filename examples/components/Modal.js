@@ -1,5 +1,6 @@
 // @flow
 import React from "react";
+import type { Node } from "react";
 import ReactModal from "react-modal";
 
 const className = {
@@ -19,6 +20,7 @@ type Props = {|
   onRequestClose: (SyntheticEvent<>) => void,
   isOpen: boolean,
   contentLabel: string,
+  children: Node,
 |};
 
 const Modal = (props: Props) => (

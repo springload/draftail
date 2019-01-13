@@ -1,7 +1,15 @@
+// @flow
 import React from "react";
+import type { Node } from "react";
 import Prism from "prismjs";
+import type { ContentBlock } from "draft-js";
 
+// $FlowFixMe
 import { BLOCK_TYPE } from "../../lib";
+
+type Options = {|
+  defaultLanguage: "javascript" | "css",
+|};
 
 /**
  * Syntax highlighting with Prism as a Draft.js decorator.
@@ -9,7 +17,12 @@ import { BLOCK_TYPE } from "../../lib";
  * to use the CompositeDecorator strategy API.
  */
 class PrismDecorator {
-  constructor(options) {
+  /* :: options: Options; */
+  /* :: highlighted: {}; */
+  /* :: component: (props: { children: Node, offsetKey: string }) => Node; */
+  /* :: strategy: (block: ContentBlock, (start: number, end: number) => void) => void; */
+
+  constructor(options: Options) {
     this.options = options;
     this.highlighted = {};
 
@@ -18,19 +31,22 @@ class PrismDecorator {
   }
 
   // Renders the decorated tokens.
-  renderToken({ children, offsetKey }) {
+  renderToken({ children, offsetKey }: { children: Node, offsetKey: string }) {
     const type = this.getTokenTypeForKey(offsetKey);
     return <span className={`token ${type}`}>{children}</span>;
   }
 
-  getTokenTypeForKey(key) {
+  getTokenTypeForKey(key: string) {
     const [blockKey, tokId] = key.split("-");
     const token = this.highlighted[blockKey][tokId];
 
     return token ? token.type : "";
   }
 
-  getDecorations(block, callback) {
+  getDecorations(
+    block: ContentBlock,
+    callback: (start: number, end: number) => void,
+  ) {
     // Only process code blocks.
     if (block.getType() !== BLOCK_TYPE.CODE) {
       return;
