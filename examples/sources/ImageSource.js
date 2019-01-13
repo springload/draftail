@@ -1,12 +1,28 @@
+// @flow
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 
 import { AtomicBlockUtils, EditorState } from "draft-js";
+import type { EntityInstance } from "draft-js";
 
 import Modal from "../components/Modal";
 
-class ImageSource extends Component {
-  constructor(props) {
+type Props = {|
+  editorState: EditorState,
+  onComplete: (EditorState) => void,
+  onClose: () => void,
+  entityType: {
+    type: string,
+  },
+  entity: ?EntityInstance,
+  entityKey: ?string,
+|};
+
+type State = {|
+  src: string,
+|};
+
+class ImageSource extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     const { entity } = this.props;
@@ -27,7 +43,8 @@ class ImageSource extends Component {
     this.onChangeSource = this.onChangeSource.bind(this);
   }
 
-  onConfirm(e) {
+  /* :: onConfirm: (e: Event) => void; */
+  onConfirm(e: Event) {
     const {
       editorState,
       entity,
@@ -41,11 +58,13 @@ class ImageSource extends Component {
 
     e.preventDefault();
 
-    if (entity) {
+    if (entity && entityKey !== null && typeof entityKey !== "undefined") {
       const nextContent = content.mergeEntityData(entityKey, { src });
       nextState = EditorState.push(editorState, nextContent, "apply-entity");
     } else {
       const contentWithEntity = content.createEntity(
+        // Fixed in https://github.com/facebook/draft-js/commit/6ba124cf663b78c41afd6c361a67bd29724fa617, to be released.
+        // $FlowFixMe
         entityType.type,
         "MUTABLE",
         {
@@ -63,24 +82,33 @@ class ImageSource extends Component {
     onComplete(nextState);
   }
 
-  onRequestClose(e) {
+  /* :: onRequestClose: (e: SyntheticEvent<>) => void; */
+  onRequestClose(e: SyntheticEvent<>) {
     const { onClose } = this.props;
     e.preventDefault();
 
     onClose();
   }
 
+  /* :: onAfterOpen: () => void; */
   onAfterOpen() {
-    if (this.inputRef) {
-      this.inputRef.focus();
-      this.inputRef.select();
+    const input = this.inputRef;
+
+    if (input) {
+      input.focus();
+      input.select();
     }
   }
 
-  onChangeSource(e) {
-    const src = e.target.value;
-    this.setState({ src });
+  /* :: onChangeSource: (e: Event) => void; */
+  onChangeSource(e: Event) {
+    if (e.target instanceof HTMLInputElement) {
+      const src = e.target.value;
+      this.setState({ src });
+    }
   }
+
+  inputRef: ?HTMLInputElement;
 
   render() {
     const { src } = this.state;
@@ -113,19 +141,5 @@ class ImageSource extends Component {
     );
   }
 }
-
-ImageSource.propTypes = {
-  editorState: PropTypes.object.isRequired,
-  onComplete: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-  entityType: PropTypes.object.isRequired,
-  entityKey: PropTypes.string,
-  entity: PropTypes.object,
-};
-
-ImageSource.defaultProps = {
-  entity: null,
-  entityKey: null,
-};
 
 export default ImageSource;

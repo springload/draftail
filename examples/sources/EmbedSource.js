@@ -1,6 +1,7 @@
-import PropTypes from "prop-types";
-import React from "react";
+// @flow
+import React, { Component } from "react";
 import { AtomicBlockUtils, EditorState } from "draft-js";
+import type { EntityInstance } from "draft-js";
 
 import Modal from "../components/Modal";
 
@@ -20,8 +21,23 @@ const getJSON = (endpoint, data, successCallback) => {
   request.send(data);
 };
 
-class EmbedSource extends React.Component {
-  constructor(props) {
+type Props = {|
+  editorState: EditorState,
+  onComplete: (EditorState) => void,
+  onClose: () => void,
+  entityType: {
+    type: string,
+  },
+  entity: ?EntityInstance,
+  entityKey: ?string,
+|};
+
+type State = {|
+  url: string,
+|};
+
+class EmbedSource extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     const { entity } = this.props;
@@ -42,7 +58,8 @@ class EmbedSource extends React.Component {
     this.onChangeSource = this.onChangeSource.bind(this);
   }
 
-  onConfirm(e) {
+  /* :: onConfirm: (e: Event) => void; */
+  onConfirm(e: Event) {
     const {
       editorState,
       entity,
@@ -60,7 +77,7 @@ class EmbedSource extends React.Component {
       `${EMBEDLY_ENDPOINT}&url=${encodeURIComponent(url)}`,
       null,
       (embed) => {
-        if (entity) {
+        if (entity && entityKey !== null && typeof entityKey !== "undefined") {
           const nextContent = content.mergeEntityData(entityKey, {
             url: embed.url,
             title: embed.title,
@@ -73,6 +90,8 @@ class EmbedSource extends React.Component {
           );
         } else {
           const contentWithEntity = content.createEntity(
+            // Fixed in https://github.com/facebook/draft-js/commit/6ba124cf663b78c41afd6c361a67bd29724fa617, to be released.
+            // $FlowFixMe
             entityType.type,
             "IMMUTABLE",
             {
@@ -94,24 +113,33 @@ class EmbedSource extends React.Component {
     );
   }
 
-  onRequestClose(e) {
+  /* :: onRequestClose: (e: SyntheticEvent<>) => void; */
+  onRequestClose(e: SyntheticEvent<>) {
     const { onClose } = this.props;
     e.preventDefault();
 
     onClose();
   }
 
+  /* :: onAfterOpen: () => void; */
   onAfterOpen() {
-    if (this.inputRef) {
-      this.inputRef.focus();
-      this.inputRef.select();
+    const input = this.inputRef;
+
+    if (input) {
+      input.focus();
+      input.select();
     }
   }
 
-  onChangeSource(e) {
-    const url = e.target.value;
-    this.setState({ url });
+  /* :: onChangeSource: (e: Event) => void; */
+  onChangeSource(e: Event) {
+    if (e.target instanceof HTMLInputElement) {
+      const url = e.target.value;
+      this.setState({ url });
+    }
   }
+
+  inputRef: ?HTMLInputElement;
 
   render() {
     const { url } = this.state;
@@ -144,19 +172,5 @@ class EmbedSource extends React.Component {
     );
   }
 }
-
-EmbedSource.propTypes = {
-  editorState: PropTypes.object.isRequired,
-  onComplete: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-  entityType: PropTypes.object.isRequired,
-  entityKey: PropTypes.string,
-  entity: PropTypes.object,
-};
-
-EmbedSource.defaultProps = {
-  entity: null,
-  entityKey: null,
-};
 
 export default EmbedSource;
