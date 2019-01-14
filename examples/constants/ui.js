@@ -115,3 +115,14 @@ export const REDACTED_STYLE = {
   description: "Redacted",
   style: { backgroundColor: "currentcolor" },
 };
+
+export const SECTION_BREAK_BLOCK = {
+  type: "section-break",
+  description: "Section break",
+  icon:
+    "M256 384V0h768v384h-64V64H320v320h-64zm768 192v448H256V576h64v384h640V576h64zM512 448h128v64H512v-64zm-192 0h128v64H320v-64zm384 0h128v64H704v-64zm192 0h128v64H896v-64zM0 288l192 192L0 672V288z",
+  block: {
+    component: () => <span>Section break</span>,
+    editable: false,
+  },
+};

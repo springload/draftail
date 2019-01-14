@@ -14,6 +14,23 @@
   font-style: italic;
 }
 
+.Draftail-block--section-break {
+  $spacing: 1rem;
+
+  pointer-events: none;
+  user-select: none;
+  text-align: center;
+  color: $GREY_AAA;
+  border-bottom: 1px solid currentColor;
+  line-height: 0.1em;
+  margin: $spacing * 2;
+
+  > span {
+    background-color: $WHITE;
+    padding: $spacing * 2;
+  }
+}
+
 .docs-ui-theming .Draftail-Toolbar {
   border: 0;
   background: transparent;

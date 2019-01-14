@@ -13,6 +13,7 @@ import {
   ENTITY_CONTROL,
   REDACTED_STYLE,
   BR_ICON,
+  SECTION_BREAK_BLOCK,
 } from "./constants/ui";
 
 import EditorWrapper from "./components/EditorWrapper";
@@ -94,6 +95,30 @@ storiesOf("Docs", module)
           label: "Tiny",
         },
       ]}
+    />
+  ))
+  .add("Custom block rendering", () => (
+    <EditorWrapper
+      id="docs-custom-block-rendering"
+      rawContentState={{
+        blocks: [
+          {
+            text: "This content is part of the first section",
+            type: "unstyled",
+          },
+          {
+            text: "",
+            type: "section-break",
+          },
+          {
+            text: "This will be the second section",
+            type: "unstyled",
+          },
+        ],
+        entityMap: {},
+      }}
+      stripPastedStyles={false}
+      blockTypes={[SECTION_BREAK_BLOCK]}
     />
   ))
   .add("Entities", () => (
