@@ -11,6 +11,11 @@
 ### Fixed
 
 - Stop unnecessarily calling `onSave` in the editor’s `onBlur` ([#173](https://github.com/springload/draftail/issues/173)).
+- Prevent crash when filtering pasted content whose last block is to be removed (e.g. unsupported image) ([#179](https://github.com/springload/draftail/issues/179)).
+
+### Changed
+
+- Update [`draftjs-filters`](https://github.com/thibaudcolas/draftjs-filters) dependency to v2.2.1 ([#179](https://github.com/springload/draftail/issues/179)).
 
 ## [[v1.0.0]](https://github.com/springload/draftail/releases/tag/v1.0.0)
 
