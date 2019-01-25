@@ -39,7 +39,7 @@
   ],
   "dependencies": {
     "draftjs-conductor": "^0.4.1",
-    "draftjs-filters": "^2.2.2"
+    "draftjs-filters": "^2.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
