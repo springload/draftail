@@ -18,6 +18,7 @@
 ### Changed
 
 - Update [`draftjs-filters`](https://github.com/thibaudcolas/draftjs-filters) dependency ([#179](https://github.com/springload/draftail/issues/179)).
+- Update [`draftjs-conductor`](https://github.com/thibaudcolas/draftjs-conductor) dependency.
 
 ## [[v1.0.0]](https://github.com/springload/draftail/releases/tag/v1.0.0)
 
