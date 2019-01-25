@@ -38,7 +38,7 @@
     "not OperaMini all"
   ],
   "dependencies": {
-    "draftjs-conductor": "^0.4.0",
+    "draftjs-conductor": "^0.4.1",
     "draftjs-filters": "^2.2.2"
   },
   "devDependencies": {
