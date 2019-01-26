@@ -3,7 +3,6 @@ import React from "react";
 import readingTime from "reading-time";
 import { EditorState } from "draft-js";
 
-// $FlowFixMe
 import { ToolbarButton } from "../../lib";
 
 const CLOCK_ICON =

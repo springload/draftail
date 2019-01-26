@@ -4,7 +4,6 @@ import type { ContentBlock } from "draft-js";
 
 import MediaBlock from "./MediaBlock";
 import type { BlockProps } from "./MediaBlock";
-// $FlowFixMe
 import { DraftUtils } from "../../lib/index";
 
 type Props = {|

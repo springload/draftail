@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import type { Node } from "react";
 import { ContentState } from "draft-js";
 
-// $FlowFixMe
 import { Icon } from "../../lib";
 
 import Tooltip from "../components/Tooltip";
