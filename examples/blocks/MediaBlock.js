@@ -4,7 +4,6 @@ import type { Node } from "react";
 import { EditorState } from "draft-js";
 import type { EntityInstance } from "draft-js";
 
-// $FlowFixMe
 import { Icon } from "../../lib";
 
 import Tooltip from "../components/Tooltip";

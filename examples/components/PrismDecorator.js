@@ -4,7 +4,6 @@ import type { Node } from "react";
 import Prism from "prismjs";
 import type { ContentBlock } from "draft-js";
 
-// $FlowFixMe
 import { BLOCK_TYPE } from "../../lib";
 
 type Options = {|
