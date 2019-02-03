@@ -32,7 +32,7 @@ declare module "react-component-benchmark" {
   |};
 
   declare type Props = {|
-    component: typeof React$Component,
+    component: any,
     componentProps?: {},
     onComplete: (x: BenchResultsType) => void,
     samples: number,
