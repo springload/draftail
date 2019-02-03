@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import Benchmark, { BenchmarkType } from "react-component-benchmark";
 import type { BenchResultsType } from "react-component-benchmark";
 
-// $FlowFixMe
 import { DraftailEditor } from "../../lib";
 
 import BenchmarkResults from "./BenchmarkResults";

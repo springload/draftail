@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from "react";
+import type { RawDraftContentState } from "draft-js/lib/RawDraftContentState";
 
-// $FlowFixMe
 import { DraftailEditor } from "../../lib";
 
 import SentryBoundary from "./SentryBoundary";
@@ -14,11 +14,11 @@ const DRAFTAIL_VERSION =
 
 type Props = {|
   id: string,
-  onSave: ?({}) => void,
+  onSave: ?(?RawDraftContentState) => void,
 |};
 
 type State = {|
-  content: ?{},
+  content: ?RawDraftContentState,
   saveCount: number,
 |};
 
@@ -34,8 +34,8 @@ class EditorWrapper extends Component<Props, State> {
     this.onSave = this.onSave.bind(this);
   }
 
-  /* :: onSave: (content: {}) => void; */
-  onSave(content: {}) {
+  /* :: onSave: (content: ?RawDraftContentState) => void; */
+  onSave(content: ?RawDraftContentState) {
     const { id, onSave } = this.props;
 
     this.setState(({ saveCount }) => ({ content, saveCount: saveCount + 1 }));
@@ -48,7 +48,7 @@ class EditorWrapper extends Component<Props, State> {
   }
 
   render() {
-    const { id } = this.props;
+    const { id, onSave, ...editorProps } = this.props;
     const { content, saveCount } = this.state;
     const storedContent = sessionStorage.getItem(`${id}:content`) || null;
     const initialContent = storedContent ? JSON.parse(storedContent) : null;
@@ -57,7 +57,7 @@ class EditorWrapper extends Component<Props, State> {
         <SentryBoundary>
           <DraftailEditor
             rawContentState={initialContent}
-            {...this.props}
+            {...editorProps}
             onSave={this.onSave}
           />
         </SentryBoundary>

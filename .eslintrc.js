@@ -8,6 +8,7 @@ module.exports = {
   plugins: ["flowtype"],
   rules: {
     "flowtype/space-after-type-colon": [0],
+    "flowtype/generic-spacing": [0],
     "@thibaudcolas/cookbook/react/require-default-props": [
       "error",
       { forbidDefaultForRequired: false },
