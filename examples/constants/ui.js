@@ -12,6 +12,7 @@ import Document, { DOCUMENT_ICON } from "../entities/Document";
 
 import EmbedBlock from "../blocks/EmbedBlock";
 import ImageBlock from "../blocks/ImageBlock";
+import Blockquote from "../blocks/Blockquote";
 
 import FontIcon from "../components/FontIcon";
 
@@ -124,5 +125,13 @@ export const SECTION_BREAK_BLOCK = {
   block: {
     component: () => <span>Section break</span>,
     editable: false,
+  },
+};
+
+export const BLOCKQUOTE_BLOCK = {
+  type: BLOCK_TYPE.BLOCKQUOTE,
+  block: {
+    component: Blockquote,
+    editable: true,
   },
 };

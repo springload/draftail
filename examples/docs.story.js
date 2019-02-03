@@ -14,6 +14,7 @@ import {
   REDACTED_STYLE,
   BR_ICON,
   SECTION_BREAK_BLOCK,
+  BLOCKQUOTE_BLOCK,
 } from "./constants/ui";
 
 import EditorWrapper from "./components/EditorWrapper";
@@ -118,7 +119,8 @@ storiesOf("Docs", module)
         entityMap: {},
       }}
       stripPastedStyles={false}
-      blockTypes={[SECTION_BREAK_BLOCK]}
+      inlineStyles={[INLINE_CONTROL.BOLD]}
+      blockTypes={[SECTION_BREAK_BLOCK, BLOCKQUOTE_BLOCK]}
     />
   ))
   .add("Entities", () => (
