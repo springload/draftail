@@ -1,13 +1,4 @@
 {
-  "plugins": [
-    [
-      "transform-react-remove-prop-types",
-      {
-        "mode": "unsafe-wrap",
-        "ignoreFilenames": ["node_modules"]
-      }
-    ]
-  ],
   "presets": [
     [
       "@babel/preset-env",
