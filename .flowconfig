@@ -5,6 +5,8 @@
 .*/node_modules/draft-js/lib/DraftEditorLeaf.react.js.flow
 .*/node_modules/draft-js/lib/DraftEditorDragHandler.js.flow
 .*/node_modules/draft-js/lib/DraftEditor.react.js.flow
+.*/node_modules/draft-js-plugins-editor/lib/Editor/index.js.flow
+.*/node_modules/draft-js-plugins-editor/lib/index.js.flow
 # .*/node_modules/config-chain
 suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
 
