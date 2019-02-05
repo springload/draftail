@@ -115,7 +115,7 @@
     "build": "npm run build:rollup -s && npm run build:storybook -s && npm run build:styles -s",
     "dist": "NODE_ENV=production npm run build -s",
     "danger": "danger ci --verbose",
-    "lint": "eslint . && flow && stylelint '**/*.scss' && prettier --list-different '**/*.{js,scss,css,json,md,yml,yaml,html}'",
+    "lint": "eslint . && flow && stylelint '**/*.scss' && prettier --check '**/*.{js,scss,css,json,md,yml,yaml,html}'",
     "format": "prettier --write '**/*.{js,scss,css,json,md,yml,yaml,html}'",
     "test": "jest",
     "test:integration": "jest --config tests/integration/jest.config.js",

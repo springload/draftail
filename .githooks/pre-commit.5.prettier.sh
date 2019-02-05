@@ -9,7 +9,7 @@ fi
 
 if [ -n "$JS_STAGED" ];
 then
-  npx prettier --list-different $JS_STAGED
+  npx prettier --check $JS_STAGED
 fi
 
 if [ -n "$SCSS_FULLY_STAGED" ];
@@ -20,7 +20,7 @@ fi
 
 if [ -n "$SCSS_STAGED" ];
 then
-  npx prettier --list-different $SCSS_STAGED
+  npx prettier --check $SCSS_STAGED
 fi
 
 if [ -n "$CSS_FULLY_STAGED" ];
@@ -31,7 +31,7 @@ fi
 
 if [ -n "$CSS_STAGED" ];
 then
-  npx prettier --list-different $CSS_STAGED
+  npx prettier --check $CSS_STAGED
 fi
 
 if [ -n "$MD_FULLY_STAGED" ];
@@ -42,7 +42,7 @@ fi
 
 if [ -n "$MD_STAGED" ];
 then
-  npx prettier --list-different $MD_STAGED
+  npx prettier --check $MD_STAGED
 fi
 
 if [ -n "$JSON_FULLY_STAGED" ];
@@ -53,7 +53,7 @@ fi
 
 if [ -n "$JSON_STAGED" ];
 then
-  npx prettier --list-different $JSON_STAGED
+  npx prettier --check $JSON_STAGED
 fi
 
 if [ -n "$YAML_FULLY_STAGED" ];
@@ -64,7 +64,7 @@ fi
 
 if [ -n "$YAML_STAGED" ];
 then
-  npx prettier --list-different $YAML_STAGED
+  npx prettier --check $YAML_STAGED
 fi
 
 if [ -n "$HTML_FULLY_STAGED" ];
@@ -75,5 +75,5 @@ fi
 
 if [ -n "$HTML_STAGED" ];
 then
-  npx prettier --list-different $HTML_STAGED
+  npx prettier --check $HTML_STAGED
 fi
