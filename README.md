@@ -11,13 +11,14 @@ Draftail aims for a mouse-free, keyboard-centric experience. Most formatting can
 Here are important features worth highlighting:
 
 - Support for [keyboard shortcuts](https://www.draftail.org/docs/keyboard-shortcuts). Lots of them!
-- Paste from Word. Or any other editor.
+- Paste from Word. Or any other editor. It just works.
 - Autolists – start a line with `-` , `*` , `1.` to create a list item.
 - Shortcuts for heading levels `##`, code blocks ` ``` `, and more.
 - Undo / redo – until the end of times.
 - Common text types: headings, paragraphs, quotes, lists.
 - Common text styles: Bold, italic, and many more.
 - API to build custom controls for links, images, and more.
+- Compatibility with the [`draft-js-plugins`](https://www.draft-js-plugins.com) ecosystem to build more advanced extensions.
 
 > This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html), and measures performance and [code coverage](https://coveralls.io/github/springload/draftail). It uses [Flow](https://flow.org/) types. We also try to follow accessibility best practices (tested with [aXe](https://www.axe-core.org/)) – please [get in touch](https://github.com/springload/draftail/issues/149#issuecomment-389476151) if you can help us do better in this area.
 
