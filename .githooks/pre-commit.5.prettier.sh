@@ -66,3 +66,14 @@ if [ -n "$YAML_STAGED" ];
 then
   npx prettier --list-different $YAML_STAGED
 fi
+
+if [ -n "$HTML_FULLY_STAGED" ];
+then
+  npx prettier --write $HTML_FULLY_STAGED
+  git add $HTML_FULLY_STAGED
+fi
+
+if [ -n "$HTML_STAGED" ];
+then
+  npx prettier --list-different $HTML_STAGED
+fi

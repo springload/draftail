@@ -24,6 +24,8 @@ SNAPSHOT_STAGED=$(grep .snap$ <<< "$STAGED" || true)
 HTML_STAGED=$(grep .html$ <<< "$STAGED" || true)
 YAML_STAGED=$(grep -e '.yml$' -e '.yaml$' <<< "$STAGED" || true)
 YAML_FULLY_STAGED=$(grep -e '.yml$' -e '.yaml$' <<< "$FULLY_STAGED" || true)
+HTML_STAGED=$(grep .html$ <<< "$STAGED" || true)
+HTML_FULLY_STAGED=$(grep .html$ <<< "$FULLY_STAGED" || true)
 
 # Uncomment, and add more variables to the list, for debugging help.
 # tr ' ' '\n' <<< "STAGED $STAGED PATCH_STAGED $PATCH_STAGED FULLY_STAGED $FULLY_STAGED JS_STAGED $JS_STAGED JS_FULLY_STAGED $JS_FULLY_STAGED SNAPSHOT_STAGED $SNAPSHOT_STAGED"
