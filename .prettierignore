@@ -4,5 +4,5 @@ coverage/
 dist/
 
 webpack-stats.json
-public/*.html
+public/webpack-stats.html
 public/storybook
