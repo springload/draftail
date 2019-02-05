@@ -20,6 +20,11 @@
 - Update [`draftjs-filters`](https://github.com/thibaudcolas/draftjs-filters) dependency ([#179](https://github.com/springload/draftail/issues/179)).
 - Update [`draftjs-conductor`](https://github.com/thibaudcolas/draftjs-conductor) dependency.
 
+### Removed
+
+- Remove all [`PropTypes`](https://www.npmjs.com/package/prop-types). The project is now typed with [Flow](https://flow.org/) ([#127](https://github.com/springload/draftail/issues/127), [#178](https://github.com/springload/draftail/pull/178)).
+- Remove peerDependency on `prop-types` ([#127](https://github.com/springload/draftail/issues/127), [#178](https://github.com/springload/draftail/pull/178)).
+
 ## [[v1.0.0]](https://github.com/springload/draftail/releases/tag/v1.0.0)
 
 > This release is functionally identical to the last one, `v0.17.2`.
