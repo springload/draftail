@@ -1,6 +1,5 @@
 // @flow
 import { ContentBlock, ContentState, EditorState, genKey } from "draft-js";
-import { List } from "immutable";
 
 /**
  * Condense an array of content blocks into a single block
@@ -12,24 +11,26 @@ export function condenseBlocks(editorState: EditorState) {
     return editorState;
   }
 
-  let text = List();
-  let characterList = List();
+  let text = "";
+  let characterList;
 
   // Gather all the text/characterList and concat them
   blocks.forEach((block) => {
     // Atomic blocks should be ignored (stripped)
     if (block.getType() !== "atomic") {
-      text = text.push(block.getText());
-      characterList = characterList.concat(block.getCharacterList());
+      text += block.getText();
+      characterList = characterList
+        ? characterList.concat(block.getCharacterList())
+        : block.getCharacterList().slice();
     }
   });
 
   const contentBlock = new ContentBlock({
     key: genKey(),
-    text: text.join(""),
     type: "unstyled",
-    characterList,
     depth: 0,
+    text,
+    characterList,
   });
 
   // Update the editor state with the compressed version.
