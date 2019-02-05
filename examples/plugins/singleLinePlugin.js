@@ -48,19 +48,17 @@ export function condenseBlocks(editorState: EditorState) {
 /**
  * Single Line Plugin
  */
-const singleLinePlugin = () => {
-  return {
-    onChange(editorState: EditorState) {
-      return condenseBlocks(editorState);
-    },
+const singleLinePlugin = () => ({
+  onChange(editorState: EditorState) {
+    return condenseBlocks(editorState);
+  },
 
-    /**
-     * Stop new lines being inserted by always handling the return
-     */
-    handleReturn() {
-      return "handled";
-    },
-  };
-};
+  /**
+   * Stop new lines being inserted by always handling the return
+   */
+  handleReturn() {
+    return "handled";
+  },
+});
 
 export default singleLinePlugin;
