@@ -5,21 +5,7 @@ import type { EntityInstance } from "draft-js";
 
 import Modal from "../components/Modal";
 
-/* global EMBEDLY_API_KEY */
-const key = typeof EMBEDLY_API_KEY === "undefined" ? "key" : EMBEDLY_API_KEY;
-const EMBEDLY_ENDPOINT = `https://api.embedly.com/1/oembed?key=${key}`;
-
-const getJSON = (endpoint, data, successCallback) => {
-  const request = new XMLHttpRequest();
-  request.open("GET", endpoint, true);
-  request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-  request.onload = () => {
-    if (request.status >= 200 && request.status < 400) {
-      successCallback(JSON.parse(request.responseText));
-    }
-  };
-  request.send(data);
-};
+import embedly from "../utils/embedly";
 
 type Props = {|
   editorState: EditorState,
@@ -73,44 +59,36 @@ class EmbedSource extends Component<Props, State> {
 
     e.preventDefault();
 
-    getJSON(
-      `${EMBEDLY_ENDPOINT}&url=${encodeURIComponent(url)}`,
-      null,
-      (embed) => {
-        if (entity && entityKey) {
-          const nextContent = content.mergeEntityData(entityKey, {
+    embedly.get(url, (embed) => {
+      if (entity && entityKey) {
+        const nextContent = content.mergeEntityData(entityKey, {
+          url: embed.url,
+          title: embed.title,
+          thumbnail: embed.thumbnail_url,
+        });
+        nextState = EditorState.push(editorState, nextContent, "apply-entity");
+      } else {
+        const contentWithEntity = content.createEntity(
+          // Fixed in https://github.com/facebook/draft-js/commit/6ba124cf663b78c41afd6c361a67bd29724fa617, to be released.
+          // $FlowFixMe
+          entityType.type,
+          "IMMUTABLE",
+          {
             url: embed.url,
             title: embed.title,
+            authorName: embed.author_name,
             thumbnail: embed.thumbnail_url,
-          });
-          nextState = EditorState.push(
-            editorState,
-            nextContent,
-            "apply-entity",
-          );
-        } else {
-          const contentWithEntity = content.createEntity(
-            // Fixed in https://github.com/facebook/draft-js/commit/6ba124cf663b78c41afd6c361a67bd29724fa617, to be released.
-            // $FlowFixMe
-            entityType.type,
-            "IMMUTABLE",
-            {
-              url: embed.url,
-              title: embed.title,
-              authorName: embed.author_name,
-              thumbnail: embed.thumbnail_url,
-            },
-          );
-          nextState = AtomicBlockUtils.insertAtomicBlock(
-            editorState,
-            contentWithEntity.getLastCreatedEntityKey(),
-            " ",
-          );
-        }
+          },
+        );
+        nextState = AtomicBlockUtils.insertAtomicBlock(
+          editorState,
+          contentWithEntity.getLastCreatedEntityKey(),
+          " ",
+        );
+      }
 
-        onComplete(nextState);
-      },
-    );
+      onComplete(nextState);
+    });
   }
 
   /* :: onRequestClose: (e: SyntheticEvent<>) => void; */

@@ -87,7 +87,7 @@ const LINKIFY_PATTERN = // protocol identifier (optional)
   "(?::\\d{2,5})?" +
   // resource path (optional)
   "(?:[/?#]\\S*)?";
-const LINKIFY_REGEX_EXACT = new RegExp(`^${LINKIFY_PATTERN}$`, "ig");
+export const LINKIFY_REGEX_EXACT = new RegExp(`^${LINKIFY_PATTERN}$`, "ig");
 
 const linkifyPlugin = () => ({
   handlePastedText(
