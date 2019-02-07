@@ -6,5 +6,5 @@ module.exports = {
   coveragePathIgnorePatterns: ["<rootDir>/tests", "/examples/"],
   snapshotSerializers: ["enzyme-to-json/serializer"],
   setupFiles: ["<rootDir>/tests/polyfills.js"],
-  setupTestFrameworkScriptFile: "<rootDir>/tests/setupTest.js",
+  setupFilesAfterEnv: ["<rootDir>/tests/setupTest.js"],
 };
