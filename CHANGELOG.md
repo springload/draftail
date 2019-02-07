@@ -4,9 +4,15 @@
 
 ## Unreleased
 
+> Documentation: [draftail.org/docs/next/getting-started](https://www.draftail.org/docs/next/getting-started)
+
+## [[v1.1.0]](https://github.com/springload/draftail/releases/tag/v1.1.0)
+
+> Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
+
 ### Added
 
-- Add [`onFocus`](https://www.draftail.org/docs/next/api#managing-focus) and [`onBlur`](https://www.draftail.org/docs/next/api#managing-focus) props to use callbacks on those events. This can be useful for [form validation](https://www.draftail.org/docs/next/form-validation). [#170](https://github.com/springload/draftail/issues/170), [#174](https://github.com/springload/draftail/pull/174), thanks to [@TheSpicyMeatball](https://github.com/TheSpicyMeatball).
+- Add [`onFocus`](https://www.draftail.org/docs/api#managing-focus) and [`onBlur`](https://www.draftail.org/docs/api#managing-focus) props to use callbacks on those events. This can be useful for [form validation](https://www.draftail.org/docs/next/form-validation). [#170](https://github.com/springload/draftail/issues/170), [#174](https://github.com/springload/draftail/pull/174), thanks to [@TheSpicyMeatball](https://github.com/TheSpicyMeatball).
 
 ### Fixed
 
@@ -26,6 +32,8 @@
 - Remove peerDependency on `prop-types` ([#127](https://github.com/springload/draftail/issues/127), [#178](https://github.com/springload/draftail/pull/178)).
 
 ## [[v1.0.0]](https://github.com/springload/draftail/releases/tag/v1.0.0)
+
+> Documentation: [draftail.org/docs/1.0.0/getting-started](https://www.draftail.org/docs/1.0.0/getting-started)
 
 > This release is functionally identical to the last one, `v0.17.2`.
 
