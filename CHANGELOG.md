@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+## [[v1.1.0]](https://github.com/springload/draftail/releases/tag/v1.1.0)
+
 ### Added
 
 - Add [`onFocus`](https://www.draftail.org/docs/next/api#managing-focus) and [`onBlur`](https://www.draftail.org/docs/next/api#managing-focus) props to use callbacks on those events. This can be useful for [form validation](https://www.draftail.org/docs/next/form-validation). [#170](https://github.com/springload/draftail/issues/170), [#174](https://github.com/springload/draftail/pull/174), thanks to [@TheSpicyMeatball](https://github.com/TheSpicyMeatball).
