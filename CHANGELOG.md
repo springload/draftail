@@ -10,6 +10,8 @@
 
 > Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
 
+🎉 blog post for this release: [Draftail v1.1.0: a quality of life release](https://www.draftail.org/blog/2019/02/08/draftail-v1-1-0-a-quality-of-life-release).
+
 ### Added
 
 - Add [`onFocus`](https://www.draftail.org/docs/api#managing-focus) and [`onBlur`](https://www.draftail.org/docs/api#managing-focus) props to use callbacks on those events. This can be useful for [form validation](https://www.draftail.org/docs/next/form-validation). [#170](https://github.com/springload/draftail/issues/170), [#174](https://github.com/springload/draftail/pull/174), thanks to [@TheSpicyMeatball](https://github.com/TheSpicyMeatball).
