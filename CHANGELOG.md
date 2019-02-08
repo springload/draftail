@@ -18,7 +18,7 @@
 
 - Stop unnecessarily calling `onSave` in the editor’s `onBlur` ([#173](https://github.com/springload/draftail/issues/173)).
 - Prevent crash when filtering pasted content whose last block is to be removed (e.g. unsupported image) ([#179](https://github.com/springload/draftail/issues/179)).
-- Prevent crash in `DraftUtils.getEntitySelection`, when the provided entity key isn't valid (undefined, missing) ([#168](https://github.com/springload/draftail/pull/168))
+- Prevent crash in `DraftUtils.getEntitySelection`, when the provided entity key isn't valid (undefined, missing) ([#168](https://github.com/springload/draftail/pull/168)).
 - Fix entity removal and editing not doing anything when the selection is backwards (right to left) ([#168](https://github.com/springload/draftail/pull/168)).
 
 ### Changed
