@@ -231,7 +231,6 @@ storiesOf("Docs", module)
             {
               text:
                 "Disable the toolbar to save space if your editor only supports a handful of formats",
-              type: "unstyled",
               inlineStyleRanges: [
                 {
                   offset: 23,
@@ -245,7 +244,55 @@ storiesOf("Docs", module)
         }}
         stripPastedStyles={false}
         inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
-        toolbar={null}
+        topToolbar={null}
+      />
+    </div>
+  ))
+  .add("Custom toolbars", () => (
+    <div className="docs-custom-toolbars">
+      <EditorWrapper
+        id="custom-toolbars"
+        rawContentState={{
+          blocks: [
+            {
+              text: "Use custom toolbars for more flexibility.",
+            },
+          ],
+          entityMap: {},
+        }}
+        stripPastedStyles={false}
+        blockTypes={[
+          BLOCK_CONTROL.HEADER_TWO,
+          BLOCK_CONTROL.HEADER_THREE,
+          BLOCK_CONTROL.HEADER_FOUR,
+        ]}
+        topToolbar={({ toggleBlockType, currentBlock }) => (
+          <div className="Draftail-Toolbar" role="toolbar">
+            <select
+              value={currentBlock}
+              onChange={(e) => toggleBlockType(e.target.value)}
+            >
+              {[
+                [BLOCK_TYPE.HEADER_TWO, "H2"],
+                [BLOCK_TYPE.HEADER_THREE, "H3"],
+                [BLOCK_TYPE.HEADER_FOUR, "H4"],
+                [BLOCK_TYPE.UNSTYLED, "¶"],
+              ].map(([type, label]) => (
+                <option key={type} value={type}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+        bottomToolbar={({ getEditorState }) => (
+          <div
+            className="Draftail-Toolbar Draftail-Toolbar--bottom"
+            role="toolbar"
+          >
+            <ReadingTime getEditorState={getEditorState} />
+          </div>
+        )}
       />
     </div>
   ))
