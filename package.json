@@ -64,6 +64,7 @@
     "draft-js": "0.10.5",
     "draft-js-hashtag-plugin": "^2.0.3",
     "draft-js-inline-toolbar-plugin": "^3.0.0",
+    "draft-js-side-toolbar-plugin": "^3.0.1",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "enzyme-to-json": "^3.3.4",
