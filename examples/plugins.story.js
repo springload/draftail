@@ -1,6 +1,9 @@
 import { storiesOf } from "@storybook/react";
-import React from "react";
+import React, { Component } from "react";
 import { composeDecorators } from "draft-js-plugins-editor";
+import createInlineToolbarPlugin from "draft-js-inline-toolbar-plugin";
+import createSideToolbarPlugin from "draft-js-side-toolbar-plugin";
+import { DraftailEditor } from "../lib";
 
 import { INLINE_CONTROL, ENTITY_CONTROL, BLOCK_CONTROL } from "./constants/ui";
 
@@ -135,3 +138,63 @@ storiesOf("Plugins", module)
       plugins={[focusPlugin, sectionBreak]}
     />
   ));
+
+class CustomToolbarStory extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      inlineToolbarPlugin: createInlineToolbarPlugin(),
+      sideToolbarPlugin: createSideToolbarPlugin(),
+    };
+  }
+
+  render() {
+    const { inlineToolbarPlugin, sideToolbarPlugin } = this.state;
+    const { InlineToolbar } = inlineToolbarPlugin;
+    const { SideToolbar } = sideToolbarPlugin;
+
+    return (
+      <div className="custom-toolbar-plugins">
+        <DraftailEditor
+          id="custom-toolbar-plugins"
+          rawContentState={{
+            entityMap: {},
+            blocks: [
+              {
+                text:
+                  "This editor uses inline and side toolbars from the draft-js-plugins ecosystem",
+              },
+            ],
+          }}
+          inlineStyles={[
+            INLINE_CONTROL.BOLD,
+            INLINE_CONTROL.ITALIC,
+            INLINE_CONTROL.UNDERLINE,
+            INLINE_CONTROL.CODE,
+          ]}
+          blockTypes={[
+            BLOCK_CONTROL.HEADER_ONE,
+            BLOCK_CONTROL.HEADER_TWO,
+            BLOCK_CONTROL.BLOCKQUOTE,
+            BLOCK_CONTROL.CODE,
+            BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+            BLOCK_CONTROL.ORDERED_LIST_ITEM,
+          ]}
+          plugins={[inlineToolbarPlugin, sideToolbarPlugin]}
+          topToolbar={null}
+          bottomToolbar={(props) => (
+            <>
+              <SideToolbar {...props} />
+              <InlineToolbar {...props} />
+            </>
+          )}
+        />
+      </div>
+    );
+  }
+}
+
+storiesOf("Plugins", module).add("Custom toolbars", () => (
+  <CustomToolbarStory />
+));
