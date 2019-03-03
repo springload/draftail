@@ -222,6 +222,33 @@ storiesOf("Docs", module)
       />
     </div>
   ))
+  .add("No toolbar", () => (
+    <div className="no-toolbar">
+      <EditorWrapper
+        id="no-toolbar"
+        rawContentState={{
+          blocks: [
+            {
+              text:
+                "Disable the toolbar to save space if your editor only supports a handful of formats",
+              type: "unstyled",
+              inlineStyleRanges: [
+                {
+                  offset: 23,
+                  length: 10,
+                  style: "ITALIC",
+                },
+              ],
+            },
+          ],
+          entityMap: {},
+        }}
+        stripPastedStyles={false}
+        inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
+        toolbar={null}
+      />
+    </div>
+  ))
   .add("Icons", () => (
     <EditorWrapper
       id="docs-icons"
