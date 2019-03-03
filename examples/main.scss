@@ -55,5 +55,6 @@ $draftail-editor-font-family: $FONT_FAMILY_SANS;
 @import "./blocks/ImageBlock";
 
 @import "./plugins/actionBlockPlugin";
+@import "./plugins/sectionBreakPlugin";
 
 @import "./utils/utilities";

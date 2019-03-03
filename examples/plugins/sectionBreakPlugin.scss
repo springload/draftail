@@ -1,0 +1,23 @@
+.SectionBreak {
+  border-bottom: 1px solid #aaa;
+  text-align: center;
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+
+  &__label {
+    background: #fff;
+    padding: 0 10px;
+  }
+
+  &--unfocused:hover {
+    cursor: default;
+    border-radius: 2px;
+    box-shadow: 0 0 0 3px #d2e3f7;
+  }
+
+  &--focused {
+    cursor: default;
+    border-radius: 2px;
+    box-shadow: 0 0 0 3px #accef7;
+  }
+}
