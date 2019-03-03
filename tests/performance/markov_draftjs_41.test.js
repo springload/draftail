@@ -31,7 +31,7 @@ describe("performance", () => {
     component.instance().start();
     expect(results.mean).toBeLessThan(87 * PERFORMANCE_BUFFER);
     expect(results.min).toBeLessThan(49 * PERFORMANCE_BUFFER);
-    expect(results.median).toBeLessThan(61 * PERFORMANCE_BUFFER);
+    expect(results.median).toBeLessThan(70 * PERFORMANCE_BUFFER);
     expect(results.max).toBeLessThan(278 * PERFORMANCE_BUFFER);
   });
 
