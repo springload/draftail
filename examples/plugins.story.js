@@ -1,5 +1,6 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
+import { composeDecorators } from "draft-js-plugins-editor";
 
 import { INLINE_CONTROL, ENTITY_CONTROL, BLOCK_CONTROL } from "./constants/ui";
 
@@ -8,11 +9,19 @@ import singleLinePlugin from "./plugins/singleLinePlugin";
 import linkifyPlugin from "./plugins/linkifyPlugin";
 import actionBlockPlugin from "./plugins/actionBlockPlugin";
 import slashCommandPlugin from "./plugins/slashCommandPlugin";
+import sectionBreakPlugin, {
+  SectionBreakControl,
+} from "./plugins/sectionBreakPlugin";
+import createFocusPlugin from "./plugins/draft-js-focus-plugin/index";
 
 const singleLine = singleLinePlugin();
 const linkify = linkifyPlugin();
 const actionBlock = actionBlockPlugin();
 const slashCommand = slashCommandPlugin();
+const focusPlugin = createFocusPlugin({ focusableBlocks: ["section-break"] });
+const sectionBreak = sectionBreakPlugin({
+  decorator: composeDecorators(focusPlugin.decorator),
+});
 
 storiesOf("Plugins", module)
   .add("Single-line", () => (
@@ -110,5 +119,19 @@ storiesOf("Plugins", module)
       blockTypes={[BLOCK_CONTROL.UNORDERED_LIST_ITEM]}
       entityTypes={[ENTITY_CONTROL.LINK, ENTITY_CONTROL.EMBED]}
       plugins={[slashCommand]}
+    />
+  ))
+  .add("Section break", () => (
+    <EditorWrapper
+      id="section-break"
+      inlineStyles={[INLINE_CONTROL.BOLD]}
+      blockTypes={[
+        BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+        {
+          type: "section-break",
+        },
+      ]}
+      controls={[SectionBreakControl]}
+      plugins={[focusPlugin, sectionBreak]}
     />
   ));
