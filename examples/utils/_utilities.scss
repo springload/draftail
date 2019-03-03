@@ -14,10 +14,21 @@
   font-style: italic;
 }
 
-.docs-ui-theming .Draftail-Toolbar {
+.docs-ui-theming .Draftail-Toolbar,
+.docs-custom-toolbars .Draftail-Toolbar--bottom {
   border: 0;
   background: transparent;
   color: $GREY_999;
+}
+
+.docs-custom-toolbars .Draftail-Toolbar {
+  [name="READING_TIME"] {
+    float: right;
+  }
+
+  select {
+    max-width: 50px;
+  }
 }
 
 // See https://snook.ca/archives/html_and_css/hiding-content-for-accessibility.
