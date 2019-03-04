@@ -17,6 +17,7 @@ This new API makes it possible to build much more advanced extensions to the edi
 - Add data reset parameter to `DraftUtils.resetBlockWithType()`.
 - Add ability to disable or customise the editor toolbar with [`topToolbar`](https://www.draftail.org/docs/customising-toolbars).
 - Add ability to add a toolbar below the editor with [`bottomToolbar`](https://www.draftail.org/docs/customising-toolbars).
+- Add support for Markdown shortcuts for inline styles, e.g. `**` for bold, `_` for italic, etc ([#134](https://github.com/springload/draftail/issues/134), [#187](https://github.com/springload/draftail/pull/187)). View the full list of [keyboard shortcuts](https://www.draftail.org/docs/keyboard-shortcuts).
 
 ### Changed
 

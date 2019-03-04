@@ -13,7 +13,7 @@ Here are important features worth highlighting:
 - Support for [keyboard shortcuts](https://www.draftail.org/docs/keyboard-shortcuts). Lots of them!
 - Paste from Word. Or any other editor. It just works.
 - Autolists – start a line with `-` , `*` , `1.` to create a list item.
-- Shortcuts for heading levels `##`, code blocks ` ``` `, and more.
+- Shortcuts for heading levels `##`, code blocks ` ``` `, text formats `**`, and more.
 - Undo / redo – until the end of times.
 - Common text types: headings, paragraphs, quotes, lists.
 - Common text styles: Bold, italic, and many more.
