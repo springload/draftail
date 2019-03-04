@@ -6,6 +6,22 @@
 
 > Documentation: [draftail.org/docs/next/getting-started](https://www.draftail.org/docs/next/getting-started)
 
+🎉 blog post for this release: [Draftail v1.2.0: supporting modern experiences](https://www.draftail.org/blog/2019/03/03/draftail-v1-2-0-supporting-modern-experiences).
+
+### Added
+
+- Add [`plugins`](https://www.draftail.org/docs/plugins) API to support extensions of the editor using the [draft-js-plugins](https://github.com/draft-js-plugins/draft-js-plugins) architecture ([#83](https://github.com/springload/draftail/issues/83), [#171](https://github.com/springload/draftail/pull/171)).
+
+This new API makes it possible to build much more advanced extensions to the editor than ever before, such as autocompletes, [linkify](https://www.draftail.org/docs/extensions-tutorial-linkify), [custom blocks](https://www.draftail.org/docs/blocks#custom-block-rendering), [custom toolbars](https://www.draftail.org/docs/customising-toolbars), and more. Read the [release blog post](https://www.draftail.org/blog/2019/03/03/draftail-v1-2-0-supporting-modern-experiences) to learn more about the motivation for those new APIs.
+
+- Add data reset parameter to `DraftUtils.resetBlockWithType()`.
+- Add ability to disable or customise the editor toolbar with [`topToolbar`](https://www.draftail.org/docs/customising-toolbars).
+- Add ability to add a toolbar below the editor with [`bottomToolbar`](https://www.draftail.org/docs/customising-toolbars).
+
+### Changed
+
+- Enable list continuation on Enter for custom `*-list-item` blocks. All that’s required is for the block type to end with `-list-item`.
+
 ## [[v1.1.0]](https://github.com/springload/draftail/releases/tag/v1.1.0)
 
 > Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
