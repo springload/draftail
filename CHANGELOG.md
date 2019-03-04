@@ -6,6 +6,10 @@
 
 > Documentation: [draftail.org/docs/next/getting-started](https://www.draftail.org/docs/next/getting-started)
 
+## [[v1.2.0]](https://github.com/springload/draftail/releases/tag/v1.2.0)
+
+> Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
+
 🎉 blog post for this release: [Draftail v1.2.0: supporting modern experiences](https://www.draftail.org/blog/2019/03/03/draftail-v1-2-0-supporting-modern-experiences).
 
 ### Added
@@ -25,7 +29,7 @@ This new API makes it possible to build much more advanced extensions to the edi
 
 ## [[v1.1.0]](https://github.com/springload/draftail/releases/tag/v1.1.0)
 
-> Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
+> Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/1.1.0/getting-started)
 
 🎉 blog post for this release: [Draftail v1.1.0: a quality of life release](https://www.draftail.org/blog/2019/02/08/draftail-v1-1-0-a-quality-of-life-release).
 
