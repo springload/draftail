@@ -48,7 +48,7 @@ describe("performance", () => {
     expect(results.mean).toBeLessThan(2 * PERFORMANCE_BUFFER);
     expect(results.min).toBeLessThan(1 * PERFORMANCE_BUFFER);
     expect(results.median).toBeLessThan(2 * PERFORMANCE_BUFFER);
-    expect(results.max).toBeLessThan(8 * PERFORMANCE_BUFFER);
+    expect(results.max).toBeLessThan(12 * PERFORMANCE_BUFFER);
   });
 
   it("markov_draftjs[41] update", () => {
