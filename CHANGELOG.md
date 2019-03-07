@@ -8,13 +8,15 @@
 
 ## [[v1.2.1]](https://github.com/springload/draftail/releases/tag/v1.2.1)
 
+> Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
+
 ### Fixed
 
 - Fix regression introduced in v1.2.0 where Draft.js-defined keyboard shortcuts were available unconditionally ([#189](https://github.com/springload/draftail/pull/189)).
 
 ## [[v1.2.0]](https://github.com/springload/draftail/releases/tag/v1.2.0)
 
-> Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
+> Documentation: [draftail.org/docs/1.2.0/getting-started](https://www.draftail.org/docs/1.2.0/getting-started)
 
 🎉 blog post for this release: [Draftail v1.2.0: supporting modern experiences](https://www.draftail.org/blog/2019/03/03/draftail-v1-2-0-supporting-modern-experiences).
 
