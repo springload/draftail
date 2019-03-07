@@ -23,13 +23,13 @@ const EMBEDLY_API_KEY = process.env.EMBEDLY_API_KEY || EMBEDLY_API_KEY_PROD;
 const SENTRY_DSN_PROD =
   "https://ab23e9a1442c46f296a2527cdbe73a0e@sentry.io/251576";
 
-module.exports = (baseConfig, env, defaultConfig) => {
-  const isProduction = env === "PRODUCTION";
+module.exports = ({ config, mode }) => {
+  const isProduction = mode === "PRODUCTION";
 
   // See http://webpack.github.io/docs/configuration.html#devtool
-  defaultConfig.devtool = "source-map";
+  config.devtool = "source-map";
 
-  defaultConfig.module.rules.push({
+  config.module.rules.push({
     test: /\.(scss|css)$/,
     loaders: [
       "style-loader",
@@ -37,7 +37,6 @@ module.exports = (baseConfig, env, defaultConfig) => {
         loader: "css-loader",
         options: {
           sourceMap: true,
-          minimize: true,
         },
       },
       {
@@ -58,9 +57,9 @@ module.exports = (baseConfig, env, defaultConfig) => {
     include: path.resolve(__dirname, "../"),
   });
 
-  defaultConfig.plugins.push(
+  config.plugins.push(
     new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify(env),
+      "process.env.NODE_ENV": JSON.stringify(mode),
       EMBEDLY_API_KEY: JSON.stringify(
         isProduction ? EMBEDLY_API_KEY_PROD : EMBEDLY_API_KEY,
       ),
@@ -70,7 +69,7 @@ module.exports = (baseConfig, env, defaultConfig) => {
     }),
   );
 
-  defaultConfig.plugins.push(
+  config.plugins.push(
     new BundleAnalyzerPlugin({
       // Can be `server`, `static` or `disabled`.
       analyzerMode: "static",
@@ -87,5 +86,5 @@ module.exports = (baseConfig, env, defaultConfig) => {
     }),
   );
 
-  return defaultConfig;
+  return config;
 };
