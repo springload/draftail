@@ -6,6 +6,8 @@
 
 > Documentation: [draftail.org/docs/next/getting-started](https://www.draftail.org/docs/next/getting-started)
 
+## [[v1.2.1]](https://github.com/springload/draftail/releases/tag/v1.2.1)
+
 ### Fixed
 
 - Fix regression introduced in v1.2.0 where Draft.js-defined keyboard shortcuts were available unconditionally ([#189](https://github.com/springload/draftail/pull/189)).
