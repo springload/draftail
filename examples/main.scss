@@ -39,6 +39,7 @@ $draftail-editor-font-family: $FONT_FAMILY_SANS;
 @import "../node_modules/draft-js-hashtag-plugin/lib/plugin";
 @import "../node_modules/draft-js-inline-toolbar-plugin/lib/plugin";
 @import "../node_modules/draft-js-side-toolbar-plugin/lib/plugin";
+@import "../node_modules/draft-js-emoji-plugin/lib/plugin";
 @import "../node_modules/react-streamfield/src/scss/index";
 @import "../lib/index";
 

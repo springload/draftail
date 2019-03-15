@@ -7,6 +7,7 @@ import thunk from "redux-thunk";
 import { composeDecorators } from "draft-js-plugins-editor";
 import createInlineToolbarPlugin from "draft-js-inline-toolbar-plugin";
 import createSideToolbarPlugin from "draft-js-side-toolbar-plugin";
+import createEmojiPlugin from "draft-js-emoji-plugin";
 import { StreamField, streamFieldReducer } from "react-streamfield";
 import { DraftailEditor } from "../lib";
 
@@ -58,9 +59,86 @@ storiesOf("Future", module)
       inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
       entityTypes={[ENTITY_CONTROL.LINK]}
       enableLineBreak
-      plugins={[singleLine]}
+      plugins={[singleLine, linkify]}
     />
   ))
+  .add("Markdown shortcuts", () => (
+    <EditorWrapper
+      id="single-line"
+      inlineStyles={[
+        INLINE_CONTROL.BOLD,
+        INLINE_CONTROL.ITALIC,
+        INLINE_CONTROL.STRIKETHROUGH,
+        INLINE_CONTROL.CODE,
+      ]}
+      blockTypes={[
+        BLOCK_CONTROL.HEADER_THREE,
+        BLOCK_CONTROL.HEADER_FOUR,
+        BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+        BLOCK_CONTROL.ORDERED_LIST_ITEM,
+      ]}
+      enableHorizontalRule
+    />
+  ));
+
+// eslint-disable-next-line
+class EmojiStory extends Component {
+  constructor(props) {
+    super(props);
+
+    const emojiPlugin = createEmojiPlugin();
+
+    this.state = {
+      emojiPlugin,
+    };
+  }
+
+  render() {
+    const { emojiPlugin } = this.state;
+    const { EmojiSuggestions, EmojiSelect } = emojiPlugin;
+
+    return (
+      <div className="emoji-plugins">
+        <DraftailEditor
+          id="emoji-plugins"
+          rawContentState={{
+            entityMap: {},
+            blocks: [
+              {
+                text:
+                  "Cool, we can have all sorts of Emojis here. 🙌 🌿☃️🎉🙈 aaaand maybe a few more here 🐲☀️🗻 Quite fun!",
+              },
+            ],
+          }}
+          inlineStyles={[
+            INLINE_CONTROL.BOLD,
+            INLINE_CONTROL.ITALIC,
+            INLINE_CONTROL.CODE,
+          ]}
+          blockTypes={[
+            BLOCK_CONTROL.HEADER_ONE,
+            BLOCK_CONTROL.HEADER_TWO,
+            BLOCK_CONTROL.BLOCKQUOTE,
+            BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+          ]}
+          plugins={[emojiPlugin]}
+          controls={[
+            () => (
+              <>
+                <EmojiSuggestions />
+                <EmojiSelect />
+              </>
+            ),
+          ]}
+        />
+      </div>
+    );
+  }
+}
+
+storiesOf("Future", module).add("Emoji", () => <EmojiStory />);
+
+storiesOf("Future", module)
   .add("Actions", () => (
     <EditorWrapper
       id="actions"
@@ -146,6 +224,7 @@ storiesOf("Future", module)
     />
   ));
 
+// eslint-disable-next-line
 class CustomToolbarStory extends Component {
   constructor(props) {
     super(props);
@@ -233,8 +312,11 @@ window.initDemoEditor = (id) => {
   ReactDOM.render(editor, editorWrapper);
 };
 
+storiesOf("Future", module).add("Custom toolbars", () => (
+  <CustomToolbarStory />
+));
+
 storiesOf("Future", module)
-  .add("Custom toolbars", () => <CustomToolbarStory />)
   .addDecorator((story) => <Provider store={store}>{story()}</Provider>)
   .add("With StreamField", () => {
     const props = {
