@@ -45,4 +45,5 @@ configure(() => {
   require("../examples/performance.story");
   require("../examples/tests.story");
   require("../examples/plugins.story");
+  require("../examples/future.story");
 }, module);
