@@ -768,7 +768,7 @@ exports[`ToolbarDefaults #showRedoControl control overrides 1`] = `
     >
       <ToolbarButton
         active={false}
-        icon={null}
+        icon="#icon-redo"
         label="Redo"
         name="redo"
         onClick={[Function]}
@@ -786,6 +786,25 @@ Ctrl + ⇧ + Z"
           tabIndex={-1}
           type="button"
         >
+          <Icon
+            className={null}
+            icon="#icon-redo"
+            title={null}
+          >
+            <svg
+              aria-hidden={true}
+              aria-label={null}
+              className="Draftail-Icon "
+              height="16"
+              role={null}
+              viewBox="0 0 1024 1024"
+              width="16"
+            >
+              <use
+                xlinkHref="#icon-redo"
+              />
+            </svg>
+          </Icon>
           <span
             className="Draftail-ToolbarButton__label"
           >
@@ -910,7 +929,7 @@ exports[`ToolbarDefaults #showUndoControl control overrides 1`] = `
     >
       <ToolbarButton
         active={false}
-        icon={null}
+        icon="#icon-undo"
         label="Undo"
         name="undo"
         onClick={[Function]}
@@ -928,6 +947,25 @@ Ctrl + Z"
           tabIndex={-1}
           type="button"
         >
+          <Icon
+            className={null}
+            icon="#icon-undo"
+            title={null}
+          >
+            <svg
+              aria-hidden={true}
+              aria-label={null}
+              className="Draftail-Icon "
+              height="16"
+              role={null}
+              viewBox="0 0 1024 1024"
+              width="16"
+            >
+              <use
+                xlinkHref="#icon-undo"
+              />
+            </svg>
+          </Icon>
           <span
             className="Draftail-ToolbarButton__label"
           >
