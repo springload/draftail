@@ -62,7 +62,7 @@
     "danger": "^4.0.2",
     "dotenv": "^6.0.0",
     "draft-convert": "^2.1.4",
-    "draft-js": "0.10.5",
+    "draft-js": "^0.11.0-beta2",
     "draft-js-hashtag-plugin": "^2.0.3",
     "draft-js-inline-toolbar-plugin": "^3.0.0",
     "draft-js-side-toolbar-plugin": "^3.0.1",
