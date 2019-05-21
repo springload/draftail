@@ -17,10 +17,12 @@ import slashCommandPlugin from "./plugins/slashCommandPlugin";
 import sectionBreakPlugin, {
   SectionBreakControl,
 } from "./plugins/sectionBreakPlugin";
+import autoEmbedPlugin from "./plugins/autoEmbedPlugin";
 import createFocusPlugin from "./plugins/draft-js-focus-plugin/index";
 
 const singleLine = singleLinePlugin();
 const linkify = linkifyPlugin();
+const autoEmbed = autoEmbedPlugin();
 const actionBlock = actionBlockPlugin();
 const slashCommand = slashCommandPlugin();
 const focusPlugin = createFocusPlugin({ focusableBlocks: ["section-break"] });
@@ -54,6 +56,25 @@ storiesOf("Plugins", module)
       blockTypes={[BLOCK_CONTROL.UNORDERED_LIST_ITEM]}
       entityTypes={[ENTITY_CONTROL.LINK]}
       plugins={[linkify]}
+    />
+  ))
+  .add("Auto-embed", () => (
+    <EditorWrapper
+      id="auto-embed"
+      rawContentState={{
+        entityMap: {},
+        blocks: [
+          {
+            key: "aaa",
+            text:
+              "Paste a YouTube or Twitter link to autmatically create an embed.",
+          },
+        ],
+      }}
+      inlineStyles={[INLINE_CONTROL.BOLD]}
+      blockTypes={[BLOCK_CONTROL.UNORDERED_LIST_ITEM]}
+      entityTypes={[ENTITY_CONTROL.LINK, ENTITY_CONTROL.EMBED]}
+      plugins={[autoEmbed, linkify]}
     />
   ))
   .add("Actions", () => (
