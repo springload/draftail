@@ -87,6 +87,7 @@ const LINKIFY_PATTERN = // protocol identifier (optional)
   "(?::\\d{2,5})?" +
   // resource path (optional)
   "(?:[/?#]\\S*)?";
+
 export const LINKIFY_REGEX_EXACT = new RegExp(`^${LINKIFY_PATTERN}$`, "ig");
 
 const linkifyPlugin = () => ({
@@ -110,14 +111,9 @@ const linkifyPlugin = () => ({
         );
       } else {
         const content = nextState.getCurrentContent();
-        const contentWithEntity = content.createEntity(
-          // Draft.js Flow types issue.
-          // See https://github.com/facebook/draft-js/issues/868.
-          // $FlowFixMe
-          "LINK",
-          "MUTABLE",
-          { url: text },
-        );
+        const contentWithEntity = content.createEntity("LINK", "MUTABLE", {
+          url: text,
+        });
         const entityKey = contentWithEntity.getLastCreatedEntityKey();
         nextState = RichUtils.toggleLink(nextState, selection, entityKey);
       }
