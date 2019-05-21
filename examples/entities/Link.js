@@ -13,6 +13,30 @@ type Props = {|
   onRemove: (string) => void,
 |};
 
+const CUSTOM_ICON_URLS = {
+  "https://www.youtube.com/": "#icon-media",
+  "https://one.npr.org/": "#icon-media",
+  "https://twitter.com/": "#icon-twitter",
+};
+
+const getLinkIcon = (url, linkType) => {
+  const isEmailLink = linkType === "email" || url.startsWith("mailto:");
+
+  if (isEmailLink) {
+    return "#icon-mail";
+  }
+
+  const customIcon = Object.keys(CUSTOM_ICON_URLS).find((key) =>
+    url.includes(key),
+  );
+
+  if (customIcon) {
+    return CUSTOM_ICON_URLS[customIcon];
+  }
+
+  return "#icon-link";
+};
+
 const Link = ({
   entityKey,
   contentState,
@@ -21,8 +45,7 @@ const Link = ({
   onRemove,
 }: Props) => {
   const { url, linkType } = contentState.getEntity(entityKey).getData();
-  const isEmailLink = linkType === "email" || url.startsWith("mailto:");
-  const icon = `#icon-${isEmailLink ? "mail" : "link"}`;
+  const icon = getLinkIcon(url, linkType);
   const label = url.replace(/(^\w+:|^)\/\//, "").split("/")[0];
 
   return (
