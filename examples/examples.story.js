@@ -11,6 +11,9 @@ import {
   REDACTED_STYLE,
 } from "./constants/ui";
 
+import linkifyPlugin from "./plugins/linkifyPlugin";
+import autoEmbedPlugin from "./plugins/autoEmbedPlugin";
+
 import EditorWrapper from "./components/EditorWrapper";
 import PrismDecorator from "./components/PrismDecorator";
 import ReadingTime from "./components/ReadingTime";
@@ -18,6 +21,8 @@ import customContentState from "./constants/customContentState";
 import allContentState from "./constants/allContentState";
 
 const hashtagPlugin = createHashtagPlugin();
+const linkify = linkifyPlugin();
+const autoEmbed = autoEmbedPlugin();
 
 storiesOf("Examples", module)
   .add("Wagtail features", () => (
@@ -109,5 +114,30 @@ storiesOf("Examples", module)
       blockTypes={Object.values(BLOCK_CONTROL)}
       inlineStyles={Object.values(INLINE_CONTROL)}
       entityTypes={[ENTITY_CONTROL.IMAGE, ENTITY_CONTROL.LINK]}
+    />
+  ))
+  .add("Content awareness", () => (
+    <EditorWrapper
+      id="content-awareness"
+      stripPastedStyles={false}
+      rawContentState={{
+        entityMap: {},
+        blocks: [
+          {
+            key: "aaa",
+            text:
+              "Paste YouTube or Twitter links! Instantly create links on text, and insert embed blocks",
+          },
+        ],
+      }}
+      inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
+      blockTypes={[
+        BLOCK_CONTROL.HEADER_TWO,
+        BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+        BLOCK_CONTROL.BLOCKQUOTE,
+      ]}
+      entityTypes={[ENTITY_CONTROL.LINK, ENTITY_CONTROL.EMBED]}
+      enableHorizontalRule
+      plugins={[autoEmbed, linkify]}
     />
   ));
