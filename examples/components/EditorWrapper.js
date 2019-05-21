@@ -53,7 +53,7 @@ class EditorWrapper extends Component<Props, State> {
     const storedContent = sessionStorage.getItem(`${id}:content`) || null;
     const initialContent = storedContent ? JSON.parse(storedContent) : null;
     return (
-      <div>
+      <div className={`EditorWrapper EditorWrapper--${id}`}>
         <SentryBoundary>
           <DraftailEditor
             rawContentState={initialContent}
@@ -61,7 +61,7 @@ class EditorWrapper extends Component<Props, State> {
             onSave={this.onSave}
           />
         </SentryBoundary>
-        <details>
+        <details className="EditorWrapper__details">
           <summary>
             <span className="link">Debug</span>
           </summary>

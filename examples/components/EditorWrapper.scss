@@ -1,0 +1,11 @@
+.EditorWrapper--content-awareness {
+  padding: 3em;
+
+  .EditorWrapper__details {
+    opacity: 0;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

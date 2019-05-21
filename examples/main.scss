@@ -47,6 +47,7 @@ $draftail-editor-font-family: $FONT_FAMILY_SANS;
 @import "./components/page-nav";
 @import "./components/Modal";
 @import "./components/Tooltip";
+@import "./components/EditorWrapper";
 @import "./components/PrismDecorator";
 @import "./entities/TooltipEntity";
 @import "./sources/LinkSource";
