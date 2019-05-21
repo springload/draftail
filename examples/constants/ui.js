@@ -88,7 +88,7 @@ export const ENTITY_CONTROL = {
     icon: EMBED_ICON,
     source: EmbedSource,
     block: EmbedBlock,
-    attributes: ["url", "title", "thumbnail"],
+    attributes: ["url", "title", "thumbnail", "html"],
   },
 
   DOCUMENT: {
