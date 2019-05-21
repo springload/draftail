@@ -14,9 +14,9 @@ type Props = {|
 |};
 
 const CUSTOM_ICON_URLS = {
-  "https://www.youtube.com/": "#icon-media",
-  "https://one.npr.org/": "#icon-media",
-  "https://twitter.com/": "#icon-twitter",
+  "://www.youtube.com/": "#icon-media",
+  "://one.npr.org/": "#icon-media",
+  "://twitter.com/": "#icon-twitter",
 };
 
 const getLinkIcon = (url, linkType) => {
