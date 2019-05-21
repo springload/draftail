@@ -1,14 +1,17 @@
 // @flow
 
+type Embed = {
+  url: string,
+  title: string,
+  author_name: string,
+  thumbnail_url: string,
+  html: string,
+};
+
 const getJSON = (
   endpoint: string,
   data: ?{},
-  successCallback: ({
-    url: string,
-    title: string,
-    author_name: string,
-    thumbnail_url: string,
-  }) => void,
+  successCallback: (embed: Embed) => void,
 ) => {
   const request = new XMLHttpRequest();
   request.open("GET", endpoint, true);
@@ -25,15 +28,7 @@ const getJSON = (
 const key = typeof EMBEDLY_API_KEY === "undefined" ? "key" : EMBEDLY_API_KEY;
 const EMBEDLY_ENDPOINT = `https://api.embedly.com/1/oembed?key=${key}`;
 
-const get = (
-  url: string,
-  callback: ({
-    url: string,
-    title: string,
-    author_name: string,
-    thumbnail_url: string,
-  }) => void,
-) => {
+const get = (url: string, callback: (embed: Embed) => void) => {
   getJSON(`${EMBEDLY_ENDPOINT}&url=${encodeURIComponent(url)}`, null, callback);
 };
 
