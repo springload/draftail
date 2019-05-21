@@ -52,6 +52,7 @@ storiesOf("Plugins", module)
           },
         ],
       }}
+      stripPastedStyles={false}
       inlineStyles={[INLINE_CONTROL.BOLD]}
       blockTypes={[BLOCK_CONTROL.UNORDERED_LIST_ITEM]}
       entityTypes={[ENTITY_CONTROL.LINK]}
@@ -62,15 +63,43 @@ storiesOf("Plugins", module)
     <EditorWrapper
       id="auto-embed"
       rawContentState={{
-        entityMap: {},
         blocks: [
           {
             key: "aaa",
             text:
-              "Paste a YouTube or Twitter link to autmatically create an embed.",
+              "Paste a YouTube or Twitter link to automatically create an embed.",
+            type: "unstyled",
+            depth: 0,
+            entityRanges: [
+              {
+                offset: 8,
+                length: 7,
+                key: 0,
+              },
+              {
+                offset: 19,
+                length: 7,
+                key: 1,
+              },
+            ],
           },
         ],
+        entityMap: {
+          "0": {
+            type: "LINK",
+            data: {
+              url: "https://www.youtube.com/watch?v=Bh37b81GtuY",
+            },
+          },
+          "1": {
+            type: "LINK",
+            data: {
+              url: "https://twitter.com/stownpodcast/status/981226459124641792",
+            },
+          },
+        },
       }}
+      stripPastedStyles={false}
       inlineStyles={[INLINE_CONTROL.BOLD]}
       blockTypes={[BLOCK_CONTROL.UNORDERED_LIST_ITEM]}
       entityTypes={[ENTITY_CONTROL.LINK, ENTITY_CONTROL.EMBED]}
