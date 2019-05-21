@@ -41,7 +41,7 @@ class ImageBlock extends Component<Props> {
     const { src, alt } = entity.getData();
 
     return (
-      <MediaBlock {...this.props} src={src} label={alt || ""}>
+      <MediaBlock {...this.props} src={src} label={alt || ""} isLoading={false}>
         <label className="ImageBlock__field">
           <p>Alt text</p>
           <input type="text" value={alt || ""} onChange={this.changeAlt} />

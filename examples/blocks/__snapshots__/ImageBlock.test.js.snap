@@ -13,6 +13,7 @@ exports[`ImageBlock alt 1`] = `
       "onChange": [Function],
     }
   }
+  isLoading={false}
   label="Test"
   src="example.png"
 >
@@ -56,6 +57,7 @@ exports[`ImageBlock renders 1`] = `
       "onChange": [Function],
     }
   }
+  isLoading={false}
   label=""
   src="example.png"
 >
