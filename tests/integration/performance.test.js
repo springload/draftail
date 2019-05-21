@@ -21,7 +21,7 @@ describe("performance", () => {
       () => window.performance.memory.usedJSHeapSize,
     );
     const heapSizeMB = heapSize / 10 ** 6;
-    expect(heapSizeMB).toBeLessThanOrEqual(25);
+    expect(heapSizeMB).toBeLessThanOrEqual(25 * PERFORMANCE_BUFFER);
   });
 
   it("markov_draftjs 41 memory", async () => {
