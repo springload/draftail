@@ -17,9 +17,10 @@ const EmbedBlock = (props: Props) => {
   const { blockProps } = props;
   const { entity, onEditEntity, onRemoveEntity } = blockProps;
   const { url, title, thumbnail } = entity.getData();
+  const isLoading = !url && !title && !thumbnail;
 
   return (
-    <MediaBlock {...props} src={thumbnail} label={title}>
+    <MediaBlock {...props} src={thumbnail} label={title} isLoading={isLoading}>
       <a
         className="EmbedBlock__link"
         href={url}

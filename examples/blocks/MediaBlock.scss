@@ -42,4 +42,37 @@
     height: auto;
     pointer-events: none;
   }
+
+  &--loading {
+    .MediaBlock__img {
+      animation-duration: 1.25s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+      animation-name: placeHolderShimmer;
+      animation-timing-function: linear;
+      // It’s ok for the loading state not to be visible on all supported browsers.
+      // stylelint-disable-next-line plugin/no-unsupported-browser-features
+      background: linear-gradient(
+        to right,
+        $draftail-editor-chrome 10%,
+        $draftail-editor-chrome-accent 18%,
+        $draftail-editor-chrome 33%
+      );
+      background-size: 800px 104px;
+      height: 100px;
+    }
+
+    .MediaBlock__icon-wrapper {
+      background-color: transparent;
+    }
+  }
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
 }

@@ -31,6 +31,7 @@ type Props = {
   blockProps: BlockProps,
   src: string,
   label: string,
+  isLoading: boolean,
   children: Node,
 };
 
@@ -108,14 +109,14 @@ class MediaBlock extends Component<Props, State> {
   }
 
   render() {
-    const { blockProps, src, label } = this.props;
+    const { blockProps, src, label, isLoading } = this.props;
     const { entityType } = blockProps;
 
     return (
       <button
         type="button"
         tabIndex={-1}
-        className="MediaBlock"
+        className={`MediaBlock${isLoading ? " MediaBlock--loading" : ""}`}
         aria-label={`${entityType.description}${label ? ": " : ""}${label}`}
         onMouseUp={this.openTooltip}
       >
