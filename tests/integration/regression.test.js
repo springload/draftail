@@ -34,8 +34,8 @@ describe("regression", () => {
 
       expect(await page.screenshot({ clip })).toMatchImageSnapshot({
         failureThresholdType: "percent",
-        // 0.2% difference to account for font rendering.
-        failureThreshold: "0.002",
+        // 0.3% difference to account for font rendering.
+        failureThreshold: "0.003",
       });
     });
   });
