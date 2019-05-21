@@ -1,4 +1,4 @@
-const PERFORMANCE_BUFFER = 1.5;
+const PERFORMANCE_BUFFER = 3;
 
 describe("performance", () => {
   let page;
