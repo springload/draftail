@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { composeDecorators } from "draft-js-plugins-editor";
 import createInlineToolbarPlugin from "draft-js-inline-toolbar-plugin";
 import createSideToolbarPlugin from "draft-js-side-toolbar-plugin";
+import createEmojiPlugin from "draft-js-emoji-plugin";
+
 import { DraftailEditor } from "../lib";
 
 import { INLINE_CONTROL, ENTITY_CONTROL, BLOCK_CONTROL } from "./constants/ui";
@@ -198,3 +200,60 @@ class CustomToolbarStory extends Component {
 storiesOf("Plugins", module).add("Custom toolbars", () => (
   <CustomToolbarStory />
 ));
+
+// eslint-disable-next-line
+class EmojiStory extends Component {
+  constructor(props) {
+    super(props);
+
+    const emojiPlugin = createEmojiPlugin();
+
+    this.state = {
+      emojiPlugin,
+    };
+  }
+
+  render() {
+    const { emojiPlugin } = this.state;
+    const { EmojiSuggestions, EmojiSelect } = emojiPlugin;
+
+    return (
+      <div className="emoji-plugins">
+        <DraftailEditor
+          id="emoji-plugins"
+          rawContentState={{
+            entityMap: {},
+            blocks: [
+              {
+                text:
+                  "We can have all sorts of Emojis here! 🙌 🌿☃️🎉🙈 aaaand maybe a few more there 🐲☀️🗻 Quite fun!",
+              },
+            ],
+          }}
+          inlineStyles={[
+            INLINE_CONTROL.BOLD,
+            INLINE_CONTROL.ITALIC,
+            INLINE_CONTROL.CODE,
+          ]}
+          blockTypes={[
+            BLOCK_CONTROL.HEADER_ONE,
+            BLOCK_CONTROL.HEADER_TWO,
+            BLOCK_CONTROL.BLOCKQUOTE,
+            BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+          ]}
+          plugins={[emojiPlugin]}
+          controls={[
+            () => (
+              <>
+                <EmojiSuggestions />
+                <EmojiSelect />
+              </>
+            ),
+          ]}
+        />
+      </div>
+    );
+  }
+}
+
+storiesOf("Plugins", module).add("Emoji", () => <EmojiStory />);
