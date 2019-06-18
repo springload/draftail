@@ -166,10 +166,12 @@ storiesOf("Docs", module)
       decorators={[
         {
           strategy: (block, callback) => {
+            // Regexes are stateful – this needs to be declared separately from the while loop.
+            const regex = /#[\w]+/g;
             const text = block.getText();
             let matches;
             // eslint-disable-next-line no-cond-assign
-            while ((matches = /#[\w]+/g.exec(text)) !== null) {
+            while ((matches = regex.exec(text)) !== null) {
               callback(matches.index, matches.index + matches[0].length);
             }
           },
