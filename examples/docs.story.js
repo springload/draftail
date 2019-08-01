@@ -13,6 +13,8 @@ import {
   ENTITY_CONTROL,
   REDACTED_STYLE,
   BR_ICON,
+  UNDO_ICON,
+  REDO_ICON,
 } from "./constants/ui";
 
 import EditorWrapper from "./components/EditorWrapper";
@@ -318,6 +320,12 @@ storiesOf("Docs", module)
         REDACTED_STYLE,
       ]}
       entityTypes={[ENTITY_CONTROL.EMBED]}
+      showUndoControl={{
+        icon: UNDO_ICON,
+      }}
+      showRedoControl={{
+        icon: REDO_ICON,
+      }}
     />
   ))
   .add("i18n", () => {
