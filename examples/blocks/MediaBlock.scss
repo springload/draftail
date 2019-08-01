@@ -31,6 +31,7 @@
   @mixin invalid-image-fallback {
     min-width: 256px;
     min-height: 100px;
+    object-fit: contain;
     background-color: $GREY_333;
   }
 
