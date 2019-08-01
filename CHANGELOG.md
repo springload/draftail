@@ -6,6 +6,10 @@
 
 > Documentation: [draftail.org/docs/next/getting-started](https://www.draftail.org/docs/next/getting-started)
 
+### Fixed
+
+- Fix undo/redo button icons not being customisable ([#195](https://github.com/springload/draftail/issues/195), [#196](https://github.com/springload/draftail/pull/196)).
+
 ## [[v1.2.1]](https://github.com/springload/draftail/releases/tag/v1.2.1)
 
 > Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
