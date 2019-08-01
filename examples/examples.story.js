@@ -7,6 +7,8 @@ import {
   BLOCK_CONTROL,
   ENTITY_CONTROL,
   BR_ICON,
+  UNDO_ICON,
+  REDO_ICON,
   TINY_TEXT_BLOCK,
   REDACTED_STYLE,
 } from "./constants/ui";
@@ -106,9 +108,11 @@ storiesOf("Examples", module)
       }}
       showUndoControl={{
         description: "Undo last change",
+        icon: UNDO_ICON,
       }}
       showRedoControl={{
         description: "Redo last change",
+        icon: REDO_ICON,
       }}
       maxListNesting={6}
       blockTypes={Object.values(BLOCK_CONTROL)}
