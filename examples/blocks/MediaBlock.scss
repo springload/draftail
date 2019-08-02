@@ -31,6 +31,8 @@
   @mixin invalid-image-fallback {
     min-width: 256px;
     min-height: 100px;
+    // IE11 and MS Edge will show images that are distored for very wide aspect ratios.
+    // stylelint-disable-next-line plugin/no-unsupported-browser-features
     object-fit: contain;
     background-color: $GREY_333;
   }
