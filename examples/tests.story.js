@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 
 import {
   INLINE_CONTROL,
@@ -12,6 +12,8 @@ import {
 import EditorWrapper from "./components/EditorWrapper";
 
 storiesOf("Tests", module)
+  // Add a decorator rendering story as a component for hooks support.
+  .addDecorator((Story) => <Story />)
   .add("Unmount", () => {
     class UnmountTest extends Component {
       constructor(props) {
@@ -157,4 +159,20 @@ storiesOf("Tests", module)
         <input type="text" placeholder="A plain-HTML input 😄" />
       </label>
     </div>
-  ));
+  ))
+  .add("Disable editing", () => {
+    const [readOnly, setReadOnly] = useState(false);
+    return (
+      <>
+        <EditorWrapper
+          id="disable-editing"
+          ariaDescribedBy="disable-editing-editor"
+          readOnly={readOnly}
+          entityTypes={[ENTITY_CONTROL.LINK]}
+        />
+        <button type="button" onClick={setReadOnly.bind(null, !readOnly)}>
+          Toggle editing
+        </button>
+      </>
+    );
+  });
