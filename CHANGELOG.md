@@ -6,6 +6,10 @@
 
 > Documentation: [draftail.org/docs/next/getting-started](https://www.draftail.org/docs/next/getting-started)
 
+### Added
+
+- Add ability to disable the editor on demand with the [`readOnly`](https://www.draftail.org/docs/next/api#draftaileditor) prop, matching behavior of Draft.js. [#201](https://github.com/springload/draftail/issues/201), [#206](https://github.com/springload/draftail/pull/206), thanks to [@SpearThruster](https://github.com/SpearThruster).
+
 ### Fixed
 
 - Fix undo/redo button icons not being customisable ([#195](https://github.com/springload/draftail/issues/195), [#196](https://github.com/springload/draftail/pull/196)).
