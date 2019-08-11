@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from "react";
+import { EditorState, convertToRaw } from "draft-js";
 import type { RawDraftContentState } from "draft-js/lib/RawDraftContentState";
 
 import { DraftailEditor } from "../../lib";
@@ -14,7 +15,10 @@ const DRAFTAIL_VERSION =
 
 type Props = {|
   id: string,
-  onSave: ?(?RawDraftContentState) => void,
+  rawContentState: ?RawDraftContentState,
+  editorState: ?EditorState,
+  onSave: ?(content: null | RawDraftContentState) => void,
+  onChange: ?(editorState: EditorState) => void,
 |};
 
 type State = {|
@@ -32,10 +36,11 @@ class EditorWrapper extends Component<Props, State> {
     };
 
     this.onSave = this.onSave.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
-  /* :: onSave: (content: ?RawDraftContentState) => void; */
-  onSave(content: ?RawDraftContentState) {
+  /* :: onSave: (content: null | RawDraftContentState) => void; */
+  onSave(content: null | RawDraftContentState) {
     const { id, onSave } = this.props;
 
     this.setState(({ saveCount }) => ({ content, saveCount: saveCount + 1 }));
@@ -47,19 +52,48 @@ class EditorWrapper extends Component<Props, State> {
     }
   }
 
+  /* :: onChange: (nextState: EditorState) => void; */
+  onChange(nextState: EditorState) {
+    const { id, onChange } = this.props;
+    const content = convertToRaw(nextState.getCurrentContent());
+
+    this.setState(({ saveCount }) => ({ content, saveCount: saveCount + 1 }));
+
+    sessionStorage.setItem(`${id}:content`, JSON.stringify(content));
+
+    if (onChange) {
+      onChange(nextState);
+    }
+  }
+
   render() {
-    const { id, onSave, ...editorProps } = this.props;
+    const {
+      id,
+      editorState,
+      rawContentState,
+      onSave,
+      onChange,
+      ...editorProps
+    } = this.props;
     const { content, saveCount } = this.state;
-    const storedContent = sessionStorage.getItem(`${id}:content`) || null;
-    const initialContent = storedContent ? JSON.parse(storedContent) : null;
+    const dataProps = {};
+    let initialContent;
+
+    if (editorState) {
+      dataProps.editorState = editorState;
+      dataProps.onChange = this.onChange;
+    } else {
+      const storedContent = sessionStorage.getItem(`${id}:content`) || "null";
+      initialContent =
+        rawContentState || storedContent ? JSON.parse(storedContent) : null;
+      dataProps.rawContentState = initialContent;
+      dataProps.onSave = this.onSave;
+    }
+
     return (
       <div className={`EditorWrapper EditorWrapper--${id}`}>
         <SentryBoundary>
-          <DraftailEditor
-            rawContentState={initialContent}
-            {...editorProps}
-            onSave={this.onSave}
-          />
+          <DraftailEditor {...dataProps} {...editorProps} />
         </SentryBoundary>
         <details className="EditorWrapper__details">
           <summary>
@@ -73,7 +107,10 @@ class EditorWrapper extends Component<Props, State> {
               <span>{`Saves: ${saveCount}`}</span>
             </li>
           </ul>
-          <EditorBenchmark componentProps={this.props} runOnMount />
+          {/* Running multiple editors with the same base state is a source of issues. */}
+          {editorState ? null : (
+            <EditorBenchmark componentProps={this.props} runOnMount />
+          )}
           <Highlight
             value={JSON.stringify(content || initialContent, null, 2)}
           />
