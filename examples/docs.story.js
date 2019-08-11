@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react";
-import React from "react";
+import React, { useState } from "react";
 import { injectIntl } from "react-intl";
 import { convertFromHTML, convertToHTML } from "draft-convert";
-import { convertToRaw, convertFromRaw } from "draft-js";
+import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
 import { Formik } from "formik";
 
 import { DraftailEditor, INLINE_STYLE, ENTITY_TYPE, BLOCK_TYPE } from "../lib";
@@ -22,6 +22,8 @@ import PrismDecorator from "./components/PrismDecorator";
 import ReadingTime from "./components/ReadingTime";
 
 storiesOf("Docs", module)
+  // Add a decorator rendering story as a component for hooks support.
+  .addDecorator((Story) => <Story />)
   .add("Built-in formats", () => (
     <EditorWrapper
       id="docs-built-in-formats"
@@ -495,4 +497,17 @@ storiesOf("Docs", module)
         </form>
       )}
     </Formik>
-  ));
+  ))
+  .add("Controlled component", () => {
+    const [editorState, setEditorState] = useState(EditorState.createEmpty());
+    return (
+      <EditorWrapper
+        id="controlled-component"
+        editorState={editorState}
+        onChange={setEditorState}
+        entityTypes={[ENTITY_CONTROL.LINK]}
+        blockTypes={[BLOCK_CONTROL.UNORDERED_LIST_ITEM]}
+        inlineStyles={[INLINE_CONTROL.BOLD]}
+      />
+    );
+  });
