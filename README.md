@@ -24,7 +24,7 @@ Here are important features worth highlighting:
 
 ## Documentation
 
-- [Getting started](https://www.draftail.org/docs/getting-started.html)
+- [Getting started](https://www.draftail.org/docs/getting-started)
 - [API reference](https://www.draftail.org/docs/api)
 - [User guide](https://www.draftail.org/docs/user-guide)
 - [Getting started with extensions](https://www.draftail.org/docs/getting-started-with-extensions)
