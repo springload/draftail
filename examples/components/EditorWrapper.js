@@ -85,7 +85,7 @@ class EditorWrapper extends Component<Props, State> {
     } else {
       const storedContent = sessionStorage.getItem(`${id}:content`) || "null";
       initialContent =
-        rawContentState || storedContent ? JSON.parse(storedContent) : null;
+        rawContentState || (storedContent ? JSON.parse(storedContent) : null);
       dataProps.rawContentState = initialContent;
       dataProps.onSave = this.onSave;
     }
