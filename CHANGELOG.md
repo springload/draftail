@@ -6,10 +6,16 @@
 
 > Documentation: [draftail.org/docs/next/getting-started](https://www.draftail.org/docs/next/getting-started)
 
+## [[v1.3.0]](https://github.com/springload/draftail/releases/tag/v1.3.0)
+
+> Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
+
+🎉 blog post for this release: [Draftail v1.3.0: community improvements, beyond Wagtail](https://www.draftail.org/blog/2019/03/03/draftail-v1-2-0-supporting-modern-experiences).
+
 ### Added
 
-- Add ability to disable the editor on demand with the [`readOnly`](https://www.draftail.org/docs/next/api#draftaileditor) prop, matching behavior of Draft.js. [#201](https://github.com/springload/draftail/issues/201), [#206](https://github.com/springload/draftail/pull/206), thanks to [@SpearThruster](https://github.com/SpearThruster).
-- Add ability to use the editor as a controlled component, like vanilla Draft.js editors, with [`editorState` and `onChange`](https://www.draftail.org/docs/next/api#editorstate-and-onchange) props. Have a look at the [controlled component documentation](https://www.draftail.org/docs/next/controlled-component) for further details. [#180](https://github.com/springload/draftail/issues/180), [#207](https://github.com/springload/draftail/pull/207).
+- Add ability to disable the editor on demand with the [`readOnly`](https://www.draftail.org/docs/api#draftaileditor) prop, matching behavior of Draft.js. [#201](https://github.com/springload/draftail/issues/201), [#206](https://github.com/springload/draftail/pull/206), thanks to [@SpearThruster](https://github.com/SpearThruster).
+- Add ability to use the editor as a controlled component, like vanilla Draft.js editors, with [`editorState` and `onChange`](https://www.draftail.org/docs/api#editorstate-and-onchange) props. Have a look at the [controlled component documentation](https://www.draftail.org/docs/controlled-component) for further details. [#180](https://github.com/springload/draftail/issues/180), [#207](https://github.com/springload/draftail/pull/207).
 
 ### Fixed
 
@@ -17,7 +23,7 @@
 
 ## [[v1.2.1]](https://github.com/springload/draftail/releases/tag/v1.2.1)
 
-> Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
+> Documentation: [draftail.org/docs/1.2.1/getting-started](https://www.draftail.org/docs/1.2.1/getting-started)
 
 ### Fixed
 
@@ -52,7 +58,7 @@ This new API makes it possible to build much more advanced extensions to the edi
 
 ### Added
 
-- Add [`onFocus`](https://www.draftail.org/docs/api#managing-focus) and [`onBlur`](https://www.draftail.org/docs/api#managing-focus) props to use callbacks on those events. This can be useful for [form validation](https://www.draftail.org/docs/next/form-validation). [#170](https://github.com/springload/draftail/issues/170), [#174](https://github.com/springload/draftail/pull/174), thanks to [@TheSpicyMeatball](https://github.com/TheSpicyMeatball).
+- Add [`onFocus`](https://www.draftail.org/docs/api#managing-focus) and [`onBlur`](https://www.draftail.org/docs/api#managing-focus) props to use callbacks on those events. This can be useful for [form validation](https://www.draftail.org/docs/form-validation). [#170](https://github.com/springload/draftail/issues/170), [#174](https://github.com/springload/draftail/pull/174), thanks to [@TheSpicyMeatball](https://github.com/TheSpicyMeatball).
 
 ### Fixed
 
