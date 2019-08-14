@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from "react";
-import { EditorState } from "draft-js";
+/* :: import { EditorState } from "draft-js"; */
 import type { RawDraftContentState } from "draft-js/lib/RawDraftContentState";
 
 import { DraftailEditor, serialiseEditorStateToRaw } from "../../lib";
