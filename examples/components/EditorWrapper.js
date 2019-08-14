@@ -1,9 +1,9 @@
 // @flow
 import React, { Component } from "react";
-import { EditorState, convertToRaw } from "draft-js";
+import { EditorState } from "draft-js";
 import type { RawDraftContentState } from "draft-js/lib/RawDraftContentState";
 
-import { DraftailEditor } from "../../lib";
+import { DraftailEditor, serialiseEditorStateToRaw } from "../../lib";
 
 import SentryBoundary from "./SentryBoundary";
 import Highlight from "./Highlight";
@@ -55,7 +55,7 @@ class EditorWrapper extends Component<Props, State> {
   /* :: onChange: (nextState: EditorState) => void; */
   onChange(nextState: EditorState) {
     const { id, onChange } = this.props;
-    const content = convertToRaw(nextState.getCurrentContent());
+    const content = serialiseEditorStateToRaw(nextState);
 
     this.setState(({ saveCount }) => ({ content, saveCount: saveCount + 1 }));
 
