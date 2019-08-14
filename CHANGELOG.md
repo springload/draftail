@@ -9,6 +9,7 @@
 ### Added
 
 - Add ability to disable the editor on demand with the [`readOnly`](https://www.draftail.org/docs/next/api#draftaileditor) prop, matching behavior of Draft.js. [#201](https://github.com/springload/draftail/issues/201), [#206](https://github.com/springload/draftail/pull/206), thanks to [@SpearThruster](https://github.com/SpearThruster).
+- Add ability to use the editor as a controlled component, like vanilla Draft.js editors, with [`editorState` and `onChange`](https://www.draftail.org/docs/next/api#editorstate-and-onchange) props. Have a look at the [controlled component documentation](https://www.draftail.org/docs/next/controlled-component) for further details. [#180](https://github.com/springload/draftail/issues/180), [#207](https://github.com/springload/draftail/pull/207).
 
 ### Fixed
 
