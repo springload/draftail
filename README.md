@@ -1,4 +1,6 @@
-# [Draftail](https://www.draftail.org/) [![npm](https://img.shields.io/npm/v/draftail.svg)](https://www.npmjs.com/package/draftail) [![Build Status](https://travis-ci.org/springload/draftail.svg?branch=master)](https://travis-ci.org/springload/draftail) [![Coverage Status](https://coveralls.io/repos/github/springload/draftail/badge.svg)](https://coveralls.io/github/springload/draftail) [<img src="https://cdn.rawgit.com/springload/awesome-wagtail/ac912cc661a7099813f90545adffa6bb3e75216c/logo.svg" width="104" align="right" alt="Wagtail">](https://wagtail.io/)
+# [Draftail](https://www.draftail.org/) [<img src="https://raw.githubusercontent.com/thibaudcolas/draftail.org/master/.github/draftail-logo.svg?sanitize=true" width="90" height="90" align="right">](https://www.draftail.org/)
+
+[![npm](https://img.shields.io/npm/v/draftail.svg)](https://www.npmjs.com/package/draftail) [![Build Status](https://travis-ci.org/springload/draftail.svg?branch=master)](https://travis-ci.org/springload/draftail) [![Coverage Status](https://coveralls.io/repos/github/springload/draftail/badge.svg)](https://coveralls.io/github/springload/draftail)
 
 > :memo::cocktail: A configurable rich text editor built with [Draft.js](https://draftjs.org/). Check out our [demos](https://www.draftail.org/examples)!
 
@@ -6,9 +8,7 @@
 
 ## Features
 
-Draftail aims for a mouse-free, keyboard-centric experience. Most formatting can be done by using common keyboard shortcuts, inspired by Google Docs and [Markdown](https://en.wikipedia.org/wiki/Markdown).
-
-Here are important features worth highlighting:
+Draftail aims for a mouse-free, keyboard-centric experience. Here are important features worth highlighting:
 
 - Support for [keyboard shortcuts](https://www.draftail.org/docs/keyboard-shortcuts). Lots of them!
 - Paste from Word. Or any other editor. It just works.
