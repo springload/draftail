@@ -18,6 +18,7 @@ The behavior of this editor is heavily inspired by prior art. If you want to dis
 - [ ] [Gmail](https://www.google.com/gmail/)
 - [ ] [TinyMCE](https://www.tinymce.com/)
 - [ ] [CKEditor](https://ckeditor.com)
+- [ ] [Trix](https://trix-editor.org)
 - [ ] [Quill](https://quilljs.com/)
 - [ ] [Slate](http://slatejs.org/)
 - [ ] Other [Draft.js editors](https://github.com/nikgraf/awesome-draft-js)
