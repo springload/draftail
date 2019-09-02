@@ -1,0 +1,11 @@
+# Security policy
+
+We take security issues seriously. We appreciate your efforts to responsibly disclose your findings, and will make every effort to acknowledge your contributions.
+
+## Supported versions
+
+This project doesn’t have formal support targets for non-latest versions. Backporting security fixes to affected releases will be decided on a case-by-case basis, based on effort involved and known usage of affected versions.
+
+### Reporting a vulnerability
+
+To report a vulnerability, please contact [@thibaudcolas](https://github.com/thibaudcolas) via email. If unresponsive, you may also go through npm’s [vulnerability report process](https://docs.npmjs.com/reporting-a-vulnerability-in-an-npm-package).
