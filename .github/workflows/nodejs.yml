@@ -27,9 +27,5 @@ jobs:
           CI: true
       - uses: actions/upload-artifact@master
         with:
-          name: my-artifact
-          path: path/to/artifact
-      - uses: actions/upload-artifact@master
-        with:
           name: reports
           path: public
