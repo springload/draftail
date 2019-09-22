@@ -23,8 +23,10 @@ jobs:
           npm run report:size
           npm run report:package
           npm run test:performance
+          npx renovate --token ${GITHUB_TOKEN} --dry-run=true springload/draftail
         env:
           CI: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-artifact@master
         with:
           name: reports
