@@ -3,13 +3,14 @@ language: node_js
 install:
   - npm ci --no-optional --no-audit --progress=false
 script:
-  - npm run test:ci
+  - 'if [ "$TRAVIS_EVENT_TYPE" != "cron" ]; then npm run test:ci; fi'
   - base64 < ./tests/integration/__image_snapshots__/__diff_output__/* || true
   - 'if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then npx danger ci --verbose; fi'
-  - npm run report:size
-  - npm run report:package
+  - 'if [ "$TRAVIS_EVENT_TYPE" != "cron" ]; then npm run report:size; fi'
+  - 'if [ "$TRAVIS_EVENT_TYPE" != "cron" ]; then npm run report:package; fi'
 after_success:
-  - cat ./coverage/lcov.info | npx coveralls
+  - 'if [ "$TRAVIS_EVENT_TYPE" != "cron" ]; then cat ./coverage/lcov.info | npx coveralls; fi'
+  - 'if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then npx renovate --token "$RENOVATE_GITHUB_API_TOKEN" --dry-run=true springload/draftail; fi'
 notifications:
   email: false
 env:
@@ -17,3 +18,6 @@ env:
     # Permissions: public_repo
     # travis encrypt --org DANGER_GITHUB_API_TOKEN=<value>
     - secure: "LYb6EEDscuvM3WOCv/pdo3UtdWIdlgzYzo1gXz1T+zMQ+dYLg4wthWrQToBE+Ewon6J0+lA1rdAk3vhmYqObRZcCc6Z8sLNGooxwufAYmeMet0IKwmOqUJhKbVcmxUdhlmo8ksFhGm0A3s3MVnmEy1OO7no0scS1CWPI/SX2KuwMTTYCnoundsvUsbNRFROJXtn4Ra1Ibdzg+iEAt+ROejSRV+Mdd0w0ggRd07v0R+fcje0oEMMD6w4w0AFQha3f+DNpVxVX9FYVS2lLJeKfSeTHWg6GJY+tuzPAmHvDBxBN9w3K2uj8iBcnkD7tEU0yYFCw5gE8r0BTn+0P9EpDQUQilR6BZ84gpbpFl7xoxEef9k7hqWUqTX390cVEl6x0n3FFDO7dl1ZrF/Lavd6K1zMp4swGJEa56c+UNCxymNAfofyNzYDJp/okdvbl0ptz2/riMYjB8dE20B2e/xlspvYE4Icp+LyohEQJQ1+3Hdt7c+3p21qFRIfwWnd7Rpff2awCO37G+CHBwcCCp3GlRLRbtkIdFfKu7/ApHGdF8/1B7Gmae0BD8c/mDCk57pdRn6TvbLekkB/YrpsX+IhWDH0+tgl74V4RYPju80h7FIZMYqOhNOuAtw15SRbIFXCKMeSLuNYYMj7at18Gy7YI699n7aV7PFqY87vxGAWvp7w="
+    # Permissions: public_repo
+    # travis encrypt --org RENOVATE_GITHUB_API_TOKEN=<value>
+    - secure: "pVlFk3EZGUgrBBwCybEE8syx3u7grOowErLuD2dAlWoQO64tZCmGqNTNvFNUD6Y7WXEqU2tlx/xLlrDBaJHMIEXGZ5ZfLWzCFhzOvV/Ir4AEnzsepv0PQKWCFh5BqwikKZ6di+HWeOapFa9JYNfOaxuKVPNfrBB2TeueqkSEefc+CrN0VdbEGGO0rrL3l4h6jqXI2SSS5lboHo9kNiH+CjDuUOliASXzxO1jHlBd/zeiuSnsW+yq4EPnwE12Kxx4zUoGb3n//4f7N4306ryL2Qj/7j68pwQxL0splhb0zW9I03+UuUiN74Xon5W/1HY2lxYhZokEb7kyBixv9aSS0HoQCLg2mfPnXgWEPuvGTJiNb5heWZSAxKDkB83Q0uZqoMXHobYHe+UwGRWJO5628y4AgJipVGSblCSqQgYK5JdtmuonNRf/ECquvzra4w/cGaRyce156m1wedefKSDARgxMpBaY/XWoWEZoSD/eHk7gfos7F2lCNmkX/NBK/KzhGh+1+u95hp3j9GQJKdaEJaDZzbwf2FOZUVTlfMIp6lzPohtoYSVFCXg+zPDzDS01bsMmtO9SlMfc/Hv6oqdKSyXg0wwhbrApHJhDSQ1+y2cuJieW+4ENKpphOMroAhfDICvgX5skGjXesObNH3XF+cxDdZJm2JY+c/8QB1+HZjY="
