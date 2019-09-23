@@ -93,6 +93,11 @@
       automerge: true,
     },
     {
+      packageNames: ["coveralls"],
+      groupName: "coveralls",
+      automerge: true,
+    },
+    {
       packageNames: ["webpack-bundle-analyzer"],
       groupName: "webpack-bundle-analyzer",
       automerge: true,
