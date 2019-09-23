@@ -57,7 +57,6 @@
     "autoprefixer": "^7.1.2",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
-    "babel-loader": "^8.0.4",
     "core-js": "^2.5.1",
     "danger": "^4.0.2",
     "dotenv": "^6.0.0",
