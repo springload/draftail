@@ -58,6 +58,7 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
     "core-js": "^2.5.1",
+    "coveralls": "^3.0.6",
     "danger": "^4.0.2",
     "dotenv": "^6.0.0",
     "draft-convert": "^2.1.4",
