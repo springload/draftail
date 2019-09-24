@@ -23,7 +23,7 @@ const header = (
         Chrome DevTools FPS meter
       </a>
     </p>
-    <StatsGraph />
+    {window.DISABLE_STATSGRAPH ? null : <StatsGraph />}
   </>
 );
 
