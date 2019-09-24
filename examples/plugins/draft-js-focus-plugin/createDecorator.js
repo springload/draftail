@@ -6,13 +6,8 @@ const getDisplayName = (WrappedComponent) => {
   return component.displayName || component.name || "Component";
 };
 
-export default ({ blockKeyStore }) => (WrappedComponent) =>
+export default ({ blockKeyStore }) => (WrappedComponent) => {
   class BlockFocusDecorator extends Component {
-    static displayName = `BlockFocus(${getDisplayName(WrappedComponent)})`;
-
-    static WrappedComponent =
-      WrappedComponent.WrappedComponent || WrappedComponent;
-
     componentDidMount() {
       const { block } = this.props;
       blockKeyStore.add(block.getKey());
@@ -23,7 +18,7 @@ export default ({ blockKeyStore }) => (WrappedComponent) =>
       blockKeyStore.remove(block.getKey());
     }
 
-    onClick = (e) => {
+    onClick(e) {
       const { blockProps } = this.props;
 
       e.preventDefault();
@@ -31,7 +26,7 @@ export default ({ blockKeyStore }) => (WrappedComponent) =>
       if (!blockProps.isFocused) {
         blockProps.setFocusToBlock();
       }
-    };
+    }
 
     render() {
       const { blockProps } = this.props;
@@ -39,9 +34,19 @@ export default ({ blockKeyStore }) => (WrappedComponent) =>
       return (
         <WrappedComponent
           {...this.props}
-          onClick={this.onClick}
+          onClick={this.onClick.bind(this)}
           isFocused={isFocused}
         />
       );
     }
-  };
+  }
+
+  BlockFocusDecorator.WrappedComponent =
+    WrappedComponent.WrappedComponent || WrappedComponent;
+
+  BlockFocusDecorator.displayName = `BlockFocus(${getDisplayName(
+    WrappedComponent,
+  )})`;
+
+  return BlockFocusDecorator;
+};
