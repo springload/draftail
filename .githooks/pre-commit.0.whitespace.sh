@@ -9,7 +9,7 @@ else
 fi
 
 # Use git diff-index to check for whitespace errors
-if ! git diff-index --check --cached $against
+if ! git diff-index --check --cached $against -- ':!*.js.snap' .
 then
   echo "Aborting commit due to whitespace errors."
   exit 1
