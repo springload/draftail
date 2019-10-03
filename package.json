@@ -122,7 +122,6 @@
     "build:storybook": "build-storybook -c .storybook -o public/storybook --quiet",
     "build": "npm run build:rollup -s && npm run build:storybook -s && npm run build:styles -s",
     "dist": "NODE_ENV=production npm run build -s",
-    "danger": "danger ci --verbose",
     "lint": "eslint . && flow && stylelint '**/*.scss' && prettier --check '**/?(.)*.{md,css,scss,js,json,json5,yaml,yml,html}'",
     "format": "prettier --write '**/?(.)*.{md,css,scss,js,json,json5,yaml,yml,html}'",
     "test": "jest",
