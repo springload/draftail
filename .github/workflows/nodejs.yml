@@ -25,7 +25,6 @@ jobs:
           npm run test:performance
         env:
           CI: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-artifact@master
         with:
           name: reports
