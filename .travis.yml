@@ -10,7 +10,7 @@ script:
   - 'if [ "$TRAVIS_EVENT_TYPE" != "cron" ]; then npm run report:package; fi'
 after_success:
   - 'if [ "$TRAVIS_EVENT_TYPE" != "cron" ]; then cat ./coverage/lcov.info | npx coveralls; fi'
-  - 'if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then npx renovate --token "$RENOVATE_GITHUB_API_TOKEN" --dry-run=true springload/draftail; fi'
+  - 'if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then npx renovate --token "$RENOVATE_GITHUB_API_TOKEN" springload/draftail; fi'
 notifications:
   email: false
 env:
