@@ -108,7 +108,7 @@
     "storybook-addon-intl": "2.4.1",
     "style-loader": "0.23.0",
     "stylelint": "9.6.0",
-    "webpack-bundle-analyzer": "3.3.2"
+    "webpack-bundle-analyzer": "3.5.2"
   },
   "peerDependencies": {
     "draft-js": "^0.10.5",
