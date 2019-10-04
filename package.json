@@ -85,7 +85,7 @@
     "jest-image-snapshot": "2.8.0",
     "markov_draftjs": "0.1.1",
     "mkdirp": "0.5.1",
-    "normalize.css": "7.0.0",
+    "normalize.css": "8.0.1",
     "postcss-cli": "6.0.1",
     "postcss-loader": "3.0.0",
     "prettier": "1.16.4",
