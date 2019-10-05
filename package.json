@@ -55,7 +55,7 @@
     "@storybook/react": "5.2.1",
     "@thibaudcolas/eslint-plugin-cookbook": "4.0.1",
     "@thibaudcolas/stylelint-config-cookbook": "2.0.1",
-    "autoprefixer": "9.6.2",
+    "autoprefixer": "9.6.4",
     "babel-eslint": "10.0.3",
     "babel-jest": "24.1.0",
     "babel-plugin-require-context-hook": "1.0.0",
