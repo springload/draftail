@@ -45,10 +45,10 @@
     "draftjs-filters": "^2.2.3"
   },
   "devDependencies": {
-    "@babel/core": "7.6.4",
-    "@babel/preset-env": "7.6.3",
+    "@babel/core": "7.7.2",
+    "@babel/preset-env": "7.7.1",
     "@babel/preset-flow": "7.0.0",
-    "@babel/preset-react": "7.6.3",
+    "@babel/preset-react": "7.7.0",
     "@sentry/browser": "5.7.1",
     "@storybook/addon-storyshots": "5.2.5",
     "@storybook/addon-viewport": "5.2.5",
