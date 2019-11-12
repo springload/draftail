@@ -49,7 +49,7 @@
     "@babel/preset-env": "7.7.1",
     "@babel/preset-flow": "7.0.0",
     "@babel/preset-react": "7.7.0",
-    "@sentry/browser": "5.7.1",
+    "@sentry/browser": "5.8.0",
     "@storybook/addon-storyshots": "5.2.6",
     "@storybook/addon-viewport": "5.2.6",
     "@storybook/react": "5.2.6",
