@@ -45,10 +45,10 @@
     "draftjs-filters": "^2.2.3"
   },
   "devDependencies": {
-    "@babel/core": "7.7.2",
-    "@babel/preset-env": "7.7.1",
-    "@babel/preset-flow": "7.0.0",
-    "@babel/preset-react": "7.7.0",
+    "@babel/core": "7.7.7",
+    "@babel/preset-env": "7.7.7",
+    "@babel/preset-flow": "7.7.4",
+    "@babel/preset-react": "7.7.4",
     "@sentry/browser": "5.8.0",
     "@storybook/addon-storyshots": "5.2.6",
     "@storybook/addon-viewport": "5.2.6",
@@ -100,7 +100,7 @@
     "react-test-renderer": "16.11.0",
     "reading-time": "^1.1.0",
     "rimraf": "3.0.0",
-    "rollup": "1.26.5",
+    "rollup": "1.27.14",
     "rollup-plugin-babel": "4.3.3",
     "sass": "1.23.3",
     "sass-loader": "8.0.0",
