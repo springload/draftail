@@ -93,6 +93,7 @@ class EditorWrapper extends Component<Props, State> {
     return (
       <div className={`EditorWrapper EditorWrapper--${id}`}>
         <SentryBoundary>
+          {/* $FlowFixMe */}
           <DraftailEditor {...dataProps} {...editorProps} />
         </SentryBoundary>
         <details className="EditorWrapper__details">
@@ -112,7 +113,7 @@ class EditorWrapper extends Component<Props, State> {
             <EditorBenchmark componentProps={this.props} runOnMount />
           )}
           <Highlight
-            value={JSON.stringify(content || initialContent, null, 2)}
+            value={JSON.stringify(content || initialContent, null, 2) || ""}
           />
         </details>
       </div>
