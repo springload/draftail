@@ -26,9 +26,7 @@ describe("performance", () => {
 
   it("markov_draftjs 41 memory", async () => {
     await page.goto(
-      `${
-        global.ROOT
-      }?selectedKind=Performance&selectedStory=markov_draftjs%2041`,
+      `${global.ROOT}?selectedKind=Performance&selectedStory=markov_draftjs%2041`,
     );
 
     const heapSize = await page.evaluate(
@@ -40,9 +38,7 @@ describe("performance", () => {
 
   it("markov_draftjs 41 speed", async () => {
     await page.goto(
-      `${
-        global.ROOT
-      }?selectedKind=Performance&selectedStory=markov_draftjs%2041`,
+      `${global.ROOT}?selectedKind=Performance&selectedStory=markov_draftjs%2041`,
     );
 
     const mean = await page.$eval('[data-benchmark="mean"]', (elt) =>
