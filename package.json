@@ -86,7 +86,7 @@
     "markov_draftjs": "0.1.1",
     "mkdirp": "0.5.1",
     "normalize.css": "8.0.1",
-    "postcss-cli": "6.1.3",
+    "postcss-cli": "7.1.0",
     "postcss-loader": "3.0.0",
     "prettier": "1.19.1",
     "prismjs": "^1.8.4",
