@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.8.0",
-    "@babel/preset-env": "7.8.0",
+    "@babel/preset-env": "7.8.2",
     "@babel/preset-flow": "7.8.0",
     "@babel/preset-react": "7.8.0",
     "@sentry/browser": "5.11.0",
