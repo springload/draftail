@@ -108,7 +108,6 @@
     {
       packageNames: ["draftjs-conductor", "draftjs-filters"],
       groupName: "draftjs-*",
-      automerge: true,
       semanticCommitType: "feat",
       updateTypes: ["minor", "patch"],
       automerge: true,
@@ -116,7 +115,6 @@
     {
       packageNames: ["draftjs-conductor", "draftjs-filters"],
       groupName: "draftjs-*",
-      automerge: true,
       semanticCommitType: "feat",
       updateTypes: ["major"],
       automerge: false,
