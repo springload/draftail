@@ -1,6 +1,6 @@
 # [Draftail](https://www.draftail.org/) [<img src="https://raw.githubusercontent.com/thibaudcolas/draftail.org/master/.github/draftail-logo.svg?sanitize=true" width="90" height="90" align="right">](https://www.draftail.org/)
 
-[![npm](https://img.shields.io/npm/v/draftail.svg)](https://www.npmjs.com/package/draftail) [![Build Status](https://travis-ci.org/springload/draftail.svg?branch=master)](https://travis-ci.org/springload/draftail) [![Coverage Status](https://coveralls.io/repos/github/springload/draftail/badge.svg)](https://coveralls.io/github/springload/draftail)
+[![npm](https://img.shields.io/npm/v/draftail.svg)](https://www.npmjs.com/package/draftail) [![Build Status](https://travis-ci.org/springload/draftail.svg?branch=master)](https://travis-ci.org/springload/draftail) [![Coverage Status](https://coveralls.io/repos/github/springload/draftail/badge.svg)](https://coveralls.io/github/springload/draftail) [![Netlify Status](https://api.netlify.com/api/v1/badges/4eb923f6-4bf3-4eed-847c-47c07d0389d4/deploy-status)](https://app.netlify.com/sites/draftail/deploys)
 
 > :memo::cocktail: A configurable rich text editor built with [Draft.js](https://draftjs.org/). Check out our [demos](https://www.draftail.org/examples)!
 
@@ -36,5 +36,5 @@ See anything you like in here? Anything missing? We welcome all support, whether
 If you just want to set up the project on your own computer, the contribution guidelines also contain all of the setup commands.
 
 ## Credits
-
+ 
 Draftail is made possible by the work of [Springload](https://github.com/springload/). View the full list of [contributors](https://github.com/springload/draftail/graphs/contributors). [MIT](LICENSE) licensed.
