@@ -36,5 +36,5 @@ See anything you like in here? Anything missing? We welcome all support, whether
 If you just want to set up the project on your own computer, the contribution guidelines also contain all of the setup commands.
 
 ## Credits
- 
+
 Draftail is made possible by the work of [Springload](https://github.com/springload/). View the full list of [contributors](https://github.com/springload/draftail/graphs/contributors). [MIT](LICENSE) licensed. The [draftail.org](https://github.com/thibaudcolas/draftail.org) documentation and demos are powered by [Netlify](https://www.netlify.com/).
