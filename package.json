@@ -100,7 +100,7 @@
     "react-test-renderer": "16.13.0",
     "reading-time": "^1.1.0",
     "rimraf": "3.0.2",
-    "rollup": "1.32.1",
+    "rollup": "2.0.2",
     "rollup-plugin-babel": "4.4.0",
     "sass": "1.26.2",
     "sass-loader": "8.0.2",
