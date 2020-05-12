@@ -33,12 +33,8 @@
   // Use shorter commit messages to account for long dependency names.
   // https://docs.renovatebot.com/configuration-options/#commitmessagetopic
   commitMessageTopic: "{{depName}}",
-  // https://renovatebot.com/docs/configuration-options/#prbodydefinitions
-  prBodyDefinitions: {
-    Sourcegraph: '[![code search for "{{{depName}}}"](https://sourcegraph.com/search/badge?q=repo:%5Egithub%5C.com/{{{repository}}}%24+case:yes+-file:package%28-lock%29%3F%5C.json+{{{depName}}}&label=matches)](https://sourcegraph.com/search?q=repo:%5Egithub%5C.com/{{{repository}}}%24+case:yes+-file:package%28-lock%29%3F%5C.json+{{{depName}}})',
-  },
   // https://renovatebot.com/docs/configuration-options/#prbodycolumns
-  prBodyColumns: ["Package", "Update", "Type", "Change", "Sourcegraph"],
+  prBodyColumns: ["Package", "Update", "Type", "Change"],
   node: {
     enabled: true,
     major: {
