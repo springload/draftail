@@ -103,7 +103,7 @@
     "rollup": "2.10.9",
     "rollup-plugin-babel": "4.4.0",
     "sass": "1.26.3",
-    "sass-loader": "8.0.2",
+    "sass-loader": "9.0.1",
     "stats-js": "^1.0.0",
     "storybook-addon-intl": "2.4.1",
     "style-loader": "1.1.3",
