@@ -90,7 +90,7 @@
     "postcss-loader": "3.0.0",
     "prettier": "1.19.1",
     "prismjs": "^1.8.4",
-    "puppeteer": "1.11.0",
+    "puppeteer": "1.13.0",
     "react": "16.14.0",
     "react-benchmark": "2.1.1",
     "react-component-benchmark": "0.0.4",
