@@ -1,14 +1,20 @@
 name: CI
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - "gh-pages"
+  pull_request:
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - id: nvm
+        run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+      - uses: actions/setup-node@v2-beta
         with:
-          node-version: 14.x
-      - run: npm ci --no-optional --no-audit --progress=false
+          node-version: "${{ steps.nvm.outputs.NVMRC }}"
+      - run: npm install --no-optional --no-audit --no-fund --progress=false
       - run: npm run dist
       - run: npm run report:size
       - run: npm run report:package
@@ -17,3 +23,4 @@ jobs:
         with:
           name: reports
           path: public
+          retention-days: 1
