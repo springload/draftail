@@ -85,13 +85,13 @@ storiesOf("Plugins", module)
           },
         ],
         entityMap: {
-          "0": {
+          0: {
             type: "LINK",
             data: {
               url: "https://www.youtube.com/watch?v=Bh37b81GtuY",
             },
           },
-          "1": {
+          1: {
             type: "LINK",
             data: {
               url: "https://twitter.com/stownpodcast/status/981226459124641792",

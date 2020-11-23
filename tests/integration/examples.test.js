@@ -24,10 +24,18 @@ describe("/storybook/", () => {
     const result = await page.evaluate(
       () =>
         new Promise((resolve) => {
-          window.axe.run((err, results) => {
-            if (err) throw err;
-            resolve(results);
-          });
+          window.axe.run(
+            {
+              rules: {
+                "aria-input-field-name": { enabled: false },
+                "page-has-heading-one": { enabled: false },
+              },
+            },
+            (err, results) => {
+              if (err) throw err;
+              resolve(results);
+            },
+          );
         }),
     );
     expect(result).toHaveNoViolations();

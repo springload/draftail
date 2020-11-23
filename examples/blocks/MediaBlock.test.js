@@ -84,12 +84,7 @@ describe("MediaBlock", () => {
 
       wrapper.simulate("mouseup", { target });
 
-      expect(
-        wrapper
-          .find("Portal")
-          .dive()
-          .instance().portal,
-      ).toMatchSnapshot();
+      expect(wrapper.find("Portal").dive().instance().portal).toMatchSnapshot();
     });
 
     it("large viewport", () => {

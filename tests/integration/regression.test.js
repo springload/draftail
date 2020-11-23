@@ -26,10 +26,7 @@ describe("regression", () => {
       await page.type('[role="textbox"]', "World");
 
       const clip = await page.evaluate(() =>
-        document
-          .querySelector("#root")
-          .getBoundingClientRect()
-          .toJSON(),
+        document.querySelector("#root").getBoundingClientRect().toJSON(),
       );
 
       expect(await page.screenshot({ clip })).toMatchImageSnapshot({

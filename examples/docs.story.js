@@ -131,13 +131,13 @@ storiesOf("Docs", module)
           },
         ],
         entityMap: {
-          "0": {
+          0: {
             type: "LINK",
             data: {
               url: "https://www.example.com/",
             },
           },
-          "1": {
+          1: {
             type: "IMAGE",
             data: {
               src: "/static/example-lowres-image.jpg",
