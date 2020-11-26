@@ -2,7 +2,7 @@
 // flow-typed signature: 28e77c1030280db8981c3735d6829271
 // flow-typed version: <<STUB>>/react-component-benchmark_v0.0.4/flow_v0.89.0
 
-const BenchmarkType = {
+const benchmarkType = {
   MOUNT: "mount",
   UPDATE: "update",
   UNMOUNT: "unmount",
@@ -37,7 +37,7 @@ declare module "react-component-benchmark" {
     onComplete: (x: BenchResultsType) => void,
     samples: number,
     timeout: number,
-    type: $Values<typeof BenchmarkType>,
+    type: $Values<typeof benchmarkType>,
   |};
 
   declare class Benchmark extends React$Component<Props> {
@@ -46,5 +46,5 @@ declare module "react-component-benchmark" {
 
   declare export default typeof Benchmark;
 
-  declare export var BenchmarkType: typeof BenchmarkType;
+  declare export var BenchmarkType: typeof benchmarkType;
 }

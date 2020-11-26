@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import contentStates from "markov_draftjs";
 
@@ -30,7 +31,12 @@ export const benchmarkProps = {
   inlineStyles: [INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC],
 };
 
-const MarkovBenchmark = ({ id }) => (
+type Props = {|
+  id: number,
+|};
+
+const MarkovBenchmark = ({ id }: Props) => (
+  // $FlowFixMe
   <DraftailEditor rawContentState={contentStates[id]} {...benchmarkProps} />
 );
 

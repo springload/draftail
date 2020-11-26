@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 
 import { INLINE_STYLE, BLOCK_TYPE, ENTITY_TYPE } from "../../lib";

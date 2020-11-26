@@ -12,6 +12,7 @@ exports[`Modal has defaults 1`] = `
     }
   }
   closeTimeoutMS={0}
+  contentElement={[Function]}
   isOpen={false}
   overlayClassName={
     Object {
@@ -20,8 +21,11 @@ exports[`Modal has defaults 1`] = `
       "beforeClose": "modal__overlay--before-close",
     }
   }
+  overlayElement={[Function]}
   parentSelector={[Function]}
   portalClassName="portal"
+  preventScroll={false}
+  role="dialog"
   shouldCloseOnEsc={true}
   shouldCloseOnOverlayClick={true}
   shouldFocusAfterRender={true}
