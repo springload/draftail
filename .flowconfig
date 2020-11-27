@@ -8,6 +8,7 @@
 .*/node_modules/draft-js-plugins-editor/lib/Editor/index.js.flow
 .*/node_modules/draft-js-plugins-editor/lib/index.js.flow
 .*/node_modules/fbjs/lib/emptyFunction.js.flow
+.*/node_modules/dotenv/lib/main.js
 # .*/node_modules/config-chain
 suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
 

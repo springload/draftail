@@ -2,7 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const webpack = require("webpack");
 const sass = require("sass");
-const autoprefixer = require("autoprefixer");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 require("dotenv").config();
@@ -43,7 +42,6 @@ module.exports = ({ config, mode }) => {
         loader: "postcss-loader",
         options: {
           sourceMap: true,
-          plugins: () => [autoprefixer()],
         },
       },
       {
