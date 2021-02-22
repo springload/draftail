@@ -5,7 +5,7 @@ import { EditorState, ContentState } from "draft-js";
 import { DraftailEditor } from "../lib";
 
 describe("Draftail", async () => {
-  it.skip("Is selectable by aria tags", () => {
+  it("Is selectable by aria tags", () => {
     const saveHandler = jest.fn();
 
     render(
