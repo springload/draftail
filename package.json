@@ -77,7 +77,7 @@
     "flow-bin": "0.121.0",
     "formik": "^1.4.1",
     "immutable": "~3.7.4",
-    "jest": "^26.6.3",
+    "jest": "24.1.0",
     "jest-axe": "3.1.1",
     "jest-environment-node": "24.0.0",
     "jest-image-snapshot": "4.2.0",
