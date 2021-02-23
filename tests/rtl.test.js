@@ -1,10 +1,14 @@
 import React from "react";
-import { getByText, render, screen } from "@testing-library/react";
-import { EditorState, ContentState } from "draft-js";
-
+import {
+  createEvent,
+  fireEvent,
+  getByText,
+  render,
+  screen,
+} from "@testing-library/react";
 import { DraftailEditor } from "../lib";
 
-describe("Draftail", async () => {
+describe("Draftail", () => {
   it("Is selectable by aria tags", () => {
     const saveHandler = jest.fn();
 
@@ -38,17 +42,11 @@ describe("Draftail", async () => {
     getByText(textbox, "abc");
   });
 
-  it("You can update the state of it", async () => {
+  it("You can update the state of it using RTL", async () => {
     const saveHandler = jest.fn();
-
-    let onChange = null;
-    const onMount = (onchange) => {
-      onChange = onchange;
-    };
 
     render(
       <DraftailEditor
-        onMount={onMount}
         ariaDescribedBy="foo"
         ariaLabel="aria label"
         inlineStyles={[]}
@@ -69,24 +67,23 @@ describe("Draftail", async () => {
       />,
     );
 
+    const textarea = screen.getByRole("textbox", {
+      name: "aria label",
+    });
+
+    const event = createEvent.paste(textarea, {
+      clipboardData: {
+        types: ["text/plain"],
+        getData: () => "hello",
+      },
+    });
+
+    fireEvent(textarea, event);
+
     const textbox = screen.getByRole("textbox", {
       name: "aria label",
     });
 
-    // Check initial value exists
-    getByText(textbox, "abc");
-
-    // Update the content
-    onChange(
-      EditorState.createWithContent(ContentState.createFromText("hello")),
-    );
-
-    // Expect that it has changed
-    getByText(
-      screen.getByRole("textbox", {
-        name: "aria label",
-      }),
-      "hello",
-    );
+    getByText(textbox, "abchello");
   });
 });

@@ -77,7 +77,7 @@
     "flow-bin": "0.121.0",
     "formik": "^1.4.1",
     "immutable": "~3.7.4",
-    "jest": "24.1.0",
+    "jest": "^26.6.3",
     "jest-axe": "3.1.1",
     "jest-environment-node": "24.0.0",
     "jest-image-snapshot": "4.2.0",
@@ -133,7 +133,6 @@
     "report:size": "uglifyjs --compress --mangle -- dist/draftail.cjs.js > dist/draftail.cjs.min.js && gzip --keep dist/* && wc -c dist/* | tee -a public/size.txt && date >> public/size.txt && rm dist/*.gz && rm dist/*.min.js",
     "report:package": "npm pack --loglevel notice 2>&1 >/dev/null | sed -e 's/^npm notice //' | tee -a public/package.txt && date >> public/package.txt && rm *.tgz",
     "test:ci": "npm run lint -s && npm run test:coverage -s --json --runInBand && npm run dist -s && npm run test:integration -s && npm run test:performance -s",
-    "prepublishOnly": "npm run dist -s",
     "prepare": "./.githooks/deploy.sh"
   }
 }
