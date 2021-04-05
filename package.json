@@ -1,6 +1,6 @@
 {
   "name": "draftail",
-  "version": "1.3.0",
+  "version": "1.4.1",
   "description": "📝🍸 A configurable rich text editor built with Draft.js",
   "author": "Springload",
   "license": "MIT",
@@ -53,6 +53,9 @@
     "@storybook/addon-storyshots": "5.3.19",
     "@storybook/addon-viewport": "5.3.19",
     "@storybook/react": "5.3.19",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.7.1",
     "@thibaudcolas/eslint-plugin-cookbook": "4.0.1",
     "@thibaudcolas/stylelint-config-cookbook": "2.0.1",
     "autoprefixer": "10.0.2",
@@ -136,7 +139,6 @@
     "report:size": "uglifyjs --compress --mangle -- dist/draftail.cjs.js > dist/draftail.cjs.min.js && gzip --keep dist/* && wc -c dist/* | tee -a public/size.txt && date >> public/size.txt && rm dist/*.gz && rm dist/*.min.js",
     "report:package": "npm pack --loglevel notice 2>&1 >/dev/null | sed -e 's/^npm notice //' | tee -a public/package.txt && date >> public/package.txt && rm *.tgz",
     "test:ci": "npm run lint -s && npm run test:coverage -s --json --runInBand && npm run dist -s && npm run test:integration -s && npm run test:performance -s",
-    "prepublishOnly": "npm run dist -s",
     "prepare": "./.githooks/deploy.sh"
   }
 }
