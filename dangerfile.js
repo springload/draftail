@@ -44,13 +44,13 @@ if (!hasLabels) {
 
 if (hasLibChanges && isEnhancement && !hasCHANGELOGChanges) {
   warn(
-    "This pull request is an enhancement. Please update the [CHANGELOG](https://github.com/springload/draftail/blob/master/CHANGELOG.md).",
+    "This pull request is an enhancement. Please update the [CHANGELOG](https://github.com/springload/draftail/blob/main/CHANGELOG.md).",
   );
 }
 
 if (hasLibChanges && isBug && !hasCHANGELOGChanges) {
   fail(
-    "This pull request fixes a bug. Please update the [CHANGELOG](https://github.com/springload/draftail/blob/master/CHANGELOG.md).",
+    "This pull request fixes a bug. Please update the [CHANGELOG](https://github.com/springload/draftail/blob/main/CHANGELOG.md).",
   );
 }
 
@@ -86,7 +86,7 @@ schedule(async () => {
 
     if (added.includes("draft-js")) {
       warn(
-        ":scream: this PR updates Draft.js! Please make sure to review the [upgrade considerations](https://github.com/springload/draftail/tree/master/docs#upgrade-considerations).",
+        ":scream: this PR updates Draft.js! Please make sure to review the [upgrade considerations](https://github.com/springload/draftail/tree/main/docs#upgrade-considerations).",
       );
     }
   }

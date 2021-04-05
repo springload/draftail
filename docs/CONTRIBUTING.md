@@ -75,7 +75,7 @@ npm run
 - In the CHANGELOG, update documentation links to point at the correct version.
 - Update the version number in `package.json` and `package-lock.json`, following semver.
 - Make a PR and squash merge it.
-- Back on master with the PR merged, follow the instructions below.
+- Back on the main branch with the PR merged, follow the instructions below.
 
 ```sh
 npm run dist
