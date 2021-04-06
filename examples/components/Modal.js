@@ -29,6 +29,7 @@ const Modal = (props: Props) => (
     overlayClassName={overlayClassName}
     bodyOpenClassName="modal__container--open"
     portalClassName="portal"
+    ariaHideApp={false}
     {...props}
   />
 );
