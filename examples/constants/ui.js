@@ -7,11 +7,9 @@ import DocumentSource from "../sources/DocumentSource";
 import LinkSource from "../sources/LinkSource";
 import ImageSource from "../sources/ImageSource";
 import EmbedSource from "../sources/EmbedSource";
-import ColorSource from "../sources/ColorSource";
 
 import Link from "../entities/Link";
 import Document, { DOCUMENT_ICON } from "../entities/Document";
-import Color, { COLOR_ICON } from "../entities/Color";
 
 import EmbedBlock from "../blocks/EmbedBlock";
 import ImageBlock from "../blocks/ImageBlock";
@@ -105,14 +103,6 @@ export const ENTITY_CONTROL = {
     source: DocumentSource,
     decorator: Document,
     attributes: ["url"],
-  },
-  COLOR: {
-    type: "COLOR",
-    icon: COLOR_ICON,
-    description: "Text Color",
-    source: ColorSource,
-    decorator: Color,
-    attributes: ["color"],
   },
 };
 

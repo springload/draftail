@@ -1,6 +1,10 @@
 import { storiesOf } from "@storybook/react";
-import React from "react";
+import React, { useState } from "react";
 import createHashtagPlugin from "draft-js-hashtag-plugin";
+import {
+  createEditorStateFromRaw,
+  serialiseEditorStateToRaw,
+} from "draftjs-conductor";
 
 import {
   INLINE_CONTROL,
@@ -21,12 +25,15 @@ import PrismDecorator from "./components/PrismDecorator";
 import ReadingTime from "./components/ReadingTime";
 import customContentState from "./constants/customContentState";
 import allContentState from "./constants/allContentState";
+import ColorPicker, { getColorInlineStyles } from "./components/ColorPicker";
 
 const hashtagPlugin = createHashtagPlugin();
 const linkify = linkifyPlugin();
 const autoEmbed = autoEmbedPlugin();
 
 storiesOf("Examples", module)
+  // Add a decorator rendering story as a component for hooks support.
+  .addDecorator((Story) => <Story />)
   .add("Wagtail features", () => (
     <main>
       <p id="wagtail-editor">
@@ -63,36 +70,57 @@ storiesOf("Examples", module)
       />
     </main>
   ))
-  .add("Custom formats", () => (
-    <EditorWrapper
-      id="custom"
-      ariaDescribedBy="custom-editor"
-      rawContentState={customContentState}
-      stripPastedStyles={false}
-      spellCheck
-      blockTypes={[
-        BLOCK_CONTROL.HEADER_TWO,
-        BLOCK_CONTROL.CODE,
-        TINY_TEXT_BLOCK,
-      ]}
-      inlineStyles={[
-        Object.assign(
-          {
-            style: {
-              fontWeight: "bold",
-              textShadow: "1px 1px 1px black",
+  .add("Custom formats", () => {
+    const [editorState, setEditorState] = useState(
+      createEditorStateFromRaw(customContentState),
+    );
+    const [colorStyles, setColorStyles] = useState(
+      getColorInlineStyles(customContentState),
+    );
+    const onChange = (state) => {
+      const raw = serialiseEditorStateToRaw(state);
+      setColorStyles(raw ? getColorInlineStyles(raw) : []);
+      setEditorState(state);
+    };
+
+    return (
+      <EditorWrapper
+        id="custom"
+        ariaDescribedBy="custom-editor"
+        editorState={editorState}
+        onChange={onChange}
+        stripPastedStyles={false}
+        spellCheck
+        blockTypes={[
+          BLOCK_CONTROL.HEADER_TWO,
+          BLOCK_CONTROL.CODE,
+          TINY_TEXT_BLOCK,
+        ]}
+        inlineStyles={[
+          Object.assign(
+            {
+              style: {
+                fontWeight: "bold",
+                textShadow: "1px 1px 1px black",
+              },
             },
-          },
-          INLINE_CONTROL.BOLD,
-        ),
-        REDACTED_STYLE,
-      ]}
-      entityTypes={[ENTITY_CONTROL.EMBED, ENTITY_CONTROL.DOCUMENT]}
-      decorators={[new PrismDecorator({ defaultLanguage: "css" })]}
-      controls={[ReadingTime]}
-      plugins={[hashtagPlugin]}
-    />
-  ))
+            INLINE_CONTROL.BOLD,
+          ),
+          REDACTED_STYLE,
+          ...colorStyles.map((s) => ({
+            type: s,
+            style: {
+              color: s.replace("COLOR_", "#"),
+            },
+          })),
+        ]}
+        entityTypes={[ENTITY_CONTROL.EMBED, ENTITY_CONTROL.DOCUMENT]}
+        decorators={[new PrismDecorator({ defaultLanguage: "css" })]}
+        controls={[ReadingTime, ColorPicker]}
+        plugins={[hashtagPlugin]}
+      />
+    );
+  })
   .add("All built-in formats", () => (
     <EditorWrapper
       id="all"
