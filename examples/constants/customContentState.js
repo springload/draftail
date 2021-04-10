@@ -9,6 +9,11 @@ export default {
       depth: 0,
       inlineStyleRanges: [
         {
+          offset: 37,
+          length: 11,
+          style: "COLOR_D30A64",
+        },
+        {
           offset: 54,
           length: 13,
           style: "REDACTED",
