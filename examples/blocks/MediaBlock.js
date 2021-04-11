@@ -16,15 +16,27 @@ const OPTIONS_SPACING = 70;
 const TOOLTIP_MAX_WIDTH = OPTIONS_MAX_WIDTH + OPTIONS_SPACING;
 
 export type BlockProps = {|
+  /** The editorState is available for arbitrary content manipulation. */
+  editorState: EditorState,
+  /** Current entity to manage. */
   entity: EntityInstance,
+  /** Current entityKey to manage. */
+  entityKey: string,
+  /** Whole entityType configuration, as provided to the editor. */
   entityType: {
     description: string,
     icon: string | string[] | Node,
   },
-  editorState: EditorState,
+  /** Make the whole editor read-only, except for the block. */
+  lockEditor: () => void,
+  /** Make the editor editable again. */
+  unlockEditor: () => void,
+  /** Shorthand to edit entity data. */
+  onEditEntity: (entityKey: string) => void,
+  /** Shorthand to remove an entity, and the related block. */
+  onRemoveEntity: (entityKey: string, blockKey: string) => void,
+  /** Update the editorState with arbitrary changes. */
   onChange: (EditorState) => void,
-  onEditEntity: () => void,
-  onRemoveEntity: () => void,
 |};
 
 type Props = {
