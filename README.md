@@ -1,6 +1,6 @@
 # [Draftail](https://www.draftail.org/) [<img src="https://raw.githubusercontent.com/thibaudcolas/draftail.org/main/.github/draftail-logo.svg?sanitize=true" width="90" height="90" align="right">](https://www.draftail.org/)
 
-[![npm](https://img.shields.io/npm/v/draftail.svg)](https://www.npmjs.com/package/draftail) [![Build Status](https://travis-ci.org/springload/draftail.svg?branch=main)](https://travis-ci.org/springload/draftail) [![Coverage Status](https://coveralls.io/repos/github/springload/draftail/badge.svg)](https://coveralls.io/github/springload/draftail) [![Netlify Status](https://api.netlify.com/api/v1/badges/cb4f2732-c1c5-4566-b22e-ce491f504a82/deploy-status)](https://app.netlify.com/sites/draftail-demos/deploys)
+[![npm](https://img.shields.io/npm/v/draftail.svg)](https://www.npmjs.com/package/draftail) [![![Build status](https://github.com/springload/draftail/workflows/CI/badge.svg)](https://github.com/springload/draftail/actions) [![Coverage Status](https://coveralls.io/repos/github/springload/draftail/badge.svg)](https://coveralls.io/github/springload/draftail) [![Netlify Status](https://api.netlify.com/api/v1/badges/cb4f2732-c1c5-4566-b22e-ce491f504a82/deploy-status)](https://app.netlify.com/sites/draftail-demos/deploys)
 
 > :memo::cocktail: A configurable rich text editor built with [Draft.js](https://draftjs.org/). Check out our [demos](https://www.draftail.org/examples)!
 

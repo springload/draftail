@@ -1,13 +1,13 @@
 /**
  * Visual regression tests are very brittle, because they run in different environments:
  * - In development, on developers' machines.
- * - In CI, in the Travis container infra that uses Ubuntu.
+ * - In CI, in the GitHub Actions container infra that uses Ubuntu.
  *
  * In both cases the tests run in the built-in Chromium version, but there can be OS-level rendering differences, like for font rendering.
  * Those styles attempt to reduce the differences, but pixel-perfect cross-browser rendering is impossible.
  *
  * There are other approaches, but they all require more infrastructure:
- * - Develop with the same Ubuntu images Travis uses (with Vagrant or Docker).
+ * - Develop with the same Ubuntu images GitHub Actions uses (with Vagrant or Docker).
  * - Create screenshots in a dedicated rendering platform like Browserstack Screenshots.
  */
 

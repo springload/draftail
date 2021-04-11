@@ -1,8 +1,9 @@
 name: CI
 on:
   push:
-    branches-ignore:
-      - "gh-pages"
+    branches:
+      - main
+      - "renovate/**"
   pull_request:
 jobs:
   test:
@@ -18,7 +19,15 @@ jobs:
       - run: npm run dist
       - run: npm run report:size
       - run: npm run report:package
+      - run: npm run test:ci
+      - run: base64 < ./tests/integration/__image_snapshots__/__diff_output__/* || true
       - run: npm run test:performance
+      - run: npx danger ci --verbose
+        if: ${{ github.event_name == 'pull_request' }}
+        env:
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: mv coverage/lcov-report build || true
+      - run: cat ./coverage/lcov.info | npx coveralls || true
       - uses: actions/upload-artifact@v2
         with:
           name: reports
