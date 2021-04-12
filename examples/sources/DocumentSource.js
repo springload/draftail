@@ -20,6 +20,8 @@ type State = {|
 |};
 
 class DocumentSource extends Component<Props, State> {
+  inputRef: ?HTMLInputElement;
+
   constructor(props: Props) {
     super(props);
 
@@ -95,8 +97,6 @@ class DocumentSource extends Component<Props, State> {
       this.setState({ url });
     }
   }
-
-  inputRef: ?HTMLInputElement;
 
   render() {
     const { url } = this.state;

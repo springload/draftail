@@ -22,6 +22,8 @@ type State = {|
 |};
 
 class ImageSource extends Component<Props, State> {
+  inputRef: ?HTMLInputElement;
+
   constructor(props: Props) {
     super(props);
 
@@ -107,8 +109,6 @@ class ImageSource extends Component<Props, State> {
       this.setState({ src });
     }
   }
-
-  inputRef: ?HTMLInputElement;
 
   render() {
     const { src } = this.state;

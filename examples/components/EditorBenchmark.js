@@ -17,6 +17,8 @@ type State = {|
 |};
 
 class EditorBenchmark extends Component<Props, State> {
+  benchmark: ?Benchmark;
+
   constructor(props: Props) {
     super(props);
 
@@ -40,8 +42,6 @@ class EditorBenchmark extends Component<Props, State> {
   onBenchmarkComplete(results: BenchResultsType) {
     this.setState({ results });
   }
-
-  benchmark: ?Benchmark;
 
   /* :: startBenchmark: () => void; */
   startBenchmark() {

@@ -16,6 +16,8 @@ type Props = {|
 |};
 
 class Portal extends Component<Props, {}> {
+  portal: Element;
+
   static defaultProps: DefaultProps;
 
   constructor(props: Props) {
@@ -78,8 +80,6 @@ class Portal extends Component<Props, {}> {
       onClose();
     }
   }
-
-  portal: Element;
 
   render() {
     return null;

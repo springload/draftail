@@ -21,6 +21,8 @@ type State = {|
 |};
 
 class LinkSource extends Component<Props, State> {
+  inputRef: ?HTMLInputElement;
+
   constructor(props: Props) {
     super(props);
 
@@ -96,8 +98,6 @@ class LinkSource extends Component<Props, State> {
       this.setState({ url });
     }
   }
-
-  inputRef: ?HTMLInputElement;
 
   render() {
     const { url } = this.state;

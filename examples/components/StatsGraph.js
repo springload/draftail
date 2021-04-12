@@ -9,6 +9,10 @@ const MB_PANEL = 2;
  * Adapted from https://github.com/vigneshshanmugam/react-memorystats.
  */
 export default class StatsGraph extends Component<{||}> {
+  stats: Stats;
+
+  elt: ?Element;
+
   componentDidMount() {
     const stats = new Stats();
     stats.showPanel(MB_PANEL);
@@ -29,10 +33,6 @@ export default class StatsGraph extends Component<{||}> {
       requestIdleCallback(updateStats);
     }
   }
-
-  stats: Stats;
-
-  elt: ?Element;
 
   render() {
     return (
