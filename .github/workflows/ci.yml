@@ -16,9 +16,13 @@ jobs:
         with:
           node-version: "${{ steps.nvm.outputs.NVMRC }}"
       - run: npm install --no-optional --no-audit --no-fund --progress=false
-      - run: npm run test:ci
+      - run: npm run lint -s
+      - run: npm run dist -s
       - run: npm run report:size
       - run: npm run report:package
+      - run: npm run test:coverage -s --json --runInBand
+      # - run: npm run test:integration -s
+      - run: npm run test:performance -s
       - run: base64 < ./tests/integration/__image_snapshots__/__diff_output__/* || true
       - run: npx danger ci --verbose
         if: ${{ github.event_name == 'pull_request' }}
