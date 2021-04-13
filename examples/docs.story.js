@@ -20,6 +20,7 @@ import {
 import EditorWrapper from "./components/EditorWrapper";
 import PrismDecorator from "./components/PrismDecorator";
 import ReadingTime from "./components/ReadingTime";
+import BlockPicker from "./components/BlockPicker";
 
 storiesOf("Docs", module)
   // Add a decorator rendering story as a component for hooks support.
@@ -204,7 +205,17 @@ storiesOf("Docs", module)
         entityMap: {},
       }}
       stripPastedStyles={false}
-      controls={[ReadingTime]}
+      blockTypes={[
+        { type: BLOCK_TYPE.HEADER_TWO, label: null },
+        { type: BLOCK_TYPE.HEADER_THREE, label: null },
+        { type: BLOCK_TYPE.HEADER_FOUR, label: null },
+        BLOCK_CONTROL.CODE,
+        {
+          type: "tiny-text",
+          element: "blockquote",
+        },
+      ]}
+      controls={[BlockPicker, ReadingTime]}
     />
   ))
   .add("UI theming", () => (

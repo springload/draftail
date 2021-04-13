@@ -6,6 +6,18 @@
 
 > Documentation: [draftail.org/docs/next/getting-started](https://www.draftail.org/docs/next/getting-started)
 
+### Added
+
+- Make it possible to hide buttons with default labels by setting their `label` to `null`. [#442](https://github.com/springload/draftail/pull/442)
+
+### Changed
+
+- Improve the editor props’ JSDoc annotations. [#441](https://github.com/springload/draftail/pull/441)
+
+### Fixed
+
+- Fix empty buttons appearing when providing custom formats without a defined label or icon. [#442](https://github.com/springload/draftail/pull/442)
+
 ## [[v1.3.0]](https://github.com/springload/draftail/releases/tag/v1.3.0)
 
 > Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
