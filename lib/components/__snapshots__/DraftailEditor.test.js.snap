@@ -87,7 +87,7 @@ exports[`DraftailEditor #maxListNesting 1`] = `
     customStyleMap={Object {}}
     decorators={Array []}
     defaultBlockRenderMap={true}
-    defaultKeyBindings={true}
+    defaultKeyBindings={false}
     defaultKeyCommands={true}
     editorState={
       EditorState {
@@ -176,13 +176,18 @@ exports[`DraftailEditor #maxListNesting 1`] = `
     handleKeyCommand={[Function]}
     handlePastedText={[Function]}
     handleReturn={[Function]}
-    keyBindingFn={[Function]}
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
     onTab={[Function]}
     placeholder={null}
-    plugins={Array []}
+    plugins={
+      Array [
+        Object {
+          "keyBindingFn": [Function],
+        },
+      ]
+    }
     readOnly={false}
     spellCheck={false}
     stripPastedStyles={true}
@@ -282,7 +287,7 @@ exports[`DraftailEditor empty 1`] = `
     customStyleMap={Object {}}
     decorators={Array []}
     defaultBlockRenderMap={true}
-    defaultKeyBindings={true}
+    defaultKeyBindings={false}
     defaultKeyCommands={true}
     editorState={
       EditorState {
@@ -371,13 +376,18 @@ exports[`DraftailEditor empty 1`] = `
     handleKeyCommand={[Function]}
     handlePastedText={[Function]}
     handleReturn={[Function]}
-    keyBindingFn={[Function]}
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
     onTab={[Function]}
     placeholder={null}
-    plugins={Array []}
+    plugins={
+      Array [
+        Object {
+          "keyBindingFn": [Function],
+        },
+      ]
+    }
     readOnly={false}
     spellCheck={false}
     stripPastedStyles={true}
