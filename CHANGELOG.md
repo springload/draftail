@@ -17,6 +17,7 @@
 ### Fixed
 
 - Fix empty buttons appearing when providing custom formats without a defined label or icon. [#442](https://github.com/springload/draftail/pull/442)
+- Clear save timeout handler when unmounting the editor. [#208](https://github.com/springload/draftail/issues/208), [#443](https://github.com/springload/draftail/pull/443)
 
 ## [[v1.3.0]](https://github.com/springload/draftail/releases/tag/v1.3.0)
 
