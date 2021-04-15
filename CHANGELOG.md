@@ -6,6 +6,10 @@
 
 > Documentation: [draftail.org/docs/next/getting-started](https://www.draftail.org/docs/next/getting-started)
 
+## [[v1.4.0]](https://github.com/springload/draftail/releases/tag/v1.4.0)
+
+> Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
+
 ### Added
 
 - Make it possible to hide buttons with default labels by setting their `label` to `null`. [#442](https://github.com/springload/draftail/pull/442)
@@ -21,7 +25,7 @@
 
 ## [[v1.3.0]](https://github.com/springload/draftail/releases/tag/v1.3.0)
 
-> Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
+> Documentation: [draftail.org/docs/1.3.0/getting-started](https://www.draftail.org/docs/1.3.0/getting-started)
 
 🎉 blog post for this release: [Draftail v1.3.0: community improvements, beyond Wagtail](https://www.draftail.org/blog/2019/03/03/draftail-v1-2-0-supporting-modern-experiences).
 
