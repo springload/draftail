@@ -82,8 +82,9 @@ const sectionBreakPlugin = (config: {|
       return null;
     },
     keyBindingFn(e: SyntheticKeyboardEvent<>) {
-      if ((e.metaKey || e.ctrlKey) && e.altKey && e.key.toLowerCase() === "s") {
-        return "break";
+      const KeyS = 83;
+      if ((e.metaKey || e.ctrlKey) && e.altKey && e.keyCode === KeyS) {
+        return "section-break";
       }
       return undefined;
     },
@@ -92,7 +93,7 @@ const sectionBreakPlugin = (config: {|
       editorState: EditorState,
       { setEditorState }: PluginFunctions,
     ) {
-      if (command === "break") {
+      if (command === "section-break") {
         setEditorState(insertSectionBreak(editorState));
         return "handled";
       }
