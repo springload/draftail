@@ -6,9 +6,13 @@
 
 > Documentation: [draftail.org/docs/next/getting-started](https://www.draftail.org/docs/next/getting-started)
 
+## [[v1.4.1]](https://github.com/springload/draftail/releases/tag/v1.4.1)
+
+> Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
+
 ### Fixed
 
-- Fix plugin `keyBindingFn`s not being called. [#246](https://github.com/springload/draftail/pull/246)
+- Fix plugin `keyBindingFn`s not being called. [#246](https://github.com/springload/draftail/pull/246), [#445](https://github.com/springload/draftail/pull/445)
 
 ## [[v1.4.0]](https://github.com/springload/draftail/releases/tag/v1.4.0)
 
