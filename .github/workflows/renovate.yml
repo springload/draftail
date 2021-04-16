@@ -13,5 +13,5 @@ jobs:
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v21.30.0
         with:
-          configurationFile: .github/renovate.json5
+          configurationFile: .github/renovate.js
           token: ${{ secrets.RENOVATE_GITHUB_API_TOKEN }}

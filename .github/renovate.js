@@ -1,4 +1,4 @@
-{
+module.exports = {
   extends: ["config:base"],
   // https://renovatebot.com/docs/configuration-options/#commitbodytable
   commitBodyTable: true,
@@ -173,4 +173,4 @@
       automerge: true,
     },
   ],
-}
+};
