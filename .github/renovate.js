@@ -43,6 +43,7 @@ module.exports = {
     // https://renovatebot.com/docs/node/#configuring-support-policy
     supportPolicy: ["current"],
   },
+  repositories: ["springload/draftail"],
   packageRules: [
     {
       packageNames: ["prettier"],
