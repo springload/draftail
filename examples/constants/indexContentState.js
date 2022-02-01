@@ -103,7 +103,7 @@ export default {
     "21": {
       type: "LINK",
       mutability: "MUTABLE",
-      data: { url: "https://wagtail.io/" },
+      data: { url: "https://wagtail.org/" },
     },
     "22": {
       type: "LINK",
