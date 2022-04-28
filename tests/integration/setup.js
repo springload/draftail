@@ -23,6 +23,6 @@ module.exports = async () => {
 
     app.use("/", express.static(path.join("public")));
 
-    global.SERVER = app.listen(5000);
+    global.SERVER = app.listen(5001);
   }
 };

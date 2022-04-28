@@ -25,6 +25,7 @@ describe("performance", () => {
   });
 
   it("markov_draftjs 41 memory", async () => {
+    jest.setTimeout(20000);
     await page.goto(
       `${global.ROOT}?selectedKind=Performance&selectedStory=markov_draftjs%2041`,
     );
@@ -37,6 +38,7 @@ describe("performance", () => {
   });
 
   it("markov_draftjs 41 speed", async () => {
+    jest.setTimeout(20000);
     await page.goto(
       `${global.ROOT}?selectedKind=Performance&selectedStory=markov_draftjs%2041`,
     );
