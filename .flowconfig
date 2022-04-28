@@ -9,7 +9,9 @@
 .*/node_modules/draft-js-plugins-editor/lib/index.js.flow
 .*/node_modules/fbjs/lib/emptyFunction.js.flow
 .*/node_modules/dotenv/lib/main.js
-# .*/node_modules/config-chain
+.*/node_modules/config-chain
+.*/node_modules/resolve
+.*/node_modules/fbjs/lib/emptyFunction.js.flow
 suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
 
 [include]
