@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - "renovate/**"
   pull_request:
 jobs:
   test:
