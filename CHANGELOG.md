@@ -6,6 +6,10 @@
 
 > Documentation: [draftail.org/docs/next/getting-started](https://www.draftail.org/docs/next/getting-started)
 
+### Fixed
+
+- Fix Sass deprecation warning with `/` slash character for divisions and separators.
+
 ## [[v1.4.1]](https://github.com/springload/draftail/releases/tag/v1.4.1)
 
 > Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
