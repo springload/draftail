@@ -66,8 +66,7 @@ storiesOf("Plugins", module)
         blocks: [
           {
             key: "aaa",
-            text:
-              "Paste a YouTube or Twitter link to automatically create an embed.",
+            text: "Paste a YouTube or Twitter link to automatically create an embed.",
             type: "unstyled",
             depth: 0,
             entityRanges: [
@@ -114,8 +113,7 @@ storiesOf("Plugins", module)
         blocks: [
           {
             key: "aaa",
-            text:
-              "This editor supports action lists. Start one with - [] at the start of a line.",
+            text: "This editor supports action lists. Start one with - [] at the start of a line.",
             inlineStyleRanges: [
               {
                 offset: 50,
@@ -147,8 +145,7 @@ storiesOf("Plugins", module)
         blocks: [
           {
             key: "aaa",
-            text:
-              "This editor supports two commands: /hr, and /embed <url>. Then press Enter.",
+            text: "This editor supports two commands: /hr, and /embed <url>. Then press Enter.",
             inlineStyleRanges: [
               {
                 offset: 35,
@@ -214,8 +211,7 @@ class CustomToolbarStory extends Component {
             entityMap: {},
             blocks: [
               {
-                text:
-                  "This editor uses inline and side toolbars from the draft-js-plugins ecosystem",
+                text: "This editor uses inline and side toolbars from the draft-js-plugins ecosystem",
               },
             ],
           }}
@@ -275,8 +271,7 @@ class EmojiStory extends Component {
             entityMap: {},
             blocks: [
               {
-                text:
-                  "We can have all sorts of Emojis here! 🙌 🌿☃️🎉🙈 aaaand maybe a few more there 🐲☀️🗻 Quite fun!",
+                text: "We can have all sorts of Emojis here! 🙌 🌿☃️🎉🙈 aaaand maybe a few more there 🐲☀️🗻 Quite fun!",
               },
             ],
           }}

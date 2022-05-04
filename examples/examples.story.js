@@ -157,8 +157,7 @@ storiesOf("Examples", module)
         blocks: [
           {
             key: "aaa",
-            text:
-              "Paste YouTube or Twitter links! Instantly create links on text, and insert embed blocks",
+            text: "Paste YouTube or Twitter links! Instantly create links on text, and insert embed blocks",
           },
         ],
       }}

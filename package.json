@@ -89,7 +89,7 @@
     "normalize.css": "8.0.1",
     "postcss-cli": "8.3.0",
     "postcss-loader": "4.1.0",
-    "prettier": "2.2.0",
+    "prettier": "2.6.2",
     "prismjs": "^1.8.4",
     "puppeteer": "1.11.0",
     "react": "16.14.0",

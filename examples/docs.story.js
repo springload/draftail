@@ -246,8 +246,7 @@ storiesOf("Docs", module)
         rawContentState={{
           blocks: [
             {
-              text:
-                "Disable the toolbar to save space if your editor only supports a handful of formats",
+              text: "Disable the toolbar to save space if your editor only supports a handful of formats",
               inlineStyleRanges: [
                 {
                   offset: 23,
@@ -319,8 +318,7 @@ storiesOf("Docs", module)
       rawContentState={{
         blocks: [
           {
-            text:
-              "Icons can recycle Unicode characters, use SVG, or custom implementations.",
+            text: "Icons can recycle Unicode characters, use SVG, or custom implementations.",
           },
         ],
         entityMap: {},
@@ -348,8 +346,7 @@ storiesOf("Docs", module)
         rawContentState={{
           blocks: [
             {
-              text:
-                "All of the text displayed in the Draftail UI can be translated",
+              text: "All of the text displayed in the Draftail UI can be translated",
             },
           ],
           entityMap: {},

@@ -91,8 +91,7 @@ export default {
       type: "LINK",
       mutability: "MUTABLE",
       data: {
-        url:
-          "https://www.springload.co.nz/blog/draftail-next-generation-rich-text-editor-wagtail/",
+        url: "https://www.springload.co.nz/blog/draftail-next-generation-rich-text-editor-wagtail/",
       },
     },
     "20": {
@@ -141,8 +140,7 @@ export default {
     },
     {
       key: "32lnv",
-      text:
-        "Draftail aims for a mouse-free experience. Most formatting can be done with keyboard shortcuts only, inspired by Google Docs and Markdown.",
+      text: "Draftail aims for a mouse-free experience. Most formatting can be done with keyboard shortcuts only, inspired by Google Docs and Markdown.",
       type: "unstyled",
       depth: 0,
       inlineStyleRanges: [],
