@@ -48,13 +48,8 @@ class EmbedSource extends Component<Props, State> {
 
   /* :: onConfirm: (e: Event) => void; */
   onConfirm(e: Event) {
-    const {
-      editorState,
-      entity,
-      entityKey,
-      entityType,
-      onComplete,
-    } = this.props;
+    const { editorState, entity, entityKey, entityType, onComplete } =
+      this.props;
     const { url } = this.state;
     const content = editorState.getCurrentContent();
     let nextState;

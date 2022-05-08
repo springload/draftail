@@ -55,15 +55,8 @@ class TooltipEntity extends Component<Props, State> {
   }
 
   render() {
-    const {
-      entityKey,
-      contentState,
-      children,
-      onEdit,
-      onRemove,
-      icon,
-      label,
-    } = this.props;
+    const { entityKey, contentState, children, onEdit, onRemove, icon, label } =
+      this.props;
     const { showTooltipAt } = this.state;
     const { url } = contentState.getEntity(entityKey).getData();
 

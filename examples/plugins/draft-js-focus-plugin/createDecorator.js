@@ -7,47 +7,48 @@ const getDisplayName = (WrappedComponent) => {
   return component.displayName || component.name || "Component";
 };
 
-export default ({ blockKeyStore }) => (WrappedComponent) => {
-  class BlockFocusDecorator extends Component {
-    componentDidMount() {
-      const { block } = this.props;
-      blockKeyStore.add(block.getKey());
-    }
+export default ({ blockKeyStore }) =>
+  (WrappedComponent) => {
+    class BlockFocusDecorator extends Component {
+      componentDidMount() {
+        const { block } = this.props;
+        blockKeyStore.add(block.getKey());
+      }
 
-    componentWillUnmount() {
-      const { block } = this.props;
-      blockKeyStore.remove(block.getKey());
-    }
+      componentWillUnmount() {
+        const { block } = this.props;
+        blockKeyStore.remove(block.getKey());
+      }
 
-    onClick(e) {
-      const { blockProps } = this.props;
+      onClick(e) {
+        const { blockProps } = this.props;
 
-      e.preventDefault();
+        e.preventDefault();
 
-      if (!blockProps.isFocused) {
-        blockProps.setFocusToBlock();
+        if (!blockProps.isFocused) {
+          blockProps.setFocusToBlock();
+        }
+      }
+
+      render() {
+        const { blockProps } = this.props;
+        const { isFocused } = blockProps;
+        return (
+          <WrappedComponent
+            {...this.props}
+            onClick={this.onClick.bind(this)}
+            isFocused={isFocused}
+          />
+        );
       }
     }
 
-    render() {
-      const { blockProps } = this.props;
-      const { isFocused } = blockProps;
-      return (
-        <WrappedComponent
-          {...this.props}
-          onClick={this.onClick.bind(this)}
-          isFocused={isFocused}
-        />
-      );
-    }
-  }
+    BlockFocusDecorator.WrappedComponent =
+      WrappedComponent.WrappedComponent || WrappedComponent;
 
-  BlockFocusDecorator.WrappedComponent =
-    WrappedComponent.WrappedComponent || WrappedComponent;
+    BlockFocusDecorator.displayName = `BlockFocus(${getDisplayName(
+      WrappedComponent,
+    )})`;
 
-  BlockFocusDecorator.displayName = `BlockFocus(${getDisplayName(
-    WrappedComponent,
-  )})`;
-
-  return BlockFocusDecorator;
-};
+    return BlockFocusDecorator;
+  };
