@@ -27,10 +27,6 @@ jobs:
       # - run: npm run test:integration -s
       - run: npm run test:performance -s
       - run: base64 < ./tests/integration/__image_snapshots__/__diff_output__/* || true
-      - run: npx danger ci --verbose
-        if: ${{ github.event_name == 'pull_request' }}
-        env:
-          DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: mv coverage/lcov-report build || true
       - uses: coverallsapp/github-action@master
         with:

@@ -1,6 +1,5 @@
 import { storiesOf } from "@storybook/react";
 import React, { useState } from "react";
-import { injectIntl } from "react-intl";
 import { convertFromHTML, convertToHTML } from "draft-convert";
 import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
 import { Formik } from "formik";
@@ -339,43 +338,39 @@ storiesOf("Docs", module)
       }}
     />
   ))
-  .add("i18n", () => {
-    const WithIntl = injectIntl(({ intl }) => (
-      <EditorWrapper
-        id="docs-i18n"
-        rawContentState={{
-          blocks: [
-            {
-              text: "All of the text displayed in the Draftail UI can be translated",
-            },
-          ],
-          entityMap: {},
-        }}
-        enableLineBreak={{
-          icon: BR_ICON,
-          description: intl.formatMessage({ id: "Line break" }),
-        }}
-        stripPastedStyles={false}
-        inlineStyles={[
+  .add("i18n", () => (
+    <EditorWrapper
+      id="docs-i18n"
+      rawContentState={{
+        blocks: [
           {
-            type: INLINE_STYLE.BOLD,
-            label: intl.formatMessage({ id: "Bold" }),
+            text: "All of the text displayed in the Draftail UI can be translated",
           },
-          {
-            type: INLINE_STYLE.KEYBOARD,
-            label: intl.formatMessage({ id: "Shortcut" }),
-          },
-        ]}
-        entityTypes={[
-          Object.assign({}, ENTITY_CONTROL.LINK, {
-            description: intl.formatMessage({ id: "Link" }),
-          }),
-        ]}
-      />
-    ));
-
-    return <WithIntl />;
-  })
+        ],
+        entityMap: {},
+      }}
+      enableLineBreak={{
+        icon: BR_ICON,
+        description: "Saut de ligne",
+      }}
+      stripPastedStyles={false}
+      inlineStyles={[
+        {
+          type: INLINE_STYLE.BOLD,
+          label: "Gras",
+        },
+        {
+          type: INLINE_STYLE.KEYBOARD,
+          label: "Raccourci",
+        },
+      ]}
+      entityTypes={[
+        Object.assign({}, ENTITY_CONTROL.LINK, {
+          description: "Lien",
+        }),
+      ]}
+    />
+  ))
   .add("HTML conversion", () => {
     const content = `
     <p>This editor demonstrates <strong>HTML import and export</strong>.</p>
