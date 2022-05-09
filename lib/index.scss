@@ -2,9 +2,10 @@
 
 @import "./components/Icon";
 @import "./components/DraftailEditor";
-@import "./components/Toolbar";
-@import "./components/ToolbarGroup";
-@import "./components/ToolbarButton";
-@import "./components/ToolbarTooltip";
+@import "./components/Toolbar/InlineToolbar/InlineToolbar";
+@import "./components/Toolbar/Toolbar";
+@import "./components/Toolbar/ToolbarGroup";
+@import "./components/Toolbar/ToolbarButton";
+@import "./components/Toolbar/ToolbarTooltip";
 
 @import "./blocks/DividerBlock";

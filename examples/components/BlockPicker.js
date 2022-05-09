@@ -41,4 +41,6 @@ const BlockPicker = ({ getEditorState, onChange }: Props) => {
   );
 };
 
+BlockPicker.type = "INLINE_CONTROL";
+
 export default BlockPicker;

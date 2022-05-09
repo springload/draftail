@@ -4,7 +4,13 @@ import { convertFromHTML, convertToHTML } from "draft-convert";
 import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
 import { Formik } from "formik";
 
-import { DraftailEditor, INLINE_STYLE, ENTITY_TYPE, BLOCK_TYPE } from "../lib";
+import {
+  DraftailEditor,
+  InlineToolbar,
+  INLINE_STYLE,
+  ENTITY_TYPE,
+  BLOCK_TYPE,
+} from "../lib";
 
 import {
   INLINE_CONTROL,
@@ -260,6 +266,55 @@ storiesOf("Docs", module)
         stripPastedStyles={false}
         inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
         topToolbar={null}
+      />
+    </div>
+  ))
+  .add("Floating toolbar", () => (
+    <div className="docs-floating-toolbar">
+      <EditorWrapper
+        id="floating-toolbar"
+        rawContentState={{
+          blocks: [
+            {
+              text: "Use a floating toolbar",
+            },
+          ],
+          entityMap: {},
+        }}
+        stripPastedStyles={false}
+        enableHorizontalRule
+        enableLineBreak={{
+          icon: BR_ICON,
+        }}
+        entityTypes={[
+          ENTITY_CONTROL.LINK,
+          ENTITY_CONTROL.IMAGE,
+          ENTITY_CONTROL.EMBED,
+        ]}
+        blockTypes={[
+          BLOCK_CONTROL.HEADER_TWO,
+          BLOCK_CONTROL.HEADER_THREE,
+          BLOCK_CONTROL.BLOCKQUOTE,
+          BLOCK_CONTROL.CODE,
+          BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+        ]}
+        inlineStyles={[
+          INLINE_CONTROL.BOLD,
+          INLINE_CONTROL.ITALIC,
+          INLINE_CONTROL.KEYBOARD,
+        ]}
+        controls={[BlockPicker]}
+        topToolbar={(props) => (
+          <>
+            <InlineToolbar {...props} />
+            <div
+              className="Draftail-Toolbar Draftail-Toolbar--bottom"
+              role="toolbar"
+            >
+              <ReadingTime getEditorState={props.getEditorState} />
+            </div>
+          </>
+        )}
       />
     </div>
   ))
