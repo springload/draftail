@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from "react";
 
-import { RichUtils, EditorState } from "draft-js";
+import { RichUtils, EditorState, Modifier } from "draft-js";
 import type { EntityInstance } from "draft-js";
 
 import Modal from "../components/Modal";
@@ -128,5 +128,64 @@ class LinkSource extends Component<Props, State> {
     );
   }
 }
+
+/**
+ * See https://docs.djangoproject.com/en/4.0/_modules/django/core/validators/#EmailValidator.
+ */
+const djangoUserRegex =
+  /(^[-!#$%&'*+/=?^_`{}|~0-9A-Z]+(\.[-!#$%&'*+/=?^_`{}|~0-9A-Z]+)*$|^"([\001-\010\013\014\016-\037!#-[\]-\177]|\\[\001-\011\013\014\016-\177])*"$)/i;
+const djangoDomainRegex =
+  /((?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+)(?:[A-Z0-9-]{2,63}(?<!-))$/i;
+
+const getValidURL = (text: string) => {
+  if (text.includes("@")) {
+    const [user, domain] = text.split("@");
+    if (djangoUserRegex.test(user) && djangoDomainRegex.test(domain)) {
+      return `mailto:${text}`;
+    }
+  }
+
+  try {
+    // eslint-disable-next-line compat/compat
+    const url = new URL(text);
+
+    if (["http:", "https:"].includes(url.protocol)) {
+      return text;
+    }
+  } catch (e) {
+    return false;
+  }
+
+  return false;
+};
+
+export const onPasteLink = (
+  text: string,
+  html: ?string,
+  editorState: EditorState,
+  { setEditorState }: { setEditorState: (EditorState) => void },
+): "handled" | "not-handled" => {
+  const url = getValidURL(text);
+
+  if (!url) {
+    return "not-handled";
+  }
+
+  const selection = editorState.getSelection();
+  let content = editorState.getCurrentContent();
+  content = content.createEntity("LINK", "MUTABLE", { url });
+  const entityKey = content.getLastCreatedEntityKey();
+  let nextState: EditorState;
+
+  if (selection.isCollapsed()) {
+    content = Modifier.insertText(content, selection, text, null, entityKey);
+    nextState = EditorState.push(editorState, content, "insert-characters");
+  } else {
+    nextState = RichUtils.toggleLink(editorState, selection, entityKey);
+  }
+
+  setEditorState(nextState);
+  return "handled";
+};
 
 export default LinkSource;

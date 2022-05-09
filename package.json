@@ -34,7 +34,7 @@
   ],
   "browserslist": [
     "> 1%",
-    "IE 11",
+    "not IE 11",
     "Firefox ESR",
     "not OperaMini all"
   ],

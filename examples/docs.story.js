@@ -304,7 +304,8 @@ storiesOf("Docs", module)
           INLINE_CONTROL.KEYBOARD,
         ]}
         controls={[BlockPicker]}
-        topToolbar={(props) => (
+        topToolbar={null}
+        bottomToolbar={(props) => (
           <>
             <InlineToolbar {...props} />
             <div

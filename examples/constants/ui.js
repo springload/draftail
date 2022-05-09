@@ -4,7 +4,7 @@ import React from "react";
 import { INLINE_STYLE, BLOCK_TYPE, ENTITY_TYPE } from "../../lib";
 
 import DocumentSource from "../sources/DocumentSource";
-import LinkSource from "../sources/LinkSource";
+import LinkSource, { onPasteLink } from "../sources/LinkSource";
 import ImageSource from "../sources/ImageSource";
 import EmbedSource from "../sources/EmbedSource";
 
@@ -71,6 +71,7 @@ export const ENTITY_CONTROL = {
     icon: "#icon-link",
     source: LinkSource,
     decorator: Link,
+    onPaste: onPasteLink,
     attributes: ["url"],
     whitelist: {
       href: "^(?![#/])",
