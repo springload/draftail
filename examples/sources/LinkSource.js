@@ -160,6 +160,7 @@ const getValidURL = (text: string) => {
 };
 
 export const onPasteLink = (
+  entityType: {},
   text: string,
   html: ?string,
   editorState: EditorState,

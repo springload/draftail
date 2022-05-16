@@ -21,10 +21,12 @@ import {
   UNDO_ICON,
   REDO_ICON,
 } from "./constants/ui";
+import indexContentState from "./constants/indexContentState";
 
 import EditorWrapper from "./components/EditorWrapper";
 import PrismDecorator from "./components/PrismDecorator";
 import ReadingTime from "./components/ReadingTime";
+import CharCount from "./components/CharCount";
 import BlockPicker from "./components/BlockPicker";
 
 storiesOf("Docs", module)
@@ -273,14 +275,7 @@ storiesOf("Docs", module)
     <div className="docs-floating-toolbar">
       <EditorWrapper
         id="floating-toolbar"
-        rawContentState={{
-          blocks: [
-            {
-              text: "Use a floating toolbar",
-            },
-          ],
-          entityMap: {},
-        }}
+        rawContentState={indexContentState}
         stripPastedStyles={false}
         enableHorizontalRule
         enableLineBreak={{
@@ -312,7 +307,7 @@ storiesOf("Docs", module)
               className="Draftail-Toolbar Draftail-Toolbar--bottom"
               role="toolbar"
             >
-              <ReadingTime getEditorState={props.getEditorState} />
+              <CharCount getEditorState={props.getEditorState} />
             </div>
           </>
         )}

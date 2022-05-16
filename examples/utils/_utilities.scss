@@ -15,19 +15,33 @@
 }
 
 .docs-ui-theming .Draftail-Toolbar,
-.docs-custom-toolbars .Draftail-Toolbar--bottom {
+.docs-custom-toolbars .Draftail-Toolbar--bottom,
+.docs-floating-toolbar .Draftail-Toolbar--bottom {
+  padding-inline: 0;
   border: 0;
   background: transparent;
   color: $GREY_999;
 }
 
-.docs-custom-toolbars .Draftail-Toolbar {
-  [name="READING_TIME"] {
-    float: right;
-  }
+.docs-custom-toolbars .Draftail-Toolbar--bottom,
+.docs-floating-toolbar .Draftail-Toolbar--bottom {
+  display: flex;
+  flex-direction: row-reverse;
+  font-variant-numeric: tabular-nums;
 
   select {
     max-width: 50px;
+  }
+}
+
+.docs-floating-toolbar {
+  .Draftail-Editor {
+    border-color: transparent;
+  }
+
+  .DraftEditor-root {
+    border: $draftail-editor-border;
+    border-radius: $draftail-editor-radius;
   }
 }
 
