@@ -7,6 +7,7 @@ import { Formik } from "formik";
 import {
   DraftailEditor,
   InlineToolbar,
+  MetaToolbar,
   INLINE_STYLE,
   ENTITY_TYPE,
   BLOCK_TYPE,
@@ -222,7 +223,14 @@ storiesOf("Docs", module)
           element: "blockquote",
         },
       ]}
-      controls={[BlockPicker, ReadingTime]}
+      controls={[
+        {
+          inline: BlockPicker,
+        },
+        {
+          meta: ReadingTime,
+        },
+      ]}
     />
   ))
   .add("UI theming", () => (
@@ -298,17 +306,19 @@ storiesOf("Docs", module)
           INLINE_CONTROL.ITALIC,
           INLINE_CONTROL.KEYBOARD,
         ]}
-        controls={[BlockPicker]}
+        controls={[
+          {
+            inline: BlockPicker,
+          },
+          {
+            meta: CharCount,
+          },
+        ]}
         topToolbar={null}
         bottomToolbar={(props) => (
           <>
             <InlineToolbar {...props} />
-            <div
-              className="Draftail-Toolbar Draftail-Toolbar--bottom"
-              role="toolbar"
-            >
-              <CharCount getEditorState={props.getEditorState} />
-            </div>
+            <MetaToolbar showBlockEntities {...props} />
           </>
         )}
       />

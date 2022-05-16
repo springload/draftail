@@ -4,17 +4,36 @@ import { EditorState } from "draft-js";
 
 type Props = {|
   getEditorState: () => EditorState,
+  maxLength: ?number,
 |};
+
+// const countParagraphs = (str) => (str ? str.match(/\n+/g).length + 1 : 0);
+// const countSentences = (str) =>
+//   str ? (str.match(/[.?!…]+./g) || []).length + 1 : 0;
+// const countWords = (str) =>
+//   str ? (str.replace(/['";:,.?¿\-!¡]+/g, "").match(/\S+/g) || []).length : 0;
+/**
+ * Count characters in a string, with special processing to account for astral symbols in UCS-2. See:
+ * - https://github.com/RadLikeWhoa/Countable/blob/master/Countable.js#L29
+ * - https://mathiasbynens.be/notes/javascript-unicode
+ */
+const countChars = (str) => (str ? str.match(/./gu).length : 0);
 
 /**
  * Shows the editor’s character count, with a calculation of unicode characters
  * matching that of `maxlength` attributes.
  */
-const CharCount = ({ getEditorState }: Props) => {
+const CharCount = ({ getEditorState, maxLength }: Props) => {
   const editorState = getEditorState();
   const content = editorState.getCurrentContent();
   const text = content.getPlainText();
-  return <span>{text ? text.match(/./gu).length : 0}</span>;
+  const suffix = maxLength ? `/${maxLength}` : "";
+
+  return (
+    <div className="Draftail-ToolbarButton CharCount">{`${countChars(
+      text,
+    )}${suffix}`}</div>
+  );
 };
 
 export default CharCount;

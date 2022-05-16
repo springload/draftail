@@ -1,0 +1,8 @@
+.#{$DRAFTAIL}MetaToolbar {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  padding: $controls-spacing;
+  background-color: $draftail-editor-background;
+  color: $draftail-editor-chrome;
+}
