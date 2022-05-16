@@ -4,6 +4,7 @@ import { AtomicBlockUtils, EditorState } from "draft-js";
 import type { EntityInstance } from "draft-js";
 
 import Modal from "../components/Modal";
+import { getValidLinkURL } from "../entities/Link";
 
 import embedly from "../utils/embedly";
 
@@ -61,6 +62,7 @@ class EmbedSource extends Component<Props, State> {
         const nextContent = content.mergeEntityData(entityKey, {
           url: embed.url,
           title: embed.title,
+          authorName: embed.author_name,
           thumbnail: embed.thumbnail_url,
         });
         nextState = EditorState.push(editorState, nextContent, "apply-entity");
@@ -147,3 +149,67 @@ class EmbedSource extends Component<Props, State> {
 }
 
 export default EmbedSource;
+
+export const getValidEmbedURL = (
+  text: string | false,
+  hostnames: $ReadOnlyArray<string>,
+) => {
+  if (text) {
+    const urlObj = new URL(text);
+    return hostnames.includes(urlObj.hostname) ? text : false;
+  }
+
+  return false;
+};
+
+export const onPasteEmbed = (
+  text: string,
+  html: ?string,
+  editorState: EditorState,
+  {
+    setEditorState,
+    getEditorState,
+  }: {
+    setEditorState: (EditorState) => void,
+    getEditorState: () => EditorState,
+  },
+  entityType: { schemes: $ReadOnlyArray<string> },
+): "handled" | "not-handled" => {
+  const url = getValidEmbedURL(getValidLinkURL(text, ["https:"]), [
+    "www.youtube.com",
+  ]);
+
+  if (!url) {
+    return "not-handled";
+  }
+
+  const content = editorState.getCurrentContent();
+  let nextContent = content.createEntity(
+    // Fixed in https://github.com/facebook/draft-js/commit/6ba124cf663b78c41afd6c361a67bd29724fa617, to be released.
+    // $FlowFixMe
+    entityType.type,
+    "IMMUTABLE",
+    { url },
+  );
+  const entityKey = nextContent.getLastCreatedEntityKey();
+  let nextState = AtomicBlockUtils.insertAtomicBlock(
+    editorState,
+    entityKey,
+    " ",
+  );
+
+  setEditorState(nextState);
+
+  embedly.get(url, (embed) => {
+    nextState = getEditorState();
+    nextContent = nextState.getCurrentContent();
+    nextContent = nextContent.mergeEntityData(entityKey, {
+      url: embed.url,
+      title: embed.title,
+      thumbnail: embed.thumbnail_url,
+    });
+    setEditorState(EditorState.push(nextState, nextContent, "apply-entity"));
+  });
+
+  return "handled";
+};

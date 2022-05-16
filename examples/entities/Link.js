@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import type { Node } from "react";
-import { ContentState } from "draft-js";
+import { EditorState, ContentState, Modifier, RichUtils } from "draft-js";
 
 import TooltipEntity from "./TooltipEntity";
 
@@ -60,6 +60,73 @@ const Link = ({
       {children}
     </TooltipEntity>
   );
+};
+
+/**
+ * See https://docs.djangoproject.com/en/4.0/_modules/django/core/validators/#EmailValidator.
+ */
+const djangoUserRegex =
+  /(^[-!#$%&'*+/=?^_`{}|~0-9A-Z]+(\.[-!#$%&'*+/=?^_`{}|~0-9A-Z]+)*$|^"([\001-\010\013\014\016-\037!#-[\]-\177]|\\[\001-\011\013\014\016-\177])*"$)/i;
+const djangoDomainRegex =
+  /((?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+)(?:[A-Z0-9-]{2,63}(?<!-))$/i;
+
+export const getValidLinkURL = (
+  text: string,
+  schemes: $ReadOnlyArray<string>,
+) => {
+  if (text.includes("@")) {
+    const [user, domain] = text.split("@");
+    if (djangoUserRegex.test(user) && djangoDomainRegex.test(domain)) {
+      return `mailto:${text}`;
+    }
+  }
+
+  try {
+    // eslint-disable-next-line compat/compat
+    const url = new URL(text);
+
+    if (schemes.includes(url.protocol)) {
+      return text;
+    }
+  } catch (e) {
+    return false;
+  }
+
+  return false;
+};
+
+export const onPasteLink = (
+  text: string,
+  html: ?string,
+  editorState: EditorState,
+  { setEditorState }: { setEditorState: (EditorState) => void },
+  entityType: { schemes: $ReadOnlyArray<string> },
+): "handled" | "not-handled" => {
+  const url = getValidLinkURL(text, entityType.schemes);
+
+  if (!url) {
+    return "not-handled";
+  }
+
+  if (new URL(url).hostname === "www.youtube.com") {
+    return "not-handled";
+  }
+
+  const selection = editorState.getSelection();
+  let content = editorState.getCurrentContent();
+  content = content.createEntity("LINK", "MUTABLE", { url });
+  const entityKey = content.getLastCreatedEntityKey();
+  let nextState: EditorState;
+
+  if (selection.isCollapsed()) {
+    content = Modifier.insertText(content, selection, text, null, entityKey);
+    nextState = EditorState.push(editorState, content, "insert-characters");
+  } else {
+    nextState = RichUtils.toggleLink(editorState, selection, entityKey);
+  }
+
+  setEditorState(nextState);
+  return "handled";
 };
 
 export default Link;

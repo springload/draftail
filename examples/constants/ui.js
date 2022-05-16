@@ -4,11 +4,11 @@ import React from "react";
 import { INLINE_STYLE, BLOCK_TYPE, ENTITY_TYPE } from "../../lib";
 
 import DocumentSource from "../sources/DocumentSource";
-import LinkSource, { onPasteLink } from "../sources/LinkSource";
+import LinkSource from "../sources/LinkSource";
 import ImageSource from "../sources/ImageSource";
-import EmbedSource from "../sources/EmbedSource";
+import EmbedSource, { onPasteEmbed } from "../sources/EmbedSource";
 
-import Link from "../entities/Link";
+import Link, { onPasteLink } from "../entities/Link";
 import Document, { DOCUMENT_ICON } from "../entities/Document";
 
 import EmbedBlock from "../blocks/EmbedBlock";
@@ -70,12 +70,13 @@ export const ENTITY_CONTROL = {
     type: ENTITY_TYPE.LINK,
     icon: "#icon-link",
     source: LinkSource,
-    decorator: Link,
     onPaste: onPasteLink,
+    decorator: Link,
     attributes: ["url"],
     whitelist: {
       href: "^(?![#/])",
     },
+    schemes: ["http:", "https:", "ftp:", "ftps:"],
   },
   IMAGE: {
     type: ENTITY_TYPE.IMAGE,
@@ -93,6 +94,7 @@ export const ENTITY_CONTROL = {
     description: "Embed",
     icon: EMBED_ICON,
     source: EmbedSource,
+    onPaste: onPasteEmbed,
     block: EmbedBlock,
     attributes: ["url", "title", "thumbnail", "html"],
   },
