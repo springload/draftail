@@ -1,6 +1,6 @@
 {
   "name": "draftail",
-  "version": "1.4.1",
+  "version": "2.0.0-dev-a2dd5e8",
   "description": "📝🍸 A configurable rich text editor built with Draft.js",
   "author": "Springload",
   "license": "MIT",
