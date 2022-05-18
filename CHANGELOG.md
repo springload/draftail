@@ -4,11 +4,32 @@
 
 ## Unreleased
 
+> This release contains **breaking changes**.
+
 > Documentation: [draftail.org/docs/next/getting-started](https://www.draftail.org/docs/next/getting-started)
+
+### Added
+
+- Add TypeScript module definition for Draftail. [#388](https://github.com/springload/draftail/issues/388), [#429](https://github.com/springload/draftail/pull/429)
+- Implement `onPaste` handler for entities to be able to create themselves on paste.
+- Add a new optional `InlineToolbar` component so the editor can be rendered with either a static or floating toolbar.
+- Add a new optional `MetaToolbar` component intended to display editor metadata at the bottom of the editor.
+
+### Changed
+
+- The controls API now expects JS objects similarly to other APIs. Controls can now declare in what type of toolbar they should be rendered: `block` (static top toolbar), `inline` (floating toolbar), `meta` (bottom / meta toolbar).
 
 ### Fixed
 
 - Fix Sass deprecation warning with `/` slash character for divisions and separators.
+
+### Breaking changes
+
+#### TypeScript type definitions
+
+For projects using TypeScript, the addition of type definitions is likely to cause new linting issues being reported in case Draftail’s new types are incompatible with the implementation.
+
+#### Controls API shape
 
 ## [[v1.4.1]](https://github.com/springload/draftail/releases/tag/v1.4.1)
 
