@@ -1,8 +1,8 @@
 @include draftail-richtext-styles() {
   blockquote {
-    border-left: 3px solid #e5e5e5;
+    border-inline-start: 3px solid #e5e5e5;
     padding: 0 0 0 20px;
-    margin-left: 0;
+    margin-inline-start: 0;
     font-style: italic;
   }
 }

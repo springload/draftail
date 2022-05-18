@@ -3,6 +3,8 @@ import * as React from "react";
 
 export as namespace Draftail;
 declare namespace Draftail {
+  type TextDirectionality = "LTR" | "RTL" | null;
+
   type BtnMetaProps = {
     /** Describes the control in the editor UI, concisely. */
     label?: string;
@@ -70,6 +72,8 @@ declare namespace Draftail {
     onEdit: (entityKey: string) => void;
     /** Shorthand to remove an entity, and the related block. */
     onRemove: (entityKey: string, blockKey: string) => void;
+    /** Optionally set the overriding text directionality for this editor. */
+    textDirectionality: TextDirectionality;
   };
 
   type BlockProps = {
@@ -152,7 +156,7 @@ declare namespace Draftail {
     /** Optionally set the overriding text directionality for this editor.
      * See https://draftjs.org/docs/api-reference-editor.html#textdirectionality.
      */
-    textDirectionality?: string | null;
+    textDirectionality?: "LTR" | "RTL" | null;
     /** Set if auto capitalization is turned on and how it behaves.
      * See https://draftjs.org/docs/api-reference-editor.html#autocapitalize-string.
      */

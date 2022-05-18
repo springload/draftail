@@ -1,17 +1,13 @@
 .Draftail-block--action-list-item {
-  [type="checkbox"] {
-    $above-draft-block: 1;
+  display: flex;
 
+  [type="checkbox"] {
     cursor: pointer;
-    float: left;
-    position: relative;
-    top: 4px;
-    z-index: $above-draft-block;
   }
 
   .public-DraftStyleDefault-block {
-    $default-list-item-spacing: 1.5em;
+    $default-list-item-spacing: 0.6825em;
 
-    padding-left: $default-list-item-spacing;
+    padding-inline-start: $default-list-item-spacing;
   }
 }

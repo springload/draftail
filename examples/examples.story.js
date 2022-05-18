@@ -97,15 +97,13 @@ storiesOf("Examples", module)
           TINY_TEXT_BLOCK,
         ]}
         inlineStyles={[
-          Object.assign(
-            {
-              style: {
-                fontWeight: "bold",
-                textShadow: "1px 1px 1px black",
-              },
+          {
+            style: {
+              fontWeight: "bold",
+              textShadow: "1px 1px 1px black",
             },
-            INLINE_CONTROL.BOLD,
-          ),
+            ...INLINE_CONTROL.BOLD,
+          },
           REDACTED_STYLE,
           ...colorStyles.map((s) => ({
             type: s,

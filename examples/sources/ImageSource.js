@@ -15,6 +15,7 @@ type Props = {|
   },
   entity: ?EntityInstance,
   entityKey: ?string,
+  textDirectionality: "LTR" | "RTL",
 |};
 
 type State = {|
@@ -106,6 +107,7 @@ class ImageSource extends Component<Props, State> {
   }
 
   render() {
+    const { textDirectionality } = this.props;
     const { src } = this.state;
     return (
       <Modal
@@ -114,7 +116,11 @@ class ImageSource extends Component<Props, State> {
         isOpen
         contentLabel="Image chooser"
       >
-        <form className="ImageSource" onSubmit={this.onConfirm}>
+        <form
+          dir={textDirectionality === "RTL" ? "rtl" : null}
+          className="ImageSource"
+          onSubmit={this.onConfirm}
+        >
           <label className="form-field">
             <span className="form-field__label">Image src</span>
             <input

@@ -1,0 +1,580 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToolbarDefaults #blockTypes 1`] = `
+<ToolbarDefaults
+  addBR={[Function]}
+  addHR={[Function]}
+  blockTypes={
+    Array [
+      Object {
+        "label": "Test 1",
+        "type": "TEST_1",
+      },
+      Object {
+        "label": "Test 2",
+        "type": "TEST_2",
+      },
+      Object {
+        "label": "Test 3",
+        "type": "TEST_3",
+      },
+    ]
+  }
+  currentBlock="unstyled"
+  currentStyles={Immutable.OrderedSet []}
+  enableHorizontalRule={false}
+  enableLineBreak={false}
+  entityTypes={Array []}
+  inlineStyles={Array []}
+  onRequestSource={[Function]}
+  onUndoRedo={[Function]}
+  showRedoControl={false}
+  showUndoControl={false}
+  toggleBlockType={[Function]}
+  toggleInlineStyle={[Function]}
+>
+  <ToolbarGroup
+    key="styles"
+  />
+  <ToolbarGroup
+    key="blocks"
+  >
+    <div
+      className="Draftail-ToolbarGroup"
+    >
+      <ToolbarButton
+        active={false}
+        icon={null}
+        key="TEST_1"
+        label="Test 1"
+        name="TEST_1"
+        onClick={[Function]}
+        title={null}
+      >
+        <button
+          aria-label={null}
+          className="Draftail-ToolbarButton"
+          data-draftail-balloon={null}
+          name="TEST_1"
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          tabIndex={-1}
+          type="button"
+        >
+          <span
+            className="Draftail-ToolbarButton__label"
+          >
+            Test 1
+          </span>
+        </button>
+      </ToolbarButton>
+      <ToolbarButton
+        active={false}
+        icon={null}
+        key="TEST_2"
+        label="Test 2"
+        name="TEST_2"
+        onClick={[Function]}
+        title={null}
+      >
+        <button
+          aria-label={null}
+          className="Draftail-ToolbarButton"
+          data-draftail-balloon={null}
+          name="TEST_2"
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          tabIndex={-1}
+          type="button"
+        >
+          <span
+            className="Draftail-ToolbarButton__label"
+          >
+            Test 2
+          </span>
+        </button>
+      </ToolbarButton>
+      <ToolbarButton
+        active={false}
+        icon={null}
+        key="TEST_3"
+        label="Test 3"
+        name="TEST_3"
+        onClick={[Function]}
+        title={null}
+      >
+        <button
+          aria-label={null}
+          className="Draftail-ToolbarButton"
+          data-draftail-balloon={null}
+          name="TEST_3"
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          tabIndex={-1}
+          type="button"
+        >
+          <span
+            className="Draftail-ToolbarButton__label"
+          >
+            Test 3
+          </span>
+        </button>
+      </ToolbarButton>
+    </div>
+  </ToolbarGroup>
+  <ToolbarGroup
+    key="entities"
+  />
+</ToolbarDefaults>
+`;
+
+exports[`ToolbarDefaults #enableHorizontalRule control overrides 1`] = `
+<ToolbarDefaults
+  addBR={[Function]}
+  addHR={[Function]}
+  blockTypes={Array []}
+  currentBlock="unstyled"
+  currentStyles={Immutable.OrderedSet []}
+  enableHorizontalRule={
+    Object {
+      "description": "Horizontal rule",
+      "icon": "#icon-hr",
+      "label": "HR",
+    }
+  }
+  enableLineBreak={false}
+  entityTypes={Array []}
+  inlineStyles={Array []}
+  onRequestSource={[Function]}
+  onUndoRedo={[Function]}
+  showRedoControl={false}
+  showUndoControl={false}
+  toggleBlockType={[Function]}
+  toggleInlineStyle={[Function]}
+>
+  <ToolbarGroup
+    key="styles"
+  />
+  <ToolbarGroup
+    key="blocks"
+  />
+  <ToolbarGroup
+    key="entities"
+  />
+</ToolbarDefaults>
+`;
+
+exports[`ToolbarDefaults #enableHorizontalRule works 1`] = `
+<ToolbarDefaults
+  addBR={[Function]}
+  addHR={[Function]}
+  blockTypes={Array []}
+  currentBlock="unstyled"
+  currentStyles={Immutable.OrderedSet []}
+  enableHorizontalRule={true}
+  enableLineBreak={false}
+  entityTypes={Array []}
+  inlineStyles={Array []}
+  onRequestSource={[Function]}
+  onUndoRedo={[Function]}
+  showRedoControl={false}
+  showUndoControl={false}
+  toggleBlockType={[Function]}
+  toggleInlineStyle={[Function]}
+>
+  <ToolbarGroup
+    key="styles"
+  />
+  <ToolbarGroup
+    key="blocks"
+  />
+  <ToolbarGroup
+    key="entities"
+  />
+</ToolbarDefaults>
+`;
+
+exports[`ToolbarDefaults #enableLineBreak control overrides 1`] = `
+<ToolbarDefaults
+  addBR={[Function]}
+  addHR={[Function]}
+  blockTypes={Array []}
+  currentBlock="unstyled"
+  currentStyles={Immutable.OrderedSet []}
+  enableHorizontalRule={false}
+  enableLineBreak={
+    Object {
+      "description": "Soft line break",
+      "icon": "#icon-br",
+      "label": "BR",
+    }
+  }
+  entityTypes={Array []}
+  inlineStyles={Array []}
+  onRequestSource={[Function]}
+  onUndoRedo={[Function]}
+  showRedoControl={false}
+  showUndoControl={false}
+  toggleBlockType={[Function]}
+  toggleInlineStyle={[Function]}
+>
+  <ToolbarGroup
+    key="styles"
+  />
+  <ToolbarGroup
+    key="blocks"
+  />
+  <ToolbarGroup
+    key="entities"
+  />
+</ToolbarDefaults>
+`;
+
+exports[`ToolbarDefaults #enableLineBreak works 1`] = `
+<ToolbarDefaults
+  addBR={[Function]}
+  addHR={[Function]}
+  blockTypes={Array []}
+  currentBlock="unstyled"
+  currentStyles={Immutable.OrderedSet []}
+  enableHorizontalRule={false}
+  enableLineBreak={true}
+  entityTypes={Array []}
+  inlineStyles={Array []}
+  onRequestSource={[Function]}
+  onUndoRedo={[Function]}
+  showRedoControl={false}
+  showUndoControl={false}
+  toggleBlockType={[Function]}
+  toggleInlineStyle={[Function]}
+>
+  <ToolbarGroup
+    key="styles"
+  />
+  <ToolbarGroup
+    key="blocks"
+  />
+  <ToolbarGroup
+    key="entities"
+  />
+</ToolbarDefaults>
+`;
+
+exports[`ToolbarDefaults #entityTypes 1`] = `
+<ToolbarDefaults
+  addBR={[Function]}
+  addHR={[Function]}
+  blockTypes={Array []}
+  currentBlock="unstyled"
+  currentStyles={Immutable.OrderedSet []}
+  enableHorizontalRule={false}
+  enableLineBreak={false}
+  entityTypes={
+    Array [
+      Object {
+        "label": "Test 1",
+        "type": "TEST_1",
+      },
+      Object {
+        "label": "Test 2",
+        "type": "TEST_2",
+      },
+      Object {
+        "label": "Test 3",
+        "type": "TEST_3",
+      },
+    ]
+  }
+  inlineStyles={Array []}
+  onRequestSource={[Function]}
+  onUndoRedo={[Function]}
+  showRedoControl={false}
+  showUndoControl={false}
+  toggleBlockType={[Function]}
+  toggleInlineStyle={[Function]}
+>
+  <ToolbarGroup
+    key="styles"
+  />
+  <ToolbarGroup
+    key="blocks"
+  />
+  <ToolbarGroup
+    key="entities"
+  />
+</ToolbarDefaults>
+`;
+
+exports[`ToolbarDefaults #inlineStyles 1`] = `
+<ToolbarDefaults
+  addBR={[Function]}
+  addHR={[Function]}
+  blockTypes={Array []}
+  currentBlock="unstyled"
+  currentStyles={Immutable.OrderedSet []}
+  enableHorizontalRule={false}
+  enableLineBreak={false}
+  entityTypes={Array []}
+  inlineStyles={
+    Array [
+      Object {
+        "label": "Test 1",
+        "type": "TEST_1",
+      },
+      Object {
+        "label": "Test 2",
+        "type": "TEST_2",
+      },
+      Object {
+        "label": "Test 3",
+        "type": "TEST_3",
+      },
+    ]
+  }
+  onRequestSource={[Function]}
+  onUndoRedo={[Function]}
+  showRedoControl={false}
+  showUndoControl={false}
+  toggleBlockType={[Function]}
+  toggleInlineStyle={[Function]}
+>
+  <ToolbarGroup
+    key="styles"
+  >
+    <div
+      className="Draftail-ToolbarGroup"
+    >
+      <ToolbarButton
+        active={false}
+        icon={null}
+        key="TEST_1"
+        label="Test 1"
+        name="TEST_1"
+        onClick={[Function]}
+        title={null}
+      >
+        <button
+          aria-label={null}
+          className="Draftail-ToolbarButton"
+          data-draftail-balloon={null}
+          name="TEST_1"
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          tabIndex={-1}
+          type="button"
+        >
+          <span
+            className="Draftail-ToolbarButton__label"
+          >
+            Test 1
+          </span>
+        </button>
+      </ToolbarButton>
+      <ToolbarButton
+        active={false}
+        icon={null}
+        key="TEST_2"
+        label="Test 2"
+        name="TEST_2"
+        onClick={[Function]}
+        title={null}
+      >
+        <button
+          aria-label={null}
+          className="Draftail-ToolbarButton"
+          data-draftail-balloon={null}
+          name="TEST_2"
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          tabIndex={-1}
+          type="button"
+        >
+          <span
+            className="Draftail-ToolbarButton__label"
+          >
+            Test 2
+          </span>
+        </button>
+      </ToolbarButton>
+      <ToolbarButton
+        active={false}
+        icon={null}
+        key="TEST_3"
+        label="Test 3"
+        name="TEST_3"
+        onClick={[Function]}
+        title={null}
+      >
+        <button
+          aria-label={null}
+          className="Draftail-ToolbarButton"
+          data-draftail-balloon={null}
+          name="TEST_3"
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          tabIndex={-1}
+          type="button"
+        >
+          <span
+            className="Draftail-ToolbarButton__label"
+          >
+            Test 3
+          </span>
+        </button>
+      </ToolbarButton>
+    </div>
+  </ToolbarGroup>
+  <ToolbarGroup
+    key="blocks"
+  />
+  <ToolbarGroup
+    key="entities"
+  />
+</ToolbarDefaults>
+`;
+
+exports[`ToolbarDefaults #showRedoControl control overrides 1`] = `
+<ToolbarDefaults
+  addBR={[Function]}
+  addHR={[Function]}
+  blockTypes={Array []}
+  currentBlock="unstyled"
+  currentStyles={Immutable.OrderedSet []}
+  enableHorizontalRule={false}
+  enableLineBreak={false}
+  entityTypes={Array []}
+  inlineStyles={Array []}
+  onRequestSource={[Function]}
+  onUndoRedo={[Function]}
+  showRedoControl={
+    Object {
+      "description": "Redo last change",
+      "icon": "#icon-redo",
+      "label": "Redo",
+    }
+  }
+  showUndoControl={false}
+  toggleBlockType={[Function]}
+  toggleInlineStyle={[Function]}
+>
+  <ToolbarGroup
+    key="styles"
+  />
+  <ToolbarGroup
+    key="blocks"
+  />
+  <ToolbarGroup
+    key="entities"
+  />
+</ToolbarDefaults>
+`;
+
+exports[`ToolbarDefaults #showRedoControl works 1`] = `
+<ToolbarDefaults
+  addBR={[Function]}
+  addHR={[Function]}
+  blockTypes={Array []}
+  currentBlock="unstyled"
+  currentStyles={Immutable.OrderedSet []}
+  enableHorizontalRule={false}
+  enableLineBreak={false}
+  entityTypes={Array []}
+  inlineStyles={Array []}
+  onRequestSource={[Function]}
+  onUndoRedo={[Function]}
+  showRedoControl={true}
+  showUndoControl={false}
+  toggleBlockType={[Function]}
+  toggleInlineStyle={[Function]}
+>
+  <ToolbarGroup
+    key="styles"
+  />
+  <ToolbarGroup
+    key="blocks"
+  />
+  <ToolbarGroup
+    key="entities"
+  />
+</ToolbarDefaults>
+`;
+
+exports[`ToolbarDefaults #showUndoControl control overrides 1`] = `
+<ToolbarDefaults
+  addBR={[Function]}
+  addHR={[Function]}
+  blockTypes={Array []}
+  currentBlock="unstyled"
+  currentStyles={Immutable.OrderedSet []}
+  enableHorizontalRule={false}
+  enableLineBreak={false}
+  entityTypes={Array []}
+  inlineStyles={Array []}
+  onRequestSource={[Function]}
+  onUndoRedo={[Function]}
+  showRedoControl={false}
+  showUndoControl={
+    Object {
+      "description": "Undo last change",
+      "icon": "#icon-undo",
+      "label": "Undo",
+    }
+  }
+  toggleBlockType={[Function]}
+  toggleInlineStyle={[Function]}
+>
+  <ToolbarGroup
+    key="styles"
+  />
+  <ToolbarGroup
+    key="blocks"
+  />
+  <ToolbarGroup
+    key="entities"
+  />
+</ToolbarDefaults>
+`;
+
+exports[`ToolbarDefaults #showUndoControl works 1`] = `
+<ToolbarDefaults
+  addBR={[Function]}
+  addHR={[Function]}
+  blockTypes={Array []}
+  currentBlock="unstyled"
+  currentStyles={Immutable.OrderedSet []}
+  enableHorizontalRule={false}
+  enableLineBreak={false}
+  entityTypes={Array []}
+  inlineStyles={Array []}
+  onRequestSource={[Function]}
+  onUndoRedo={[Function]}
+  showRedoControl={false}
+  showUndoControl={true}
+  toggleBlockType={[Function]}
+  toggleInlineStyle={[Function]}
+>
+  <ToolbarGroup
+    key="styles"
+  />
+  <ToolbarGroup
+    key="blocks"
+  />
+  <ToolbarGroup
+    key="entities"
+  />
+</ToolbarDefaults>
+`;
+
+exports[`ToolbarDefaults empty 1`] = `
+Array [
+  <ToolbarGroup
+    key="styles"
+  />,
+  <ToolbarGroup
+    key="blocks"
+  />,
+  <ToolbarGroup
+    key="entities"
+  />,
+]
+`;

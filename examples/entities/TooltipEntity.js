@@ -20,6 +20,7 @@ type Props = {
   onEdit: (string) => void,
   // Call with the entityKey to remove the entity.
   onRemove: (string) => void,
+  textDirectionality: "LTR" | "RTL",
   icon: string | Node,
   label: string,
 };
@@ -55,8 +56,16 @@ class TooltipEntity extends Component<Props, State> {
   }
 
   render() {
-    const { entityKey, contentState, children, onEdit, onRemove, icon, label } =
-      this.props;
+    const {
+      entityKey,
+      contentState,
+      children,
+      onEdit,
+      onRemove,
+      textDirectionality,
+      icon,
+      label,
+    } = this.props;
     const { showTooltipAt } = this.state;
     const { url } = contentState.getEntity(entityKey).getData();
 
@@ -73,7 +82,11 @@ class TooltipEntity extends Component<Props, State> {
             closeOnType
             closeOnResize
           >
-            <Tooltip target={showTooltipAt} direction="top">
+            <Tooltip
+              target={showTooltipAt}
+              direction="top"
+              textDirectionality={textDirectionality}
+            >
               <a
                 href={url}
                 title={url}

@@ -35,7 +35,7 @@ export const INLINE_CONTROL = {
     icon: "#icon-strikethrough",
   },
   MARK: { type: INLINE_STYLE.MARK, icon: "#icon-info" },
-  QUOTATION: { type: INLINE_STYLE.QUOTATION, icon: "#icon-quotes-right" },
+  QUOTATION: { type: INLINE_STYLE.QUOTATION, icon: "#icon-quotes-end" },
   SMALL: { type: INLINE_STYLE.SMALL, icon: "#icon-font-size" },
   SAMPLE: { type: INLINE_STYLE.SAMPLE, icon: "#icon-lab" },
   INSERT: { type: INLINE_STYLE.INSERT, label: "+" },

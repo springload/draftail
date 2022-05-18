@@ -3,6 +3,13 @@
   border: $draftail-editor-border;
   border-radius: $draftail-editor-radius;
 
+  --draftail-text-direction: 1;
+
+  &[dir="rtl"],
+  [dir="rtl"] & {
+    --draftail-text-direction: -1;
+  }
+
   &--hide-placeholder .public-DraftEditorPlaceholder-root {
     display: none;
   }
@@ -18,7 +25,7 @@
         display: block;
         position: absolute;
         top: 0;
-        left: 0;
+        inset-inline-start: 0;
         height: 100%;
         width: 100%;
         z-index: $draftail-overlay-z-index;

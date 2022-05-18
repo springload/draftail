@@ -3,34 +3,34 @@ $tooltip-arrow-spacing: 25px;
 
 @mixin arrow--top {
   margin-top: $tooltip-arrow-spacing;
-  transform: translateX(-50%);
+  transform: translateX(calc(-50% * var(--draftail-text-direction)));
 
   &::before {
     bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    inset-inline-start: 50%;
+    transform: translateX(calc(-50% * var(--draftail-text-direction)));
     border-bottom-color: $draftail-tooltip-chrome;
   }
 }
 
-@mixin arrow--left {
-  margin-left: $tooltip-arrow-spacing;
+@mixin arrow--start {
+  margin-inline-start: $tooltip-arrow-spacing;
   transform: translateY(-50%);
 
   &::before {
     top: 50%;
-    right: 100%;
+    inset-inline-end: 100%;
     transform: translateY(-50%);
-    border-right-color: $draftail-tooltip-chrome;
+    border-inline-end-color: $draftail-tooltip-chrome;
   }
 }
 
-@mixin arrow--top-left {
+@mixin arrow--top-start {
   margin-top: $tooltip-arrow-spacing;
 
   &::before {
     bottom: 100%;
-    left: $tooltip-arrow-spacing;
+    inset-inline-start: $tooltip-arrow-spacing;
     border-bottom-color: $draftail-tooltip-chrome;
   }
 }
@@ -43,6 +43,13 @@ $tooltip-arrow-spacing: 25px;
   z-index: $draftail-tooltip-z-index;
   border-radius: $draftail-tooltip-radius;
 
+  --draftail-text-direction: 1;
+
+  &[dir="rtl"],
+  [dir="rtl"] & {
+    --draftail-text-direction: -1;
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -53,17 +60,17 @@ $tooltip-arrow-spacing: 25px;
     @include arrow--top();
   }
 
-  &--left {
-    @include arrow--left();
+  &--start {
+    @include arrow--start();
   }
 
-  &--top-left {
-    @include arrow--top-left();
+  &--top-start {
+    @include arrow--top-start();
   }
 }
 
 .Tooltip__link {
-  margin-right: $controls-spacing * 4;
+  margin-inline-end: $controls-spacing * 4;
   display: inline-block;
 }
 
@@ -77,6 +84,6 @@ $tooltip-arrow-spacing: 25px;
   cursor: pointer;
 
   + .Tooltip__button {
-    margin-left: $button-spacing;
+    margin-inline-start: $button-spacing;
   }
 }

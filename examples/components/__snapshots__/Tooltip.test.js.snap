@@ -1,12 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tooltip #direction left 1`] = `
+exports[`Tooltip #direction start 1`] = `
 <div
-  className="Tooltip Tooltip--left"
+  className="Tooltip Tooltip--start"
+  dir="ltr"
   role="tooltip"
   style={
     Object {
-      "left": 13,
+      "insetInlineStart": 13,
       "top": 601,
     }
   }
@@ -18,10 +19,11 @@ exports[`Tooltip #direction left 1`] = `
 exports[`Tooltip #direction top 1`] = `
 <div
   className="Tooltip Tooltip--top"
+  dir="ltr"
   role="tooltip"
   style={
     Object {
-      "left": 7,
+      "insetInlineStart": 7,
       "top": 1201,
     }
   }
@@ -30,13 +32,14 @@ exports[`Tooltip #direction top 1`] = `
 </div>
 `;
 
-exports[`Tooltip #direction top-left 1`] = `
+exports[`Tooltip #direction top-start 1`] = `
 <div
-  className="Tooltip Tooltip--top-left"
+  className="Tooltip Tooltip--top-start"
+  dir="ltr"
   role="tooltip"
   style={
     Object {
-      "left": 1,
+      "insetInlineStart": 1,
       "top": 1201,
     }
   }

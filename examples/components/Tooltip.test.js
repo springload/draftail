@@ -21,20 +21,20 @@ describe("Tooltip", () => {
     ).toMatchSnapshot();
   });
 
-  it("#direction left", () => {
+  it("#direction start", () => {
     expect(
       shallow(
-        <Tooltip target={target} direction="left">
+        <Tooltip target={target} direction="start">
           Test
         </Tooltip>,
       ),
     ).toMatchSnapshot();
   });
 
-  it("#direction top-left", () => {
+  it("#direction top-start", () => {
     expect(
       shallow(
-        <Tooltip target={target} direction="top-left">
+        <Tooltip target={target} direction="top-start">
           Test
         </Tooltip>,
       ),

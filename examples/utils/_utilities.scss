@@ -14,6 +14,18 @@
   font-style: italic;
 }
 
+.docs-rtl-support {
+  // Flip icons that are directional.
+  [name="ordered-list-item"],
+  [name="unordered-list-item"],
+  [name="ITALIC"],
+  [name="BOLD"] {
+    .Draftail-Icon {
+      transform: scaleX(-1);
+    }
+  }
+}
+
 .docs-ui-theming .Draftail-Toolbar,
 .docs-custom-toolbars .Draftail-Toolbar--bottom {
   padding-inline: 0;

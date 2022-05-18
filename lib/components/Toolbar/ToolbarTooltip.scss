@@ -34,28 +34,28 @@ $balloon-font-size: 0.875em;
 
 @mixin balloon-position-down {
   &::after {
-    left: 50%;
+    inset-inline-start: 50%;
     margin-top: $balloon-arrow-offset + $balloon-arrow-height;
     top: 100%;
-    transform: translate(-50%, -10px);
+    transform: translate(calc(-50% * var(--draftail-text-direction)), -10px);
   }
 
   &::before {
     @include svg-arrow-down($color: $balloon-bg);
 
-    left: 50%;
+    inset-inline-start: 50%;
     margin-top: $balloon-arrow-offset;
     top: 100%;
-    transform: translate(-50%, -10px);
+    transform: translate(calc(-50% * var(--draftail-text-direction)), -10px);
   }
 
   &:hover {
     &::after {
-      transform: translate(-50%, 0);
+      transform: translate(calc(-50% * var(--draftail-text-direction)), 0);
     }
 
     &::before {
-      transform: translate(-50%, 0);
+      transform: translate(calc(-50% * var(--draftail-text-direction)), 0);
     }
   }
 }

@@ -19,7 +19,7 @@ const Highlight = ({ value }: Props) => (
     <button
       type="button"
       onClick={onCopy.bind(null, value)}
-      style={{ position: "absolute", right: "1rem" }}
+      style={{ position: "absolute", insetInlineEnd: "1rem" }}
     >
       Copy
     </button>

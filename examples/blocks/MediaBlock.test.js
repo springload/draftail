@@ -105,7 +105,7 @@ describe("MediaBlock", () => {
           .dive()
           .instance()
           .portal.querySelector(".Tooltip").className,
-      ).toBe("Tooltip Tooltip--left");
+      ).toBe("Tooltip Tooltip--start");
     });
 
     it("closes", () => {

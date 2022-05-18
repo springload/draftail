@@ -15,7 +15,7 @@ $spacing-modal: 0.5rem;
 
 .modal {
   position: absolute;
-  left: 50%;
+  inset-inline-start: 50%;
   top: 25vh;
   min-width: 320px;
   transform: translate(-50%, -50%);
@@ -24,6 +24,13 @@ $spacing-modal: 0.5rem;
   z-index: $modal-z-index;
   background-color: $color-bg-modal;
   animation: modal-in 0.2s $easing-circ 0s backwards;
+
+  --draftail-text-direction: 1;
+
+  &[dir="rtl"],
+  [dir="rtl"] & {
+    --draftail-text-direction: -1;
+  }
 }
 
 .modal--exit {
@@ -37,9 +44,9 @@ $spacing-modal: 0.5rem;
 .modal__overlay {
   position: fixed;
   top: 0;
-  right: 0;
+  inset-inline-end: 0;
   bottom: 0;
-  left: 0;
+  inset-inline-start: 0;
   background-color: $color-bg-modal__overlay;
   z-index: $modal__overlay-z-index;
   cursor: pointer;

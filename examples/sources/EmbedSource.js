@@ -17,6 +17,7 @@ type Props = {|
   },
   entity: ?EntityInstance,
   entityKey: ?string,
+  textDirectionality: "LTR" | "RTL",
 |};
 
 type State = {|
@@ -117,6 +118,7 @@ class EmbedSource extends Component<Props, State> {
   }
 
   render() {
+    const { textDirectionality } = this.props;
     const { url } = this.state;
     return (
       <Modal
@@ -125,7 +127,11 @@ class EmbedSource extends Component<Props, State> {
         isOpen
         contentLabel="Embed chooser"
       >
-        <form className="EmbedSource" onSubmit={this.onConfirm}>
+        <form
+          dir={textDirectionality === "RTL" ? "rtl" : null}
+          className="EmbedSource"
+          onSubmit={this.onConfirm}
+        >
           <label className="form-field">
             <span className="form-field__label">Embed URL</span>
             <input

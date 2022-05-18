@@ -86,7 +86,7 @@ assignees: ""
     * Create a new app and try to reproduce the issue in it.
       This is useful if you roughly know where the problem is, or can’t share the real code.
 
-    * Or, copy your app and remove things until you’re left with the minimal reproducible demo.
+    * Or, copy your app and remove things until you arrive at the minimal reproducible demo.
       This is useful for finding the root cause. You may then optionally create a new project.
 
   Once you’re done, push the project to GitHub and paste the link to it below:

@@ -58,9 +58,10 @@ exports[`MediaBlock tooltip opens 1`] = `
 <div>
   <div>
     <div
-      class="Tooltip Tooltip--top-left"
+      class="Tooltip Tooltip--top-start"
+      dir="ltr"
       role="tooltip"
-      style="top: 0px; left: 0px;"
+      style="top: 0px; inset-inline-start: 0;"
     >
       <div
         style="max-width: 300px;"

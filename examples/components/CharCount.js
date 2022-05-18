@@ -4,7 +4,8 @@ import { EditorState } from "draft-js";
 
 type Props = {|
   getEditorState: () => EditorState,
-  maxLength: ?number,
+  // eslint-disable-next-line @thibaudcolas/cookbook/react/require-default-props
+  maxLength?: ?number,
 |};
 
 // const countParagraphs = (str) => (str ? str.match(/\n+/g).length + 1 : 0);
@@ -23,7 +24,7 @@ const countChars = (str) => (str ? str.match(/./gu).length : 0);
  * Shows the editor’s character count, with a calculation of unicode characters
  * matching that of `maxlength` attributes.
  */
-const CharCount = ({ getEditorState, maxLength }: Props) => {
+const CharCount = ({ getEditorState, maxLength = null }: Props) => {
   const editorState = getEditorState();
   const content = editorState.getCurrentContent();
   const text = content.getPlainText();

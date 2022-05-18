@@ -42,7 +42,7 @@ touch .env
 > Everything mentioned in the installation process should already be done.
 
 ```sh
-# Make sure you use the right node version.
+# Make sure you use the correct node version.
 nvm use
 # Start the server and the development tools.
 npm run start

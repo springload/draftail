@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from "react";
 
-import { RichUtils, EditorState, Modifier } from "draft-js";
+import { RichUtils, EditorState } from "draft-js";
 import type { EntityInstance } from "draft-js";
 
 import Modal from "../components/Modal";
@@ -14,6 +14,7 @@ type Props = {|
     type: string,
   },
   entity: ?EntityInstance,
+  textDirectionality: "LTR" | "RTL",
 |};
 
 type State = {|
@@ -100,6 +101,7 @@ class LinkSource extends Component<Props, State> {
   }
 
   render() {
+    const { textDirectionality } = this.props;
     const { url } = this.state;
     return (
       <Modal
@@ -108,7 +110,11 @@ class LinkSource extends Component<Props, State> {
         isOpen
         contentLabel="Link chooser"
       >
-        <form className="LinkSource" onSubmit={this.onConfirm}>
+        <form
+          dir={textDirectionality === "RTL" ? "rtl" : null}
+          className="LinkSource"
+          onSubmit={this.onConfirm}
+        >
           <label className="form-field">
             <span className="form-field__label">Link URL</span>
             <input

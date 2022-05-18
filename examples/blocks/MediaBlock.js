@@ -27,6 +27,8 @@ export type BlockProps = {|
     description: string,
     icon: string | string[] | Node,
   },
+  /** Optionally set the overriding text directionality for this editor. */
+  textDirectionality: "LTR" | "RTL" | null,
   /** Make the whole editor read-only, except for the block. */
   lockEditor: () => void,
   /** Make the editor editable again. */
@@ -96,7 +98,8 @@ class MediaBlock extends Component<Props, State> {
 
   /* :: renderTooltip: () => ?Node; */
   renderTooltip() {
-    const { children } = this.props;
+    const { children, blockProps } = this.props;
+    const { textDirectionality } = blockProps;
     const { tooltip } = this.state;
 
     if (!tooltip) {
@@ -104,7 +107,7 @@ class MediaBlock extends Component<Props, State> {
     }
 
     const maxWidth = tooltip.containerWidth - tooltip.target.width;
-    const direction = maxWidth >= TOOLTIP_MAX_WIDTH ? "left" : "top-left";
+    const direction = maxWidth >= TOOLTIP_MAX_WIDTH ? "start" : "top-start";
 
     return (
       <Portal
@@ -113,7 +116,11 @@ class MediaBlock extends Component<Props, State> {
         closeOnType
         closeOnResize
       >
-        <Tooltip target={tooltip.target} direction={direction}>
+        <Tooltip
+          target={tooltip.target}
+          direction={direction}
+          textDirectionality={textDirectionality}
+        >
           <div style={{ maxWidth: OPTIONS_MAX_WIDTH }}>{children}</div>
         </Tooltip>
       </Portal>

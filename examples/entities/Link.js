@@ -11,6 +11,7 @@ type Props = {|
   children: Node,
   onEdit: (string) => void,
   onRemove: (string) => void,
+  textDirectionality: "LTR" | "RTL",
 |};
 
 const CUSTOM_ICON_URLS = {
@@ -43,6 +44,7 @@ const Link = ({
   children,
   onEdit,
   onRemove,
+  textDirectionality,
 }: Props) => {
   const { url, linkType } = contentState.getEntity(entityKey).getData();
   const icon = getLinkIcon(url, linkType);
@@ -54,6 +56,7 @@ const Link = ({
       contentState={contentState}
       onEdit={onEdit}
       onRemove={onRemove}
+      textDirectionality={textDirectionality}
       icon={icon}
       label={label}
     >

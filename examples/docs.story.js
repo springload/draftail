@@ -254,6 +254,92 @@ storiesOf("Docs", module)
       />
     </div>
   ))
+  .add("RTL support", () => (
+    <div className="docs-rtl-support" dir="rtl">
+      <EditorWrapper
+        id="docs-rtl-support"
+        rawContentState={{
+          blocks: [
+            {
+              text: "ما تبحث عنه يبحث عنك",
+              type: "blockquote",
+              entityRanges: [
+                {
+                  offset: 3,
+                  length: 4,
+                  key: 0,
+                },
+              ],
+            },
+            {
+              text: " ",
+              type: "atomic",
+              entityRanges: [
+                {
+                  offset: 0,
+                  length: 1,
+                  key: 1,
+                },
+              ],
+            },
+            { text: "إنجليزي", type: "unordered-list-item" },
+            { text: "العربية", type: "unordered-list-item" },
+            { text: "اللغة العِبْرِيَّة", type: "unordered-list-item" },
+            { text: "اللُغَةُ الْفَارِسِيَّةُ", type: "unordered-list-item" },
+          ],
+          entityMap: {
+            0: {
+              type: "LINK",
+              data: {
+                url: "https://www.example.com/",
+              },
+            },
+            1: {
+              type: "IMAGE",
+              data: {
+                src: "/static/example-lowres-image.jpg",
+                alt: "",
+              },
+            },
+          },
+        }}
+        textDirectionality="RTL"
+        placeholder="اكتب هنا…"
+        enableHorizontalRule={{ description: "خط أفقي" }}
+        enableLineBreak={{ description: "الخط مقطوع" }}
+        showUndoControl={{ description: "تراجع" }}
+        showRedoControl={{ description: "إعادة" }}
+        stripPastedStyles={false}
+        maxListNesting={6}
+        spellCheck
+        entityTypes={[
+          { ...ENTITY_CONTROL.IMAGE, description: "صورة" },
+          { ...ENTITY_CONTROL.EMBED, description: "تضمين" },
+          { ...ENTITY_CONTROL.LINK, description: "ارتباط" },
+          { ...ENTITY_CONTROL.DOCUMENT, description: "المستند" },
+        ]}
+        blockTypes={[
+          { ...BLOCK_CONTROL.HEADER_TWO, label: "2H", description: "عنوان 2" },
+          {
+            ...BLOCK_CONTROL.HEADER_THREE,
+            label: "3H",
+            description: "عنوان 3",
+          },
+          { ...BLOCK_CONTROL.HEADER_FOUR, label: "4H", description: "عنوان 4" },
+          { ...BLOCK_CONTROL.HEADER_FIVE, label: "5H", description: "عنوان 5" },
+          {
+            ...BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+            description: "قائمة تعداد نقطي",
+          },
+          { ...BLOCK_CONTROL.ORDERED_LIST_ITEM, description: "قائمة مرقمَّة" },
+        ]}
+        inlineStyles={[
+          { ...INLINE_CONTROL.BOLD, description: "غامق" },
+          { ...INLINE_CONTROL.ITALIC, description: "مائل" },
+        ]}
+      />
+    </div>
+  ))
   .add("No toolbar", () => (
     <div className="no-toolbar">
       <EditorWrapper
@@ -426,9 +512,10 @@ storiesOf("Docs", module)
         },
       ]}
       entityTypes={[
-        Object.assign({}, ENTITY_CONTROL.LINK, {
+        {
+          ...ENTITY_CONTROL.LINK,
           description: "Lien",
-        }),
+        },
       ]}
     />
   ))

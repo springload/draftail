@@ -112,14 +112,12 @@ export default (config = {}) => {
     },
     keyBindingFn(evt, { getEditorState, setEditorState }) {
       const editorState = getEditorState();
-      // TODO match by entitiy instead of block type
+      // TODO match by entity instead of block type
       if (focusableBlockIsSelected(editorState, blockKeyStore)) {
-        // arrow left
-        if (evt.keyCode === 37) {
+        if (evt.key === "ArrowLeft") {
           setSelection(getEditorState, setEditorState, "up", evt);
         }
-        // arrow right
-        if (evt.keyCode === 39) {
+        if (evt.key === "ArrowRight") {
           setSelection(getEditorState, setEditorState, "down", evt);
         }
       }
@@ -130,8 +128,7 @@ export default (config = {}) => {
         return;
       }
 
-      // arrow left
-      if (evt.keyCode === 37) {
+      if (evt.key === "ArrowLeft") {
         // Covering the case to select the before block
         const selection = editorState.getSelection();
         const selectionKey = selection.getAnchorKey();
@@ -147,8 +144,7 @@ export default (config = {}) => {
           setSelection(getEditorState, setEditorState, "up", evt);
         }
       }
-      // arrow right
-      if (evt.keyCode === 39) {
+      if (evt.key === "ArrowRight") {
         // Covering the case to select the after block
         const selection = editorState.getSelection();
         const selectionKey = selection.getFocusKey();

@@ -13,6 +13,7 @@ type Props = {|
     type: string,
   },
   entity: ?EntityInstance,
+  textDirectionality: "LTR" | "RTL",
 |};
 
 type State = {|
@@ -99,6 +100,7 @@ class DocumentSource extends Component<Props, State> {
   }
 
   render() {
+    const { textDirectionality } = this.props;
     const { url } = this.state;
     return (
       <Modal
@@ -107,7 +109,11 @@ class DocumentSource extends Component<Props, State> {
         isOpen
         contentLabel="Document chooser"
       >
-        <form className="DocumentSource" onSubmit={this.onConfirm}>
+        <form
+          dir={textDirectionality === "RTL" ? "rtl" : null}
+          className="DocumentSource"
+          onSubmit={this.onConfirm}
+        >
           <label className="form-field">
             <span className="form-field__label">Document URL</span>
             <input

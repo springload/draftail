@@ -9,6 +9,7 @@ import { DraftUtils } from "../../lib/index";
 type Props = {|
   block: ContentBlock,
   blockProps: BlockProps,
+  textDirectionality: "RTL" | "LTR",
 |};
 
 /**

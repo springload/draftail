@@ -2,6 +2,6 @@
   text-align: center;
 
   @include xsmall() {
-    text-align: left;
+    text-align: start;
   }
 }

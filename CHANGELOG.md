@@ -18,10 +18,15 @@
 ### Changed
 
 - The controls API now expects JS objects similarly to other APIs. Controls can now declare in what type of toolbar they should be rendered: `block` (static top toolbar), `inline` (floating toolbar), `meta` (bottom / meta toolbar).
+- Draftail now uses [CSS logical properties and values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties) to support right-to-left (RTL) languages.
 
 ### Fixed
 
 - Fix Sass deprecation warning with `/` slash character for divisions and separators.
+
+### Removed
+
+- Remove IE11 support
 
 ### Breaking changes
 

@@ -12,7 +12,7 @@
   &__icon-wrapper {
     position: absolute;
     top: 0;
-    right: 0;
+    inset-inline-end: 0;
     background: $draftail-editor-chrome;
     color: $draftail-editor-chrome-text;
     line-height: 1;
@@ -56,7 +56,7 @@
       // It’s ok for the loading state not to be visible on all supported browsers.
       // stylelint-disable-next-line plugin/no-unsupported-browser-features
       background: linear-gradient(
-        to right,
+        90deg,
         $draftail-editor-chrome 10%,
         $draftail-editor-chrome-accent 18%,
         $draftail-editor-chrome 33%

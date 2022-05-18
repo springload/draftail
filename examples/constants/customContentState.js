@@ -68,7 +68,7 @@ export default {
     },
     {
       key: "9cgaa",
-      text: "    margin-right: 10px;",
+      text: "    margin-inline-end: 10px;",
       type: "code-block",
       depth: 0,
       inlineStyleRanges: [],

@@ -3,8 +3,8 @@ import React from "react";
 import type { Node } from "react";
 
 const TOP = "top";
-const LEFT = "left";
-const TOP_LEFT = "top-left";
+const START = "start";
+const TOP_START = "top-start";
 
 export type Rect = {
   top: number,
@@ -13,30 +13,36 @@ export type Rect = {
   height: number,
 };
 
-type Direction = "top" | "left" | "top-left";
+type Direction = "top" | "start" | "top-start";
 
 const getTooltipStyles = (
   target: Rect,
   direction: Direction,
-): {| top: number, left: number |} => {
-  const top = window.pageYOffset + target.top;
-  const left = window.pageXOffset + target.left;
+  textDirectionality: "RTL" | "LTR" | null,
+): {| top: number, insetInlineStart: number |} => {
+  const documentRTL = document.dir === "rtl";
+  const forcedRTL = textDirectionality === "RTL";
+  const isRTL = forcedRTL || documentRTL;
+  const dirFactor = isRTL ? -1 : 1;
+  const top = window.scrollY + target.top;
+  const start =
+    window.scrollX + dirFactor * target.left + (isRTL ? window.innerWidth : 0);
   switch (direction) {
     case TOP:
       return {
         top: top + target.height,
-        left: left + target.width / 2,
+        insetInlineStart: start + dirFactor * (target.width / 2),
       };
-    case LEFT:
+    case START:
       return {
         top: top + target.height / 2,
-        left: left + target.width,
+        insetInlineStart: start + (isRTL ? 0 : target.width),
       };
-    case TOP_LEFT:
+    case TOP_START:
     default:
       return {
         top: top + target.height,
-        left,
+        insetInlineStart: start,
       };
   }
 };
@@ -45,16 +51,23 @@ type Props = {|
   target: Rect,
   children: Node,
   direction: Direction,
+  textDirectionality: "LTR" | "RTL" | null,
 |};
 
 /**
  * A tooltip, with arbitrary content.
  */
-const Tooltip = ({ target, children, direction }: Props) => (
+const Tooltip = ({
+  target,
+  children,
+  direction,
+  textDirectionality,
+}: Props) => (
   <div
-    style={getTooltipStyles(target, direction)}
+    style={getTooltipStyles(target, direction, textDirectionality)}
     className={`Tooltip Tooltip--${direction}`}
     role="tooltip"
+    dir={textDirectionality === "RTL" ? "rtl" : "ltr"}
   >
     {children}
   </div>

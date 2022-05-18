@@ -3,6 +3,7 @@
 exports[`DraftailEditor #maxListNesting 1`] = `
 <div
   className="Draftail-Editor"
+  dir={null}
 >
   <Toolbar
     addBR={[Function]}
@@ -203,6 +204,7 @@ exports[`DraftailEditor #maxListNesting 1`] = `
 exports[`DraftailEditor empty 1`] = `
 <div
   className="Draftail-Editor"
+  dir={null}
 >
   <Toolbar
     addBR={[Function]}
