@@ -53,6 +53,9 @@
     "@sentry/browser": "5.27.4",
     "@storybook/addon-storyshots": "^6.4.22",
     "@storybook/react": "^6.4.22",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^12.1.5",
+    "@testing-library/user-event": "^14.2.0",
     "@thibaudcolas/eslint-plugin-cookbook": "4.0.1",
     "@thibaudcolas/stylelint-config-cookbook": "2.0.1",
     "babel-eslint": "10.0.3",
@@ -133,7 +136,6 @@
     "report:size": "uglifyjs --compress --mangle -- dist/draftail.cjs.js > dist/draftail.cjs.min.js && gzip --keep dist/* && wc -c dist/* | tee -a public/size.txt && date >> public/size.txt && rm dist/*.gz && rm dist/*.min.js",
     "report:package": "npm pack --loglevel notice 2>&1 >/dev/null | sed -e 's/^npm notice //' | tee -a public/package.txt && date >> public/package.txt && rm *.tgz",
     "test:ci": "npm run lint -s && npm run test:coverage -s --json --runInBand && npm run dist -s && npm run test:integration -s && npm run test:performance -s",
-    "prepublishOnly": "npm run dist -s",
     "prepare": "./.githooks/deploy.sh"
   }
 }

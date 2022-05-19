@@ -171,6 +171,12 @@ declare namespace Draftail {
     autoCorrect?: string | null;
     /** See https://draftjs.org/docs/api-reference-editor.html#aria-props. */
     ariaDescribedBy?: string | null;
+    ariaExpanded: ?boolean;
+    ariaLabel: ?string;
+    ariaLabelledBy: ?string;
+    ariaMultiline: ?boolean;
+    ariaOwneeID: ?string;
+    ariaRequired: ?string;
     /** List of the available block types. */
     blockTypes?: BlockType[];
     /** List of the available inline styles. */
