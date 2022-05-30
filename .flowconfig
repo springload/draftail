@@ -19,6 +19,7 @@ suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
 [lints]
 all=error
 sketchy-null-string=off
+sketchy-null-mixed=off
 
 [options]
 module.name_mapper='.*\(.scss\)' -> 'empty/object'
