@@ -37,7 +37,7 @@ const CharCount = ({ getEditorState, maxLength = null }: Props) => {
   const content = editorState.getCurrentContent();
   const text = content.getPlainText();
   // $FlowFixMe
-  const suffix = typeof maxLength !== "undefined" ? `/${maxLength}` : "";
+  const suffix = maxLength ? `/${maxLength}` : "";
 
   return (
     <div className="Draftail-ToolbarButton CharCount">{`${countChars(
