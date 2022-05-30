@@ -5,7 +5,6 @@ import {
   getByText,
   render,
   screen,
-  waitFor,
 } from "@testing-library/react";
 import { DraftailEditor } from "../lib";
 
