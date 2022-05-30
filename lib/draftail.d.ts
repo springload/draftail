@@ -141,6 +141,8 @@ declare namespace Draftail {
     showRedoControl?: boolean | BtnMetaProps;
     /** Disable copy/paste of rich text in the editor. */
     stripPastedStyles?: boolean;
+    /** Set if the editor supports multiple lines / blocks of text, or only a single line. */
+    multiline?: boolean;
     /** Set whether spellcheck is turned on for your editor.
      * See https://draftjs.org/docs/api-reference-editor.html#spellcheck.
      */
@@ -174,7 +176,6 @@ declare namespace Draftail {
     ariaExpanded: ?boolean;
     ariaLabel: ?string;
     ariaLabelledBy: ?string;
-    ariaMultiline: ?boolean;
     ariaOwneeID: ?string;
     ariaRequired: ?string;
     /** List of the available block types. */

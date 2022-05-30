@@ -14,6 +14,7 @@ type Props = {|
   children: Node,
   onEdit: (string) => void,
   onRemove: (string) => void,
+  textDirectionality: "LTR" | "RTL",
 |};
 
 const Document = ({
@@ -22,6 +23,7 @@ const Document = ({
   children,
   onEdit,
   onRemove,
+  textDirectionality,
 }: Props) => {
   const { url, id } = contentState.getEntity(entityKey).getData();
   // Supports documents defined based on a URL, and id.
@@ -32,6 +34,7 @@ const Document = ({
       contentState={contentState}
       onEdit={onEdit}
       onRemove={onRemove}
+      textDirectionality={textDirectionality}
       icon={DOCUMENT_ICON}
       label={label}
     >

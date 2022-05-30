@@ -18,7 +18,15 @@ type Props = {|
  * - https://github.com/RadLikeWhoa/Countable/blob/master/Countable.js#L29
  * - https://mathiasbynens.be/notes/javascript-unicode
  */
-const countChars = (str) => (str ? str.match(/./gu).length : 0);
+const countChars = (str) => {
+  if (str) {
+    // Impossible for `match` to be null here since this matches all characters.
+    // $FlowFixMe
+    return str.match(/./gu).length;
+  }
+
+  return 0;
+};
 
 /**
  * Shows the editor’s character count, with a calculation of unicode characters
@@ -28,7 +36,8 @@ const CharCount = ({ getEditorState, maxLength = null }: Props) => {
   const editorState = getEditorState();
   const content = editorState.getCurrentContent();
   const text = content.getPlainText();
-  const suffix = maxLength ? `/${maxLength}` : "";
+  // $FlowFixMe
+  const suffix = typeof maxLength !== "undefined" ? `/${maxLength}` : "";
 
   return (
     <div className="Draftail-ToolbarButton CharCount">{`${countChars(

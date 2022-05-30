@@ -215,6 +215,4 @@ class ColorPicker extends Component<Props, State> {
   }
 }
 
-ColorPicker.type = "INLINE_CONTROL";
-
 export default ColorPicker;

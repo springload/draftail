@@ -607,6 +607,15 @@ storiesOf("Docs", module)
       />
     );
   })
+  .add("Single-line", () => (
+    <EditorWrapper
+      id="single-line"
+      inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
+      entityTypes={[ENTITY_CONTROL.LINK]}
+      enableLineBreak
+      multiline={false}
+    />
+  ))
   .add("Form validation", () => (
     <Formik
       initialValues={{ content: null }}
