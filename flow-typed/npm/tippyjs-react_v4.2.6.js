@@ -3,7 +3,7 @@
 declare module "@tippyjs/react" {
   declare type DefaultProps = {
     visible?: boolean,
-    getReferenceClientRect?: () => {},
+    getReferenceClientRect?: () => ?ClientRect,
     maxWidth?: string,
     interactive?: boolean,
     appendTo?: () => HTMLElement | null,
