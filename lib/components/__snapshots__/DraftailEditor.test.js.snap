@@ -28,6 +28,12 @@ exports[`DraftailEditor #maxListNesting 1`] = `
   />
   <PluginEditor
     ariaDescribedBy={null}
+    ariaExpanded={null}
+    ariaLabel={null}
+    ariaLabelledBy={null}
+    ariaMultiline={true}
+    ariaOwneeID={null}
+    ariaRequired={null}
     autoCapitalize={null}
     autoComplete={null}
     autoCorrect={null}
@@ -229,6 +235,12 @@ exports[`DraftailEditor empty 1`] = `
   />
   <PluginEditor
     ariaDescribedBy={null}
+    ariaExpanded={null}
+    ariaLabel={null}
+    ariaLabelledBy={null}
+    ariaMultiline={true}
+    ariaOwneeID={null}
+    ariaRequired={null}
     autoCapitalize={null}
     autoComplete={null}
     autoCorrect={null}
