@@ -394,7 +394,7 @@ storiesOf("Docs", module)
         ]}
         controls={[
           {
-            inline: BlockPicker,
+            inline: CharCount,
           },
           {
             meta: CharCount,
