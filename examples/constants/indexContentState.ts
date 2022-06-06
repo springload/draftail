@@ -1,0 +1,381 @@
+export default {
+  entityMap: {
+    "0": {
+      type: "LINK",
+      mutability: "MUTABLE",
+      data: {
+        url: "https://github.com/facebook/draft-js",
+      },
+    },
+    "1": {
+      type: "LINK",
+      mutability: "MUTABLE",
+      data: {
+        url: "https://support.google.com/docs/answer/179738",
+      },
+    },
+    "2": {
+      type: "LINK",
+      mutability: "MUTABLE",
+      data: {
+        url: "https://en.wikipedia.org/wiki/Markdown",
+      },
+    },
+    "3": {
+      type: "HORIZONTAL_RULE",
+      mutability: "IMMUTABLE",
+      data: {},
+    },
+    "4": {
+      type: "LINK",
+      mutability: "MUTABLE",
+      data: {
+        url: "https://www.draftail.org/docs/keyboard-shortcuts",
+      },
+    },
+    "6": {
+      type: "IMAGE",
+      mutability: "IMMUTABLE",
+      data: {
+        alt: "Test image alt text",
+        src: "/static/example-lowres-image.jpg",
+      },
+    },
+    "7": {
+      type: "LINK",
+      mutability: "MUTABLE",
+      data: {
+        url: "http://embed.ly/",
+      },
+    },
+    "8": {
+      type: "EMBED",
+      mutability: "IMMUTABLE",
+      data: {
+        url: "http://www.youtube.com/watch?v=feUYwoLhE_4",
+        title:
+          "React.js Conf 2016 - Isaac Salier-Hellendag - Rich Text Editing with React",
+        thumbnail: "/static/example-lowres-image2.jpg",
+      },
+    },
+    "9": {
+      type: "HORIZONTAL_RULE",
+      mutability: "IMMUTABLE",
+      data: {},
+    },
+    "10": {
+      type: "HORIZONTAL_RULE",
+      mutability: "IMMUTABLE",
+      data: {},
+    },
+    "11": {
+      type: "LINK",
+      mutability: "MUTABLE",
+      data: {
+        url: "https://github.com/springload/draftail",
+      },
+    },
+    "12": {
+      type: "LINK",
+      mutability: "MUTABLE",
+      data: {
+        url: "https://github.com/springload/draftail#getting-started",
+      },
+    },
+    "13": {
+      type: "LINK",
+      mutability: "MUTABLE",
+      data: {
+        url: "https://github.com/springload/draftail#polyfills",
+      },
+    },
+    "14": {
+      type: "LINK",
+      mutability: "MUTABLE",
+      data: {
+        url: "https://github.com/springload/draftail",
+      },
+    },
+    "15": {
+      type: "HORIZONTAL_RULE",
+      mutability: "IMMUTABLE",
+      data: {},
+    },
+    "16": {
+      type: "LINK",
+      mutability: "MUTABLE",
+      data: {
+        url: "https://github.com/springload/draftail/issues",
+      },
+    },
+    "17": {
+      type: "LINK",
+      mutability: "MUTABLE",
+      data: {
+        url: "https://github.com/springload/draftjs_exporter",
+      },
+    },
+    "18": {
+      type: "LINK",
+      mutability: "MUTABLE",
+      data: {
+        url: "https://github.com/springload/wagtaildraftail",
+      },
+    },
+    "19": {
+      type: "LINK",
+      mutability: "MUTABLE",
+      data: {
+        url:
+          "https://www.springload.co.nz/blog/draftail-next-generation-rich-text-editor-wagtail/",
+      },
+    },
+    "20": {
+      type: "LINK",
+      mutability: "MUTABLE",
+      data: {
+        url: "https://github.com/springload/",
+      },
+    },
+    "21": {
+      type: "LINK",
+      mutability: "MUTABLE",
+      data: {
+        url: "https://wagtail.org/",
+      },
+    },
+    "22": {
+      type: "LINK",
+      mutability: "MUTABLE",
+      data: {
+        url: "https://github.com/thibaudcolas",
+      },
+    },
+  },
+  blocks: [
+    {
+      key: "b0ei9",
+      text: "Draftail is an editor built with Draft.js",
+      type: "header-two",
+      depth: 0,
+      inlineStyleRanges: [],
+      entityRanges: [
+        {
+          offset: 33,
+          length: 8,
+          key: 0,
+        },
+      ],
+      data: {},
+    },
+    {
+      key: "74al",
+      text: "Try it out by editing this text!",
+      type: "unstyled",
+      depth: 0,
+      inlineStyleRanges: [],
+      entityRanges: [],
+      data: {},
+    },
+    {
+      key: "7htbd",
+      text: "Features 📝🍸",
+      type: "header-three",
+      depth: 0,
+      inlineStyleRanges: [],
+      entityRanges: [],
+      data: {},
+    },
+    {
+      key: "32lnv",
+      text:
+        "Draftail aims for a mouse-free experience. Most formatting can be done with keyboard shortcuts only, inspired by Google Docs and Markdown.",
+      type: "unstyled",
+      depth: 0,
+      inlineStyleRanges: [],
+      entityRanges: [
+        {
+          offset: 113,
+          length: 11,
+          key: 1,
+        },
+        {
+          offset: 129,
+          length: 8,
+          key: 2,
+        },
+      ],
+      data: {},
+    },
+    {
+      key: "a15ts",
+      text: " ",
+      type: "atomic",
+      depth: 0,
+      inlineStyleRanges: [],
+      entityRanges: [
+        {
+          offset: 0,
+          length: 1,
+          key: 3,
+        },
+      ],
+      data: {},
+    },
+    {
+      key: "ejqsd",
+      text: "Here are important features worth highlighting:",
+      type: "unstyled",
+      depth: 0,
+      inlineStyleRanges: [],
+      entityRanges: [],
+      data: {},
+    },
+    {
+      key: "2mhgt",
+      text: "Support for keyboard shortcuts. Lots of them!",
+      type: "unordered-list-item",
+      depth: 0,
+      inlineStyleRanges: [],
+      entityRanges: [
+        {
+          offset: 12,
+          length: 18,
+          key: 4,
+        },
+      ],
+      data: {},
+    },
+    {
+      key: "fisb1",
+      text: "Paste from Word. Or any other editor.",
+      type: "unordered-list-item",
+      depth: 0,
+      inlineStyleRanges: [],
+      entityRanges: [],
+      data: {},
+    },
+    {
+      key: "f4gp0",
+      text: "Autolists – start a line with -, *, 1. to create a list item.",
+      type: "unordered-list-item",
+      depth: 0,
+      inlineStyleRanges: [
+        {
+          offset: 30,
+          length: 1,
+          style: "KEYBOARD",
+        },
+        {
+          offset: 33,
+          length: 1,
+          style: "KEYBOARD",
+        },
+        {
+          offset: 36,
+          length: 2,
+          style: "KEYBOARD",
+        },
+      ],
+      entityRanges: [],
+      data: {},
+    },
+    {
+      key: "9pkgn",
+      text: "Shortcuts for heading levels ##, code blocks ```, and more.",
+      type: "unordered-list-item",
+      depth: 0,
+      inlineStyleRanges: [
+        {
+          offset: 29,
+          length: 2,
+          style: "KEYBOARD",
+        },
+        {
+          offset: 45,
+          length: 3,
+          style: "KEYBOARD",
+        },
+      ],
+      entityRanges: [],
+      data: {},
+    },
+    {
+      key: "cum79",
+      text: "Undo / redo – until the end of times.",
+      type: "unordered-list-item",
+      depth: 0,
+      inlineStyleRanges: [],
+      entityRanges: [],
+      data: {},
+    },
+    {
+      key: "3cnm0",
+      text: "Common text types: headings, paragraphs, quotes, lists.",
+      type: "unordered-list-item",
+      depth: 0,
+      inlineStyleRanges: [],
+      entityRanges: [],
+      data: {},
+    },
+    {
+      key: "5qfeb",
+      text: "Common text styles: Bold, Italic, and many more.",
+      type: "unordered-list-item",
+      depth: 0,
+      inlineStyleRanges: [
+        {
+          offset: 20,
+          length: 4,
+          style: "BOLD",
+        },
+        {
+          offset: 26,
+          length: 6,
+          style: "ITALIC",
+        },
+      ],
+      entityRanges: [],
+      data: {},
+    },
+    {
+      key: "8br3k",
+      text: "API to build custom controls for links, images, and more.",
+      type: "unordered-list-item",
+      depth: 0,
+      inlineStyleRanges: [],
+      entityRanges: [],
+      data: {},
+    },
+    {
+      key: "f7s8c",
+      text: " ",
+      type: "atomic",
+      depth: 0,
+      inlineStyleRanges: [],
+      entityRanges: [
+        {
+          offset: 0,
+          length: 1,
+          key: 8,
+        },
+      ],
+      data: {},
+    },
+    {
+      key: "eb00n",
+      text: "The embeds in this example are powered by Embedly.",
+      type: "unstyled",
+      depth: 0,
+      inlineStyleRanges: [],
+      entityRanges: [
+        {
+          offset: 42,
+          length: 7,
+          key: 7,
+        },
+      ],
+      data: {},
+    },
+  ],
+};
