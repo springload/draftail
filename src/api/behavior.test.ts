@@ -1,5 +1,6 @@
 import { List, Repeat } from "immutable";
 import { EditorState, CharacterMetadata, ContentBlock } from "draft-js";
+
 import behavior from "./behavior";
 import {
   BLOCK_TYPE,
@@ -16,54 +17,36 @@ describe("behavior", () => {
     it("has custom block with element", () => {
       expect(
         behavior
-          .getBlockRenderMap([
-            {
-              type: "TEST",
-              element: "div",
-            },
-          ])
+          .getBlockRenderMap([{ type: "TEST", element: "div" }])
           .get("TEST"),
-      ).toEqual({
-        element: "div",
-      });
+      ).toEqual({ element: "div" });
     });
+
     it("no custom block without element", () => {
       expect(
-        behavior
-          .getBlockRenderMap([
-            {
-              type: "TEST",
-            },
-          ])
-          .get("TEST"),
+        behavior.getBlockRenderMap([{ type: "TEST" }]).get("TEST"),
       ).not.toBeDefined();
     });
+
     describe("code block element", () => {
       it('default is "code"', () => {
         expect(
           behavior
-            .getBlockRenderMap([
-              {
-                type: BLOCK_TYPE.CODE,
-              },
-            ])
+            .getBlockRenderMap([{ type: BLOCK_TYPE.CODE }])
             .get(BLOCK_TYPE.CODE).element,
         ).toEqual("code");
       });
+
       it("can be overriden", () => {
         expect(
           behavior
-            .getBlockRenderMap([
-              {
-                type: BLOCK_TYPE.CODE,
-                element: "span",
-              },
-            ])
+            .getBlockRenderMap([{ type: BLOCK_TYPE.CODE, element: "span" }])
             .get(BLOCK_TYPE.CODE).element,
         ).toEqual("span");
       });
     });
   });
+
   describe("#blockStyleFn", () => {
     it("works", () => {
       expect(
@@ -84,6 +67,7 @@ describe("behavior", () => {
         ),
       ).toEqual("Draftail-block--TEST ");
     });
+
     it("depth", () => {
       expect(
         behavior.blockStyleFn(
@@ -94,9 +78,7 @@ describe("behavior", () => {
             depth: 6,
             characterList: List(
               Repeat(
-                CharacterMetadata.create({
-                  entity: "1234",
-                }),
+                CharacterMetadata.create({ entity: "1234" }),
                 "test".length,
               ),
             ),
@@ -105,16 +87,13 @@ describe("behavior", () => {
       ).toEqual("Draftail-block--TEST public-DraftStyleDefault-depth6");
     });
   });
+
   describe("#getKeyBindingFn", () => {
     it("has strict keyboard shortcut matching", () => {
       expect(
         behavior.getKeyBindingFn(
           [],
-          [
-            {
-              type: "BOLD",
-            },
-          ],
+          [{ type: "BOLD" }],
           [],
         )({
           keyCode: KEY_CODES.B,
@@ -125,6 +104,7 @@ describe("behavior", () => {
         }),
       ).toBe(undefined);
     });
+
     describe("styles", () => {
       it("disables default style key bindings", () => {
         expect(
@@ -141,15 +121,12 @@ describe("behavior", () => {
           }),
         ).toBe(undefined);
       });
+
       it("enables style key bindings when required", () => {
         expect(
           behavior.getKeyBindingFn(
             [],
-            [
-              {
-                type: "BOLD",
-              },
-            ],
+            [{ type: "BOLD" }],
             [],
           )({
             keyCode: KEY_CODES.B,
@@ -161,6 +138,7 @@ describe("behavior", () => {
         ).toBe("BOLD");
       });
     });
+
     describe("blocks", () => {
       it("has no default heading block key binding", () => {
         expect(
@@ -177,14 +155,11 @@ describe("behavior", () => {
           }),
         ).toBe(undefined);
       });
+
       it("enables heading block key binding when required", () => {
         expect(
           behavior.getKeyBindingFn(
-            [
-              {
-                type: "header-one",
-              },
-            ],
+            [{ type: "header-one" }],
             [],
             [],
           )({
@@ -196,6 +171,7 @@ describe("behavior", () => {
           }),
         ).toBe("header-one");
       });
+
       it("has default unstyled block key binding", () => {
         expect(
           behavior.getKeyBindingFn(
@@ -212,6 +188,7 @@ describe("behavior", () => {
         ).toBe("unstyled");
       });
     });
+
     describe("entities", () => {
       it("has no default link entity key binding", () => {
         expect(
@@ -228,16 +205,13 @@ describe("behavior", () => {
           }),
         ).toBe(undefined);
       });
+
       it("enables link entity key binding when required", () => {
         expect(
           behavior.getKeyBindingFn(
             [],
             [],
-            [
-              {
-                type: "LINK",
-              },
-            ],
+            [{ type: "LINK" }],
           )({
             keyCode: KEY_CODES.K,
             metaKey: false,
@@ -248,6 +222,7 @@ describe("behavior", () => {
         ).toBe("LINK");
       });
     });
+
     it("all shortcuts", () => {
       const blockTypes = Object.values(BLOCK_TYPE).map((type) => ({
         type,
@@ -263,6 +238,7 @@ describe("behavior", () => {
         inlineStyles,
         entityTypes,
       );
+
       const shiftKey = [
         {
           keyCode: KEY_CODES.B,
@@ -304,6 +280,7 @@ describe("behavior", () => {
           keyCode: 1337,
         },
       ];
+
       const noShiftKey = [
         {
           keyCode: KEY_CODES.K,
@@ -418,9 +395,11 @@ describe("behavior", () => {
           keyCode: 1337,
         },
       ];
+
       const shortcuts = []
         .concat(shiftKey.map((s) => ({ ...s, shiftKey: true })))
         .concat(noShiftKey);
+
       shortcuts.forEach((s) => {
         const result = keyBindingFn({
           metaKey: false,
@@ -438,76 +417,77 @@ describe("behavior", () => {
       });
     });
   });
+
   describe("#hasKeyboardShortcut", () => {
     it("defined shortcut", () => {
       expect(behavior.hasKeyboardShortcut(BLOCK_TYPE.HEADER_FIVE)).toBe(true);
     });
+
     it("undefined shortcut", () => {
       expect(behavior.hasKeyboardShortcut("AAA")).toBe(false);
     });
   });
+
   describe("#getKeyboardShortcut", () => {
     it("header five shortcut", () => {
       expect(behavior.getKeyboardShortcut(BLOCK_TYPE.HEADER_FIVE)).toBe(
         "#####",
       );
     });
+
     it("header five shortcut, macOS", () => {
       expect(behavior.getKeyboardShortcut(BLOCK_TYPE.HEADER_FIVE, true)).toBe(
         "#####",
       );
     });
+
     it("undefined shortcut", () => {
       expect(behavior.getKeyboardShortcut("AAA")).not.toBeDefined();
     });
   });
+
   describe("#handleBeforeInputBlockType", () => {
     it("does not convert without the correct types", () => {
       expect(
         behavior.handleBeforeInputBlockType("* ", [
-          {
-            type: BLOCK_TYPE.ORDERED_LIST_ITEM,
-          },
+          { type: BLOCK_TYPE.ORDERED_LIST_ITEM },
         ]),
       ).toBe(false);
     });
+
     it("converts regardless of block type", () => {
       expect(
         behavior.handleBeforeInputBlockType("* ", [
-          {
-            type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
-          },
+          { type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
         ]),
       ).toBe("unordered-list-item");
     });
+
     it('converts "* "', () => {
       expect(
         behavior.handleBeforeInputBlockType("* ", [
-          {
-            type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
-          },
+          { type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
         ]),
       ).toBe("unordered-list-item");
     });
+
     it('converts "- "', () => {
       expect(
         behavior.handleBeforeInputBlockType("- ", [
-          {
-            type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
-          },
+          { type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
         ]),
       ).toBe("unordered-list-item");
     });
+
     it('converts "1. "', () => {
       expect(
         behavior.handleBeforeInputBlockType("1. ", [
-          {
-            type: BLOCK_TYPE.ORDERED_LIST_ITEM,
-          },
+          { type: BLOCK_TYPE.ORDERED_LIST_ITEM },
         ]),
       ).toBe("ordered-list-item");
     });
   });
+
   describe("#handleBeforeInputHR", () => {
     it("does not convert in code block", () => {
       expect(
@@ -524,6 +504,7 @@ describe("behavior", () => {
         ),
       ).toBe(false);
     });
+
     it('converts "---"', () => {
       expect(
         behavior.handleBeforeInputHR(
@@ -540,52 +521,43 @@ describe("behavior", () => {
       ).toBe(true);
     });
   });
+
   describe("#handleBeforeInputInlineStyle", () => {
     it.each`
-      label                                    | beforeInput     | styles                | expected
-      ${"no marker"}                           | ${"test"}       | ${["ITALIC"]}         | ${false}
-      ${"open only"}                           | ${"a _test"}    | ${["ITALIC"]}         | ${false}
-      ${"close only"}                          | ${"a test_"}    | ${["ITALIC"]}         | ${false}
-      ${"open - close markers"}                | ${"a _test_"}   | ${["ITALIC"]}         | ${{}}
-      ${"open - close markers in the middle"}  | ${"a _test_ a"} | ${["ITALIC"]}         | ${false}
-      ${"open - close markers whole text"}     | ${"_a test_"}   | ${["ITALIC"]}         | ${{}}
-      ${"open - close markers single char"}    | ${"_a_"}        | ${["ITALIC"]}         | ${{}}
-      ${"no marked text"}                      | ${"a _test"}    | ${["ITALIC"]}         | ${false}
-      ${"open only, or no marked text"}        | ${"a _test"}    | ${["ITALIC", "BOLD"]} | ${false}
-      ${"open - close markers, or no marked text"} | ${"a _test_"} | ${["ITALIC", "BOLD"]} | ${{
-  pattern: "_",
-}}
-      ${"different open & close"}              | ${"a _test*"}   | ${["ITALIC", "BOLD"]} | ${false}
-      ${"different open & close but similar"}  | ${"a __test_"}  | ${["ITALIC", "BOLD"]} | ${false}
-      ${"different open & close, after input"} | ${"a _test__"}  | ${["ITALIC", "BOLD"]} | ${false}
-      ${"two marker sets"} | ${"a __test__ two _test_"} | ${["ITALIC", "BOLD"]} | ${{
-  pattern: "_",
-}}
-      ${"no whitespace before open"}           | ${"a_test_"}    | ${["ITALIC"]}         | ${false}
-      ${"whitespace after open"}               | ${"a _ test_"}  | ${["ITALIC"]}         | ${false}
-      ${"whitespace before close"}             | ${"a _test _"}  | ${["ITALIC"]}         | ${false}
+      label                                        | beforeInput                | styles                | expected
+      ${"no marker"}                               | ${"test"}                  | ${["ITALIC"]}         | ${false}
+      ${"open only"}                               | ${"a _test"}               | ${["ITALIC"]}         | ${false}
+      ${"close only"}                              | ${"a test_"}               | ${["ITALIC"]}         | ${false}
+      ${"open - close markers"}                    | ${"a _test_"}              | ${["ITALIC"]}         | ${{}}
+      ${"open - close markers in the middle"}      | ${"a _test_ a"}            | ${["ITALIC"]}         | ${false}
+      ${"open - close markers whole text"}         | ${"_a test_"}              | ${["ITALIC"]}         | ${{}}
+      ${"open - close markers single char"}        | ${"_a_"}                   | ${["ITALIC"]}         | ${{}}
+      ${"no marked text"}                          | ${"a _test"}               | ${["ITALIC"]}         | ${false}
+      ${"open only, or no marked text"}            | ${"a _test"}               | ${["ITALIC", "BOLD"]} | ${false}
+      ${"open - close markers, or no marked text"} | ${"a _test_"}              | ${["ITALIC", "BOLD"]} | ${{ pattern: "_" }}
+      ${"different open & close"}                  | ${"a _test*"}              | ${["ITALIC", "BOLD"]} | ${false}
+      ${"different open & close but similar"}      | ${"a __test_"}             | ${["ITALIC", "BOLD"]} | ${false}
+      ${"different open & close, after input"}     | ${"a _test__"}             | ${["ITALIC", "BOLD"]} | ${false}
+      ${"two marker sets"}                         | ${"a __test__ two _test_"} | ${["ITALIC", "BOLD"]} | ${{ pattern: "_" }}
+      ${"no whitespace before open"}               | ${"a_test_"}               | ${["ITALIC"]}         | ${false}
+      ${"whitespace after open"}                   | ${"a _ test_"}             | ${["ITALIC"]}         | ${false}
+      ${"whitespace before close"}                 | ${"a _test _"}             | ${["ITALIC"]}         | ${false}
     `("$label", ({ beforeInput, styles, expected }) => {
-      const inlineStyles = styles.map((type) => ({
-        type,
-      }));
+      const inlineStyles = styles.map((type) => ({ type }));
       const result = behavior.handleBeforeInputInlineStyle(
         beforeInput,
         inlineStyles,
       );
-
       if (expected) {
         expect(result).toMatchObject(expected);
       } else {
         expect(result).toEqual(expected);
       }
     });
+
     it("open - close marker, handling", () => {
       expect(
-        behavior.handleBeforeInputInlineStyle("a **test**", [
-          {
-            type: "BOLD",
-          },
-        ]),
+        behavior.handleBeforeInputInlineStyle("a **test**", [{ type: "BOLD" }]),
       ).toEqual({
         pattern: "**",
         start: 2,
@@ -594,24 +566,20 @@ describe("behavior", () => {
       });
     });
   });
+
   describe("#getCustomStyleMap", () => {
     it("existing styles, default styling", () => {
       expect(
         behavior.getCustomStyleMap([
-          {
-            label: "Bold",
-            type: INLINE_STYLE.BOLD,
-          },
-          {
-            label: "Mark",
-            type: INLINE_STYLE.MARK,
-          },
+          { label: "Bold", type: INLINE_STYLE.BOLD },
+          { label: "Mark", type: INLINE_STYLE.MARK },
         ]),
       ).toEqual({
         [INLINE_STYLE.BOLD]: CUSTOM_STYLE_MAP[INLINE_STYLE.BOLD],
         [INLINE_STYLE.MARK]: CUSTOM_STYLE_MAP[INLINE_STYLE.MARK],
       });
     });
+
     it("existing styles, custom styling", () => {
       expect(
         behavior.getCustomStyleMap([
@@ -629,16 +597,11 @@ describe("behavior", () => {
         },
       });
     });
+
     it("custom styles, custom styling", () => {
       expect(
         behavior.getCustomStyleMap([
-          {
-            label: "Red",
-            type: "RED",
-            style: {
-              color: "red",
-            },
-          },
+          { label: "Red", type: "RED", style: { color: "red" } },
         ]),
       ).toEqual({
         RED: {
@@ -646,42 +609,33 @@ describe("behavior", () => {
         },
       });
     });
+
     it("custom styles, undefined styling", () => {
       expect(
-        behavior.getCustomStyleMap([
-          {
-            label: "Red",
-            type: "RED",
-          },
-        ]),
+        behavior.getCustomStyleMap([{ label: "Red", type: "RED" }]),
       ).toEqual({
         RED: {},
       });
     });
   });
+
   describe("#filterPaste", () => {
     beforeEach(() => {
       jest.spyOn(DraftFilters, "filterEditorState");
     });
+
     afterEach(() => {
       jest.restoreAllMocks();
     });
+
     it("works", () => {
       behavior.filterPaste(
         {
           maxListNesting: 1,
           enableHorizontalRule: false,
           enableLineBreak: false,
-          blockTypes: [
-            {
-              type: "blockquote",
-            },
-          ],
-          inlineStyles: [
-            {
-              type: "BOLD",
-            },
-          ],
+          blockTypes: [{ type: "blockquote" }],
+          inlineStyles: [{ type: "BOLD" }],
           entityTypes: [],
         },
         EditorState.createEmpty(),
@@ -693,6 +647,7 @@ describe("behavior", () => {
         expect.anything(),
       );
     });
+
     it("enableHorizontalRule", () => {
       behavior.filterPaste(
         {
@@ -716,6 +671,7 @@ describe("behavior", () => {
         expect.anything(),
       );
     });
+
     it("enableLineBreak", () => {
       behavior.filterPaste(
         {

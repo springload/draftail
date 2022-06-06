@@ -3,6 +3,7 @@ import type { ComponentType } from "react";
 import ToolbarButton from "./ToolbarButton";
 import ToolbarGroup from "./ToolbarGroup";
 import type { IconProp } from "../Icon";
+
 import {
   BR_TYPE,
   ENTITY_TYPE,
@@ -12,6 +13,7 @@ import {
   DESCRIPTIONS,
 } from "../../api/constants";
 import behavior from "../../api/behavior";
+
 type ControlProp = {
   // Describes the control in the editor UI, concisely.
   label?: string | null | undefined;
@@ -20,6 +22,7 @@ type ControlProp = {
   // Represents the control in the editor UI.
   icon?: IconProp;
 };
+
 export const getButtonLabel = (type: string, config: boolean | ControlProp) => {
   const icon = typeof config === "boolean" ? undefined : config.icon;
 
@@ -33,11 +36,10 @@ export const getButtonLabel = (type: string, config: boolean | ControlProp) => {
 
   return LABELS[type];
 };
-export const showButton = (
-  config: ControlProp & {
-    type: string;
-  },
-) => Boolean(config.icon) || Boolean(getButtonLabel(config.type, config));
+
+export const showButton = (config: ControlProp & { type: string }) =>
+  Boolean(config.icon) || Boolean(getButtonLabel(config.type, config));
+
 export const getButtonTitle = (type: string, config: boolean | ControlProp) => {
   const description =
     typeof config === "boolean" || typeof config.description === "undefined"
@@ -53,6 +55,7 @@ export const getButtonTitle = (type: string, config: boolean | ControlProp) => {
 
   return title;
 };
+
 export type ToolbarDefaultProps = {
   currentStyles: {
     has: (style: string) => boolean;
@@ -119,6 +122,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
           />
         ))}
       </ToolbarGroup>,
+
       <ToolbarGroup key="blocks">
         {blockTypes.filter(showButton).map((t) => (
           <ToolbarButton
@@ -132,6 +136,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
           />
         ))}
       </ToolbarGroup>,
+
       <ToolbarGroup key="hr-br">
         {enableHorizontalRule ? (
           <ToolbarButton
@@ -165,6 +170,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
           />
         ) : null}
       </ToolbarGroup>,
+
       <ToolbarGroup key="entities">
         {entityTypes.filter(showButton).map((t) => (
           <ToolbarButton
@@ -177,6 +183,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
           />
         ))}
       </ToolbarGroup>,
+
       <ToolbarGroup key="undo-redo">
         {showUndoControl ? (
           <ToolbarButton

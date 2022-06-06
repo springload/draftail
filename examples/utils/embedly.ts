@@ -14,13 +14,11 @@ const getJSON = (
   const request = new XMLHttpRequest();
   request.open("GET", endpoint, true);
   request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-
   request.onload = () => {
     if (request.status >= 200 && request.status < 400) {
       successCallback(JSON.parse(request.responseText));
     }
   };
-
   request.send(data);
 };
 

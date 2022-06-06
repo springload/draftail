@@ -9,14 +9,15 @@ import {
   genKey,
 } from "draft-js";
 import isSoftNewlineEvent from "draft-js/lib/isSoftNewlineEvent";
+
 import { BLOCK_TYPE, ENTITY_TYPE } from "./constants";
+
 /**
  * Inspired by draftjs-utils, with our custom functions.
  *
  * DraftUtils functions are utility helpers useful in isolation, specific to the Draft.js API,
  * without ties to Draftail's specific behavior or other APIs.
  */
-
 export default {
   /**
    * Returns the first selected block.
@@ -24,6 +25,7 @@ export default {
   getSelectedBlock(editorState: EditorState) {
     const selection = editorState.getSelection();
     const content = editorState.getCurrentContent();
+
     return content.getBlockMap().get(selection.getStartKey());
   },
 
@@ -105,6 +107,7 @@ export default {
   updateBlockEntity(editorState: EditorState, block: ContentBlock, data: {}) {
     const content = editorState.getCurrentContent();
     let nextContent = content.mergeEntityData(block.getEntityAt(0), data);
+
     // To remove in Draft.js 0.11.
     // This is necessary because entity data is still using a mutable, global store.
     nextContent = Modifier.mergeBlockData(
@@ -117,6 +120,7 @@ export default {
       }),
       {},
     );
+
     return EditorState.push(editorState, nextContent, "apply-entity");
   },
 
@@ -128,14 +132,12 @@ export default {
   addHorizontalRuleRemovingSelection(editorState: EditorState) {
     const contentState = editorState.getCurrentContent();
     const contentStateWithEntity = contentState.createEntity(
-      // Draft.js Flow typing issue.
-      // See https://github.com/facebook/draft-js/issues/868.
-      // $FlowFixMe
       ENTITY_TYPE.HORIZONTAL_RULE,
       "IMMUTABLE",
       {},
     );
     const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+
     return AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, " ");
   },
 
@@ -148,13 +150,14 @@ export default {
     editorState: EditorState,
     newType: string,
     newText: string,
-    newData: {} | null | undefined = {},
+    newData: { [key: string]: any } | undefined = {},
   ) {
     const contentState = editorState.getCurrentContent();
     const selectionState = editorState.getSelection();
     const key = selectionState.getStartKey();
     const blockMap = contentState.getBlockMap();
     const block = blockMap.get(key);
+
     // Maintain persistence in the list while removing chars from the start.
     // https://github.com/facebook/draft-js/blob/788595984da7c1e00d1071ea82b063ff87140be4/src/model/transaction/removeRangeFromContentState.js#L333
     let chars = block.getCharacterList();
@@ -179,6 +182,7 @@ export default {
       anchorOffset: 0,
       focusOffset: 0,
     });
+
     return EditorState.acceptSelection(
       EditorState.set(editorState, {
         currentContent: newContentState,
@@ -204,6 +208,7 @@ export default {
   ) {
     const selection = editorState.getSelection();
     let content = editorState.getCurrentContent();
+
     const marked = selection.merge({
       anchorOffset: range.start,
       focusOffset: range.end,
@@ -216,19 +221,21 @@ export default {
       anchorOffset: range.start,
       focusOffset: range.start + range.pattern.length,
     });
+
     // Remove the markers separately to preserve existing styles and entities on the marked text.
     content = Modifier.applyInlineStyle(content, marked, range.type);
     content = Modifier.removeRange(content, endMarker, "forward");
     content = Modifier.removeRange(content, startMarker, "forward");
+
     const offset = selection.getFocusOffset() - range.pattern.length * 2;
     const endSelection = selection.merge({
       anchorOffset: offset,
       focusOffset: offset,
     });
-    content = content.merge({
-      selectionAfter: endSelection,
-    });
+    content = content.merge({ selectionAfter: endSelection });
+
     content = Modifier.insertText(content, endSelection, char);
+
     return EditorState.push(editorState, content, "change-inline-style");
   },
 
@@ -238,6 +245,7 @@ export default {
   removeBlock(editorState: EditorState, key: string) {
     const content = editorState.getCurrentContent();
     const blockMap = content.getBlockMap().remove(key);
+
     return EditorState.set(editorState, {
       currentContent: content.merge({
         blockMap,
@@ -255,9 +263,11 @@ export default {
     blockKey: string,
   ) {
     let newState = editorState;
+
     const content = editorState.getCurrentContent();
     const blockMap = content.getBlockMap();
     const block = blockMap.get(blockKey);
+
     const newBlock = block.merge({
       type: BLOCK_TYPE.UNSTYLED,
       text: "",
@@ -265,17 +275,21 @@ export default {
       characterList: block.getCharacterList().slice(0, 0),
       data: {},
     });
+
     const newSelection = new SelectionState({
       anchorKey: blockKey,
       focusKey: blockKey,
       anchorOffset: 0,
       focusOffset: 0,
     });
+
     const newContent = content.merge({
       blockMap: blockMap.set(blockKey, newBlock),
     });
+
     newState = EditorState.push(newState, newContent, "change-block-type");
     newState = EditorState.forceSelection(newState, newSelection);
+
     return newState;
   },
 
@@ -353,12 +367,15 @@ export default {
     const blockMap = newContent.getBlockMap();
     const blockKey = selection.getStartKey();
     const insertedBlockKey = newContent.getKeyAfter(blockKey);
+
     const newBlock = blockMap
       .get(insertedBlockKey)
       .set("type", BLOCK_TYPE.UNSTYLED);
+
     newContent = newContent.merge({
       blockMap: blockMap.set(insertedBlockKey, newBlock),
     });
+
     return EditorState.push(editorState, newContent, "split-block");
   },
 
@@ -427,6 +444,7 @@ export default {
 
       const blockMap = content.getBlockMap();
       const newBlock = block.set("depth", depth - 1);
+
       return EditorState.push(
         editorState,
         content.merge({
@@ -458,6 +476,7 @@ export default {
     const key = selection.getStartKey();
     const offset = selection.getStartOffset();
     const block = content.getBlockForKey(key);
+
     const isDeferredBreakoutBlock = [BLOCK_TYPE.CODE].includes(block.getType());
 
     if (isDeferredBreakoutBlock) {
@@ -490,6 +509,7 @@ export default {
 
     let text = "";
     let characterList;
+
     // Gather all the text/characterList and concat them
     blocks.forEach((block) => {
       // Atomic blocks should be ignored (stripped)
@@ -500,6 +520,7 @@ export default {
           : block.getCharacterList().slice();
       }
     });
+
     const contentBlock = new ContentBlock({
       key: genKey(),
       type: BLOCK_TYPE.UNSTYLED,
@@ -507,6 +528,7 @@ export default {
       text,
       characterList,
     });
+
     // Update the editor state with the compressed version.
     const newContentState = ContentState.createFromBlockArray([contentBlock]);
     // Create the new state as an undoable action.

@@ -48,8 +48,6 @@ nvm use
 npm run start
 # Runs linting.
 npm run lint
-# Start a Flow server for type errors.
-npx flow
 # Re-formats all of the files in the project (with Prettier).
 npm run format
 # Run tests in a watcher.

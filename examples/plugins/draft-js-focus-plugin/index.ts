@@ -10,11 +10,9 @@ import removeBlock from "./modifiers/removeBlock";
 
 const focusableBlockIsSelected = (editorState, blockKeyStore) => {
   const selection = editorState.getSelection();
-
   if (selection.getAnchorKey() !== selection.getFocusKey()) {
     return false;
   }
-
   const content = editorState.getCurrentContent();
   const block = content.getBlockForKey(selection.getAnchorKey());
   return blockKeyStore.includes(block.getKey());
@@ -28,11 +26,13 @@ const deleteCommands = [
   "delete-word",
   "delete-to-end-of-block",
 ];
+
 export default (config = {}) => {
   const focusableBlocks = config.focusableBlocks || [];
   const blockKeyStore = createBlockKeyStore({});
   let lastSelection;
   let lastContentState;
+
   return {
     handleReturn: (event, editorState, { setEditorState }) => {
       // if a focusable block is selected then overwrite new line behavior to custom
@@ -40,7 +40,6 @@ export default (config = {}) => {
         setEditorState(insertNewLine(editorState));
         return "handled";
       }
-
       return "not-handled";
     },
     handleKeyCommand: (command, editorState, { setEditorState }) => {
@@ -50,13 +49,11 @@ export default (config = {}) => {
       ) {
         const key = editorState.getSelection().getStartKey();
         const newEditorState = removeBlock(editorState, key);
-
         if (newEditorState !== editorState) {
           setEditorState(newEditorState);
           return "handled";
         }
       }
-
       return "not-handled";
     },
     onChange: (editorState) => {
@@ -64,16 +61,14 @@ export default (config = {}) => {
       // since if a block was added it will be rendered anyway and if it was text
       // then the change was not a pure selection change
       const contentState = editorState.getCurrentContent();
-
       if (!contentState.equals(lastContentState)) {
         lastContentState = contentState;
         return editorState;
       }
-
       lastContentState = contentState;
+
       // if the selection didn't change there is no need to re-render
       const selection = editorState.getSelection();
-
       if (lastSelection && selection.equals(lastSelection)) {
         lastSelection = editorState.getSelection();
         return editorState;
@@ -81,14 +76,12 @@ export default (config = {}) => {
 
       // Note: Only if the previous or current selection contained a focusableBlock a re-render is needed.
       const focusableBlockKeys = blockKeyStore.getAll();
-
       if (lastSelection) {
         const lastBlockMapKeys = getBlockMapKeys(
           contentState,
           lastSelection.getStartKey(),
           lastSelection.getEndKey(),
         );
-
         if (lastBlockMapKeys.some((key) => focusableBlockKeys.includes(key))) {
           lastSelection = selection;
           // By forcing the selection the editor will trigger the blockRendererFn which is
@@ -105,7 +98,6 @@ export default (config = {}) => {
         selection.getStartKey(),
         selection.getEndKey(),
       );
-
       if (currentBlockMapKeys.some((key) => focusableBlockKeys.includes(key))) {
         lastSelection = selection;
         // By forcing the selection the editor will trigger the blockRendererFn which is
@@ -118,16 +110,13 @@ export default (config = {}) => {
 
       return editorState;
     },
-
     keyBindingFn(evt, { getEditorState, setEditorState }) {
       const editorState = getEditorState();
-
       // TODO match by entity instead of block type
       if (focusableBlockIsSelected(editorState, blockKeyStore)) {
         if (evt.key === "ArrowLeft") {
           setSelection(getEditorState, setEditorState, "up", evt);
         }
-
         if (evt.key === "ArrowRight") {
           setSelection(getEditorState, setEditorState, "down", evt);
         }
@@ -146,7 +135,6 @@ export default (config = {}) => {
         const beforeBlock = editorState
           .getCurrentContent()
           .getBlockBefore(selectionKey);
-
         // only if the selection caret is a the left most position
         if (
           beforeBlock &&
@@ -156,7 +144,6 @@ export default (config = {}) => {
           setSelection(getEditorState, setEditorState, "up", evt);
         }
       }
-
       if (evt.key === "ArrowRight") {
         // Covering the case to select the after block
         const selection = editorState.getSelection();
@@ -170,7 +157,6 @@ export default (config = {}) => {
         const notAtomicAndLastPost =
           !focusableBlocks.includes(currentBlock.getType()) &&
           currentBlock.getLength() === selection.getFocusOffset();
-
         if (
           afterBlock &&
           notAtomicAndLastPost &&
@@ -180,7 +166,6 @@ export default (config = {}) => {
         }
       }
     },
-
     // Wrap all block-types in block-focus decorator
     blockRendererFn: (contentBlock, { getEditorState, setEditorState }) => {
       if (!focusableBlocks.includes(contentBlock.getType())) {
@@ -189,6 +174,7 @@ export default (config = {}) => {
 
       const editorState = getEditorState();
       const isFocused = blockInSelection(editorState, contentBlock.getKey());
+
       return {
         props: {
           isFocused,
@@ -202,8 +188,8 @@ export default (config = {}) => {
     // Handle down/up arrow events and set activeBlock/selection if necessary
     onDownArrow: (event, { getEditorState, setEditorState }) => {
       // TODO edgecase: if one block is selected and the user wants to expand the selection using the shift key
-      const editorState = getEditorState();
 
+      const editorState = getEditorState();
       if (focusableBlockIsSelected(editorState, blockKeyStore)) {
         setSelection(getEditorState, setEditorState, "down", event);
         return;
@@ -220,15 +206,14 @@ export default (config = {}) => {
       const afterBlock = editorState
         .getCurrentContent()
         .getBlockAfter(selectionKey);
-
       if (afterBlock && blockKeyStore.includes(afterBlock.getKey())) {
         setSelection(getEditorState, setEditorState, "down", event);
       }
     },
     onUpArrow: (event, { getEditorState, setEditorState }) => {
       // TODO edgecase: if one block is selected and the user wants to expand the selection using the shift key
-      const editorState = getEditorState();
 
+      const editorState = getEditorState();
       if (focusableBlockIsSelected(editorState, blockKeyStore)) {
         setSelection(getEditorState, setEditorState, "up", event);
       }
@@ -244,13 +229,10 @@ export default (config = {}) => {
       const beforeBlock = editorState
         .getCurrentContent()
         .getBlockBefore(selectionKey);
-
       if (beforeBlock && blockKeyStore.includes(beforeBlock.getKey())) {
         setSelection(getEditorState, setEditorState, "up", event);
       }
     },
-    decorator: createDecorator({
-      blockKeyStore,
-    }),
+    decorator: createDecorator({ blockKeyStore }),
   };
 };

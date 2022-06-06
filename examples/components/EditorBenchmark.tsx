@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import Benchmark, { BenchmarkType } from "react-component-benchmark";
 import type { BenchResultsType } from "react-component-benchmark";
-import { DraftailEditor } from "../../lib";
+
+import { DraftailEditor } from "../../src/index";
+
 import BenchmarkResults from "./BenchmarkResults";
+
 type Props = {
   componentProps: {};
   runOnMount: boolean;
 };
+
 type State = {
   results: BenchResultsType | null | undefined;
 };
@@ -16,9 +20,11 @@ class EditorBenchmark extends Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
+
     this.state = {
       results: null,
     };
+
     this.startBenchmark = this.startBenchmark.bind(this);
     this.onBenchmarkComplete = this.onBenchmarkComplete.bind(this);
   }
@@ -31,14 +37,10 @@ class EditorBenchmark extends Component<Props, State> {
     }
   }
 
-  /* :: onBenchmarkComplete: (results: BenchResultsType) => void; */
   onBenchmarkComplete(results: BenchResultsType) {
-    this.setState({
-      results,
-    });
+    this.setState({ results });
   }
 
-  /* :: startBenchmark: () => void; */
   startBenchmark() {
     if (this.benchmark) {
       this.benchmark.start();
@@ -48,6 +50,7 @@ class EditorBenchmark extends Component<Props, State> {
   render() {
     const { componentProps } = this.props;
     const { results } = this.state;
+
     return (
       <>
         <button type="button" onClick={this.startBenchmark}>

@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import type { Node } from "react";
 import { ContentState } from "draft-js";
-import { Icon } from "../../lib";
+
+import { Icon } from "../../src/index";
+
 import Tooltip from "../components/Tooltip";
 import type { Rect } from "../components/Tooltip";
 import Portal from "../components/Portal";
+
 type Props = {
   // Key of the entity being decorated.
   entityKey: string;
@@ -13,13 +16,14 @@ type Props = {
   // The decorated nodes / entity text.
   children: Node;
   // Call with the entityKey to trigger the entity source.
-  onEdit: (arg0: string) => void;
+  onEdit: (entityKey: string) => void;
   // Call with the entityKey to remove the entity.
-  onRemove: (arg0: string) => void;
+  onRemove: (entityKey: string) => void;
   textDirectionality: "LTR" | "RTL";
   icon: string | Node;
   label: string;
 };
+
 type State = {
   showTooltipAt: Rect | null | undefined;
 };
@@ -27,29 +31,25 @@ type State = {
 class TooltipEntity extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
+
     this.state = {
       showTooltipAt: null,
     };
+
     this.openTooltip = this.openTooltip.bind(this);
     this.closeTooltip = this.closeTooltip.bind(this);
   }
 
-  /* :: openTooltip: (e: Event) => void; */
   openTooltip(e: Event) {
     const trigger = e.target;
 
     if (trigger instanceof Element) {
-      this.setState({
-        showTooltipAt: trigger.getBoundingClientRect(),
-      });
+      this.setState({ showTooltipAt: trigger.getBoundingClientRect() });
     }
   }
 
-  /* :: closeTooltip: () => void; */
   closeTooltip() {
-    this.setState({
-      showTooltipAt: null,
-    });
+    this.setState({ showTooltipAt: null });
   }
 
   render() {
@@ -65,8 +65,8 @@ class TooltipEntity extends Component<Props, State> {
     } = this.props;
     const { showTooltipAt } = this.state;
     const { url } = contentState.getEntity(entityKey).getData();
-    // Contrary to what JSX A11Y says, this should be a button but it shouldn't be focusable.
 
+    // Contrary to what JSX A11Y says, this should be a button but it shouldn't be focusable.
     /* eslint-disable @thibaudcolas/cookbook/jsx-a11y/interactive-supports-focus, @thibaudcolas/cookbook/jsx-a11y/anchor-is-valid */
     return (
       <a role="button" onMouseUp={this.openTooltip} className="TooltipEntity">

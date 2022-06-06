@@ -1,6 +1,8 @@
 import React from "react";
 import { EditorState, RichUtils } from "draft-js";
-import { BLOCK_TYPE } from "../../lib";
+
+import { BLOCK_TYPE } from "../../src/index";
+
 type Props = {
   getEditorState: () => EditorState;
   onChange: (arg0: EditorState) => void;
@@ -11,6 +13,7 @@ type Props = {
  */
 const BlockPicker = ({ getEditorState, onChange }: Props) => {
   const editorState = getEditorState();
+
   return (
     <select
       onChange={(e) => {
@@ -20,9 +23,7 @@ const BlockPicker = ({ getEditorState, onChange }: Props) => {
         nextState = EditorState.forceSelection(nextState, selection);
         onChange(nextState);
       }}
-      style={{
-        maxWidth: "3rem",
-      }}
+      style={{ maxWidth: "3rem" }}
     >
       {[
         [BLOCK_TYPE.HEADER_TWO, "H2"],

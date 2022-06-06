@@ -1,7 +1,9 @@
 import React from "react";
 import type { Node } from "react";
 import { EditorState, ContentState, Modifier, RichUtils } from "draft-js";
+
 import TooltipEntity from "./TooltipEntity";
+
 type Props = {
   entityKey: string;
   contentState: ContentState;
@@ -10,6 +12,7 @@ type Props = {
   onRemove: (arg0: string) => void;
   textDirectionality: "LTR" | "RTL";
 };
+
 const CUSTOM_ICON_URLS = {
   "://www.youtube.com/": "#icon-media",
   "://one.npr.org/": "#icon-media",
@@ -45,6 +48,7 @@ const Link = ({
   const { url, linkType } = contentState.getEntity(entityKey).getData();
   const icon = getLinkIcon(url, linkType);
   const label = url.replace(/(^\w+:|^)\/\//, "").split("/")[0];
+
   return (
     <TooltipEntity
       entityKey={entityKey}
@@ -63,15 +67,17 @@ const Link = ({
 /**
  * See https://docs.djangoproject.com/en/4.0/_modules/django/core/validators/#EmailValidator.
  */
-const djangoUserRegex = /(^[-!#$%&'*+/=?^_`{}|~0-9A-Z]+(\.[-!#$%&'*+/=?^_`{}|~0-9A-Z]+)*$|^"([\001-\010\013\014\016-\037!#-[\]-\177]|\\[\001-\011\013\014\016-\177])*"$)/i;
-const djangoDomainRegex = /((?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+)(?:[A-Z0-9-]{2,63}(?<!-))$/i;
+const djangoUserRegex =
+  /(^[-!#$%&'*+/=?^_`{}|~0-9A-Z]+(\.[-!#$%&'*+/=?^_`{}|~0-9A-Z]+)*$|^"([\001-\010\013\014\016-\037!#-[\]-\177]|\\[\001-\011\013\014\016-\177])*"$)/i;
+const djangoDomainRegex =
+  /((?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+)(?:[A-Z0-9-]{2,63}(?<!-))$/i;
+
 export const getValidLinkURL = (
   text: string,
   schemes: ReadonlyArray<string>,
 ) => {
   if (text.includes("@")) {
     const [user, domain] = text.split("@");
-
     if (djangoUserRegex.test(user) && djangoDomainRegex.test(domain)) {
       return `mailto:${text}`;
     }
@@ -90,6 +96,7 @@ export const getValidLinkURL = (
 
   return false;
 };
+
 export const onPasteLink = (
   text: string,
   html: string | null | undefined,
@@ -115,9 +122,7 @@ export const onPasteLink = (
 
   const selection = editorState.getSelection();
   let content = editorState.getCurrentContent();
-  content = content.createEntity("LINK", "MUTABLE", {
-    url,
-  });
+  content = content.createEntity("LINK", "MUTABLE", { url });
   const entityKey = content.getLastCreatedEntityKey();
   let nextState: EditorState;
 
@@ -131,4 +136,5 @@ export const onPasteLink = (
   setEditorState(nextState);
   return "handled";
 };
+
 export default Link;

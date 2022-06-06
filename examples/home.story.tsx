@@ -1,14 +1,18 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
+
 import {
   INLINE_CONTROL,
   BLOCK_CONTROL,
   ENTITY_CONTROL,
   BR_ICON,
 } from "./constants/ui";
+
 import indexContentState from "./constants/indexContentState";
+
 import PrismDecorator from "./components/PrismDecorator";
 import EditorWrapper from "./components/EditorWrapper";
+
 storiesOf("Draftail", module).add("Home", () => (
   <EditorWrapper
     id="index"
@@ -20,11 +24,7 @@ storiesOf("Draftail", module).add("Home", () => (
       icon: BR_ICON,
     }}
     stripPastedStyles={false}
-    decorators={[
-      new PrismDecorator({
-        defaultLanguage: "javascript",
-      }),
-    ]}
+    decorators={[new PrismDecorator({ defaultLanguage: "javascript" })]}
     entityTypes={[
       ENTITY_CONTROL.LINK,
       ENTITY_CONTROL.IMAGE,

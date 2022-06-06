@@ -1,5 +1,6 @@
 import { storiesOf } from "@storybook/react";
 import React, { Component, useState } from "react";
+
 import {
   INLINE_CONTROL,
   BLOCK_CONTROL,
@@ -7,23 +8,26 @@ import {
   TINY_TEXT_BLOCK,
   REDACTED_STYLE,
 } from "./constants/ui";
+
 import EditorWrapper from "./components/EditorWrapper";
-storiesOf("Tests", module) // Add a decorator rendering story as a component for hooks support.
+
+storiesOf("Tests", module)
+  // Add a decorator rendering story as a component for hooks support.
   .addDecorator((Story) => <Story />)
   .add("Unmount", () => {
     class UnmountTest extends Component {
       constructor(props) {
         super(props);
+
         this.state = {
           count: 0,
         };
+
         this.onSave = this.onSave.bind(this);
       }
 
       onSave() {
-        this.setState(({ count }) => ({
-          count: count + 1,
-        }));
+        this.setState(({ count }) => ({ count: count + 1 }));
       }
 
       render() {
@@ -39,21 +43,22 @@ storiesOf("Tests", module) // Add a decorator rendering story as a component for
           </>
         );
       }
-    } // eslint-disable-next-line @thibaudcolas/cookbook/react/no-multi-comp
+    }
 
+    // eslint-disable-next-line @thibaudcolas/cookbook/react/no-multi-comp
     class UnmountWrapper extends Component {
       constructor(props) {
         super(props);
+
         this.state = {
           isMounted: true,
         };
+
         this.toggleMount = this.toggleMount.bind(this);
       }
 
       toggleMount() {
-        this.setState(({ isMounted }) => ({
-          isMounted: !isMounted,
-        }));
+        this.setState(({ isMounted }) => ({ isMounted: !isMounted }));
       }
 
       render() {

@@ -1,6 +1,9 @@
 import { EditorState, ContentState, convertFromHTML } from "draft-js";
+
 import { getValidLinkURL, onPasteLink } from "./Link";
+
 const schemes = ["http:", "https:", "ftp:", "ftps:"];
+
 describe.each`
   text                           | result
   ${"test@example.com"}          | ${"mailto:test@example.com"}
@@ -23,31 +26,26 @@ describe.each`
     expect(getValidLinkURL(text, schemes)).toBe(result);
   });
 });
+
 describe("onPasteLink", () => {
   let editorState;
   let setEditorState;
+
   beforeEach(() => {
     const { contentBlocks } = convertFromHTML("<p>hello</p>");
     const contentState = ContentState.createFromBlockArray(contentBlocks);
     editorState = EditorState.createWithContent(contentState);
+
     setEditorState = jest.fn((state) => state);
   });
+
   it("discards invalid URLs", () => {
     expect(
-      onPasteLink(
-        "test",
-        null,
-        editorState,
-        {
-          setEditorState,
-        },
-        {
-          schemes,
-        },
-      ),
+      onPasteLink("test", null, editorState, { setEditorState }, { schemes }),
     ).toBe("not-handled");
     expect(setEditorState).not.toHaveBeenCalled();
   });
+
   it("creates link onto selected text", () => {
     const selection = editorState.getSelection().merge({
       focusOffset: 4,
@@ -58,12 +56,8 @@ describe("onPasteLink", () => {
         "https://example.com/selected",
         null,
         selected,
-        {
-          setEditorState,
-        },
-        {
-          schemes,
-        },
+        { setEditorState },
+        { schemes },
       ),
     ).toBe("handled");
     expect(setEditorState).toHaveBeenCalled();
@@ -74,18 +68,15 @@ describe("onPasteLink", () => {
       content.getEntity(content.getLastCreatedEntityKey()).getData().url,
     ).toBe("https://example.com/selected");
   });
+
   it("creates link with paste as link text when collapsed", () => {
     expect(
       onPasteLink(
         "https://example.com/collapsed",
         null,
         editorState,
-        {
-          setEditorState,
-        },
-        {
-          schemes,
-        },
+        { setEditorState },
+        { schemes },
       ),
     ).toBe("handled");
     expect(setEditorState).toHaveBeenCalled();

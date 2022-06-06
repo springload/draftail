@@ -1,12 +1,15 @@
 import React from "react";
 import { shallow } from "enzyme";
+
 import Tooltip from "./Tooltip";
+
 const target = {
   top: 1,
   left: 1,
   width: 12,
   height: 1200,
 };
+
 describe("Tooltip", () => {
   it("#direction top", () => {
     expect(
@@ -17,6 +20,7 @@ describe("Tooltip", () => {
       ),
     ).toMatchSnapshot();
   });
+
   it("#direction start", () => {
     expect(
       shallow(
@@ -26,6 +30,7 @@ describe("Tooltip", () => {
       ),
     ).toMatchSnapshot();
   });
+
   it("#direction top-start", () => {
     expect(
       shallow(

@@ -3,11 +3,9 @@ import React from "react";
 const onCopy = (value) => {
   const hidden = document.createElement("textarea");
   hidden.value = value;
-  // $FlowFixMe
   document.body.appendChild(hidden);
   hidden.select();
   document.execCommand("copy");
-  // $FlowFixMe
   document.body.removeChild(hidden);
 };
 
@@ -16,18 +14,11 @@ type Props = {
 };
 
 const Highlight = ({ value }: Props) => (
-  <pre
-    style={{
-      position: "relative",
-    }}
-  >
+  <pre style={{ position: "relative" }}>
     <button
       type="button"
       onClick={onCopy.bind(null, value)}
-      style={{
-        position: "absolute",
-        insetInlineEnd: "1rem",
-      }}
+      style={{ position: "absolute", insetInlineEnd: "1rem" }}
     >
       Copy
     </button>

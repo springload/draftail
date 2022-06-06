@@ -8,10 +8,13 @@ import {
 } from "draft-js";
 import type { DraftDecoratorType } from "draft-js/lib/DraftDecoratorType";
 import type { BidiDirection } from "fbjs/lib/UnicodeBidiDirection";
-import { DraftUtils } from "../../lib/index";
+
+import { DraftUtils } from "../../src/index";
+
 // https://github.com/brijeshb42/medium-draft/blob/master/src/components/blocks/todo.js
+
 type PluginFns = {
-  setEditorState: (arg0: EditorState) => void;
+  setEditorState: (editorState: EditorState) => void;
   getEditorState: () => EditorState;
 };
 
@@ -23,6 +26,7 @@ const updateDataOfBlock = (editorState, block, newData) => {
   const newContentState = contentState.merge({
     blockMap: contentState.getBlockMap().set(block.getKey(), newBlock),
   });
+
   // forceSelection hack to make sure the selection does not attempt to go where the checkbox is.
   return EditorState.forceSelection(
     EditorState.push(editorState, newContentState, "change-block-data"),
@@ -54,13 +58,14 @@ type Props = {
 class ActionBlock extends Component<Props> {
   constructor(props: Props) {
     super(props);
+
     this.onChange = this.onChange.bind(this);
   }
 
-  /* :: onChange: () => void; */
   onChange() {
     const { block, blockProps } = this.props;
     const { setEditorState, getEditorState } = blockProps;
+
     const data = block.getData();
     const newData = data.set("checked", !data.get("checked"));
     setEditorState(updateDataOfBlock(getEditorState(), block, newData));
@@ -126,6 +131,7 @@ const actionBlockPlugin = () => ({
       const text = block.getText();
       const beforeBeforeInput = text.slice(0, startOffset);
       const mark = `${beforeBeforeInput}${char}`;
+
       const shouldSwitchBlock = typeof ACTION_INPUT[mark] !== "undefined";
 
       if (shouldSwitchBlock) {

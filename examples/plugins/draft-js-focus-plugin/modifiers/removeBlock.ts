@@ -1,8 +1,10 @@
 import { Modifier, EditorState, SelectionState } from "draft-js";
+
 /* NOT USED at the moment, but might be valuable if we want to fix atomic block behaviour */
 
 export default function (editorState, blockKey) {
   let content = editorState.getCurrentContent();
+
   const beforeKey = content.getKeyBefore(blockKey);
   const beforeBlock = content.getBlockForKey(beforeKey);
 
@@ -19,6 +21,7 @@ export default function (editorState, blockKey) {
     content = Modifier.removeRange(content, targetRange, "backward");
     content = Modifier.setBlockType(content, targetRange, "unstyled");
     const newState = EditorState.push(editorState, content, "remove-block");
+
     // force to new selection
     const newSelection = new SelectionState({
       anchorKey: blockKey,
@@ -35,8 +38,10 @@ export default function (editorState, blockKey) {
     focusKey: blockKey,
     focusOffset: 1,
   });
+
   content = Modifier.removeRange(content, targetRange, "backward");
   const newState = EditorState.push(editorState, content, "remove-block");
+
   // force to new selection
   const newSelection = new SelectionState({
     anchorKey: beforeKey,

@@ -1,5 +1,6 @@
 import React from "react";
 import type { Node } from "react";
+
 type Props = {
   children?: Node;
 };
@@ -14,4 +15,5 @@ const ToolbarGroup = ({ children }: Props) => {
 ToolbarGroup.defaultProps = {
   children: null,
 };
+
 export default ToolbarGroup;

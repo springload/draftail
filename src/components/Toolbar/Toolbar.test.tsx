@@ -1,7 +1,9 @@
 import { OrderedSet } from "immutable";
 import React from "react";
 import { shallow } from "enzyme";
+
 import Toolbar from "./Toolbar";
+
 const mockProps = {
   currentStyles: new OrderedSet(),
   currentBlock: "unstyled",
@@ -22,10 +24,12 @@ const mockProps = {
   getEditorState: () => {},
   onChange: () => {},
 };
+
 describe("Toolbar", () => {
   it("empty", () => {
     expect(shallow(<Toolbar {...mockProps} />)).toMatchSnapshot();
   });
+
   it("#controls", () => {
     expect(
       shallow(<Toolbar {...mockProps} controls={[() => <span>Test</span>]} />),

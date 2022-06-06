@@ -1,24 +1,26 @@
 import React, { Component } from "react";
 import type { ContentBlock } from "draft-js";
+
 import MediaBlock from "./MediaBlock";
 import type { BlockProps } from "./MediaBlock";
-import { DraftUtils } from "../../lib/index";
+import { DraftUtils } from "../../src/index";
+
 type Props = {
   block: ContentBlock;
   blockProps: BlockProps;
   textDirectionality: "RTL" | "LTR";
 };
+
 /**
  * Editor block to preview and edit images.
  */
-
 class ImageBlock extends Component<Props> {
   constructor(props: Props) {
     super(props);
+
     this.changeAlt = this.changeAlt.bind(this);
   }
 
-  /* :: changeAlt: (e: Event) => void; */
   changeAlt(e: Event) {
     const { block, blockProps } = this.props;
     const { editorState, onChange } = blockProps;
@@ -27,6 +29,7 @@ class ImageBlock extends Component<Props> {
       const data = {
         alt: e.currentTarget.value,
       };
+
       onChange(DraftUtils.updateBlockEntity(editorState, block, data));
     }
   }
@@ -35,6 +38,7 @@ class ImageBlock extends Component<Props> {
     const { blockProps } = this.props;
     const { entity, onEditEntity, onRemoveEntity } = blockProps;
     const { src, alt } = entity.getData();
+
     return (
       <MediaBlock {...this.props} src={src} label={alt || ""} isLoading={false}>
         <label className="ImageBlock__field">

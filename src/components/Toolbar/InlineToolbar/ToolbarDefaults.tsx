@@ -1,10 +1,13 @@
 import React, { PureComponent } from "react";
 import type { ComponentType } from "react";
+
 import ToolbarButton from "../ToolbarButton";
 import ToolbarGroup from "../ToolbarGroup";
+
 import { LABELS, DESCRIPTIONS } from "../../../api/constants";
 import behavior from "../../../api/behavior";
 import type { IconProp } from "../../Icon";
+
 type ControlProp = {
   // Describes the control in the editor UI, concisely.
   label?: string | null | undefined;
@@ -109,6 +112,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
           />
         ))}
       </ToolbarGroup>,
+
       <ToolbarGroup key="blocks">
         {blockTypes.filter(showButton).map((t) => (
           <ToolbarButton
@@ -122,6 +126,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
           />
         ))}
       </ToolbarGroup>,
+
       <ToolbarGroup key="entities">
         {entityTypes.filter(showEntityButton).map((t) => (
           <ToolbarButton

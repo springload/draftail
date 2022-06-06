@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+
 import { AtomicBlockUtils, EditorState } from "draft-js";
 import type { EntityInstance } from "draft-js";
+
 import Modal from "../components/Modal";
+
 type Props = {
   editorState: EditorState;
   onComplete: (arg0: EditorState) => void;
@@ -13,6 +16,7 @@ type Props = {
   entityKey: string | null | undefined;
   textDirectionality: "LTR" | "RTL";
 };
+
 type State = {
   src: string;
 };
@@ -22,6 +26,7 @@ class ImageSource extends Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
+
     const { entity } = this.props;
     const state = {
       src: "",
@@ -33,35 +38,27 @@ class ImageSource extends Component<Props, State> {
     }
 
     this.state = state;
+
     this.onRequestClose = this.onRequestClose.bind(this);
     this.onAfterOpen = this.onAfterOpen.bind(this);
     this.onConfirm = this.onConfirm.bind(this);
     this.onChangeSource = this.onChangeSource.bind(this);
   }
 
-  /* :: onConfirm: (e: Event) => void; */
   onConfirm(e: Event) {
-    const {
-      editorState,
-      entity,
-      entityKey,
-      entityType,
-      onComplete,
-    } = this.props;
+    const { editorState, entity, entityKey, entityType, onComplete } =
+      this.props;
     const { src } = this.state;
     const content = editorState.getCurrentContent();
     let nextState;
+
     e.preventDefault();
 
     if (entity && entityKey) {
-      const nextContent = content.mergeEntityData(entityKey, {
-        src,
-      });
+      const nextContent = content.mergeEntityData(entityKey, { src });
       nextState = EditorState.push(editorState, nextContent, "apply-entity");
     } else {
       const contentWithEntity = content.createEntity(
-        // Fixed in https://github.com/facebook/draft-js/commit/6ba124cf663b78c41afd6c361a67bd29724fa617, to be released.
-        // $FlowFixMe
         entityType.type,
         "MUTABLE",
         {
@@ -79,14 +76,13 @@ class ImageSource extends Component<Props, State> {
     onComplete(nextState);
   }
 
-  /* :: onRequestClose: (e: SyntheticEvent<>) => void; */
   onRequestClose(e: React.SyntheticEvent) {
     const { onClose } = this.props;
     e.preventDefault();
+
     onClose();
   }
 
-  /* :: onAfterOpen: () => void; */
   onAfterOpen() {
     const input = this.inputRef;
 
@@ -96,13 +92,10 @@ class ImageSource extends Component<Props, State> {
     }
   }
 
-  /* :: onChangeSource: (e: Event) => void; */
   onChangeSource(e: Event) {
     if (e.target instanceof HTMLInputElement) {
       const src = e.target.value;
-      this.setState({
-        src,
-      });
+      this.setState({ src });
     }
   }
 

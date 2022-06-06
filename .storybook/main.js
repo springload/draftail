@@ -1,10 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const webpack = require("webpack");
-const sass = require("sass");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
-
-require("dotenv").config();
 
 const pkg = require("../package.json");
 
@@ -19,22 +16,34 @@ const SVG_ICONS = fs.readFileSync(
 const EMBEDLY_API_KEY_PROD = "d23c29a928fe4d89bda46b0291914c9c";
 const EMBEDLY_API_KEY = process.env.EMBEDLY_API_KEY || EMBEDLY_API_KEY_PROD;
 
-const SENTRY_DSN_PROD =
-  "https://ab23e9a1442c46f296a2527cdbe73a0e@sentry.io/251576";
-
 module.exports = {
   stories: ["../examples/**/*.story.*"],
   framework: "@storybook/react",
+  core: {
+    builder: {
+      name: "webpack5",
+      options: {
+        lazyCompilation: true,
+        fsCache: true,
+      },
+    },
+    disableTelemetry: true,
+  },
   staticDirs: ["../public"],
   webpackFinal: (config, { configType }) => {
     const isProduction = configType === "PRODUCTION";
 
-    // See http://webpack.github.io/docs/configuration.html#devtool
     config.devtool = "source-map";
+
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      // "react-dom": path.resolve("..", "node_modules", "react-dom"),
+      // "react-dom/client": path.resolve("..", "node_modules", "react-dom"),
+    };
 
     config.module.rules.push({
       test: /\.(scss|css)$/,
-      loaders: ["style-loader", "css-loader", "sass-loader"],
+      use: ["style-loader", "css-loader", "sass-loader"],
       include: path.resolve(__dirname, "../"),
     });
 
@@ -46,7 +55,6 @@ module.exports = {
         ),
         PKG_VERSION: JSON.stringify(pkg.version),
         SVG_ICONS: JSON.stringify(SVG_ICONS),
-        SENTRY_DSN: JSON.stringify(isProduction ? SENTRY_DSN_PROD : ""),
       }),
     );
 

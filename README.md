@@ -20,7 +20,7 @@ Draftail aims for a mouse-free, keyboard-centric experience. Here are important 
 - API to build custom controls for links, images, and more.
 - Compatibility with the [`draft-js-plugins`](https://www.draft-js-plugins.com) ecosystem to build more advanced extensions.
 
-> This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html), and measures performance and [code coverage](https://coveralls.io/github/springload/draftail). It uses [Flow](https://flow.org/) types. We also try to follow accessibility best practices (tested with [aXe](https://www.axe-core.org/)) – please [get in touch](https://github.com/springload/draftail/issues/149#issuecomment-389476151) if you can help us do better in this area.
+> This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html), and measures performance and [code coverage](https://coveralls.io/github/springload/draftail). We also try to follow accessibility best practices (tested with [aXe](https://www.axe-core.org/)) – please [get in touch](https://github.com/springload/draftail/issues/149#issuecomment-389476151) if you can help us do better in this area.
 
 ## Documentation
 

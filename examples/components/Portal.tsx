@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import type { Node } from "react";
 import ReactDOM from "react-dom";
+
 type DefaultProps = {
   children?: Node;
   closeOnClick: boolean;
@@ -13,10 +14,12 @@ type Props = DefaultProps & {
 
 class Portal extends Component<Props, {}> {
   portal: Element;
+
   static defaultProps: DefaultProps;
 
   constructor(props: Props) {
     super(props);
+
     this.onCloseEvent = this.onCloseEvent.bind(this);
   }
 
@@ -50,6 +53,7 @@ class Portal extends Component<Props, {}> {
 
   componentDidUpdate() {
     const { children } = this.props;
+
     ReactDOM.render(<div>{children}</div>, this.portal);
   }
 
@@ -65,7 +69,6 @@ class Portal extends Component<Props, {}> {
     window.removeEventListener("resize", onClose);
   }
 
-  /* :: onCloseEvent: (e: Event) => void; */
   onCloseEvent(e: Event) {
     const { onClose } = this.props;
 
@@ -85,4 +88,5 @@ Portal.defaultProps = {
   closeOnType: false,
   closeOnResize: false,
 };
+
 export default Portal;

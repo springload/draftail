@@ -6,7 +6,7 @@ import {
   render,
   screen,
 } from "@testing-library/react";
-import { DraftailEditor } from "../lib";
+import { DraftailEditor } from "../src/index";
 
 describe("DraftailEditor RTL", () => {
   it("selectable by ARIA attributes", () => {

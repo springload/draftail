@@ -17,6 +17,7 @@ import {
   HANDLED,
   NOT_HANDLED,
 } from "./constants";
+
 describe("constants", () => {
   it("#BLOCK_TYPE", () => expect(BLOCK_TYPE).toBeDefined());
   it("#ENTITY_TYPE", () => expect(ENTITY_TYPE).toBeDefined());

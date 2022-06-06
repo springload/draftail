@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { convertFromHTML, convertToHTML } from "draft-convert";
 import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
 import { Formik } from "formik";
+
 import {
   DraftailEditor,
   InlineToolbar,
@@ -10,7 +11,8 @@ import {
   INLINE_STYLE,
   ENTITY_TYPE,
   BLOCK_TYPE,
-} from "../lib";
+} from "../src/index";
+
 import {
   INLINE_CONTROL,
   BLOCK_CONTROL,
@@ -21,12 +23,15 @@ import {
   REDO_ICON,
 } from "./constants/ui";
 import indexContentState from "./constants/indexContentState";
+
 import EditorWrapper from "./components/EditorWrapper";
 import PrismDecorator from "./components/PrismDecorator";
 import ReadingTime from "./components/ReadingTime";
 import CharCount from "./components/CharCount";
 import BlockPicker from "./components/BlockPicker";
-storiesOf("Docs", module) // Add a decorator rendering story as a component for hooks support.
+
+storiesOf("Docs", module)
+  // Add a decorator rendering story as a component for hooks support.
   .addDecorator((Story) => <Story />)
   .add("Built-in formats", () => (
     <EditorWrapper
@@ -178,7 +183,6 @@ storiesOf("Docs", module) // Add a decorator rendering story as a component for 
             const regex = /#[\w]+/g;
             const text = block.getText();
             let matches;
-
             // eslint-disable-next-line no-cond-assign
             while ((matches = regex.exec(text)) !== null) {
               callback(matches.index, matches.index + matches[0].length);
@@ -186,18 +190,10 @@ storiesOf("Docs", module) // Add a decorator rendering story as a component for 
           },
           // eslint-disable-next-line @thibaudcolas/cookbook/react/prop-types
           component: ({ children }) => (
-            <span
-              style={{
-                color: "#007d7e",
-              }}
-            >
-              {children}
-            </span>
+            <span style={{ color: "#007d7e" }}>{children}</span>
           ),
         },
-        new PrismDecorator({
-          defaultLanguage: "javascript",
-        }),
+        new PrismDecorator({ defaultLanguage: "javascript" }),
       ]}
     />
   ))
@@ -218,18 +214,9 @@ storiesOf("Docs", module) // Add a decorator rendering story as a component for 
       }}
       stripPastedStyles={false}
       blockTypes={[
-        {
-          type: BLOCK_TYPE.HEADER_TWO,
-          label: null,
-        },
-        {
-          type: BLOCK_TYPE.HEADER_THREE,
-          label: null,
-        },
-        {
-          type: BLOCK_TYPE.HEADER_FOUR,
-          label: null,
-        },
+        { type: BLOCK_TYPE.HEADER_TWO, label: null },
+        { type: BLOCK_TYPE.HEADER_THREE, label: null },
+        { type: BLOCK_TYPE.HEADER_FOUR, label: null },
         BLOCK_CONTROL.CODE,
         {
           type: "tiny-text",
@@ -295,22 +282,10 @@ storiesOf("Docs", module) // Add a decorator rendering story as a component for 
                 },
               ],
             },
-            {
-              text: "إنجليزي",
-              type: "unordered-list-item",
-            },
-            {
-              text: "العربية",
-              type: "unordered-list-item",
-            },
-            {
-              text: "اللغة العِبْرِيَّة",
-              type: "unordered-list-item",
-            },
-            {
-              text: "اللُغَةُ الْفَارِسِيَّةُ",
-              type: "unordered-list-item",
-            },
+            { text: "إنجليزي", type: "unordered-list-item" },
+            { text: "العربية", type: "unordered-list-item" },
+            { text: "اللغة العِبْرِيَّة", type: "unordered-list-item" },
+            { text: "اللُغَةُ الْفَارِسِيَّةُ", type: "unordered-list-item" },
           ],
           entityMap: {
             0: {
@@ -330,18 +305,10 @@ storiesOf("Docs", module) // Add a decorator rendering story as a component for 
         }}
         textDirectionality="RTL"
         placeholder="اكتب هنا…"
-        enableHorizontalRule={{
-          description: "خط أفقي",
-        }}
-        enableLineBreak={{
-          description: "الخط مقطوع",
-        }}
-        showUndoControl={{
-          description: "تراجع",
-        }}
-        showRedoControl={{
-          description: "إعادة",
-        }}
+        enableHorizontalRule={{ description: "خط أفقي" }}
+        enableLineBreak={{ description: "الخط مقطوع" }}
+        showUndoControl={{ description: "تراجع" }}
+        showRedoControl={{ description: "إعادة" }}
         stripPastedStyles={false}
         maxListNesting={6}
         spellCheck
@@ -380,8 +347,7 @@ storiesOf("Docs", module) // Add a decorator rendering story as a component for 
         rawContentState={{
           blocks: [
             {
-              text:
-                "Disable the toolbar to save space if your editor only supports a handful of formats",
+              text: "Disable the toolbar to save space if your editor only supports a handful of formats",
               inlineStyleRanges: [
                 {
                   offset: 23,
@@ -498,15 +464,12 @@ storiesOf("Docs", module) // Add a decorator rendering story as a component for 
       rawContentState={{
         blocks: [
           {
-            text:
-              "Icons can recycle Unicode characters, use SVG, or custom implementations.",
+            text: "Icons can recycle Unicode characters, use SVG, or custom implementations.",
           },
         ],
         entityMap: {},
       }}
-      enableLineBreak={{
-        icon: BR_ICON,
-      }}
+      enableLineBreak={{ icon: BR_ICON }}
       stripPastedStyles={false}
       inlineStyles={[
         INLINE_CONTROL.BOLD,
@@ -528,8 +491,7 @@ storiesOf("Docs", module) // Add a decorator rendering story as a component for 
       rawContentState={{
         blocks: [
           {
-            text:
-              "All of the text displayed in the Draftail UI can be translated",
+            text: "All of the text displayed in the Draftail UI can be translated",
           },
         ],
         entityMap: {},
@@ -549,7 +511,12 @@ storiesOf("Docs", module) // Add a decorator rendering story as a component for 
           label: "Raccourci",
         },
       ]}
-      entityTypes={[{ ...ENTITY_CONTROL.LINK, description: "Lien" }]}
+      entityTypes={[
+        {
+          ...ENTITY_CONTROL.LINK,
+          description: "Lien",
+        },
+      ]}
     />
   ))
   .add("HTML conversion", () => {
@@ -560,13 +527,12 @@ storiesOf("Docs", module) // Add a decorator rendering story as a component for 
     <img src="/static/example-lowres-image2.jpg"/>
     <p></p>
     `;
+
     const fromHTML = convertFromHTML({
       htmlToEntity: (nodeName, node, createEntity) => {
         // a tags will become LINK entities, marked as mutable, with only the URL as data.
         if (nodeName === "a") {
-          return createEntity(ENTITY_TYPE.LINK, "MUTABLE", {
-            url: node.href,
-          });
+          return createEntity(ENTITY_TYPE.LINK, "MUTABLE", { url: node.href });
         }
 
         if (nodeName === "img") {
@@ -590,6 +556,7 @@ storiesOf("Docs", module) // Add a decorator rendering story as a component for 
         return null;
       },
     });
+
     const toHTML = convertToHTML({
       blockToHTML: (block) => {
         if (block.type === BLOCK_TYPE.BLOCKQUOTE) {
@@ -606,6 +573,7 @@ storiesOf("Docs", module) // Add a decorator rendering story as a component for 
 
         return null;
       },
+
       entityToHTML: (entity, originalText) => {
         if (entity.type === ENTITY_TYPE.LINK) {
           return <a href={entity.data.url}>{originalText}</a>;
@@ -622,6 +590,7 @@ storiesOf("Docs", module) // Add a decorator rendering story as a component for 
         return originalText;
       },
     });
+
     return (
       <EditorWrapper
         id="docs-html"
@@ -650,9 +619,7 @@ storiesOf("Docs", module) // Add a decorator rendering story as a component for 
   ))
   .add("Form validation", () => (
     <Formik
-      initialValues={{
-        content: null,
-      }}
+      initialValues={{ content: null }}
       onSubmit={window.alert.bind(null, "Success!")}
       validate={(values) => {
         const errors = {};
@@ -661,7 +628,6 @@ storiesOf("Docs", module) // Add a decorator rendering story as a component for 
           errors.content = "Please enter at least two paragraphs";
         } else {
           const { blocks, entityMap } = values.content;
-
           if (Object.keys(entityMap).length === 0) {
             errors.content = "Please use at least one link";
           }

@@ -7,6 +7,7 @@ import {
 import type { ContentBlock } from "draft-js";
 import { filterEditorState } from "draftjs-filters";
 import { blockDepthStyleFn } from "draftjs-conductor";
+
 import {
   ENTITY_TYPE,
   BLOCK_TYPE,
@@ -18,28 +19,24 @@ import {
   INPUT_ENTITY_MAP,
   INLINE_STYLE,
 } from "./constants";
+
 const { hasCommandModifier, isOptionKeyCommand } = KeyBindingUtil;
 const hasCmd = hasCommandModifier;
+
 // Hack relying on the internals of Draft.js.
 // See https://github.com/facebook/draft-js/pull/869
 // @ts-expect-error
-const IS_MAC_OS =
-  isOptionKeyCommand({
-    altKey: "test",
-  }) === "test";
+const IS_MAC_OS = isOptionKeyCommand({ altKey: "test" }) === "test";
+
 /**
  * Methods defining the behavior of the editor, depending on its configuration.
  */
-
 export default {
   /**
    * Configure block render map from block types list.
    */
   getBlockRenderMap(
-    blockTypes: ReadonlyArray<{
-      type: string;
-      element?: string;
-    }>,
+    blockTypes: ReadonlyArray<{ type: string; element?: string }>,
   ) {
     let renderMap = DefaultDraftBlockRenderMap;
 
@@ -59,6 +56,7 @@ export default {
           element: block.element,
         });
       });
+
     return renderMap;
   },
 
@@ -67,6 +65,7 @@ export default {
    */
   blockStyleFn(block: ContentBlock) {
     const type = block.getType();
+
     return `Draftail-block--${type} ${blockDepthStyleFn(block)}`;
   },
 
@@ -74,15 +73,9 @@ export default {
    * Configure key binding function from enabled blocks, styles, entities.
    */
   getKeyBindingFn(
-    blockTypes: ReadonlyArray<{
-      type: string;
-    }>,
-    inlineStyles: ReadonlyArray<{
-      type: string;
-    }>,
-    entityTypes: ReadonlyArray<{
-      type: string;
-    }>,
+    blockTypes: ReadonlyArray<{ type: string }>,
+    inlineStyles: ReadonlyArray<{ type: string }>,
+    entityTypes: ReadonlyArray<{ type: string }>,
   ) {
     const getEnabled = (activeTypes) =>
       activeTypes.reduce((enabled, type) => {
@@ -104,25 +97,18 @@ export default {
         switch (e.keyCode) {
           case KEY_CODES.B:
             return undefined;
-
           case KEY_CODES.I:
             return undefined;
-
           case KEY_CODES.J:
             return undefined;
-
           case KEY_CODES.U:
             return undefined;
-
           case KEY_CODES.X:
             return hasCmd(e) && styles[INLINE_STYLE.STRIKETHROUGH];
-
           case KEY_CODES[7]:
             return hasCmd(e) && blocks[BLOCK_TYPE.ORDERED_LIST_ITEM];
-
           case KEY_CODES[8]:
             return hasCmd(e) && blocks[BLOCK_TYPE.UNORDERED_LIST_ITEM];
-
           default:
             return getDefaultKeyBinding(e);
         }
@@ -133,47 +119,33 @@ export default {
       switch (e.keyCode) {
         case KEY_CODES.K:
           return hasCmd(e) && entities.LINK;
-
         case KEY_CODES.B:
           return hasCmd(e) && styles[INLINE_STYLE.BOLD];
-
         case KEY_CODES.I:
           return hasCmd(e) && styles[INLINE_STYLE.ITALIC];
-
         case KEY_CODES.J:
           return hasCmd(e) && styles[INLINE_STYLE.CODE];
-
         case KEY_CODES.U:
           return hasCmd(e) && styles[INLINE_STYLE.UNDERLINE];
-
         case KEY_CODES["."]:
           return hasCmd(e) && styles[INLINE_STYLE.SUPERSCRIPT];
-
         case KEY_CODES[","]:
           return hasCmd(e) && styles[INLINE_STYLE.SUBSCRIPT];
-
         case KEY_CODES[0]:
           // Reverting to unstyled block is always available.
           return ctrlAlt && BLOCK_TYPE.UNSTYLED;
-
         case KEY_CODES[1]:
           return ctrlAlt && blocks[BLOCK_TYPE.HEADER_ONE];
-
         case KEY_CODES[2]:
           return ctrlAlt && blocks[BLOCK_TYPE.HEADER_TWO];
-
         case KEY_CODES[3]:
           return ctrlAlt && blocks[BLOCK_TYPE.HEADER_THREE];
-
         case KEY_CODES[4]:
           return ctrlAlt && blocks[BLOCK_TYPE.HEADER_FOUR];
-
         case KEY_CODES[5]:
           return ctrlAlt && blocks[BLOCK_TYPE.HEADER_FIVE];
-
         case KEY_CODES[6]:
           return ctrlAlt && blocks[BLOCK_TYPE.HEADER_SIX];
-
         default:
           return getDefaultKeyBinding(e);
       }
@@ -189,6 +161,7 @@ export default {
   getKeyboardShortcut(type: string, isMacOS: boolean = IS_MAC_OS) {
     const shortcut = KEYBOARD_SHORTCUTS[type];
     const system = isMacOS ? "macOS" : "other";
+
     return (shortcut && shortcut[system]) || shortcut;
   },
 
@@ -201,9 +174,7 @@ export default {
    */
   handleBeforeInputBlockType(
     mark: string,
-    blockTypes: ReadonlyArray<{
-      type: string;
-    }>,
+    blockTypes: ReadonlyArray<{ type: string }>,
   ) {
     return blockTypes.find((b) => b.type === INPUT_BLOCK_MAP[mark])
       ? INPUT_BLOCK_MAP[mark]
@@ -223,19 +194,20 @@ export default {
    */
   handleBeforeInputInlineStyle(
     input: string,
-    inlineStyles: ReadonlyArray<{
-      type: string;
-    }>,
+    inlineStyles: ReadonlyArray<{ type: string }>,
   ) {
     const activeShortcuts = INPUT_STYLE_MAP.filter(({ type }) =>
       inlineStyles.some((s) => s.type === type),
     );
     let range;
+
     const match = activeShortcuts.find(({ regex }) => {
       // Re-create a RegExp object every time because RegExp is stateful.
       range = new RegExp(regex, "g").exec(input);
+
       return range;
     });
+
     return range && match
       ? {
           pattern: match.pattern,
@@ -246,13 +218,9 @@ export default {
       : false;
   },
 
-  getCustomStyleMap(
-    inlineStyles: ReadonlyArray<{
-      type: string;
-      style?: {};
-    }>,
-  ) {
+  getCustomStyleMap(inlineStyles: ReadonlyArray<{ type: string; style?: {} }>) {
     const customStyleMap = {};
+
     inlineStyles.forEach((style) => {
       if (style.style) {
         customStyleMap[style.type] = style.style;
@@ -262,6 +230,7 @@ export default {
         customStyleMap[style.type] = {};
       }
     });
+
     return customStyleMap;
   },
 
@@ -282,17 +251,17 @@ export default {
       maxListNesting: number;
       enableHorizontalRule: boolean | {};
       enableLineBreak: boolean | {};
-      blockTypes: ReadonlyArray<{
-        type: string;
-      }>;
-      inlineStyles: ReadonlyArray<{
-        type: string;
-      }>;
+      blockTypes: ReadonlyArray<{ type: string }>;
+      inlineStyles: ReadonlyArray<{ type: string }>;
       entityTypes: ReadonlyArray<{
         type: string;
         attributes?: ReadonlyArray<string>;
-        allowlist?: Record<string, string | boolean>;
-        whitelist?: Record<string, string | boolean>;
+        allowlist?: {
+          [attribute: string]: string | boolean;
+        };
+        whitelist?: {
+          [attribute: string]: string | boolean;
+        };
       }>;
     },
     editorState: EditorState,

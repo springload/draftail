@@ -1,27 +1,26 @@
 import { AtomicBlockUtils, EditorState, CharacterMetadata } from "draft-js";
-import { DraftUtils } from "../../lib/index";
+
+import { DraftUtils } from "../../src/index";
+
 import embedly from "../utils/embedly";
 import { LINKIFY_REGEX_EXACT } from "./linkifyPlugin";
+
 const TARGET_EMBED_URLS = [
   ".youtube.com",
   "https://twitter.com",
   "www.wnycstudios.org",
   ".npr.org",
 ];
+
 type PluginFunctions = {
-  setEditorState: (arg0: EditorState) => void;
+  setEditorState: (editorState: EditorState) => void;
   getEditorState: () => EditorState;
 };
 
 const insertEmbedBlock = (editorState, block) => {
   const content = editorState.getCurrentContent();
-  const contentWithEntity = content.createEntity(
-    // Fixed in https://github.com/facebook/draft-js/commit/6ba124cf663b78c41afd6c361a67bd29724fa617, to be released.
-    // $FlowFixMe
-    "EMBED",
-    "IMMUTABLE",
-    {},
-  );
+  const contentWithEntity = content.createEntity("EMBED", "IMMUTABLE", {});
+
   return DraftUtils.removeBlock(
     AtomicBlockUtils.insertAtomicBlock(
       editorState,
@@ -35,13 +34,8 @@ const insertEmbedBlock = (editorState, block) => {
 const replaceEmbedBlock = (editorState, block) => {
   const content = editorState.getCurrentContent();
   const blockMap = content.getBlockMap();
-  const contentWithEntity = content.createEntity(
-    // Fixed in https://github.com/facebook/draft-js/commit/6ba124cf663b78c41afd6c361a67bd29724fa617, to be released.
-    // $FlowFixMe
-    "EMBED",
-    "IMMUTABLE",
-    {},
-  );
+  const contentWithEntity = content.createEntity("EMBED", "IMMUTABLE", {});
+
   const newBlock = block.merge({
     type: "atomic",
     text: "",
@@ -57,9 +51,11 @@ const replaceEmbedBlock = (editorState, block) => {
   const newContent = content.merge({
     blockMap: blockMap.set(block.getKey(), newBlock),
   });
+
   const newState = EditorState.set(editorState, {
     currentContent: newContent,
   });
+
   return {
     newState,
     newBlock,
@@ -93,12 +89,14 @@ const autoEmbedPlugin = () => ({
       if (embedBlock) {
         const replaced = replaceEmbedBlock(filteredState, embedBlock);
         filteredState = replaced.newState;
+
         embedly.get(embedBlock.getText(), (embed) => {
           const newState = getEditorState();
           // const newSpacerBlock = DraftUtils.getSelectedBlock(newState);
           const newBlock = newState
             .getCurrentContent()
             .getBlockForKey(replaced.newBlock.getKey());
+
           filteredState = DraftUtils.updateBlockEntity(newState, newBlock, {
             url: embed.url,
             title: embed.title,
@@ -106,6 +104,7 @@ const autoEmbedPlugin = () => ({
             thumbnail: embed.thumbnail_url,
             html: embed.html,
           });
+
           setEditorState(filteredState);
         });
       }
@@ -129,12 +128,14 @@ const autoEmbedPlugin = () => ({
     ) {
       const block = DraftUtils.getSelectedBlock(editorState);
       setEditorState(insertEmbedBlock(editorState, block));
+
       embedly.get(text, (embed) => {
         const newState = getEditorState();
         const newSpacerBlock = DraftUtils.getSelectedBlock(newState);
         const newBlock = newState
           .getCurrentContent()
           .getBlockBefore(newSpacerBlock.getKey());
+
         const nextState = DraftUtils.updateBlockEntity(newState, newBlock, {
           url: embed.url,
           title: embed.title,
@@ -142,8 +143,10 @@ const autoEmbedPlugin = () => ({
           thumbnail: embed.thumbnail_url,
           html: embed.html,
         });
+
         setEditorState(nextState);
       });
+
       return "handled";
     }
 

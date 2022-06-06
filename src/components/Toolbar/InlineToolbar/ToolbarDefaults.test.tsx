@@ -1,7 +1,9 @@
 import { OrderedSet } from "immutable";
 import React from "react";
 import { shallow, mount } from "enzyme";
+
 import ToolbarDefaults from "./ToolbarDefaults";
+
 const mockProps = {
   currentStyles: new OrderedSet(),
   currentBlock: "unstyled",
@@ -19,16 +21,19 @@ const mockProps = {
   onUndoRedo: () => {},
   onRequestSource: () => {},
 };
+
 describe("ToolbarDefaults", () => {
   it("empty", () => {
     expect(shallow(<ToolbarDefaults {...mockProps} />)).toMatchSnapshot();
   });
+
   describe("#enableHorizontalRule", () => {
     it("works", () => {
       expect(
         mount(<ToolbarDefaults {...mockProps} enableHorizontalRule />),
       ).toMatchSnapshot();
     });
+
     it("control overrides", () => {
       expect(
         mount(
@@ -44,12 +49,14 @@ describe("ToolbarDefaults", () => {
       ).toMatchSnapshot();
     });
   });
+
   describe("#enableLineBreak", () => {
     it("works", () => {
       expect(
         mount(<ToolbarDefaults {...mockProps} enableLineBreak />),
       ).toMatchSnapshot();
     });
+
     it("control overrides", () => {
       expect(
         mount(
@@ -65,12 +72,14 @@ describe("ToolbarDefaults", () => {
       ).toMatchSnapshot();
     });
   });
+
   describe("#showUndoControl", () => {
     it("works", () => {
       expect(
         mount(<ToolbarDefaults {...mockProps} showUndoControl />),
       ).toMatchSnapshot();
     });
+
     it("control overrides", () => {
       expect(
         mount(
@@ -86,12 +95,14 @@ describe("ToolbarDefaults", () => {
       ).toMatchSnapshot();
     });
   });
+
   describe("#showRedoControl", () => {
     it("works", () => {
       expect(
         mount(<ToolbarDefaults {...mockProps} showRedoControl />),
       ).toMatchSnapshot();
     });
+
     it("control overrides", () => {
       expect(
         mount(
@@ -107,102 +118,69 @@ describe("ToolbarDefaults", () => {
       ).toMatchSnapshot();
     });
   });
+
   it("#entityTypes", () => {
     expect(
       mount(
         <ToolbarDefaults
           {...mockProps}
           entityTypes={[
-            {
-              type: "TEST_1",
-              label: "Test 1",
-            },
-            {
-              type: "TEST_2",
-              label: "Test 2",
-            },
-            {
-              type: "TEST_3",
-              label: "Test 3",
-            },
+            { type: "TEST_1", label: "Test 1" },
+            { type: "TEST_2", label: "Test 2" },
+            { type: "TEST_3", label: "Test 3" },
           ]}
         />,
       ),
     ).toMatchSnapshot();
   });
+
   it("#blockTypes", () => {
     expect(
       mount(
         <ToolbarDefaults
           {...mockProps}
           blockTypes={[
-            {
-              type: "TEST_1",
-              label: "Test 1",
-            },
-            {
-              type: "TEST_2",
-              label: "Test 2",
-            },
-            {
-              type: "TEST_3",
-              label: "Test 3",
-            },
+            { type: "TEST_1", label: "Test 1" },
+            { type: "TEST_2", label: "Test 2" },
+            { type: "TEST_3", label: "Test 3" },
           ]}
         />,
       ),
     ).toMatchSnapshot();
   });
+
   it("#inlineStyles", () => {
     expect(
       mount(
         <ToolbarDefaults
           {...mockProps}
           inlineStyles={[
-            {
-              type: "TEST_1",
-              label: "Test 1",
-            },
-            {
-              type: "TEST_2",
-              label: "Test 2",
-            },
-            {
-              type: "TEST_3",
-              label: "Test 3",
-            },
+            { type: "TEST_1", label: "Test 1" },
+            { type: "TEST_2", label: "Test 2" },
+            { type: "TEST_3", label: "Test 3" },
           ]}
         />,
       ),
     ).toMatchSnapshot();
   });
+
   it("button label default", () => {
     const wrapper = mount(
-      <ToolbarDefaults
-        {...mockProps}
-        inlineStyles={[
-          {
-            type: "BOLD",
-          },
-        ]}
-      />,
+      <ToolbarDefaults {...mockProps} inlineStyles={[{ type: "BOLD" }]} />,
     );
     expect(wrapper.find("ToolbarButton").prop("label")).toBe("B");
   });
+
   it("button label with icon", () => {
     const wrapper = mount(
       <ToolbarDefaults
         {...mockProps}
-        inlineStyles={[
-          {
-            type: "BOLD",
-            icon: "#icon-bold",
-          },
-        ]}
+        inlineStyles={[{ type: "BOLD", icon: "#icon-bold" }]}
       />,
     );
     expect(wrapper.find("ToolbarButton").prop("label")).toBe(null);
   });
+
   it("button label overrides", () => {
     const wrapper = mount(
       <ToolbarDefaults
@@ -217,6 +195,7 @@ describe("ToolbarDefaults", () => {
     );
     expect(wrapper.find("ToolbarButton").prop("label")).toBe("Format as bold");
   });
+
   it("custom button without label nor icon", () => {
     const wrapper = mount(
       <ToolbarDefaults
@@ -241,6 +220,7 @@ describe("ToolbarDefaults", () => {
     );
     expect(wrapper.find("ToolbarButton").exists()).toBe(false);
   });
+
   it("built-in button with empty label", () => {
     const wrapper = mount(
       <ToolbarDefaults
@@ -268,6 +248,7 @@ describe("ToolbarDefaults", () => {
     );
     expect(wrapper.find("ToolbarButton").exists()).toBe(false);
   });
+
   it("built-in button with null label", () => {
     const wrapper = mount(
       <ToolbarDefaults
@@ -295,34 +276,26 @@ describe("ToolbarDefaults", () => {
     );
     expect(wrapper.find("ToolbarButton").exists()).toBe(false);
   });
+
   it("button titles with shortcut", () => {
     expect(
       mount(
         <ToolbarDefaults
           {...mockProps}
-          inlineStyles={[
-            {
-              type: "BOLD",
-              description: null,
-            },
-          ]}
+          inlineStyles={[{ type: "BOLD", description: null }]}
         />,
       )
         .find("ToolbarButton")
         .prop("title"),
     ).toBe("Ctrl + B");
   });
+
   it("button titles with shortcut and description", () => {
     expect(
       mount(
         <ToolbarDefaults
           {...mockProps}
-          inlineStyles={[
-            {
-              type: "BOLD",
-              description: "Bold",
-            },
-          ]}
+          inlineStyles={[{ type: "BOLD", description: "Bold" }]}
         />,
       )
         .find("ToolbarButton")

@@ -1,9 +1,12 @@
 import React from "react";
 import type { Node } from "react";
 import { ContentState } from "draft-js";
+
 import FontIcon from "../components/FontIcon";
 import TooltipEntity from "./TooltipEntity";
+
 export const DOCUMENT_ICON = <FontIcon icon="document" />;
+
 type Props = {
   entityKey: string;
   contentState: ContentState;

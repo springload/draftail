@@ -1,7 +1,10 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { DraftUtils } from "../../lib";
+
+import { DraftUtils } from "../../src/index";
+
 import ImageBlock from "./ImageBlock";
+
 describe("ImageBlock", () => {
   it("renders", () => {
     expect(
@@ -22,6 +25,7 @@ describe("ImageBlock", () => {
       ),
     ).toMatchSnapshot();
   });
+
   it("alt", () => {
     expect(
       shallow(
@@ -42,9 +46,11 @@ describe("ImageBlock", () => {
       ),
     ).toMatchSnapshot();
   });
+
   it("changeAlt", () => {
     jest.spyOn(DraftUtils, "updateBlockEntity");
     DraftUtils.updateBlockEntity.mockImplementation((e) => e);
+
     const onChange = jest.fn();
     const wrapper = shallow(
       <ImageBlock
@@ -62,19 +68,19 @@ describe("ImageBlock", () => {
         }}
       />,
     );
+
     const currentTarget = document.createElement("input");
     currentTarget.value = "new alt";
-    wrapper.find('[type="text"]').simulate("change", {
-      currentTarget,
-    });
+
+    wrapper.find('[type="text"]').simulate("change", { currentTarget });
+
     expect(onChange).toHaveBeenCalled();
     expect(DraftUtils.updateBlockEntity).toHaveBeenCalledWith(
       expect.any(Object),
       {},
-      expect.objectContaining({
-        alt: "new alt",
-      }),
+      expect.objectContaining({ alt: "new alt" }),
     );
+
     jest.restoreAllMocks();
   });
 });

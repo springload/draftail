@@ -2,14 +2,18 @@ import React, { Component } from "react";
 import type { Node } from "react";
 import { EditorState } from "draft-js";
 import type { EntityInstance } from "draft-js";
-import { Icon } from "../../lib";
+
+import { Icon } from "../../src/index";
+
 import Tooltip from "../components/Tooltip";
 import type { Rect } from "../components/Tooltip";
 import Portal from "../components/Portal";
+
 // Constraints the maximum size of the tooltip.
 const OPTIONS_MAX_WIDTH = 300;
 const OPTIONS_SPACING = 70;
 const TOOLTIP_MAX_WIDTH = OPTIONS_MAX_WIDTH + OPTIONS_SPACING;
+
 export type BlockProps = {
   /** The editorState is available for arbitrary content manipulation. */
   editorState: EditorState;
@@ -44,6 +48,7 @@ export type BlockProps = {
   /** Update the editorState with arbitrary changes. */
   onChange: (arg0: EditorState) => void;
 };
+
 type Props = {
   blockProps: BlockProps;
   src: string;
@@ -51,6 +56,7 @@ type Props = {
   isLoading: boolean;
   children: Node;
 };
+
 type State = {
   tooltip:
     | {
@@ -60,22 +66,23 @@ type State = {
     | null
     | undefined;
 };
+
 /**
  * Editor block to preview and edit images.
  */
-
 class MediaBlock extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
+
     this.state = {
       tooltip: null,
     };
+
     this.openTooltip = this.openTooltip.bind(this);
     this.closeTooltip = this.closeTooltip.bind(this);
     this.renderTooltip = this.renderTooltip.bind(this);
   }
 
-  /* :: openTooltip: (e: Event) => void; */
   openTooltip(e: Event) {
     const trigger = e.target;
 
@@ -84,6 +91,7 @@ class MediaBlock extends Component<Props, State> {
       trigger.parentNode instanceof HTMLElement
     ) {
       const containerWidth = trigger.parentNode.offsetWidth;
+
       this.setState({
         tooltip: {
           target: trigger.getBoundingClientRect(),
@@ -93,14 +101,10 @@ class MediaBlock extends Component<Props, State> {
     }
   }
 
-  /* :: closeTooltip: () => void; */
   closeTooltip() {
-    this.setState({
-      tooltip: null,
-    });
+    this.setState({ tooltip: null });
   }
 
-  /* :: renderTooltip: () => ?Node; */
   renderTooltip() {
     const { children, blockProps } = this.props;
     const { textDirectionality } = blockProps;
@@ -112,6 +116,7 @@ class MediaBlock extends Component<Props, State> {
 
     const maxWidth = tooltip.containerWidth - tooltip.target.width;
     const direction = maxWidth >= TOOLTIP_MAX_WIDTH ? "start" : "top-start";
+
     return (
       <Portal
         onClose={this.closeTooltip}
@@ -124,13 +129,7 @@ class MediaBlock extends Component<Props, State> {
           direction={direction}
           textDirectionality={textDirectionality}
         >
-          <div
-            style={{
-              maxWidth: OPTIONS_MAX_WIDTH,
-            }}
-          >
-            {children}
-          </div>
+          <div style={{ maxWidth: OPTIONS_MAX_WIDTH }}>{children}</div>
         </Tooltip>
       </Portal>
     );
@@ -139,6 +138,7 @@ class MediaBlock extends Component<Props, State> {
   render() {
     const { blockProps, src, label, isLoading } = this.props;
     const { entityType } = blockProps;
+
     return (
       <button
         type="button"

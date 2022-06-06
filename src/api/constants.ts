@@ -1,4 +1,5 @@
 import { DefaultDraftInlineStyle } from "draft-js";
+
 // See https://github.com/facebook/draft-js/blob/master/src/model/immutable/DefaultDraftBlockRenderMap.js
 export const BLOCK_TYPE = {
   // This is used to represent a normal text block (paragraph).
@@ -16,11 +17,13 @@ export const BLOCK_TYPE = {
   // This represents a "custom" block, not for rich text, with arbitrary content.
   ATOMIC: "atomic",
 };
+
 export const ENTITY_TYPE = {
   LINK: "LINK",
   IMAGE: "IMAGE",
   HORIZONTAL_RULE: "HORIZONTAL_RULE",
 };
+
 // See https://github.com/facebook/draft-js/blob/master/src/model/immutable/DefaultDraftInlineStyle.js
 export const INLINE_STYLE = {
   BOLD: "BOLD",
@@ -38,21 +41,26 @@ export const INLINE_STYLE = {
   SUPERSCRIPT: "SUPERSCRIPT",
   SUBSCRIPT: "SUBSCRIPT",
 };
+
 const BLOCK_TYPES = Object.values(BLOCK_TYPE);
 const ENTITY_TYPES = Object.values(ENTITY_TYPE);
 const INLINE_STYLES = Object.values(INLINE_STYLE);
+
 export const KEY_COMMANDS = [
   ...BLOCK_TYPES,
   ...ENTITY_TYPES,
-  ...INLINE_STYLES, // Lowercase identifiers used by Draft.js
+  ...INLINE_STYLES,
+  // Lowercase identifiers used by Draft.js
   // See https://github.com/facebook/draft-js/blob/585af35c3a8c31fefb64bc884d4001faa96544d3/src/model/constants/DraftEditorCommand.js#L58-L61.
   "bold",
   "italic",
   "underline",
   "code",
 ];
+
 export const FONT_FAMILY_MONOSPACE =
   "Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif";
+
 // See https://github.com/facebook/draft-js/blob/master/src/model/immutable/DefaultDraftInlineStyle.js
 export const CUSTOM_STYLE_MAP = {};
 CUSTOM_STYLE_MAP[INLINE_STYLE.BOLD] =
@@ -63,6 +71,7 @@ CUSTOM_STYLE_MAP[INLINE_STYLE.STRIKETHROUGH] =
   DefaultDraftInlineStyle[INLINE_STYLE.STRIKETHROUGH];
 CUSTOM_STYLE_MAP[INLINE_STYLE.UNDERLINE] =
   DefaultDraftInlineStyle[INLINE_STYLE.UNDERLINE];
+
 CUSTOM_STYLE_MAP[INLINE_STYLE.CODE] = {
   padding: "0.2em 0.3125em",
   margin: "0",
@@ -71,6 +80,7 @@ CUSTOM_STYLE_MAP[INLINE_STYLE.CODE] = {
   fontFamily: FONT_FAMILY_MONOSPACE,
   borderRadius: "3px",
 };
+
 CUSTOM_STYLE_MAP[INLINE_STYLE.MARK] = {
   backgroundColor: "yellow",
 };
@@ -112,9 +122,12 @@ CUSTOM_STYLE_MAP[INLINE_STYLE.SUBSCRIPT] = {
   verticalAlign: "sub",
   lineHeight: "1",
 };
+
 export const BR_TYPE = "BR";
+
 export const UNDO_TYPE = "undo";
 export const REDO_TYPE = "redo";
+
 // Originally from https://github.com/facebook/draft-js/blob/master/src/component/utils/getDefaultKeyBinding.js.
 export const KEY_CODES = {
   K: 75,
@@ -135,6 +148,7 @@ export const KEY_CODES = {
   ".": 190,
   ",": 188,
 };
+
 export const INPUT_BLOCK_MAP = {
   "* ": BLOCK_TYPE.UNORDERED_LIST_ITEM,
   "- ": BLOCK_TYPE.UNORDERED_LIST_ITEM,
@@ -150,41 +164,17 @@ export const INPUT_BLOCK_MAP = {
   // This matches how Dropbox Paper operates.
   "```": BLOCK_TYPE.CODE,
 };
+
 export const INPUT_STYLE_MAP = [
   // Order matters, as shorter patterns are contained in the longer ones.
-  {
-    pattern: "**",
-    type: INLINE_STYLE.BOLD,
-  },
-  {
-    pattern: "__",
-    type: INLINE_STYLE.BOLD,
-  },
-  {
-    pattern: "*",
-    type: INLINE_STYLE.ITALIC,
-  },
-  {
-    pattern: "_",
-    type: INLINE_STYLE.ITALIC,
-  },
-  {
-    pattern: "~~",
-    type: INLINE_STYLE.STRIKETHROUGH,
-  },
-  {
-    pattern: "~",
-    type: INLINE_STYLE.STRIKETHROUGH,
-  },
-  {
-    pattern: "`",
-    type: INLINE_STYLE.CODE,
-  },
-].map<{
-  pattern: string;
-  type: string;
-  regex: string;
-}>(({ pattern, type }) => {
+  { pattern: "**", type: INLINE_STYLE.BOLD },
+  { pattern: "__", type: INLINE_STYLE.BOLD },
+  { pattern: "*", type: INLINE_STYLE.ITALIC },
+  { pattern: "_", type: INLINE_STYLE.ITALIC },
+  { pattern: "~~", type: INLINE_STYLE.STRIKETHROUGH },
+  { pattern: "~", type: INLINE_STYLE.STRIKETHROUGH },
+  { pattern: "`", type: INLINE_STYLE.CODE },
+].map(({ pattern, type }) => {
   const pat = pattern.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const char = pattern[0].replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   // https://regexper.com/#%28%5Cs%7C%5E%29__%28%5B%5E%5Cs_%5D%7B1%2C2%7D%7C%5B%5E%5Cs_%5D.%2B%5B%5E%5Cs_%5D%29__%24
@@ -195,15 +185,20 @@ export const INPUT_STYLE_MAP = [
   // - In-between the start and end patterns, there can't be only whitespace or characters from the pattern.
   // - There has to be at least 1 char that's not whitespace or the pattern’s char.
   const regex = `(\\s|^)${pat}([^\\s${char}]{1,2}|[^\\s${char}].+[^\\s${char}])${pat}$`;
+
   return {
     pattern,
     type,
     regex,
   };
 });
+
 export const INPUT_ENTITY_MAP = {};
+
 INPUT_ENTITY_MAP[ENTITY_TYPE.HORIZONTAL_RULE] = "---";
+
 export const LABELS = {};
+
 LABELS[BLOCK_TYPE.UNSTYLED] = "P";
 LABELS[BLOCK_TYPE.HEADER_ONE] = "H1";
 LABELS[BLOCK_TYPE.HEADER_TWO] = "H2";
@@ -215,6 +210,7 @@ LABELS[BLOCK_TYPE.UNORDERED_LIST_ITEM] = "UL";
 LABELS[BLOCK_TYPE.ORDERED_LIST_ITEM] = "OL";
 LABELS[BLOCK_TYPE.CODE] = "{ }";
 LABELS[BLOCK_TYPE.BLOCKQUOTE] = "❝";
+
 LABELS[INLINE_STYLE.BOLD] = "B";
 LABELS[INLINE_STYLE.ITALIC] = "𝘐";
 LABELS[INLINE_STYLE.CODE] = "{ }";
@@ -229,13 +225,17 @@ LABELS[INLINE_STYLE.DELETE] = "Del";
 LABELS[INLINE_STYLE.SUPERSCRIPT] = "Sup";
 LABELS[INLINE_STYLE.SUBSCRIPT] = "Sub";
 LABELS[INLINE_STYLE.KEYBOARD] = "⌘";
+
 LABELS[ENTITY_TYPE.LINK] = "🔗";
 LABELS[ENTITY_TYPE.IMAGE] = "🖼";
 LABELS[ENTITY_TYPE.HORIZONTAL_RULE] = "―";
 LABELS[BR_TYPE] = "↵";
+
 LABELS[UNDO_TYPE] = "↺";
 LABELS[REDO_TYPE] = "↻";
+
 export const DESCRIPTIONS = {};
+
 DESCRIPTIONS[BLOCK_TYPE.UNSTYLED] = "Paragraph";
 DESCRIPTIONS[BLOCK_TYPE.HEADER_ONE] = "Heading 1";
 DESCRIPTIONS[BLOCK_TYPE.HEADER_TWO] = "Heading 2";
@@ -247,6 +247,7 @@ DESCRIPTIONS[BLOCK_TYPE.UNORDERED_LIST_ITEM] = "Bulleted list";
 DESCRIPTIONS[BLOCK_TYPE.ORDERED_LIST_ITEM] = "Numbered list";
 DESCRIPTIONS[BLOCK_TYPE.BLOCKQUOTE] = "Blockquote";
 DESCRIPTIONS[BLOCK_TYPE.CODE] = "Code block";
+
 DESCRIPTIONS[INLINE_STYLE.BOLD] = "Bold";
 DESCRIPTIONS[INLINE_STYLE.ITALIC] = "Italic";
 DESCRIPTIONS[INLINE_STYLE.CODE] = "Code";
@@ -261,13 +262,18 @@ DESCRIPTIONS[INLINE_STYLE.DELETE] = "Deleted";
 DESCRIPTIONS[INLINE_STYLE.KEYBOARD] = "Shortcut key";
 DESCRIPTIONS[INLINE_STYLE.SUPERSCRIPT] = "Superscript";
 DESCRIPTIONS[INLINE_STYLE.SUBSCRIPT] = "Subscript";
+
 DESCRIPTIONS[ENTITY_TYPE.LINK] = "Link";
 DESCRIPTIONS[ENTITY_TYPE.IMAGE] = "Image";
 DESCRIPTIONS[ENTITY_TYPE.HORIZONTAL_RULE] = "Horizontal line";
+
 DESCRIPTIONS[BR_TYPE] = "Line break";
+
 DESCRIPTIONS[UNDO_TYPE] = "Undo";
 DESCRIPTIONS[REDO_TYPE] = "Redo";
+
 export const KEYBOARD_SHORTCUTS = {};
+
 KEYBOARD_SHORTCUTS[BLOCK_TYPE.UNSTYLED] = "⌫";
 KEYBOARD_SHORTCUTS[BLOCK_TYPE.HEADER_ONE] = "#";
 KEYBOARD_SHORTCUTS[BLOCK_TYPE.HEADER_TWO] = "##";
@@ -279,14 +285,9 @@ KEYBOARD_SHORTCUTS[BLOCK_TYPE.UNORDERED_LIST_ITEM] = "-";
 KEYBOARD_SHORTCUTS[BLOCK_TYPE.ORDERED_LIST_ITEM] = "1.";
 KEYBOARD_SHORTCUTS[BLOCK_TYPE.BLOCKQUOTE] = ">";
 KEYBOARD_SHORTCUTS[BLOCK_TYPE.CODE] = "```";
-KEYBOARD_SHORTCUTS[INLINE_STYLE.BOLD] = {
-  other: "Ctrl + B",
-  macOS: "⌘ + B",
-};
-KEYBOARD_SHORTCUTS[INLINE_STYLE.ITALIC] = {
-  other: "Ctrl + I",
-  macOS: "⌘ + I",
-};
+
+KEYBOARD_SHORTCUTS[INLINE_STYLE.BOLD] = { other: "Ctrl + B", macOS: "⌘ + B" };
+KEYBOARD_SHORTCUTS[INLINE_STYLE.ITALIC] = { other: "Ctrl + I", macOS: "⌘ + I" };
 KEYBOARD_SHORTCUTS[INLINE_STYLE.UNDERLINE] = {
   other: "Ctrl + U",
   macOS: "⌘ + U",
@@ -303,19 +304,14 @@ KEYBOARD_SHORTCUTS[INLINE_STYLE.SUBSCRIPT] = {
   other: "Ctrl + ,",
   macOS: "⌘ + ,",
 };
-KEYBOARD_SHORTCUTS[ENTITY_TYPE.LINK] = {
-  other: "Ctrl + K",
-  macOS: "⌘ + K",
-};
+
+KEYBOARD_SHORTCUTS[ENTITY_TYPE.LINK] = { other: "Ctrl + K", macOS: "⌘ + K" };
+
 KEYBOARD_SHORTCUTS[BR_TYPE] = "⇧ + ↵";
 KEYBOARD_SHORTCUTS[ENTITY_TYPE.HORIZONTAL_RULE] = "- - -";
-KEYBOARD_SHORTCUTS[UNDO_TYPE] = {
-  other: "Ctrl + Z",
-  macOS: "⌘ + Z",
-};
-KEYBOARD_SHORTCUTS[REDO_TYPE] = {
-  other: "Ctrl + ⇧ + Z",
-  macOS: "⌘ + ⇧ + Z",
-};
+
+KEYBOARD_SHORTCUTS[UNDO_TYPE] = { other: "Ctrl + Z", macOS: "⌘ + Z" };
+KEYBOARD_SHORTCUTS[REDO_TYPE] = { other: "Ctrl + ⇧ + Z", macOS: "⌘ + ⇧ + Z" };
+
 export const HANDLED = "handled";
 export const NOT_HANDLED = "not-handled";

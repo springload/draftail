@@ -1,31 +1,20 @@
 export default {
   entityMap: {
-    "0": {
+    0: {
       type: "LINK",
       mutability: "MUTABLE",
-      data: {
-        url: "www.example.com",
-      },
+      data: { url: "www.example.com" },
     },
-    "1": {
+    1: {
       type: "LINK",
       mutability: "MUTABLE",
-      data: {
-        url: "www.example.com",
-      },
+      data: { url: "www.example.com" },
     },
-    "2": {
-      type: "HORIZONTAL_RULE",
-      mutability: "IMMUTABLE",
-      data: {},
-    },
-    "3": {
+    2: { type: "HORIZONTAL_RULE", mutability: "IMMUTABLE", data: {} },
+    3: {
       type: "IMAGE",
       mutability: "IMMUTABLE",
-      data: {
-        alt: "",
-        src: "/static/example-lowres-image.jpg",
-      },
+      data: { alt: "", src: "/static/example-lowres-image.jpg" },
     },
   },
   blocks: [
@@ -43,13 +32,7 @@ export default {
       text: "Bold: Bold",
       type: "unstyled",
       depth: 0,
-      inlineStyleRanges: [
-        {
-          offset: 6,
-          length: 4,
-          style: "BOLD",
-        },
-      ],
+      inlineStyleRanges: [{ offset: 6, length: 4, style: "BOLD" }],
       entityRanges: [],
       data: {},
     },
@@ -58,13 +41,7 @@ export default {
       text: "Italic: Italic",
       type: "unstyled",
       depth: 0,
-      inlineStyleRanges: [
-        {
-          offset: 8,
-          length: 6,
-          style: "ITALIC",
-        },
-      ],
+      inlineStyleRanges: [{ offset: 8, length: 6, style: "ITALIC" }],
       entityRanges: [],
       data: {},
     },
@@ -73,13 +50,7 @@ export default {
       text: "Code: Code",
       type: "unstyled",
       depth: 0,
-      inlineStyleRanges: [
-        {
-          offset: 6,
-          length: 4,
-          style: "CODE",
-        },
-      ],
+      inlineStyleRanges: [{ offset: 6, length: 4, style: "CODE" }],
       entityRanges: [],
       data: {},
     },
@@ -88,13 +59,7 @@ export default {
       text: "Underline: Underline",
       type: "unstyled",
       depth: 0,
-      inlineStyleRanges: [
-        {
-          offset: 11,
-          length: 9,
-          style: "UNDERLINE",
-        },
-      ],
+      inlineStyleRanges: [{ offset: 11, length: 9, style: "UNDERLINE" }],
       entityRanges: [],
       data: {},
     },
@@ -103,13 +68,7 @@ export default {
       text: "Strikethrough: Strikethrough",
       type: "unstyled",
       depth: 0,
-      inlineStyleRanges: [
-        {
-          offset: 15,
-          length: 13,
-          style: "STRIKETHROUGH",
-        },
-      ],
+      inlineStyleRanges: [{ offset: 15, length: 13, style: "STRIKETHROUGH" }],
       entityRanges: [],
       data: {},
     },
@@ -118,13 +77,7 @@ export default {
       text: "Mark: Mark",
       type: "unstyled",
       depth: 0,
-      inlineStyleRanges: [
-        {
-          offset: 6,
-          length: 4,
-          style: "MARK",
-        },
-      ],
+      inlineStyleRanges: [{ offset: 6, length: 4, style: "MARK" }],
       entityRanges: [],
       data: {},
     },
@@ -133,13 +86,7 @@ export default {
       text: "Quotation: Quotation",
       type: "unstyled",
       depth: 0,
-      inlineStyleRanges: [
-        {
-          offset: 11,
-          length: 9,
-          style: "QUOTATION",
-        },
-      ],
+      inlineStyleRanges: [{ offset: 11, length: 9, style: "QUOTATION" }],
       entityRanges: [],
       data: {},
     },
@@ -148,13 +95,7 @@ export default {
       text: "Small: Small",
       type: "unstyled",
       depth: 0,
-      inlineStyleRanges: [
-        {
-          offset: 7,
-          length: 5,
-          style: "SMALL",
-        },
-      ],
+      inlineStyleRanges: [{ offset: 7, length: 5, style: "SMALL" }],
       entityRanges: [],
       data: {},
     },
@@ -163,13 +104,7 @@ export default {
       text: "Sample: Sample",
       type: "unstyled",
       depth: 0,
-      inlineStyleRanges: [
-        {
-          offset: 8,
-          length: 6,
-          style: "SAMPLE",
-        },
-      ],
+      inlineStyleRanges: [{ offset: 8, length: 6, style: "SAMPLE" }],
       entityRanges: [],
       data: {},
     },
@@ -178,13 +113,7 @@ export default {
       text: "Insert: Insert",
       type: "unstyled",
       depth: 0,
-      inlineStyleRanges: [
-        {
-          offset: 8,
-          length: 6,
-          style: "INSERT",
-        },
-      ],
+      inlineStyleRanges: [{ offset: 8, length: 6, style: "INSERT" }],
       entityRanges: [],
       data: {},
     },
@@ -193,13 +122,7 @@ export default {
       text: "Delete: Delete",
       type: "unstyled",
       depth: 0,
-      inlineStyleRanges: [
-        {
-          offset: 8,
-          length: 6,
-          style: "DELETE",
-        },
-      ],
+      inlineStyleRanges: [{ offset: 8, length: 6, style: "DELETE" }],
       entityRanges: [],
       data: {},
     },
@@ -208,13 +131,7 @@ export default {
       text: "Keyboard: Keyboard",
       type: "unstyled",
       depth: 0,
-      inlineStyleRanges: [
-        {
-          offset: 10,
-          length: 8,
-          style: "KEYBOARD",
-        },
-      ],
+      inlineStyleRanges: [{ offset: 10, length: 8, style: "KEYBOARD" }],
       entityRanges: [],
       data: {},
     },
@@ -223,13 +140,7 @@ export default {
       text: "Superscript: Superscript",
       type: "unstyled",
       depth: 0,
-      inlineStyleRanges: [
-        {
-          offset: 13,
-          length: 11,
-          style: "SUPERSCRIPT",
-        },
-      ],
+      inlineStyleRanges: [{ offset: 13, length: 11, style: "SUPERSCRIPT" }],
       entityRanges: [],
       data: {},
     },
@@ -238,13 +149,7 @@ export default {
       text: "Subscript: Subscript",
       type: "unstyled",
       depth: 0,
-      inlineStyleRanges: [
-        {
-          offset: 11,
-          length: 9,
-          style: "SUBSCRIPT",
-        },
-      ],
+      inlineStyleRanges: [{ offset: 11, length: 9, style: "SUBSCRIPT" }],
       entityRanges: [],
       data: {},
     },
@@ -254,13 +159,7 @@ export default {
       type: "unstyled",
       depth: 0,
       inlineStyleRanges: [],
-      entityRanges: [
-        {
-          offset: 9,
-          length: 4,
-          key: 0,
-        },
-      ],
+      entityRanges: [{ offset: 9, length: 4, key: 0 }],
       data: {},
     },
     {
@@ -269,26 +168,10 @@ export default {
       type: "unstyled",
       depth: 0,
       inlineStyleRanges: [
-        {
-          offset: 9,
-          length: 11,
-          style: "BOLD",
-        },
-        {
-          offset: 22,
-          length: 9,
-          style: "BOLD",
-        },
-        {
-          offset: 9,
-          length: 11,
-          style: "ITALIC",
-        },
-        {
-          offset: 22,
-          length: 9,
-          style: "CODE",
-        },
+        { offset: 9, length: 11, style: "BOLD" },
+        { offset: 22, length: 9, style: "BOLD" },
+        { offset: 9, length: 11, style: "ITALIC" },
+        { offset: 22, length: 9, style: "CODE" },
       ],
       entityRanges: [],
       data: {},
@@ -298,20 +181,8 @@ export default {
       text: "Unstyled bold link",
       type: "unstyled",
       depth: 0,
-      inlineStyleRanges: [
-        {
-          offset: 9,
-          length: 9,
-          style: "BOLD",
-        },
-      ],
-      entityRanges: [
-        {
-          offset: 9,
-          length: 9,
-          key: 1,
-        },
-      ],
+      inlineStyleRanges: [{ offset: 9, length: 9, style: "BOLD" }],
+      entityRanges: [{ offset: 9, length: 9, key: 1 }],
       data: {},
     },
     {
@@ -419,13 +290,7 @@ export default {
       type: "atomic",
       depth: 0,
       inlineStyleRanges: [],
-      entityRanges: [
-        {
-          offset: 0,
-          length: 1,
-          key: 2,
-        },
-      ],
+      entityRanges: [{ offset: 0, length: 1, key: 2 }],
       data: {},
     },
     {
@@ -452,13 +317,7 @@ export default {
       type: "atomic",
       depth: 0,
       inlineStyleRanges: [],
-      entityRanges: [
-        {
-          offset: 0,
-          length: 1,
-          key: 3,
-        },
-      ],
+      entityRanges: [{ offset: 0, length: 1, key: 3 }],
       data: {},
     },
     {

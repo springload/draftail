@@ -1,6 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
+
 import MediaBlock from "./MediaBlock";
+
 describe("MediaBlock", () => {
   it("renders", () => {
     expect(
@@ -25,6 +27,7 @@ describe("MediaBlock", () => {
       ),
     ).toMatchSnapshot();
   });
+
   it("isLoading", () => {
     expect(
       shallow(
@@ -49,8 +52,10 @@ describe("MediaBlock", () => {
       ),
     ).toMatchSnapshot();
   });
+
   describe("tooltip", () => {
     let wrapper;
+
     beforeEach(() => {
       wrapper = shallow(
         <MediaBlock
@@ -72,18 +77,19 @@ describe("MediaBlock", () => {
         </MediaBlock>,
       );
     });
+
     it("opens", () => {
       const target = document.createElement("div");
       document.body.appendChild(target);
-      wrapper.simulate("mouseup", {
-        target,
-      });
+
+      wrapper.simulate("mouseup", { target });
+
       expect(wrapper.find("Portal").dive().instance().portal).toMatchSnapshot();
     });
+
     it("large viewport", () => {
       const target = document.createElement("div");
       document.body.appendChild(target);
-
       target.getBoundingClientRect = () => ({
         top: 0,
         left: 0,
@@ -91,9 +97,8 @@ describe("MediaBlock", () => {
         height: 0,
       });
 
-      wrapper.simulate("mouseup", {
-        target,
-      });
+      wrapper.simulate("mouseup", { target });
+
       expect(
         wrapper
           .find("Portal")
@@ -102,14 +107,17 @@ describe("MediaBlock", () => {
           .portal.querySelector(".Tooltip").className,
       ).toBe("Tooltip Tooltip--start");
     });
+
     it("closes", () => {
       const target = document.createElement("div");
       document.body.appendChild(target);
+
       jest.spyOn(target, "getBoundingClientRect");
+
       expect(wrapper.state("tooltip")).toBe(null);
-      wrapper.simulate("mouseup", {
-        target,
-      });
+
+      wrapper.simulate("mouseup", { target });
+
       expect(wrapper.state("tooltip")).toMatchObject({
         target: {
           top: 0,
@@ -117,7 +125,9 @@ describe("MediaBlock", () => {
         },
       });
       expect(target.getBoundingClientRect).toHaveBeenCalled();
+
       wrapper.instance().closeTooltip();
+
       expect(wrapper.state("tooltip")).toBe(null);
     });
   });

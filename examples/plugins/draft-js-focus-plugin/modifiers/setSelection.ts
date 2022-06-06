@@ -1,5 +1,6 @@
 import { SelectionState, EditorState } from "draft-js";
-import DraftOffsetKey from "draft-js/lib/DraftOffsetKey"; // Set selection of editor to next/previous block
+// Set selection of editor to next/previous block
+import DraftOffsetKey from "draft-js/lib/DraftOffsetKey";
 
 export default (getEditorState, setEditorState, mode, event) => {
   const editorState = getEditorState();
@@ -27,6 +28,7 @@ export default (getEditorState, setEditorState, mode, event) => {
     range.setEnd(node, 0);
     selection.removeAllRanges();
     selection.addRange(range);
+
     const offset = mode === "up" ? newActiveBlock.getLength() : 0;
     event.preventDefault();
     setEditorState(

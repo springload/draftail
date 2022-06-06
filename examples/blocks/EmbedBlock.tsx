@@ -1,7 +1,9 @@
 import React from "react";
 import type { ContentBlock } from "draft-js";
+
 import MediaBlock from "./MediaBlock";
 import type { BlockProps } from "./MediaBlock";
+
 type Props = {
   block: ContentBlock;
   blockProps: BlockProps;
@@ -15,6 +17,7 @@ const EmbedBlock = (props: Props) => {
   const { entity, onEditEntity, onRemoveEntity } = blockProps;
   const { url, title, thumbnail } = entity.getData();
   const isLoading = !url && !title && !thumbnail;
+
   return (
     <MediaBlock {...props} src={thumbnail} label={title} isLoading={isLoading}>
       <a

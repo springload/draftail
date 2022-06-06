@@ -1,6 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
+
 import EmbedBlock from "./EmbedBlock";
+
 describe("EmbedBlock", () => {
   it("renders", () => {
     expect(
@@ -20,6 +22,7 @@ describe("EmbedBlock", () => {
       ),
     ).toMatchSnapshot();
   });
+
   it("no data", () => {
     expect(
       shallow(

@@ -5,6 +5,7 @@ import {
   createEditorStateFromRaw,
   serialiseEditorStateToRaw,
 } from "draftjs-conductor";
+
 import {
   INLINE_CONTROL,
   BLOCK_CONTROL,
@@ -15,18 +16,23 @@ import {
   TINY_TEXT_BLOCK,
   REDACTED_STYLE,
 } from "./constants/ui";
+
 import linkifyPlugin from "./plugins/linkifyPlugin";
 import autoEmbedPlugin from "./plugins/autoEmbedPlugin";
+
 import EditorWrapper from "./components/EditorWrapper";
 import PrismDecorator from "./components/PrismDecorator";
 import ReadingTime from "./components/ReadingTime";
 import customContentState from "./constants/customContentState";
 import allContentState from "./constants/allContentState";
 import ColorPicker, { getColorInlineStyles } from "./components/ColorPicker";
+
 const hashtagPlugin = createHashtagPlugin();
 const linkify = linkifyPlugin();
 const autoEmbed = autoEmbedPlugin();
-storiesOf("Examples", module) // Add a decorator rendering story as a component for hooks support.
+
+storiesOf("Examples", module)
+  // Add a decorator rendering story as a component for hooks support.
   .addDecorator((Story) => <Story />)
   .add("Wagtail features", () => (
     <main>
@@ -36,7 +42,8 @@ storiesOf("Examples", module) // Add a decorator rendering story as a component 
       <EditorWrapper
         id="wagtail"
         ariaDescribedBy="wagtail-editor"
-        placeholder="Write here…" // Makes it easier to write automated tests retrieving the content.
+        placeholder="Write here…"
+        // Makes it easier to write automated tests retrieving the content.
         stateSaveInterval={50}
         enableHorizontalRule
         enableLineBreak
@@ -70,7 +77,6 @@ storiesOf("Examples", module) // Add a decorator rendering story as a component 
     const [colorStyles, setColorStyles] = useState(
       getColorInlineStyles(customContentState),
     );
-
     const onChange = (state) => {
       const raw = serialiseEditorStateToRaw(state);
       setColorStyles(raw ? getColorInlineStyles(raw) : []);
@@ -107,11 +113,7 @@ storiesOf("Examples", module) // Add a decorator rendering story as a component 
           })),
         ]}
         entityTypes={[ENTITY_CONTROL.EMBED, ENTITY_CONTROL.DOCUMENT]}
-        decorators={[
-          new PrismDecorator({
-            defaultLanguage: "css",
-          }),
-        ]}
+        decorators={[new PrismDecorator({ defaultLanguage: "css" })]}
         controls={[ReadingTime, ColorPicker]}
         plugins={[hashtagPlugin]}
       />
@@ -153,8 +155,7 @@ storiesOf("Examples", module) // Add a decorator rendering story as a component 
         blocks: [
           {
             key: "aaa",
-            text:
-              "Paste YouTube or Twitter links! Instantly create links on text, and insert embed blocks",
+            text: "Paste YouTube or Twitter links! Instantly create links on text, and insert embed blocks",
           },
         ],
       }}

@@ -7,7 +7,6 @@ module.exports = {
       },
     ],
     "@babel/preset-react",
-    "@babel/preset-flow",
   ],
   env: {
     test: {
@@ -21,9 +20,7 @@ module.exports = {
           },
         ],
         "@babel/preset-react",
-        "@babel/preset-flow",
       ],
-      plugins: ["require-context-hook"],
     },
   },
 };

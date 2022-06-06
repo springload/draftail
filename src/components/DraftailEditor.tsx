@@ -6,7 +6,6 @@ import type { EntityInstance } from "draft-js";
 import type { RawDraftContentState } from "draft-js/lib/RawDraftContentState";
 import type { DraftEditorCommand } from "draft-js/lib/DraftEditorCommand";
 import type { DraftDecorator } from "draft-js/lib/DraftDecorator";
-// flowlint untyped-import:off
 import Editor from "draft-js-plugins-editor";
 import {
   ListNestingStyles,
@@ -16,6 +15,7 @@ import {
   serialiseEditorStateToRaw,
 } from "draftjs-conductor";
 import decorateComponentWithProps from "decorate-component-with-props";
+
 import {
   ENTITY_TYPE,
   BLOCK_TYPE,
@@ -25,13 +25,18 @@ import {
   UNDO_TYPE,
   REDO_TYPE,
 } from "../api/constants";
+
 import DraftUtils from "../api/DraftUtils";
 import behavior from "../api/behavior";
+
 import Toolbar from "./Toolbar/Toolbar";
 import type { ToolbarProps } from "./Toolbar/Toolbar";
 import type { IconProp } from "./Icon";
+
 import DividerBlock from "../blocks/DividerBlock";
+
 type TextDirectionality = "LTR" | "RTL";
+
 type ControlProp = {
   /** Describes the control in the editor UI, concisely. */
   label?: string | null | undefined;
@@ -42,6 +47,7 @@ type ControlProp = {
   /** Represents the control in the editor UI. */
   icon?: IconProp;
 };
+
 type Props = {
   /** Initial content of the editor. Use this to edit pre-existing content. */
   rawContentState: RawDraftContentState | null | undefined;
@@ -217,81 +223,62 @@ type Props = {
   /** Frequency at which to call the onSave callback (ms). */
   stateSaveInterval: number;
 };
+
 const defaultProps = {
   /** Initial content of the editor. Use this to edit pre-existing content. */
   rawContentState: null,
-
   /** Called when changes occurred. Use this to persist editor content. */
   onSave: null,
-
   /** Content of the editor, when using the editor as a controlled component. Incompatible with `rawContentState` and `onSave`. */
   editorState: null,
-
   /** Called whenever the editor state is updated. Use this to manage the content of a controlled editor. Incompatible with `rawContentState` and `onSave`. */
   onChange: null,
-
   /** Called when the editor receives focus. */
   onFocus: null,
-
   /** Called when the editor loses focus. */
   onBlur: null,
-
   /** Displayed when the editor is empty. Hidden if the user changes styling. */
   placeholder: null,
-
   /** Enable the use of horizontal rules in the editor. */
   enableHorizontalRule: false,
-
   /** Enable the use of line breaks in the editor. */
   enableLineBreak: false,
-
   /** Show undo control in the toolbar. */
   showUndoControl: false,
-
   /** Show redo control in the toolbar. */
   showRedoControl: false,
-
   /** Disable copy/paste of rich text in the editor. */
   stripPastedStyles: true,
-
   /** Set if the editor supports multiple lines / blocks of text, or only a single line. */
   multiline: true,
-
   /** Set whether spellcheck is turned on for your editor.
    * See https://draftjs.org/docs/api-reference-editor.html#spellcheck.
    */
   spellCheck: false,
-
   /** Set whether the editor should be rendered in readOnly mode.
    * See https://draftjs.org/docs/api-reference-editor.html#readonly
    */
   readOnly: false,
-
   /** Optionally set the overriding text alignment for this editor.
    * See https://draftjs.org/docs/api-reference-editor.html#textalignment.
    */
   textAlignment: null,
-
   /** Optionally set the overriding text directionality for this editor.
    * See https://draftjs.org/docs/api-reference-editor.html#textdirectionality.
    */
   textDirectionality: null,
-
   /** Set if auto capitalization is turned on and how it behaves.
    * See https://draftjs.org/docs/api-reference-editor.html#autocapitalize-string.
    */
   autoCapitalize: null,
-
   /** Set if auto complete is turned on and how it behaves.
    * See https://draftjs.org/docs/api-reference-editor.html#autocomplete-string.
    */
   autoComplete: null,
-
   /** Set if auto correct is turned on and how it behaves.
    * See https://draftjs.org/docs/api-reference-editor.html#autocorrect-string.
    */
   autoCorrect: null,
-
   /** See https://draftjs.org/docs/api-reference-editor.html#aria-props. */
   ariaDescribedBy: null,
   ariaExpanded: null,
@@ -299,37 +286,28 @@ const defaultProps = {
   ariaLabelledBy: null,
   ariaOwneeID: null,
   ariaRequired: null,
-
   /** List of the available block types. */
   blockTypes: [],
-
   /** List of the available inline styles. */
   inlineStyles: [],
-
   /** List of the available entity types. */
   entityTypes: [],
-
   /** List of active decorators. */
   decorators: [],
-
   /** List of extra toolbar controls. */
   controls: [],
-
   /** List of plugins of the draft-js-plugins architecture. */
   plugins: [],
-
   /** Optionally override the default Draftail toolbar, removing or replacing it. */
   topToolbar: Toolbar,
-
   /** Optionally add a custom toolbar underneath the editor, e.g. for metrics. */
   bottomToolbar: null,
-
   /** Max level of nesting for list items. 0 = no nesting. Maximum = 10. */
   maxListNesting: 1,
-
   /** Frequency at which to call the onSave callback (ms). */
   stateSaveInterval: 250,
 };
+
 type State = {
   // editorState is only part of the local state if the editor is uncontrolled.
   editorState?: EditorState;
@@ -349,35 +327,25 @@ type State = {
     | null
     | undefined;
 };
-/* :: import type { ElementRef, Node } from "react"; */
 
 /**
  * Main component of the Draftail editor.
  * Contains the Draft.js editor instance, and ties together UI and behavior.
  */
-
 class DraftailEditor extends Component<Props, State> {
   static defaultProps: Props;
 
-  /* :: editorRef: ElementRef<Editor>; */
-
-  /* :: copySource: { unregister: () => void }; */
-
-  /* :: updateTimeout: ?number; */
-
-  /* :: lockEditor: () => void; */
-
-  /* :: unlockEditor: () => void; */
-
-  /* :: getEditorState: () => EditorState; */
   constructor(props: Props) {
     super(props);
+
     this.onChange = this.onChange.bind(this);
     this.saveState = this.saveState.bind(this);
+
     this.toggleSource = this.toggleSource.bind(this);
     this.toggleEditor = this.toggleEditor.bind(this);
     this.lockEditor = this.toggleEditor.bind(this, true);
     this.unlockEditor = this.toggleEditor.bind(this, false);
+
     this.handleReturn = this.handleReturn.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
@@ -385,20 +353,28 @@ class DraftailEditor extends Component<Props, State> {
     this.handleKeyCommand = this.handleKeyCommand.bind(this);
     this.handleBeforeInput = this.handleBeforeInput.bind(this);
     this.handlePastedText = this.handlePastedText.bind(this);
+
     this.toggleBlockType = this.toggleBlockType.bind(this);
     this.toggleInlineStyle = this.toggleInlineStyle.bind(this);
+
     this.onEditEntity = this.onEditEntity.bind(this);
     this.onRemoveEntity = this.onRemoveEntity.bind(this);
+
     this.addHR = this.addHR.bind(this);
     this.addBR = this.addBR.bind(this);
     this.onUndoRedo = this.onUndoRedo.bind(this);
+
     this.blockRenderer = this.blockRenderer.bind(this);
     this.onRequestSource = this.onRequestSource.bind(this);
     this.onCompleteSource = this.onCompleteSource.bind(this);
     this.onCloseSource = this.onCloseSource.bind(this);
+
     this.focus = this.focus.bind(this);
+
     this.renderSource = this.renderSource.bind(this);
+
     const { editorState, rawContentState } = props;
+
     this.state = {
       readOnlyState: false,
       hasFocus: false,
@@ -420,14 +396,15 @@ class DraftailEditor extends Component<Props, State> {
 
   componentWillUnmount() {
     this.copySource.unregister();
+
     window.clearTimeout(this.updateTimeout);
   }
 
-  /* :: onFocus: () => void; */
   onFocus() {
     this.setState({
       hasFocus: true,
     });
+
     const { onFocus } = this.props;
 
     if (onFocus) {
@@ -435,11 +412,11 @@ class DraftailEditor extends Component<Props, State> {
     }
   }
 
-  /* :: onBlur: () => void; */
   onBlur() {
     this.setState({
       hasFocus: false,
     });
+
     const { onBlur } = this.props;
 
     if (onBlur) {
@@ -447,16 +424,15 @@ class DraftailEditor extends Component<Props, State> {
     }
   }
 
-  /* :: onTab: (event: SyntheticKeyboardEvent<>) => true; */
   onTab(event: React.KeyboardEvent) {
     const { maxListNesting } = this.props;
     const editorState = this.getEditorState();
     const newState = RichUtils.onTab(event, editorState, maxListNesting);
+
     this.onChange(newState);
     return true;
   }
 
-  /* :: onChange: (nextState: EditorState) => void; */
   onChange(nextState: EditorState) {
     const {
       multiline,
@@ -511,7 +487,6 @@ class DraftailEditor extends Component<Props, State> {
     }
   }
 
-  /* :: onEditEntity: (entityKey: string) => void; */
   onEditEntity(entityKey: string) {
     const { entityTypes } = this.props;
     const editorState = this.getEditorState();
@@ -519,7 +494,6 @@ class DraftailEditor extends Component<Props, State> {
     const entity = content.getEntity(entityKey);
     const entityType = entityTypes.find((t) => t.type === entity.type);
 
-    // $FlowFixMe
     if (!entityType.block) {
       const entitySelection = DraftUtils.getEntitySelection(
         editorState,
@@ -529,13 +503,13 @@ class DraftailEditor extends Component<Props, State> {
         editorState,
         entitySelection,
       );
+
       this.onChange(nextState);
     }
 
     this.toggleSource(entity.getType(), entityKey, entity);
   }
 
-  /* :: onRemoveEntity: (entityKey: string, blockKey: string) => void; */
   onRemoveEntity(entityKey: string, blockKey: string) {
     const { entityTypes } = this.props;
     const editorState = this.getEditorState();
@@ -544,7 +518,6 @@ class DraftailEditor extends Component<Props, State> {
     const entityType = entityTypes.find((t) => t.type === entity.type);
     let newState = editorState;
 
-    // $FlowFixMe
     if (entityType.block) {
       newState = DraftUtils.removeBlockEntity(newState, entityKey, blockKey);
     } else {
@@ -552,13 +525,13 @@ class DraftailEditor extends Component<Props, State> {
         editorState,
         entityKey,
       );
+
       newState = RichUtils.toggleLink(newState, entitySelection, null);
     }
 
     this.onChange(newState);
   }
 
-  /* :: onUndoRedo: (type: string) => void; */
   onUndoRedo(type: string) {
     const editorState = this.getEditorState();
     let newEditorState = editorState;
@@ -572,11 +545,11 @@ class DraftailEditor extends Component<Props, State> {
     this.onChange(newEditorState);
   }
 
-  /* :: onRequestSource: (entityType: string) => void; */
   onRequestSource(entityType: string) {
     const editorState = this.getEditorState();
     const contentState = editorState.getCurrentContent();
     const entityKey = DraftUtils.getSelectionEntity(editorState);
+
     this.toggleSource(
       entityType,
       entityKey,
@@ -584,7 +557,6 @@ class DraftailEditor extends Component<Props, State> {
     );
   }
 
-  /* :: onCompleteSource: (nextState: EditorState) => void; */
   onCompleteSource(nextState: EditorState) {
     this.setState(
       {
@@ -596,22 +568,16 @@ class DraftailEditor extends Component<Props, State> {
         }
 
         window.setTimeout(() => {
-          this.setState(
-            {
-              readOnlyState: false,
-            },
-            () => {
-              window.setTimeout(() => {
-                this.focus();
-              }, 0);
-            },
-          );
+          this.setState({ readOnlyState: false }, () => {
+            window.setTimeout(() => {
+              this.focus();
+            }, 0);
+          });
         }, 0);
       },
     );
   }
 
-  /* :: onCloseSource: () => void; */
   onCloseSource() {
     this.setState({
       sourceOptions: null,
@@ -619,19 +585,16 @@ class DraftailEditor extends Component<Props, State> {
     });
   }
 
-  /* :: getEditorStateProp: () => EditorState; */
   getEditorStateProp() {
     const { editorState } = this.props;
     return editorState;
   }
 
-  /* :: getEditorStateState: () => EditorState; */
   getEditorStateState() {
     const { editorState } = this.state;
     return editorState;
   }
 
-  /* :: saveState: () => void; */
   saveState() {
     const { onSave } = this.props;
     const editorState = this.getEditorState();
@@ -641,14 +604,12 @@ class DraftailEditor extends Component<Props, State> {
     }
   }
 
-  /* :: toggleEditor: (readOnlyState: boolean) => void; */
   toggleEditor(readOnlyState: boolean) {
     this.setState({
       readOnlyState,
     });
   }
 
-  /* :: toggleSource: (type:string, entityKey: ?string, entity: ?EntityInstance) => void; */
   toggleSource(
     type: string,
     entityKey: string | null | undefined,
@@ -656,6 +617,7 @@ class DraftailEditor extends Component<Props, State> {
   ) {
     const { entityTypes } = this.props;
     const entityType = entityTypes.find((item) => item.type === type);
+
     this.setState({
       readOnlyState: true,
       sourceOptions: {
@@ -666,7 +628,6 @@ class DraftailEditor extends Component<Props, State> {
     });
   }
 
-  /* :: handleReturn: (e: SyntheticKeyboardEvent<>) => 'not-handled' | 'handled'; */
   handleReturn(e: React.KeyboardEvent) {
     const { multiline, enableLineBreak, inlineStyles } = this.props;
     const editorState = this.getEditorState();
@@ -696,8 +657,8 @@ class DraftailEditor extends Component<Props, State> {
 
     let newState = editorState;
     let newStyle = false;
-    const selection = newState.getSelection();
 
+    const selection = newState.getSelection();
     // Check whether we should apply a Markdown styles shortcut.
     if (selection.isCollapsed()) {
       const block = DraftUtils.getSelectedBlock(editorState);
@@ -736,7 +697,6 @@ class DraftailEditor extends Component<Props, State> {
     return NOT_HANDLED;
   }
 
-  /* :: handleKeyCommand: (command: DraftEditorCommand) => 'handled' | 'not-handled'; */
   handleKeyCommand(command: DraftEditorCommand) {
     const { entityTypes, blockTypes, inlineStyles } = this.props;
     const editorState = this.getEditorState();
@@ -772,7 +732,6 @@ class DraftailEditor extends Component<Props, State> {
     }
 
     const newState = RichUtils.handleKeyCommand(editorState, command);
-
     if (newState) {
       this.onChange(newState);
       return HANDLED;
@@ -781,7 +740,6 @@ class DraftailEditor extends Component<Props, State> {
     return NOT_HANDLED;
   }
 
-  /* :: handleBeforeInput: (char: string) => 'handled' | 'not-handled'; */
   handleBeforeInput(char: string) {
     const { blockTypes, inlineStyles, enableHorizontalRule } = this.props;
     const editorState = this.getEditorState();
@@ -794,6 +752,7 @@ class DraftailEditor extends Component<Props, State> {
       const beforeInput = text.slice(0, startOffset);
       const mark = `${beforeInput}${char}`;
       let newEditorState = editorState;
+
       const newBlockType = behavior.handleBeforeInputBlockType(
         mark,
         blockTypes,
@@ -836,13 +795,13 @@ class DraftailEditor extends Component<Props, State> {
     return NOT_HANDLED;
   }
 
-  /* :: handlePastedText: (text: string, html: ?string, editorState: EditorState) => 'handled' | 'not-handled'; */
   handlePastedText(
     text: string,
     html: string | null | undefined,
     editorState: EditorState,
   ) {
     const { stripPastedStyles, entityTypes } = this.props;
+
     const hasProcessedEntity = entityTypes.some((t) => {
       const ret =
         t.onPaste &&
@@ -878,31 +837,26 @@ class DraftailEditor extends Component<Props, State> {
     return NOT_HANDLED;
   }
 
-  /* :: toggleBlockType: (blockType: string) => void; */
   toggleBlockType(blockType: string) {
     const editorState = this.getEditorState();
     this.onChange(RichUtils.toggleBlockType(editorState, blockType));
   }
 
-  /* :: toggleInlineStyle: (inlineStyle: string) => void; */
   toggleInlineStyle(inlineStyle: string) {
     const editorState = this.getEditorState();
     this.onChange(RichUtils.toggleInlineStyle(editorState, inlineStyle));
   }
 
-  /* :: addHR: () => void; */
   addHR() {
     const editorState = this.getEditorState();
     this.onChange(DraftUtils.addHorizontalRuleRemovingSelection(editorState));
   }
 
-  /* :: addBR: () => void; */
   addBR() {
     const editorState = this.getEditorState();
     this.onChange(DraftUtils.addLineBreak(editorState));
   }
 
-  /* :: blockRenderer: (block: ContentBlock) => {}; */
   blockRenderer(block: ContentBlock) {
     const { entityTypes, textDirectionality } = this.props;
     const editorState = this.getEditorState();
@@ -931,42 +885,33 @@ class DraftailEditor extends Component<Props, State> {
     }
 
     const entityType = entityTypes.find((t) => t.type === entity.type);
+
     return {
-      // $FlowFixMe
       component: entityType.block,
       editable: false,
       props: {
         /** The editorState is available for arbitrary content manipulation. */
         editorState,
-
         /** Current entity to manage. */
         entity,
-
         /** Current entityKey to manage. */
         entityKey,
-
         /** Whole entityType configuration, as provided to the editor. */
         entityType,
-
         /** Optionally set the overriding text directionality for this editor. */
         textDirectionality,
-
         /** Make the whole editor read-only, except for the block. */
         lockEditor: this.lockEditor,
-
         /** Make the editor editable again. */
         unlockEditor: this.unlockEditor,
-
         /** Shorthand to edit entity data. */
         onEditEntity: this.onEditEntity.bind(null, entityKey),
-
         /** Shorthand to remove an entity, and the related block. */
         onRemoveEntity: this.onRemoveEntity.bind(
           null,
           entityKey,
           block.getKey(),
         ),
-
         /** Update the editorState with arbitrary changes. */
         onChange: this.onChange,
       },
@@ -977,13 +922,10 @@ class DraftailEditor extends Component<Props, State> {
    * Imperative focus API similar to that of Draft.js.
    * See https://draftjs.org/docs/advanced-topics-managing-focus.html#content.
    */
-
-  /* :: focus: () => void; */
   focus() {
     this.editorRef.focus();
   }
 
-  /* :: renderSource: () => ?Node; */
   renderSource() {
     const { textDirectionality } = this.props;
     const { sourceOptions } = this.state;
@@ -991,6 +933,7 @@ class DraftailEditor extends Component<Props, State> {
 
     if (sourceOptions && sourceOptions.entityType) {
       const Source = sourceOptions.entityType.source;
+
       return (
         <Source
           /** The editorState is available for arbitrary content manipulation. */
@@ -1054,13 +997,13 @@ class DraftailEditor extends Component<Props, State> {
       .filter((type) => !!type.decorator)
       .map((type) => ({
         strategy: DraftUtils.getEntityTypeStrategy(type.type),
-        // $FlowFixMe
         component: decorateComponentWithProps(type.decorator, {
           onEdit: this.onEditEntity,
           onRemove: this.onRemoveEntity,
           textDirectionality,
         }),
       }));
+
     const TopToolbar = topToolbar;
     const BottomToolbar = bottomToolbar;
     const toolbarProps = {
@@ -1084,6 +1027,7 @@ class DraftailEditor extends Component<Props, State> {
       getEditorState: this.getEditorState,
       onChange: this.onChange,
     };
+
     return (
       <div
         className={`Draftail-Editor${
@@ -1128,7 +1072,8 @@ class DraftailEditor extends Component<Props, State> {
           onTab={this.onTab}
           blockRendererFn={this.blockRenderer}
           blockRenderMap={behavior.getBlockRenderMap(blockTypes)}
-          blockStyleFn={behavior.blockStyleFn} // Include the keyBindingFn in a plugin here so that
+          blockStyleFn={behavior.blockStyleFn}
+          // Include the keyBindingFn in a plugin here so that
           // other plugin keyBindingFn's are still called, while
           // still being able to override the Draft.js oversensitive
           // keyboard shortcuts.
@@ -1140,7 +1085,7 @@ class DraftailEditor extends Component<Props, State> {
                 entityTypes,
               ),
             },
-          ])} // $FlowFixMe
+          ])}
           decorators={decorators.concat(entityDecorators)}
         />
 
@@ -1155,4 +1100,5 @@ class DraftailEditor extends Component<Props, State> {
 }
 
 DraftailEditor.defaultProps = defaultProps;
+
 export default DraftailEditor;

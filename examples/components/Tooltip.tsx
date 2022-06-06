@@ -1,14 +1,17 @@
 import React from "react";
 import type { Node } from "react";
+
 const TOP = "top";
 const START = "start";
 const TOP_START = "top-start";
+
 export type Rect = {
   top: number;
   left: number;
   width: number;
   height: number;
 };
+
 type Direction = "top" | "start" | "top-start";
 
 const getTooltipStyles = (
@@ -33,13 +36,11 @@ const getTooltipStyles = (
         top: top + target.height,
         insetInlineStart: start + dirFactor * (target.width / 2),
       };
-
     case START:
       return {
         top: top + target.height / 2,
         insetInlineStart: start + (isRTL ? 0 : target.width),
       };
-
     case TOP_START:
     default:
       return {

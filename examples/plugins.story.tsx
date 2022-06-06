@@ -4,8 +4,11 @@ import { composeDecorators } from "draft-js-plugins-editor";
 import createInlineToolbarPlugin from "draft-js-inline-toolbar-plugin";
 import createSideToolbarPlugin from "draft-js-side-toolbar-plugin";
 import createEmojiPlugin from "draft-js-emoji-plugin";
-import { DraftailEditor } from "../lib";
+
+import { DraftailEditor } from "../src/index";
+
 import { INLINE_CONTROL, ENTITY_CONTROL, BLOCK_CONTROL } from "./constants/ui";
+
 import EditorWrapper from "./components/EditorWrapper";
 import singleLinePlugin from "./plugins/singleLinePlugin";
 import linkifyPlugin from "./plugins/linkifyPlugin";
@@ -16,17 +19,17 @@ import sectionBreakPlugin, {
 } from "./plugins/sectionBreakPlugin";
 import autoEmbedPlugin from "./plugins/autoEmbedPlugin";
 import createFocusPlugin from "./plugins/draft-js-focus-plugin/index";
+
 const singleLine = singleLinePlugin();
 const linkify = linkifyPlugin();
 const autoEmbed = autoEmbedPlugin();
 const actionBlock = actionBlockPlugin();
 const slashCommand = slashCommandPlugin();
-const focusPlugin = createFocusPlugin({
-  focusableBlocks: ["section-break"],
-});
+const focusPlugin = createFocusPlugin({ focusableBlocks: ["section-break"] });
 const sectionBreak = sectionBreakPlugin({
   decorator: composeDecorators(focusPlugin.decorator),
 });
+
 storiesOf("Plugins", module)
   .add("Single-line", () => (
     <EditorWrapper
@@ -63,8 +66,7 @@ storiesOf("Plugins", module)
         blocks: [
           {
             key: "aaa",
-            text:
-              "Paste a YouTube or Twitter link to automatically create an embed.",
+            text: "Paste a YouTube or Twitter link to automatically create an embed.",
             type: "unstyled",
             depth: 0,
             entityRanges: [
@@ -111,8 +113,7 @@ storiesOf("Plugins", module)
         blocks: [
           {
             key: "aaa",
-            text:
-              "This editor supports action lists. Start one with - [] at the start of a line.",
+            text: "This editor supports action lists. Start one with - [] at the start of a line.",
             inlineStyleRanges: [
               {
                 offset: 50,
@@ -144,8 +145,7 @@ storiesOf("Plugins", module)
         blocks: [
           {
             key: "aaa",
-            text:
-              "This editor supports two commands: /hr, and /embed <url>. Then press Enter.",
+            text: "This editor supports two commands: /hr, and /embed <url>. Then press Enter.",
             inlineStyleRanges: [
               {
                 offset: 35,
@@ -191,6 +191,7 @@ storiesOf("Plugins", module)
 class CustomToolbarStory extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       inlineToolbarPlugin: createInlineToolbarPlugin(),
       sideToolbarPlugin: createSideToolbarPlugin(),
@@ -201,6 +202,7 @@ class CustomToolbarStory extends Component {
     const { inlineToolbarPlugin, sideToolbarPlugin } = this.state;
     const { InlineToolbar } = inlineToolbarPlugin;
     const { SideToolbar } = sideToolbarPlugin;
+
     return (
       <div className="custom-toolbar-plugins">
         <DraftailEditor
@@ -209,8 +211,7 @@ class CustomToolbarStory extends Component {
             entityMap: {},
             blocks: [
               {
-                text:
-                  "This editor uses inline and side toolbars from the draft-js-plugins ecosystem",
+                text: "This editor uses inline and side toolbars from the draft-js-plugins ecosystem",
               },
             ],
           }}
@@ -244,12 +245,15 @@ class CustomToolbarStory extends Component {
 
 storiesOf("Plugins", module).add("Custom toolbars", () => (
   <CustomToolbarStory />
-)); // eslint-disable-next-line
+));
 
+// eslint-disable-next-line
 class EmojiStory extends Component {
   constructor(props) {
     super(props);
+
     const emojiPlugin = createEmojiPlugin();
+
     this.state = {
       emojiPlugin,
     };
@@ -258,6 +262,7 @@ class EmojiStory extends Component {
   render() {
     const { emojiPlugin } = this.state;
     const { EmojiSuggestions, EmojiSelect } = emojiPlugin;
+
     return (
       <div className="emoji-plugins">
         <DraftailEditor
@@ -266,8 +271,7 @@ class EmojiStory extends Component {
             entityMap: {},
             blocks: [
               {
-                text:
-                  "We can have all sorts of Emojis here! 🙌 🌿☃️🎉🙈 aaaand maybe a few more there 🐲☀️🗻 Quite fun!",
+                text: "We can have all sorts of Emojis here! 🙌 🌿☃️🎉🙈 aaaand maybe a few more there 🐲☀️🗻 Quite fun!",
               },
             ],
           }}

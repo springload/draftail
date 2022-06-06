@@ -1,9 +1,7 @@
-import React, { Component } from "react";
-import type { Node } from "react";
-const { Raven } = window;
-const isRavenAvailable = !!Raven;
+import React, { Component, ReactNode } from "react";
+
 type Props = {
-  children: Node;
+  children: ReactNode;
 };
 type State = {
   error: Error | null | undefined;
@@ -20,12 +18,11 @@ class SentryBoundary extends Component<Props, State> {
     this.onAttemptReload = this.onAttemptReload.bind(this);
   }
 
-  /* :: onAttemptReload: () => void; */
   onAttemptReload() {
     const { reloads } = this.state;
 
     if (reloads > 2) {
-      window.location.reload(false);
+      window.location.reload();
     } else {
       this.setState({
         error: null,
@@ -34,21 +31,10 @@ class SentryBoundary extends Component<Props, State> {
     }
   }
 
-  componentDidCatch(
-    error: Error,
-    errorInfo: {
-      componentStack: string;
-    },
-  ) {
+  componentDidCatch(error: Error) {
     this.setState({
       error,
     });
-
-    if (isRavenAvailable) {
-      Raven.captureException(error, {
-        extra: errorInfo,
-      });
-    }
   }
 
   render() {
@@ -66,7 +52,6 @@ class SentryBoundary extends Component<Props, State> {
         <div className="DraftEditor-root">
           <div className="DraftEditor-editorContainer">
             <div className="public-DraftEditor-content">
-              {/* <img src={oops} /> */}
               <div className="u-text-center">
                 <p>Oops. The editor just crashed.</p>
                 <p>
@@ -74,27 +59,16 @@ class SentryBoundary extends Component<Props, State> {
                   information if you want to.
                 </p>
                 <div>
-                  {isRavenAvailable ? (
-                    <button
-                      type="button"
-                      onClick={() =>
-                        Raven.lastEventId() && Raven.showReportDialog()
-                      }
-                    >
-                      Submit a report
-                    </button>
-                  ) : (
-                    <a
-                      href="https://github.com/springload/draftail/issues"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        textDecoration: "underline",
-                      }}
-                    >
-                      Open a GitHub issue
-                    </a>
-                  )}
+                  <a
+                    href="https://github.com/springload/draftail/issues"
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      textDecoration: "underline",
+                    }}
+                  >
+                    Open a GitHub issue
+                  </a>
                   <span> or </span>
                   <button type="button" onClick={this.onAttemptReload}>
                     {reloads > 2 ? "Reload the page" : "Reload the editor"}

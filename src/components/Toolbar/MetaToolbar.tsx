@@ -1,14 +1,17 @@
 import React from "react";
 import type { ComponentType } from "react";
 import { EditorState } from "draft-js";
+
 import type { IconProp } from "../Icon";
 import ToolbarButton from "./ToolbarButton";
 import ToolbarGroup from "./ToolbarGroup";
 import { showButton, getButtonLabel, getButtonTitle } from "./ToolbarDefaults";
+
 type ControlProps = {
   getEditorState: () => EditorState;
   onChange: (arg0: EditorState) => void;
 };
+
 type ControlComponent = ComponentType<ControlProps>;
 type LegacyControlConfig = ControlComponent;
 type CurrentControlConfig = {
@@ -16,6 +19,7 @@ type CurrentControlConfig = {
   block?: ControlComponent;
   meta?: ControlComponent;
 };
+
 type ControlConfig = CurrentControlConfig;
 export type MetaToolbarProps = {
   showBlockEntities: boolean | null | undefined;
@@ -67,10 +71,11 @@ const MetaToolbar = ({
         }
 
         // Support the legacy and current controls APIs.
-        // $FlowFixMe
         const Control = control.meta || (control as LegacyControlConfig);
+
         return (
-          <Control // eslint-disable-next-line @thibaudcolas/cookbook/react/no-array-index-key
+          <Control
+            // eslint-disable-next-line @thibaudcolas/cookbook/react/no-array-index-key
             key={i}
             getEditorState={getEditorState}
             onChange={onChange}

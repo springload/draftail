@@ -1,8 +1,7 @@
-// @flow
 import React from "react";
 import contentStates from "markov_draftjs";
 
-import { DraftailEditor } from "../../lib";
+import { DraftailEditor } from "../../src/index";
 
 import {
   INLINE_CONTROL,
@@ -36,7 +35,6 @@ type Props = {|
 |};
 
 const MarkovBenchmark = ({ id }: Props) => (
-  // $FlowFixMe
   <DraftailEditor rawContentState={contentStates[id]} {...benchmarkProps} />
 );
 

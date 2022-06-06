@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
-import Icon from "../Icon";
-import type { IconProp } from "../Icon";
+import Icon, { IconProp } from "../Icon";
+
 type Props = {
   name: string | null | undefined;
   active: boolean;
@@ -9,6 +9,7 @@ type Props = {
   icon: IconProp | null | undefined;
   onClick: ((arg0: string) => void) | null | undefined;
 };
+
 type State = {
   showTooltipOnHover: boolean;
 };
@@ -16,23 +17,25 @@ type State = {
  * Displays a basic button, with optional active variant,
  * enriched with a tooltip. The tooltip stops showing on click.
  */
-
 class ToolbarButton extends PureComponent<Props, State> {
   static defaultProps: Props;
 
   constructor(props: Props) {
     super(props);
+
     this.state = {
       showTooltipOnHover: true,
     };
+
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
   }
 
-  /* :: onMouseDown: (e: Event) => void; */
   onMouseDown(e: Event) {
     const { name, onClick } = this.props;
+
     e.preventDefault();
+
     this.setState({
       showTooltipOnHover: false,
     });
@@ -42,7 +45,6 @@ class ToolbarButton extends PureComponent<Props, State> {
     }
   }
 
-  /* :: onMouseLeave: () => void; */
   onMouseLeave() {
     this.setState({
       showTooltipOnHover: true,
@@ -52,6 +54,7 @@ class ToolbarButton extends PureComponent<Props, State> {
   render() {
     const { name, active, label, title, icon } = this.props;
     const { showTooltipOnHover } = this.state;
+
     return (
       <button
         name={name}
@@ -84,4 +87,5 @@ ToolbarButton.defaultProps = {
   icon: null,
   onClick: null,
 };
+
 export default ToolbarButton;

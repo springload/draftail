@@ -1,9 +1,10 @@
-import babel from "rollup-plugin-babel";
 import pkg from "./package.json";
+import typescript from "@rollup/plugin-typescript";
+import dts from "rollup-plugin-dts";
 
-export default [
+const config = [
   {
-    input: "lib/index.js",
+    input: "./src/lib/index.ts",
     external: ["draft-js/lib/isSoftNewlineEvent"]
       .concat(Object.keys(pkg.dependencies))
       .concat(Object.keys(pkg.peerDependencies)),
@@ -11,10 +12,13 @@ export default [
       { file: pkg.main, format: "cjs" },
       { file: pkg.module, format: "es" },
     ],
-    plugins: [
-      babel({
-        exclude: ["node_modules/**"],
-      }),
-    ],
+    plugins: [typescript()],
+  },
+  {
+    input: "./src/lib/index.ts",
+    output: [{ file: pkg.types, format: "es" }],
+    plugins: [dts()],
   },
 ];
+
+export default config;

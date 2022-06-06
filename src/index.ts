@@ -10,6 +10,7 @@ export { default as InlineToolbar } from "./components/Toolbar/InlineToolbar/Inl
 export { default as MetaToolbar } from "./components/Toolbar/MetaToolbar";
 export { default as DraftUtils } from "./api/DraftUtils";
 export { BLOCK_TYPE, ENTITY_TYPE, INLINE_STYLE } from "./api/constants";
+
 // Expose methods from draftjs-conductor directly for users of Draftail.
 export {
   createEditorStateFromRaw,

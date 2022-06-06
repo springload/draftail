@@ -1,7 +1,9 @@
 import { EditorState, AtomicBlockUtils } from "draft-js";
-import { DraftUtils } from "../../lib/index";
+import { DraftUtils } from "../../src/index";
 import embedly from "../utils/embedly";
+
 import { LINKIFY_REGEX_EXACT } from "./linkifyPlugin";
+
 type PluginFns = {
   setEditorState: (arg0: EditorState) => void;
 };
@@ -28,6 +30,7 @@ const slashCommandPlugin = () => ({
         DraftUtils.addHorizontalRuleRemovingSelection(editorState),
         block.getKey(),
       );
+
       setEditorState(nextState);
       return "handled";
     }
@@ -37,11 +40,11 @@ const slashCommandPlugin = () => ({
       text.replace("/embed ", "").match(LINKIFY_REGEX_EXACT)
     ) {
       const url = text.replace("/embed ", "");
+
       embedly.get(url, (embed) => {
         const content = editorState.getCurrentContent();
         const contentWithEntity = content.createEntity(
           // Fixed in https://github.com/facebook/draft-js/commit/6ba124cf663b78c41afd6c361a67bd29724fa617, to be released.
-          // $FlowFixMe
           "EMBED",
           "IMMUTABLE",
           {
@@ -59,8 +62,10 @@ const slashCommandPlugin = () => ({
           ),
           block.getKey(),
         );
+
         setEditorState(nextState);
       });
+
       return "handled";
     }
 

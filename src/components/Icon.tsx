@@ -1,6 +1,8 @@
 import React from "react";
 import type { Node } from "react";
+
 export type IconProp = string | string[] | Node;
+
 type Props = {
   icon: IconProp;
   title: string | null | undefined;
@@ -45,4 +47,5 @@ Icon.defaultProps = {
   title: null,
   className: null,
 };
+
 export default Icon;

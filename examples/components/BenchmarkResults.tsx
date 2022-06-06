@@ -1,5 +1,6 @@
 import React from "react";
 import type { BenchResultsType } from "react-component-benchmark";
+
 type Props = {
   results: BenchResultsType;
 };

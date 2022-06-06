@@ -2,8 +2,7 @@ export default {
   blocks: [
     {
       key: "c1gc9",
-      text:
-        "You can implement custom block types as required, and inline styles too, or entities.",
+      text: "You can implement custom block types as required, and inline styles too, or entities.",
       type: "tiny-text",
       depth: 0,
       inlineStyleRanges: [
@@ -29,8 +28,7 @@ export default {
     },
     {
       key: "7dtlg",
-      text:
-        "Draftail also supports the #plugins architecture of draft-js-plugins.",
+      text: "Draftail also supports the #plugins architecture of draft-js-plugins.",
       type: "unstyled",
       depth: 0,
       inlineStyleRanges: [
@@ -87,14 +85,14 @@ export default {
     },
   ],
   entityMap: {
-    "0": {
+    0: {
       type: "DOCUMENT",
       mutability: "MUTABLE",
       data: {
         url: "docs.pdf",
       },
     },
-    "1": {
+    1: {
       type: "EMBED",
       mutability: "IMMUTABLE",
       data: {

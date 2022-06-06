@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-
-/* :: import { EditorState } from "draft-js"; */
+import { EditorState } from "draft-js";
 import type { RawDraftContentState } from "draft-js/lib/RawDraftContentState";
-import { DraftailEditor, serialiseEditorStateToRaw } from "../../lib";
+
+import { DraftailEditor, serialiseEditorStateToRaw } from "../../src/index";
+
 import SentryBoundary from "./SentryBoundary";
 import Highlight from "./Highlight";
 import EditorBenchmark from "./EditorBenchmark";
@@ -10,6 +11,7 @@ import EditorBenchmark from "./EditorBenchmark";
 /* global PKG_VERSION */
 const DRAFTAIL_VERSION =
   typeof PKG_VERSION === "undefined" ? "dev" : PKG_VERSION;
+
 type Props = {
   id: string;
   rawContentState: RawDraftContentState | null | undefined;
@@ -17,6 +19,7 @@ type Props = {
   onSave: ((content: null | RawDraftContentState) => void) | null | undefined;
   onChange: ((editorState: EditorState) => void) | null | undefined;
 };
+
 type State = {
   content: RawDraftContentState | null | undefined;
   saveCount: number;
@@ -25,21 +28,21 @@ type State = {
 class EditorWrapper extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
+
     this.state = {
       content: null,
       saveCount: 0,
     };
+
     this.onSave = this.onSave.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
-  /* :: onSave: (content: null | RawDraftContentState) => void; */
   onSave(content: null | RawDraftContentState) {
     const { id, onSave } = this.props;
-    this.setState(({ saveCount }) => ({
-      content,
-      saveCount: saveCount + 1,
-    }));
+
+    this.setState(({ saveCount }) => ({ content, saveCount: saveCount + 1 }));
+
     sessionStorage.setItem(`${id}:content`, JSON.stringify(content));
 
     if (onSave) {
@@ -47,14 +50,12 @@ class EditorWrapper extends Component<Props, State> {
     }
   }
 
-  /* :: onChange: (nextState: EditorState) => void; */
   onChange(nextState: EditorState) {
     const { id, onChange } = this.props;
     const content = serialiseEditorStateToRaw(nextState);
-    this.setState(({ saveCount }) => ({
-      content,
-      saveCount: saveCount + 1,
-    }));
+
+    this.setState(({ saveCount }) => ({ content, saveCount: saveCount + 1 }));
+
     sessionStorage.setItem(`${id}:content`, JSON.stringify(content));
 
     if (onChange) {
@@ -89,7 +90,6 @@ class EditorWrapper extends Component<Props, State> {
     return (
       <div className={`EditorWrapper EditorWrapper--${id}`}>
         <SentryBoundary>
-          {/* $FlowFixMe */}
           <DraftailEditor {...dataProps} {...editorProps} />
         </SentryBoundary>
         <details className="EditorWrapper__details">

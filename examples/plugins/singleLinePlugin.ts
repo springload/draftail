@@ -12,6 +12,7 @@ export function condenseBlocks(editorState: EditorState) {
 
   let text = "";
   let characterList;
+
   // Gather all the text/characterList and concat them
   blocks.forEach((block) => {
     // Atomic blocks should be ignored (stripped)
@@ -22,6 +23,7 @@ export function condenseBlocks(editorState: EditorState) {
         : block.getCharacterList().slice();
     }
   });
+
   const contentBlock = new ContentBlock({
     key: genKey(),
     type: "unstyled",
@@ -29,6 +31,7 @@ export function condenseBlocks(editorState: EditorState) {
     text,
     characterList,
   });
+
   // Update the editor state with the compressed version.
   const newContentState = ContentState.createFromBlockArray([contentBlock]);
   // Create the new state as an undoable action.
