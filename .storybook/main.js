@@ -15,7 +15,7 @@ const SVG_ICONS = fs.readFileSync(
 );
 
 // Key is hard-coded because it will be public on the demo site anyway.
-// Key usage is limited to whitelisted Referrers.
+// Key usage is limited to allowed Referrers.
 const EMBEDLY_API_KEY_PROD = "d23c29a928fe4d89bda46b0291914c9c";
 const EMBEDLY_API_KEY = process.env.EMBEDLY_API_KEY || EMBEDLY_API_KEY_PROD;
 

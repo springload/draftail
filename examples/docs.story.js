@@ -614,6 +614,7 @@ storiesOf("Docs", module)
       entityTypes={[ENTITY_CONTROL.LINK]}
       enableLineBreak
       multiline={false}
+      stripPastedStyles={false}
     />
   ))
   .add("Form validation", () => (

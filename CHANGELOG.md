@@ -310,7 +310,7 @@ The project has reached a high-enough level of stability to be used in productio
 - Add shortcuts for blockquote and code block to toolbar tooltips.
 - Use alternative keyboard shortcuts for more formats.
 - Add default labels & descriptions for built-in formats ([#122](https://github.com/springload/draftail/issues/122)).
-- Process, whitelist, blacklist, migrate available blocks, styles and entities when pasting rich text ([#50](https://github.com/springload/draftail/pull/50) & [#103](https://github.com/springload/draftail/pull/103) thanks to [@inostia](https://github.com/inostia), see [#123](https://github.com/springload/draftail/issues/123) for next steps).
+- Process, filter, migrate available blocks, styles and entities when pasting rich text ([#50](https://github.com/springload/draftail/pull/50) & [#103](https://github.com/springload/draftail/pull/103) thanks to [@inostia](https://github.com/inostia), see [#123](https://github.com/springload/draftail/issues/123) for next steps).
 - Add support for custom text decorators ([#121](https://github.com/springload/draftail/issues/121)).
 - Add predefined classes for block depth levels above 4, of the format `public-DraftStyleDefault-depth${depth}`.
 - Add `nested-list-item($depth)` Sass mixin to generate styles for arbitrary list item nesting.

@@ -73,7 +73,7 @@ export const ENTITY_CONTROL = {
     onPaste: onPasteLink,
     decorator: Link,
     attributes: ["url"],
-    whitelist: {
+    allowlist: {
       href: "^(?![#/])",
     },
     schemes: ["http:", "https:", "ftp:", "ftps:"],
@@ -85,7 +85,7 @@ export const ENTITY_CONTROL = {
     source: ImageSource,
     block: ImageBlock,
     attributes: ["src", "alt"],
-    whitelist: {
+    allowlist: {
       src: "^(?!(data:|file:))",
     },
   },
