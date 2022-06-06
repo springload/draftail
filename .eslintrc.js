@@ -5,6 +5,7 @@ module.exports = {
     "plugin:compat/recommended",
   ],
   rules: {
+    "@thibaudcolas/cookbook/react/jsx-filename-extension": "off",
     "@thibaudcolas/cookbook/react/require-default-props": [
       "error",
       { forbidDefaultForRequired: false },

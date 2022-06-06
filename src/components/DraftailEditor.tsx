@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import type { ComponentType } from "react";
 import { EditorState, RichUtils, ContentBlock, Modifier } from "draft-js";
 import { condenseBlocks } from "draftjs-filters";
@@ -32,8 +32,11 @@ import behavior from "../api/behavior";
 import Toolbar from "./Toolbar/Toolbar";
 import type { ToolbarProps } from "./Toolbar/Toolbar";
 import type { IconProp } from "./Icon";
+import DraftailEditorBlock from "./DraftailEditorBlock";
 
 import DividerBlock from "../blocks/DividerBlock";
+import ToolbarButton from "./Toolbar/ToolbarButton";
+import CommandPalette from "./CommandPalette/CommandPalette";
 
 type TextDirectionality = "LTR" | "RTL";
 
@@ -312,6 +315,8 @@ type State = {
   // editorState is only part of the local state if the editor is uncontrolled.
   editorState?: EditorState;
   hasFocus: boolean;
+  lastFocusedBlock?: HTMLElement;
+  lastFocusedBlockBounds?: ClientRect;
   readOnlyState: boolean;
   sourceOptions:
     | {
@@ -349,7 +354,11 @@ class DraftailEditor extends Component<Props, State> {
     this.handleReturn = this.handleReturn.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
+    this.onMouseEnterBlock = this.onMouseEnterBlock.bind(this);
+    this.onMouseLeave = this.onMouseLeave.bind(this);
     this.onTab = this.onTab.bind(this);
+    this.onUpArrow = this.onUpArrow.bind(this);
+    this.onDownArrow = this.onDownArrow.bind(this);
     this.handleKeyCommand = this.handleKeyCommand.bind(this);
     this.handleBeforeInput = this.handleBeforeInput.bind(this);
     this.handlePastedText = this.handlePastedText.bind(this);
@@ -372,6 +381,7 @@ class DraftailEditor extends Component<Props, State> {
     this.focus = this.focus.bind(this);
 
     this.renderSource = this.renderSource.bind(this);
+    this.renderCommandPalette = this.renderCommandPalette.bind(this);
 
     const { editorState, rawContentState } = props;
 
@@ -424,13 +434,72 @@ class DraftailEditor extends Component<Props, State> {
     }
   }
 
+  onMouseEnterBlock(e) {
+    const block = e.target.closest('[data-block="true"]');
+    const lastFocusedBlock = block;
+    const lastFocusedBlockBounds = block.getBoundingClientRect();
+
+    this.setState({
+      lastFocusedBlock,
+      lastFocusedBlockBounds,
+    });
+  }
+
+  onMouseLeave() {
+    // this.setState({
+    //   lastFocusedBlock: null,
+    //   lastFocusedBlockBounds: null,
+    // });
+  }
+
   onTab(event: React.KeyboardEvent) {
-    const { maxListNesting } = this.props;
+    const { maxListNesting, blockTypes } = this.props;
     const editorState = this.getEditorState();
     const newState = RichUtils.onTab(event, editorState, maxListNesting);
 
+    const selection = editorState.getSelection();
+    const block = DraftUtils.getSelectedBlock(editorState);
+    const text = block.getText();
+
+    if (text === "/blockquote") {
+      event.preventDefault();
+      this.toggleBlockType("blockquote");
+      return true;
+    }
+
+    if (text === "/hr") {
+      const nextState = DraftUtils.removeBlock(
+        DraftUtils.addHorizontalRuleRemovingSelection(editorState),
+        block.getKey(),
+      );
+
+      event.preventDefault();
+      this.onChange(nextState);
+      return true;
+    }
+
     this.onChange(newState);
     return true;
+  }
+
+  onUpArrow(event: React.KeyboardEvent) {
+    console.log("up");
+    const input = document.querySelector('[aria-autocomplete="list"]');
+    const evt = new Event("keydown", { bubbles: true });
+    evt.keyCode = 38;
+    evt.key = "ArrowUp";
+    input?.dispatchEvent(evt);
+    event.preventDefault();
+  }
+
+  onDownArrow(event: React.KeyboardEvent) {
+    console.log("down");
+    const input = document.querySelector('[aria-autocomplete="list"]');
+    const evt = new Event("keydown", { bubbles: true });
+    evt.keyCode = 40;
+    evt.key = "ArrowDown";
+    input?.dispatchEvent(evt);
+    event.preventDefault();
   }
 
   onChange(nextState: EditorState) {
@@ -863,7 +932,12 @@ class DraftailEditor extends Component<Props, State> {
     const contentState = editorState.getCurrentContent();
 
     if (block.getType() !== BLOCK_TYPE.ATOMIC) {
-      return null;
+      return {
+        component: DraftailEditorBlock,
+        props: {
+          onMouseEnter: this.onMouseEnterBlock,
+        },
+      };
     }
 
     const entityKey = block.getEntityAt(0);
@@ -879,17 +953,23 @@ class DraftailEditor extends Component<Props, State> {
 
     if (isHorizontalRule) {
       return {
-        component: DividerBlock,
+        component: DraftailEditorBlock,
         editable: false,
+        props: {
+          blockComponent: DividerBlock,
+          onMouseEnter: this.onMouseEnterBlock,
+        },
       };
     }
 
     const entityType = entityTypes.find((t) => t.type === entity.type);
 
     return {
-      component: entityType.block,
+      component: DraftailEditorBlock,
       editable: false,
       props: {
+        blockComponent: entityType.block,
+        onMouseEnter: this.onMouseEnterBlock,
         /** The editorState is available for arbitrary content manipulation. */
         editorState,
         /** Current entity to manage. */
@@ -957,6 +1037,18 @@ class DraftailEditor extends Component<Props, State> {
     return null;
   }
 
+  renderCommandPalette() {
+    const { textDirectionality, blockTypes } = this.props;
+
+    return (
+      <CommandPalette
+        textDirectionality={textDirectionality}
+        blockTypes={blockTypes}
+        getEditorState={this.getEditorState}
+      />
+    );
+  }
+
   render() {
     const {
       placeholder,
@@ -989,7 +1081,7 @@ class DraftailEditor extends Component<Props, State> {
       topToolbar,
       bottomToolbar,
     } = this.props;
-    const { hasFocus, readOnlyState } = this.state;
+    const { hasFocus, lastFocusedBlockBounds, readOnlyState } = this.state;
     const editorState = this.getEditorState();
     const isReadOnly = readOnlyState || readOnly;
     const hidePlaceholder = DraftUtils.shouldHidePlaceholder(editorState);
@@ -1030,68 +1122,82 @@ class DraftailEditor extends Component<Props, State> {
 
     return (
       <div
+        style={{
+          "--draftail-editor-last-focused-block-top": lastFocusedBlockBounds
+            ? lastFocusedBlockBounds.top
+            : null,
+        }}
         className={`Draftail-Editor${
           isReadOnly ? " Draftail-Editor--readonly" : ""
         }${hidePlaceholder ? " Draftail-Editor--hide-placeholder" : ""}${
           hasFocus ? " Draftail-Editor--focus" : ""
         }`}
         dir={textDirectionality === "RTL" ? "rtl" : null}
+        data-draftail-editor
       >
         {TopToolbar ? <TopToolbar {...toolbarProps} /> : null}
 
-        <Editor
-          customStyleMap={behavior.getCustomStyleMap(inlineStyles)}
-          ref={(ref) => {
-            this.editorRef = ref;
-          }}
-          editorState={editorState}
-          onChange={this.onChange}
-          placeholder={placeholder}
-          readOnly={isReadOnly}
-          stripPastedStyles={stripPastedStyles}
-          spellCheck={spellCheck}
-          textAlignment={textAlignment}
-          textDirectionality={textDirectionality}
-          autoCapitalize={autoCapitalize}
-          autoComplete={autoComplete}
-          autoCorrect={autoCorrect}
-          ariaDescribedBy={ariaDescribedBy}
-          ariaExpanded={ariaExpanded}
-          ariaLabel={ariaLabel}
-          ariaLabelledBy={ariaLabelledBy}
-          ariaMultiline={multiline}
-          ariaOwneeID={ariaOwneeID}
-          ariaRequired={ariaRequired}
-          handleReturn={this.handleReturn}
-          defaultKeyBindings={false}
-          handleKeyCommand={this.handleKeyCommand}
-          handleBeforeInput={this.handleBeforeInput}
-          handlePastedText={this.handlePastedText}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          onTab={this.onTab}
-          blockRendererFn={this.blockRenderer}
-          blockRenderMap={behavior.getBlockRenderMap(blockTypes)}
-          blockStyleFn={behavior.blockStyleFn}
-          // Include the keyBindingFn in a plugin here so that
-          // other plugin keyBindingFn's are still called, while
-          // still being able to override the Draft.js oversensitive
-          // keyboard shortcuts.
-          plugins={plugins.concat([
-            {
-              keyBindingFn: behavior.getKeyBindingFn(
-                blockTypes,
-                inlineStyles,
-                entityTypes,
-              ),
-            },
-          ])}
-          decorators={decorators.concat(entityDecorators)}
-        />
+        <div
+          className="Draftail-Editor__wrapper"
+          onMouseLeave={this.onMouseLeave}
+        >
+          <Editor
+            customStyleMap={behavior.getCustomStyleMap(inlineStyles)}
+            ref={(ref) => {
+              this.editorRef = ref;
+            }}
+            editorState={editorState}
+            onChange={this.onChange}
+            placeholder={placeholder}
+            readOnly={isReadOnly}
+            stripPastedStyles={stripPastedStyles}
+            spellCheck={spellCheck}
+            textAlignment={textAlignment}
+            textDirectionality={textDirectionality}
+            autoCapitalize={autoCapitalize}
+            autoComplete={autoComplete}
+            autoCorrect={autoCorrect}
+            ariaDescribedBy={ariaDescribedBy}
+            ariaExpanded={ariaExpanded}
+            ariaLabel={ariaLabel}
+            ariaLabelledBy={ariaLabelledBy}
+            ariaMultiline={multiline}
+            ariaOwneeID={ariaOwneeID}
+            ariaRequired={ariaRequired}
+            handleReturn={this.handleReturn}
+            defaultKeyBindings={false}
+            handleKeyCommand={this.handleKeyCommand}
+            handleBeforeInput={this.handleBeforeInput}
+            handlePastedText={this.handlePastedText}
+            onFocus={this.onFocus}
+            onBlur={this.onBlur}
+            onTab={this.onTab}
+            onUpArrow={this.onUpArrow}
+            onDownArrow={this.onDownArrow}
+            blockRendererFn={this.blockRenderer}
+            blockRenderMap={behavior.getBlockRenderMap(blockTypes)}
+            blockStyleFn={behavior.blockStyleFn}
+            // Include the keyBindingFn in a plugin here so that
+            // other plugin keyBindingFn's are still called, while
+            // still being able to override the Draft.js oversensitive
+            // keyboard shortcuts.
+            plugins={plugins.concat([
+              {
+                keyBindingFn: behavior.getKeyBindingFn(
+                  blockTypes,
+                  inlineStyles,
+                  entityTypes,
+                ),
+              },
+            ])}
+            decorators={decorators.concat(entityDecorators)}
+          />
+        </div>
 
         {BottomToolbar ? <BottomToolbar {...toolbarProps} /> : null}
 
         {this.renderSource()}
+        {this.renderCommandPalette()}
 
         <ListNestingStyles max={maxListNesting} />
       </div>

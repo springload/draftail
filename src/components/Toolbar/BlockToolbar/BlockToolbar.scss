@@ -1,0 +1,30 @@
+.Draftail-BlockToolbar__trigger {
+  appearance: none;
+  background: $draftail-editor-background;
+  color: inherit;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: calc(1px * var(--draftail-editor-last-focused-block-top));
+  margin-left: -1.5rem;
+}
+
+.Draftail-BlockToolbar__wrapper {
+  float: left;
+  visibility: hidden;
+
+  .Draftail-Editor--focus &,
+  .Draftail-Editor:hover & {
+    visibility: visible;
+  }
+
+  ~ .DraftEditor-root {
+    margin-left: 2.5rem;
+  }
+}

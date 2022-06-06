@@ -44,7 +44,6 @@ module.exports = {
     config.module.rules.push({
       test: /\.(scss|css)$/,
       use: ["style-loader", "css-loader", "sass-loader"],
-      include: path.resolve(__dirname, "../"),
     });
 
     config.plugins.push(

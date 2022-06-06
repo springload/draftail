@@ -35,7 +35,7 @@
 }
 
 .docs-custom-toolbars .Draftail-Toolbar--bottom,
-.docs-floating-toolbar .Draftail-Toolbar--bottom {
+.docs-floating-toolbars .Draftail-Toolbar--bottom {
   display: flex;
   flex-direction: row-reverse;
   font-variant-numeric: tabular-nums;
@@ -45,7 +45,7 @@
   }
 }
 
-.docs-floating-toolbar {
+.docs-floating-toolbars {
   .Draftail-Editor {
     border-color: transparent;
   }

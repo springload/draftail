@@ -7,6 +7,7 @@ import { Formik } from "formik";
 import {
   DraftailEditor,
   InlineToolbar,
+  BlockToolbar,
   MetaToolbar,
   INLINE_STYLE,
   ENTITY_TYPE,
@@ -365,10 +366,10 @@ storiesOf("Docs", module)
       />
     </div>
   ))
-  .add("Floating toolbar", () => (
-    <div className="docs-floating-toolbar">
+  .add("Floating toolbars", () => (
+    <div className="docs-floating-toolbars">
       <EditorWrapper
-        id="floating-toolbar"
+        id="floating-toolbars"
         rawContentState={indexContentState}
         stripPastedStyles={false}
         enableHorizontalRule
@@ -400,7 +401,7 @@ storiesOf("Docs", module)
             meta: CharCount,
           },
         ]}
-        topToolbar={null}
+        topToolbar={BlockToolbar}
         bottomToolbar={(props) => (
           <>
             <InlineToolbar {...props} />
