@@ -10,6 +10,7 @@ import ToolbarGroup from "../ToolbarGroup";
 import type { ToolbarProps } from "../Toolbar";
 import { showButton, getButtonLabel, getButtonTitle } from "../ToolbarDefaults";
 import ComboBox from "./ComboBox";
+import DraftUtils from "../../../api/DraftUtils";
 
 const getReferenceClientRect = () => getVisibleSelectionRect(window);
 
@@ -27,19 +28,32 @@ const BlockToolbar = ({
 }: ToolbarProps) => {
   // Support the legacy and current controls APIs.
   const tippyParentRef = useRef(null);
-  const [selectionRect, setSelectionRect] = useState();
+  const [selectionRect, setSelectionRect] = useState<DOMRect | null>(null);
 
   const editorState = getEditorState();
   const selection = editorState.getSelection();
-  const isCollapsed = selection.getHasFocus() && !selection.isCollapsed();
+  const isCollapsed = selection.isCollapsed();
+  const isStart = selection.getAnchorOffset() === 0;
+  const anchorKey = selection.getAnchorKey();
+  const isToggleVisible =
+    isCollapsed &&
+    isStart &&
+    DraftUtils.getSelectedBlock(editorState).getText() === "";
 
   useEffect(() => {
-    if (isCollapsed) {
-      setSelectionRect(getReferenceClientRect());
+    if (isToggleVisible) {
+      const elt = document.querySelector<HTMLElement>(
+        `[data-block="true"][data-offset-key="${anchorKey}-0-0"]`,
+      );
+      setSelectionRect(elt!.getBoundingClientRect());
     } else {
       setSelectionRect(null);
     }
-  }, [isCollapsed]);
+
+    return () => {
+      setSelectionRect(null);
+    };
+  }, [isToggleVisible, anchorKey]);
 
   const items = []
     .concat(
@@ -85,7 +99,12 @@ const BlockToolbar = ({
     );
 
   return (
-    <div className="Draftail-BlockToolbar__wrapper">
+    <div
+      className="Draftail-BlockToolbar__wrapper"
+      style={{
+        "--draftail-editor-last-focused-block-top": selectionRect?.top,
+      }}
+    >
       <Tippy
         maxWidth="100%"
         interactive
@@ -105,6 +124,7 @@ const BlockToolbar = ({
           type="button"
           aria-expanded="false"
           className="Draftail-BlockToolbar__trigger"
+          hidden={!selectionRect}
         >
           <Icon
             icon={

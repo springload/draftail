@@ -13,6 +13,10 @@
   position: absolute;
   top: calc(1px * var(--draftail-editor-last-focused-block-top));
   margin-left: -1.5rem;
+
+  &[hidden] {
+    display: none;
+  }
 }
 
 .Draftail-BlockToolbar__wrapper {

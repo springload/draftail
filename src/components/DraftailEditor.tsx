@@ -355,8 +355,6 @@ class DraftailEditor extends Component<Props, State> {
     this.handleReturn = this.handleReturn.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
-    this.onMouseEnterBlock = this.onMouseEnterBlock.bind(this);
-    this.onMouseLeave = this.onMouseLeave.bind(this);
     this.onTab = this.onTab.bind(this);
     this.onUpArrow = this.onUpArrow.bind(this);
     this.onDownArrow = this.onDownArrow.bind(this);
@@ -1129,11 +1127,6 @@ class DraftailEditor extends Component<Props, State> {
 
     return (
       <div
-        style={{
-          "--draftail-editor-last-focused-block-top": lastFocusedBlockBounds
-            ? lastFocusedBlockBounds.top
-            : null,
-        }}
         className={`Draftail-Editor${
           isReadOnly ? " Draftail-Editor--readonly" : ""
         }${hidePlaceholder ? " Draftail-Editor--hide-placeholder" : ""}${
