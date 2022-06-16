@@ -12,8 +12,8 @@ $draftail-editor-padding: $button-spacing + $controls-spacing !default;
 $color-white: #fff;
 $color-black: #000;
 $color-grey: #333;
-// Default Draft.js placeholder text color, minus 15% lightness.
-$color-grey-525760: #525760;
+// As-light-as-allowed grey for placeholder text.
+$color-grey-757575: #757575;
 $color-light-grey: #ddd;
 
 $draftail-editor-text: $color-grey !default;
@@ -33,7 +33,7 @@ $draftail-editor-font-family: sans-serif !default;
 $draftail-editor-font-size: 1rem !default;
 $draftail-editor-line-height: 1.5 !default;
 
-$draftail-placeholder-text: $color-grey-525760 !default;
+$draftail-placeholder-text: $color-grey-757575 !default;
 
 $draftail-editor-border: 1px solid $draftail-editor-chrome !default;
 

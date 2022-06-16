@@ -372,6 +372,7 @@ storiesOf("Docs", module)
         id="floating-toolbars"
         rawContentState={indexContentState}
         stripPastedStyles={false}
+        placeholder="Insert / or write here…"
         enableHorizontalRule
         enableLineBreak={{
           icon: BR_ICON,

@@ -113,8 +113,8 @@
   },
   "peerDependencies": {
     "draft-js": "^0.10.5",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
   },
   "scripts": {
     "start": "start-storybook -c .storybook -p 9001 --no-open --no-version-updates --no-release-notes --quiet --modern",

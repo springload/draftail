@@ -35,8 +35,9 @@ import type { IconProp } from "./Icon";
 import DraftailEditorBlock from "./DraftailEditorBlock";
 
 import DividerBlock from "../blocks/DividerBlock";
-import ToolbarButton from "./Toolbar/ToolbarButton";
 import CommandPalette from "./CommandPalette/CommandPalette";
+import PlaceholderStyles from "./PlaceholderBlock/PlaceholderStyles";
+import PlaceholderBlock from "./PlaceholderBlock/PlaceholderBlock";
 
 type TextDirectionality = "LTR" | "RTL";
 
@@ -927,17 +928,28 @@ class DraftailEditor extends Component<Props, State> {
   }
 
   blockRenderer(block: ContentBlock) {
-    const { entityTypes, textDirectionality } = this.props;
+    const { entityTypes, textDirectionality, placeholder, blockTypes } =
+      this.props;
     const editorState = this.getEditorState();
     const contentState = editorState.getCurrentContent();
 
     if (block.getType() !== BLOCK_TYPE.ATOMIC) {
-      return {
-        component: DraftailEditorBlock,
-        props: {
-          onMouseEnter: this.onMouseEnterBlock,
-        },
-      };
+      const selection = editorState.getSelection();
+      const isCollapsed = selection.isCollapsed();
+      const isStart = selection.getAnchorOffset() === 0;
+      const anchorKey = selection.getAnchorKey();
+
+      if (block.getText() === "") {
+        return {
+          component: PlaceholderBlock,
+          props: {
+            placeholder,
+            blockTypes,
+          },
+        };
+      }
+
+      return null;
     }
 
     const entityKey = block.getEntityAt(0);
@@ -953,23 +965,17 @@ class DraftailEditor extends Component<Props, State> {
 
     if (isHorizontalRule) {
       return {
-        component: DraftailEditorBlock,
+        component: DividerBlock,
         editable: false,
-        props: {
-          blockComponent: DividerBlock,
-          onMouseEnter: this.onMouseEnterBlock,
-        },
       };
     }
 
     const entityType = entityTypes.find((t) => t.type === entity.type);
 
     return {
-      component: DraftailEditorBlock,
+      component: entityType.block,
       editable: false,
       props: {
-        blockComponent: entityType.block,
-        onMouseEnter: this.onMouseEnterBlock,
         /** The editorState is available for arbitrary content manipulation. */
         editorState,
         /** Current entity to manage. */
@@ -1098,9 +1104,10 @@ class DraftailEditor extends Component<Props, State> {
 
     const TopToolbar = topToolbar;
     const BottomToolbar = bottomToolbar;
+    const selectedBlock = DraftUtils.getSelectedBlock(editorState);
     const toolbarProps = {
       currentStyles: editorState.getCurrentInlineStyle(),
-      currentBlock: DraftUtils.getSelectedBlock(editorState).getType(),
+      currentBlock: selectedBlock.getType(),
       enableHorizontalRule,
       enableLineBreak,
       showUndoControl,
@@ -1198,6 +1205,11 @@ class DraftailEditor extends Component<Props, State> {
 
         {this.renderSource()}
         {this.renderCommandPalette()}
+
+        <PlaceholderStyles
+          blockKey={selectedBlock.getKey()}
+          placeholder={placeholder}
+        />
 
         <ListNestingStyles max={maxListNesting} />
       </div>

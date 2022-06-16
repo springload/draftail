@@ -496,48 +496,4 @@ export default {
 
     return this.handleHardNewline(editorState);
   },
-
-  /**
-   * Combines multiple blocks onto a single one with equivalent content.
-   */
-  concatenateBlocks(editorState: EditorState) {
-    const blocks = editorState.getCurrentContent().getBlocksAsArray();
-
-    if (blocks.length < 2) {
-      return editorState;
-    }
-
-    let text = "";
-    let characterList;
-
-    // Gather all the text/characterList and concat them
-    blocks.forEach((block) => {
-      // Atomic blocks should be ignored (stripped)
-      if (block.getType() !== BLOCK_TYPE.ATOMIC) {
-        text += block.getText();
-        characterList = characterList
-          ? characterList.concat(block.getCharacterList())
-          : block.getCharacterList().slice();
-      }
-    });
-
-    const contentBlock = new ContentBlock({
-      key: genKey(),
-      type: BLOCK_TYPE.UNSTYLED,
-      depth: 0,
-      text,
-      characterList,
-    });
-
-    // Update the editor state with the compressed version.
-    const newContentState = ContentState.createFromBlockArray([contentBlock]);
-    // Create the new state as an undoable action.
-    const nextState = EditorState.push(
-      editorState,
-      newContentState,
-      "remove-range",
-    );
-    // Move the selection to the end.
-    return EditorState.moveFocusToEnd(nextState);
-  },
 };

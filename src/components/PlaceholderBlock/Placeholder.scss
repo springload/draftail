@@ -1,0 +1,10 @@
+.#{$DRAFTAIL}Placeholder {
+  position: absolute;
+  touch-action: none;
+  user-select: none;
+  color: $draftail-placeholder-text;
+}
+
+.#{$DRAFTAIL}Placeholder::before {
+  content: attr(data-text);
+}
