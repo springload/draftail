@@ -1,0 +1,53 @@
+.#{$DRAFTAIL}ComboBox {
+}
+
+.#{$DRAFTAIL}ComboBox__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.#{$DRAFTAIL}ComboBox [role="combobox"] {
+  padding: 10px;
+  padding-inline-end: 15px;
+}
+
+.#{$DRAFTAIL}ComboBox [aria-autocomplete="list"] {
+  width: 100%;
+  padding: 7px 20px;
+  line-height: 1.5;
+  border: $draftail-editor-border;
+  border-radius: $draftail-editor-radius;
+
+  &::placeholder {
+    color: $draftail-placeholder-text;
+  }
+}
+
+.#{$DRAFTAIL}ComboBox [role="option"] {
+  padding: 10px;
+  border: 1px solid transparent;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+
+  &[aria-selected="true"] {
+    background-color: $color-light-grey;
+    border-color: currentColor;
+  }
+}
+
+.#{$DRAFTAIL}ComboBox__option-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-inline-start: 6px;
+  margin-inline-end: 6px;
+}

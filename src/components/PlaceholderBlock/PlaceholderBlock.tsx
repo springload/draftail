@@ -1,11 +1,11 @@
 import React from "react";
 import DraftEditorBlock from "draft-js/lib/DraftEditorBlock.react";
 
-import { DESCRIPTIONS, LABELS } from "../../api/constants";
+import { getControlDescription } from "../../api/ui";
 
 import Placeholder from "./Placeholder";
 
-export const getBlockDescription = (
+export const findBlockDescription = (
   type: string,
   blockTypes: {
     type?: string;
@@ -14,20 +14,7 @@ export const getBlockDescription = (
   }[],
 ) => {
   const blockType = blockTypes.find((t) => t.type === type);
-  if (blockType) {
-    const useDefaultDescription = typeof blockType.description === "undefined";
-    const defaultDescription = DESCRIPTIONS[type];
-    const description = useDefaultDescription
-      ? defaultDescription
-      : blockType.description;
-    const useDefaultLabel = typeof blockType.label === "undefined";
-    const defaultLabel = LABELS[type];
-    const label = useDefaultLabel ? defaultLabel : blockType.label;
-
-    return description || label;
-  }
-
-  return null;
+  return blockType ? getControlDescription(blockType) : null;
 };
 
 /**
@@ -37,7 +24,7 @@ const DraftailPlaceholderBlock = (props: any) => {
   const { blockProps, ...otherProps } = props;
   const { blockTypes, ...otherBlockProps } = blockProps;
   const { block } = otherProps;
-  const blockDescription = getBlockDescription(block.getType(), blockTypes);
+  const blockDescription = findBlockDescription(block.getType(), blockTypes);
   return (
     <>
       <Placeholder text={blockDescription} />

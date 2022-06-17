@@ -1,6 +1,6 @@
 .#{$DRAFTAIL}Placeholder {
   position: absolute;
-  touch-action: none;
+  pointer-events: none;
   user-select: none;
   color: $draftail-placeholder-text;
 }

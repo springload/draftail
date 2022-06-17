@@ -1,8 +1,8 @@
 import React, { PureComponent } from "react";
 import type { ComponentType } from "react";
+import { EditorState } from "draft-js";
 import ToolbarButton from "./ToolbarButton";
 import ToolbarGroup from "./ToolbarGroup";
-import type { IconProp } from "../Icon";
 
 import {
   BR_TYPE,
@@ -13,34 +13,19 @@ import {
   DESCRIPTIONS,
 } from "../../api/constants";
 import behavior from "../../api/behavior";
+import { getControlLabel } from "../../api/ui";
+import {
+  BlockType,
+  BoolControl,
+  Control,
+  EntityType,
+  InlineStyle,
+} from "../../api/types";
 
-type ControlProp = {
-  // Describes the control in the editor UI, concisely.
-  label?: string | null | undefined;
-  // Describes the control in the editor UI.
-  description?: string;
-  // Represents the control in the editor UI.
-  icon?: IconProp;
-};
+export const showButton = (config: Control) =>
+  Boolean(config.icon) || Boolean(getControlLabel(config.type, config));
 
-export const getButtonLabel = (type: string, config: boolean | ControlProp) => {
-  const icon = typeof config === "boolean" ? undefined : config.icon;
-
-  if (typeof config.label === "string" || config.label === null) {
-    return config.label;
-  }
-
-  if (typeof icon !== "undefined") {
-    return null;
-  }
-
-  return LABELS[type];
-};
-
-export const showButton = (config: ControlProp & { type: string }) =>
-  Boolean(config.icon) || Boolean(getButtonLabel(config.type, config));
-
-export const getButtonTitle = (type: string, config: boolean | ControlProp) => {
+export const getButtonTitle = (type: string, config: BoolControl) => {
   const description =
     typeof config === "boolean" || typeof config.description === "undefined"
       ? DESCRIPTIONS[type]
@@ -61,32 +46,21 @@ export type ToolbarDefaultProps = {
     has: (style: string) => boolean;
   };
   currentBlock: string;
-  enableHorizontalRule: boolean | ControlProp;
-  enableLineBreak: boolean | ControlProp;
-  showUndoControl: boolean | ControlProp;
-  showRedoControl: boolean | ControlProp;
-  entityTypes: ReadonlyArray<
-    ControlProp & {
-      decorator?: ComponentType<{}>;
-      type: string;
-    }
-  >;
-  blockTypes: ReadonlyArray<
-    ControlProp & {
-      type: string;
-    }
-  >;
-  inlineStyles: ReadonlyArray<
-    ControlProp & {
-      type: string;
-    }
-  >;
+  enableHorizontalRule: BoolControl;
+  enableLineBreak: BoolControl;
+  showUndoControl: BoolControl;
+  showRedoControl: BoolControl;
+  entityTypes: ReadonlyArray<EntityType>;
+  blockTypes: ReadonlyArray<BlockType>;
+  inlineStyles: ReadonlyArray<InlineStyle>;
   toggleBlockType: (blockType: string) => void;
   toggleInlineStyle: (inlineStyle: string) => void;
   addHR: () => void;
   addBR: () => void;
   onUndoRedo: (type: string) => void;
   onRequestSource: (entityType: string) => void;
+  onCompleteSource: (nextState: EditorState) => void;
+  focus: () => void;
 };
 
 class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
@@ -115,7 +89,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
             key={t.type}
             name={t.type}
             active={currentStyles.has(t.type)}
-            label={getButtonLabel(t.type, t)}
+            label={getControlLabel(t.type, t)}
             title={getButtonTitle(t.type, t)}
             icon={t.icon}
             onClick={toggleInlineStyle}
@@ -129,7 +103,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
             key={t.type}
             name={t.type}
             active={currentBlock === t.type}
-            label={getButtonLabel(t.type, t)}
+            label={getControlLabel(t.type, t)}
             title={getButtonTitle(t.type, t)}
             icon={t.icon}
             onClick={toggleBlockType}
@@ -142,7 +116,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
           <ToolbarButton
             name={ENTITY_TYPE.HORIZONTAL_RULE}
             onClick={addHR}
-            label={getButtonLabel(
+            label={getControlLabel(
               ENTITY_TYPE.HORIZONTAL_RULE,
               enableHorizontalRule,
             )}
@@ -162,7 +136,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
           <ToolbarButton
             name={BR_TYPE}
             onClick={addBR}
-            label={getButtonLabel(BR_TYPE, enableLineBreak)}
+            label={getControlLabel(BR_TYPE, enableLineBreak)}
             title={getButtonTitle(BR_TYPE, enableLineBreak)}
             icon={
               typeof enableLineBreak !== "boolean" ? enableLineBreak.icon : null
@@ -177,7 +151,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
             key={t.type}
             name={t.type}
             onClick={onRequestSource}
-            label={getButtonLabel(t.type, t)}
+            label={getControlLabel(t.type, t)}
             title={getButtonTitle(t.type, t)}
             icon={t.icon}
           />
@@ -189,7 +163,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
           <ToolbarButton
             name={UNDO_TYPE}
             onClick={onUndoRedo}
-            label={getButtonLabel(UNDO_TYPE, showUndoControl)}
+            label={getControlLabel(UNDO_TYPE, showUndoControl)}
             title={getButtonTitle(UNDO_TYPE, showUndoControl)}
             icon={
               typeof showUndoControl !== "boolean" ? showUndoControl.icon : null
@@ -201,7 +175,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
           <ToolbarButton
             name={REDO_TYPE}
             onClick={onUndoRedo}
-            label={getButtonLabel(REDO_TYPE, showRedoControl)}
+            label={getControlLabel(REDO_TYPE, showRedoControl)}
             title={getButtonTitle(REDO_TYPE, showRedoControl)}
             icon={
               typeof showRedoControl !== "boolean" ? showRedoControl.icon : null

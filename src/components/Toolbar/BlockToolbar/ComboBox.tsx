@@ -1,62 +1,111 @@
-import React, { useState } from "react";
-import { useCombobox } from "downshift";
+import React, { useEffect, useState } from "react";
+import { useCombobox, UseComboboxStateChange } from "downshift";
 
-import ToolbarButton from "../ToolbarButton";
+import Icon, { IconProp } from "../../Icon";
+import { getControlDescription, getControlLabel } from "../../../api/ui";
 
-export default function DropdownCombobox({
+export interface ComboBoxOption {
+  type: string;
+  label?: string | null;
+  description?: string;
+  icon?: IconProp;
+}
+
+interface ComboBoxProps {
+  label: string;
+  placeholder: string;
+  items: ComboBoxOption[];
+  selectedItem: ComboBoxOption;
+  handleSelectedItemChange: (
+    changes: UseComboboxStateChange<ComboBoxOption>,
+  ) => void;
+}
+
+export default function ComboBox({
+  label,
+  placeholder,
   items,
   selectedItem,
   handleSelectedItemChange,
-}) {
-  const [inputItems, setInputItems] = useState(items);
+}: ComboBoxProps) {
+  const [inputItems, setInputItems] = useState<ComboBoxOption[]>(items);
+  console.log(inputItems.length, items.length);
   const {
     getLabelProps,
     getMenuProps,
     getInputProps,
     getComboboxProps,
-    highlightedIndex,
     getItemProps,
-  } = useCombobox({
+    reset,
+    selectItem,
+  } = useCombobox<ComboBoxOption>({
     items: inputItems,
-    selectedItem,
+    itemToString(item) {
+      return item ? getControlDescription(item) : "";
+    },
+    selectedItem: null,
     onSelectedItemChange: (selection) => {
       handleSelectedItemChange(selection);
+      reset();
+      console.log("items.length", items.length);
+      setInputItems(items);
+      reset();
+      selectItem(null);
+    },
+    onStateChange: (changes) => {
+      console.log(changes);
     },
     onInputValueChange: ({ inputValue }) => {
-      setInputItems(
-        items.filter((item) =>
-          item.title.toLowerCase().startsWith(inputValue.toLowerCase()),
-        ),
-      );
+      console.log("onInputValueChange");
+      if (!inputValue) {
+        return;
+      }
+
+      const input = inputValue.toLowerCase();
+      const filtered = items.filter((item) => {
+        const label = getControlLabel(item.type, item);
+        if (label) {
+          const matchLabel = label.toLowerCase().startsWith(input);
+          if (matchLabel) {
+            return matchLabel;
+          }
+        }
+
+        const description = getControlDescription(item);
+        if (description) {
+          return description.toLowerCase().startsWith(input);
+        }
+      });
+
+      setInputItems(filtered);
     },
   });
+
   return (
-    <div>
-      <label {...getLabelProps()} style={{ visibility: "hidden" }}>
-        Choose an element:
+    <div className="Draftail-ComboBox">
+      <label className="Draftail-ComboBox__label" {...getLabelProps()}>
+        {label}
       </label>
       <div {...getComboboxProps()}>
-        <input {...getInputProps()} />
+        <input {...getInputProps()} placeholder={placeholder} />
       </div>
       <div {...getMenuProps()}>
-        {inputItems.map((item, index) => (
-          <div
-            style={
-              highlightedIndex === index ? { backgroundColor: "#bde4ff" } : {}
-            }
-            key={`${item}${index}`}
-            {...getItemProps({ item, index })}
-          >
-            <ToolbarButton
-              key={item.key}
-              name={item.name}
-              active={item.active}
-              label={item.label}
-              title={item.title}
-              icon={item.icon}
-            />
-          </div>
-        ))}
+        {inputItems.map((item, index) => {
+          const label = getControlLabel(item.type, item);
+          return (
+            <div key={`${item}${index}`} {...getItemProps({ item, index })}>
+              <div className="Draftail-ComboBox__option-icon">
+                {typeof item.icon !== "undefined" && item.icon !== null ? (
+                  <Icon icon={item!.icon} />
+                ) : null}
+                {label ? <span>{label}</span> : null}
+              </div>
+              <div className="Draftail-ComboBox__option-text">
+                {getControlDescription(item)}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

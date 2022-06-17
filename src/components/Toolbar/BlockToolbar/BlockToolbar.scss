@@ -1,4 +1,16 @@
-.Draftail-BlockToolbar__trigger {
+.#{$DRAFTAIL}BlockToolbar {
+  float: left;
+
+  [dir="rtl"] & {
+    float: right;
+  }
+
+  ~ .DraftEditor-root {
+    margin-inline-start: 2.5rem;
+  }
+}
+
+.#{$DRAFTAIL}BlockToolbar__trigger {
   appearance: none;
   background: $draftail-editor-background;
   color: inherit;
@@ -10,25 +22,39 @@
   display: grid;
   align-items: center;
   justify-content: center;
+  // top offset will be set with JS.
   position: absolute;
-  top: calc(1px * var(--draftail-editor-last-focused-block-top));
-  margin-left: -1.5rem;
+  margin-inline-start: -1.5rem;
+  visibility: hidden;
+}
 
-  &[hidden] {
-    display: none;
+.#{$DRAFTAIL}BlockToolbar .tippy-box {
+  min-width: 240px;
+  background: $draftail-editor-background;
+  color: $draftail-editor-text;
+  border-radius: $draftail-tooltip-radius;
+  font-size: $draftail-editor-font-size;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+
+  .tippy-content {
+    padding: 0;
   }
 }
 
-.Draftail-BlockToolbar__wrapper {
-  float: left;
-  visibility: hidden;
+.#{$DRAFTAIL}BlockToolbar__backdrop {
+  position: relative;
+  background-color: $color-black;
+  opacity: 0;
+  transition: opacity $draftail-toolbar-tooltip-duration 0s;
+  z-index: $draftail-page-overlay-z-index;
+  pointer-events: none;
+}
 
-  .Draftail-Editor--focus &,
-  .Draftail-Editor:hover & {
-    visibility: visible;
-  }
-
-  ~ .DraftEditor-root {
-    margin-left: 2.5rem;
-  }
+.#{$DRAFTAIL}BlockToolbar--open .#{$DRAFTAIL}BlockToolbar__backdrop {
+  position: fixed;
+  top: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  bottom: 0;
+  opacity: 11.76%;
 }

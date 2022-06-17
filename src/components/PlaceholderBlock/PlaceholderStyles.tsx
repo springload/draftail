@@ -10,8 +10,6 @@ interface PlaceholderStylesProps {
  * Done with CSS so this can switch blocks without re-rendering the whole editor.
  */
 function Styles({ blockKey, placeholder }: PlaceholderStylesProps) {
-  console.log("styling", blockKey);
-
   if (!blockKey || !placeholder) {
     return null;
   }

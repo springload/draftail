@@ -2,10 +2,11 @@ import React from "react";
 import type { ComponentType } from "react";
 import { EditorState } from "draft-js";
 
+import { getControlLabel } from "../../api/ui";
 import type { IconProp } from "../Icon";
 import ToolbarButton from "./ToolbarButton";
 import ToolbarGroup from "./ToolbarGroup";
-import { showButton, getButtonLabel, getButtonTitle } from "./ToolbarDefaults";
+import { showButton, getButtonTitle } from "./ToolbarDefaults";
 
 type ControlProps = {
   getEditorState: () => EditorState;
@@ -57,7 +58,7 @@ const MetaToolbar = ({
               key={t.type}
               name={t.type}
               onClick={onRequestSource}
-              label={getButtonLabel(t.type, t)}
+              label={getControlLabel(t.type, t)}
               title={getButtonTitle(t.type, t)}
               icon={t.icon}
             />

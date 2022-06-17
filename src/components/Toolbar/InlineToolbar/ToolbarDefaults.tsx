@@ -5,6 +5,7 @@ import ToolbarButton from "../ToolbarButton";
 import ToolbarGroup from "../ToolbarGroup";
 
 import { LABELS, DESCRIPTIONS } from "../../../api/constants";
+import { getControlLabel } from "../../../api/ui";
 import behavior from "../../../api/behavior";
 import type { IconProp } from "../../Icon";
 
@@ -17,25 +18,11 @@ type ControlProp = {
   icon?: IconProp;
 };
 
-const getButtonLabel = (type: string, config: boolean | ControlProp) => {
-  const icon = typeof config === "boolean" ? undefined : config.icon;
-
-  if (typeof config.label === "string" || config.label === null) {
-    return config.label;
-  }
-
-  if (typeof icon !== "undefined") {
-    return null;
-  }
-
-  return LABELS[type];
-};
-
 const showButton = (
   config: ControlProp & {
     type: string;
   },
-) => Boolean(config.icon) || Boolean(getButtonLabel(config.type, config));
+) => Boolean(config.icon) || Boolean(getControlLabel(config.type, config));
 
 const showEntityButton = (
   config: ControlProp & {
@@ -105,7 +92,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
             key={t.type}
             name={t.type}
             active={currentStyles.has(t.type)}
-            label={getButtonLabel(t.type, t)}
+            label={getControlLabel(t.type, t)}
             title={getButtonTitle(t.type, t)}
             icon={t.icon}
             onClick={toggleInlineStyle}
@@ -119,7 +106,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
             key={t.type}
             name={t.type}
             active={currentBlock === t.type}
-            label={getButtonLabel(t.type, t)}
+            label={getControlLabel(t.type, t)}
             title={getButtonTitle(t.type, t)}
             icon={t.icon}
             onClick={toggleBlockType}
@@ -133,7 +120,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
             key={t.type}
             name={t.type}
             onClick={onRequestSource}
-            label={getButtonLabel(t.type, t)}
+            label={getControlLabel(t.type, t)}
             title={getButtonTitle(t.type, t)}
             icon={t.icon}
           />

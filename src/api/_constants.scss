@@ -53,6 +53,7 @@ $draftail-tooltip-z-index: $draftail-editor-z-index + 1 !default;
 $draftail-overlay-z-index: $draftail-tooltip-z-index + 1 !default;
 $draftail-toolbar-z-index: $draftail-overlay-z-index + 1 !default;
 $draftail-toolbar-tooltip-z-index: $draftail-toolbar-z-index + 1 !default;
+$draftail-page-overlay-z-index: $draftail-toolbar-z-index + 1000 !default;
 
 @mixin font-smoothing {
   -webkit-font-smoothing: antialiased;

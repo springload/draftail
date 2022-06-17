@@ -316,8 +316,6 @@ type State = {
   // editorState is only part of the local state if the editor is uncontrolled.
   editorState?: EditorState;
   hasFocus: boolean;
-  lastFocusedBlock?: HTMLElement;
-  lastFocusedBlockBounds?: ClientRect;
   readOnlyState: boolean;
   sourceOptions:
     | {
@@ -431,24 +429,6 @@ class DraftailEditor extends Component<Props, State> {
     if (onBlur) {
       onBlur();
     }
-  }
-
-  onMouseEnterBlock(e) {
-    const block = e.target.closest('[data-block="true"]');
-    const lastFocusedBlock = block;
-    const lastFocusedBlockBounds = block.getBoundingClientRect();
-
-    this.setState({
-      lastFocusedBlock,
-      lastFocusedBlockBounds,
-    });
-  }
-
-  onMouseLeave() {
-    // this.setState({
-    //   lastFocusedBlock: null,
-    //   lastFocusedBlockBounds: null,
-    // });
   }
 
   onTab(event: React.KeyboardEvent) {
@@ -1085,7 +1065,7 @@ class DraftailEditor extends Component<Props, State> {
       topToolbar,
       bottomToolbar,
     } = this.props;
-    const { hasFocus, lastFocusedBlockBounds, readOnlyState } = this.state;
+    const { hasFocus, readOnlyState } = this.state;
     const editorState = this.getEditorState();
     const isReadOnly = readOnlyState || readOnly;
     const hidePlaceholder = DraftUtils.shouldHidePlaceholder(editorState);
@@ -1121,7 +1101,9 @@ class DraftailEditor extends Component<Props, State> {
       addBR: this.addBR,
       onUndoRedo: this.onUndoRedo,
       onRequestSource: this.onRequestSource,
+      onCompleteSource: this.onCompleteSource,
       getEditorState: this.getEditorState,
+      focus: this.focus,
       onChange: this.onChange,
     };
 
