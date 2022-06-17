@@ -20,11 +20,11 @@ type CurrentControlConfig = {
 };
 
 type ControlConfig = CurrentControlConfig | LegacyControlConfig;
-export type ToolbarProps = {
+export interface ToolbarProps extends ToolbarDefaultProps {
   controls: ReadonlyArray<ControlConfig>;
   getEditorState: () => EditorState;
   onChange: (arg0: EditorState) => void;
-} & ToolbarDefaultProps;
+}
 
 const Toolbar = (props: ToolbarProps) => {
   // Support the legacy and current controls APIs.

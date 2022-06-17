@@ -1,13 +1,14 @@
 import React, { PureComponent } from "react";
-import Icon, { IconProp } from "../Icon";
+import { IconProp } from "../../api/types";
+import Icon from "../Icon";
 
 type Props = {
-  name: string | null | undefined;
-  active: boolean;
-  label: string | null | undefined;
-  title: string | null | undefined;
-  icon: IconProp | null | undefined;
-  onClick: ((arg0: string) => void) | null | undefined;
+  name?: string;
+  active?: boolean;
+  label?: string;
+  title?: string;
+  icon?: IconProp | null;
+  onClick?: ((name: string) => void) | null;
 };
 
 type State = {
@@ -18,8 +19,6 @@ type State = {
  * enriched with a tooltip. The tooltip stops showing on click.
  */
 class ToolbarButton extends PureComponent<Props, State> {
-  static defaultProps: Props;
-
   constructor(props: Props) {
     super(props);
 
@@ -31,7 +30,7 @@ class ToolbarButton extends PureComponent<Props, State> {
     this.onMouseLeave = this.onMouseLeave.bind(this);
   }
 
-  onMouseDown(e: Event) {
+  onMouseDown(e: React.MouseEvent<HTMLButtonElement>) {
     const { name, onClick } = this.props;
 
     e.preventDefault();
@@ -62,15 +61,13 @@ class ToolbarButton extends PureComponent<Props, State> {
           active ? " Draftail-ToolbarButton--active" : ""
         }`}
         type="button"
-        aria-label={title || null}
+        aria-label={title}
         data-draftail-balloon={title && showTooltipOnHover ? true : null}
         tabIndex={-1}
         onMouseDown={this.onMouseDown}
         onMouseLeave={this.onMouseLeave}
       >
-        {typeof icon !== "undefined" && icon !== null ? (
-          <Icon icon={icon} />
-        ) : null}
+        {icon ? <Icon icon={icon} /> : null}
         {label ? (
           <span className="Draftail-ToolbarButton__label">{label}</span>
         ) : null}
@@ -78,14 +75,5 @@ class ToolbarButton extends PureComponent<Props, State> {
     );
   }
 }
-
-ToolbarButton.defaultProps = {
-  name: null,
-  active: false,
-  label: null,
-  title: null,
-  icon: null,
-  onClick: null,
-};
 
 export default ToolbarButton;

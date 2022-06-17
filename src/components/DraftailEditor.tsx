@@ -1,5 +1,4 @@
-import React, { Component, useState } from "react";
-import type { ComponentType } from "react";
+import React, { Component } from "react";
 import { EditorState, RichUtils, ContentBlock, Modifier } from "draft-js";
 import { condenseBlocks } from "draftjs-filters";
 import type { EntityInstance } from "draft-js";
@@ -29,62 +28,49 @@ import {
 import DraftUtils from "../api/DraftUtils";
 import behavior from "../api/behavior";
 
-import Toolbar from "./Toolbar/Toolbar";
-import type { ToolbarProps } from "./Toolbar/Toolbar";
-import type { IconProp } from "./Icon";
-import DraftailEditorBlock from "./DraftailEditorBlock";
+import Toolbar, { ToolbarProps } from "./Toolbar/Toolbar";
 
 import DividerBlock from "../blocks/DividerBlock";
 import CommandPalette from "./CommandPalette/CommandPalette";
 import PlaceholderStyles from "./PlaceholderBlock/PlaceholderStyles";
 import PlaceholderBlock from "./PlaceholderBlock/PlaceholderBlock";
+import { BlockType, BoolControl, EntityType, InlineStyle } from "../api/types";
 
 type TextDirectionality = "LTR" | "RTL";
 
-type ControlProp = {
-  /** Describes the control in the editor UI, concisely. */
-  label?: string | null | undefined;
-
-  /** Describes the control in the editor UI. */
-  description?: string;
-
-  /** Represents the control in the editor UI. */
-  icon?: IconProp;
-};
-
-type Props = {
+interface DraftailEditorProps {
   /** Initial content of the editor. Use this to edit pre-existing content. */
-  rawContentState: RawDraftContentState | null | undefined;
+  rawContentState?: RawDraftContentState | null;
 
   /** Called when changes occurred. Use this to persist editor content. */
-  onSave: ((content: null | RawDraftContentState) => void) | null | undefined;
+  onSave?: ((content: null | RawDraftContentState) => void) | null;
 
   /** Content of the editor, when using the editor as a controlled component. Incompatible with `rawContentState` and `onSave`. */
-  editorState: EditorState | null | undefined;
+  editorState?: EditorState | null;
 
   /** Called whenever the editor state is updated. Use this to manage the content of a controlled editor. Incompatible with `rawContentState` and `onSave`. */
-  onChange: ((editorState: EditorState) => void) | null | undefined;
+  onChange?: ((editorState: EditorState) => void) | null;
 
   /** Called when the editor receives focus. */
-  onFocus: (() => void) | null | undefined;
+  onFocus?: (() => void) | null;
 
   /** Called when the editor loses focus. */
-  onBlur: (() => void) | null | undefined;
+  onBlur?: (() => void) | null;
 
   /** Displayed when the editor is empty. Hidden if the user changes styling. */
-  placeholder: string | null | undefined;
+  placeholder?: string | null;
 
   /** Enable the use of horizontal rules in the editor. */
-  enableHorizontalRule: boolean | ControlProp;
+  enableHorizontalRule: BoolControl;
 
   /** Enable the use of line breaks in the editor. */
-  enableLineBreak: boolean | ControlProp;
+  enableLineBreak: BoolControl;
 
   /** Show undo control in the toolbar. */
-  showUndoControl: boolean | ControlProp;
+  showUndoControl: BoolControl;
 
   /** Show redo control in the toolbar. */
-  showRedoControl: boolean | ControlProp;
+  showRedoControl: BoolControl;
 
   /** Disable copy/paste of rich text in the editor. */
   stripPastedStyles: boolean;
@@ -105,110 +91,53 @@ type Props = {
   /** Optionally set the overriding text alignment for this editor.
    * See https://draftjs.org/docs/api-reference-editor.html#textalignment.
    */
-  textAlignment: string | null | undefined;
+  textAlignment?: string | null;
 
   /** Optionally set the overriding text directionality for this editor.
    * See https://draftjs.org/docs/api-reference-editor.html#textdirectionality.
    */
-  textDirectionality: TextDirectionality | null | undefined;
+  textDirectionality?: TextDirectionality | null;
 
   /** Set if auto capitalization is turned on and how it behaves.
    * See https://draftjs.org/docs/api-reference-editor.html#autocapitalize-string.
    */
-  autoCapitalize: string | null | undefined;
+  autoCapitalize?: string | null;
 
   /** Set if auto complete is turned on and how it behaves.
    * See https://draftjs.org/docs/api-reference-editor.html#autocomplete-string.
    */
-  autoComplete: string | null | undefined;
+  autoComplete?: string | null;
 
   /** Set if auto correct is turned on and how it behaves.
    * See https://draftjs.org/docs/api-reference-editor.html#autocorrect-string.
    */
-  autoCorrect: string | null | undefined;
+  autoCorrect?: string | null;
 
   /** See https://draftjs.org/docs/api-reference-editor.html#aria-props. */
-  ariaDescribedBy: string | null | undefined;
-  ariaExpanded: boolean | null | undefined;
-  ariaLabel: string | null | undefined;
-  ariaLabelledBy: string | null | undefined;
-  ariaOwneeID: string | null | undefined;
-  ariaRequired: string | null | undefined;
+  ariaDescribedBy?: string | null;
+  ariaExpanded?: boolean | null;
+  ariaLabel?: string | null;
+  ariaLabelledBy?: string | null;
+  ariaOwneeID?: string | null;
+  ariaRequired?: string | null;
 
   /** List of the available block types. */
-  blockTypes: ReadonlyArray<
-    ControlProp & {
-      /** Unique type shared between block instances. */
-      type: string;
-
-      /** DOM element used to display the block within the editor area. */
-      element?: string;
-    }
-  >;
+  blockTypes: ReadonlyArray<BlockType>;
 
   /** List of the available inline styles. */
-  inlineStyles: ReadonlyArray<
-    ControlProp & {
-      /** Unique type shared between inline style instances. */
-      type: string;
-
-      /** CSS properties (in JS format) to apply for styling within the editor area. */
-      style?: {};
-    }
-  >;
+  inlineStyles: ReadonlyArray<InlineStyle>;
 
   /** List of the available entity types. */
-  entityTypes: ReadonlyArray<
-    ControlProp & {
-      /** Unique type shared between entity instances. */
-      type: string;
-
-      /** React component providing the UI to manage entities of this type. */
-      source: ComponentType<{}>;
-
-      /** React component to display inline entities. */
-      decorator?: ComponentType<{}>;
-
-      /** React component to display block-level entities. */
-      block?: ComponentType<{}>;
-
-      /** Custom copy-paste processing checker. */
-      onPaste: (
-        text: string,
-        html: string | null | undefined,
-        editorState: EditorState,
-        helpers: {
-          setEditorState: (arg0: EditorState) => void;
-          getEditorState: () => EditorState;
-        },
-        entityType: {},
-      ) => "handled" | "not-handled";
-
-      /** Array of attributes the entity uses, to preserve when filtering entities on paste.
-       * If undefined, all entity data is preserved.
-       */
-      attributes?: ReadonlyArray<string>;
-
-      /** Attribute - regex mapping, to preserve entities based on their data on paste.
-       * For example, { url: '^https:' } will only preserve links that point to HTTPS URLs.
-       */
-      allowlist?: {};
-
-      /** Attribute - regex mapping, to preserve entities based on their data on paste.
-       * For example, { url: '^https:' } will only preserve links that point to HTTPS URLs.
-       */
-      whitelist?: {};
-    }
-  >;
+  entityTypes: ReadonlyArray<EntityType>;
 
   /** List of active decorators. */
   decorators: ReadonlyArray<DraftDecorator>;
 
   /** List of extra toolbar controls. */
   controls: ReadonlyArray<
-    ComponentType<{
+    React.Component<{
       getEditorState: () => EditorState;
-      onChange: (arg0: EditorState) => void;
+      onChange: (state: EditorState) => void;
     }>
   >;
 
@@ -216,17 +145,17 @@ type Props = {
   plugins: ReadonlyArray<{}>;
 
   /** Optionally override the default Draftail toolbar, removing or replacing it. */
-  topToolbar: ComponentType<ToolbarProps> | null | undefined;
+  topToolbar?: React.Component<ToolbarProps> | null;
 
   /** Optionally add a custom toolbar underneath the editor, e.g. for metrics. */
-  bottomToolbar: ComponentType<ToolbarProps> | null | undefined;
+  bottomToolbar?: React.Component<ToolbarProps> | null;
 
   /** Max level of nesting for list items. 0 = no nesting. Maximum = 10. */
   maxListNesting: number;
 
   /** Frequency at which to call the onSave callback (ms). */
   stateSaveInterval: number;
-};
+}
 
 const defaultProps = {
   /** Initial content of the editor. Use this to edit pre-existing content. */
@@ -323,7 +252,7 @@ type State = {
         entityKey: string | null | undefined;
         entityType:
           | {
-              source: ComponentType<{}>;
+              source: React.Component<{}>;
             }
           | null
           | undefined;
@@ -336,10 +265,19 @@ type State = {
  * Main component of the Draftail editor.
  * Contains the Draft.js editor instance, and ties together UI and behavior.
  */
-class DraftailEditor extends Component<Props, State> {
-  static defaultProps: Props;
+class DraftailEditor extends Component<DraftailEditorProps, State> {
+  static defaultProps: DraftailEditorProps;
 
-  constructor(props: Props) {
+  state: State;
+
+  updateTimeout?: number;
+  editorRef?: React.Ref<Editor>;
+
+  lockEditor: () => void;
+  unlockEditor: () => void;
+  getEditorState: () => EditorState;
+
+  constructor(props: DraftailEditorProps) {
     super(props);
 
     this.onChange = this.onChange.bind(this);
@@ -635,12 +573,12 @@ class DraftailEditor extends Component<Props, State> {
 
   getEditorStateProp() {
     const { editorState } = this.props;
-    return editorState;
+    return editorState as EditorState;
   }
 
   getEditorStateState() {
     const { editorState } = this.state;
-    return editorState;
+    return editorState as EditorState;
   }
 
   saveState() {
@@ -1086,6 +1024,7 @@ class DraftailEditor extends Component<Props, State> {
     const toolbarProps = {
       currentStyles: editorState.getCurrentInlineStyle(),
       currentBlock: selectedBlock.getType(),
+      currentBlockKey: selectedBlock.getKey(),
       enableHorizontalRule,
       enableLineBreak,
       showUndoControl,
@@ -1114,18 +1053,15 @@ class DraftailEditor extends Component<Props, State> {
         }${hidePlaceholder ? " Draftail-Editor--hide-placeholder" : ""}${
           hasFocus ? " Draftail-Editor--focus" : ""
         }`}
-        dir={textDirectionality === "RTL" ? "rtl" : null}
+        dir={textDirectionality === "RTL" ? "rtl" : "ltr"}
         data-draftail-editor
       >
         {TopToolbar ? <TopToolbar {...toolbarProps} /> : null}
 
-        <div
-          className="Draftail-Editor__wrapper"
-          onMouseLeave={this.onMouseLeave}
-        >
+        <div className="Draftail-Editor__wrapper">
           <Editor
             customStyleMap={behavior.getCustomStyleMap(inlineStyles)}
-            ref={(ref) => {
+            ref={(ref: React.Ref<Editor>) => {
               this.editorRef = ref;
             }}
             editorState={editorState}

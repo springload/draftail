@@ -232,7 +232,7 @@ export default {
       anchorOffset: offset,
       focusOffset: offset,
     });
-    content = content.merge({ selectionAfter: endSelection });
+    content = content.merge({ selectionAfter: endSelection }) as ContentState;
 
     content = Modifier.insertText(content, endSelection, char);
 

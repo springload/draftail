@@ -1,5 +1,3 @@
-import { DefaultDraftInlineStyle } from "draft-js";
-
 // See https://github.com/facebook/draft-js/blob/master/src/model/immutable/DefaultDraftBlockRenderMap.js
 export const BLOCK_TYPE = {
   // This is used to represent a normal text block (paragraph).
@@ -16,13 +14,13 @@ export const BLOCK_TYPE = {
   CODE: "code-block",
   // This represents a "custom" block, not for rich text, with arbitrary content.
   ATOMIC: "atomic",
-};
+} as const;
 
 export const ENTITY_TYPE = {
   LINK: "LINK",
   IMAGE: "IMAGE",
   HORIZONTAL_RULE: "HORIZONTAL_RULE",
-};
+} as const;
 
 // See https://github.com/facebook/draft-js/blob/master/src/model/immutable/DefaultDraftInlineStyle.js
 export const INLINE_STYLE = {
@@ -40,7 +38,7 @@ export const INLINE_STYLE = {
   KEYBOARD: "KEYBOARD",
   SUPERSCRIPT: "SUPERSCRIPT",
   SUBSCRIPT: "SUBSCRIPT",
-};
+} as const;
 
 const BLOCK_TYPES = Object.values(BLOCK_TYPE);
 const ENTITY_TYPES = Object.values(ENTITY_TYPE);
@@ -56,72 +54,75 @@ export const KEY_COMMANDS = [
   "italic",
   "underline",
   "code",
-];
+] as const;
 
 export const FONT_FAMILY_MONOSPACE =
   "Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif";
 
 // See https://github.com/facebook/draft-js/blob/master/src/model/immutable/DefaultDraftInlineStyle.js
-export const CUSTOM_STYLE_MAP = {};
-CUSTOM_STYLE_MAP[INLINE_STYLE.BOLD] =
-  DefaultDraftInlineStyle[INLINE_STYLE.BOLD];
-CUSTOM_STYLE_MAP[INLINE_STYLE.ITALIC] =
-  DefaultDraftInlineStyle[INLINE_STYLE.ITALIC];
-CUSTOM_STYLE_MAP[INLINE_STYLE.STRIKETHROUGH] =
-  DefaultDraftInlineStyle[INLINE_STYLE.STRIKETHROUGH];
-CUSTOM_STYLE_MAP[INLINE_STYLE.UNDERLINE] =
-  DefaultDraftInlineStyle[INLINE_STYLE.UNDERLINE];
-
-CUSTOM_STYLE_MAP[INLINE_STYLE.CODE] = {
-  padding: "0.2em 0.3125em",
-  margin: "0",
-  fontSize: "85%",
-  backgroundColor: "rgba(27, 31, 35, 0.05)",
-  fontFamily: FONT_FAMILY_MONOSPACE,
-  borderRadius: "3px",
-};
-
-CUSTOM_STYLE_MAP[INLINE_STYLE.MARK] = {
-  backgroundColor: "yellow",
-};
-CUSTOM_STYLE_MAP[INLINE_STYLE.QUOTATION] = {
-  fontStyle: "italic",
-};
-CUSTOM_STYLE_MAP[INLINE_STYLE.SMALL] = {
-  fontSize: "smaller",
-};
-CUSTOM_STYLE_MAP[INLINE_STYLE.SAMPLE] = {
-  fontFamily: FONT_FAMILY_MONOSPACE,
-};
-CUSTOM_STYLE_MAP[INLINE_STYLE.INSERT] = {
-  textDecoration: "underline",
-};
-CUSTOM_STYLE_MAP[INLINE_STYLE.DELETE] = {
-  textDecoration: "line-through",
-};
-CUSTOM_STYLE_MAP[INLINE_STYLE.KEYBOARD] = {
-  fontFamily: FONT_FAMILY_MONOSPACE,
-  padding: "3px 5px",
-  fontSize: "11px",
-  lineHeight: "10px",
-  color: "#444d56",
-  verticalAlign: "middle",
-  backgroundColor: "#fafbfc",
-  border: "solid 1px #c6cbd1",
-  borderBottomColor: "#959da5",
-  borderRadius: "3px",
-  boxShadow: "inset 0 -1px 0 #959da5",
-};
-CUSTOM_STYLE_MAP[INLINE_STYLE.SUPERSCRIPT] = {
-  fontSize: "80%",
-  verticalAlign: "super",
-  lineHeight: "1",
-};
-CUSTOM_STYLE_MAP[INLINE_STYLE.SUBSCRIPT] = {
-  fontSize: "80%",
-  verticalAlign: "sub",
-  lineHeight: "1",
-};
+export const CUSTOM_STYLE_MAP = {
+  [INLINE_STYLE.BOLD]: {
+    fontWeight: "bold",
+  },
+  [INLINE_STYLE.ITALIC]: {
+    fontStyle: "italic",
+  },
+  [INLINE_STYLE.STRIKETHROUGH]: {
+    textDecoration: "line-through",
+  },
+  [INLINE_STYLE.UNDERLINE]: {
+    textDecoration: "underline",
+  },
+  [INLINE_STYLE.CODE]: {
+    padding: "0.2em 0.3125em",
+    margin: "0",
+    fontSize: "85%",
+    backgroundColor: "rgba(27, 31, 35, 0.05)",
+    fontFamily: FONT_FAMILY_MONOSPACE,
+    borderRadius: "3px",
+  },
+  [INLINE_STYLE.MARK]: {
+    backgroundColor: "yellow",
+  },
+  [INLINE_STYLE.QUOTATION]: {
+    fontStyle: "italic",
+  },
+  [INLINE_STYLE.SMALL]: {
+    fontSize: "smaller",
+  },
+  [INLINE_STYLE.SAMPLE]: {
+    fontFamily: FONT_FAMILY_MONOSPACE,
+  },
+  [INLINE_STYLE.INSERT]: {
+    textDecoration: "underline",
+  },
+  [INLINE_STYLE.DELETE]: {
+    textDecoration: "line-through",
+  },
+  [INLINE_STYLE.KEYBOARD]: {
+    fontFamily: FONT_FAMILY_MONOSPACE,
+    padding: "3px 5px",
+    fontSize: "11px",
+    lineHeight: "10px",
+    color: "#444d56",
+    verticalAlign: "middle",
+    backgroundColor: "#fafbfc",
+    border: "solid 1px #c6cbd1",
+    borderBottomColor: "#959da5",
+    borderRadius: "3px",
+    boxShadow: "inset 0 -1px 0 #959da5",
+  },
+  [INLINE_STYLE.SUPERSCRIPT]: {
+    fontSize: "80%",
+    verticalAlign: "super",
+    lineHeight: "1",
+  },
+  [INLINE_STYLE.SUBSCRIPT]: {
+    fontSize: "80%",
+    verticalAlign: "sub",
+    lineHeight: "1",
+  },
+} as const;
 
 export const BR_TYPE = "BR";
 
@@ -147,7 +148,7 @@ export const KEY_CODES = {
   "8": 56,
   ".": 190,
   ",": 188,
-};
+} as const;
 
 export const INPUT_BLOCK_MAP = {
   "* ": BLOCK_TYPE.UNORDERED_LIST_ITEM,
@@ -163,7 +164,7 @@ export const INPUT_BLOCK_MAP = {
   // It makes more sense not to require a space here.
   // This matches how Dropbox Paper operates.
   "```": BLOCK_TYPE.CODE,
-};
+} as const;
 
 export const INPUT_STYLE_MAP = [
   // Order matters, as shorter patterns are contained in the longer ones.
@@ -193,125 +194,125 @@ export const INPUT_STYLE_MAP = [
   };
 });
 
-export const INPUT_ENTITY_MAP = {};
+export const INPUT_ENTITY_MAP = {
+  [ENTITY_TYPE.HORIZONTAL_RULE]: "---",
+} as const;
 
-INPUT_ENTITY_MAP[ENTITY_TYPE.HORIZONTAL_RULE] = "---";
+export const LABELS = {
+  [BLOCK_TYPE.UNSTYLED]: "P",
+  [BLOCK_TYPE.HEADER_ONE]: "H1",
+  [BLOCK_TYPE.HEADER_TWO]: "H2",
+  [BLOCK_TYPE.HEADER_THREE]: "H3",
+  [BLOCK_TYPE.HEADER_FOUR]: "H4",
+  [BLOCK_TYPE.HEADER_FIVE]: "H5",
+  [BLOCK_TYPE.HEADER_SIX]: "H6",
+  [BLOCK_TYPE.UNORDERED_LIST_ITEM]: "UL",
+  [BLOCK_TYPE.ORDERED_LIST_ITEM]: "OL",
+  [BLOCK_TYPE.CODE]: "{ }",
+  [BLOCK_TYPE.BLOCKQUOTE]: "❝",
 
-export const LABELS = {};
+  [INLINE_STYLE.BOLD]: "𝐁",
+  [INLINE_STYLE.ITALIC]: "𝘐",
+  [INLINE_STYLE.CODE]: "{ }",
+  [INLINE_STYLE.UNDERLINE]: "U",
+  [INLINE_STYLE.STRIKETHROUGH]: "S",
+  [INLINE_STYLE.MARK]: "☆",
+  [INLINE_STYLE.QUOTATION]: "❛",
+  [INLINE_STYLE.SMALL]: "Small",
+  [INLINE_STYLE.SAMPLE]: "Data",
+  [INLINE_STYLE.INSERT]: "Ins",
+  [INLINE_STYLE.DELETE]: "Del",
+  [INLINE_STYLE.SUPERSCRIPT]: "Sup",
+  [INLINE_STYLE.SUBSCRIPT]: "Sub",
+  [INLINE_STYLE.KEYBOARD]: "⌘",
 
-LABELS[BLOCK_TYPE.UNSTYLED] = "P";
-LABELS[BLOCK_TYPE.HEADER_ONE] = "H1";
-LABELS[BLOCK_TYPE.HEADER_TWO] = "H2";
-LABELS[BLOCK_TYPE.HEADER_THREE] = "H3";
-LABELS[BLOCK_TYPE.HEADER_FOUR] = "H4";
-LABELS[BLOCK_TYPE.HEADER_FIVE] = "H5";
-LABELS[BLOCK_TYPE.HEADER_SIX] = "H6";
-LABELS[BLOCK_TYPE.UNORDERED_LIST_ITEM] = "UL";
-LABELS[BLOCK_TYPE.ORDERED_LIST_ITEM] = "OL";
-LABELS[BLOCK_TYPE.CODE] = "{ }";
-LABELS[BLOCK_TYPE.BLOCKQUOTE] = "❝";
+  [ENTITY_TYPE.LINK]: "🔗",
+  [ENTITY_TYPE.IMAGE]: "🖼",
+  [ENTITY_TYPE.HORIZONTAL_RULE]: "―",
+  [BR_TYPE]: "↵",
 
-LABELS[INLINE_STYLE.BOLD] = "B";
-LABELS[INLINE_STYLE.ITALIC] = "𝘐";
-LABELS[INLINE_STYLE.CODE] = "{ }";
-LABELS[INLINE_STYLE.UNDERLINE] = "U";
-LABELS[INLINE_STYLE.STRIKETHROUGH] = "S";
-LABELS[INLINE_STYLE.MARK] = "☆";
-LABELS[INLINE_STYLE.QUOTATION] = "❛";
-LABELS[INLINE_STYLE.SMALL] = "𝖲𝗆a𝗅𝗅";
-LABELS[INLINE_STYLE.SAMPLE] = "𝙳𝚊𝚝𝚊";
-LABELS[INLINE_STYLE.INSERT] = "Ins";
-LABELS[INLINE_STYLE.DELETE] = "Del";
-LABELS[INLINE_STYLE.SUPERSCRIPT] = "Sup";
-LABELS[INLINE_STYLE.SUBSCRIPT] = "Sub";
-LABELS[INLINE_STYLE.KEYBOARD] = "⌘";
+  [UNDO_TYPE]: "↺",
+  [REDO_TYPE]: "↻",
+} as const;
 
-LABELS[ENTITY_TYPE.LINK] = "🔗";
-LABELS[ENTITY_TYPE.IMAGE] = "🖼";
-LABELS[ENTITY_TYPE.HORIZONTAL_RULE] = "―";
-LABELS[BR_TYPE] = "↵";
+export const DESCRIPTIONS = {
+  [BLOCK_TYPE.UNSTYLED]: "Paragraph",
+  [BLOCK_TYPE.HEADER_ONE]: "Heading 1",
+  [BLOCK_TYPE.HEADER_TWO]: "Heading 2",
+  [BLOCK_TYPE.HEADER_THREE]: "Heading 3",
+  [BLOCK_TYPE.HEADER_FOUR]: "Heading 4",
+  [BLOCK_TYPE.HEADER_FIVE]: "Heading 5",
+  [BLOCK_TYPE.HEADER_SIX]: "Heading 6",
+  [BLOCK_TYPE.UNORDERED_LIST_ITEM]: "Bulleted list",
+  [BLOCK_TYPE.ORDERED_LIST_ITEM]: "Numbered list",
+  [BLOCK_TYPE.BLOCKQUOTE]: "Blockquote",
+  [BLOCK_TYPE.CODE]: "Code block",
 
-LABELS[UNDO_TYPE] = "↺";
-LABELS[REDO_TYPE] = "↻";
+  [INLINE_STYLE.BOLD]: "Bold",
+  [INLINE_STYLE.ITALIC]: "Italic",
+  [INLINE_STYLE.CODE]: "Code",
+  [INLINE_STYLE.UNDERLINE]: "Underline",
+  [INLINE_STYLE.STRIKETHROUGH]: "Strikethrough",
+  [INLINE_STYLE.MARK]: "Highlight",
+  [INLINE_STYLE.QUOTATION]: "Inline quotation",
+  [INLINE_STYLE.SMALL]: "Small",
+  [INLINE_STYLE.SAMPLE]: "Program output",
+  [INLINE_STYLE.INSERT]: "Inserted",
+  [INLINE_STYLE.DELETE]: "Deleted",
+  [INLINE_STYLE.KEYBOARD]: "Shortcut key",
+  [INLINE_STYLE.SUPERSCRIPT]: "Superscript",
+  [INLINE_STYLE.SUBSCRIPT]: "Subscript",
 
-export const DESCRIPTIONS = {};
+  [ENTITY_TYPE.LINK]: "Link",
+  [ENTITY_TYPE.IMAGE]: "Image",
+  [ENTITY_TYPE.HORIZONTAL_RULE]: "Horizontal line",
 
-DESCRIPTIONS[BLOCK_TYPE.UNSTYLED] = "Paragraph";
-DESCRIPTIONS[BLOCK_TYPE.HEADER_ONE] = "Heading 1";
-DESCRIPTIONS[BLOCK_TYPE.HEADER_TWO] = "Heading 2";
-DESCRIPTIONS[BLOCK_TYPE.HEADER_THREE] = "Heading 3";
-DESCRIPTIONS[BLOCK_TYPE.HEADER_FOUR] = "Heading 4";
-DESCRIPTIONS[BLOCK_TYPE.HEADER_FIVE] = "Heading 5";
-DESCRIPTIONS[BLOCK_TYPE.HEADER_SIX] = "Heading 6";
-DESCRIPTIONS[BLOCK_TYPE.UNORDERED_LIST_ITEM] = "Bulleted list";
-DESCRIPTIONS[BLOCK_TYPE.ORDERED_LIST_ITEM] = "Numbered list";
-DESCRIPTIONS[BLOCK_TYPE.BLOCKQUOTE] = "Blockquote";
-DESCRIPTIONS[BLOCK_TYPE.CODE] = "Code block";
+  [BR_TYPE]: "Line break",
 
-DESCRIPTIONS[INLINE_STYLE.BOLD] = "Bold";
-DESCRIPTIONS[INLINE_STYLE.ITALIC] = "Italic";
-DESCRIPTIONS[INLINE_STYLE.CODE] = "Code";
-DESCRIPTIONS[INLINE_STYLE.UNDERLINE] = "Underline";
-DESCRIPTIONS[INLINE_STYLE.STRIKETHROUGH] = "Strikethrough";
-DESCRIPTIONS[INLINE_STYLE.MARK] = "Highlight";
-DESCRIPTIONS[INLINE_STYLE.QUOTATION] = "Inline quotation";
-DESCRIPTIONS[INLINE_STYLE.SMALL] = "Small";
-DESCRIPTIONS[INLINE_STYLE.SAMPLE] = "Program output";
-DESCRIPTIONS[INLINE_STYLE.INSERT] = "Inserted";
-DESCRIPTIONS[INLINE_STYLE.DELETE] = "Deleted";
-DESCRIPTIONS[INLINE_STYLE.KEYBOARD] = "Shortcut key";
-DESCRIPTIONS[INLINE_STYLE.SUPERSCRIPT] = "Superscript";
-DESCRIPTIONS[INLINE_STYLE.SUBSCRIPT] = "Subscript";
+  [UNDO_TYPE]: "Undo",
+  [REDO_TYPE]: "Redo",
+} as const;
 
-DESCRIPTIONS[ENTITY_TYPE.LINK] = "Link";
-DESCRIPTIONS[ENTITY_TYPE.IMAGE] = "Image";
-DESCRIPTIONS[ENTITY_TYPE.HORIZONTAL_RULE] = "Horizontal line";
+export const KEYBOARD_SHORTCUTS = {
+  [BLOCK_TYPE.UNSTYLED]: "⌫",
+  [BLOCK_TYPE.HEADER_ONE]: "#",
+  [BLOCK_TYPE.HEADER_TWO]: "##",
+  [BLOCK_TYPE.HEADER_THREE]: "###",
+  [BLOCK_TYPE.HEADER_FOUR]: "####",
+  [BLOCK_TYPE.HEADER_FIVE]: "#####",
+  [BLOCK_TYPE.HEADER_SIX]: "######",
+  [BLOCK_TYPE.UNORDERED_LIST_ITEM]: "-",
+  [BLOCK_TYPE.ORDERED_LIST_ITEM]: "1.",
+  [BLOCK_TYPE.BLOCKQUOTE]: ">",
+  [BLOCK_TYPE.CODE]: "```",
 
-DESCRIPTIONS[BR_TYPE] = "Line break";
+  [INLINE_STYLE.BOLD]: { other: "Ctrl + B", macOS: "⌘ + B" },
+  [INLINE_STYLE.ITALIC]: { other: "Ctrl + I", macOS: "⌘ + I" },
+  [INLINE_STYLE.UNDERLINE]: {
+    other: "Ctrl + U",
+    macOS: "⌘ + U",
+  },
+  [INLINE_STYLE.STRIKETHROUGH]: {
+    other: "Ctrl + ⇧ + X",
+    macOS: "⌘ + ⇧ + X",
+  },
+  [INLINE_STYLE.SUPERSCRIPT]: {
+    other: "Ctrl + .",
+    macOS: "⌘ + .",
+  },
+  [INLINE_STYLE.SUBSCRIPT]: {
+    other: "Ctrl + ,",
+    macOS: "⌘ + ,",
+  },
 
-DESCRIPTIONS[UNDO_TYPE] = "Undo";
-DESCRIPTIONS[REDO_TYPE] = "Redo";
+  [ENTITY_TYPE.LINK]: { other: "Ctrl + K", macOS: "⌘ + K" },
 
-export const KEYBOARD_SHORTCUTS = {};
+  [BR_TYPE]: "⇧ + ↵",
+  [ENTITY_TYPE.HORIZONTAL_RULE]: "- - -",
 
-KEYBOARD_SHORTCUTS[BLOCK_TYPE.UNSTYLED] = "⌫";
-KEYBOARD_SHORTCUTS[BLOCK_TYPE.HEADER_ONE] = "#";
-KEYBOARD_SHORTCUTS[BLOCK_TYPE.HEADER_TWO] = "##";
-KEYBOARD_SHORTCUTS[BLOCK_TYPE.HEADER_THREE] = "###";
-KEYBOARD_SHORTCUTS[BLOCK_TYPE.HEADER_FOUR] = "####";
-KEYBOARD_SHORTCUTS[BLOCK_TYPE.HEADER_FIVE] = "#####";
-KEYBOARD_SHORTCUTS[BLOCK_TYPE.HEADER_SIX] = "######";
-KEYBOARD_SHORTCUTS[BLOCK_TYPE.UNORDERED_LIST_ITEM] = "-";
-KEYBOARD_SHORTCUTS[BLOCK_TYPE.ORDERED_LIST_ITEM] = "1.";
-KEYBOARD_SHORTCUTS[BLOCK_TYPE.BLOCKQUOTE] = ">";
-KEYBOARD_SHORTCUTS[BLOCK_TYPE.CODE] = "```";
-
-KEYBOARD_SHORTCUTS[INLINE_STYLE.BOLD] = { other: "Ctrl + B", macOS: "⌘ + B" };
-KEYBOARD_SHORTCUTS[INLINE_STYLE.ITALIC] = { other: "Ctrl + I", macOS: "⌘ + I" };
-KEYBOARD_SHORTCUTS[INLINE_STYLE.UNDERLINE] = {
-  other: "Ctrl + U",
-  macOS: "⌘ + U",
-};
-KEYBOARD_SHORTCUTS[INLINE_STYLE.STRIKETHROUGH] = {
-  other: "Ctrl + ⇧ + X",
-  macOS: "⌘ + ⇧ + X",
-};
-KEYBOARD_SHORTCUTS[INLINE_STYLE.SUPERSCRIPT] = {
-  other: "Ctrl + .",
-  macOS: "⌘ + .",
-};
-KEYBOARD_SHORTCUTS[INLINE_STYLE.SUBSCRIPT] = {
-  other: "Ctrl + ,",
-  macOS: "⌘ + ,",
-};
-
-KEYBOARD_SHORTCUTS[ENTITY_TYPE.LINK] = { other: "Ctrl + K", macOS: "⌘ + K" };
-
-KEYBOARD_SHORTCUTS[BR_TYPE] = "⇧ + ↵";
-KEYBOARD_SHORTCUTS[ENTITY_TYPE.HORIZONTAL_RULE] = "- - -";
-
-KEYBOARD_SHORTCUTS[UNDO_TYPE] = { other: "Ctrl + Z", macOS: "⌘ + Z" };
-KEYBOARD_SHORTCUTS[REDO_TYPE] = { other: "Ctrl + ⇧ + Z", macOS: "⌘ + ⇧ + Z" };
+  [UNDO_TYPE]: { other: "Ctrl + Z", macOS: "⌘ + Z" },
+  [REDO_TYPE]: { other: "Ctrl + ⇧ + Z", macOS: "⌘ + ⇧ + Z" },
+} as const;
 
 export const HANDLED = "handled";
 export const NOT_HANDLED = "not-handled";

@@ -9,7 +9,6 @@ import {
   ENTITY_TYPE,
   UNDO_TYPE,
   REDO_TYPE,
-  LABELS,
   DESCRIPTIONS,
 } from "../../api/constants";
 import behavior from "../../api/behavior";
@@ -41,11 +40,12 @@ export const getButtonTitle = (type: string, config: BoolControl) => {
   return title;
 };
 
-export type ToolbarDefaultProps = {
+export interface ToolbarDefaultProps {
   currentStyles: {
     has: (style: string) => boolean;
   };
   currentBlock: string;
+  currentBlockKey: string;
   enableHorizontalRule: BoolControl;
   enableLineBreak: BoolControl;
   showUndoControl: BoolControl;
@@ -61,7 +61,7 @@ export type ToolbarDefaultProps = {
   onRequestSource: (entityType: string) => void;
   onCompleteSource: (nextState: EditorState) => void;
   focus: () => void;
-};
+}
 
 class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
   render() {
