@@ -12,7 +12,6 @@ import {
 import { condenseBlocks } from "draftjs-filters";
 import Editor from "draft-js-plugins-editor";
 import {
-  ListNestingStyles,
   registerCopySource,
   handleDraftEditorPastedText,
   createEditorStateFromRaw,
@@ -32,19 +31,19 @@ import {
 
 import DraftUtils from "../api/DraftUtils";
 import behavior from "../api/behavior";
-
-import Toolbar, { ToolbarProps } from "./Toolbar/Toolbar";
-
-import DividerBlock from "../blocks/DividerBlock";
-import CommandPalette from "./CommandPalette/CommandPalette";
-import PlaceholderStyles from "./PlaceholderBlock/PlaceholderStyles";
-import PlaceholderBlock from "./PlaceholderBlock/PlaceholderBlock";
 import {
   BlockTypeControl,
   BoolControl,
   EntityTypeControl,
   InlineStyleControl,
 } from "../api/types";
+
+import Toolbar, { ToolbarProps } from "./Toolbar/Toolbar";
+import ListNestingStyles from "./ListNestingStyles";
+import DividerBlock from "../blocks/DividerBlock";
+import CommandPalette from "./CommandPalette/CommandPalette";
+import PlaceholderStyles from "./PlaceholderBlock/PlaceholderStyles";
+import PlaceholderBlock from "./PlaceholderBlock/PlaceholderBlock";
 
 type TextDirectionality = "LTR" | "RTL";
 
@@ -271,6 +270,10 @@ type State = {
     | undefined;
 };
 
+type DraftEditorRef = React.Ref<Editor> & {
+  focus: () => void;
+};
+
 /**
  * Main component of the Draftail editor.
  * Contains the Draft.js editor instance, and ties together UI and behavior.
@@ -281,7 +284,7 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
   state: State;
 
   updateTimeout?: number;
-  editorRef?: React.Ref<Editor> & { focus: () => void };
+  editorRef?: DraftEditorRef;
 
   lockEditor: () => void;
   unlockEditor: () => void;
@@ -410,23 +413,25 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
   }
 
   onUpArrow(event: React.KeyboardEvent) {
-    console.log("up");
     const input = document.querySelector('[aria-autocomplete="list"]');
-    const evt = new Event("keydown", { bubbles: true });
-    evt.keyCode = 38;
-    evt.key = "ArrowUp";
-    input?.dispatchEvent(evt);
-    event.preventDefault();
+    if (input) {
+      const evt = new Event("keydown", { bubbles: true });
+      evt.keyCode = 38;
+      evt.key = "ArrowUp";
+      input?.dispatchEvent(evt);
+      event.preventDefault();
+    }
   }
 
   onDownArrow(event: React.KeyboardEvent) {
-    console.log("down");
     const input = document.querySelector('[aria-autocomplete="list"]');
-    const evt = new Event("keydown", { bubbles: true });
-    evt.keyCode = 40;
-    evt.key = "ArrowDown";
-    input?.dispatchEvent(evt);
-    event.preventDefault();
+    if (input) {
+      const evt = new Event("keydown", { bubbles: true });
+      evt.keyCode = 40;
+      evt.key = "ArrowDown";
+      input?.dispatchEvent(evt);
+      event.preventDefault();
+    }
   }
 
   onChange(nextState: EditorState) {
@@ -488,9 +493,9 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
     const editorState = this.getEditorState();
     const content = editorState.getCurrentContent();
     const entity = content.getEntity(entityKey);
-    const entityType = entityTypes.find((t) => t.type === entity.type);
+    const entityType = entityTypes.find((t) => t.type === entity.getType());
 
-    if (!entityType.block) {
+    if (!entityType!.block) {
       const entitySelection = DraftUtils.getEntitySelection(
         editorState,
         entityKey,
@@ -511,10 +516,10 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
     const editorState = this.getEditorState();
     const content = editorState.getCurrentContent();
     const entity = content.getEntity(entityKey);
-    const entityType = entityTypes.find((t) => t.type === entity.type);
+    const entityType = entityTypes.find((t) => t.type === entity.getType());
     let newState = editorState;
 
-    if (entityType.block) {
+    if (entityType!.block) {
       newState = DraftUtils.removeBlockEntity(newState, entityKey, blockKey);
     } else {
       const entitySelection = DraftUtils.getEntitySelection(
@@ -1078,7 +1083,7 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
         <div className="Draftail-Editor__wrapper">
           <Editor
             customStyleMap={behavior.getCustomStyleMap(inlineStyles)}
-            ref={(ref: React.Ref<Editor>) => {
+            ref={(ref: DraftEditorRef) => {
               this.editorRef = ref;
             }}
             editorState={editorState}
