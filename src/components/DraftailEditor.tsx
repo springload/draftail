@@ -1033,11 +1033,14 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
       .filter((type) => !!type.decorator)
       .map((type) => ({
         strategy: DraftUtils.getEntityTypeStrategy(type.type),
-        component: decorateComponentWithProps(type.decorator, {
-          onEdit: this.onEditEntity,
-          onRemove: this.onRemoveEntity,
-          textDirectionality,
-        }),
+        component: decorateComponentWithProps<React.Component<{}>>(
+          type.decorator,
+          {
+            onEdit: this.onEditEntity,
+            onRemove: this.onRemoveEntity,
+            textDirectionality,
+          },
+        ),
       }));
 
     const TopToolbar = topToolbar;

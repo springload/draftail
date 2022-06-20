@@ -4,7 +4,7 @@ import dts from "rollup-plugin-dts";
 
 const config = [
   {
-    input: "./src/lib/index.ts",
+    input: "./src/index.ts",
     external: [
       "draft-js/lib/isSoftNewlineEvent",
       "draft-js/lib/DraftEditorBlock.react",
@@ -18,7 +18,7 @@ const config = [
     plugins: [typescript()],
   },
   {
-    input: "./src/lib/index.ts",
+    input: "./src/index.ts",
     output: [{ file: pkg.types, format: "es" }],
     plugins: [dts()],
   },

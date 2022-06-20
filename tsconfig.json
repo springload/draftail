@@ -12,9 +12,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "noFallthroughCasesInSwitch": true,
     "lib": ["dom", "dom.iterable", "esnext"]
   },
-  "include": ["src", "examples"]
+  "include": ["src", "examples"],
+  "exclude": ["**/*.test.tsx"]
 }
