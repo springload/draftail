@@ -58,6 +58,7 @@ const BlockToolbar = ({
   onChange,
   blockTypes,
   currentBlock,
+  currentBlockKey,
   toggleBlockType,
   onRequestSource,
   onCompleteSource,
@@ -154,6 +155,7 @@ const BlockToolbar = ({
         plugins={tippyPlugins}
         content={
           <ComboBox
+            key={`${currentBlockKey}-${currentBlock}`}
             label={comboBox.label}
             placeholder={comboBox.placeholder}
             selectedItem={selectedItem}

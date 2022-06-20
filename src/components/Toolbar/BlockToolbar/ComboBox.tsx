@@ -29,7 +29,6 @@ export default function ComboBox({
   handleSelectedItemChange,
 }: ComboBoxProps) {
   const [inputItems, setInputItems] = useState<ComboBoxOption[]>(items);
-  console.log(inputItems.length, items.length);
   const {
     getLabelProps,
     getMenuProps,
@@ -38,6 +37,7 @@ export default function ComboBox({
     getItemProps,
     reset,
     selectItem,
+    setHighlightedIndex,
   } = useCombobox<ComboBoxOption>({
     items: inputItems,
     itemToString(item) {
@@ -46,18 +46,21 @@ export default function ComboBox({
     selectedItem: null,
     onSelectedItemChange: (selection) => {
       handleSelectedItemChange(selection);
-      reset();
-      console.log("items.length", items.length);
-      setInputItems(items);
-      reset();
-      selectItem(null);
+      // reset();
+      // console.log("items.length", items.length);
+      // setInputItems(items);
+      // reset();
+      // selectItem(null);
     },
-    onStateChange: (changes) => {
+    // onStateChange: (changes) => {
+    //   console.log(changes);
+    // },
+    onInputValueChange: (changes) => {
+      const { inputValue } = changes;
       console.log(changes);
-    },
-    onInputValueChange: ({ inputValue }) => {
-      console.log("onInputValueChange");
+      // console.log("onInputValueChange");
       if (!inputValue) {
+        setInputItems(items);
         return;
       }
 
@@ -78,6 +81,7 @@ export default function ComboBox({
       });
 
       setInputItems(filtered);
+      setHighlightedIndex(0);
     },
   });
 
