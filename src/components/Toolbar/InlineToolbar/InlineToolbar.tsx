@@ -31,6 +31,7 @@ const InlineToolbar = (props: ToolbarProps) => {
 
   return (
     <>
+      <div ref={tippyParentRef} />
       {isVisible ? (
         <Tippy
           visible={isVisible}
@@ -61,7 +62,6 @@ const InlineToolbar = (props: ToolbarProps) => {
           }
         />
       ) : null}
-      <div ref={tippyParentRef} />
     </>
   );
 };

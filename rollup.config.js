@@ -5,7 +5,10 @@ import dts from "rollup-plugin-dts";
 const config = [
   {
     input: "./src/lib/index.ts",
-    external: ["draft-js/lib/isSoftNewlineEvent"]
+    external: [
+      "draft-js/lib/isSoftNewlineEvent",
+      "draft-js/lib/DraftEditorBlock.react",
+    ]
       .concat(Object.keys(pkg.dependencies))
       .concat(Object.keys(pkg.peerDependencies)),
     output: [

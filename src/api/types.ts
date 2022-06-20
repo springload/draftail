@@ -6,30 +6,30 @@ export type IconProp = string | string[] | JSX.Element;
 export interface Control {
   type?: string;
   // Describes the control in the editor UI, concisely.
-  label?: string | null | undefined;
+  label?: string | null;
   // Describes the control in the editor UI.
-  description?: string;
+  description?: string | null;
   // Represents the control in the editor UI.
   icon?: IconProp;
 }
 
 export type BoolControl = boolean | Control;
 
-export interface BlockType extends Control {
+export interface BlockTypeControl extends Control {
   /** Unique type shared between block instances. */
   type: string;
   /** DOM element used to display the block within the editor area. */
   element?: string;
 }
 
-export interface InlineStyle extends Control {
+export interface InlineStyleControl extends Control {
   /** Unique type shared between inline style instances. */
   type: string;
   /** CSS properties (in JS format) to apply for styling within the editor area. */
   style?: CSSProperties;
 }
 
-export interface EntityType extends Control {
+export interface EntityTypeControl extends Control {
   /** Unique type shared between entity instances. */
   type: string;
 

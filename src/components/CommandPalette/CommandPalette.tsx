@@ -3,7 +3,14 @@ import React, { useState } from "react";
 import DraftUtils from "../../api/DraftUtils";
 import CommandComboBox from "./CommandComboBox";
 
-const CommandPalette = ({ textDirectionality, blockTypes, getEditorState }) => {
+const CommandPalette = ({
+  textDirectionality,
+  blockTypes,
+  getEditorState,
+  currentBlock,
+  currentBlockKey,
+  onCompleteSource,
+}) => {
   const commands = blockTypes;
   const editorState = getEditorState();
   const selection = editorState.getSelection();
@@ -17,8 +24,11 @@ const CommandPalette = ({ textDirectionality, blockTypes, getEditorState }) => {
   return (
     <CommandComboBox
       blockTypes={blockTypes}
+      currentBlock={currentBlock}
+      currentBlockKey={currentBlockKey}
       match={text.replace("/", "")}
       getEditorState={getEditorState}
+      onCompleteSource={onCompleteSource}
     />
   );
 };

@@ -16,11 +16,15 @@ export const BLOCK_TYPE = {
   ATOMIC: "atomic",
 } as const;
 
+export type BlockType = typeof BLOCK_TYPE[keyof typeof BLOCK_TYPE];
+
 export const ENTITY_TYPE = {
   LINK: "LINK",
   IMAGE: "IMAGE",
   HORIZONTAL_RULE: "HORIZONTAL_RULE",
 } as const;
+
+export type EntityType = typeof ENTITY_TYPE[keyof typeof ENTITY_TYPE];
 
 // See https://github.com/facebook/draft-js/blob/master/src/model/immutable/DefaultDraftInlineStyle.js
 export const INLINE_STYLE = {
@@ -39,6 +43,8 @@ export const INLINE_STYLE = {
   SUPERSCRIPT: "SUPERSCRIPT",
   SUBSCRIPT: "SUBSCRIPT",
 } as const;
+
+export type InlineStyle = typeof INLINE_STYLE[keyof typeof INLINE_STYLE];
 
 const BLOCK_TYPES = Object.values(BLOCK_TYPE);
 const ENTITY_TYPES = Object.values(ENTITY_TYPE);

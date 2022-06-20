@@ -1,7 +1,7 @@
 .#{$DRAFTAIL}ComboBox {
 }
 
-.#{$DRAFTAIL}ComboBox__label {
+@mixin sr-only() {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -10,12 +10,20 @@
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
-  border-width: 0;
+  border: 0;
+}
+
+.#{$DRAFTAIL}ComboBox__label {
+  @include sr-only();
 }
 
 .#{$DRAFTAIL}ComboBox [role="combobox"] {
   padding: 10px;
   padding-inline-end: 15px;
+}
+
+.#{$DRAFTAIL}ComboBox--contenteditable [role="combobox"] {
+  @include sr-only();
 }
 
 .#{$DRAFTAIL}ComboBox [aria-autocomplete="list"] {

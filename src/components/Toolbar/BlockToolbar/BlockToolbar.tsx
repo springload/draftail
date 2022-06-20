@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Tippy from "@tippyjs/react";
+import Tippy, { TippyProps } from "@tippyjs/react";
 
 import { ENTITY_TYPE } from "../../../api/constants";
 
@@ -46,6 +46,7 @@ type BlockToolbarProps = {
   comboBox: {
     label: string;
     placeholder: string;
+    placement: TippyProps["placement"];
   };
 } & ToolbarProps;
 
@@ -102,7 +103,7 @@ const BlockToolbar = ({
   const items: ComboBoxOption[] = [
     ...blockTypes.filter(showButton).map((t) => ({
       ...t,
-      onClick: () => {
+      onSelect: () => {
         return RichUtils.toggleBlockType(getEditorState(), t.type);
       },
     })),
@@ -111,14 +112,14 @@ const BlockToolbar = ({
       .filter((t) => Boolean(t.block))
       .map((t) => ({
         ...t,
-        onClick: onRequestSource.bind(null, t.type),
+        onSelect: onRequestSource.bind(null, t.type),
       })),
   ];
 
   if (enableHorizontalRule) {
     items.push({
       type: ENTITY_TYPE.HORIZONTAL_RULE,
-      onClick: addHR,
+      onSelect: addHR,
       ...(typeof enableHorizontalRule === "object" ? enableHorizontalRule : {}),
     });
   }
@@ -136,7 +137,7 @@ const BlockToolbar = ({
         visible={visible}
         onClickOutside={() => setVisible(false)}
         trigger="click"
-        placement="auto-end"
+        placement={comboBox.placement}
         arrow={false}
         appendTo={() => tippyParentRef.current}
         onMount={(instance) => {
@@ -160,10 +161,10 @@ const BlockToolbar = ({
             placeholder={comboBox.placeholder}
             selectedItem={selectedItem}
             items={items}
-            handleSelectedItemChange={(selection) => {
+            onSelect={(selection) => {
               setSelectedItem(selection.selectedItem);
               setVisible(false);
-              onCompleteSource(selection.selectedItem!.onClick());
+              onCompleteSource(selection.selectedItem!.onSelect());
             }}
           />
         }
@@ -195,6 +196,7 @@ BlockToolbar.defaultProps = {
   comboBox: {
     label: "Choose an item:",
     placeholder: "Search blocks",
+    placement: "auto-end",
   },
 };
 

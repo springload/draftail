@@ -1,10 +1,15 @@
 import React, { Component } from "react";
-import { EditorState, RichUtils, ContentBlock, Modifier } from "draft-js";
+import {
+  EditorState,
+  RichUtils,
+  ContentBlock,
+  Modifier,
+  RawDraftContentState,
+  DraftEditorCommand,
+  DraftDecorator,
+  EntityInstance,
+} from "draft-js";
 import { condenseBlocks } from "draftjs-filters";
-import type { EntityInstance } from "draft-js";
-import type { RawDraftContentState } from "draft-js/lib/RawDraftContentState";
-import type { DraftEditorCommand } from "draft-js/lib/DraftEditorCommand";
-import type { DraftDecorator } from "draft-js/lib/DraftDecorator";
 import Editor from "draft-js-plugins-editor";
 import {
   ListNestingStyles,
@@ -34,7 +39,12 @@ import DividerBlock from "../blocks/DividerBlock";
 import CommandPalette from "./CommandPalette/CommandPalette";
 import PlaceholderStyles from "./PlaceholderBlock/PlaceholderStyles";
 import PlaceholderBlock from "./PlaceholderBlock/PlaceholderBlock";
-import { BlockType, BoolControl, EntityType, InlineStyle } from "../api/types";
+import {
+  BlockTypeControl,
+  BoolControl,
+  EntityTypeControl,
+  InlineStyleControl,
+} from "../api/types";
 
 type TextDirectionality = "LTR" | "RTL";
 
@@ -122,13 +132,13 @@ interface DraftailEditorProps {
   ariaRequired?: string | null;
 
   /** List of the available block types. */
-  blockTypes: ReadonlyArray<BlockType>;
+  blockTypes: ReadonlyArray<BlockTypeControl>;
 
   /** List of the available inline styles. */
-  inlineStyles: ReadonlyArray<InlineStyle>;
+  inlineStyles: ReadonlyArray<InlineStyleControl>;
 
   /** List of the available entity types. */
-  entityTypes: ReadonlyArray<EntityType>;
+  entityTypes: ReadonlyArray<EntityTypeControl>;
 
   /** List of active decorators. */
   decorators: ReadonlyArray<DraftDecorator>;
@@ -271,7 +281,7 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
   state: State;
 
   updateTimeout?: number;
-  editorRef?: React.Ref<Editor>;
+  editorRef?: React.Ref<Editor> & { focus: () => void };
 
   lockEditor: () => void;
   unlockEditor: () => void;
@@ -618,6 +628,16 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
     const { multiline, enableLineBreak, inlineStyles } = this.props;
     const editorState = this.getEditorState();
 
+    const input = document.querySelector('[aria-autocomplete="list"]');
+    if (input) {
+      const evt = new Event("keydown", { bubbles: true });
+      evt.keyCode = 13;
+      evt.key = "Enter";
+      input?.dispatchEvent(evt);
+      e.preventDefault();
+      return HANDLED;
+    }
+
     // alt + enter opens links and other entities with a `url` property.
     if (e.altKey) {
       const entityKey = DraftUtils.getSelectionEntity(editorState);
@@ -850,11 +870,7 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
     const contentState = editorState.getCurrentContent();
 
     if (block.getType() !== BLOCK_TYPE.ATOMIC) {
-      const selection = editorState.getSelection();
-      const isCollapsed = selection.isCollapsed();
-      const isStart = selection.getAnchorOffset() === 0;
-      const anchorKey = selection.getAnchorKey();
-
+      // Render an (editable) custom placeholder block for empty non-atomic blocks.
       if (block.getText() === "") {
         return {
           component: PlaceholderBlock,
@@ -877,7 +893,7 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
     }
 
     const entity = contentState.getEntity(entityKey);
-    const isHorizontalRule = entity.type === ENTITY_TYPE.HORIZONTAL_RULE;
+    const isHorizontalRule = entity.getType() === ENTITY_TYPE.HORIZONTAL_RULE;
 
     if (isHorizontalRule) {
       return {
@@ -886,10 +902,10 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
       };
     }
 
-    const entityType = entityTypes.find((t) => t.type === entity.type);
+    const entityType = entityTypes.find((t) => t.type === entity.getType());
 
     return {
-      component: entityType.block,
+      component: entityType!.block,
       editable: false,
       props: {
         /** The editorState is available for arbitrary content manipulation. */
@@ -925,7 +941,7 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
    * See https://draftjs.org/docs/advanced-topics-managing-focus.html#content.
    */
   focus() {
-    this.editorRef.focus();
+    this.editorRef!.focus();
   }
 
   renderSource() {
@@ -967,6 +983,7 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
         textDirectionality={textDirectionality}
         blockTypes={blockTypes}
         getEditorState={this.getEditorState}
+        onCompleteSource={this.onCompleteSource}
       />
     );
   }

@@ -14,11 +14,11 @@ import {
 import behavior from "../../api/behavior";
 import { getControlLabel } from "../../api/ui";
 import {
-  BlockType,
+  BlockTypeControl,
   BoolControl,
   Control,
-  EntityType,
-  InlineStyle,
+  EntityTypeControl,
+  InlineStyleControl,
 } from "../../api/types";
 
 export const showButton = (config: Control) =>
@@ -50,9 +50,9 @@ export interface ToolbarDefaultProps {
   enableLineBreak: BoolControl;
   showUndoControl: BoolControl;
   showRedoControl: BoolControl;
-  entityTypes: ReadonlyArray<EntityType>;
-  blockTypes: ReadonlyArray<BlockType>;
-  inlineStyles: ReadonlyArray<InlineStyle>;
+  entityTypes: ReadonlyArray<EntityTypeControl>;
+  blockTypes: ReadonlyArray<BlockTypeControl>;
+  inlineStyles: ReadonlyArray<InlineStyleControl>;
   toggleBlockType: (blockType: string) => void;
   toggleInlineStyle: (inlineStyle: string) => void;
   addHR: () => void;

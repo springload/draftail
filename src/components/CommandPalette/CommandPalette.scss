@@ -1,0 +1,12 @@
+.#{$DRAFTAIL}CommandPalette .tippy-box {
+  min-width: 240px;
+  background: $draftail-editor-background;
+  color: $draftail-editor-text;
+  border-radius: $draftail-tooltip-radius;
+  font-size: $draftail-editor-font-size;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+
+  .tippy-content {
+    padding: 0;
+  }
+}

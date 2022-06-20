@@ -1,4 +1,5 @@
 import React from "react";
+// @ts-ignore
 import DraftEditorBlock from "draft-js/lib/DraftEditorBlock.react";
 
 import { getControlDescription } from "../../api/ui";

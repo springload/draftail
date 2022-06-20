@@ -1,21 +1,26 @@
 import React, { Component, useState, useRef, useEffect } from "react";
 import Tippy from "@tippyjs/react";
-import { useCombobox } from "downshift";
-import { getVisibleSelectionRect } from "draft-js";
+import { getVisibleSelectionRect, RichUtils } from "draft-js";
 
-import ToolbarButton from "../Toolbar/ToolbarButton";
-import DraftUtils from "../../api/DraftUtils";
+import ComboBox from "../Toolbar/BlockToolbar/ComboBox";
 
 const getReferenceClientRect = () => getVisibleSelectionRect(window);
 
 const CommandComboBox = ({
   textDirectionality,
+  currentBlockKey,
+  currentBlock,
   blockTypes,
   match,
   getEditorState,
+  onCompleteSource,
 }) => {
-  const commands = blockTypes;
-  const [inputItems, setInputItems] = useState(commands);
+  const commands = blockTypes.map((t) => ({
+    ...t,
+    onSelect: () => {
+      return RichUtils.toggleBlockType(getEditorState(), t.type);
+    },
+  }));
   const tippyParentRef = useRef(null);
   const [selectionRect, setSelectionRect] = useState();
 
@@ -33,65 +38,26 @@ const CommandComboBox = ({
 
   const isVisible = isCollapsed && Boolean(selectionRect);
 
-  const {
-    getLabelProps,
-    getMenuProps,
-    getInputProps,
-    getComboboxProps,
-    highlightedIndex,
-    getItemProps,
-  } = useCombobox({
-    items: inputItems,
-    selectedItem: match,
-    onSelectedItemChange: (selection) => {
-      console.log(selection);
-    },
-    onInputValueChange: ({ inputValue }) => {
-      setInputItems(
-        inputItems.filter((item) =>
-          item.type.toLowerCase().startsWith(inputValue?.toLowerCase()),
-        ),
-      );
-    },
-  });
-
   return (
-    <div>
+    <div className="Draftail-CommandPalette">
       {isVisible ? (
         <Tippy
           visible={isVisible}
           getReferenceClientRect={() => selectionRect}
           maxWidth="100%"
           interactive
+          arrow={false}
+          placement="bottom"
           appendTo={() => tippyParentRef.current}
           content={
-            <>
-              <div {...getComboboxProps()}>
-                <input {...getInputProps()} />
-              </div>
-              <div {...getMenuProps()}>
-                {inputItems.map((item, index) => (
-                  <div
-                    style={
-                      highlightedIndex === index
-                        ? { backgroundColor: "#bde4ff" }
-                        : {}
-                    }
-                    key={`${item}${index}`}
-                    {...getItemProps({ item, index })}
-                  >
-                    <ToolbarButton
-                      key={item.key}
-                      name={item.name}
-                      active={item.active}
-                      label={item.label}
-                      title={item.title}
-                      icon={item.icon}
-                    />
-                  </div>
-                ))}
-              </div>
-            </>
+            <ComboBox
+              key={`${currentBlockKey}-${currentBlock}`}
+              items={commands}
+              onSelect={(selection) => {
+                setSelectionRect(null);
+                onCompleteSource(selection.selectedItem!.onSelect());
+              }}
+            />
           }
         />
       ) : null}

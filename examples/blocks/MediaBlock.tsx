@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import type { Node } from "react";
-import { EditorState } from "draft-js";
-import type { EntityInstance } from "draft-js";
+import { EditorState, EntityInstance } from "draft-js";
 
 import { Icon } from "../../src/index";
 

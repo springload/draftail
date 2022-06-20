@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import type { Node } from "react";
 import { ContentState } from "draft-js";
 
 import { Icon } from "../../src/index";
@@ -14,13 +13,13 @@ type Props = {
   // Full contentState, read-only.
   contentState: ContentState;
   // The decorated nodes / entity text.
-  children: Node;
+  children: React.ReactNode;
   // Call with the entityKey to trigger the entity source.
   onEdit: (entityKey: string) => void;
   // Call with the entityKey to remove the entity.
   onRemove: (entityKey: string) => void;
   textDirectionality: "LTR" | "RTL";
-  icon: string | Node;
+  icon: string | React.ReactNode;
   label: string;
 };
 

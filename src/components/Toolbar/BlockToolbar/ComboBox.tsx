@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useCombobox, UseComboboxStateChange } from "downshift";
 
-import Icon, { IconProp } from "../../Icon";
+import Icon from "../../Icon";
 import { getControlDescription, getControlLabel } from "../../../api/ui";
+import { IconProp } from "../../../api/types";
 
 export interface ComboBoxOption {
-  type: string;
-  label?: string | null;
+  type?: string;
+  label?: string;
   description?: string;
   icon?: IconProp;
 }
@@ -16,17 +17,14 @@ interface ComboBoxProps {
   placeholder: string;
   items: ComboBoxOption[];
   selectedItem: ComboBoxOption;
-  handleSelectedItemChange: (
-    changes: UseComboboxStateChange<ComboBoxOption>,
-  ) => void;
+  onSelect: (changes: UseComboboxStateChange<ComboBoxOption>) => void;
 }
 
 export default function ComboBox({
   label,
   placeholder,
   items,
-  selectedItem,
-  handleSelectedItemChange,
+  onSelect,
 }: ComboBoxProps) {
   const [inputItems, setInputItems] = useState<ComboBoxOption[]>(items);
   const {
@@ -40,25 +38,21 @@ export default function ComboBox({
     setHighlightedIndex,
   } = useCombobox<ComboBoxOption>({
     items: inputItems,
-    itemToString(item) {
-      return item ? getControlDescription(item) : "";
+    itemToString(item: ComboBoxOption | null) {
+      if (!item) {
+        return "";
+      }
+
+      return (
+        getControlDescription(item) || getControlLabel(item.type, item) || ""
+      );
     },
     selectedItem: null,
-    onSelectedItemChange: (selection) => {
-      handleSelectedItemChange(selection);
-      // reset();
-      // console.log("items.length", items.length);
-      // setInputItems(items);
-      // reset();
-      // selectItem(null);
-    },
-    // onStateChange: (changes) => {
-    //   console.log(changes);
-    // },
+
+    onSelectedItemChange: onSelect,
+
     onInputValueChange: (changes) => {
       const { inputValue } = changes;
-      console.log(changes);
-      // console.log("onInputValueChange");
       if (!inputValue) {
         setInputItems(items);
         return;
@@ -81,12 +75,17 @@ export default function ComboBox({
       });
 
       setInputItems(filtered);
+      // Always reset the first item to highlighted on filtering, to speed up selection.
       setHighlightedIndex(0);
     },
   });
 
   return (
-    <div className="Draftail-ComboBox">
+    <div
+      className={`Draftail-ComboBox Draftail-ComboBox--${
+        label ? "field" : "contenteditable"
+      }`}
+    >
       <label className="Draftail-ComboBox__label" {...getLabelProps()}>
         {label}
       </label>
@@ -96,8 +95,13 @@ export default function ComboBox({
       <div {...getMenuProps()}>
         {inputItems.map((item, index) => {
           const label = getControlLabel(item.type, item);
+          const description = getControlDescription(item);
+
           return (
-            <div key={`${item}${index}`} {...getItemProps({ item, index })}>
+            <div
+              key={`${label}${item.type}${index}`}
+              {...getItemProps({ item, index })}
+            >
               <div className="Draftail-ComboBox__option-icon">
                 {typeof item.icon !== "undefined" && item.icon !== null ? (
                   <Icon icon={item!.icon} />
@@ -105,7 +109,7 @@ export default function ComboBox({
                 {label ? <span>{label}</span> : null}
               </div>
               <div className="Draftail-ComboBox__option-text">
-                {getControlDescription(item)}
+                {description}
               </div>
             </div>
           );
