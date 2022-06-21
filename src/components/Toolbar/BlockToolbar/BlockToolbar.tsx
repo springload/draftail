@@ -68,7 +68,7 @@ const BlockToolbar = ({
   enableHorizontalRule,
 }: BlockToolbarProps) => {
   const tippyParentRef = useRef(null);
-  const [selectionRect, setSelectionRect] = useState<DOMRect | null>(null);
+  const [focusedBlockTop, setFocusedBlockTop] = useState<number>(0);
   const [visible, setVisible] = useState(false);
   const [toggleVisible, setToggleVisible] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
@@ -89,7 +89,10 @@ const BlockToolbar = ({
       const elt = document.querySelector<HTMLElement>(
         `[data-block="true"][data-offset-key="${anchorKey}-0-0"]`,
       );
-      setSelectionRect(elt!.getBoundingClientRect());
+      const editor = elt!.closest<HTMLDivElement>("[data-draftail-editor]");
+      setFocusedBlockTop(
+        elt!.getBoundingClientRect().top - editor!.getBoundingClientRect().top,
+      );
       setToggleVisible(true);
     } else {
       setToggleVisible(false);
@@ -174,7 +177,7 @@ const BlockToolbar = ({
           aria-expanded={toggleVisible ? "true" : "false"}
           className="Draftail-BlockToolbar__trigger"
           style={{
-            top: selectionRect ? selectionRect.top + window.scrollY : 0,
+            top: focusedBlockTop,
             visibility: toggleVisible ? "visible" : "hidden",
           }}
           aria-label={trigger.label}

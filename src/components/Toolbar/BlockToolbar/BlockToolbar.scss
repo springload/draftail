@@ -6,7 +6,7 @@
   }
 
   ~ .DraftEditor-root {
-    margin-inline-start: 2.5rem;
+    margin-inline-start: 3rem;
   }
 }
 
@@ -23,7 +23,7 @@
   align-items: center;
   justify-content: center;
   // top offset will be set with JS.
-  position: absolute;
+  position: relative;
   margin-inline-start: -1.5rem;
   visibility: hidden;
 }

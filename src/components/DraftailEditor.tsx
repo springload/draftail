@@ -1083,59 +1083,57 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
       >
         {TopToolbar ? <TopToolbar {...toolbarProps} /> : null}
 
-        <div className="Draftail-Editor__wrapper">
-          <Editor
-            customStyleMap={behavior.getCustomStyleMap(inlineStyles)}
-            ref={(ref: DraftEditorRef) => {
-              this.editorRef = ref;
-            }}
-            editorState={editorState}
-            onChange={this.onChange}
-            placeholder={placeholder}
-            readOnly={isReadOnly}
-            stripPastedStyles={stripPastedStyles}
-            spellCheck={spellCheck}
-            textAlignment={textAlignment}
-            textDirectionality={textDirectionality}
-            autoCapitalize={autoCapitalize}
-            autoComplete={autoComplete}
-            autoCorrect={autoCorrect}
-            ariaDescribedBy={ariaDescribedBy}
-            ariaExpanded={ariaExpanded}
-            ariaLabel={ariaLabel}
-            ariaLabelledBy={ariaLabelledBy}
-            ariaMultiline={multiline}
-            ariaOwneeID={ariaOwneeID}
-            ariaRequired={ariaRequired}
-            handleReturn={this.handleReturn}
-            defaultKeyBindings={false}
-            handleKeyCommand={this.handleKeyCommand}
-            handleBeforeInput={this.handleBeforeInput}
-            handlePastedText={this.handlePastedText}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
-            onTab={this.onTab}
-            onUpArrow={this.onUpArrow}
-            onDownArrow={this.onDownArrow}
-            blockRendererFn={this.blockRenderer}
-            blockRenderMap={behavior.getBlockRenderMap(blockTypes)}
-            blockStyleFn={behavior.blockStyleFn}
-            // Include the keyBindingFn in a plugin here so that
-            // other plugin keyBindingFn's are still called, while
-            // still being able to override the Draft.js oversensitive
-            // keyboard shortcuts.
-            plugins={plugins.concat([
-              {
-                keyBindingFn: behavior.getKeyBindingFn(
-                  blockTypes,
-                  inlineStyles,
-                  entityTypes,
-                ),
-              },
-            ])}
-            decorators={decorators.concat(entityDecorators)}
-          />
-        </div>
+        <Editor
+          customStyleMap={behavior.getCustomStyleMap(inlineStyles)}
+          ref={(ref: DraftEditorRef) => {
+            this.editorRef = ref;
+          }}
+          editorState={editorState}
+          onChange={this.onChange}
+          placeholder={placeholder}
+          readOnly={isReadOnly}
+          stripPastedStyles={stripPastedStyles}
+          spellCheck={spellCheck}
+          textAlignment={textAlignment}
+          textDirectionality={textDirectionality}
+          autoCapitalize={autoCapitalize}
+          autoComplete={autoComplete}
+          autoCorrect={autoCorrect}
+          ariaDescribedBy={ariaDescribedBy}
+          ariaExpanded={ariaExpanded}
+          ariaLabel={ariaLabel}
+          ariaLabelledBy={ariaLabelledBy}
+          ariaMultiline={multiline}
+          ariaOwneeID={ariaOwneeID}
+          ariaRequired={ariaRequired}
+          handleReturn={this.handleReturn}
+          defaultKeyBindings={false}
+          handleKeyCommand={this.handleKeyCommand}
+          handleBeforeInput={this.handleBeforeInput}
+          handlePastedText={this.handlePastedText}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+          onTab={this.onTab}
+          onUpArrow={this.onUpArrow}
+          onDownArrow={this.onDownArrow}
+          blockRendererFn={this.blockRenderer}
+          blockRenderMap={behavior.getBlockRenderMap(blockTypes)}
+          blockStyleFn={behavior.blockStyleFn}
+          // Include the keyBindingFn in a plugin here so that
+          // other plugin keyBindingFn's are still called, while
+          // still being able to override the Draft.js oversensitive
+          // keyboard shortcuts.
+          plugins={plugins.concat([
+            {
+              keyBindingFn: behavior.getKeyBindingFn(
+                blockTypes,
+                inlineStyles,
+                entityTypes,
+              ),
+            },
+          ])}
+          decorators={decorators.concat(entityDecorators)}
+        />
 
         {BottomToolbar ? <BottomToolbar {...toolbarProps} /> : null}
 
