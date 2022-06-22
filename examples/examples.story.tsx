@@ -26,6 +26,8 @@ import ReadingTime from "./components/ReadingTime";
 import customContentState from "./constants/customContentState";
 import allContentState from "./constants/allContentState";
 import ColorPicker, { getColorInlineStyles } from "./components/ColorPicker";
+import CharCount from "./components/CharCount";
+import { BlockToolbar, InlineToolbar, MetaToolbar } from "../src";
 
 const hashtagPlugin = createHashtagPlugin();
 const linkify = linkifyPlugin();
@@ -47,8 +49,6 @@ storiesOf("Examples", module)
         stateSaveInterval={50}
         enableHorizontalRule
         enableLineBreak
-        showUndoControl
-        showRedoControl
         stripPastedStyles={false}
         maxListNesting={6}
         spellCheck
@@ -67,6 +67,18 @@ storiesOf("Examples", module)
           BLOCK_CONTROL.ORDERED_LIST_ITEM,
         ]}
         inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
+        controls={[
+          {
+            meta: CharCount,
+          },
+        ]}
+        topToolbar={BlockToolbar}
+        bottomToolbar={(props) => (
+          <>
+            <InlineToolbar {...props} />
+            <MetaToolbar {...props} />
+          </>
+        )}
       />
     </main>
   ))

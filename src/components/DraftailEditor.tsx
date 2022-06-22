@@ -413,8 +413,15 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
   }
 
   onUpArrow(event: React.KeyboardEvent) {
-    const input = document.querySelector('[aria-autocomplete="list"]');
-    if (input) {
+    const editorState = this.getEditorState();
+    const showPrompt = !!DraftUtils.getCommandPalettePrompt(editorState);
+    if (showPrompt) {
+      const input = document.querySelector<HTMLInputElement>(
+        "[data-draftail-command-palette-input]",
+      );
+      if (!input) {
+        return;
+      }
       const evt = new Event("keydown", { bubbles: true });
       evt.keyCode = 38;
       evt.key = "ArrowUp";
@@ -424,8 +431,15 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
   }
 
   onDownArrow(event: React.KeyboardEvent) {
-    const input = document.querySelector('[aria-autocomplete="list"]');
-    if (input) {
+    const editorState = this.getEditorState();
+    const showPrompt = !!DraftUtils.getCommandPalettePrompt(editorState);
+    if (showPrompt) {
+      const input = document.querySelector<HTMLInputElement>(
+        "[data-draftail-command-palette-input]",
+      );
+      if (!input) {
+        return;
+      }
       const evt = new Event("keydown", { bubbles: true });
       evt.keyCode = 40;
       evt.key = "ArrowDown";
@@ -633,12 +647,17 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
     const { multiline, enableLineBreak, inlineStyles } = this.props;
     const editorState = this.getEditorState();
 
-    const input = document.querySelector('[aria-autocomplete="list"]');
-    if (input) {
+    const showPrompt = !!DraftUtils.getCommandPalettePrompt(editorState);
+    if (showPrompt) {
+      const input = document.querySelector<HTMLInputElement>(
+        "[data-draftail-command-palette-input]",
+      );
+      if (!input) {
+        return;
+      }
       const evt = new Event("keydown", { bubbles: true });
-      evt.keyCode = 13;
       evt.key = "Enter";
-      input?.dispatchEvent(evt);
+      input.dispatchEvent(evt);
       e.preventDefault();
       return HANDLED;
     }
@@ -808,7 +827,7 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
 
   handlePastedText(
     text: string,
-    html: string | null | undefined,
+    html: string | undefined,
     editorState: EditorState,
   ) {
     const { stripPastedStyles, entityTypes } = this.props;

@@ -1,5 +1,5 @@
 import { DESCRIPTIONS, LABELS } from "./constants";
-import { BoolControl } from "./types";
+import { BoolControl, Control } from "./types";
 
 export const getControlLabel = (
   type: string | undefined,
@@ -22,11 +22,7 @@ export const getControlLabel = (
   return LABELS[predefinedType];
 };
 
-export const getControlDescription = (control: {
-  type?: string;
-  label?: string;
-  description?: string;
-}) => {
+export const getControlDescription = (control: Control) => {
   const predefinedType = control.type as keyof typeof LABELS;
   const useDefaultDescription = typeof control.description === "undefined";
   const defaultDescription = DESCRIPTIONS[predefinedType];

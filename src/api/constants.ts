@@ -279,6 +279,8 @@ export const DESCRIPTIONS = {
   [REDO_TYPE]: "Redo",
 } as const;
 
+export type KnownFormatType = keyof typeof LABELS;
+
 export const KEYBOARD_SHORTCUTS = {
   [BLOCK_TYPE.UNSTYLED]: "⌫",
   [BLOCK_TYPE.HEADER_ONE]: "#",

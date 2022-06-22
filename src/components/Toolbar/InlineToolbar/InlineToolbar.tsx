@@ -3,17 +3,20 @@ import Tippy from "@tippyjs/react";
 
 import { getVisibleSelectionRect } from "draft-js";
 
-import type { ToolbarProps } from "../Toolbar";
+import { ToolbarProps } from "../Toolbar";
 import ToolbarDefaults from "./ToolbarDefaults";
 import ToolbarGroup from "../ToolbarGroup";
 
 const getReferenceClientRect = () => getVisibleSelectionRect(window);
 
-const InlineToolbar = (props: ToolbarProps) => {
-  // Support the legacy and current controls APIs.
+type FakeRect = ReturnType<typeof getVisibleSelectionRect>;
+
+interface InlineToolbarProps extends ToolbarProps {}
+
+const InlineToolbar = (props: InlineToolbarProps) => {
   const { controls, getEditorState, onChange } = props;
-  const tippyParentRef = useRef(null);
-  const [selectionRect, setSelectionRect] = useState();
+  const tippyParentRef = useRef<HTMLDivElement>(null);
+  const [selectionRect, setSelectionRect] = useState<FakeRect | null>();
 
   const editorState = getEditorState();
   const selection = editorState.getSelection();
@@ -35,10 +38,11 @@ const InlineToolbar = (props: ToolbarProps) => {
       {isVisible ? (
         <Tippy
           visible={isVisible}
-          getReferenceClientRect={() => selectionRect}
+          getReferenceClientRect={() => selectionRect as DOMRect}
           maxWidth="100%"
           interactive
-          appendTo={() => tippyParentRef.current}
+          arrow={false}
+          appendTo={() => tippyParentRef.current as HTMLDivElement}
           content={
             <div className="Draftail-Toolbar" role="toolbar">
               <ToolbarDefaults {...props} />
@@ -64,6 +68,12 @@ const InlineToolbar = (props: ToolbarProps) => {
       ) : null}
     </>
   );
+};
+
+InlineToolbar.defaultProps = {
+  tooltip: {
+    placement: "top",
+  },
 };
 
 export default InlineToolbar;

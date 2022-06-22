@@ -19,12 +19,12 @@
   width: 1.5rem;
   height: 1.5rem;
   padding: 0;
+  margin: 0 1rem;
   display: grid;
   align-items: center;
   justify-content: center;
   // top offset will be set with JS.
   position: relative;
-  margin-inline-start: -1.5rem;
   visibility: hidden;
 }
 

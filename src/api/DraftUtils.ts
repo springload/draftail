@@ -174,7 +174,7 @@ export default {
       text: newText,
       characterList: chars,
       data: newData,
-    });
+    }) as ContentBlock;
     const newContentState = contentState.merge({
       blockMap: blockMap.set(key, newBlock),
     });
@@ -477,7 +477,7 @@ export default {
     const offset = selection.getStartOffset();
     const block = content.getBlockForKey(key);
 
-    const isDeferredBreakoutBlock = [BLOCK_TYPE.CODE].includes(block.getType());
+    const isDeferredBreakoutBlock = block.getType() === BLOCK_TYPE.CODE;
 
     if (isDeferredBreakoutBlock) {
       const isEmpty =
@@ -495,5 +495,18 @@ export default {
     }
 
     return this.handleHardNewline(editorState);
+  },
+
+  getCommandPalettePrompt(editorState: EditorState) {
+    const selection = editorState.getSelection();
+    const block = this.getSelectedBlock(editorState);
+    const text = block.getText();
+    const isCollapsed = selection.isCollapsed();
+    const isAfterSlash = selection.getFocusOffset() > 0;
+
+    const hasPrompt =
+      isCollapsed && isAfterSlash && text.startsWith("/") && !/\s/.test(text);
+
+    return hasPrompt ? text : "";
   },
 };

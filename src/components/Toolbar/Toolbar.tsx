@@ -2,8 +2,7 @@ import React from "react";
 import type { ComponentType } from "react";
 import { EditorState } from "draft-js";
 
-import ToolbarDefaults from "./ToolbarDefaults";
-import type { ToolbarDefaultProps } from "./ToolbarDefaults";
+import ToolbarDefaults, { ToolbarDefaultProps } from "./ToolbarDefaults";
 import ToolbarGroup from "./ToolbarGroup";
 
 type ControlProps = {

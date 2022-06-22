@@ -5,6 +5,7 @@ import { getVisibleSelectionRect, RichUtils } from "draft-js";
 import ComboBox from "../Toolbar/BlockToolbar/ComboBox";
 
 const getReferenceClientRect = () => getVisibleSelectionRect(window);
+type FakeRect = ReturnType<typeof getVisibleSelectionRect>;
 
 const CommandComboBox = ({
   textDirectionality,
@@ -21,8 +22,8 @@ const CommandComboBox = ({
       return RichUtils.toggleBlockType(getEditorState(), t.type);
     },
   }));
-  const tippyParentRef = useRef(null);
-  const [selectionRect, setSelectionRect] = useState();
+  const tippyParentRef = useRef<HTMLDivElement>(null);
+  const [selectionRect, setSelectionRect] = useState<FakeRect | null>(null);
 
   const editorState = getEditorState();
   const selection = editorState.getSelection();
@@ -39,16 +40,21 @@ const CommandComboBox = ({
   const isVisible = isCollapsed && Boolean(selectionRect);
 
   return (
-    <div className="Draftail-CommandPalette">
+    <div
+      className={`Draftail-CommandPalette Draftail-CommandPalette--${
+        isVisible ? "open" : "closed"
+      }`}
+    >
+      <div ref={tippyParentRef} />
       {isVisible ? (
         <Tippy
           visible={isVisible}
-          getReferenceClientRect={() => selectionRect}
+          getReferenceClientRect={() => selectionRect as DOMRect}
           maxWidth="100%"
           interactive
           arrow={false}
-          placement="bottom"
-          appendTo={() => tippyParentRef.current}
+          placement="bottom-end"
+          appendTo={() => tippyParentRef.current as HTMLDivElement}
           content={
             <ComboBox
               key={`${currentBlockKey}-${currentBlock}`}
@@ -61,7 +67,7 @@ const CommandComboBox = ({
           }
         />
       ) : null}
-      <div ref={tippyParentRef} />
+      <div className="Draftail-BlockToolbar__backdrop" />
     </div>
   );
 };

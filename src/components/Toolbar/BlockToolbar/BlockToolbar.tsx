@@ -67,22 +67,19 @@ const BlockToolbar = ({
   addHR,
   enableHorizontalRule,
 }: BlockToolbarProps) => {
-  const tippyParentRef = useRef(null);
+  const tippyParentRef = useRef<HTMLDivElement>(null);
   const [focusedBlockTop, setFocusedBlockTop] = useState<number>(0);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState<boolean>(false);
   const [toggleVisible, setToggleVisible] = useState<boolean>(false);
-  const [open, setOpen] = useState<boolean>(false);
-  const [selectedItem, setSelectedItem] = useState<any>(null);
 
   const editorState = getEditorState();
   const selection = editorState.getSelection();
   const isCollapsed = selection.isCollapsed();
   const isStart = selection.getAnchorOffset() === 0;
   const anchorKey = selection.getAnchorKey();
-  const showToggle =
-    isCollapsed &&
-    isStart &&
-    DraftUtils.getSelectedBlock(editorState).getText() === "";
+  const selectedBlock = DraftUtils.getSelectedBlock(editorState);
+  const blockType = selectedBlock.getType();
+  const showToggle = isCollapsed && isStart && selectedBlock.getText() === "";
 
   useEffect(() => {
     if (showToggle) {
@@ -101,7 +98,9 @@ const BlockToolbar = ({
     return () => {
       setToggleVisible(false);
     };
-  }, [showToggle, anchorKey]);
+    // Account for the block type, as each type has a different height.
+    // Worst-case scenario is turning a list item block into unstyled.
+  }, [showToggle, anchorKey, blockType]);
 
   const items: ComboBoxOption[] = [
     ...blockTypes.filter(showButton).map((t) => ({
@@ -138,14 +137,15 @@ const BlockToolbar = ({
         maxWidth="100%"
         interactive
         visible={visible}
+        onHide={() => setVisible(false)}
         onClickOutside={() => setVisible(false)}
         trigger="click"
         placement={comboBox.placement}
         arrow={false}
-        appendTo={() => tippyParentRef.current}
+        appendTo={() => tippyParentRef.current as HTMLDivElement}
         onMount={(instance) => {
           const field = instance.popper.querySelector<HTMLInputElement>(
-            '[aria-autocomplete="list"]',
+            "[data-draftail-command-palette-input]",
           );
           if (field) {
             field.focus();
@@ -162,10 +162,8 @@ const BlockToolbar = ({
             key={`${currentBlockKey}-${currentBlock}`}
             label={comboBox.label}
             placeholder={comboBox.placeholder}
-            selectedItem={selectedItem}
             items={items}
             onSelect={(selection) => {
-              setSelectedItem(selection.selectedItem);
               setVisible(false);
               onCompleteSource(selection.selectedItem!.onSelect());
             }}
@@ -199,7 +197,7 @@ BlockToolbar.defaultProps = {
   comboBox: {
     label: "Choose an item:",
     placeholder: "Search blocks",
-    placement: "auto-end",
+    placement: "right-start",
   },
 };
 

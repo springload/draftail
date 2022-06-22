@@ -1,20 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useCombobox, UseComboboxStateChange } from "downshift";
 
 import Icon from "../../Icon";
 import { getControlDescription, getControlLabel } from "../../../api/ui";
 import { IconProp } from "../../../api/types";
+import findMatches from "./findMatches";
 
 export interface ComboBoxOption {
   type?: string;
-  label?: string;
-  description?: string;
+  label?: string | null;
+  description?: string | null;
   icon?: IconProp;
+  onSelect: () => void;
 }
 
 interface ComboBoxProps {
   label: string;
   placeholder: string;
+  inputValue?: string;
   items: ComboBoxOption[];
   selectedItem: ComboBoxOption;
   onSelect: (changes: UseComboboxStateChange<ComboBoxOption>) => void;
@@ -23,6 +26,7 @@ interface ComboBoxProps {
 export default function ComboBox({
   label,
   placeholder,
+  inputValue,
   items,
   onSelect,
 }: ComboBoxProps) {
@@ -33,10 +37,11 @@ export default function ComboBox({
     getInputProps,
     getComboboxProps,
     getItemProps,
-    reset,
-    selectItem,
     setHighlightedIndex,
+    setInputValue,
+    openMenu,
   } = useCombobox<ComboBoxOption>({
+    inputValue,
     items: inputItems,
     itemToString(item: ComboBoxOption | null) {
       if (!item) {
@@ -58,27 +63,27 @@ export default function ComboBox({
         return;
       }
 
-      const input = inputValue.toLowerCase();
-      const filtered = items.filter((item) => {
-        const label = getControlLabel(item.type, item);
-        if (label) {
-          const matchLabel = label.toLowerCase().startsWith(input);
-          if (matchLabel) {
-            return matchLabel;
-          }
-        }
-
-        const description = getControlDescription(item);
-        if (description) {
-          return description.toLowerCase().startsWith(input);
-        }
-      });
-
+      const filtered = findMatches<ComboBoxOption>(items, inputValue);
       setInputItems(filtered);
       // Always reset the first item to highlighted on filtering, to speed up selection.
       setHighlightedIndex(0);
     },
   });
+
+  useEffect(() => {
+    if (inputValue) {
+      openMenu();
+      setInputValue(inputValue);
+      const filtered = findMatches<ComboBoxOption>(items, inputValue);
+      setInputItems(filtered);
+      // Always reset the first item to highlighted on filtering, to speed up selection.
+      setHighlightedIndex(0);
+    } else {
+      setInputValue("");
+      setInputItems(items);
+      setHighlightedIndex(-1);
+    }
+  }, [inputValue]);
 
   return (
     <div
@@ -90,7 +95,11 @@ export default function ComboBox({
         {label}
       </label>
       <div {...getComboboxProps()}>
-        <input {...getInputProps()} placeholder={placeholder} />
+        <input
+          data-draftail-command-palette-input
+          {...getInputProps()}
+          placeholder={placeholder}
+        />
       </div>
       <div {...getMenuProps()}>
         {inputItems.map((item, index) => {

@@ -2,24 +2,29 @@ import React, { PureComponent } from "react";
 import { IconProp } from "../../api/types";
 import Icon from "../Icon";
 
-type Props = {
+interface ToolbarButtonProps {
   name?: string;
   active?: boolean;
-  label?: string;
-  title?: string;
+  label?: string | null;
+  title?: string | null;
   icon?: IconProp | null;
   onClick?: ((name: string) => void) | null;
-};
+}
 
-type State = {
+interface ToolbarButtonState {
   showTooltipOnHover: boolean;
-};
+}
 /**
  * Displays a basic button, with optional active variant,
  * enriched with a tooltip. The tooltip stops showing on click.
  */
-class ToolbarButton extends PureComponent<Props, State> {
-  constructor(props: Props) {
+class ToolbarButton extends PureComponent<
+  ToolbarButtonProps,
+  ToolbarButtonState
+> {
+  state: ToolbarButtonState;
+
+  constructor(props: ToolbarButtonProps) {
     super(props);
 
     this.state = {

@@ -1,40 +1,30 @@
 import React, { PureComponent } from "react";
-import type { ComponentType } from "react";
 
 import ToolbarButton from "../ToolbarButton";
 import ToolbarGroup from "../ToolbarGroup";
 
-import { LABELS, DESCRIPTIONS } from "../../../api/constants";
+import {
+  BlockTypeControl,
+  BoolControl,
+  Control,
+  EntityTypeControl,
+  InlineStyleControl,
+} from "../../../api/types";
+import { DESCRIPTIONS } from "../../../api/constants";
 import { getControlLabel } from "../../../api/ui";
 import behavior from "../../../api/behavior";
-import type { IconProp } from "../../Icon";
+import { DraftInlineStyle } from "draft-js";
 
-type ControlProp = {
-  // Describes the control in the editor UI, concisely.
-  label?: string | null | undefined;
-  // Describes the control in the editor UI.
-  description?: string;
-  // Represents the control in the editor UI.
-  icon?: IconProp;
-};
+const showButton = (config: Control) =>
+  Boolean(config.icon) || Boolean(getControlLabel(config.type, config));
 
-const showButton = (
-  config: ControlProp & {
-    type: string;
-  },
-) => Boolean(config.icon) || Boolean(getControlLabel(config.type, config));
+const showEntityButton = (config: EntityTypeControl) =>
+  showButton(config) && Boolean(config.decorator);
 
-const showEntityButton = (
-  config: ControlProp & {
-    type: string;
-    decorator?: ComponentType<{}>;
-  },
-) => showButton(config) && Boolean(config.decorator);
-
-const getButtonTitle = (type: string, config: boolean | ControlProp) => {
+const getButtonTitle = (type: string, config: BoolControl) => {
   const description =
     typeof config === "boolean" || typeof config.description === "undefined"
-      ? DESCRIPTIONS[type]
+      ? DESCRIPTIONS[type as keyof typeof DESCRIPTIONS]
       : config.description;
   const hasShortcut = behavior.hasKeyboardShortcut(type);
   let title = description;
@@ -47,31 +37,16 @@ const getButtonTitle = (type: string, config: boolean | ControlProp) => {
   return title;
 };
 
-export type ToolbarDefaultProps = {
-  currentStyles: {
-    has: (style: string) => boolean;
-  };
+export interface ToolbarDefaultProps {
+  currentStyles: DraftInlineStyle;
   currentBlock: string;
-  entityTypes: ReadonlyArray<
-    ControlProp & {
-      type: string;
-      decorator?: ComponentType<{}>;
-    }
-  >;
-  blockTypes: ReadonlyArray<
-    ControlProp & {
-      type: string;
-    }
-  >;
-  inlineStyles: ReadonlyArray<
-    ControlProp & {
-      type: string;
-    }
-  >;
+  entityTypes: ReadonlyArray<EntityTypeControl>;
+  blockTypes: ReadonlyArray<BlockTypeControl>;
+  inlineStyles: ReadonlyArray<InlineStyleControl>;
   toggleBlockType: (blockType: string) => void;
   toggleInlineStyle: (inlineStyle: string) => void;
   onRequestSource: (entityType: string) => void;
-};
+}
 
 class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
   render() {
