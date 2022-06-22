@@ -30,11 +30,7 @@ export const benchmarkProps = {
   inlineStyles: [INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC],
 };
 
-type Props = {|
-  id: number,
-|};
-
-const MarkovBenchmark = ({ id }: Props) => (
+const MarkovBenchmark = ({ id }: { id: number }) => (
   <DraftailEditor rawContentState={contentStates[id]} {...benchmarkProps} />
 );
 

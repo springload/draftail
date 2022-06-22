@@ -41,7 +41,9 @@ import {
 import Toolbar, { ToolbarProps } from "./Toolbar/Toolbar";
 import ListNestingStyles from "./ListNestingStyles";
 import DividerBlock from "../blocks/DividerBlock";
-import CommandPalette from "./CommandPalette/CommandPalette";
+import CommandPalette, {
+  simulateInputEvent,
+} from "./CommandPalette/CommandPalette";
 import PlaceholderStyles from "./PlaceholderBlock/PlaceholderStyles";
 import PlaceholderBlock from "./PlaceholderBlock/PlaceholderBlock";
 
@@ -412,39 +414,19 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
     return true;
   }
 
-  onUpArrow(event: React.KeyboardEvent) {
+  onUpArrow(event: React.KeyboardEvent<HTMLDivElement>) {
     const editorState = this.getEditorState();
     const showPrompt = !!DraftUtils.getCommandPalettePrompt(editorState);
     if (showPrompt) {
-      const input = document.querySelector<HTMLInputElement>(
-        "[data-draftail-command-palette-input]",
-      );
-      if (!input) {
-        return;
-      }
-      const evt = new Event("keydown", { bubbles: true });
-      evt.keyCode = 38;
-      evt.key = "ArrowUp";
-      input?.dispatchEvent(evt);
-      event.preventDefault();
+      simulateInputEvent("ArrowUp", event);
     }
   }
 
-  onDownArrow(event: React.KeyboardEvent) {
+  onDownArrow(event: React.KeyboardEvent<HTMLDivElement>) {
     const editorState = this.getEditorState();
     const showPrompt = !!DraftUtils.getCommandPalettePrompt(editorState);
     if (showPrompt) {
-      const input = document.querySelector<HTMLInputElement>(
-        "[data-draftail-command-palette-input]",
-      );
-      if (!input) {
-        return;
-      }
-      const evt = new Event("keydown", { bubbles: true });
-      evt.keyCode = 40;
-      evt.key = "ArrowDown";
-      input?.dispatchEvent(evt);
-      event.preventDefault();
+      simulateInputEvent("ArrowDown", event);
     }
   }
 
@@ -643,22 +625,15 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
     });
   }
 
-  handleReturn(e: React.KeyboardEvent) {
+  handleReturn(e: React.KeyboardEvent<HTMLDivElement>) {
     const { multiline, enableLineBreak, inlineStyles } = this.props;
     const editorState = this.getEditorState();
 
     const showPrompt = !!DraftUtils.getCommandPalettePrompt(editorState);
     if (showPrompt) {
-      const input = document.querySelector<HTMLInputElement>(
-        "[data-draftail-command-palette-input]",
-      );
-      if (!input) {
-        return;
+      if (showPrompt) {
+        simulateInputEvent("Enter", e);
       }
-      const evt = new Event("keydown", { bubbles: true });
-      evt.key = "Enter";
-      input.dispatchEvent(evt);
-      e.preventDefault();
       return HANDLED;
     }
 
@@ -1004,7 +979,6 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
 
     return (
       <CommandPalette
-        textDirectionality={textDirectionality}
         blockTypes={blockTypes}
         getEditorState={this.getEditorState}
         onCompleteSource={this.onCompleteSource}

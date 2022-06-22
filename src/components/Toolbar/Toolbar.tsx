@@ -42,7 +42,7 @@ const Toolbar = (props: ToolbarProps) => {
 
           return (
             <Control
-              // eslint-disable-next-line @thibaudcolas/cookbook/react/no-array-index-key
+              // eslint-disable-next-line react/no-array-index-key
               key={i}
               getEditorState={getEditorState}
               onChange={onChange}

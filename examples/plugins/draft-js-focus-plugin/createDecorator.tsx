@@ -1,4 +1,4 @@
-/* eslint-disable @thibaudcolas/cookbook/react/prop-types */
+/* eslint-disable react/prop-types */
 import React, { Component } from "react";
 
 // Get a component's display name

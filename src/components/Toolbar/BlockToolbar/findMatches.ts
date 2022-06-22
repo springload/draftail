@@ -18,14 +18,12 @@ const contains = (string: string, substring: string) => {
     return true;
   }
 
-  string = string.normalize("NFC");
-  substring = substring.normalize("NFC");
+  const haystack = string.normalize("NFC");
+  const needle = substring.normalize("NFC");
 
-  let scan = 0;
-  let sliceLen = substring.length;
-  for (; scan + sliceLen <= string.length; scan++) {
-    let slice = string.slice(scan, scan + sliceLen);
-    if (collator.compare(substring, slice) === 0) {
+  for (let scan = 0; scan + needle.length <= haystack.length; scan += 1) {
+    const slice = haystack.slice(scan, scan + needle.length);
+    if (collator.compare(needle, slice) === 0) {
       return true;
     }
   }
@@ -36,8 +34,8 @@ const contains = (string: string, substring: string) => {
 /**
  * Find all items where the label or description matches the inputValue.
  */
-const findMatches = <T extends Control>(items: T[], input: string) => {
-  return items.filter((item) => {
+const findMatches = <T extends Control>(items: T[], input: string) =>
+  items.filter((item) => {
     const matches = [
       item.label,
       item.description,
@@ -48,6 +46,5 @@ const findMatches = <T extends Control>(items: T[], input: string) => {
 
     return matches.some((match) => match && contains(match, input));
   });
-};
 
 export default findMatches;

@@ -1,11 +1,11 @@
-import { DESCRIPTIONS, LABELS } from "./constants";
+import { DESCRIPTIONS, KnownFormatType, LABELS } from "./constants";
 import { BoolControl, Control } from "./types";
 
 export const getControlLabel = (
   type: string | undefined,
   config: BoolControl,
 ) => {
-  const predefinedType = type as keyof typeof LABELS;
+  const predefinedType = type as KnownFormatType;
 
   if (typeof config === "boolean") {
     return LABELS[predefinedType];
@@ -23,7 +23,7 @@ export const getControlLabel = (
 };
 
 export const getControlDescription = (control: Control) => {
-  const predefinedType = control.type as keyof typeof LABELS;
+  const predefinedType = control.type as KnownFormatType;
   const useDefaultDescription = typeof control.description === "undefined";
   const defaultDescription = DESCRIPTIONS[predefinedType];
   const description = useDefaultDescription

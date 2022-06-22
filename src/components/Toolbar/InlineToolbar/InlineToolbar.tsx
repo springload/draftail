@@ -11,7 +11,7 @@ const getReferenceClientRect = () => getVisibleSelectionRect(window);
 
 type FakeRect = ReturnType<typeof getVisibleSelectionRect>;
 
-interface InlineToolbarProps extends ToolbarProps {}
+type InlineToolbarProps = ToolbarProps;
 
 const InlineToolbar = (props: InlineToolbarProps) => {
   const { controls, getEditorState, onChange } = props;
@@ -54,7 +54,7 @@ const InlineToolbar = (props: InlineToolbarProps) => {
                     const Control = control.inline;
                     return (
                       <Control
-                        // eslint-disable-next-line @thibaudcolas/cookbook/react/no-array-index-key
+                        // eslint-disable-next-line react/no-array-index-key
                         key={i}
                         getEditorState={getEditorState}
                         onChange={onChange}

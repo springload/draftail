@@ -1,24 +1,16 @@
 module.exports = {
-  parser: "babel-eslint",
-  extends: [
-    "plugin:@thibaudcolas/eslint-plugin-cookbook/recommended",
-    "plugin:compat/recommended",
+  extends: ["torchbox/typescript"],
+  overrides: [
+    {
+      files: ["*.stories.tsx", "*.story.tsx", "*.test.tsx", "tests/*"],
+      rules: {
+        "react/jsx-props-no-spreading": "off",
+        "max-classes-per-file": "off",
+        "jsx-a11y/label-has-associated-control": "off",
+        // Don’t mandate typing for Storybook stories.
+        // '@typescript-eslint/explicit-module-boundary-types': 0,
+        // '@typescript-eslint/explicit-function-return-type': 0,
+      },
+    },
   ],
-  rules: {
-    "@thibaudcolas/cookbook/react/jsx-filename-extension": "off",
-    "@thibaudcolas/cookbook/react/require-default-props": [
-      "error",
-      { forbidDefaultForRequired: false },
-    ],
-    "@thibaudcolas/cookbook/react/default-props-match-prop-types": [
-      "error",
-      { allowRequiredDefaults: true },
-    ],
-  },
-  settings: {
-    polyfills: ["promises"],
-  },
-  env: {
-    jest: true,
-  },
 };

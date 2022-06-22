@@ -20,7 +20,7 @@ const Icon = ({ icon, title, className }: IconProps): JSX.Element => {
       children = <path d={icon} />;
     }
   } else if (Array.isArray(icon)) {
-    // eslint-disable-next-line @thibaudcolas/cookbook/react/no-array-index-key
+    // eslint-disable-next-line react/no-array-index-key
     children = icon.map((d, i) => <path key={i} d={d} />);
   } else {
     return icon;

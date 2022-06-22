@@ -3,7 +3,7 @@ import { EditorState } from "draft-js";
 
 type Props = {
   getEditorState: () => EditorState;
-  // eslint-disable-next-line @thibaudcolas/cookbook/react/require-default-props
+  // eslint-disable-next-line react/require-default-props
   maxLength?: number | null | undefined;
 };
 
@@ -21,7 +21,8 @@ const countChars = (text: string) => {
   if (text) {
     // Find as many matches as there are (g), as unicode code points (u), matching newlines as characters (s).
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#advanced_searching_with_flags.
-    return text.match(/./gsu)!.length;
+    const matches = text.match(/./gsu);
+    return matches ? matches.length : 0;
   }
 
   return 0;

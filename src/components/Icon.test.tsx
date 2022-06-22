@@ -4,7 +4,7 @@ import Icon from "./Icon";
 
 const SQUARE = "M10 10 H 90 V 90 H 10 Z";
 
-// eslint-disable-next-line @thibaudcolas/cookbook/react/prop-types
+// eslint-disable-next-line react/prop-types
 const CustomIcon = ({ icon }) => (
   <span className={`icon icon-${icon}`} aria-hidden />
 );

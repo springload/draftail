@@ -10,6 +10,7 @@ import {
   UNDO_TYPE,
   REDO_TYPE,
   DESCRIPTIONS,
+  KnownFormatType,
 } from "../../api/constants";
 import behavior from "../../api/behavior";
 import { getControlLabel } from "../../api/ui";
@@ -27,7 +28,7 @@ export const showButton = (config: Control) =>
 export const getButtonTitle = (type: string, config: BoolControl) => {
   const description =
     typeof config === "boolean" || typeof config.description === "undefined"
-      ? DESCRIPTIONS[type]
+      ? DESCRIPTIONS[type as KnownFormatType]
       : config.description;
   const hasShortcut = behavior.hasKeyboardShortcut(type);
   let title = description;

@@ -45,7 +45,7 @@ storiesOf("Tests", module)
       }
     }
 
-    // eslint-disable-next-line @thibaudcolas/cookbook/react/no-multi-comp
+    // eslint-disable-next-line react/no-multi-comp
     class UnmountWrapper extends Component {
       constructor(props) {
         super(props);

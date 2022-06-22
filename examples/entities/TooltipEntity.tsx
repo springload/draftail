@@ -66,7 +66,7 @@ class TooltipEntity extends Component<Props, State> {
     const { url } = contentState.getEntity(entityKey).getData();
 
     // Contrary to what JSX A11Y says, this should be a button but it shouldn't be focusable.
-    /* eslint-disable @thibaudcolas/cookbook/jsx-a11y/interactive-supports-focus, @thibaudcolas/cookbook/jsx-a11y/anchor-is-valid */
+    /* eslint-disable jsx-a11y/interactive-supports-focus, jsx-a11y/anchor-is-valid */
     return (
       <a role="button" onMouseUp={this.openTooltip} className="TooltipEntity">
         <Icon icon={icon} className="TooltipEntity__icon" />

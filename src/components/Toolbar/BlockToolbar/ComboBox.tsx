@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useCombobox, UseComboboxStateChange } from "downshift";
+import { useCombobox } from "downshift";
+import { EditorState } from "draft-js";
 
 import Icon from "../../Icon";
 import { getControlDescription, getControlLabel } from "../../../api/ui";
@@ -20,7 +21,7 @@ interface ComboBoxProps {
   inputValue?: string;
   items: ComboBoxOption[];
   selectedItem: ComboBoxOption;
-  onSelect: (changes: UseComboboxStateChange<ComboBoxOption>) => void;
+  onSelect: () => EditorState;
 }
 
 export default function ComboBox({

@@ -1,6 +1,6 @@
-import React, { Component, useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Tippy from "@tippyjs/react";
-import { getVisibleSelectionRect, RichUtils } from "draft-js";
+import { getVisibleSelectionRect } from "draft-js";
 
 import DraftUtils from "../../api/DraftUtils";
 
@@ -31,16 +31,33 @@ const hideTooltipOnEsc = {
   },
 };
 
+/**
+ * Simulates a keyboard event having happened on the combobox’s input.
+ */
+export const simulateInputEvent = (
+  key: "ArrowDown" | "ArrowUp" | "Enter",
+  event: React.KeyboardEvent<HTMLDivElement>,
+) => {
+  const editor = (event.target as HTMLDivElement).closest<HTMLDivElement>(
+    "[data-draftail-editor]",
+  );
+  const input = editor!.querySelector<HTMLInputElement>(
+    "[data-draftail-command-palette-input]",
+  );
+  if (!input) {
+    return;
+  }
+  input?.dispatchEvent(new KeyboardEvent("keydown", { key, bubbles: true }));
+  event.preventDefault();
+};
+
 const tippyPlugins = [hideTooltipOnEsc];
 
-interface CommandPaletteProps extends ToolbarProps {}
+type CommandPaletteProps = ToolbarProps;
 
 const CommandPalette = ({
-  textDirectionality,
   blockTypes,
   getEditorState,
-  currentBlock,
-  currentBlockKey,
   onCompleteSource,
 }: CommandPaletteProps) => {
   const editorState = getEditorState();
@@ -95,12 +112,14 @@ const CommandPalette = ({
         plugins={tippyPlugins}
         content={
           <ComboBox
-            key={`${currentBlockKey}-${currentBlock}`}
+            // key={`${currentBlockKey}-${currentBlock}`}
             items={commands}
             inputValue={prompt.substring(1)}
             onSelect={(selection) => {
               setSelectionRect(null);
-              onCompleteSource(selection.selectedItem!.onSelect());
+              if (selection.selectedItem) {
+                onCompleteSource(selection.selectedItem.onSelect());
+              }
             }}
           />
         }

@@ -3,10 +3,10 @@ import type { ComponentType } from "react";
 import { EditorState } from "draft-js";
 
 import { getControlLabel } from "../../api/ui";
-import type { IconProp } from "../Icon";
 import ToolbarButton from "./ToolbarButton";
 import ToolbarGroup from "./ToolbarGroup";
 import { showButton, getButtonTitle } from "./ToolbarDefaults";
+import { EntityTypeControl } from "../../api/types";
 
 type ControlProps = {
   getEditorState: () => EditorState;
@@ -23,20 +23,11 @@ type CurrentControlConfig = {
 
 type ControlConfig = CurrentControlConfig;
 export type MetaToolbarProps = {
-  showBlockEntities: boolean | null | undefined;
-  entityTypes: ReadonlyArray<{
-    type: string;
-    // Describes the control in the editor UI, concisely.
-    label?: string | null | undefined;
-    // Describes the control in the editor UI.
-    description?: string;
-    // Represents the control in the editor UI.
-    icon?: IconProp;
-    block?: ComponentType<{}>;
-  }>;
+  showBlockEntities?: boolean | null;
+  entityTypes: ReadonlyArray<EntityTypeControl>;
   controls: ReadonlyArray<ControlConfig>;
   getEditorState: () => EditorState;
-  onChange: (arg0: EditorState) => void;
+  onChange: (state: EditorState) => void;
   onRequestSource: (entityType: string) => void;
 };
 
@@ -76,7 +67,7 @@ const MetaToolbar = ({
 
         return (
           <Control
-            // eslint-disable-next-line @thibaudcolas/cookbook/react/no-array-index-key
+            // eslint-disable-next-line react/no-array-index-key
             key={i}
             getEditorState={getEditorState}
             onChange={onChange}

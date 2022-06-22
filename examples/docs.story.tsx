@@ -189,7 +189,7 @@ storiesOf("Docs", module)
               callback(matches.index, matches.index + matches[0].length);
             }
           },
-          // eslint-disable-next-line @thibaudcolas/cookbook/react/prop-types
+          // eslint-disable-next-line react/prop-types
           component: ({ children }) => (
             <span style={{ color: "#007d7e" }}>{children}</span>
           ),
@@ -366,52 +366,57 @@ storiesOf("Docs", module)
       />
     </div>
   ))
-  .add("Floating toolbars", () => (
-    <div className="docs-floating-toolbars">
-      <EditorWrapper
-        id="floating-toolbars"
-        rawContentState={indexContentState}
-        stripPastedStyles={false}
-        placeholder="Insert / or write here…"
-        enableHorizontalRule
-        enableLineBreak={{
-          icon: BR_ICON,
-        }}
-        entityTypes={[
-          ENTITY_CONTROL.LINK,
-          ENTITY_CONTROL.IMAGE,
-          ENTITY_CONTROL.EMBED,
-        ]}
-        blockTypes={[
-          BLOCK_CONTROL.HEADER_TWO,
-          BLOCK_CONTROL.HEADER_THREE,
-          BLOCK_CONTROL.BLOCKQUOTE,
-          BLOCK_CONTROL.CODE,
-          BLOCK_CONTROL.UNORDERED_LIST_ITEM,
-        ]}
-        inlineStyles={[
-          INLINE_CONTROL.BOLD,
-          INLINE_CONTROL.ITALIC,
-          INLINE_CONTROL.KEYBOARD,
-        ]}
-        controls={[
-          {
-            inline: CharCount,
-          },
-          {
-            meta: CharCount,
-          },
-        ]}
-        topToolbar={BlockToolbar}
-        bottomToolbar={(props) => (
-          <>
-            <InlineToolbar {...props} />
-            <MetaToolbar showBlockEntities {...props} />
-          </>
-        )}
-      />
-    </div>
-  ))
+  .add("Floating toolbars", () => {
+    const commandPalette = [];
+
+    return (
+      <div className="docs-floating-toolbars">
+        <EditorWrapper
+          id="floating-toolbars"
+          rawContentState={indexContentState}
+          stripPastedStyles={false}
+          placeholder="Insert / or write here…"
+          enableHorizontalRule
+          enableLineBreak={{
+            icon: BR_ICON,
+          }}
+          entityTypes={[
+            ENTITY_CONTROL.LINK,
+            ENTITY_CONTROL.IMAGE,
+            ENTITY_CONTROL.EMBED,
+          ]}
+          blockTypes={[
+            BLOCK_CONTROL.HEADER_TWO,
+            BLOCK_CONTROL.HEADER_THREE,
+            BLOCK_CONTROL.BLOCKQUOTE,
+            BLOCK_CONTROL.CODE,
+            BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+          ]}
+          inlineStyles={[
+            INLINE_CONTROL.BOLD,
+            INLINE_CONTROL.ITALIC,
+            INLINE_CONTROL.KEYBOARD,
+          ]}
+          commandPalette={commandPalette}
+          controls={[
+            {
+              inline: CharCount,
+            },
+            {
+              meta: CharCount,
+            },
+          ]}
+          topToolbar={BlockToolbar}
+          bottomToolbar={(props) => (
+            <>
+              <InlineToolbar {...props} />
+              <MetaToolbar showBlockEntities {...props} />
+            </>
+          )}
+        />
+      </div>
+    );
+  })
   .add("Custom toolbars", () => (
     <div className="docs-custom-toolbars">
       <EditorWrapper

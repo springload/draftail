@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import { DraftInlineStyle } from "draft-js";
 
 import ToolbarButton from "../ToolbarButton";
 import ToolbarGroup from "../ToolbarGroup";
@@ -10,10 +11,9 @@ import {
   EntityTypeControl,
   InlineStyleControl,
 } from "../../../api/types";
-import { DESCRIPTIONS } from "../../../api/constants";
+import { DESCRIPTIONS, KnownFormatType } from "../../../api/constants";
 import { getControlLabel } from "../../../api/ui";
 import behavior from "../../../api/behavior";
-import { DraftInlineStyle } from "draft-js";
 
 const showButton = (config: Control) =>
   Boolean(config.icon) || Boolean(getControlLabel(config.type, config));
@@ -24,7 +24,7 @@ const showEntityButton = (config: EntityTypeControl) =>
 const getButtonTitle = (type: string, config: BoolControl) => {
   const description =
     typeof config === "boolean" || typeof config.description === "undefined"
-      ? DESCRIPTIONS[type as keyof typeof DESCRIPTIONS]
+      ? DESCRIPTIONS[type as KnownFormatType]
       : config.description;
   const hasShortcut = behavior.hasKeyboardShortcut(type);
   let title = description;

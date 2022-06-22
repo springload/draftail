@@ -8,7 +8,7 @@ type Embed = {
 
 const getJSON = (
   endpoint: string,
-  data: {} | null | undefined,
+  data: Record<string, unknown>,
   successCallback: (embed: Embed) => void,
 ) => {
   const request = new XMLHttpRequest();
@@ -19,6 +19,7 @@ const getJSON = (
       successCallback(JSON.parse(request.responseText));
     }
   };
+  // @ts-ignore
   request.send(data);
 };
 

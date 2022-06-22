@@ -22,8 +22,6 @@ class ToolbarButton extends PureComponent<
   ToolbarButtonProps,
   ToolbarButtonState
 > {
-  state: ToolbarButtonState;
-
   constructor(props: ToolbarButtonProps) {
     super(props);
 
