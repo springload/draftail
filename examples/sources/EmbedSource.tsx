@@ -9,7 +9,7 @@ import embedly from "../utils/embedly";
 
 type Props = {
   editorState: EditorState;
-  onComplete: (arg0: EditorState) => void;
+  onComplete: (state: EditorState) => void;
   onClose: () => void;
   entityType: {
     type: string;
@@ -169,7 +169,7 @@ export const onPasteEmbed = (
     setEditorState,
     getEditorState,
   }: {
-    setEditorState: (arg0: EditorState) => void;
+    setEditorState: (state: EditorState) => void;
     getEditorState: () => EditorState;
   },
   entityType: {

@@ -34,6 +34,7 @@ import behavior from "../api/behavior";
 import {
   BlockTypeControl,
   BoolControl,
+  CommandPaletteCategory,
   EntityTypeControl,
   InlineStyleControl,
 } from "../api/types";
@@ -153,13 +154,16 @@ interface DraftailEditorProps {
   >;
 
   /** List of plugins of the draft-js-plugins architecture. */
-  plugins: ReadonlyArray<{}>;
+  plugins: ReadonlyArray<unknown>;
 
   /** Optionally override the default Draftail toolbar, removing or replacing it. */
   topToolbar?: React.Component<ToolbarProps> | null;
 
   /** Optionally add a custom toolbar underneath the editor, e.g. for metrics. */
   bottomToolbar?: React.Component<ToolbarProps> | null;
+
+  /** Optionally enable the command palette UI. */
+  commandPalette?: boolean | ReadonlyArray<CommandPaletteCategory>;
 
   /** Max level of nesting for list items. 0 = no nesting. Maximum = 10. */
   maxListNesting: number;
@@ -246,31 +250,25 @@ const defaultProps = {
   topToolbar: Toolbar,
   /** Optionally add a custom toolbar underneath the editor, e.g. for metrics. */
   bottomToolbar: null,
+  /** Optionally enable the command palette UI. */
+  commandPalette: false,
   /** Max level of nesting for list items. 0 = no nesting. Maximum = 10. */
   maxListNesting: 1,
   /** Frequency at which to call the onSave callback (ms). */
   stateSaveInterval: 250,
 };
 
-type State = {
+interface DraftailEditorState {
   // editorState is only part of the local state if the editor is uncontrolled.
   editorState?: EditorState;
   hasFocus: boolean;
   readOnlyState: boolean;
-  sourceOptions:
-    | {
-        entity: EntityInstance | null | undefined;
-        entityKey: string | null | undefined;
-        entityType:
-          | {
-              source: React.Component<{}>;
-            }
-          | null
-          | undefined;
-      }
-    | null
-    | undefined;
-};
+  sourceOptions: {
+    entity?: EntityInstance | null;
+    entityKey?: string | null;
+    entityType?: EntityTypeControl;
+  } | null;
+}
 
 type DraftEditorRef = React.Ref<Editor> & {
   focus: () => void;
@@ -280,16 +278,20 @@ type DraftEditorRef = React.Ref<Editor> & {
  * Main component of the Draftail editor.
  * Contains the Draft.js editor instance, and ties together UI and behavior.
  */
-class DraftailEditor extends Component<DraftailEditorProps, State> {
-  static defaultProps: DraftailEditorProps;
-
-  state: State;
-
+class DraftailEditor extends Component<
+  DraftailEditorProps,
+  DraftailEditorState
+> {
   updateTimeout?: number;
+
   editorRef?: DraftEditorRef;
 
+  copySource?: ReturnType<typeof registerCopySource>;
+
   lockEditor: () => void;
+
   unlockEditor: () => void;
+
   getEditorState: () => EditorState;
 
   constructor(props: DraftailEditorProps) {
@@ -331,7 +333,6 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
     this.focus = this.focus.bind(this);
 
     this.renderSource = this.renderSource.bind(this);
-    this.renderCommandPalette = this.renderCommandPalette.bind(this);
 
     const { editorState, rawContentState } = props;
 
@@ -385,46 +386,29 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
   }
 
   onTab(event: React.KeyboardEvent) {
-    const { maxListNesting, blockTypes } = this.props;
+    const { maxListNesting } = this.props;
     const editorState = this.getEditorState();
     const newState = RichUtils.onTab(event, editorState, maxListNesting);
-
-    const selection = editorState.getSelection();
-    const block = DraftUtils.getSelectedBlock(editorState);
-    const text = block.getText();
-
-    if (text === "/blockquote") {
-      event.preventDefault();
-      this.toggleBlockType("blockquote");
-      return true;
-    }
-
-    if (text === "/hr") {
-      const nextState = DraftUtils.removeBlock(
-        DraftUtils.addHorizontalRuleRemovingSelection(editorState),
-        block.getKey(),
-      );
-
-      event.preventDefault();
-      this.onChange(nextState);
-      return true;
-    }
 
     this.onChange(newState);
     return true;
   }
 
   onUpArrow(event: React.KeyboardEvent<HTMLDivElement>) {
+    const { commandPalette } = this.props;
     const editorState = this.getEditorState();
-    const showPrompt = !!DraftUtils.getCommandPalettePrompt(editorState);
+    const showPrompt =
+      !!commandPalette && !!DraftUtils.getCommandPalettePrompt(editorState);
     if (showPrompt) {
       simulateInputEvent("ArrowUp", event);
     }
   }
 
   onDownArrow(event: React.KeyboardEvent<HTMLDivElement>) {
+    const { commandPalette } = this.props;
     const editorState = this.getEditorState();
-    const showPrompt = !!DraftUtils.getCommandPalettePrompt(editorState);
+    const showPrompt =
+      !!commandPalette && !!DraftUtils.getCommandPalettePrompt(editorState);
     if (showPrompt) {
       simulateInputEvent("ArrowDown", event);
     }
@@ -609,8 +593,8 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
 
   toggleSource(
     type: string,
-    entityKey: string | null | undefined,
-    entity: EntityInstance | null | undefined,
+    entityKey?: string | null,
+    entity?: EntityInstance | null,
   ) {
     const { entityTypes } = this.props;
     const entityType = entityTypes.find((item) => item.type === type);
@@ -625,15 +609,16 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
     });
   }
 
+  // eslint-disable-next-line react/sort-comp
   handleReturn(e: React.KeyboardEvent<HTMLDivElement>) {
-    const { multiline, enableLineBreak, inlineStyles } = this.props;
+    const { multiline, enableLineBreak, inlineStyles, commandPalette } =
+      this.props;
     const editorState = this.getEditorState();
 
-    const showPrompt = !!DraftUtils.getCommandPalettePrompt(editorState);
+    const showPrompt =
+      !!commandPalette && !!DraftUtils.getCommandPalettePrompt(editorState);
     if (showPrompt) {
-      if (showPrompt) {
-        simulateInputEvent("Enter", e);
-      }
+      simulateInputEvent("Enter", e);
       return HANDLED;
     }
 
@@ -974,18 +959,6 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
     return null;
   }
 
-  renderCommandPalette() {
-    const { textDirectionality, blockTypes } = this.props;
-
-    return (
-      <CommandPalette
-        blockTypes={blockTypes}
-        getEditorState={this.getEditorState}
-        onCompleteSource={this.onCompleteSource}
-      />
-    );
-  }
-
   render() {
     const {
       placeholder,
@@ -1017,6 +990,7 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
       plugins,
       topToolbar,
       bottomToolbar,
+      commandPalette,
     } = this.props;
     const { hasFocus, readOnlyState } = this.state;
     const editorState = this.getEditorState();
@@ -1026,7 +1000,7 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
       .filter((type) => !!type.decorator)
       .map((type) => ({
         strategy: DraftUtils.getEntityTypeStrategy(type.type),
-        component: decorateComponentWithProps<React.Component<{}>>(
+        component: decorateComponentWithProps<React.Component<unknown>>(
           type.decorator,
           {
             onEdit: this.onEditEntity,
@@ -1051,6 +1025,7 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
       inlineStyles,
       entityTypes,
       controls,
+      commandPalette,
       readOnly: isReadOnly,
       toggleBlockType: this.toggleBlockType,
       toggleInlineStyle: this.toggleInlineStyle,
@@ -1074,6 +1049,7 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
         dir={textDirectionality === "RTL" ? "rtl" : "ltr"}
         data-draftail-editor
       >
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         {TopToolbar ? <TopToolbar {...toolbarProps} /> : null}
 
         <Editor
@@ -1128,10 +1104,13 @@ class DraftailEditor extends Component<DraftailEditorProps, State> {
           decorators={decorators.concat(entityDecorators)}
         />
 
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         {BottomToolbar ? <BottomToolbar {...toolbarProps} /> : null}
 
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        {commandPalette ? <CommandPalette {...toolbarProps} /> : null}
+
         {this.renderSource()}
-        {this.renderCommandPalette()}
 
         <PlaceholderStyles
           blockKey={selectedBlock.getKey()}

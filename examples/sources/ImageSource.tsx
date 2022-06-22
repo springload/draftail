@@ -7,7 +7,7 @@ import Modal from "../components/Modal";
 
 type Props = {
   editorState: EditorState;
-  onComplete: (arg0: EditorState) => void;
+  onComplete: (state: EditorState) => void;
   onClose: () => void;
   entityType: {
     type: string;

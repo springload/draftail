@@ -1,23 +1,21 @@
 import React, { Component } from "react";
-import type { Node } from "react";
 import ReactDOM from "react-dom";
 
-type DefaultProps = {
-  children?: Node;
+interface DefaultProps {
+  children?: React.ReactNode;
   closeOnClick: boolean;
   closeOnType: boolean;
   closeOnResize: boolean;
-};
-type Props = DefaultProps & {
-  onClose: () => void;
-};
+}
 
-class Portal extends Component<Props, {}> {
+interface PortalProps extends DefaultProps {
+  onClose: () => void;
+}
+
+class Portal extends Component<PortalProps> {
   portal: Element;
 
-  static defaultProps: DefaultProps;
-
-  constructor(props: Props) {
+  constructor(props: PortalProps) {
     super(props);
 
     this.onCloseEvent = this.onCloseEvent.bind(this);

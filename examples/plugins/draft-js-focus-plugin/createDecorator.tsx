@@ -35,6 +35,7 @@ export default ({ blockKeyStore }) =>
         const { isFocused } = blockProps;
         return (
           <WrappedComponent
+            // eslint-disable-next-line react/jsx-props-no-spreading
             {...this.props}
             onClick={this.onClick.bind(this)}
             isFocused={isFocused}

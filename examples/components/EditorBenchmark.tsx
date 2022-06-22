@@ -7,7 +7,7 @@ import { DraftailEditor } from "../../src/index";
 import BenchmarkResults from "./BenchmarkResults";
 
 type Props = {
-  componentProps: {};
+  componentProps: unknown;
   runOnMount: boolean;
 };
 

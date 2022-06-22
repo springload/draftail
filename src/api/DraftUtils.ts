@@ -6,7 +6,6 @@ import {
   AtomicBlockUtils,
   RichUtils,
   SelectionState,
-  genKey,
 } from "draft-js";
 import isSoftNewlineEvent from "draft-js/lib/isSoftNewlineEvent";
 
@@ -104,7 +103,11 @@ export default {
   /**
    * Updates a given atomic block's entity, merging new data with the old one.
    */
-  updateBlockEntity(editorState: EditorState, block: ContentBlock, data: {}) {
+  updateBlockEntity(
+    editorState: EditorState,
+    block: ContentBlock,
+    data: { [key: string]: unknown },
+  ) {
     const content = editorState.getCurrentContent();
     let nextContent = content.mergeEntityData(block.getEntityAt(0), data);
 
@@ -150,7 +153,7 @@ export default {
     editorState: EditorState,
     newType: string,
     newText: string,
-    newData: { [key: string]: any } | undefined = {},
+    newData: { [key: string]: unknown } = {},
   ) {
     const contentState = editorState.getCurrentContent();
     const selectionState = editorState.getSelection();

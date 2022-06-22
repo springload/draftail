@@ -90,6 +90,7 @@ class EditorWrapper extends Component<Props, State> {
     return (
       <div className={`EditorWrapper EditorWrapper--${id}`}>
         <SentryBoundary>
+          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <DraftailEditor {...dataProps} {...editorProps} />
         </SentryBoundary>
         <details className="EditorWrapper__details">

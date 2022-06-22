@@ -5,7 +5,7 @@ import { BLOCK_TYPE } from "../../src/index";
 
 type Props = {
   getEditorState: () => EditorState;
-  onChange: (arg0: EditorState) => void;
+  onChange: (state: EditorState) => void;
 };
 
 /**

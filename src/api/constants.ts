@@ -322,5 +322,7 @@ export const KEYBOARD_SHORTCUTS = {
   [REDO_TYPE]: { other: "Ctrl + ⇧ + Z", macOS: "⌘ + ⇧ + Z" },
 } as const;
 
+export type KeyboardShortcutType = keyof typeof KEYBOARD_SHORTCUTS;
+
 export const HANDLED = "handled";
 export const NOT_HANDLED = "not-handled";

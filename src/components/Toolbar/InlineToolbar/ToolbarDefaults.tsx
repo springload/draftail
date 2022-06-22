@@ -7,19 +7,15 @@ import ToolbarGroup from "../ToolbarGroup";
 import {
   BlockTypeControl,
   BoolControl,
-  Control,
   EntityTypeControl,
   InlineStyleControl,
 } from "../../../api/types";
 import { DESCRIPTIONS, KnownFormatType } from "../../../api/constants";
-import { getControlLabel } from "../../../api/ui";
+import { getControlLabel, showControl } from "../../../api/ui";
 import behavior from "../../../api/behavior";
 
-const showButton = (config: Control) =>
-  Boolean(config.icon) || Boolean(getControlLabel(config.type, config));
-
 const showEntityButton = (config: EntityTypeControl) =>
-  showButton(config) && Boolean(config.decorator);
+  showControl(config) && Boolean(config.decorator);
 
 const getButtonTitle = (type: string, config: BoolControl) => {
   const description =
@@ -62,7 +58,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
     } = this.props;
     return [
       <ToolbarGroup key="styles">
-        {inlineStyles.filter(showButton).map((t) => (
+        {inlineStyles.filter(showControl).map((t) => (
           <ToolbarButton
             key={t.type}
             name={t.type}
@@ -76,7 +72,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
       </ToolbarGroup>,
 
       <ToolbarGroup key="blocks">
-        {blockTypes.filter(showButton).map((t) => (
+        {blockTypes.filter(showControl).map((t) => (
           <ToolbarButton
             key={t.type}
             name={t.type}

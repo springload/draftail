@@ -3,8 +3,7 @@ import { EditorState } from "draft-js";
 
 type Props = {
   getEditorState: () => EditorState;
-  // eslint-disable-next-line react/require-default-props
-  maxLength?: number | null | undefined;
+  maxLength?: number | null;
 };
 
 // const countParagraphs = (str) => (str ? str.match(/\n+/g).length + 1 : 0);

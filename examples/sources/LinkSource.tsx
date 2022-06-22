@@ -1,28 +1,19 @@
 import React, { Component } from "react";
 
-import { RichUtils, EditorState } from "draft-js";
-import type { EntityInstance } from "draft-js";
+import { RichUtils } from "draft-js";
+
+import { EntitySourceProps } from "../../src/api/types";
 
 import Modal from "../components/Modal";
 
-type Props = {
-  editorState: EditorState;
-  onComplete: (arg0: EditorState) => void;
-  onClose: () => void;
-  entityType: {
-    type: string;
-  };
-  entity: EntityInstance | null | undefined;
-  textDirectionality: "LTR" | "RTL";
-};
 type State = {
   url: string;
 };
 
-class LinkSource extends Component<Props, State> {
-  inputRef: HTMLInputElement | null | undefined;
+class LinkSource extends Component<EntitySourceProps, State> {
+  inputRef?: React.Ref<HTMLInputElement>;
 
-  constructor(props: Props) {
+  constructor(props: EntitySourceProps) {
     super(props);
 
     const { entity } = this.props;
@@ -43,7 +34,7 @@ class LinkSource extends Component<Props, State> {
     this.onChangeURL = this.onChangeURL.bind(this);
   }
 
-  onConfirm(e: Event) {
+  onConfirm(e: React.FormEvent<HTMLFormElement>) {
     const { editorState, entityType, onComplete } = this.props;
     const { url } = this.state;
 
@@ -103,7 +94,7 @@ class LinkSource extends Component<Props, State> {
         contentLabel="Link chooser"
       >
         <form
-          dir={textDirectionality === "RTL" ? "rtl" : null}
+          dir={textDirectionality === "RTL" ? "rtl" : "ltr"}
           className="LinkSource"
           onSubmit={this.onConfirm}
         >

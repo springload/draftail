@@ -44,15 +44,18 @@ type Props = {
   blockProps: PluginFns;
   blockStyleFn: (block: ContentBlock) => string;
   contentState: ContentState;
-  customStyleFn: (style: string, block: ContentBlock) => {} | null | undefined;
-  customStyleMap: {};
+  customStyleFn: (
+    style: string,
+    block: ContentBlock,
+  ) => React.CSSProperties | null | undefined;
+  customStyleMap: { [key: string]: React.CSSProperties };
   decorator: DraftDecoratorType | null | undefined;
   direction: BidiDirection;
   forceSelection: boolean;
   offsetKey: string;
   selection: SelectionState;
   startIndent: boolean;
-  tree: {};
+  tree: unknown;
 };
 
 class ActionBlock extends Component<Props> {
@@ -84,6 +87,7 @@ class ActionBlock extends Component<Props> {
             onMouseDown={preventDefaultStopPropagation}
           />
         </span>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <EditorBlock {...this.props} />
       </>
     );
@@ -103,7 +107,8 @@ const ACTION_INPUT = {
   "[X] ": true,
   "- [X] ": true,
   "* [X] ": true,
-};
+} as const;
+type ActionInput = keyof typeof ACTION_INPUT;
 
 const actionBlockPlugin = () => ({
   blockRendererFn(block: ContentBlock, pluginFns: PluginFns) {
@@ -132,7 +137,8 @@ const actionBlockPlugin = () => ({
       const beforeBeforeInput = text.slice(0, startOffset);
       const mark = `${beforeBeforeInput}${char}`;
 
-      const shouldSwitchBlock = typeof ACTION_INPUT[mark] !== "undefined";
+      const shouldSwitchBlock =
+        typeof ACTION_INPUT[mark as ActionInput] !== "undefined";
 
       if (shouldSwitchBlock) {
         setEditorState(
@@ -141,7 +147,7 @@ const actionBlockPlugin = () => ({
             "action-list-item",
             text.replace(beforeBeforeInput, ""),
             {
-              checked: ACTION_INPUT[mark],
+              checked: ACTION_INPUT[mark as ActionInput],
             },
           ),
         );

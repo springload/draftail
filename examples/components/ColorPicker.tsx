@@ -112,7 +112,7 @@ const DROP_ICON =
 
 type Props = {
   getEditorState: () => EditorState;
-  onChange: (arg0: EditorState) => void;
+  onChange: (state: EditorState) => void;
 };
 
 type State = {
@@ -185,7 +185,7 @@ class ColorPicker extends Component<Props, State> {
     const editorState = getEditorState();
 
     return (
-      <React.Fragment>
+      <>
         <ToolbarButton
           name="COLORPICKER"
           icon={DROP_ICON}
@@ -207,7 +207,7 @@ class ColorPicker extends Component<Props, State> {
             </button>
           </div>
         </Modal>
-      </React.Fragment>
+      </>
     );
   }
 }

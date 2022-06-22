@@ -1,5 +1,4 @@
 import React from "react";
-import type { Node } from "react";
 import ReactModal from "react-modal";
 
 const className = {
@@ -14,21 +13,22 @@ const overlayClassName = {
   beforeClose: "modal__overlay--before-close",
 };
 
-type Props = {
+interface ModalProps {
   onAfterOpen: () => void | Promise<void>;
-  onRequestClose: (arg0: React.SyntheticEvent) => void;
+  onRequestClose: (e: React.SyntheticEvent) => void;
   isOpen: boolean;
   contentLabel: string;
-  children: Node;
-};
+  children: React.ReactNode;
+}
 
-const Modal = (props: Props) => (
+const Modal = (props: ModalProps) => (
   <ReactModal
     className={className}
     overlayClassName={overlayClassName}
     bodyOpenClassName="modal__container--open"
     portalClassName="portal"
     ariaHideApp={false}
+    // eslint-disable-next-line react/jsx-props-no-spreading
     {...props}
   />
 );

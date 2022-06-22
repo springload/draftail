@@ -1,3 +1,4 @@
+import React from "react";
 import {
   DefaultDraftBlockRenderMap,
   getDefaultKeyBinding,
@@ -18,13 +19,25 @@ import {
   INPUT_STYLE_MAP,
   INPUT_ENTITY_MAP,
   INLINE_STYLE,
+  KeyboardShortcutType,
+  InlineStyle,
 } from "./constants";
+import {
+  BlockTypeControl,
+  BoolControl,
+  CommandPaletteCategory,
+  CommandPaletteItem,
+  EntityTypeControl,
+  InlineStyleControl,
+} from "./types";
+import { showControl } from "./ui";
 
 const { hasCommandModifier, isOptionKeyCommand } = KeyBindingUtil;
 const hasCmd = hasCommandModifier;
 
 // Hack relying on the internals of Draft.js.
 // See https://github.com/facebook/draft-js/pull/869
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 const IS_MAC_OS = isOptionKeyCommand({ altKey: "test" }) === "test";
 
@@ -35,9 +48,7 @@ export default {
   /**
    * Configure block render map from block types list.
    */
-  getBlockRenderMap(
-    blockTypes: ReadonlyArray<{ type: string; element?: string }>,
-  ) {
+  getBlockRenderMap(blockTypes: ReadonlyArray<BlockTypeControl>) {
     let renderMap = DefaultDraftBlockRenderMap;
 
     // Override default element for code block.
@@ -73,12 +84,12 @@ export default {
    * Configure key binding function from enabled blocks, styles, entities.
    */
   getKeyBindingFn(
-    blockTypes: ReadonlyArray<{ type: string }>,
-    inlineStyles: ReadonlyArray<{ type: string }>,
-    entityTypes: ReadonlyArray<{ type: string }>,
+    blockTypes: ReadonlyArray<BlockTypeControl>,
+    inlineStyles: ReadonlyArray<InlineStyleControl>,
+    entityTypes: ReadonlyArray<EntityTypeControl>,
   ) {
-    const getEnabled = (activeTypes) =>
-      activeTypes.reduce((enabled, type) => {
+    const getEnabled = (activeTypes: ReadonlyArray<{ type: string }>) =>
+      activeTypes.reduce<{ [type: string]: string }>((enabled, type) => {
         enabled[type.type] = type.type;
         return enabled;
       }, {});
@@ -155,13 +166,15 @@ export default {
   },
 
   hasKeyboardShortcut(type: string) {
-    return !!KEYBOARD_SHORTCUTS[type];
+    return !!KEYBOARD_SHORTCUTS[type as KeyboardShortcutType];
   },
 
   getKeyboardShortcut(type: string, isMacOS: boolean = IS_MAC_OS) {
-    const shortcut = KEYBOARD_SHORTCUTS[type];
+    const shortcut = KEYBOARD_SHORTCUTS[type as KeyboardShortcutType];
     const system = isMacOS ? "macOS" : "other";
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     return (shortcut && shortcut[system]) || shortcut;
   },
 
@@ -176,8 +189,9 @@ export default {
     mark: string,
     blockTypes: ReadonlyArray<{ type: string }>,
   ) {
-    return blockTypes.find((b) => b.type === INPUT_BLOCK_MAP[mark])
-      ? INPUT_BLOCK_MAP[mark]
+    const knownMark = mark as keyof typeof INPUT_BLOCK_MAP;
+    return blockTypes.find((b) => b.type === INPUT_BLOCK_MAP[knownMark])
+      ? INPUT_BLOCK_MAP[knownMark]
       : false;
   },
 
@@ -199,7 +213,7 @@ export default {
     const activeShortcuts = INPUT_STYLE_MAP.filter(({ type }) =>
       inlineStyles.some((s) => s.type === type),
     );
-    let range;
+    let range: RegExpExecArray | null;
 
     const match = activeShortcuts.find(({ regex }) => {
       // Re-create a RegExp object every time because RegExp is stateful.
@@ -208,6 +222,8 @@ export default {
       return range;
     });
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     return range && match
       ? {
           pattern: match.pattern,
@@ -218,14 +234,15 @@ export default {
       : false;
   },
 
-  getCustomStyleMap(inlineStyles: ReadonlyArray<{ type: string; style?: {} }>) {
-    const customStyleMap = {};
+  getCustomStyleMap(inlineStyles: ReadonlyArray<InlineStyleControl>) {
+    const customStyleMap: { [key: string]: React.CSSProperties } = {};
 
     inlineStyles.forEach((style) => {
       if (style.style) {
         customStyleMap[style.type] = style.style;
-      } else if (CUSTOM_STYLE_MAP[style.type]) {
-        customStyleMap[style.type] = CUSTOM_STYLE_MAP[style.type];
+      } else if (CUSTOM_STYLE_MAP[style.type as InlineStyle]) {
+        customStyleMap[style.type] =
+          CUSTOM_STYLE_MAP[style.type as InlineStyle];
       } else {
         customStyleMap[style.type] = {};
       }
@@ -249,24 +266,15 @@ export default {
       entityTypes,
     }: {
       maxListNesting: number;
-      enableHorizontalRule: boolean | {};
-      enableLineBreak: boolean | {};
-      blockTypes: ReadonlyArray<{ type: string }>;
-      inlineStyles: ReadonlyArray<{ type: string }>;
-      entityTypes: ReadonlyArray<{
-        type: string;
-        attributes?: ReadonlyArray<string>;
-        allowlist?: {
-          [attribute: string]: string | boolean;
-        };
-        whitelist?: {
-          [attribute: string]: string | boolean;
-        };
-      }>;
+      enableHorizontalRule: BoolControl;
+      enableLineBreak: BoolControl;
+      blockTypes: ReadonlyArray<BlockTypeControl>;
+      inlineStyles: ReadonlyArray<InlineStyleControl>;
+      entityTypes: ReadonlyArray<EntityTypeControl>;
     },
     editorState: EditorState,
   ) {
-    const enabledEntityTypes = entityTypes.slice();
+    const enabledEntityTypes: { type: string }[] = entityTypes.slice();
     const whitespacedCharacters = ["\t", "📷"];
 
     if (enableHorizontalRule) {
@@ -289,5 +297,83 @@ export default {
       },
       editorState,
     );
+  },
+
+  getCommandPalette({
+    commandPalette,
+    blockTypes,
+    entityTypes,
+    enableHorizontalRule,
+  }: {
+    commandPalette: boolean | ReadonlyArray<CommandPaletteCategory>;
+    blockTypes: ReadonlyArray<BlockTypeControl>;
+    entityTypes: ReadonlyArray<EntityTypeControl>;
+    enableHorizontalRule: BoolControl;
+  }) {
+    if (!commandPalette) {
+      return [];
+    }
+
+    if (typeof commandPalette === "boolean" && commandPalette) {
+      const items = [
+        ...blockTypes.filter(showControl).map((t) => ({
+          ...t,
+          category: "blockTypes",
+        })),
+        ...entityTypes
+          .filter((t) => showControl(t) && Boolean(t.block))
+          .map((t) => ({
+            ...t,
+            category: "entityTypes",
+          })),
+      ];
+
+      if (enableHorizontalRule) {
+        items.push({
+          type: ENTITY_TYPE.HORIZONTAL_RULE,
+          ...(typeof enableHorizontalRule === "object"
+            ? enableHorizontalRule
+            : {}),
+          category: "entityTypes",
+        });
+      }
+
+      return [
+        {
+          label: null,
+          type: "built-ins",
+          items,
+        },
+      ];
+    }
+
+    return commandPalette.map((category) => {
+      let items: CommandPaletteItem[] = category.items || [];
+
+      if (category.type === "blockTypes") {
+        const rawItems = category.items || blockTypes;
+        items = rawItems.filter(showControl).map((t) => ({
+          ...t,
+          category: "blockTypes",
+        }));
+      } else if (category.type === "entityTypes") {
+        const rawItems = category.items || entityTypes;
+        items = rawItems
+          .filter(
+            (t) =>
+              showControl(t) &&
+              (Boolean(t.block) || t.type === ENTITY_TYPE.HORIZONTAL_RULE),
+          )
+          .map((t) => ({
+            ...t,
+            category: "entityTypes",
+          }));
+      }
+
+      return {
+        ...category,
+        items,
+      };
+    });
   },
 };

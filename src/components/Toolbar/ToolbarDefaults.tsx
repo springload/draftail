@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-import type { ComponentType } from "react";
 import { EditorState } from "draft-js";
 import ToolbarButton from "./ToolbarButton";
 import ToolbarGroup from "./ToolbarGroup";
@@ -13,17 +12,14 @@ import {
   KnownFormatType,
 } from "../../api/constants";
 import behavior from "../../api/behavior";
-import { getControlLabel } from "../../api/ui";
+import { getControlLabel, showControl } from "../../api/ui";
 import {
   BlockTypeControl,
   BoolControl,
-  Control,
+  CommandPaletteCategory,
   EntityTypeControl,
   InlineStyleControl,
 } from "../../api/types";
-
-export const showButton = (config: Control) =>
-  Boolean(config.icon) || Boolean(getControlLabel(config.type, config));
 
 export const getButtonTitle = (type: string, config: BoolControl) => {
   const description =
@@ -41,6 +37,7 @@ export const getButtonTitle = (type: string, config: BoolControl) => {
   return title;
 };
 
+/* eslint-disable react/no-unused-prop-types */
 export interface ToolbarDefaultProps {
   currentStyles: {
     has: (style: string) => boolean;
@@ -54,6 +51,7 @@ export interface ToolbarDefaultProps {
   entityTypes: ReadonlyArray<EntityTypeControl>;
   blockTypes: ReadonlyArray<BlockTypeControl>;
   inlineStyles: ReadonlyArray<InlineStyleControl>;
+  commandPalette: ReadonlyArray<CommandPaletteCategory>;
   toggleBlockType: (blockType: string) => void;
   toggleInlineStyle: (inlineStyle: string) => void;
   addHR: () => void;
@@ -85,7 +83,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
     } = this.props;
     return [
       <ToolbarGroup key="styles">
-        {inlineStyles.filter(showButton).map((t) => (
+        {inlineStyles.filter(showControl).map((t) => (
           <ToolbarButton
             key={t.type}
             name={t.type}
@@ -99,7 +97,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
       </ToolbarGroup>,
 
       <ToolbarGroup key="blocks">
-        {blockTypes.filter(showButton).map((t) => (
+        {blockTypes.filter(showControl).map((t) => (
           <ToolbarButton
             key={t.type}
             name={t.type}
@@ -147,7 +145,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
       </ToolbarGroup>,
 
       <ToolbarGroup key="entities">
-        {entityTypes.filter(showButton).map((t) => (
+        {entityTypes.filter(showControl).map((t) => (
           <ToolbarButton
             key={t.type}
             name={t.type}

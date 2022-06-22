@@ -1,7 +1,13 @@
-import { EditorState } from "draft-js";
+import {
+  ContentBlock,
+  ContentState,
+  EditorState,
+  EntityInstance,
+} from "draft-js";
 import React, { CSSProperties } from "react";
 
 export type IconProp = string | string[] | JSX.Element;
+export type TextDirectionality = "LTR" | "RTL" | null;
 
 export interface Control {
   type?: string;
@@ -34,13 +40,13 @@ export interface EntityTypeControl extends Control {
   type: string;
 
   /** React component providing the UI to manage entities of this type. */
-  source: React.Component<{}>;
+  source: React.Component<EntitySourceProps>;
 
   /** React component to display inline entities. */
-  decorator?: React.Component<{}>;
+  decorator?: React.Component<EntityDecoratorProps>;
 
   /** React component to display block-level entities. */
-  block?: React.Component<{}>;
+  block?: React.Component<EntityBlockProps>;
 
   /** Custom copy-paste processing checker. */
   onPaste: (
@@ -51,7 +57,7 @@ export interface EntityTypeControl extends Control {
       setEditorState: (state: EditorState) => void;
       getEditorState: () => EditorState;
     },
-    entityType: {},
+    entityType: EntityTypeControl,
   ) => "handled" | "not-handled";
 
   /** Array of attributes the entity uses, to preserve when filtering entities on paste.
@@ -68,4 +74,69 @@ export interface EntityTypeControl extends Control {
    * For example, { url: '^https:' } will only preserve links that point to HTTPS URLs.
    */
   whitelist?: { [attr: string]: string };
+}
+
+export interface EntitySourceProps {
+  /** The editorState is available for arbitrary content manipulation. */
+  editorState: EditorState;
+  /** Takes the updated editorState, or null if there are no changes, and focuses the editor. */
+  onComplete: (nextState: EditorState) => void;
+  /** Closes the source, without focusing the editor again. */
+  onClose: () => void;
+  /** Current entity to edit, if any. */
+  entityType: EntityTypeControl;
+  /** Current entityKey to edit, if any. */
+  entityKey: string | null;
+  /** Whole entityType configuration, as provided to the editor. */
+  entity: EntityInstance | null;
+}
+
+export interface EntityDecoratorProps {
+  /** The key of the decorated entity. */
+  entityKey: string;
+  /** The editor’s content. */
+  contentState: ContentState;
+  /** Rich text to be displayed inside the decorator. */
+  children: React.ReactNode;
+  /** Shorthand to edit entity data. */
+  onEdit: (entityKey: string) => void;
+  /** Shorthand to remove an entity, and the related block. */
+  onRemove: (entityKey: string, blockKey: string) => void;
+  /** Optionally set the overriding text directionality for this editor. */
+  textDirectionality: TextDirectionality;
+}
+
+export interface EntityBlockProps {
+  block: ContentBlock;
+  blockProps: {
+    /** The editorState is available for arbitrary content manipulation. */
+    editorState: EditorState;
+    /** Current entity to manage. */
+    entity: EntityInstance;
+    /** Current entityKey to manage. */
+    entityKey: string;
+    /** Whole entityType configuration, as provided to the editor. */
+    entityType: EntityTypeControl;
+    /** Make the whole editor read-only, except for the block. */
+    lockEditor: () => void;
+    /** Make the editor editable again. */
+    unlockEditor: () => void;
+    /** Shorthand to edit entity data. */
+    onEditEntity: (entityKey: string) => void;
+    /** Shorthand to remove an entity, and the related block. */
+    onRemoveEntity: (entityKey: string, blockKey: string) => void;
+    /** Update the editorState with arbitrary changes. */
+    onChange: (nextState: EditorState) => void;
+  };
+}
+
+export interface CommandPaletteItem extends Control {
+  onSelect?: (editorState: EditorState) => EditorState;
+  category?: string;
+}
+
+export interface CommandPaletteCategory {
+  type: "blockTypes" | "entityTypes" | string;
+  label: string | null;
+  items?: CommandPaletteItem[];
 }

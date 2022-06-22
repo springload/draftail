@@ -5,9 +5,11 @@
   padding: 0;
   cursor: pointer;
 
+  // stylelint-disable
   &:focus {
     outline: none;
   }
+  // stylelint-enable
 
   &__icon-wrapper {
     position: absolute;
@@ -31,8 +33,6 @@
   @mixin invalid-image-fallback {
     min-width: 256px;
     min-height: 100px;
-    // IE11 and MS Edge will show images that are distored for very wide aspect ratios.
-    // stylelint-disable-next-line plugin/no-unsupported-browser-features
     object-fit: contain;
     background-color: $GREY_333;
   }
@@ -53,8 +53,6 @@
       animation-iteration-count: infinite;
       animation-name: placeHolderShimmer;
       animation-timing-function: linear;
-      // It’s ok for the loading state not to be visible on all supported browsers.
-      // stylelint-disable-next-line plugin/no-unsupported-browser-features
       background: linear-gradient(
         90deg,
         $draftail-editor-chrome 10%,

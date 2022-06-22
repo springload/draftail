@@ -8,8 +8,8 @@ type Props = {
   entityKey: string;
   contentState: ContentState;
   children: Node;
-  onEdit: (arg0: string) => void;
-  onRemove: (arg0: string) => void;
+  onEdit: (entityType: string) => void;
+  onRemove: (entityType: string) => void;
   textDirectionality: "LTR" | "RTL";
 };
 
@@ -84,7 +84,6 @@ export const getValidLinkURL = (
   }
 
   try {
-    // eslint-disable-next-line compat/compat
     const url = new URL(text);
 
     if (schemes.includes(url.protocol)) {
@@ -104,7 +103,7 @@ export const onPasteLink = (
   {
     setEditorState,
   }: {
-    setEditorState: (arg0: EditorState) => void;
+    setEditorState: (state: EditorState) => void;
   },
   entityType: {
     schemes: ReadonlyArray<string>;

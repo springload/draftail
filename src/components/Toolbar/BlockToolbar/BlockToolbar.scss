@@ -1,7 +1,9 @@
 .#{$DRAFTAIL}BlockToolbar {
+  // stylelint-disable-next-line property-disallowed-list
   float: left;
 
   [dir="rtl"] & {
+    // stylelint-disable-next-line property-disallowed-list
     float: right;
   }
 

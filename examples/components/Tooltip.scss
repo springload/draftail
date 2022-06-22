@@ -36,14 +36,14 @@ $tooltip-arrow-spacing: 25px;
 }
 
 .Tooltip {
+  --draftail-text-direction: 1;
+
   position: absolute;
   padding: $tooltip-spacing;
   background-color: $draftail-tooltip-chrome;
   color: $draftail-tooltip-chrome-text;
   z-index: $draftail-tooltip-z-index;
   border-radius: $draftail-tooltip-radius;
-
-  --draftail-text-direction: 1;
 
   &[dir="rtl"],
   [dir="rtl"] & {

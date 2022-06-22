@@ -5,7 +5,7 @@ import embedly from "../utils/embedly";
 import { LINKIFY_REGEX_EXACT } from "./linkifyPlugin";
 
 type PluginFns = {
-  setEditorState: (arg0: EditorState) => void;
+  setEditorState: (state: EditorState) => void;
 };
 
 const slashCommandPlugin = () => ({

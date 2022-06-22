@@ -3,9 +3,11 @@ import Tippy from "@tippyjs/react";
 import { getVisibleSelectionRect } from "draft-js";
 
 import DraftUtils from "../../api/DraftUtils";
+import behavior from "../../api/behavior";
 
 import ComboBox from "../Toolbar/BlockToolbar/ComboBox";
 import { ToolbarProps } from "../Toolbar/Toolbar";
+import { ENTITY_TYPE } from "../../api/constants";
 
 const getReferenceClientRect = () => getVisibleSelectionRect(window);
 type FakeRect = ReturnType<typeof getVisibleSelectionRect>;
@@ -57,24 +59,22 @@ type CommandPaletteProps = ToolbarProps;
 
 const CommandPalette = ({
   blockTypes,
+  entityTypes,
+  enableHorizontalRule,
+  commandPalette,
   getEditorState,
   onCompleteSource,
+  onRequestSource,
 }: CommandPaletteProps) => {
   const editorState = getEditorState();
   const prompt = DraftUtils.getCommandPalettePrompt(editorState);
   const showPrompt = !!prompt;
-  const commands = blockTypes.map((t) => ({
-    ...t,
-    onSelect: () => {
-      const editorState = getEditorState();
-      const block = DraftUtils.getSelectedBlock(editorState);
-      return DraftUtils.resetBlockWithType(
-        editorState,
-        t.type,
-        block.getText().replace(prompt, ""),
-      );
-    },
-  }));
+  const commands = behavior.getCommandPalette({
+    commandPalette,
+    blockTypes,
+    entityTypes,
+    enableHorizontalRule,
+  });
   const tippyParentRef = useRef<HTMLDivElement>(null);
   const [selectionRect, setSelectionRect] = useState<FakeRect | null>(null);
 
@@ -112,13 +112,43 @@ const CommandPalette = ({
         plugins={tippyPlugins}
         content={
           <ComboBox
-            // key={`${currentBlockKey}-${currentBlock}`}
             items={commands}
             inputValue={prompt.substring(1)}
-            onSelect={(selection) => {
+            onSelect={(change) => {
+              const item = change.selectedItem;
+
+              if (!item) {
+                return;
+              }
+
               setSelectionRect(null);
-              if (selection.selectedItem) {
-                onCompleteSource(selection.selectedItem.onSelect());
+              if (item.onSelect) {
+                onCompleteSource(
+                  item.onSelect({ editorState: getEditorState(), prompt }),
+                );
+              } else if (item.category === "blockTypes") {
+                const state = getEditorState();
+                const block = DraftUtils.getSelectedBlock(state);
+                onCompleteSource(
+                  DraftUtils.resetBlockWithType(
+                    state,
+                    item.type,
+                    block.getText().replace(prompt, ""),
+                  ),
+                );
+              } else if (item.type === ENTITY_TYPE.HORIZONTAL_RULE) {
+                let nextState = getEditorState();
+                const block = DraftUtils.getSelectedBlock(nextState);
+                nextState = DraftUtils.resetBlockWithType(
+                  nextState,
+                  block.getType(),
+                  block.getText().replace(prompt, ""),
+                );
+                onCompleteSource(
+                  DraftUtils.addHorizontalRuleRemovingSelection(nextState),
+                );
+              } else if (item.category === "entityTypes") {
+                onRequestSource(item.type);
               }
             }}
           />

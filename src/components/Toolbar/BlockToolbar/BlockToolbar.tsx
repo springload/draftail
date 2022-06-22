@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import Tippy, { TippyProps } from "@tippyjs/react";
 
+import { RichUtils } from "draft-js";
 import { ENTITY_TYPE } from "../../../api/constants";
 
 import { ToolbarProps } from "../Toolbar";
-import { showButton } from "../ToolbarDefaults";
-import ComboBox, { ComboBoxOption } from "./ComboBox";
+import ComboBox from "./ComboBox";
 import DraftUtils from "../../../api/DraftUtils";
-import { RichUtils } from "draft-js";
+import behavior from "../../../api/behavior";
 
 const addIcon = (
   <svg width="16" height="16" viewBox="0 0 448 512" aria-hidden="true">
@@ -53,14 +53,11 @@ type BlockToolbarProps = {
 const BlockToolbar = ({
   trigger,
   comboBox,
-  controls,
+  commandPalette,
   getEditorState,
-  focus,
-  onChange,
   blockTypes,
   currentBlock,
   currentBlockKey,
-  toggleBlockType,
   onRequestSource,
   onCompleteSource,
   entityTypes,
@@ -102,29 +99,34 @@ const BlockToolbar = ({
     // Worst-case scenario is turning a list item block into unstyled.
   }, [showToggle, anchorKey, blockType]);
 
-  const items: ComboBoxOption[] = [
-    ...blockTypes.filter(showButton).map((t) => ({
-      ...t,
-      onSelect: () => {
-        return RichUtils.toggleBlockType(getEditorState(), t.type);
-      },
-    })),
-    ...entityTypes
-      .filter(showButton)
-      .filter((t) => Boolean(t.block))
-      .map((t) => ({
-        ...t,
-        onSelect: onRequestSource.bind(null, t.type),
-      })),
-  ];
+  // const items: ComboBoxOption[] = [
+  //   ...blockTypes.filter(showControl).map((t) => ({
+  //     ...t,
+  //     onSelect: () => RichUtils.toggleBlockType(getEditorState(), t.type),
+  //   })),
+  //   ...entityTypes
+  //     .filter(showControl)
+  //     .filter((t) => Boolean(t.block))
+  //     .map((t) => ({
+  //       ...t,
+  //       onSelect: onRequestSource.bind(null, t.type),
+  //     })),
+  // ];
 
-  if (enableHorizontalRule) {
-    items.push({
-      type: ENTITY_TYPE.HORIZONTAL_RULE,
-      onSelect: addHR,
-      ...(typeof enableHorizontalRule === "object" ? enableHorizontalRule : {}),
-    });
-  }
+  // if (enableHorizontalRule) {
+  //   items.push({
+  //     type: ENTITY_TYPE.HORIZONTAL_RULE,
+  //     onSelect: addHR,
+  //     ...(typeof enableHorizontalRule === "object" ? enableHorizontalRule : {}),
+  //   });
+  // }
+
+  const commands = behavior.getCommandPalette({
+    commandPalette,
+    blockTypes,
+    entityTypes,
+    enableHorizontalRule,
+  });
 
   return (
     <div
@@ -162,10 +164,28 @@ const BlockToolbar = ({
             key={`${currentBlockKey}-${currentBlock}`}
             label={comboBox.label}
             placeholder={comboBox.placeholder}
-            items={items}
-            onSelect={(selection) => {
+            items={commands}
+            onSelect={(change) => {
+              const item = change.selectedItem;
+
+              if (!item) {
+                return;
+              }
+
               setVisible(false);
-              onCompleteSource(selection.selectedItem!.onSelect());
+              if (item.onSelect) {
+                onCompleteSource(
+                  item.onSelect({ editorState: getEditorState(), prompt }),
+                );
+              } else if (item.category === "blockTypes") {
+                onCompleteSource(
+                  RichUtils.toggleBlockType(getEditorState(), item.type),
+                );
+              } else if (item.type === ENTITY_TYPE.HORIZONTAL_RULE) {
+                addHR();
+              } else if (item.category === "entityTypes") {
+                onRequestSource(item.type);
+              }
             }}
           />
         }

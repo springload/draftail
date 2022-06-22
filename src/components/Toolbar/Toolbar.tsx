@@ -7,7 +7,7 @@ import ToolbarGroup from "./ToolbarGroup";
 
 type ControlProps = {
   getEditorState: () => EditorState;
-  onChange: (arg0: EditorState) => void;
+  onChange: (state: EditorState) => void;
 };
 
 type ControlComponent = ComponentType<ControlProps>;
@@ -22,7 +22,7 @@ type ControlConfig = CurrentControlConfig | LegacyControlConfig;
 export interface ToolbarProps extends ToolbarDefaultProps {
   controls: ReadonlyArray<ControlConfig>;
   getEditorState: () => EditorState;
-  onChange: (arg0: EditorState) => void;
+  onChange: (state: EditorState) => void;
 }
 
 const Toolbar = (props: ToolbarProps) => {
@@ -30,6 +30,7 @@ const Toolbar = (props: ToolbarProps) => {
   const { controls, getEditorState, onChange } = props;
   return (
     <div className="Draftail-Toolbar" role="toolbar">
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <ToolbarDefaults {...props} />
 
       <ToolbarGroup>

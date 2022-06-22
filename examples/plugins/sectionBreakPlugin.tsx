@@ -1,6 +1,11 @@
-import React from "react";
-import type { Component, Node } from "react";
-import { ContentBlock, EditorState, KeyBindingUtil, Modifier } from "draft-js";
+import React, { Component } from "react";
+import {
+  ContentBlock,
+  ContentState,
+  EditorState,
+  KeyBindingUtil,
+  Modifier,
+} from "draft-js";
 
 import { ToolbarButton } from "../../src/index";
 
@@ -15,6 +20,8 @@ const { isOptionKeyCommand } = KeyBindingUtil;
 // Copied from behavior.js.
 // Hack relying on the internals of Draft.js.
 // See https://github.com/facebook/draft-js/pull/869
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 const IS_MAC_OS = isOptionKeyCommand({ altKey: "test" }) === "test";
 
 const insertSectionBreak = (editorState: EditorState) => {
@@ -26,18 +33,20 @@ const insertSectionBreak = (editorState: EditorState) => {
   const blockKey = selection.getStartKey();
   const insertedBlockKey = newContent.getKeyAfter(blockKey);
 
-  const newBlock = blockMap.get(insertedBlockKey).set("type", "section-break");
+  const newBlock = blockMap
+    .get(insertedBlockKey)
+    .set("type", "section-break") as ContentBlock;
 
   newContent = newContent.merge({
     blockMap: blockMap.set(insertedBlockKey, newBlock),
-  });
+  }) as ContentState;
 
   return EditorState.push(editorState, newContent, "split-block");
 };
 
 type Props = {
   getEditorState: () => EditorState;
-  onChange: (arg0: EditorState) => void;
+  onChange: (state: EditorState) => void;
 };
 
 export const SectionBreakControl = ({ getEditorState, onChange }: Props) => (
@@ -66,7 +75,9 @@ const SectionBreak = ({ isFocused }: SectionBreakProps) => (
 );
 
 const sectionBreakPlugin = (config: {
-  decorator: (arg0: (props: SectionBreakProps) => Node) => Component<{}>;
+  decorator: (
+    component: (props: SectionBreakProps) => Node,
+  ) => Component<unknown>;
 }) => {
   const component = config.decorator(SectionBreak);
   return {

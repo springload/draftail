@@ -2,15 +2,15 @@ import React from "react";
 import type { ComponentType } from "react";
 import { EditorState } from "draft-js";
 
-import { getControlLabel } from "../../api/ui";
+import { getControlLabel, showControl } from "../../api/ui";
 import ToolbarButton from "./ToolbarButton";
 import ToolbarGroup from "./ToolbarGroup";
-import { showButton, getButtonTitle } from "./ToolbarDefaults";
+import { getButtonTitle } from "./ToolbarDefaults";
 import { EntityTypeControl } from "../../api/types";
 
 type ControlProps = {
   getEditorState: () => EditorState;
-  onChange: (arg0: EditorState) => void;
+  onChange: (state: EditorState) => void;
 };
 
 type ControlComponent = ComponentType<ControlProps>;
@@ -43,7 +43,7 @@ const MetaToolbar = ({
     {showBlockEntities ? (
       <ToolbarGroup key="entities">
         {entityTypes
-          .filter((entityType) => showButton(entityType) && entityType.block)
+          .filter((entityType) => showControl(entityType) && entityType.block)
           .map((t) => (
             <ToolbarButton
               key={t.type}

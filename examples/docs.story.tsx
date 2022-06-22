@@ -12,6 +12,7 @@ import {
   INLINE_STYLE,
   ENTITY_TYPE,
   BLOCK_TYPE,
+  DraftUtils,
 } from "../src/index";
 
 import {
@@ -22,6 +23,8 @@ import {
   BR_ICON,
   UNDO_ICON,
   REDO_ICON,
+  SCISSORS_ICON,
+  HAND_ICON,
 } from "./constants/ui";
 import indexContentState from "./constants/indexContentState";
 
@@ -189,7 +192,7 @@ storiesOf("Docs", module)
               callback(matches.index, matches.index + matches[0].length);
             }
           },
-          // eslint-disable-next-line react/prop-types
+
           component: ({ children }) => (
             <span style={{ color: "#007d7e" }}>{children}</span>
           ),
@@ -367,7 +370,62 @@ storiesOf("Docs", module)
     </div>
   ))
   .add("Floating toolbars", () => {
-    const commandPalette = [];
+    const commandPalette = [
+      {
+        label: "Block formats",
+        type: "blockTypes",
+        items: [
+          BLOCK_CONTROL.HEADER_TWO,
+          BLOCK_CONTROL.BLOCKQUOTE,
+          BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+        ],
+      },
+      {
+        label: "Data",
+        type: "entityTypes",
+        items: [
+          ENTITY_CONTROL.IMAGE,
+          ENTITY_CONTROL.EMBED,
+          {
+            type: ENTITY_TYPE.HORIZONTAL_RULE,
+          },
+        ],
+      },
+      {
+        label: "Actions",
+        type: "custom",
+        items: [
+          {
+            type: "split",
+            description: "Split",
+            icon: SCISSORS_ICON,
+            onSelect: ({ editorState, prompt }) => {
+              window.alert("split");
+              const block = DraftUtils.getSelectedBlock(editorState);
+              return DraftUtils.resetBlockWithType(
+                editorState,
+                block.getType(),
+                block.getText().replace(prompt, ""),
+              );
+            },
+          },
+          {
+            type: "alert",
+            description: "Alert",
+            icon: HAND_ICON,
+            onSelect: ({ editorState, prompt }) => {
+              window.alert("Alert");
+              const block = DraftUtils.getSelectedBlock(editorState);
+              return DraftUtils.resetBlockWithType(
+                editorState,
+                block.getType(),
+                block.getText().replace(prompt, ""),
+              );
+            },
+          },
+        ],
+      },
+    ];
 
     return (
       <div className="docs-floating-toolbars">
@@ -397,7 +455,6 @@ storiesOf("Docs", module)
             INLINE_CONTROL.ITALIC,
             INLINE_CONTROL.KEYBOARD,
           ]}
-          commandPalette={commandPalette}
           controls={[
             {
               inline: CharCount,
@@ -406,6 +463,7 @@ storiesOf("Docs", module)
               meta: CharCount,
             },
           ]}
+          commandPalette={commandPalette}
           topToolbar={BlockToolbar}
           bottomToolbar={(props) => (
             <>

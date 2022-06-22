@@ -18,6 +18,12 @@ class SentryBoundary extends Component<Props, State> {
     this.onAttemptReload = this.onAttemptReload.bind(this);
   }
 
+  componentDidCatch(error: Error) {
+    this.setState({
+      error,
+    });
+  }
+
   onAttemptReload() {
     const { reloads } = this.state;
 
@@ -29,12 +35,6 @@ class SentryBoundary extends Component<Props, State> {
         reloads: reloads + 1,
       });
     }
-  }
-
-  componentDidCatch(error: Error) {
-    this.setState({
-      error,
-    });
   }
 
   render() {

@@ -22,7 +22,6 @@ const ReadingTime = ({ getEditorState }: Props) => {
       icon={CLOCK_ICON}
       label={text.length}
       onClick={() => {
-        // eslint-disable-next-line no-alert
         window.alert(`${text.length} characters, a few words`);
       }}
     />

@@ -11,8 +11,8 @@ type Props = {
   entityKey: string;
   contentState: ContentState;
   children: Node;
-  onEdit: (arg0: string) => void;
-  onRemove: (arg0: string) => void;
+  onEdit: (entityType: string) => void;
+  onRemove: (entityType: string) => void;
   textDirectionality: "LTR" | "RTL";
 };
 

@@ -20,17 +20,17 @@ const InlineToolbar = (props: InlineToolbarProps) => {
 
   const editorState = getEditorState();
   const selection = editorState.getSelection();
-  const isCollapsed = selection.getHasFocus() && !selection.isCollapsed();
+  const hasSelection = selection.getHasFocus() && !selection.isCollapsed();
 
   useEffect(() => {
-    if (isCollapsed) {
+    if (hasSelection) {
       setSelectionRect(getReferenceClientRect());
     } else {
       setSelectionRect(null);
     }
-  }, [isCollapsed]);
+  }, [hasSelection]);
 
-  const isVisible = isCollapsed && Boolean(selectionRect);
+  const isVisible = hasSelection && Boolean(selectionRect);
 
   return (
     <>
@@ -45,6 +45,7 @@ const InlineToolbar = (props: InlineToolbarProps) => {
           appendTo={() => tippyParentRef.current as HTMLDivElement}
           content={
             <div className="Draftail-Toolbar" role="toolbar">
+              {/* eslint-disable-next-line react/jsx-props-no-spreading */}
               <ToolbarDefaults {...props} />
 
               <ToolbarGroup>

@@ -38,6 +38,7 @@ coverage
 .coverage
 .grunt
 .bundle
+.eslintcache
 docs/pattern-library/index.html
 webpack-stats.json
 source-map-explorer.html

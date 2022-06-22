@@ -45,7 +45,7 @@ export type BlockProps = {
   onRemoveEntity: (entityKey: string, blockKey: string) => void;
 
   /** Update the editorState with arbitrary changes. */
-  onChange: (arg0: EditorState) => void;
+  onChange: (state: EditorState) => void;
 };
 
 type Props = {

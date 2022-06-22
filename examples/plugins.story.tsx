@@ -231,6 +231,7 @@ class CustomToolbarStory extends Component {
           ]}
           plugins={[inlineToolbarPlugin, sideToolbarPlugin]}
           topToolbar={null}
+          // eslint-disable-next-line react/no-unstable-nested-components
           bottomToolbar={(props) => (
             <>
               <SideToolbar {...props} />
@@ -247,7 +248,6 @@ storiesOf("Plugins", module).add("Custom toolbars", () => (
   <CustomToolbarStory />
 ));
 
-// eslint-disable-next-line
 class EmojiStory extends Component {
   constructor(props) {
     super(props);
@@ -288,6 +288,7 @@ class EmojiStory extends Component {
           ]}
           plugins={[emojiPlugin]}
           controls={[
+            // eslint-disable-next-line react/no-unstable-nested-components
             () => (
               <>
                 <EmojiSuggestions />

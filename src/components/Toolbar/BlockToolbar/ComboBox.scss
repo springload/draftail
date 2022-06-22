@@ -1,6 +1,3 @@
-.#{$DRAFTAIL}ComboBox {
-}
-
 @mixin sr-only() {
   position: absolute;
   width: 1px;
@@ -38,7 +35,13 @@
   }
 }
 
-.#{$DRAFTAIL}ComboBox [role="option"] {
+.#{$DRAFTAIL}ComboBox__optgroup-label {
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.#{$DRAFTAIL}ComboBox__option {
   padding: 10px;
   border: 1px solid transparent;
   font-size: 0.875rem;

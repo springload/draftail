@@ -2,7 +2,10 @@ import { Modifier, EditorState, SelectionState } from "draft-js";
 
 /* NOT USED at the moment, but might be valuable if we want to fix atomic block behaviour */
 
-export default function (editorState, blockKey) {
+export default function removeBlock(
+  editorState: EditorState,
+  blockKey: string,
+) {
   let content = editorState.getCurrentContent();
 
   const beforeKey = content.getKeyBefore(blockKey);
@@ -20,6 +23,9 @@ export default function (editorState, blockKey) {
     // change the blocktype and remove the characterList entry with the sticker
     content = Modifier.removeRange(content, targetRange, "backward");
     content = Modifier.setBlockType(content, targetRange, "unstyled");
+    // TODO Investigate.
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const newState = EditorState.push(editorState, content, "remove-block");
 
     // force to new selection
@@ -40,6 +46,9 @@ export default function (editorState, blockKey) {
   });
 
   content = Modifier.removeRange(content, targetRange, "backward");
+  // TODO Investigate.
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const newState = EditorState.push(editorState, content, "remove-block");
 
   // force to new selection

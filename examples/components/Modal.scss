@@ -14,6 +14,7 @@ $spacing-modal: 0.5rem;
 }
 
 .modal {
+  --draftail-text-direction: 1;
   position: absolute;
   inset-inline-start: 50%;
   top: 25vh;
@@ -24,8 +25,6 @@ $spacing-modal: 0.5rem;
   z-index: $modal-z-index;
   background-color: $color-bg-modal;
   animation: modal-in 0.2s $easing-circ 0s backwards;
-
-  --draftail-text-direction: 1;
 
   &[dir="rtl"],
   [dir="rtl"] & {

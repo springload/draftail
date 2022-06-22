@@ -1,9 +1,9 @@
 .#{$DRAFTAIL}Editor {
+  --draftail-text-direction: 1;
+
   background-color: $draftail-editor-background;
   border: $draftail-editor-border;
   border-radius: $draftail-editor-radius;
-
-  --draftail-text-direction: 1;
 
   &[dir="rtl"],
   [dir="rtl"] & {

@@ -1,15 +1,16 @@
 module.exports = {
-  // https://github.com/thibaudcolas/stylelint-config-cookbook
-  extends: "@thibaudcolas/stylelint-config-cookbook",
+  // https://github.com/torchbox/stylelint-config-torchbox
+  extends: "stylelint-config-torchbox",
   rules: {
-    "property-blacklist": [
+    "property-disallowed-list": [
       // Disallow positioning with physical properties. Use logical ones instead.
       "/left/",
       "/right/",
       "/float/",
       "/clear/",
     ],
-    "declaration-property-value-whitelist": {
+    "selector-class-pattern": null,
+    "declaration-property-value-allowed-list": {
       // Only allow logical values.
       "text-align": ["start", "end", "center"],
     },

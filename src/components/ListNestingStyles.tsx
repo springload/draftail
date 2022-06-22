@@ -2,15 +2,14 @@ import { getListNestingStyles } from "draftjs-conductor";
 import React from "react";
 
 interface ListNestingStylesProps {
-  max: number;
+  max?: number;
 }
 
 /**
  * Generates CSS styles for list items, for a given depth.
- * @param {number} max
  */
 function Styles({ max }: ListNestingStylesProps) {
-  return <style>{getListNestingStyles(max)}</style>;
+  return max ? <style>{getListNestingStyles(max)}</style> : null;
 }
 
 const ListNestingStyles = React.memo(Styles);

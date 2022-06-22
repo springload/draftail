@@ -40,6 +40,7 @@ class ImageBlock extends Component<Props> {
     const { src, alt } = entity.getData();
 
     return (
+      // eslint-disable-next-line react/jsx-props-no-spreading
       <MediaBlock {...this.props} src={src} label={alt || ""} isLoading={false}>
         <label className="ImageBlock__field">
           <p>Alt text</p>

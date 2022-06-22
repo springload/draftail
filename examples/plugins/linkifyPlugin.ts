@@ -3,7 +3,7 @@ import { Modifier, RichUtils, EditorState } from "draft-js";
 const createEntity = (
   editorState: EditorState,
   entityType: string,
-  entityData: {},
+  entityData: Record<string, unknown>,
   entityText: string,
   entityMutability: "IMMUTABLE" | "MUTABLE" = "IMMUTABLE",
 ) => {
@@ -94,7 +94,7 @@ const linkifyPlugin = () => ({
     {
       setEditorState,
     }: {
-      setEditorState: (arg0: EditorState) => void;
+      setEditorState: (state: EditorState) => void;
     },
   ) {
     let nextState = editorState;

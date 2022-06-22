@@ -19,6 +19,7 @@ const EmbedBlock = (props: Props) => {
   const isLoading = !url && !title && !thumbnail;
 
   return (
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <MediaBlock {...props} src={thumbnail} label={title} isLoading={isLoading}>
       <a
         className="EmbedBlock__link"
