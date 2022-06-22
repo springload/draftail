@@ -17,10 +17,11 @@ type Props = {
  * - https://github.com/RadLikeWhoa/Countable/blob/master/Countable.js#L29
  * - https://mathiasbynens.be/notes/javascript-unicode
  */
-const countChars = (str) => {
-  if (str) {
-    // Impossible for `match` to be null here since this matches all characters.
-    return str.match(/./gu).length;
+const countChars = (text: string) => {
+  if (text) {
+    // Find as many matches as there are (g), as unicode code points (u), matching newlines as characters (s).
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#advanced_searching_with_flags.
+    return text.match(/./gsu)!.length;
   }
 
   return 0;
