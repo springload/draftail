@@ -148,7 +148,17 @@ const CommandPalette = ({
                   DraftUtils.addHorizontalRuleRemovingSelection(nextState),
                 );
               } else if (item.category === "entityTypes") {
-                onRequestSource(item.type);
+                let nextState = getEditorState();
+                const block = DraftUtils.getSelectedBlock(nextState);
+                nextState = DraftUtils.resetBlockWithType(
+                  nextState,
+                  block.getType(),
+                  block.getText().replace(prompt, ""),
+                );
+                onCompleteSource(nextState);
+                setTimeout(() => {
+                  onRequestSource(item.type);
+                }, 50);
               }
             }}
           />

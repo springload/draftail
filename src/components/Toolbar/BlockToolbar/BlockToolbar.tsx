@@ -99,30 +99,9 @@ const BlockToolbar = ({
     // Worst-case scenario is turning a list item block into unstyled.
   }, [showToggle, anchorKey, blockType]);
 
-  // const items: ComboBoxOption[] = [
-  //   ...blockTypes.filter(showControl).map((t) => ({
-  //     ...t,
-  //     onSelect: () => RichUtils.toggleBlockType(getEditorState(), t.type),
-  //   })),
-  //   ...entityTypes
-  //     .filter(showControl)
-  //     .filter((t) => Boolean(t.block))
-  //     .map((t) => ({
-  //       ...t,
-  //       onSelect: onRequestSource.bind(null, t.type),
-  //     })),
-  // ];
-
-  // if (enableHorizontalRule) {
-  //   items.push({
-  //     type: ENTITY_TYPE.HORIZONTAL_RULE,
-  //     onSelect: addHR,
-  //     ...(typeof enableHorizontalRule === "object" ? enableHorizontalRule : {}),
-  //   });
-  // }
-
   const commands = behavior.getCommandPalette({
-    commandPalette,
+    // We always want commands for the block toolbar, even if the main command palette is disabled.
+    commandPalette: commandPalette || true,
     blockTypes,
     entityTypes,
     enableHorizontalRule,
@@ -141,7 +120,6 @@ const BlockToolbar = ({
         visible={visible}
         onHide={() => setVisible(false)}
         onClickOutside={() => setVisible(false)}
-        trigger="click"
         placement={comboBox.placement}
         arrow={false}
         appendTo={() => tippyParentRef.current as HTMLDivElement}

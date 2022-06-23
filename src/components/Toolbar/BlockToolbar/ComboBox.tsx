@@ -71,7 +71,7 @@ export default function ComboBox({
       // Always reset the first item to highlighted on filtering, to speed up selection.
       setHighlightedIndex(0);
     } else {
-      setInputValue("");
+      setInputValue(undefined);
       setInputItems(flatItems);
       setHighlightedIndex(-1);
     }
