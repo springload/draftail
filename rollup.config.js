@@ -18,11 +18,11 @@ const config = [
     ],
     plugins: [typescript()],
   },
-  {
-    input: "./src/index.ts",
-    output: [{ file: pkg.types, format: "es" }],
-    plugins: [dts()],
-  },
+  // {
+  //   input: "./src/index.ts",
+  //   output: [{ file: pkg.types, format: "es" }],
+  //   plugins: [dts()],
+  // },
 ];
 
 export default config;
