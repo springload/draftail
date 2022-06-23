@@ -9,7 +9,7 @@ const PERFORMANCE_BUFFER = 3;
 /**
  * Performance numbers: highest seen number, multiplied by 1.5 factor.
  */
-describe("performance", () => {
+describe.skip("performance", () => {
   let onComplete;
   let results;
 

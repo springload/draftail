@@ -3,21 +3,26 @@
 exports[`DraftailEditor #maxListNesting 1`] = `
 <div
   className="Draftail-Editor"
-  dir={null}
+  data-draftail-editor={true}
+  dir="ltr"
 >
   <Toolbar
     addBR={[Function]}
     addHR={[Function]}
     blockTypes={Array []}
+    commandPalette={false}
     controls={Array []}
     currentBlock="unstyled"
+    currentBlockKey="a"
     currentStyles={Immutable.OrderedSet []}
     enableHorizontalRule={false}
     enableLineBreak={false}
     entityTypes={Array []}
+    focus={[Function]}
     getEditorState={[Function]}
     inlineStyles={Array []}
     onChange={[Function]}
+    onCompleteSource={[Function]}
     onRequestSource={[Function]}
     onUndoRedo={[Function]}
     readOnly={false}
@@ -185,8 +190,10 @@ exports[`DraftailEditor #maxListNesting 1`] = `
     handleReturn={[Function]}
     onBlur={[Function]}
     onChange={[Function]}
+    onDownArrow={[Function]}
     onFocus={[Function]}
     onTab={[Function]}
+    onUpArrow={[Function]}
     placeholder={null}
     plugins={
       Array [
@@ -201,7 +208,11 @@ exports[`DraftailEditor #maxListNesting 1`] = `
     textAlignment={null}
     textDirectionality={null}
   />
-  <ListNestingStyles
+  <Memo(Styles)
+    blockKey="a"
+    placeholder={null}
+  />
+  <Memo(Styles)
     max={6}
   />
 </div>
@@ -210,21 +221,26 @@ exports[`DraftailEditor #maxListNesting 1`] = `
 exports[`DraftailEditor empty 1`] = `
 <div
   className="Draftail-Editor"
-  dir={null}
+  data-draftail-editor={true}
+  dir="ltr"
 >
   <Toolbar
     addBR={[Function]}
     addHR={[Function]}
     blockTypes={Array []}
+    commandPalette={false}
     controls={Array []}
     currentBlock="unstyled"
+    currentBlockKey="a"
     currentStyles={Immutable.OrderedSet []}
     enableHorizontalRule={false}
     enableLineBreak={false}
     entityTypes={Array []}
+    focus={[Function]}
     getEditorState={[Function]}
     inlineStyles={Array []}
     onChange={[Function]}
+    onCompleteSource={[Function]}
     onRequestSource={[Function]}
     onUndoRedo={[Function]}
     readOnly={false}
@@ -392,8 +408,10 @@ exports[`DraftailEditor empty 1`] = `
     handleReturn={[Function]}
     onBlur={[Function]}
     onChange={[Function]}
+    onDownArrow={[Function]}
     onFocus={[Function]}
     onTab={[Function]}
+    onUpArrow={[Function]}
     placeholder={null}
     plugins={
       Array [
@@ -408,7 +426,11 @@ exports[`DraftailEditor empty 1`] = `
     textAlignment={null}
     textDirectionality={null}
   />
-  <ListNestingStyles
+  <Memo(Styles)
+    blockKey="a"
+    placeholder={null}
+  />
+  <Memo(Styles)
     max={1}
   />
 </div>

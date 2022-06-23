@@ -44,15 +44,12 @@ exports[`ToolbarDefaults #blockTypes 1`] = `
     >
       <ToolbarButton
         active={false}
-        icon={null}
         key="TEST_1"
         label="Test 1"
         name="TEST_1"
         onClick={[Function]}
-        title={null}
       >
         <button
-          aria-label={null}
           className="Draftail-ToolbarButton"
           data-draftail-balloon={null}
           name="TEST_1"
@@ -70,15 +67,12 @@ exports[`ToolbarDefaults #blockTypes 1`] = `
       </ToolbarButton>
       <ToolbarButton
         active={false}
-        icon={null}
         key="TEST_2"
         label="Test 2"
         name="TEST_2"
         onClick={[Function]}
-        title={null}
       >
         <button
-          aria-label={null}
           className="Draftail-ToolbarButton"
           data-draftail-balloon={null}
           name="TEST_2"
@@ -96,15 +90,12 @@ exports[`ToolbarDefaults #blockTypes 1`] = `
       </ToolbarButton>
       <ToolbarButton
         active={false}
-        icon={null}
         key="TEST_3"
         label="Test 3"
         name="TEST_3"
         onClick={[Function]}
-        title={null}
       >
         <button
-          aria-label={null}
           className="Draftail-ToolbarButton"
           data-draftail-balloon={null}
           name="TEST_3"
@@ -346,15 +337,12 @@ exports[`ToolbarDefaults #inlineStyles 1`] = `
     >
       <ToolbarButton
         active={false}
-        icon={null}
         key="TEST_1"
         label="Test 1"
         name="TEST_1"
         onClick={[Function]}
-        title={null}
       >
         <button
-          aria-label={null}
           className="Draftail-ToolbarButton"
           data-draftail-balloon={null}
           name="TEST_1"
@@ -372,15 +360,12 @@ exports[`ToolbarDefaults #inlineStyles 1`] = `
       </ToolbarButton>
       <ToolbarButton
         active={false}
-        icon={null}
         key="TEST_2"
         label="Test 2"
         name="TEST_2"
         onClick={[Function]}
-        title={null}
       >
         <button
-          aria-label={null}
           className="Draftail-ToolbarButton"
           data-draftail-balloon={null}
           name="TEST_2"
@@ -398,15 +383,12 @@ exports[`ToolbarDefaults #inlineStyles 1`] = `
       </ToolbarButton>
       <ToolbarButton
         active={false}
-        icon={null}
         key="TEST_3"
         label="Test 3"
         name="TEST_3"
         onClick={[Function]}
-        title={null}
       >
         <button
-          aria-label={null}
           className="Draftail-ToolbarButton"
           data-draftail-balloon={null}
           name="TEST_3"

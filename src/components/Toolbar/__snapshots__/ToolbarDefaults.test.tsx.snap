@@ -44,15 +44,12 @@ exports[`ToolbarDefaults #blockTypes 1`] = `
     >
       <ToolbarButton
         active={false}
-        icon={null}
         key="TEST_1"
         label="Test 1"
         name="TEST_1"
         onClick={[Function]}
-        title={null}
       >
         <button
-          aria-label={null}
           className="Draftail-ToolbarButton"
           data-draftail-balloon={null}
           name="TEST_1"
@@ -70,15 +67,12 @@ exports[`ToolbarDefaults #blockTypes 1`] = `
       </ToolbarButton>
       <ToolbarButton
         active={false}
-        icon={null}
         key="TEST_2"
         label="Test 2"
         name="TEST_2"
         onClick={[Function]}
-        title={null}
       >
         <button
-          aria-label={null}
           className="Draftail-ToolbarButton"
           data-draftail-balloon={null}
           name="TEST_2"
@@ -96,15 +90,12 @@ exports[`ToolbarDefaults #blockTypes 1`] = `
       </ToolbarButton>
       <ToolbarButton
         active={false}
-        icon={null}
         key="TEST_3"
         label="Test 3"
         name="TEST_3"
         onClick={[Function]}
-        title={null}
       >
         <button
-          aria-label={null}
           className="Draftail-ToolbarButton"
           data-draftail-balloon={null}
           name="TEST_3"
@@ -171,7 +162,6 @@ exports[`ToolbarDefaults #enableHorizontalRule control overrides 1`] = `
       className="Draftail-ToolbarGroup"
     >
       <ToolbarButton
-        active={false}
         icon="#icon-hr"
         label="HR"
         name="HORIZONTAL_RULE"
@@ -191,16 +181,12 @@ exports[`ToolbarDefaults #enableHorizontalRule control overrides 1`] = `
           type="button"
         >
           <Icon
-            className={null}
             icon="#icon-hr"
-            title={null}
           >
             <svg
-              aria-hidden={true}
-              aria-label={null}
+              aria-hidden="true"
               className="Draftail-Icon "
               height="16"
-              role={null}
               viewBox="0 0 1024 1024"
               width="16"
             >
@@ -258,7 +244,6 @@ exports[`ToolbarDefaults #enableHorizontalRule works 1`] = `
       className="Draftail-ToolbarGroup"
     >
       <ToolbarButton
-        active={false}
         icon={null}
         label="―"
         name="HORIZONTAL_RULE"
@@ -332,7 +317,6 @@ exports[`ToolbarDefaults #enableLineBreak control overrides 1`] = `
       className="Draftail-ToolbarGroup"
     >
       <ToolbarButton
-        active={false}
         icon="#icon-br"
         label="BR"
         name="BR"
@@ -352,16 +336,12 @@ exports[`ToolbarDefaults #enableLineBreak control overrides 1`] = `
           type="button"
         >
           <Icon
-            className={null}
             icon="#icon-br"
-            title={null}
           >
             <svg
-              aria-hidden={true}
-              aria-label={null}
+              aria-hidden="true"
               className="Draftail-Icon "
               height="16"
-              role={null}
               viewBox="0 0 1024 1024"
               width="16"
             >
@@ -419,7 +399,6 @@ exports[`ToolbarDefaults #enableLineBreak works 1`] = `
       className="Draftail-ToolbarGroup"
     >
       <ToolbarButton
-        active={false}
         icon={null}
         label="↵"
         name="BR"
@@ -505,16 +484,12 @@ exports[`ToolbarDefaults #entityTypes 1`] = `
       className="Draftail-ToolbarGroup"
     >
       <ToolbarButton
-        active={false}
-        icon={null}
         key="TEST_1"
         label="Test 1"
         name="TEST_1"
         onClick={[Function]}
-        title={null}
       >
         <button
-          aria-label={null}
           className="Draftail-ToolbarButton"
           data-draftail-balloon={null}
           name="TEST_1"
@@ -531,16 +506,12 @@ exports[`ToolbarDefaults #entityTypes 1`] = `
         </button>
       </ToolbarButton>
       <ToolbarButton
-        active={false}
-        icon={null}
         key="TEST_2"
         label="Test 2"
         name="TEST_2"
         onClick={[Function]}
-        title={null}
       >
         <button
-          aria-label={null}
           className="Draftail-ToolbarButton"
           data-draftail-balloon={null}
           name="TEST_2"
@@ -557,16 +528,12 @@ exports[`ToolbarDefaults #entityTypes 1`] = `
         </button>
       </ToolbarButton>
       <ToolbarButton
-        active={false}
-        icon={null}
         key="TEST_3"
         label="Test 3"
         name="TEST_3"
         onClick={[Function]}
-        title={null}
       >
         <button
-          aria-label={null}
           className="Draftail-ToolbarButton"
           data-draftail-balloon={null}
           name="TEST_3"
@@ -631,15 +598,12 @@ exports[`ToolbarDefaults #inlineStyles 1`] = `
     >
       <ToolbarButton
         active={false}
-        icon={null}
         key="TEST_1"
         label="Test 1"
         name="TEST_1"
         onClick={[Function]}
-        title={null}
       >
         <button
-          aria-label={null}
           className="Draftail-ToolbarButton"
           data-draftail-balloon={null}
           name="TEST_1"
@@ -657,15 +621,12 @@ exports[`ToolbarDefaults #inlineStyles 1`] = `
       </ToolbarButton>
       <ToolbarButton
         active={false}
-        icon={null}
         key="TEST_2"
         label="Test 2"
         name="TEST_2"
         onClick={[Function]}
-        title={null}
       >
         <button
-          aria-label={null}
           className="Draftail-ToolbarButton"
           data-draftail-balloon={null}
           name="TEST_2"
@@ -683,15 +644,12 @@ exports[`ToolbarDefaults #inlineStyles 1`] = `
       </ToolbarButton>
       <ToolbarButton
         active={false}
-        icon={null}
         key="TEST_3"
         label="Test 3"
         name="TEST_3"
         onClick={[Function]}
-        title={null}
       >
         <button
-          aria-label={null}
           className="Draftail-ToolbarButton"
           data-draftail-balloon={null}
           name="TEST_3"
@@ -767,7 +725,6 @@ exports[`ToolbarDefaults #showRedoControl control overrides 1`] = `
       className="Draftail-ToolbarGroup"
     >
       <ToolbarButton
-        active={false}
         icon="#icon-redo"
         label="Redo"
         name="redo"
@@ -787,16 +744,12 @@ Ctrl + ⇧ + Z"
           type="button"
         >
           <Icon
-            className={null}
             icon="#icon-redo"
-            title={null}
           >
             <svg
-              aria-hidden={true}
-              aria-label={null}
+              aria-hidden="true"
               className="Draftail-Icon "
               height="16"
-              role={null}
               viewBox="0 0 1024 1024"
               width="16"
             >
@@ -854,7 +807,6 @@ exports[`ToolbarDefaults #showRedoControl works 1`] = `
       className="Draftail-ToolbarGroup"
     >
       <ToolbarButton
-        active={false}
         icon={null}
         label="↻"
         name="redo"
@@ -928,7 +880,6 @@ exports[`ToolbarDefaults #showUndoControl control overrides 1`] = `
       className="Draftail-ToolbarGroup"
     >
       <ToolbarButton
-        active={false}
         icon="#icon-undo"
         label="Undo"
         name="undo"
@@ -948,16 +899,12 @@ Ctrl + Z"
           type="button"
         >
           <Icon
-            className={null}
             icon="#icon-undo"
-            title={null}
           >
             <svg
-              aria-hidden={true}
-              aria-label={null}
+              aria-hidden="true"
               className="Draftail-Icon "
               height="16"
-              role={null}
               viewBox="0 0 1024 1024"
               width="16"
             >
@@ -1015,7 +962,6 @@ exports[`ToolbarDefaults #showUndoControl works 1`] = `
       className="Draftail-ToolbarGroup"
     >
       <ToolbarButton
-        active={false}
         icon={null}
         label="↺"
         name="undo"

@@ -2,11 +2,9 @@
 
 exports[`Icon #className 1`] = `
 <svg
-  aria-hidden={true}
-  aria-label={null}
+  aria-hidden="true"
   className="Draftail-Icon u-test"
   height="16"
-  role={null}
   viewBox="0 0 1024 1024"
   width="16"
 >
@@ -24,11 +22,9 @@ exports[`Icon #icon custom 1`] = `
 
 exports[`Icon #icon external svg ref 1`] = `
 <svg
-  aria-hidden={true}
-  aria-label={null}
+  aria-hidden="true"
   className="Draftail-Icon "
   height="16"
-  role={null}
   viewBox="0 0 1024 1024"
   width="16"
 >
@@ -40,11 +36,9 @@ exports[`Icon #icon external svg ref 1`] = `
 
 exports[`Icon #icon inline svg ref 1`] = `
 <svg
-  aria-hidden={true}
-  aria-label={null}
+  aria-hidden="true"
   className="Draftail-Icon "
   height="16"
-  role={null}
   viewBox="0 0 1024 1024"
   width="16"
 >
@@ -56,11 +50,9 @@ exports[`Icon #icon inline svg ref 1`] = `
 
 exports[`Icon #icon svg path 1`] = `
 <svg
-  aria-hidden={true}
-  aria-label={null}
+  aria-hidden="true"
   className="Draftail-Icon "
   height="16"
-  role={null}
   viewBox="0 0 1024 1024"
   width="16"
 >
@@ -72,11 +64,9 @@ exports[`Icon #icon svg path 1`] = `
 
 exports[`Icon #icon svg path array 1`] = `
 <svg
-  aria-hidden={true}
-  aria-label={null}
+  aria-hidden="true"
   className="Draftail-Icon "
   height="16"
-  role={null}
   viewBox="0 0 1024 1024"
   width="16"
 >
@@ -93,7 +83,6 @@ exports[`Icon #icon svg path array 1`] = `
 
 exports[`Icon #title 1`] = `
 <svg
-  aria-hidden={null}
   aria-label="Test title"
   className="Draftail-Icon "
   height="16"

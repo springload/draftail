@@ -13,4 +13,9 @@ module.exports = {
   snapshotSerializers: ["enzyme-to-json/serializer"],
   setupFiles: ["<rootDir>/tests/environment.js"],
   setupFilesAfterEnv: ["<rootDir>/tests/setupTest.js"],
+  globals: {
+    "ts-jest": {
+      isolatedModules: true,
+    },
+  },
 };
