@@ -1072,7 +1072,6 @@ class DraftailEditor extends Component<
           }}
           editorState={editorState}
           onChange={this.onChange}
-          placeholder={placeholder}
           readOnly={isReadOnly}
           stripPastedStyles={stripPastedStyles}
           spellCheck={spellCheck}

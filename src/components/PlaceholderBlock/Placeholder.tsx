@@ -9,5 +9,12 @@ interface PlaceholderProps {
  * CSS `content: attr(data-text)`, which can bypass Draft.js rendering optimisations.
  */
 export default function Placeholder({ text }: PlaceholderProps) {
-  return <div className="Draftail-Placeholder" data-text={text} />;
+  return (
+    <div
+      className="Draftail-Placeholder"
+      data-text={text}
+      contentEditable="false"
+      suppressContentEditableWarning
+    />
+  );
 }
