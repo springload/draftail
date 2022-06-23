@@ -268,6 +268,7 @@ interface DraftailEditorState {
     entityKey?: string | null;
     entityType?: EntityTypeControl;
   } | null;
+  lastShortcutKey: string | null;
 }
 
 type DraftEditorRef = React.Ref<Editor> & {
@@ -340,6 +341,7 @@ class DraftailEditor extends Component<
       readOnlyState: false,
       hasFocus: false,
       sourceOptions: null,
+      lastShortcutKey: null,
     };
 
     if (editorState !== null) {
@@ -732,6 +734,7 @@ class DraftailEditor extends Component<
 
   handleBeforeInput(char: string) {
     const { blockTypes, inlineStyles, enableHorizontalRule } = this.props;
+    const { lastShortcutKey } = this.state;
     const editorState = this.getEditorState();
     const selection = editorState.getSelection();
 
@@ -741,6 +744,7 @@ class DraftailEditor extends Component<
       const text = block.getText();
       const beforeInput = text.slice(0, startOffset);
       const mark = `${beforeInput}${char}`;
+      const shortcutKey = `${block.getKey()}:${beforeInput}`;
       let newEditorState = editorState;
 
       const newBlockType = behavior.handleBeforeInputBlockType(
@@ -748,12 +752,21 @@ class DraftailEditor extends Component<
         blockTypes,
       );
 
-      if (newBlockType) {
-        newEditorState = DraftUtils.resetBlockWithType(
-          newEditorState,
-          newBlockType,
-          text.replace(beforeInput, ""),
-        );
+      if (newBlockType && newBlockType !== block.getType()) {
+        if (shortcutKey !== lastShortcutKey) {
+          newEditorState = DraftUtils.resetBlockWithType(
+            newEditorState,
+            newBlockType,
+            text.replace(beforeInput, ""),
+          );
+          this.setState({
+            lastShortcutKey: shortcutKey,
+          });
+        } else {
+          this.setState({
+            lastShortcutKey: null,
+          });
+        }
       }
 
       if (enableHorizontalRule && behavior.handleBeforeInputHR(mark, block)) {
