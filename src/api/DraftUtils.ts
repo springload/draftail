@@ -180,16 +180,14 @@ export default {
     }) as ContentBlock;
     const newContentState = contentState.merge({
       blockMap: blockMap.set(key, newBlock),
-    });
+    }) as ContentState;
     const newSelectionState = selectionState.merge({
       anchorOffset: 0,
       focusOffset: 0,
     });
 
     return EditorState.acceptSelection(
-      EditorState.set(editorState, {
-        currentContent: newContentState,
-      }),
+      EditorState.push(editorState, newContentState, "change-block-type"),
       newSelectionState,
     );
   },
