@@ -10,10 +10,6 @@
     --draftail-text-direction: -1;
   }
 
-  &--hide-placeholder .public-DraftEditorPlaceholder-root {
-    display: none;
-  }
-
   &--readonly {
     pointer-events: none;
 

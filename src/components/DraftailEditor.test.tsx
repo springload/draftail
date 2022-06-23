@@ -89,22 +89,6 @@ describe("DraftailEditor", () => {
           .prop("placeholder"),
       ).toEqual("Write here…");
     });
-
-    it("hidden", () => {
-      expect(
-        shallowNoLifecycle(
-          <DraftailEditor
-            placeholder="Write here…"
-            rawContentState={{
-              entityMap: {},
-              blocks: [{ text: "test" }],
-            }}
-          />,
-        )
-          .find("div")
-          .prop("className"),
-      ).toContain("Draftail-Editor--hide-placeholder");
-    });
   });
 
   it("#spellCheck", () => {

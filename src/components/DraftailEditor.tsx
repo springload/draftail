@@ -1008,7 +1008,6 @@ class DraftailEditor extends Component<
     const { hasFocus, readOnlyState } = this.state;
     const editorState = this.getEditorState();
     const isReadOnly = readOnlyState || readOnly;
-    const hidePlaceholder = DraftUtils.shouldHidePlaceholder(editorState);
     const entityDecorators = entityTypes
       .filter((type) => !!type.decorator)
       .map((type) => ({
@@ -1056,14 +1055,12 @@ class DraftailEditor extends Component<
       <div
         className={`Draftail-Editor${
           isReadOnly ? " Draftail-Editor--readonly" : ""
-        }${hidePlaceholder ? " Draftail-Editor--hide-placeholder" : ""}${
-          hasFocus ? " Draftail-Editor--focus" : ""
-        }`}
+        }${hasFocus ? " Draftail-Editor--focus" : ""}`}
         dir={textDirectionality === "RTL" ? "rtl" : "ltr"}
         data-draftail-editor
       >
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        {TopToolbar ? <TopToolbar {...toolbarProps} /> : null}
+        {TopToolbar ? <gdw {...toolbarProps} /> : null}
 
         <Editor
           customStyleMap={behavior.getCustomStyleMap(inlineStyles)}

@@ -341,19 +341,6 @@ export default {
   },
 
   /**
-   * Determines whether the editor should show its placeholder.
-   * See https://draftjs.org/docs/api-reference-editor.html#placeholder
-   * for details on why this is useful.
-   */
-  shouldHidePlaceholder(editorState: EditorState) {
-    const contentState = editorState.getCurrentContent();
-    return (
-      contentState.hasText() ||
-      contentState.getBlockMap().first().getType() !== BLOCK_TYPE.UNSTYLED
-    );
-  },
-
-  /**
    * Inserts new unstyled block.
    * Initially inspired from https://github.com/jpuri/draftjs-utils/blob/e81c0ae19c3b0fdef7e0c1b70d924398956be126/js/block.js#L153,
    * but changed so that the split + block type reset amounts to
