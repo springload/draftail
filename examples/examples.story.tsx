@@ -6,6 +6,7 @@ import {
   serialiseEditorStateToRaw,
 } from "draftjs-conductor";
 
+import { EditorState, RichUtils } from "draft-js";
 import {
   INLINE_CONTROL,
   BLOCK_CONTROL,
@@ -27,7 +28,13 @@ import customContentState from "./constants/customContentState";
 import allContentState from "./constants/allContentState";
 import ColorPicker, { getColorInlineStyles } from "./components/ColorPicker";
 import CharCount from "./components/CharCount";
-import { BlockToolbar, InlineToolbar, MetaToolbar } from "../src";
+import {
+  BlockToolbar,
+  DraftUtils,
+  ENTITY_TYPE,
+  InlineToolbar,
+  MetaToolbar,
+} from "../src";
 
 const hashtagPlugin = createHashtagPlugin();
 const linkify = linkifyPlugin();
@@ -44,7 +51,7 @@ storiesOf("Examples", module)
       <EditorWrapper
         id="wagtail"
         ariaDescribedBy="wagtail-editor"
-        placeholder="Write here…"
+        placeholder="Type ‘/’ to insert a block or write here…"
         // Makes it easier to write automated tests retrieving the content.
         stateSaveInterval={50}
         enableHorizontalRule
@@ -79,6 +86,108 @@ storiesOf("Examples", module)
             <MetaToolbar {...props} />
           </>
         )}
+        commandPalette={[
+          {
+            label: "Rich text",
+            type: "blockTypes",
+          },
+          {
+            label: null,
+            type: "entityTypes",
+          },
+          {
+            label: null,
+            type: "hr",
+            items: [
+              {
+                type: ENTITY_TYPE.HORIZONTAL_RULE,
+              },
+            ],
+          },
+          {
+            label: "Blocks",
+            type: "streamfield",
+            items: [
+              {
+                label: "Heading",
+                type: "heading",
+                onSelect: ({ editorState }: { editorState: EditorState }) => {
+                  const block = DraftUtils.getSelectedBlock(editorState);
+                  return DraftUtils.resetBlockWithType(
+                    editorState,
+                    block.getType(),
+                    "😄 test",
+                  );
+                },
+              },
+              {
+                label: "Paragraph",
+                type: "paragraph",
+                onSelect: ({ editorState }: { editorState: EditorState }) => {
+                  const block = DraftUtils.getSelectedBlock(editorState);
+                  return DraftUtils.resetBlockWithType(
+                    editorState,
+                    block.getType(),
+                    "😄 test",
+                  );
+                },
+              },
+              {
+                label: "Image",
+                type: "image",
+                onSelect: ({ editorState }: { editorState: EditorState }) => {
+                  const block = DraftUtils.getSelectedBlock(editorState);
+                  return DraftUtils.resetBlockWithType(
+                    editorState,
+                    block.getType(),
+                    "😄 test",
+                  );
+                },
+              },
+              {
+                label: "Blockquote",
+                type: "blockquote",
+                onSelect: ({ editorState }: { editorState: EditorState }) => {
+                  const block = DraftUtils.getSelectedBlock(editorState);
+                  return DraftUtils.resetBlockWithType(
+                    editorState,
+                    block.getType(),
+                    "😄 test",
+                  );
+                },
+              },
+              {
+                label: "Embed",
+                type: "embed",
+                onSelect: ({ editorState }: { editorState: EditorState }) => {
+                  const block = DraftUtils.getSelectedBlock(editorState);
+                  return DraftUtils.resetBlockWithType(
+                    editorState,
+                    block.getType(),
+                    "😄 test",
+                  );
+                },
+              },
+            ],
+          },
+          {
+            label: "Actions",
+            type: "custom-actions",
+            items: [
+              {
+                label: "Split",
+                onSelect: ({ editorState }: { editorState: EditorState }) => {
+                  const block = DraftUtils.getSelectedBlock(editorState);
+                  return DraftUtils.resetBlockWithType(
+                    editorState,
+                    block.getType(),
+                    "✂",
+                  );
+                },
+              },
+            ],
+          },
+        ]}
       />
     </main>
   ))
@@ -156,6 +265,7 @@ storiesOf("Examples", module)
       blockTypes={Object.values(BLOCK_CONTROL)}
       inlineStyles={Object.values(INLINE_CONTROL)}
       entityTypes={[ENTITY_CONTROL.IMAGE, ENTITY_CONTROL.LINK]}
+      commandPalette
     />
   ))
   .add("Content awareness", () => (
@@ -179,6 +289,7 @@ storiesOf("Examples", module)
       ]}
       entityTypes={[ENTITY_CONTROL.LINK, ENTITY_CONTROL.EMBED]}
       enableHorizontalRule
+      commandPalette
       plugins={[autoEmbed, linkify]}
     />
   ));

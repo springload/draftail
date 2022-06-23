@@ -1,7 +1,12 @@
 import { storiesOf } from "@storybook/react";
 import React, { useState } from "react";
 import { convertFromHTML, convertToHTML } from "draft-convert";
-import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
+import {
+  EditorState,
+  convertToRaw,
+  convertFromRaw,
+  ContentState,
+} from "draft-js";
 import { Formik } from "formik";
 
 import {
@@ -13,6 +18,7 @@ import {
   ENTITY_TYPE,
   BLOCK_TYPE,
   DraftUtils,
+  Toolbar,
 } from "../src/index";
 
 import {
@@ -341,6 +347,18 @@ storiesOf("Docs", module)
           { ...INLINE_CONTROL.BOLD, description: "غامق" },
           { ...INLINE_CONTROL.ITALIC, description: "مائل" },
         ]}
+        topToolbar={(props) => (
+          <>
+            <BlockToolbar {...props} />
+            <Toolbar {...props} />
+          </>
+        )}
+        bottomToolbar={(props) => (
+          <>
+            <InlineToolbar {...props} />
+            <MetaToolbar showBlockEntities {...props} />
+          </>
+        )}
       />
     </div>
   ))
@@ -399,29 +417,20 @@ storiesOf("Docs", module)
             type: "split",
             description: "Split",
             icon: SCISSORS_ICON,
-            onSelect: ({ editorState, prompt }) => {
-              window.alert("split");
+            onSelect: ({ editorState }: { editorState: EditorState }) => {
               const block = DraftUtils.getSelectedBlock(editorState);
               return DraftUtils.resetBlockWithType(
                 editorState,
                 block.getType(),
-                block.getText().replace(prompt, ""),
+                "✂",
               );
             },
           },
           {
-            type: "alert",
-            description: "Alert",
-            icon: HAND_ICON,
-            onSelect: ({ editorState, prompt }) => {
-              window.alert("Alert");
-              const block = DraftUtils.getSelectedBlock(editorState);
-              return DraftUtils.resetBlockWithType(
-                editorState,
-                block.getType(),
-                block.getText().replace(prompt, ""),
-              );
-            },
+            type: "reset",
+            description: "Reset",
+            label: "♻",
+            onSelect: () => EditorState.createEmpty(),
           },
         ],
       },
@@ -433,7 +442,7 @@ storiesOf("Docs", module)
           id="floating-toolbars"
           rawContentState={indexContentState}
           stripPastedStyles={false}
-          placeholder="Insert / or write here…"
+          placeholder="Insert ‘/’ or write here…"
           enableHorizontalRule
           enableLineBreak={{
             icon: BR_ICON,
@@ -464,7 +473,12 @@ storiesOf("Docs", module)
             },
           ]}
           commandPalette={commandPalette}
-          topToolbar={BlockToolbar}
+          topToolbar={(props) => (
+            <>
+              <BlockToolbar {...props} />
+              <Toolbar {...props} />
+            </>
+          )}
           bottomToolbar={(props) => (
             <>
               <InlineToolbar {...props} />

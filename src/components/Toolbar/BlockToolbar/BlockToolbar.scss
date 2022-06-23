@@ -7,8 +7,9 @@
     float: right;
   }
 
+  ~ .#{$DRAFTAIL}Toolbar,
   ~ .DraftEditor-root {
-    margin-inline-start: 3rem;
+    margin-inline-start: 2rem;
   }
 }
 
@@ -21,7 +22,8 @@
   width: 1.5rem;
   height: 1.5rem;
   padding: 0;
-  margin: 0 1rem;
+  margin: 0;
+  margin-inline-end: 0.5rem;
   display: grid;
   align-items: center;
   justify-content: center;
