@@ -1,4 +1,6 @@
 .#{$DRAFTAIL}Editor {
+  --draftail-offset-inline-start: 2rem;
+  --draftail-editor-padding: #{$draftail-editor-padding};
   --draftail-text-direction: 1;
 
   background-color: $draftail-editor-background;

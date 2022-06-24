@@ -16,7 +16,6 @@
 
 .#{$DRAFTAIL}ComboBox [role="combobox"] {
   padding: 10px;
-  padding-inline-end: 15px;
 }
 
 .#{$DRAFTAIL}ComboBox--contenteditable [role="combobox"] {
@@ -41,6 +40,12 @@
   font-weight: 700;
 }
 
+.#{$DRAFTAIL}ComboBox__menu {
+  max-height: 70vh;
+  overflow-y: scroll;
+}
+
+.#{$DRAFTAIL}ComboBox__status,
 .#{$DRAFTAIL}ComboBox__option {
   padding: 10px;
   border: 1px solid transparent;

@@ -9,7 +9,7 @@
 
   ~ .#{$DRAFTAIL}Toolbar,
   ~ .DraftEditor-root {
-    margin-inline-start: 2rem;
+    margin-inline-start: var(--draftail-offset-inline-start);
   }
 }
 
@@ -47,18 +47,17 @@
 
 .#{$DRAFTAIL}BlockToolbar__backdrop {
   position: relative;
-  background-color: $color-black;
-  opacity: 0;
-  transition: opacity $draftail-toolbar-tooltip-duration 0s;
+  top: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color $draftail-toolbar-tooltip-duration 0s;
   z-index: $draftail-page-overlay-z-index;
   pointer-events: none;
 }
 
 .#{$DRAFTAIL}BlockToolbar--open .#{$DRAFTAIL}BlockToolbar__backdrop {
   position: fixed;
-  top: 0;
-  inset-inline-start: 0;
-  inset-inline-end: 0;
-  bottom: 0;
-  opacity: 11.76%;
+  background-color: rgba(0, 0, 0, 0.1);
 }

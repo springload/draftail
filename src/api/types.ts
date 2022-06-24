@@ -131,7 +131,13 @@ export interface EntityBlockProps {
 }
 
 export interface CommandPaletteItem extends Control {
-  onSelect?: (editorState: EditorState) => EditorState;
+  onSelect?: ({
+    editorState,
+    prompt,
+  }: {
+    editorState: EditorState;
+    prompt?: string;
+  }) => EditorState;
   category?: string;
 }
 

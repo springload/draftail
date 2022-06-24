@@ -1060,7 +1060,7 @@ class DraftailEditor extends Component<
         data-draftail-editor
       >
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        {TopToolbar ? <gdw {...toolbarProps} /> : null}
+        {TopToolbar ? <TopToolbar {...toolbarProps} /> : null}
 
         <Editor
           customStyleMap={behavior.getCustomStyleMap(inlineStyles)}

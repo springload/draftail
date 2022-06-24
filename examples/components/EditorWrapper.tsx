@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { EditorState } from "draft-js";
-import type { RawDraftContentState } from "draft-js/lib/RawDraftContentState";
+import { EditorState, RawDraftContentState } from "draft-js";
 
 import { DraftailEditor, serialiseEditorStateToRaw } from "../../src/index";
 

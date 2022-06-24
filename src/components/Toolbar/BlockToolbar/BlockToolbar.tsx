@@ -115,14 +115,15 @@ const BlockToolbar = ({
     >
       <div ref={tippyParentRef} />
       <Tippy
-        maxWidth="100%"
         interactive
         visible={visible}
         onHide={() => setVisible(false)}
         onClickOutside={() => setVisible(false)}
         placement={comboBox.placement}
+        maxWidth="100%"
         arrow={false}
         appendTo={() => tippyParentRef.current as HTMLDivElement}
+        plugins={tippyPlugins}
         onMount={(instance) => {
           const field = instance.popper.querySelector<HTMLInputElement>(
             "[data-draftail-command-palette-input]",
@@ -136,7 +137,6 @@ const BlockToolbar = ({
             setToggleVisible(false);
           }
         }}
-        plugins={tippyPlugins}
         content={
           <ComboBox
             key={`${currentBlockKey}-${currentBlock}`}
@@ -150,19 +150,21 @@ const BlockToolbar = ({
                 return;
               }
 
+              const itemType = item.type as string;
+
               setVisible(false);
               if (item.onSelect) {
                 onCompleteSource(
-                  item.onSelect({ editorState: getEditorState(), prompt }),
+                  item.onSelect({ editorState: getEditorState() }),
                 );
               } else if (item.category === "blockTypes") {
                 onCompleteSource(
-                  RichUtils.toggleBlockType(getEditorState(), item.type),
+                  RichUtils.toggleBlockType(getEditorState(), itemType),
                 );
-              } else if (item.type === ENTITY_TYPE.HORIZONTAL_RULE) {
+              } else if (itemType === ENTITY_TYPE.HORIZONTAL_RULE) {
                 addHR();
               } else if (item.category === "entityTypes") {
-                onRequestSource(item.type);
+                onRequestSource(itemType);
               }
             }}
           />

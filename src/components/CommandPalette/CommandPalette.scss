@@ -11,11 +11,16 @@
   }
 }
 
+.#{$DRAFTAIL}CommandPalette__target {
+  position: absolute;
+  pointer-events: none;
+  visibility: hidden;
+  margin-inline-start: calc(
+    var(--draftail-offset-inline-start, 0) + var(--draftail-editor-padding, 0)
+  );
+}
+
 .#{$DRAFTAIL}CommandPalette--open .#{$DRAFTAIL}BlockToolbar__backdrop {
   position: fixed;
-  top: 0;
-  inset-inline-start: 0;
-  inset-inline-end: 0;
-  bottom: 0;
-  opacity: 11.76%;
+  background-color: rgba(0, 0, 0, 0.1);
 }

@@ -109,7 +109,7 @@ storiesOf("Examples", module)
             type: "streamfield",
             items: [
               {
-                label: "Heading",
+                description: "Heading",
                 type: "heading",
                 onSelect: ({ editorState }: { editorState: EditorState }) => {
                   const block = DraftUtils.getSelectedBlock(editorState);
@@ -121,7 +121,7 @@ storiesOf("Examples", module)
                 },
               },
               {
-                label: "Paragraph",
+                description: "Paragraph",
                 type: "paragraph",
                 onSelect: ({ editorState }: { editorState: EditorState }) => {
                   const block = DraftUtils.getSelectedBlock(editorState);
@@ -133,7 +133,7 @@ storiesOf("Examples", module)
                 },
               },
               {
-                label: "Image",
+                description: "Image",
                 type: "image",
                 onSelect: ({ editorState }: { editorState: EditorState }) => {
                   const block = DraftUtils.getSelectedBlock(editorState);
@@ -145,7 +145,8 @@ storiesOf("Examples", module)
                 },
               },
               {
-                label: "Blockquote",
+                description: "Blockquote",
+                icon: null,
                 type: "blockquote",
                 onSelect: ({ editorState }: { editorState: EditorState }) => {
                   const block = DraftUtils.getSelectedBlock(editorState);
@@ -157,7 +158,7 @@ storiesOf("Examples", module)
                 },
               },
               {
-                label: "Embed",
+                description: "Embed",
                 type: "embed",
                 onSelect: ({ editorState }: { editorState: EditorState }) => {
                   const block = DraftUtils.getSelectedBlock(editorState);
@@ -175,7 +176,8 @@ storiesOf("Examples", module)
             type: "custom-actions",
             items: [
               {
-                label: "Split",
+                label: "✂",
+                description: "Split",
                 onSelect: ({ editorState }: { editorState: EditorState }) => {
                   const block = DraftUtils.getSelectedBlock(editorState);
                   return DraftUtils.resetBlockWithType(

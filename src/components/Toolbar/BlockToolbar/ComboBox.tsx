@@ -21,8 +21,11 @@ export default function ComboBox({
   items,
   onSelect,
 }: ComboBoxProps) {
-  const flatItems = items.flatMap((category) => category.items);
+  const flatItems = items.flatMap<CommandPaletteItem>(
+    (category) => category.items || [],
+  );
   const [inputItems, setInputItems] = useState<CommandPaletteItem[]>(flatItems);
+  const noResults = inputItems.length === 0;
   const {
     getLabelProps,
     getMenuProps,
@@ -95,9 +98,12 @@ export default function ComboBox({
           placeholder={placeholder}
         />
       </div>
+      {noResults ? (
+        <div className="Draftail-ComboBox__status">No results</div>
+      ) : null}
       <div {...getMenuProps()} className="Draftail-ComboBox__menu">
         {items.map((category) => {
-          const categoryItems = category.items.filter((item) =>
+          const categoryItems = (category.items || []).filter((item) =>
             inputItems.find((i) => i.type === item.type),
           );
 

@@ -101,13 +101,12 @@ const CommandPalette = ({
       <div ref={tippyParentRef} />
       <Tippy
         visible={isVisible}
+        interactive
         onHide={() => setSelectionRect(null)}
         onClickOutside={() => setSelectionRect(null)}
-        getReferenceClientRect={() => selectionRect as DOMRect}
-        maxWidth="100%"
-        interactive
-        arrow={false}
         placement="bottom-end"
+        maxWidth="100%"
+        arrow={false}
         appendTo={() => tippyParentRef.current as HTMLDivElement}
         plugins={tippyPlugins}
         content={
@@ -121,6 +120,8 @@ const CommandPalette = ({
                 return;
               }
 
+              const itemType = item.type as string;
+
               setSelectionRect(null);
               if (item.onSelect) {
                 onCompleteSource(
@@ -132,7 +133,7 @@ const CommandPalette = ({
                 onCompleteSource(
                   DraftUtils.resetBlockWithType(
                     state,
-                    item.type,
+                    itemType,
                     block.getText().replace(prompt, ""),
                   ),
                 );
@@ -157,13 +158,26 @@ const CommandPalette = ({
                 );
                 onCompleteSource(nextState);
                 setTimeout(() => {
-                  onRequestSource(item.type);
+                  onRequestSource(itemType);
                 }, 50);
               }
             }}
           />
         }
-      />
+      >
+        <div
+          className="Draftail-CommandPalette__target"
+          style={
+            selectionRect
+              ? {
+                  top: selectionRect.top,
+                }
+              : {}
+          }
+        >
+          {"\u200B"}
+        </div>
+      </Tippy>
       <div className="Draftail-BlockToolbar__backdrop" />
     </div>
   );
