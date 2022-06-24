@@ -493,7 +493,10 @@ export default {
     const isAfterSlash = selection.getFocusOffset() > 0;
 
     const hasPrompt =
-      isCollapsed && isAfterSlash && text.startsWith("/") && !/\s/.test(text);
+      isCollapsed &&
+      isAfterSlash &&
+      text.startsWith("/") &&
+      ((text || "").match(/\s/g) || []).length < 2;
 
     return hasPrompt ? text : "";
   },
