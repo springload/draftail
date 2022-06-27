@@ -43,7 +43,7 @@ class DocumentSource extends Component<Props, State> {
     this.onChangeURL = this.onChangeURL.bind(this);
   }
 
-  onConfirm(e: Event) {
+  onConfirm(e: React.FormEvent<HTMLFormElement>) {
     const { editorState, entityType, onComplete } = this.props;
     const { url } = this.state;
 
@@ -85,7 +85,7 @@ class DocumentSource extends Component<Props, State> {
     }
   }
 
-  onChangeURL(e: Event) {
+  onChangeURL(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target instanceof HTMLInputElement) {
       const url = e.target.value;
       this.setState({ url });
@@ -103,7 +103,7 @@ class DocumentSource extends Component<Props, State> {
         contentLabel="Document chooser"
       >
         <form
-          dir={textDirectionality === "RTL" ? "rtl" : null}
+          dir={textDirectionality === "RTL" ? "rtl" : undefined}
           className="DocumentSource"
           onSubmit={this.onConfirm}
         >

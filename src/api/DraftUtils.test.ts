@@ -8,8 +8,10 @@ import {
   CharacterMetadata,
   ContentBlock,
   convertToRaw,
+  RawDraftContentState,
 } from "draft-js";
 
+import React from "react";
 import DraftUtils from "./DraftUtils";
 
 describe("DraftUtils", () => {
@@ -24,7 +26,7 @@ describe("DraftUtils", () => {
             type: "header-two",
           },
         ],
-      });
+      } as RawDraftContentState);
       const editorState = EditorState.createWithContent(contentState);
 
       expect(DraftUtils.getSelectedBlock(editorState).getText()).toBe("test");
@@ -42,7 +44,7 @@ describe("DraftUtils", () => {
             type: "header-two",
           },
         ],
-      });
+      } as RawDraftContentState);
       const editorState = EditorState.createWithContent(contentState);
 
       expect(DraftUtils.getSelectionEntity(editorState)).not.toBeDefined();
@@ -58,7 +60,7 @@ describe("DraftUtils", () => {
             type: "header-two",
           },
         ],
-      });
+      } as RawDraftContentState);
       let editorState = EditorState.createWithContent(content);
       content = content.createEntity("LINK", "MUTABLE", {
         url: "www.testing.com",
@@ -86,7 +88,7 @@ describe("DraftUtils", () => {
             type: "header-two",
           },
         ],
-      });
+      } as RawDraftContentState);
       let editorState = EditorState.createWithContent(content);
       content = content.createEntity("LINK", "MUTABLE", {
         url: "www.testing.com",
@@ -114,7 +116,7 @@ describe("DraftUtils", () => {
             type: "header-two",
           },
         ],
-      });
+      } as RawDraftContentState);
       let editorState = EditorState.createWithContent(content);
       content = content.createEntity("LINK", "MUTABLE", {
         url: "www.testing.com",
@@ -213,7 +215,7 @@ describe("DraftUtils", () => {
     it("missing entity key should not change selection (#168)", () => {
       const content = ContentState.createFromText("hello, world");
       const editorState = EditorState.createWithContent(content);
-      expect(DraftUtils.getEntitySelection(editorState, null)).toBe(
+      expect(DraftUtils.getEntitySelection(editorState, undefined)).toBe(
         editorState.getSelection(),
       );
     });
@@ -236,10 +238,12 @@ describe("DraftUtils", () => {
             key: "b0ei9",
             text: " ",
             type: "atomic",
+            depth: 0,
+            inlineStyleRanges: [],
             entityRanges: [{ offset: 0, length: 1, key: 1 }],
           },
         ],
-      });
+      } as RawDraftContentState);
       const editorState = DraftUtils.updateBlockEntity(
         EditorState.createWithContent(content),
         content.getFirstBlock(),
@@ -264,14 +268,16 @@ describe("DraftUtils", () => {
     it("works", () => {
       const editorState = DraftUtils.addHorizontalRuleRemovingSelection(
         EditorState.createWithContent(
-          ContentState.createFromBlockArray(convertFromHTML(`<h1>Test</h1>`)),
+          ContentState.createFromBlockArray(
+            convertFromHTML(`<h1>Test</h1>`).contentBlocks,
+          ),
         ),
       );
       const currentContent = editorState.getCurrentContent();
       const lastBlock = currentContent.getLastBlock();
 
       expect(lastBlock.getType()).toBe("unstyled");
-      expect(currentContent.getBlockBefore(lastBlock.getKey()).getType()).toBe(
+      expect(currentContent.getBlockBefore(lastBlock.getKey())!.getType()).toBe(
         "atomic",
       );
 
@@ -286,7 +292,9 @@ describe("DraftUtils", () => {
     it("works", () => {
       const editorState = DraftUtils.resetBlockWithType(
         EditorState.createWithContent(
-          ContentState.createFromBlockArray(convertFromHTML(`<h1>Test</h1>`)),
+          ContentState.createFromBlockArray(
+            convertFromHTML(`<h1>Test</h1>`).contentBlocks,
+          ),
         ),
         "header-two",
         "",
@@ -315,7 +323,7 @@ describe("DraftUtils", () => {
                 ],
               },
             ],
-          }),
+          } as RawDraftContentState),
         ),
         "header-two",
         "test bold",
@@ -343,7 +351,7 @@ describe("DraftUtils", () => {
                 data: {},
               },
             ],
-          }),
+          } as RawDraftContentState),
         ),
         "header-two",
         "test bold",
@@ -365,7 +373,7 @@ describe("DraftUtils", () => {
     it("works", () => {
       let editorState = EditorState.createWithContent(
         ContentState.createFromBlockArray(
-          convertFromHTML(`<p>This is a _Test_</p>`),
+          convertFromHTML(`<p>This is a _Test_</p>`).contentBlocks,
         ),
       );
       editorState = EditorState.moveFocusToEnd(editorState);
@@ -395,7 +403,8 @@ describe("DraftUtils", () => {
     it("stacks styles", () => {
       let editorState = EditorState.createWithContent(
         ContentState.createFromBlockArray(
-          convertFromHTML(`<p>This is a _<strong>Test</strong>_</p>`),
+          convertFromHTML(`<p>This is a _<strong>Test</strong>_</p>`)
+            .contentBlocks,
         ),
       );
       editorState = EditorState.moveFocusToEnd(editorState);
@@ -437,9 +446,12 @@ describe("DraftUtils", () => {
             {
               key: "a",
               text: "A _test_",
+              type: "unstyled",
+              depth: 0,
+              inlineStyleRanges: [],
               entityRanges: [
                 {
-                  key: "1",
+                  key: 1,
                   offset: 3,
                   length: 4,
                 },
@@ -472,7 +484,7 @@ describe("DraftUtils", () => {
     it("supports arbitrary markers", () => {
       let editorState = EditorState.createWithContent(
         ContentState.createFromBlockArray(
-          convertFromHTML(`<p>A !!!test!!!</p>`),
+          convertFromHTML(`<p>A !!!test!!!</p>`).contentBlocks,
         ),
       );
       editorState = EditorState.moveFocusToEnd(editorState);
@@ -534,7 +546,7 @@ describe("DraftUtils", () => {
           editorState
             .getCurrentContent()
             .getBlockMap()
-            .map((b) => b.getKey())
+            .map((b) => b!.getKey())
             .toJS(),
         ),
       ).toEqual(["5678", "test"]);
@@ -558,17 +570,19 @@ describe("DraftUtils", () => {
             key: "a",
             text: " ",
             type: "atomic",
+            depth: 0,
+            inlineStyleRanges: [],
             entityRanges: [{ offset: 0, length: 1, key: 1 }],
           },
         ],
       });
       let editorState = EditorState.createWithContent(contentState);
-      editorState = DraftUtils.removeBlockEntity(editorState, 1, "a");
+      editorState = DraftUtils.removeBlockEntity(editorState, "1", "a");
       expect(
         editorState
           .getCurrentContent()
           .getBlockMap()
-          .map((b) => b.toJS())
+          .map((b) => b!.toJS())
           .toJS(),
       ).toEqual({
         a: {
@@ -589,6 +603,7 @@ describe("DraftUtils", () => {
         entityMap: {
           1: {
             type: "IMAGE",
+            mutability: "IMMUTABLE",
             data: {},
           },
         },
@@ -597,17 +612,19 @@ describe("DraftUtils", () => {
             key: "a",
             text: " ",
             type: "atomic",
+            depth: 0,
+            inlineStyleRanges: [],
             entityRanges: [{ offset: 0, length: 1, key: 1 }],
           },
         ],
       });
       let editorState = EditorState.createWithContent(contentState);
-      editorState = DraftUtils.handleDeleteAtomic(editorState);
+      editorState = DraftUtils.handleDeleteAtomic(editorState) as EditorState;
       expect(
         editorState
           .getCurrentContent()
           .getBlockMap()
-          .map((b) => b.toJS())
+          .map((b) => b!.toJS())
           .toJS(),
       ).toEqual({
         a: {
@@ -626,6 +643,7 @@ describe("DraftUtils", () => {
         entityMap: {
           1: {
             type: "IMAGE",
+            mutability: "IMMUTABLE",
             data: {},
           },
         },
@@ -634,6 +652,8 @@ describe("DraftUtils", () => {
             key: "a",
             text: " ",
             type: "atomic",
+            depth: 0,
+            inlineStyleRanges: [],
             entityRanges: [{ offset: 0, length: 1, key: 1 }],
           },
         ],
@@ -654,6 +674,7 @@ describe("DraftUtils", () => {
         entityMap: {
           1: {
             type: "IMAGE",
+            mutability: "IMMUTABLE",
             data: {},
           },
         },
@@ -662,6 +683,8 @@ describe("DraftUtils", () => {
             key: "a",
             text: " ",
             type: "atomic",
+            depth: 0,
+            inlineStyleRanges: [],
             entityRanges: [{ offset: 0, length: 1, key: 1 }],
           },
         ],
@@ -682,6 +705,7 @@ describe("DraftUtils", () => {
         entityMap: {
           1: {
             type: "IMAGE",
+            mutability: "IMMUTABLE",
             data: {},
           },
         },
@@ -690,6 +714,8 @@ describe("DraftUtils", () => {
             key: "a",
             text: " ",
             type: "unstyled",
+            depth: 0,
+            inlineStyleRanges: [],
             entityRanges: [{ offset: 0, length: 1, key: 1 }],
           },
         ],
@@ -717,7 +743,7 @@ describe("DraftUtils", () => {
             type: "header-two",
           },
         ],
-      });
+      } as RawDraftContentState);
       let editorState = EditorState.createWithContent(contentState);
       editorState = DraftUtils.insertNewUnstyledBlock(editorState);
 
@@ -739,7 +765,7 @@ describe("DraftUtils", () => {
             type: "header-two",
           },
         ],
-      });
+      } as RawDraftContentState);
       const editorState = EditorState.createWithContent(contentState);
 
       expect(
@@ -760,7 +786,7 @@ describe("DraftUtils", () => {
             type: "header-two",
           },
         ],
-      });
+      } as RawDraftContentState);
       let editorState = EditorState.createWithContent(contentState);
       const selection = editorState.getSelection().merge({
         anchorKey: "a",
@@ -780,9 +806,10 @@ describe("DraftUtils", () => {
   });
 
   describe("#handleHardNewline", () => {
+    let tryToRemoveBlockStyle: jest.SpyInstance;
     beforeEach(() => {
       jest.spyOn(DraftUtils, "insertNewUnstyledBlock");
-      jest.spyOn(RichUtils, "tryToRemoveBlockStyle");
+      tryToRemoveBlockStyle = jest.spyOn(RichUtils, "tryToRemoveBlockStyle");
     });
 
     afterEach(() => {
@@ -804,7 +831,7 @@ describe("DraftUtils", () => {
             type: "header-two",
           },
         ],
-      });
+      } as RawDraftContentState);
       let editorState = EditorState.createWithContent(contentState);
       const selection = editorState.getSelection().merge({
         anchorKey: "b0ei9",
@@ -826,7 +853,7 @@ describe("DraftUtils", () => {
             type: "unstyled",
           },
         ],
-      });
+      } as RawDraftContentState);
       const editorState = EditorState.createWithContent(contentState);
       expect(DraftUtils.handleHardNewline(editorState)).toBe(false);
     });
@@ -841,7 +868,7 @@ describe("DraftUtils", () => {
             type: "header-one",
           },
         ],
-      });
+      } as RawDraftContentState);
       const editorState = EditorState.createWithContent(contentState);
       expect(DraftUtils.handleHardNewline(editorState)).toBe(false);
     });
@@ -856,7 +883,7 @@ describe("DraftUtils", () => {
             type: "header-two",
           },
         ],
-      });
+      } as RawDraftContentState);
       let editorState = EditorState.createWithContent(contentState);
       const selection = editorState.getSelection().merge({
         anchorOffset: 4,
@@ -878,7 +905,7 @@ describe("DraftUtils", () => {
             type: "unordered-list-item",
           },
         ],
-      });
+      } as RawDraftContentState);
       const editorState = EditorState.createWithContent(contentState);
       expect(DraftUtils.handleHardNewline(editorState)).toBe(false);
     });
@@ -893,7 +920,7 @@ describe("DraftUtils", () => {
             type: "action-list-item",
           },
         ],
-      });
+      } as RawDraftContentState);
       const editorState = EditorState.createWithContent(contentState);
       expect(DraftUtils.handleHardNewline(editorState)).toBe(false);
     });
@@ -908,7 +935,7 @@ describe("DraftUtils", () => {
             type: "unordered-list-item",
           },
         ],
-      });
+      } as RawDraftContentState);
       const editorState = EditorState.createWithContent(contentState);
       DraftUtils.handleHardNewline(editorState);
       expect(RichUtils.tryToRemoveBlockStyle).toHaveBeenCalled();
@@ -924,9 +951,9 @@ describe("DraftUtils", () => {
             type: "unordered-list-item",
           },
         ],
-      });
+      } as RawDraftContentState);
       const editorState = EditorState.createWithContent(contentState);
-      RichUtils.tryToRemoveBlockStyle.mockImplementationOnce(() => null);
+      tryToRemoveBlockStyle.mockImplementationOnce(() => null);
       expect(DraftUtils.handleHardNewline(editorState)).toBe(false);
     });
 
@@ -941,10 +968,10 @@ describe("DraftUtils", () => {
             depth: 1,
           },
         ],
-      });
+      } as RawDraftContentState);
       const editorState = EditorState.createWithContent(contentState);
       expect(
-        DraftUtils.handleHardNewline(editorState)
+        (DraftUtils.handleHardNewline(editorState) as EditorState)
           .getCurrentContent()
           .getFirstBlock()
           .getDepth(),
@@ -973,12 +1000,12 @@ describe("DraftUtils", () => {
             type: "header-two",
           },
         ],
-      });
+      } as RawDraftContentState);
       const editorState = EditorState.createWithContent(contentState);
       DraftUtils.handleNewLine(editorState, {
         which: 13,
         getModifierState: () => false,
-      });
+      } as unknown as React.KeyboardEvent<HTMLDivElement>);
 
       expect(DraftUtils.handleHardNewline).toHaveBeenCalled();
       expect(RichUtils.insertSoftNewline).not.toHaveBeenCalled();
@@ -999,7 +1026,7 @@ describe("DraftUtils", () => {
             type: "header-two",
           },
         ],
-      });
+      } as RawDraftContentState);
       let editorState = EditorState.createWithContent(contentState);
       const selection = editorState.getSelection().merge({
         anchorKey: "b0ei9",
@@ -1011,7 +1038,7 @@ describe("DraftUtils", () => {
       DraftUtils.handleNewLine(editorState, {
         which: 13,
         getModifierState: () => true,
-      });
+      } as unknown as React.KeyboardEvent<HTMLDivElement>);
 
       expect(DraftUtils.handleHardNewline).not.toHaveBeenCalled();
       expect(RichUtils.insertSoftNewline).not.toHaveBeenCalled();
@@ -1028,12 +1055,12 @@ describe("DraftUtils", () => {
             type: "header-two",
           },
         ],
-      });
+      } as RawDraftContentState);
       const editorState = EditorState.createWithContent(contentState);
       DraftUtils.handleNewLine(editorState, {
         which: 13,
         getModifierState: () => true,
-      });
+      } as unknown as React.KeyboardEvent<HTMLDivElement>);
 
       expect(DraftUtils.handleHardNewline).not.toHaveBeenCalled();
       expect(RichUtils.insertSoftNewline).toHaveBeenCalled();
@@ -1049,13 +1076,13 @@ describe("DraftUtils", () => {
             type: "code-block",
           },
         ],
-      });
+      } as RawDraftContentState);
       const editorState = EditorState.createWithContent(contentState);
       expect(
         DraftUtils.handleNewLine(editorState, {
           which: 13,
           getModifierState: () => false,
-        }),
+        } as unknown as React.KeyboardEvent<HTMLDivElement>),
       ).toBe(false);
     });
 
@@ -1069,13 +1096,15 @@ describe("DraftUtils", () => {
             type: "code-block",
           },
         ],
-      });
+      } as RawDraftContentState);
       const editorState = EditorState.createWithContent(contentState);
       expect(
-        DraftUtils.handleNewLine(editorState, {
-          which: 13,
-          getModifierState: () => false,
-        })
+        (
+          DraftUtils.handleNewLine(editorState, {
+            which: 13,
+            getModifierState: () => false,
+          } as unknown as React.KeyboardEvent<HTMLDivElement>) as EditorState
+        )
           .getCurrentContent()
           .getFirstBlock()
           .getType(),

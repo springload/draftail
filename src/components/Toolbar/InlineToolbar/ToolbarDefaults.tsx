@@ -1,48 +1,14 @@
 import React, { PureComponent } from "react";
-import { DraftInlineStyle } from "draft-js";
 
 import ToolbarButton from "../ToolbarButton";
 import ToolbarGroup from "../ToolbarGroup";
 
-import {
-  BlockTypeControl,
-  BoolControl,
-  EntityTypeControl,
-  InlineStyleControl,
-} from "../../../api/types";
-import { DESCRIPTIONS, KnownFormatType } from "../../../api/constants";
+import { EntityTypeControl } from "../../../api/types";
 import { getControlLabel, showControl } from "../../../api/ui";
-import behavior from "../../../api/behavior";
+import { getButtonTitle, ToolbarDefaultProps } from "../ToolbarDefaults";
 
 const showEntityButton = (config: EntityTypeControl) =>
   showControl(config) && Boolean(config.decorator);
-
-const getButtonTitle = (type: string, config: BoolControl) => {
-  const description =
-    typeof config === "boolean" || typeof config.description === "undefined"
-      ? DESCRIPTIONS[type as KnownFormatType]
-      : config.description;
-  const hasShortcut = behavior.hasKeyboardShortcut(type);
-  let title = description;
-
-  if (hasShortcut) {
-    const desc = description ? `${description}\n` : "";
-    title = `${desc}${behavior.getKeyboardShortcut(type)}`;
-  }
-
-  return title;
-};
-
-export interface ToolbarDefaultProps {
-  currentStyles: DraftInlineStyle;
-  currentBlock: string;
-  entityTypes: ReadonlyArray<EntityTypeControl>;
-  blockTypes: ReadonlyArray<BlockTypeControl>;
-  inlineStyles: ReadonlyArray<InlineStyleControl>;
-  toggleBlockType: (blockType: string) => void;
-  toggleInlineStyle: (inlineStyle: string) => void;
-  onRequestSource: (entityType: string) => void;
-}
 
 class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
   render() {

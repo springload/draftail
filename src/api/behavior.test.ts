@@ -1,6 +1,7 @@
 import { List, Repeat } from "immutable";
 import { EditorState, CharacterMetadata, ContentBlock } from "draft-js";
 
+import React from "react";
 import behavior from "./behavior";
 import {
   BLOCK_TYPE,
@@ -9,6 +10,7 @@ import {
   CUSTOM_STYLE_MAP,
   ENTITY_TYPE,
 } from "./constants";
+import { EntityTypeControl } from "./types";
 
 const DraftFilters = require("draftjs-filters");
 
@@ -101,7 +103,7 @@ describe("behavior", () => {
           altKey: false,
           shiftKey: true,
           ctrlKey: true,
-        }),
+        } as React.KeyboardEvent<HTMLDivElement>),
       ).toBe(undefined);
     });
 
@@ -118,7 +120,7 @@ describe("behavior", () => {
             altKey: false,
             shiftKey: false,
             ctrlKey: true,
-          }),
+          } as React.KeyboardEvent<HTMLDivElement>),
         ).toBe(undefined);
       });
 
@@ -134,7 +136,7 @@ describe("behavior", () => {
             altKey: false,
             shiftKey: false,
             ctrlKey: true,
-          }),
+          } as React.KeyboardEvent<HTMLDivElement>),
         ).toBe("BOLD");
       });
     });
@@ -152,7 +154,7 @@ describe("behavior", () => {
             altKey: true,
             shiftKey: false,
             ctrlKey: true,
-          }),
+          } as React.KeyboardEvent<HTMLDivElement>),
         ).toBe(undefined);
       });
 
@@ -168,7 +170,7 @@ describe("behavior", () => {
             altKey: true,
             shiftKey: false,
             ctrlKey: true,
-          }),
+          } as React.KeyboardEvent<HTMLDivElement>),
         ).toBe("header-one");
       });
 
@@ -184,7 +186,7 @@ describe("behavior", () => {
             altKey: true,
             shiftKey: false,
             ctrlKey: true,
-          }),
+          } as React.KeyboardEvent<HTMLDivElement>),
         ).toBe("unstyled");
       });
     });
@@ -202,7 +204,7 @@ describe("behavior", () => {
             altKey: false,
             shiftKey: false,
             ctrlKey: true,
-          }),
+          } as React.KeyboardEvent<HTMLDivElement>),
         ).toBe(undefined);
       });
 
@@ -211,14 +213,14 @@ describe("behavior", () => {
           behavior.getKeyBindingFn(
             [],
             [],
-            [{ type: "LINK" }],
+            [{ type: "LINK" } as EntityTypeControl],
           )({
             keyCode: KEY_CODES.K,
             metaKey: false,
             altKey: false,
             shiftKey: false,
             ctrlKey: true,
-          }),
+          } as React.KeyboardEvent<HTMLDivElement>),
         ).toBe("LINK");
       });
     });
@@ -230,9 +232,12 @@ describe("behavior", () => {
       const inlineStyles = Object.values(INLINE_STYLE).map((type) => ({
         type,
       }));
-      const entityTypes = Object.values(ENTITY_TYPE).map((type) => ({
-        type,
-      }));
+      const entityTypes = Object.values(ENTITY_TYPE).map(
+        (type) =>
+          ({
+            type,
+          } as EntityTypeControl),
+      );
       const keyBindingFn = behavior.getKeyBindingFn(
         blockTypes,
         inlineStyles,
@@ -279,7 +284,7 @@ describe("behavior", () => {
         {
           keyCode: 1337,
         },
-      ];
+      ] as const;
 
       const noShiftKey = [
         {
@@ -394,9 +399,16 @@ describe("behavior", () => {
         {
           keyCode: 1337,
         },
-      ];
+      ] as const;
 
-      const shortcuts = []
+      type Shortcut = {
+        keyCode: number;
+        metaKey?: boolean;
+        shiftKey?: boolean;
+        altKey?: boolean;
+        output?: string;
+      };
+      const shortcuts: Shortcut[] = ([] as Shortcut[])
         .concat(shiftKey.map((s) => ({ ...s, shiftKey: true })))
         .concat(noShiftKey);
 
@@ -407,7 +419,7 @@ describe("behavior", () => {
           shiftKey: false,
           ctrlKey: false,
           ...s,
-        });
+        } as unknown as React.KeyboardEvent<HTMLDivElement>);
 
         if (typeof s.output !== "undefined") {
           expect(result).toBe(s.output);
@@ -543,7 +555,7 @@ describe("behavior", () => {
       ${"whitespace after open"}                   | ${"a _ test_"}             | ${["ITALIC"]}         | ${false}
       ${"whitespace before close"}                 | ${"a _test _"}             | ${["ITALIC"]}         | ${false}
     `("$label", ({ beforeInput, styles, expected }) => {
-      const inlineStyles = styles.map((type) => ({ type }));
+      const inlineStyles = styles.map((type: "ITALIC" | "BOLD") => ({ type }));
       const result = behavior.handleBeforeInputInlineStyle(
         beforeInput,
         inlineStyles,

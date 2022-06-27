@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { IconProp } from "../../api/types";
 import Icon from "../Icon";
 
-interface ToolbarButtonProps {
+export interface ToolbarButtonProps {
   name?: string;
   active?: boolean;
   label?: string | null;
@@ -64,7 +64,7 @@ class ToolbarButton extends PureComponent<
           active ? " Draftail-ToolbarButton--active" : ""
         }`}
         type="button"
-        aria-label={title}
+        aria-label={title || undefined}
         data-draftail-balloon={title && showTooltipOnHover ? true : null}
         tabIndex={-1}
         onMouseDown={this.onMouseDown}

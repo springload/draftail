@@ -10,12 +10,11 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
     "noFallthroughCasesInSwitch": true,
     "lib": ["dom", "dom.iterable", "esnext"]
   },
   "include": ["src", "examples"],
-  "exclude": ["**/*.test.tsx"]
+  "exclude": ["src/components/DraftailEditor.test.tsx"]
 }

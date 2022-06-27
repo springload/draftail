@@ -1,7 +1,7 @@
 import React from "react";
 import { IconProp } from "../api/types";
 
-interface IconProps {
+export interface IconProps {
   icon: IconProp;
   title?: string | null;
   className?: string | null;
@@ -10,7 +10,7 @@ interface IconProps {
 /**
  * Icon as SVG element. Can optionally render a React element instead.
  */
-const Icon = ({ icon, title, className }: IconProps): JSX.Element => {
+const Icon = ({ icon, title, className }: IconProps) => {
   let children;
 
   if (typeof icon === "string") {

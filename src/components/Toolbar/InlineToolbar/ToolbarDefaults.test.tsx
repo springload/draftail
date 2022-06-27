@@ -5,8 +5,9 @@ import { shallow, mount } from "enzyme";
 import ToolbarDefaults from "./ToolbarDefaults";
 
 const mockProps = {
-  currentStyles: new OrderedSet(),
+  currentStyles: OrderedSet(),
   currentBlock: "unstyled",
+  currentBlockKey: "abcd",
   enableHorizontalRule: false,
   enableLineBreak: false,
   showUndoControl: false,
@@ -14,12 +15,15 @@ const mockProps = {
   entityTypes: [],
   blockTypes: [],
   inlineStyles: [],
+  commands: false,
   toggleBlockType: () => {},
   toggleInlineStyle: () => {},
   addHR: () => {},
   addBR: () => {},
   onUndoRedo: () => {},
   onRequestSource: () => {},
+  onCompleteSource: () => {},
+  focus: () => {},
 };
 
 describe("ToolbarDefaults", () => {
@@ -125,9 +129,24 @@ describe("ToolbarDefaults", () => {
         <ToolbarDefaults
           {...mockProps}
           entityTypes={[
-            { type: "TEST_1", label: "Test 1" },
-            { type: "TEST_2", label: "Test 2" },
-            { type: "TEST_3", label: "Test 3" },
+            {
+              type: "TEST_1",
+              label: "Test 1",
+              source: (props) => <div {...props}>Test</div>,
+              onPaste: () => "not-handled",
+            },
+            {
+              type: "TEST_2",
+              label: "Test 2",
+              source: (props) => <div {...props}>Test</div>,
+              onPaste: () => "not-handled",
+            },
+            {
+              type: "TEST_3",
+              label: "Test 3",
+              source: (props) => <div {...props}>Test</div>,
+              onPaste: () => "not-handled",
+            },
           ]}
         />,
       ),
@@ -213,7 +232,8 @@ describe("ToolbarDefaults", () => {
         entityTypes={[
           {
             type: "CUSTOM_LINK",
-            source: () => {},
+            source: (props) => <div {...props}>Test</div>,
+            onPaste: () => "not-handled",
           },
         ]}
       />,
@@ -241,7 +261,8 @@ describe("ToolbarDefaults", () => {
           {
             type: "LINK",
             label: "",
-            source: () => {},
+            source: (props) => <div {...props}>Test</div>,
+            onPaste: () => "not-handled",
           },
         ]}
       />,
@@ -269,7 +290,8 @@ describe("ToolbarDefaults", () => {
           {
             type: "LINK",
             label: null,
-            source: () => {},
+            source: (props) => <div {...props}>Test</div>,
+            onPaste: () => "not-handled",
           },
         ]}
       />,

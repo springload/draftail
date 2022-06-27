@@ -1,12 +1,14 @@
 import { OrderedSet } from "immutable";
 import React from "react";
+import { EditorState } from "draft-js";
 import { shallow } from "enzyme";
 
 import Toolbar from "./Toolbar";
 
 const mockProps = {
-  currentStyles: new OrderedSet(),
+  currentStyles: OrderedSet(),
   currentBlock: "unstyled",
+  currentBlockKey: "abcd",
   enableHorizontalRule: false,
   enableLineBreak: false,
   showUndoControl: false,
@@ -14,15 +16,18 @@ const mockProps = {
   entityTypes: [],
   blockTypes: [],
   inlineStyles: [],
-  controls: [],
+  commands: false,
   toggleBlockType: () => {},
   toggleInlineStyle: () => {},
   addHR: () => {},
   addBR: () => {},
   onUndoRedo: () => {},
   onRequestSource: () => {},
-  getEditorState: () => {},
+  onCompleteSource: () => {},
+  focus: () => {},
+  getEditorState: () => EditorState.createEmpty(),
   onChange: () => {},
+  controls: [],
 };
 
 describe("Toolbar", () => {
@@ -32,7 +37,12 @@ describe("Toolbar", () => {
 
   it("#controls", () => {
     expect(
-      shallow(<Toolbar {...mockProps} controls={[() => <span>Test</span>]} />),
+      shallow(
+        <Toolbar
+          {...mockProps}
+          controls={[{ block: () => <span>Test</span> }]}
+        />,
+      ),
     ).toMatchSnapshot();
   });
 });

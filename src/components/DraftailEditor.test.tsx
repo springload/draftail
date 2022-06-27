@@ -7,6 +7,9 @@ import {
   SelectionState,
   ContentBlock,
   RichUtils,
+  RawDraftContentBlock,
+  DraftEditorCommand,
+  RawDraftContentState,
 } from "draft-js";
 import Editor from "draft-js-plugins-editor";
 
@@ -15,14 +18,19 @@ import behavior from "../api/behavior";
 import DraftUtils from "../api/DraftUtils";
 
 import DividerBlock from "../blocks/DividerBlock";
-import DraftailEditor from "./DraftailEditor";
+import DraftailEditor, {
+  DraftailEditorProps,
+  DraftailEditorState,
+} from "./DraftailEditor";
 import Toolbar from "./Toolbar/Toolbar";
 import PlaceholderStyles from "./PlaceholderBlock/PlaceholderStyles";
 
 jest.mock("draft-js/lib/generateRandomKey", () => () => "a");
 
 const shallowNoLifecycle = (elt) =>
-  shallow(elt, { disableLifecycleMethods: true });
+  shallow<DraftailEditor, DraftailEditorProps, DraftailEditorState>(elt, {
+    disableLifecycleMethods: true,
+  });
 
 describe("DraftailEditor", () => {
   it("empty", () => {
@@ -34,7 +42,7 @@ describe("DraftailEditor", () => {
       <DraftailEditor
         rawContentState={{
           entityMap: {},
-          blocks: [{ text: "test" }],
+          blocks: [{ text: "test" } as RawDraftContentBlock],
         }}
       />,
     );
@@ -50,7 +58,9 @@ describe("DraftailEditor", () => {
   });
 
   it("editorRef", () => {
-    expect(mount(<DraftailEditor />).instance().editorRef).toBeDefined();
+    expect(
+      mount<DraftailEditor>(<DraftailEditor />).instance().editorRef,
+    ).toBeDefined();
   });
 
   describe("readOnly", () => {
@@ -327,7 +337,7 @@ describe("DraftailEditor", () => {
 
     const contentState = convertFromRaw({
       entityMap: {},
-      blocks: [{ text: "test" }],
+      blocks: [{ text: "test" } as RawDraftContentBlock],
     });
 
     const editorState = EditorState.push(
@@ -382,7 +392,7 @@ describe("DraftailEditor", () => {
 
       const contentState = convertFromRaw({
         entityMap: {},
-        blocks: [{ text: "test" }],
+        blocks: [{ text: "test" } as RawDraftContentBlock],
       });
 
       const editorState = EditorState.push(
@@ -403,7 +413,7 @@ describe("DraftailEditor", () => {
 
       const contentState = convertFromRaw({
         entityMap: {},
-        blocks: [{ text: "test" }],
+        blocks: [{ text: "test" } as RawDraftContentBlock],
       });
 
       const editorState = EditorState.push(
@@ -643,7 +653,7 @@ describe("DraftailEditor", () => {
 
     const contentState = convertFromRaw({
       entityMap: {},
-      blocks: [{ text: "test" }],
+      blocks: [{ text: "test" } as RawDraftContentBlock],
     });
 
     const editorState = EditorState.push(
@@ -717,17 +727,25 @@ describe("DraftailEditor", () => {
 
     it("entity type - active", () => {
       const wrapper = shallowNoLifecycle(
-        <DraftailEditor entityTypes={[{ type: "LINK", source: () => null }]} />,
+        <DraftailEditor
+          entityTypes={[
+            { type: "LINK", source: () => null, onPaste: () => "handled" },
+          ]}
+        />,
       ).instance();
       jest.spyOn(wrapper, "onRequestSource");
-      expect(wrapper.handleKeyCommand("LINK")).toBe("handled");
+      expect(wrapper.handleKeyCommand("LINK" as DraftEditorCommand)).toBe(
+        "handled",
+      );
       expect(wrapper.onRequestSource).toHaveBeenCalled();
     });
 
     it("entity type - inactive", () => {
       const wrapper = shallowNoLifecycle(<DraftailEditor />).instance();
       jest.spyOn(wrapper, "onRequestSource");
-      expect(wrapper.handleKeyCommand("LINK")).toBe("handled");
+      expect(wrapper.handleKeyCommand("LINK" as DraftEditorCommand)).toBe(
+        "handled",
+      );
       expect(wrapper.onRequestSource).not.toHaveBeenCalled();
     });
 
@@ -736,14 +754,18 @@ describe("DraftailEditor", () => {
         <DraftailEditor blockTypes={[{ type: "header-one" }]} />,
       ).instance();
       jest.spyOn(wrapper, "toggleBlockType");
-      expect(wrapper.handleKeyCommand("header-one")).toBe("handled");
+      expect(wrapper.handleKeyCommand("header-one" as DraftEditorCommand)).toBe(
+        "handled",
+      );
       expect(wrapper.toggleBlockType).toHaveBeenCalled();
     });
 
     it("block type - inactive", () => {
       const wrapper = shallowNoLifecycle(<DraftailEditor />).instance();
       jest.spyOn(wrapper, "toggleBlockType");
-      expect(wrapper.handleKeyCommand("header-one")).toBe("handled");
+      expect(wrapper.handleKeyCommand("header-one" as DraftEditorCommand)).toBe(
+        "handled",
+      );
       expect(wrapper.toggleBlockType).not.toHaveBeenCalled();
     });
 
@@ -752,14 +774,18 @@ describe("DraftailEditor", () => {
         <DraftailEditor inlineStyles={[{ type: "BOLD" }]} />,
       ).instance();
       jest.spyOn(wrapper, "toggleInlineStyle");
-      expect(wrapper.handleKeyCommand("BOLD")).toBe("handled");
+      expect(wrapper.handleKeyCommand("BOLD" as DraftEditorCommand)).toBe(
+        "handled",
+      );
       expect(wrapper.toggleInlineStyle).toHaveBeenCalled();
     });
 
     it("inline style - inactive", () => {
       const wrapper = shallowNoLifecycle(<DraftailEditor />).instance();
       jest.spyOn(wrapper, "toggleInlineStyle");
-      expect(wrapper.handleKeyCommand("BOLD")).toBe("handled");
+      expect(wrapper.handleKeyCommand("BOLD" as DraftEditorCommand)).toBe(
+        "handled",
+      );
       expect(wrapper.toggleInlineStyle).not.toHaveBeenCalled();
     });
 
@@ -841,12 +867,6 @@ describe("DraftailEditor", () => {
       expect(wrapper.instance().onChange).not.toHaveBeenCalled();
     });
 
-    it("no matching processing", () => {
-      DraftUtils.hasNoSelectionStartEntity = jest.fn(() => false);
-      expect(wrapper.instance().handleBeforeInput("a")).toBe("not-handled");
-      expect(wrapper.instance().onChange).not.toHaveBeenCalled();
-    });
-
     it("enter text", () => {
       expect(wrapper.instance().handleBeforeInput("a")).toBe("not-handled");
     });
@@ -882,7 +902,9 @@ describe("DraftailEditor", () => {
 
   describe("handlePastedText", () => {
     it("default handling", () => {
-      const wrapper = mount(<DraftailEditor stripPastedStyles={false} />);
+      const wrapper = mount<DraftailEditor>(
+        <DraftailEditor stripPastedStyles={false} />,
+      );
 
       expect(
         wrapper
@@ -896,7 +918,9 @@ describe("DraftailEditor", () => {
     });
 
     it("stripPastedStyles", () => {
-      const wrapper = mount(<DraftailEditor stripPastedStyles />);
+      const wrapper = mount<DraftailEditor>(
+        <DraftailEditor stripPastedStyles />,
+      );
 
       expect(
         wrapper
@@ -910,7 +934,9 @@ describe("DraftailEditor", () => {
     });
 
     it("handled by handleDraftEditorPastedText", () => {
-      const wrapper = mount(<DraftailEditor stripPastedStyles={false} />);
+      const wrapper = mount<DraftailEditor>(
+        <DraftailEditor stripPastedStyles={false} />,
+      );
       const text = "hello,\nworld!";
       const content = {
         blocks: [
@@ -925,7 +951,7 @@ describe("DraftailEditor", () => {
           },
         ],
         entityMap: {},
-      };
+      } as RawDraftContentState;
       const html = `<div data-draftjs-conductor-fragment='${JSON.stringify(
         content,
       )}'><p>${text}</p></div>`;
@@ -939,7 +965,7 @@ describe("DraftailEditor", () => {
 
     it("entities onPaste not-handled", () => {
       const onPaste = jest.fn(() => "not-handled");
-      const wrapper = mount(
+      const wrapper = mount<DraftailEditor>(
         <DraftailEditor entityTypes={[{ type: ENTITY_TYPE.LINK, onPaste }]} />,
       );
 
@@ -956,7 +982,7 @@ describe("DraftailEditor", () => {
 
     it("entities onPaste handled", () => {
       const onPaste = jest.fn(() => "handled");
-      const wrapper = mount(
+      const wrapper = mount<DraftailEditor>(
         <DraftailEditor entityTypes={[{ type: ENTITY_TYPE.LINK, onPaste }]} />,
       );
 
@@ -973,7 +999,7 @@ describe("DraftailEditor", () => {
 
     it("entities onPaste handled trumps stripPastedStyles", () => {
       const onPaste = jest.fn(() => "handled");
-      const wrapper = mount(
+      const wrapper = mount<DraftailEditor>(
         <DraftailEditor
           entityTypes={[{ type: ENTITY_TYPE.LINK, onPaste }]}
           stripPastedStyles
@@ -1064,7 +1090,7 @@ describe("DraftailEditor", () => {
           data: {},
         },
       ],
-    };
+    } as RawDraftContentState;
 
     beforeEach(() => {
       jest
@@ -1297,7 +1323,7 @@ describe("DraftailEditor", () => {
             type: "unstyled",
           },
         ],
-      };
+      } as RawDraftContentState;
       expect(
         shallowNoLifecycle(<DraftailEditor rawContentState={rawContentState} />)
           .instance()
@@ -1325,7 +1351,7 @@ describe("DraftailEditor", () => {
             ],
           },
         ],
-      };
+      } as RawDraftContentState;
       const wrapper = shallowNoLifecycle(
         <DraftailEditor
           rawContentState={rawContentState}
@@ -1362,6 +1388,8 @@ describe("DraftailEditor", () => {
           {
             text: " ",
             type: "atomic",
+            depth: 0,
+            inlineStyleRanges: [],
             entityRanges: [
               {
                 offset: 0,
@@ -1394,7 +1422,7 @@ describe("DraftailEditor", () => {
             type: "atomic",
           },
         ],
-      };
+      } as RawDraftContentState;
       const wrapper = shallowNoLifecycle(
         <DraftailEditor rawContentState={rawContentState} />,
       );
@@ -1427,7 +1455,9 @@ describe("DraftailEditor", () => {
       it("with sourceOptions", () => {
         const source = () => <blockquote />;
         const wrapper = shallowNoLifecycle(
-          <DraftailEditor entityTypes={[{ type: "LINK", source }]} />,
+          <DraftailEditor
+            entityTypes={[{ type: "LINK", source, onPaste: () => "handled" }]}
+          />,
         );
 
         wrapper.instance().onRequestSource("LINK");
@@ -1447,7 +1477,7 @@ describe("DraftailEditor", () => {
         const source = () => <blockquote />;
         const wrapper = shallowNoLifecycle(
           <DraftailEditor
-            entityTypes={[{ type: "LINK", source }]}
+            entityTypes={[{ type: "LINK", source, onPaste: () => "handled" }]}
             rawContentState={{
               entityMap: {
                 0: {
@@ -1499,7 +1529,7 @@ describe("DraftailEditor", () => {
       });
 
       it.skip("empty", () => {
-        const wrapper = mount(<DraftailEditor />);
+        const wrapper = mount<DraftailEditor>(<DraftailEditor />);
 
         wrapper.instance().onCompleteSource(null);
 
@@ -1537,7 +1567,7 @@ describe("DraftailEditor", () => {
 
   describe("#focus", () => {
     it("works", () => {
-      const wrapper = mount(<DraftailEditor />);
+      const wrapper = mount<DraftailEditor>(<DraftailEditor />);
       const focus = jest.fn();
       wrapper.instance().editorRef.focus = focus;
 

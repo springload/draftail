@@ -10,6 +10,8 @@ import {
   EntityInstance,
 } from "draft-js";
 import { condenseBlocks } from "draftjs-filters";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import Editor from "draft-js-plugins-editor";
 import {
   registerCopySource,
@@ -17,6 +19,8 @@ import {
   createEditorStateFromRaw,
   serialiseEditorStateToRaw,
 } from "draftjs-conductor";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import decorateComponentWithProps from "decorate-component-with-props";
 
 import {
@@ -27,6 +31,7 @@ import {
   NOT_HANDLED,
   UNDO_TYPE,
   REDO_TYPE,
+  KnownKeyCommand,
 } from "../api/constants";
 
 import DraftUtils from "../api/DraftUtils";
@@ -35,8 +40,11 @@ import {
   BlockTypeControl,
   BoolControl,
   CommandCategory,
+  ControlControl,
+  EntityBlockProps,
   EntityTypeControl,
   InlineStyleControl,
+  LegacyControlControl,
   TextDirectionality,
 } from "../api/types";
 
@@ -44,12 +52,16 @@ import Toolbar, { ToolbarProps } from "./Toolbar/Toolbar";
 import ListNestingStyles from "./ListNestingStyles";
 import DividerBlock from "../blocks/DividerBlock";
 import CommandPalette, {
+  CommandPaletteProps,
   simulateInputEvent,
 } from "./CommandPalette/CommandPalette";
 import PlaceholderStyles from "./PlaceholderBlock/PlaceholderStyles";
-import PlaceholderBlock from "./PlaceholderBlock/PlaceholderBlock";
+import PlaceholderBlock, {
+  DraftailPlaceholderBlockProps,
+} from "./PlaceholderBlock/PlaceholderBlock";
+import { MetaToolbarProps } from "./Toolbar/MetaToolbar";
 
-interface DraftailEditorProps {
+export interface DraftailEditorProps {
   /** Initial content of the editor. Use this to edit pre-existing content. */
   rawContentState?: RawDraftContentState | null;
 
@@ -145,12 +157,7 @@ interface DraftailEditorProps {
   decorators: ReadonlyArray<DraftDecorator>;
 
   /** List of extra toolbar controls. */
-  controls: ReadonlyArray<
-    React.Component<{
-      getEditorState: () => EditorState;
-      onChange: (state: EditorState) => void;
-    }>
-  >;
+  controls: ReadonlyArray<ControlControl | LegacyControlControl>;
 
   /** Optionally enable the command palette UI. */
   commands: boolean | ReadonlyArray<CommandCategory>;
@@ -162,10 +169,10 @@ interface DraftailEditorProps {
   topToolbar?: React.ComponentType<ToolbarProps> | null;
 
   /** Optionally add a custom toolbar underneath the editor, e.g. for metrics. */
-  bottomToolbar?: React.ComponentType<ToolbarProps> | null;
+  bottomToolbar?: React.ComponentType<MetaToolbarProps> | null;
 
   /** Optionally override the default command toolbar, removing or replacing it. */
-  commandToolbar?: React.ComponentType<ToolbarProps> | null;
+  commandToolbar?: React.ComponentType<CommandPaletteProps> | null;
 
   /** Max level of nesting for list items. 0 = no nesting. Maximum = 10. */
   maxListNesting: number;
@@ -262,7 +269,7 @@ const defaultProps = {
   stateSaveInterval: 250,
 };
 
-interface DraftailEditorState {
+export interface DraftailEditorState {
   // editorState is only part of the local state if the editor is uncontrolled.
   editorState?: EditorState;
   hasFocus: boolean;
@@ -287,6 +294,9 @@ class DraftailEditor extends Component<
   DraftailEditorProps,
   DraftailEditorState
 > {
+  // eslint-disable-next-line react/static-property-placement
+  static defaultProps: DraftailEditorProps;
+
   updateTimeout?: number;
 
   editorRef?: DraftEditorRef;
@@ -352,12 +362,16 @@ class DraftailEditor extends Component<
       this.getEditorState = this.getEditorStateProp.bind(this);
     } else {
       // If editorState is not used as a prop, create it in local state from rawContentState.
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       this.state.editorState = createEditorStateFromRaw(rawContentState);
       this.getEditorState = this.getEditorStateState.bind(this);
     }
   }
 
   componentDidMount() {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     this.copySource = registerCopySource(this.editorRef.editor);
   }
 
@@ -650,8 +664,9 @@ class DraftailEditor extends Component<
       e.which = 0;
     }
 
-    let newState = editorState;
-    let newStyle = false;
+    let newState: EditorState | false = editorState;
+    let newStyle: ReturnType<typeof behavior.handleBeforeInputInlineStyle> =
+      false;
 
     const selection = newState.getSelection();
     // Check whether we should apply a Markdown styles shortcut.
@@ -722,7 +737,7 @@ class DraftailEditor extends Component<
     }
 
     // If the command is known but not enabled for this editor, treat it as handled but don't do anything.
-    if (KEY_COMMANDS.includes(command)) {
+    if (KEY_COMMANDS.includes(command as KnownKeyCommand)) {
       return HANDLED;
     }
 
@@ -877,7 +892,7 @@ class DraftailEditor extends Component<
           props: {
             placeholder,
             blockTypes,
-          },
+          } as DraftailPlaceholderBlockProps["blockProps"],
         };
       }
 
@@ -932,7 +947,7 @@ class DraftailEditor extends Component<
         ),
         /** Update the editorState with arbitrary changes. */
         onChange: this.onChange,
-      },
+      } as EntityBlockProps["blockProps"],
     };
   }
 

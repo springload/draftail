@@ -1,13 +1,13 @@
 import React from "react";
 import { EditorState } from "draft-js";
 
-import { ControlControl } from "../../api/types";
+import { ControlControl, LegacyControlControl } from "../../api/types";
 
 import ToolbarDefaults, { ToolbarDefaultProps } from "./ToolbarDefaults";
 import ToolbarGroup from "./ToolbarGroup";
 
 export interface ToolbarProps extends ToolbarDefaultProps {
-  controls: ReadonlyArray<ControlControl>;
+  controls: ReadonlyArray<ControlControl | LegacyControlControl>;
   getEditorState: () => EditorState;
   onChange: (state: EditorState) => void;
 }
@@ -26,7 +26,7 @@ const Toolbar = (props: ToolbarProps) => {
             return null;
           }
 
-          const Control = control.block || control;
+          const Control = control.block || (control as LegacyControlControl);
 
           return (
             <Control

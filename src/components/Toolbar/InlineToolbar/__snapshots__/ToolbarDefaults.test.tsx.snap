@@ -20,12 +20,16 @@ exports[`ToolbarDefaults #blockTypes 1`] = `
       },
     ]
   }
+  commands={false}
   currentBlock="unstyled"
+  currentBlockKey="abcd"
   currentStyles={Immutable.OrderedSet []}
   enableHorizontalRule={false}
   enableLineBreak={false}
   entityTypes={Array []}
+  focus={[Function]}
   inlineStyles={Array []}
+  onCompleteSource={[Function]}
   onRequestSource={[Function]}
   onUndoRedo={[Function]}
   showRedoControl={false}
@@ -124,7 +128,9 @@ exports[`ToolbarDefaults #enableHorizontalRule control overrides 1`] = `
   addBR={[Function]}
   addHR={[Function]}
   blockTypes={Array []}
+  commands={false}
   currentBlock="unstyled"
+  currentBlockKey="abcd"
   currentStyles={Immutable.OrderedSet []}
   enableHorizontalRule={
     Object {
@@ -135,7 +141,9 @@ exports[`ToolbarDefaults #enableHorizontalRule control overrides 1`] = `
   }
   enableLineBreak={false}
   entityTypes={Array []}
+  focus={[Function]}
   inlineStyles={Array []}
+  onCompleteSource={[Function]}
   onRequestSource={[Function]}
   onUndoRedo={[Function]}
   showRedoControl={false}
@@ -160,12 +168,16 @@ exports[`ToolbarDefaults #enableHorizontalRule works 1`] = `
   addBR={[Function]}
   addHR={[Function]}
   blockTypes={Array []}
+  commands={false}
   currentBlock="unstyled"
+  currentBlockKey="abcd"
   currentStyles={Immutable.OrderedSet []}
   enableHorizontalRule={true}
   enableLineBreak={false}
   entityTypes={Array []}
+  focus={[Function]}
   inlineStyles={Array []}
+  onCompleteSource={[Function]}
   onRequestSource={[Function]}
   onUndoRedo={[Function]}
   showRedoControl={false}
@@ -190,7 +202,9 @@ exports[`ToolbarDefaults #enableLineBreak control overrides 1`] = `
   addBR={[Function]}
   addHR={[Function]}
   blockTypes={Array []}
+  commands={false}
   currentBlock="unstyled"
+  currentBlockKey="abcd"
   currentStyles={Immutable.OrderedSet []}
   enableHorizontalRule={false}
   enableLineBreak={
@@ -201,7 +215,9 @@ exports[`ToolbarDefaults #enableLineBreak control overrides 1`] = `
     }
   }
   entityTypes={Array []}
+  focus={[Function]}
   inlineStyles={Array []}
+  onCompleteSource={[Function]}
   onRequestSource={[Function]}
   onUndoRedo={[Function]}
   showRedoControl={false}
@@ -226,12 +242,16 @@ exports[`ToolbarDefaults #enableLineBreak works 1`] = `
   addBR={[Function]}
   addHR={[Function]}
   blockTypes={Array []}
+  commands={false}
   currentBlock="unstyled"
+  currentBlockKey="abcd"
   currentStyles={Immutable.OrderedSet []}
   enableHorizontalRule={false}
   enableLineBreak={true}
   entityTypes={Array []}
+  focus={[Function]}
   inlineStyles={Array []}
+  onCompleteSource={[Function]}
   onRequestSource={[Function]}
   onUndoRedo={[Function]}
   showRedoControl={false}
@@ -256,7 +276,9 @@ exports[`ToolbarDefaults #entityTypes 1`] = `
   addBR={[Function]}
   addHR={[Function]}
   blockTypes={Array []}
+  commands={false}
   currentBlock="unstyled"
+  currentBlockKey="abcd"
   currentStyles={Immutable.OrderedSet []}
   enableHorizontalRule={false}
   enableLineBreak={false}
@@ -264,19 +286,27 @@ exports[`ToolbarDefaults #entityTypes 1`] = `
     Array [
       Object {
         "label": "Test 1",
+        "onPaste": [Function],
+        "source": [Function],
         "type": "TEST_1",
       },
       Object {
         "label": "Test 2",
+        "onPaste": [Function],
+        "source": [Function],
         "type": "TEST_2",
       },
       Object {
         "label": "Test 3",
+        "onPaste": [Function],
+        "source": [Function],
         "type": "TEST_3",
       },
     ]
   }
+  focus={[Function]}
   inlineStyles={Array []}
+  onCompleteSource={[Function]}
   onRequestSource={[Function]}
   onUndoRedo={[Function]}
   showRedoControl={false}
@@ -301,11 +331,14 @@ exports[`ToolbarDefaults #inlineStyles 1`] = `
   addBR={[Function]}
   addHR={[Function]}
   blockTypes={Array []}
+  commands={false}
   currentBlock="unstyled"
+  currentBlockKey="abcd"
   currentStyles={Immutable.OrderedSet []}
   enableHorizontalRule={false}
   enableLineBreak={false}
   entityTypes={Array []}
+  focus={[Function]}
   inlineStyles={
     Array [
       Object {
@@ -322,6 +355,7 @@ exports[`ToolbarDefaults #inlineStyles 1`] = `
       },
     ]
   }
+  onCompleteSource={[Function]}
   onRequestSource={[Function]}
   onUndoRedo={[Function]}
   showRedoControl={false}
@@ -420,12 +454,16 @@ exports[`ToolbarDefaults #showRedoControl control overrides 1`] = `
   addBR={[Function]}
   addHR={[Function]}
   blockTypes={Array []}
+  commands={false}
   currentBlock="unstyled"
+  currentBlockKey="abcd"
   currentStyles={Immutable.OrderedSet []}
   enableHorizontalRule={false}
   enableLineBreak={false}
   entityTypes={Array []}
+  focus={[Function]}
   inlineStyles={Array []}
+  onCompleteSource={[Function]}
   onRequestSource={[Function]}
   onUndoRedo={[Function]}
   showRedoControl={
@@ -456,12 +494,16 @@ exports[`ToolbarDefaults #showRedoControl works 1`] = `
   addBR={[Function]}
   addHR={[Function]}
   blockTypes={Array []}
+  commands={false}
   currentBlock="unstyled"
+  currentBlockKey="abcd"
   currentStyles={Immutable.OrderedSet []}
   enableHorizontalRule={false}
   enableLineBreak={false}
   entityTypes={Array []}
+  focus={[Function]}
   inlineStyles={Array []}
+  onCompleteSource={[Function]}
   onRequestSource={[Function]}
   onUndoRedo={[Function]}
   showRedoControl={true}
@@ -486,12 +528,16 @@ exports[`ToolbarDefaults #showUndoControl control overrides 1`] = `
   addBR={[Function]}
   addHR={[Function]}
   blockTypes={Array []}
+  commands={false}
   currentBlock="unstyled"
+  currentBlockKey="abcd"
   currentStyles={Immutable.OrderedSet []}
   enableHorizontalRule={false}
   enableLineBreak={false}
   entityTypes={Array []}
+  focus={[Function]}
   inlineStyles={Array []}
+  onCompleteSource={[Function]}
   onRequestSource={[Function]}
   onUndoRedo={[Function]}
   showRedoControl={false}
@@ -522,12 +568,16 @@ exports[`ToolbarDefaults #showUndoControl works 1`] = `
   addBR={[Function]}
   addHR={[Function]}
   blockTypes={Array []}
+  commands={false}
   currentBlock="unstyled"
+  currentBlockKey="abcd"
   currentStyles={Immutable.OrderedSet []}
   enableHorizontalRule={false}
   enableLineBreak={false}
   entityTypes={Array []}
+  focus={[Function]}
   inlineStyles={Array []}
+  onCompleteSource={[Function]}
   onRequestSource={[Function]}
   onUndoRedo={[Function]}
   showRedoControl={false}

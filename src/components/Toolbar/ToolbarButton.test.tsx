@@ -33,7 +33,6 @@ describe("ToolbarButton", () => {
     shallow(<ToolbarButton onClick={onClick} />).simulate("mousedown", event);
     expect(onClick).toHaveBeenCalledTimes(1);
     expect(event.preventDefault).toHaveBeenCalledTimes(1);
-    expect();
   });
 
   it("stops showing tooltip on click", () => {

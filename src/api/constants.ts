@@ -62,6 +62,8 @@ export const KEY_COMMANDS = [
   "code",
 ] as const;
 
+export type KnownKeyCommand = typeof KEY_COMMANDS[number];
+
 export const FONT_FAMILY_MONOSPACE =
   "Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif";
 

@@ -9,19 +9,25 @@ exports[`Toolbar #controls 1`] = `
     addBR={[Function]}
     addHR={[Function]}
     blockTypes={Array []}
+    commands={false}
     controls={
       Array [
-        [Function],
+        Object {
+          "block": [Function],
+        },
       ]
     }
     currentBlock="unstyled"
+    currentBlockKey="abcd"
     currentStyles={Immutable.OrderedSet []}
     enableHorizontalRule={false}
     enableLineBreak={false}
     entityTypes={Array []}
+    focus={[Function]}
     getEditorState={[Function]}
     inlineStyles={Array []}
     onChange={[Function]}
+    onCompleteSource={[Function]}
     onRequestSource={[Function]}
     onUndoRedo={[Function]}
     showRedoControl={false}
@@ -30,7 +36,7 @@ exports[`Toolbar #controls 1`] = `
     toggleInlineStyle={[Function]}
   />
   <ToolbarGroup>
-    <Component
+    <block
       getEditorState={[Function]}
       key="0"
       onChange={[Function]}
@@ -48,15 +54,19 @@ exports[`Toolbar empty 1`] = `
     addBR={[Function]}
     addHR={[Function]}
     blockTypes={Array []}
+    commands={false}
     controls={Array []}
     currentBlock="unstyled"
+    currentBlockKey="abcd"
     currentStyles={Immutable.OrderedSet []}
     enableHorizontalRule={false}
     enableLineBreak={false}
     entityTypes={Array []}
+    focus={[Function]}
     getEditorState={[Function]}
     inlineStyles={Array []}
     onChange={[Function]}
+    onCompleteSource={[Function]}
     onRequestSource={[Function]}
     onUndoRedo={[Function]}
     showRedoControl={false}

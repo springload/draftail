@@ -11,15 +11,15 @@ import Placeholder from "./Placeholder";
 
 export const findBlockDescription = (
   type: string,
-  blockTypes: BlockTypeControl[],
+  blockTypes: ReadonlyArray<BlockTypeControl>,
 ) => {
   const blockType = blockTypes.find((t) => t.type === type);
   return blockType ? getControlDescription(blockType) : null;
 };
 
-interface DraftailPlaceholderBlockProps {
+export interface DraftailPlaceholderBlockProps {
   blockProps: {
-    blockTypes: BlockTypeControl[];
+    blockTypes: ReadonlyArray<BlockTypeControl>;
   };
   block: ContentBlock;
 }

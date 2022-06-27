@@ -1,35 +1,24 @@
 import React from "react";
-import type { ComponentType } from "react";
 import { EditorState } from "draft-js";
 
+import {
+  ControlControl,
+  EntityTypeControl,
+  LegacyControlControl,
+} from "../../api/types";
 import { getControlLabel, showControl } from "../../api/ui";
 import ToolbarButton from "./ToolbarButton";
 import ToolbarGroup from "./ToolbarGroup";
 import { getButtonTitle } from "./ToolbarDefaults";
-import { EntityTypeControl } from "../../api/types";
 
-type ControlProps = {
-  getEditorState: () => EditorState;
-  onChange: (state: EditorState) => void;
-};
-
-type ControlComponent = ComponentType<ControlProps>;
-type LegacyControlConfig = ControlComponent;
-type CurrentControlConfig = {
-  inline?: ControlComponent;
-  block?: ControlComponent;
-  meta?: ControlComponent;
-};
-
-type ControlConfig = CurrentControlConfig;
-export type MetaToolbarProps = {
-  showBlockEntities?: boolean | null;
+export interface MetaToolbarProps {
+  showBlockEntities?: boolean;
   entityTypes: ReadonlyArray<EntityTypeControl>;
-  controls: ReadonlyArray<ControlConfig>;
+  controls: ReadonlyArray<ControlControl | LegacyControlControl>;
   getEditorState: () => EditorState;
   onChange: (state: EditorState) => void;
   onRequestSource: (entityType: string) => void;
-};
+}
 
 const MetaToolbar = ({
   showBlockEntities,
@@ -63,7 +52,7 @@ const MetaToolbar = ({
         }
 
         // Support the legacy and current controls APIs.
-        const Control = control.meta || (control as LegacyControlConfig);
+        const Control = control.meta || (control as LegacyControlControl);
 
         return (
           <Control

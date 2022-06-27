@@ -7,6 +7,8 @@ import {
   RichUtils,
   SelectionState,
 } from "draft-js";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import isSoftNewlineEvent from "draft-js/lib/isSoftNewlineEvent";
 
 import { BLOCK_TYPE, ENTITY_TYPE } from "./constants";
@@ -70,7 +72,7 @@ export default {
    * Creates a selection on a given entity in the currently selected block.
    * Returns the current selection if no entity key is provided, or if the entity could not be found.
    */
-  getEntitySelection(editorState: EditorState, entityKey: string) {
+  getEntitySelection(editorState: EditorState, entityKey?: string) {
     const selection = editorState.getSelection();
 
     if (!entityKey) {
@@ -81,6 +83,8 @@ export default {
     let entityRange;
     // https://github.com/jpuri/draftjs-utils/blob/e81c0ae19c3b0fdef7e0c1b70d924398956be126/js/inline.js#L111
     block.findEntityRanges(
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       (value) => value.get("entity") === entityKey,
       (start, end) => {
         entityRange = {
@@ -95,7 +99,11 @@ export default {
     }
 
     return selection.merge({
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       anchorOffset: selection.isBackward ? entityRange.end : entityRange.start,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       focusOffset: selection.isBackward ? entityRange.start : entityRange.end,
     });
   },
@@ -121,6 +129,8 @@ export default {
         focusKey: block.getKey(),
         focusOffset: block.getLength(),
       }),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       {},
     );
 
@@ -275,7 +285,7 @@ export default {
       // No text = no character list
       characterList: block.getCharacterList().slice(0, 0),
       data: {},
-    });
+    }) as ContentBlock;
 
     const newSelection = new SelectionState({
       anchorKey: blockKey,
@@ -286,7 +296,7 @@ export default {
 
     const newContent = content.merge({
       blockMap: blockMap.set(blockKey, newBlock),
-    });
+    }) as ContentState;
 
     newState = EditorState.push(newState, newContent, "change-block-type");
     newState = EditorState.forceSelection(newState, newSelection);
@@ -358,11 +368,11 @@ export default {
 
     const newBlock = blockMap
       .get(insertedBlockKey)
-      .set("type", BLOCK_TYPE.UNSTYLED);
+      .set("type", BLOCK_TYPE.UNSTYLED) as ContentBlock;
 
     newContent = newContent.merge({
       blockMap: blockMap.set(insertedBlockKey, newBlock),
-    });
+    }) as ContentState;
 
     return EditorState.push(editorState, newContent, "split-block");
   },
@@ -387,7 +397,7 @@ export default {
       fragment,
       "\n",
       block.getInlineStyleAt(fragment.getStartOffset()),
-      null,
+      undefined,
     );
     return EditorState.push(editorState, newContent, "insert-fragment");
   },
@@ -431,13 +441,13 @@ export default {
       }
 
       const blockMap = content.getBlockMap();
-      const newBlock = block.set("depth", depth - 1);
+      const newBlock = block.set("depth", depth - 1) as ContentBlock;
 
       return EditorState.push(
         editorState,
         content.merge({
           blockMap: blockMap.set(blockKey, newBlock),
-        }),
+        }) as ContentState,
         "adjust-depth",
       );
     }

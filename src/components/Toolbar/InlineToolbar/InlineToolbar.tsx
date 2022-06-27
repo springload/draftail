@@ -11,7 +11,7 @@ const getReferenceClientRect = () => getVisibleSelectionRect(window);
 
 type FakeRect = ReturnType<typeof getVisibleSelectionRect>;
 
-type InlineToolbarProps = ToolbarProps;
+export type InlineToolbarProps = ToolbarProps;
 
 const InlineToolbar = (props: InlineToolbarProps) => {
   const { controls, getEditorState, onChange } = props;
@@ -49,19 +49,22 @@ const InlineToolbar = (props: InlineToolbarProps) => {
               <ToolbarDefaults {...props} />
 
               <ToolbarGroup>
-                {controls
-                  .filter((control) => Boolean(control.inline))
-                  .map((control, i) => {
-                    const Control = control.inline;
-                    return (
-                      <Control
-                        // eslint-disable-next-line react/no-array-index-key
-                        key={i}
-                        getEditorState={getEditorState}
-                        onChange={onChange}
-                      />
-                    );
-                  })}
+                {controls.map((control, i) => {
+                  const Control = control.inline;
+
+                  if (!Control) {
+                    return null;
+                  }
+
+                  return (
+                    <Control
+                      // eslint-disable-next-line react/no-array-index-key
+                      key={i}
+                      getEditorState={getEditorState}
+                      onChange={onChange}
+                    />
+                  );
+                })}
               </ToolbarGroup>
             </div>
           }

@@ -2,16 +2,61 @@
  * Draftail's main API entry point. Exposes all of the modules people
  * will need to create their own editor instances from Draftail.
  */
-export { default as DraftailEditor } from "./components/DraftailEditor";
-export { default as Icon } from "./components/Icon";
-export { default as ToolbarButton } from "./components/Toolbar/ToolbarButton";
-export { default as Toolbar } from "./components/Toolbar/Toolbar";
-export { default as InlineToolbar } from "./components/Toolbar/InlineToolbar/InlineToolbar";
-export { default as BlockToolbar } from "./components/Toolbar/BlockToolbar/BlockToolbar";
-export { default as MetaToolbar } from "./components/Toolbar/MetaToolbar";
-export { default as CommandPalette } from "./components/CommandPalette/CommandPalette";
+export {
+  default as DraftailEditor,
+  DraftailEditorProps,
+  DraftailEditorState,
+} from "./components/DraftailEditor";
+export { default as Icon, IconProps } from "./components/Icon";
+export {
+  default as ToolbarButton,
+  ToolbarButtonProps,
+} from "./components/Toolbar/ToolbarButton";
+export { default as Toolbar, ToolbarProps } from "./components/Toolbar/Toolbar";
+export {
+  default as InlineToolbar,
+  InlineToolbarProps,
+} from "./components/Toolbar/InlineToolbar/InlineToolbar";
+export {
+  default as BlockToolbar,
+  BlockToolbarProps,
+} from "./components/Toolbar/BlockToolbar/BlockToolbar";
+export {
+  default as MetaToolbar,
+  MetaToolbarProps,
+} from "./components/Toolbar/MetaToolbar";
+export {
+  default as CommandPalette,
+  CommandPaletteProps,
+} from "./components/CommandPalette/CommandPalette";
 export { default as DraftUtils } from "./api/DraftUtils";
-export { BLOCK_TYPE, ENTITY_TYPE, INLINE_STYLE } from "./api/constants";
+export {
+  BLOCK_TYPE,
+  BlockType,
+  ENTITY_TYPE,
+  EntityType,
+  INLINE_STYLE,
+  InlineStyle,
+  KnownFormatType,
+  KeyboardShortcutType,
+} from "./api/constants";
+export {
+  IconProp,
+  TextDirectionality,
+  Control,
+  BoolControl,
+  BlockTypeControl,
+  InlineStyleControl,
+  EntityTypeControl,
+  EntitySourceProps,
+  EntityDecoratorProps,
+  EntityBlockProps,
+  ControlComponentProps,
+  ControlControl,
+  LegacyControlControl,
+  CommandControl,
+  CommandCategory,
+} from "./api/types";
 
 // Expose methods from draftjs-conductor directly for users of Draftail.
 export {

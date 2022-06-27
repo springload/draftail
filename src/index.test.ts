@@ -1,34 +1,102 @@
-import {
-  DraftailEditor,
-  DraftUtils,
-  BLOCK_TYPE,
-  ENTITY_TYPE,
-  INLINE_STYLE,
-  Icon,
-  ToolbarButton,
-  Toolbar,
-  InlineToolbar,
-  MetaToolbar,
-} from "./index";
+import * as api from "./index";
 
 describe("draftail", () => {
-  it("#DraftailEditor", () => expect(DraftailEditor).toBeDefined());
-
-  it("#DraftUtils", () => expect(DraftUtils).toBeDefined());
-
-  it("#BLOCK_TYPE", () => expect(BLOCK_TYPE).toBeDefined());
-
-  it("#ENTITY_TYPE", () => expect(ENTITY_TYPE).toBeDefined());
-
-  it("#INLINE_STYLE", () => expect(INLINE_STYLE).toBeDefined());
-
-  it("#Icon", () => expect(Icon).toBeDefined());
-
-  it("#ToolbarButton", () => expect(ToolbarButton).toBeDefined());
-
-  it("#Toolbar", () => expect(Toolbar).toBeDefined());
-
-  it("#MetaToolbar", () => expect(MetaToolbar).toBeDefined());
-
-  it("#InlineToolbar", () => expect(InlineToolbar).toBeDefined());
+  it("has stable API", () => {
+    expect(api).toMatchInlineSnapshot(`
+      Object {
+        "BLOCK_TYPE": Object {
+          "ATOMIC": "atomic",
+          "BLOCKQUOTE": "blockquote",
+          "CODE": "code-block",
+          "HEADER_FIVE": "header-five",
+          "HEADER_FOUR": "header-four",
+          "HEADER_ONE": "header-one",
+          "HEADER_SIX": "header-six",
+          "HEADER_THREE": "header-three",
+          "HEADER_TWO": "header-two",
+          "ORDERED_LIST_ITEM": "ordered-list-item",
+          "UNORDERED_LIST_ITEM": "unordered-list-item",
+          "UNSTYLED": "unstyled",
+        },
+        "BlockToolbar": [Function],
+        "BlockToolbarProps": undefined,
+        "BlockType": undefined,
+        "BlockTypeControl": undefined,
+        "BoolControl": undefined,
+        "CommandCategory": undefined,
+        "CommandControl": undefined,
+        "CommandPalette": [Function],
+        "CommandPaletteProps": undefined,
+        "Control": undefined,
+        "ControlComponentProps": undefined,
+        "ControlControl": undefined,
+        "DraftUtils": Object {
+          "addHorizontalRuleRemovingSelection": [Function],
+          "addLineBreak": [Function],
+          "applyMarkdownStyle": [Function],
+          "getCommandPalettePrompt": [Function],
+          "getEntitySelection": [Function],
+          "getEntityTypeStrategy": [Function],
+          "getSelectedBlock": [Function],
+          "getSelectionEntity": [Function],
+          "handleDeleteAtomic": [Function],
+          "handleHardNewline": [Function],
+          "handleNewLine": [Function],
+          "insertNewUnstyledBlock": [Function],
+          "removeBlock": [Function],
+          "removeBlockEntity": [Function],
+          "resetBlockWithType": [Function],
+          "updateBlockEntity": [Function],
+        },
+        "DraftailEditor": [Function],
+        "DraftailEditorProps": undefined,
+        "DraftailEditorState": undefined,
+        "ENTITY_TYPE": Object {
+          "HORIZONTAL_RULE": "HORIZONTAL_RULE",
+          "IMAGE": "IMAGE",
+          "LINK": "LINK",
+        },
+        "EntityBlockProps": undefined,
+        "EntityDecoratorProps": undefined,
+        "EntitySourceProps": undefined,
+        "EntityType": undefined,
+        "EntityTypeControl": undefined,
+        "INLINE_STYLE": Object {
+          "BOLD": "BOLD",
+          "CODE": "CODE",
+          "DELETE": "DELETE",
+          "INSERT": "INSERT",
+          "ITALIC": "ITALIC",
+          "KEYBOARD": "KEYBOARD",
+          "MARK": "MARK",
+          "QUOTATION": "QUOTATION",
+          "SAMPLE": "SAMPLE",
+          "SMALL": "SMALL",
+          "STRIKETHROUGH": "STRIKETHROUGH",
+          "SUBSCRIPT": "SUBSCRIPT",
+          "SUPERSCRIPT": "SUPERSCRIPT",
+          "UNDERLINE": "UNDERLINE",
+        },
+        "Icon": [Function],
+        "IconProp": undefined,
+        "IconProps": undefined,
+        "InlineStyle": undefined,
+        "InlineStyleControl": undefined,
+        "InlineToolbar": [Function],
+        "InlineToolbarProps": undefined,
+        "KeyboardShortcutType": undefined,
+        "KnownFormatType": undefined,
+        "LegacyControlControl": undefined,
+        "MetaToolbar": [Function],
+        "MetaToolbarProps": undefined,
+        "TextDirectionality": undefined,
+        "Toolbar": [Function],
+        "ToolbarButton": [Function],
+        "ToolbarButtonProps": undefined,
+        "ToolbarProps": undefined,
+        "createEditorStateFromRaw": [Function],
+        "serialiseEditorStateToRaw": [Function],
+      }
+    `);
+  });
 });

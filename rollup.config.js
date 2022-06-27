@@ -1,5 +1,5 @@
 import typescript from "@rollup/plugin-typescript";
-// import dts from "rollup-plugin-dts";
+import dts from "rollup-plugin-dts";
 
 import pkg from "./package.json";
 
@@ -18,11 +18,11 @@ const config = [
     ],
     plugins: [typescript()],
   },
-  // {
-  //   input: "./src/index.ts",
-  //   output: [{ file: pkg.types, format: "es" }],
-  //   plugins: [dts()],
-  // },
+  {
+    input: "./src/index.ts",
+    output: [{ file: pkg.types, format: "es" }],
+    plugins: [dts()],
+  },
 ];
 
 export default config;

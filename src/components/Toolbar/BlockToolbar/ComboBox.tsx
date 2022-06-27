@@ -7,12 +7,12 @@ import { CommandCategory, CommandControl } from "../../../api/types";
 import findMatches from "./findMatches";
 
 interface ComboBoxProps {
-  label: string;
-  placeholder: string;
+  label?: string;
+  placeholder?: string;
   inputValue?: string;
   items: CommandCategory[];
   onSelect: (change: UseComboboxStateChange<CommandControl>) => void;
-  noResultsText: string;
+  noResultsText?: string;
 }
 
 export default function ComboBox({

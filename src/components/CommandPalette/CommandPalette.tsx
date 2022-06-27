@@ -58,9 +58,9 @@ export const simulateInputEvent = (
 
 const tippyPlugins = [hideTooltipOnEsc];
 
-interface CommandPaletteProps extends ToolbarProps {
-  comboPlacement: TippyProps["placement"];
-  noResultsText: string;
+export interface CommandPaletteProps extends ToolbarProps {
+  comboPlacement?: TippyProps["placement"];
+  noResultsText?: string;
 }
 
 const CommandPalette = ({
@@ -194,7 +194,7 @@ const CommandPalette = ({
 
 CommandPalette.defaultProps = {
   // right-start also works in RTL mode.
-  comboPlacement: "bottom-end",
+  comboPlacement: "bottom-end" as TippyProps["placement"],
   noResultsText: "No results found",
 };
 

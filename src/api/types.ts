@@ -138,10 +138,16 @@ export interface ControlComponentProps {
 }
 
 export interface ControlControl extends Control {
-  inline?: React.Component<ControlComponentProps>;
-  block?: React.Component<ControlComponentProps>;
-  meta?: React.Component<ControlComponentProps>;
+  inline?: React.ComponentType<ControlComponentProps>;
+  block?: React.ComponentType<ControlComponentProps>;
+  meta?: React.ComponentType<ControlComponentProps>;
 }
+export type LegacyControlControl =
+  React.ComponentClass<ControlComponentProps> & {
+    inline: never;
+    block: never;
+    meta: never;
+  };
 
 export interface CommandControl extends Control {
   onSelect?: ({

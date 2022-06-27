@@ -38,7 +38,7 @@ const hideTooltipOnEsc = {
 
 const tippyPlugins = [hideTooltipOnEsc];
 
-interface BlockToolbarProps extends ToolbarProps {
+export interface BlockToolbarProps extends ToolbarProps {
   triggerLabel: string;
   triggerIcon: React.ReactNode;
   comboLabel: string;
@@ -84,14 +84,14 @@ const BlockToolbar = ({
       const elt = document.querySelector<HTMLElement>(
         `[data-block="true"][data-offset-key="${anchorKey}-0-0"]`,
       );
-      if (!elt) {
-        return;
+      if (elt) {
+        const editor = elt.closest<HTMLDivElement>("[data-draftail-editor]");
+        setFocusedBlockTop(
+          elt!.getBoundingClientRect().top -
+            editor!.getBoundingClientRect().top,
+        );
+        setToggleVisible(true);
       }
-      const editor = elt.closest<HTMLDivElement>("[data-draftail-editor]");
-      setFocusedBlockTop(
-        elt!.getBoundingClientRect().top - editor!.getBoundingClientRect().top,
-      );
-      setToggleVisible(true);
     } else {
       setToggleVisible(false);
     }
@@ -200,7 +200,7 @@ BlockToolbar.defaultProps = {
   comboLabel: "Choose an item",
   comboPlaceholder: "Search blocks",
   // right-start also works in RTL mode.
-  comboPlacement: "right-start",
+  comboPlacement: "right-start" as TippyProps["placement"],
   noResultsText: "No results found",
 };
 

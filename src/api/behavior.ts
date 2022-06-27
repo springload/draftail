@@ -351,13 +351,13 @@ export default {
       let items: CommandControl[] = category.items || [];
 
       if (category.type === "blockTypes") {
-        const rawItems = category.items || blockTypes;
+        const rawItems = (category.items as BlockTypeControl[]) || blockTypes;
         items = rawItems.filter(showControl).map((t) => ({
           ...t,
           category: "blockTypes",
         }));
       } else if (category.type === "entityTypes") {
-        const rawItems = category.items || entityTypes;
+        const rawItems = (category.items as EntityTypeControl[]) || entityTypes;
         items = rawItems
           .filter(
             (t) =>
