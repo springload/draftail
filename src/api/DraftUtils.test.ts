@@ -706,37 +706,6 @@ describe("DraftUtils", () => {
     });
   });
 
-  describe("#shouldHidePlaceholder", () => {
-    it("is empty", () => {
-      expect(
-        DraftUtils.shouldHidePlaceholder(EditorState.createEmpty()),
-      ).toBeFalsy();
-    });
-
-    it("has content", () => {
-      const contentBlocks = convertFromHTML("<h1>aaaaaaaaaa</h1>");
-      const contentState = ContentState.createFromBlockArray(contentBlocks);
-      const editorState = EditorState.createWithContent(contentState);
-
-      expect(DraftUtils.shouldHidePlaceholder(editorState)).toBeTruthy();
-    });
-
-    it("is empty but not unstyled", () => {
-      const contentState = convertFromRaw({
-        entityMap: {},
-        blocks: [
-          {
-            key: "b0ei9",
-            text: "",
-            type: "header-two",
-          },
-        ],
-      });
-      const editorState = EditorState.createWithContent(contentState);
-      expect(DraftUtils.shouldHidePlaceholder(editorState)).toBeTruthy();
-    });
-  });
-
   describe("#insertNewUnstyledBlock", () => {
     it("works", () => {
       const contentState = convertFromRaw({

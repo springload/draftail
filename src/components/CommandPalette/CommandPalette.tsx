@@ -43,7 +43,10 @@ export const simulateInputEvent = (
   const editor = (event.target as HTMLDivElement).closest<HTMLDivElement>(
     "[data-draftail-editor]",
   );
-  const input = editor!.querySelector<HTMLInputElement>(
+  if (!editor) {
+    return;
+  }
+  const input = editor.querySelector<HTMLInputElement>(
     "[data-draftail-command-palette-input]",
   );
   if (!input) {

@@ -10,12 +10,14 @@ import {
 } from "draft-js";
 import Editor from "draft-js-plugins-editor";
 
+import { ENTITY_TYPE, INLINE_STYLE } from "../api/constants";
 import behavior from "../api/behavior";
 import DraftUtils from "../api/DraftUtils";
+
 import DividerBlock from "../blocks/DividerBlock";
 import DraftailEditor from "./DraftailEditor";
 import Toolbar from "./Toolbar/Toolbar";
-import { ENTITY_TYPE, INLINE_STYLE } from "../api/constants";
+import PlaceholderStyles from "./PlaceholderBlock/PlaceholderStyles";
 
 jest.mock("draft-js/lib/generateRandomKey", () => () => "a");
 
@@ -85,7 +87,7 @@ describe("DraftailEditor", () => {
     it("visible", () => {
       expect(
         shallowNoLifecycle(<DraftailEditor placeholder="Write here…" />)
-          .find(Editor)
+          .find(PlaceholderStyles)
           .prop("placeholder"),
       ).toEqual("Write here…");
     });
@@ -859,11 +861,9 @@ describe("DraftailEditor", () => {
     it("enter hr", () => {
       wrapper.instance().render = () => {};
       behavior.handleBeforeInputHR = jest.fn(() => true);
-      DraftUtils.shouldHidePlaceholder = jest.fn(() => true);
       expect(wrapper.instance().handleBeforeInput("-")).toBe("handled");
       expect(wrapper.instance().onChange).toHaveBeenCalled();
       expect(DraftUtils.addHorizontalRuleRemovingSelection).toHaveBeenCalled();
-      DraftUtils.shouldHidePlaceholder.mockRestore();
     });
 
     it("change style", () => {

@@ -194,7 +194,6 @@ exports[`DraftailEditor #maxListNesting 1`] = `
     onFocus={[Function]}
     onTab={[Function]}
     onUpArrow={[Function]}
-    placeholder={null}
     plugins={
       Array [
         Object {
@@ -412,7 +411,6 @@ exports[`DraftailEditor empty 1`] = `
     onFocus={[Function]}
     onTab={[Function]}
     onUpArrow={[Function]}
-    placeholder={null}
     plugins={
       Array [
         Object {

@@ -84,7 +84,10 @@ const BlockToolbar = ({
       const elt = document.querySelector<HTMLElement>(
         `[data-block="true"][data-offset-key="${anchorKey}-0-0"]`,
       );
-      const editor = elt!.closest<HTMLDivElement>("[data-draftail-editor]");
+      if (!elt) {
+        return;
+      }
+      const editor = elt.closest<HTMLDivElement>("[data-draftail-editor]");
       setFocusedBlockTop(
         elt!.getBoundingClientRect().top - editor!.getBoundingClientRect().top,
       );
