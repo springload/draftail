@@ -9,6 +9,7 @@ export { default as Toolbar } from "./components/Toolbar/Toolbar";
 export { default as InlineToolbar } from "./components/Toolbar/InlineToolbar/InlineToolbar";
 export { default as BlockToolbar } from "./components/Toolbar/BlockToolbar/BlockToolbar";
 export { default as MetaToolbar } from "./components/Toolbar/MetaToolbar";
+export { default as CommandPalette } from "./components/CommandPalette/CommandPalette";
 export { default as DraftUtils } from "./api/DraftUtils";
 export { BLOCK_TYPE, ENTITY_TYPE, INLINE_STYLE } from "./api/constants";
 

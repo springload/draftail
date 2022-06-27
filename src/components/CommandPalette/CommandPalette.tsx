@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import Tippy from "@tippyjs/react";
+import Tippy, { TippyProps } from "@tippyjs/react";
 import { getVisibleSelectionRect } from "draft-js";
 
 import DraftUtils from "../../api/DraftUtils";
@@ -55,13 +55,18 @@ export const simulateInputEvent = (
 
 const tippyPlugins = [hideTooltipOnEsc];
 
-type CommandPaletteProps = ToolbarProps;
+interface CommandPaletteProps extends ToolbarProps {
+  comboPlacement: TippyProps["placement"];
+  noResultsText: string;
+}
 
 const CommandPalette = ({
   blockTypes,
   entityTypes,
   enableHorizontalRule,
-  commandPalette,
+  comboPlacement,
+  noResultsText,
+  commands,
   getEditorState,
   onCompleteSource,
   onRequestSource,
@@ -69,8 +74,8 @@ const CommandPalette = ({
   const editorState = getEditorState();
   const prompt = DraftUtils.getCommandPalettePrompt(editorState);
   const showPrompt = !!prompt;
-  const commands = behavior.getCommandPalette({
-    commandPalette,
+  const comboOptions = behavior.getCommandPalette({
+    commands,
     blockTypes,
     entityTypes,
     enableHorizontalRule,
@@ -104,15 +109,16 @@ const CommandPalette = ({
         interactive
         onHide={() => setSelectionRect(null)}
         onClickOutside={() => setSelectionRect(null)}
-        placement="bottom-end"
+        placement={comboPlacement}
         maxWidth="100%"
         arrow={false}
         appendTo={() => tippyParentRef.current as HTMLDivElement}
         plugins={tippyPlugins}
         content={
           <ComboBox
-            items={commands}
+            items={comboOptions}
             inputValue={prompt.substring(1)}
+            noResultsText={noResultsText}
             onSelect={(change) => {
               const item = change.selectedItem;
 
@@ -181,6 +187,12 @@ const CommandPalette = ({
       <div className="Draftail-BlockToolbar__backdrop" />
     </div>
   );
+};
+
+CommandPalette.defaultProps = {
+  // right-start also works in RTL mode.
+  comboPlacement: "bottom-end",
+  noResultsText: "No results found",
 };
 
 export default CommandPalette;

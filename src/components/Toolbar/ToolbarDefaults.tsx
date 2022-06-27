@@ -16,7 +16,7 @@ import { getControlLabel, showControl } from "../../api/ui";
 import {
   BlockTypeControl,
   BoolControl,
-  CommandPaletteCategory,
+  CommandCategory,
   EntityTypeControl,
   InlineStyleControl,
 } from "../../api/types";
@@ -51,7 +51,7 @@ export interface ToolbarDefaultProps {
   entityTypes: ReadonlyArray<EntityTypeControl>;
   blockTypes: ReadonlyArray<BlockTypeControl>;
   inlineStyles: ReadonlyArray<InlineStyleControl>;
-  commandPalette: ReadonlyArray<CommandPaletteCategory>;
+  commands: boolean | ReadonlyArray<CommandCategory>;
   toggleBlockType: (blockType: string) => void;
   toggleInlineStyle: (inlineStyle: string) => void;
   addHR: () => void;

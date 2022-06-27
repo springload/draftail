@@ -1,12 +1,7 @@
 import { storiesOf } from "@storybook/react";
 import React, { useState } from "react";
 import { convertFromHTML, convertToHTML } from "draft-convert";
-import {
-  EditorState,
-  convertToRaw,
-  convertFromRaw,
-  ContentState,
-} from "draft-js";
+import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
 import { Formik } from "formik";
 
 import {
@@ -19,6 +14,7 @@ import {
   BLOCK_TYPE,
   DraftUtils,
   Toolbar,
+  CommandPalette,
 } from "../src/index";
 
 import {
@@ -30,7 +26,6 @@ import {
   UNDO_ICON,
   REDO_ICON,
   SCISSORS_ICON,
-  HAND_ICON,
 } from "./constants/ui";
 import indexContentState from "./constants/indexContentState";
 
@@ -321,6 +316,7 @@ storiesOf("Docs", module)
         showRedoControl={{ description: "إعادة" }}
         stripPastedStyles={false}
         maxListNesting={6}
+        commands
         spellCheck
         entityTypes={[
           { ...ENTITY_CONTROL.IMAGE, description: "صورة" },
@@ -349,7 +345,13 @@ storiesOf("Docs", module)
         ]}
         topToolbar={(props) => (
           <>
-            <BlockToolbar {...props} />
+            <BlockToolbar
+              {...props}
+              triggerLabel="إدراج كتلة"
+              comboLabel="اختيار عنصر"
+              comboPlaceholder="كتل البحث"
+              noResultsText="لم يتم العثور على نتائج"
+            />
             <Toolbar {...props} />
           </>
         )}
@@ -358,6 +360,9 @@ storiesOf("Docs", module)
             <InlineToolbar {...props} />
             <MetaToolbar showBlockEntities {...props} />
           </>
+        )}
+        commandToolbar={(props) => (
+          <CommandPalette noResultsText="لم يتم العثور على نتائج" {...props} />
         )}
       />
     </div>
@@ -388,7 +393,7 @@ storiesOf("Docs", module)
     </div>
   ))
   .add("Floating toolbars", () => {
-    const commandPalette = [
+    const commands = [
       {
         label: "Block formats",
         type: "blockTypes",
@@ -472,7 +477,7 @@ storiesOf("Docs", module)
               meta: CharCount,
             },
           ]}
-          commandPalette={commandPalette}
+          commands={commands}
           topToolbar={(props) => (
             <>
               <BlockToolbar {...props} />

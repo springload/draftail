@@ -3,15 +3,16 @@ import { useCombobox, UseComboboxStateChange } from "downshift";
 
 import Icon from "../../Icon";
 import { getControlDescription, getControlLabel } from "../../../api/ui";
-import { CommandPaletteCategory, CommandPaletteItem } from "../../../api/types";
+import { CommandCategory, CommandControl } from "../../../api/types";
 import findMatches from "./findMatches";
 
 interface ComboBoxProps {
   label: string;
   placeholder: string;
   inputValue?: string;
-  items: CommandPaletteCategory[];
-  onSelect: (change: UseComboboxStateChange<CommandPaletteItem>) => void;
+  items: CommandCategory[];
+  onSelect: (change: UseComboboxStateChange<CommandControl>) => void;
+  noResultsText: string;
 }
 
 export default function ComboBox({
@@ -20,11 +21,12 @@ export default function ComboBox({
   inputValue,
   items,
   onSelect,
+  noResultsText,
 }: ComboBoxProps) {
-  const flatItems = items.flatMap<CommandPaletteItem>(
+  const flatItems = items.flatMap<CommandControl>(
     (category) => category.items || [],
   );
-  const [inputItems, setInputItems] = useState<CommandPaletteItem[]>(flatItems);
+  const [inputItems, setInputItems] = useState<CommandControl[]>(flatItems);
   const noResults = inputItems.length === 0;
   const {
     getLabelProps,
@@ -35,10 +37,10 @@ export default function ComboBox({
     setHighlightedIndex,
     setInputValue,
     openMenu,
-  } = useCombobox<CommandPaletteItem>({
+  } = useCombobox<CommandControl>({
     inputValue,
     items: inputItems,
-    itemToString(item: CommandPaletteItem | null) {
+    itemToString(item: CommandControl | null) {
       if (!item) {
         return "";
       }
@@ -58,7 +60,7 @@ export default function ComboBox({
         return;
       }
 
-      const filtered = findMatches<CommandPaletteItem>(flatItems, val);
+      const filtered = findMatches<CommandControl>(flatItems, val);
       setInputItems(filtered);
       // Always reset the first item to highlighted on filtering, to speed up selection.
       setHighlightedIndex(0);
@@ -69,12 +71,12 @@ export default function ComboBox({
     if (inputValue) {
       openMenu();
       setInputValue(inputValue);
-      const filtered = findMatches<CommandPaletteItem>(flatItems, inputValue);
+      const filtered = findMatches<CommandControl>(flatItems, inputValue);
       setInputItems(filtered);
       // Always reset the first item to highlighted on filtering, to speed up selection.
       setHighlightedIndex(0);
     } else {
-      setInputValue(undefined);
+      setInputValue("");
       setInputItems(flatItems);
       setHighlightedIndex(-1);
     }
@@ -99,7 +101,7 @@ export default function ComboBox({
         />
       </div>
       {noResults ? (
-        <div className="Draftail-ComboBox__status">No results</div>
+        <div className="Draftail-ComboBox__status">{noResultsText}</div>
       ) : null}
       <div {...getMenuProps()} className="Draftail-ComboBox__menu">
         {items.map((category) => {

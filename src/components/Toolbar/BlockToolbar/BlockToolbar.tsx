@@ -38,22 +38,23 @@ const hideTooltipOnEsc = {
 
 const tippyPlugins = [hideTooltipOnEsc];
 
-type BlockToolbarProps = {
-  trigger: {
-    icon: React.ReactNode;
-    label: string;
-  };
-  comboBox: {
-    label: string;
-    placeholder: string;
-    placement: TippyProps["placement"];
-  };
-} & ToolbarProps;
+interface BlockToolbarProps extends ToolbarProps {
+  triggerLabel: string;
+  triggerIcon: React.ReactNode;
+  comboLabel: string;
+  comboPlaceholder: string;
+  comboPlacement: TippyProps["placement"];
+  noResultsText: string;
+}
 
 const BlockToolbar = ({
-  trigger,
-  comboBox,
-  commandPalette,
+  triggerLabel,
+  triggerIcon,
+  comboLabel,
+  comboPlaceholder,
+  comboPlacement,
+  noResultsText,
+  commands,
   getEditorState,
   blockTypes,
   currentBlock,
@@ -99,9 +100,9 @@ const BlockToolbar = ({
     // Worst-case scenario is turning a list item block into unstyled.
   }, [showToggle, anchorKey, blockType]);
 
-  const commands = behavior.getCommandPalette({
+  const comboOptions = behavior.getCommandPalette({
     // We always want commands for the block toolbar, even if the main command palette is disabled.
-    commandPalette: commandPalette || true,
+    commands: commands || true,
     blockTypes,
     entityTypes,
     enableHorizontalRule,
@@ -119,7 +120,7 @@ const BlockToolbar = ({
         visible={visible}
         onHide={() => setVisible(false)}
         onClickOutside={() => setVisible(false)}
-        placement={comboBox.placement}
+        placement={comboPlacement}
         maxWidth="100%"
         arrow={false}
         appendTo={() => tippyParentRef.current as HTMLDivElement}
@@ -140,9 +141,10 @@ const BlockToolbar = ({
         content={
           <ComboBox
             key={`${currentBlockKey}-${currentBlock}`}
-            label={comboBox.label}
-            placeholder={comboBox.placeholder}
-            items={commands}
+            label={comboLabel}
+            placeholder={comboPlaceholder}
+            items={comboOptions}
+            noResultsText={noResultsText}
             onSelect={(change) => {
               const item = change.selectedItem;
 
@@ -178,10 +180,10 @@ const BlockToolbar = ({
             top: focusedBlockTop,
             visibility: toggleVisible ? "visible" : "hidden",
           }}
-          aria-label={trigger.label}
+          aria-label={triggerLabel}
           onClick={() => setVisible(true)}
         >
-          {trigger.icon}
+          {triggerIcon}
         </button>
       </Tippy>
       <div className="Draftail-BlockToolbar__backdrop" />
@@ -190,15 +192,13 @@ const BlockToolbar = ({
 };
 
 BlockToolbar.defaultProps = {
-  trigger: {
-    icon: addIcon,
-    label: "Insert block",
-  },
-  comboBox: {
-    label: "Choose an item:",
-    placeholder: "Search blocks",
-    placement: "right-start",
-  },
+  triggerLabel: "Insert block",
+  triggerIcon: addIcon,
+  comboLabel: "Choose an item",
+  comboPlaceholder: "Search blocks",
+  // right-start also works in RTL mode.
+  comboPlacement: "right-start",
+  noResultsText: "No results found",
 };
 
 export default BlockToolbar;

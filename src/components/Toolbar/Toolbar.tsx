@@ -1,26 +1,13 @@
 import React from "react";
-import type { ComponentType } from "react";
 import { EditorState } from "draft-js";
+
+import { ControlControl } from "../../api/types";
 
 import ToolbarDefaults, { ToolbarDefaultProps } from "./ToolbarDefaults";
 import ToolbarGroup from "./ToolbarGroup";
 
-type ControlProps = {
-  getEditorState: () => EditorState;
-  onChange: (state: EditorState) => void;
-};
-
-type ControlComponent = ComponentType<ControlProps>;
-type LegacyControlConfig = ControlComponent;
-type CurrentControlConfig = {
-  inline?: ControlComponent;
-  block?: ControlComponent;
-  meta?: ControlComponent;
-};
-
-type ControlConfig = CurrentControlConfig | LegacyControlConfig;
 export interface ToolbarProps extends ToolbarDefaultProps {
-  controls: ReadonlyArray<ControlConfig>;
+  controls: ReadonlyArray<ControlControl>;
   getEditorState: () => EditorState;
   onChange: (state: EditorState) => void;
 }

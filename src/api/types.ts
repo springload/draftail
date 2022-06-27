@@ -40,13 +40,13 @@ export interface EntityTypeControl extends Control {
   type: string;
 
   /** React component providing the UI to manage entities of this type. */
-  source: React.Component<EntitySourceProps>;
+  source: React.ComponentType<EntitySourceProps>;
 
   /** React component to display inline entities. */
-  decorator?: React.Component<EntityDecoratorProps>;
+  decorator?: React.ComponentType<EntityDecoratorProps>;
 
   /** React component to display block-level entities. */
-  block?: React.Component<EntityBlockProps>;
+  block?: React.ComponentType<EntityBlockProps>;
 
   /** Custom copy-paste processing checker. */
   onPaste: (
@@ -86,9 +86,11 @@ export interface EntitySourceProps {
   /** Current entity to edit, if any. */
   entityType: EntityTypeControl;
   /** Current entityKey to edit, if any. */
-  entityKey: string | null;
+  entityKey?: string | null;
   /** Whole entityType configuration, as provided to the editor. */
-  entity: EntityInstance | null;
+  entity?: EntityInstance | null;
+  /** Optionally set the overriding text directionality for this editor. */
+  textDirectionality: TextDirectionality;
 }
 
 export interface EntityDecoratorProps {
@@ -130,7 +132,18 @@ export interface EntityBlockProps {
   };
 }
 
-export interface CommandPaletteItem extends Control {
+export interface ControlComponentProps {
+  getEditorState: () => EditorState;
+  onChange: (state: EditorState) => void;
+}
+
+export interface ControlControl extends Control {
+  inline?: React.Component<ControlComponentProps>;
+  block?: React.Component<ControlComponentProps>;
+  meta?: React.Component<ControlComponentProps>;
+}
+
+export interface CommandControl extends Control {
   onSelect?: ({
     editorState,
     prompt,
@@ -141,8 +154,8 @@ export interface CommandPaletteItem extends Control {
   category?: string;
 }
 
-export interface CommandPaletteCategory {
+export interface CommandCategory {
   type: "blockTypes" | "entityTypes" | string;
   label: string | null;
-  items?: CommandPaletteItem[];
+  items?: CommandControl[];
 }

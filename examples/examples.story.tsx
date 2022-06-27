@@ -6,7 +6,7 @@ import {
   serialiseEditorStateToRaw,
 } from "draftjs-conductor";
 
-import { EditorState, RichUtils } from "draft-js";
+import { EditorState } from "draft-js";
 import {
   INLINE_CONTROL,
   BLOCK_CONTROL,
@@ -86,7 +86,7 @@ storiesOf("Examples", module)
             <MetaToolbar {...props} />
           </>
         )}
-        commandPalette={[
+        commands={[
           {
             label: "Rich text",
             type: "blockTypes",
@@ -267,7 +267,7 @@ storiesOf("Examples", module)
       blockTypes={Object.values(BLOCK_CONTROL)}
       inlineStyles={Object.values(INLINE_CONTROL)}
       entityTypes={[ENTITY_CONTROL.IMAGE, ENTITY_CONTROL.LINK]}
-      commandPalette
+      commands
     />
   ))
   .add("Content awareness", () => (
@@ -291,7 +291,7 @@ storiesOf("Examples", module)
       ]}
       entityTypes={[ENTITY_CONTROL.LINK, ENTITY_CONTROL.EMBED]}
       enableHorizontalRule
-      commandPalette
+      commands
       plugins={[autoEmbed, linkify]}
     />
   ));

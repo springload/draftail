@@ -25,8 +25,8 @@ import {
 import {
   BlockTypeControl,
   BoolControl,
-  CommandPaletteCategory,
-  CommandPaletteItem,
+  CommandCategory,
+  CommandControl,
   EntityTypeControl,
   InlineStyleControl,
 } from "./types";
@@ -300,21 +300,21 @@ export default {
   },
 
   getCommandPalette({
-    commandPalette,
+    commands,
     blockTypes,
     entityTypes,
     enableHorizontalRule,
   }: {
-    commandPalette: boolean | ReadonlyArray<CommandPaletteCategory>;
+    commands: boolean | ReadonlyArray<CommandCategory>;
     blockTypes: ReadonlyArray<BlockTypeControl>;
     entityTypes: ReadonlyArray<EntityTypeControl>;
     enableHorizontalRule: BoolControl;
   }) {
-    if (!commandPalette) {
+    if (!commands) {
       return [];
     }
 
-    if (typeof commandPalette === "boolean" && commandPalette) {
+    if (typeof commands === "boolean" && commands) {
       const items = [
         ...blockTypes.filter(showControl).map((t) => ({
           ...t,
@@ -347,8 +347,8 @@ export default {
       ];
     }
 
-    return commandPalette.map((category) => {
-      let items: CommandPaletteItem[] = category.items || [];
+    return commands.map((category) => {
+      let items: CommandControl[] = category.items || [];
 
       if (category.type === "blockTypes") {
         const rawItems = category.items || blockTypes;

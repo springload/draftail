@@ -34,9 +34,10 @@ import behavior from "../api/behavior";
 import {
   BlockTypeControl,
   BoolControl,
-  CommandPaletteCategory,
+  CommandCategory,
   EntityTypeControl,
   InlineStyleControl,
+  TextDirectionality,
 } from "../api/types";
 
 import Toolbar, { ToolbarProps } from "./Toolbar/Toolbar";
@@ -47,8 +48,6 @@ import CommandPalette, {
 } from "./CommandPalette/CommandPalette";
 import PlaceholderStyles from "./PlaceholderBlock/PlaceholderStyles";
 import PlaceholderBlock from "./PlaceholderBlock/PlaceholderBlock";
-
-type TextDirectionality = "LTR" | "RTL";
 
 interface DraftailEditorProps {
   /** Initial content of the editor. Use this to edit pre-existing content. */
@@ -108,7 +107,7 @@ interface DraftailEditorProps {
   /** Optionally set the overriding text directionality for this editor.
    * See https://draftjs.org/docs/api-reference-editor.html#textdirectionality.
    */
-  textDirectionality?: TextDirectionality | null;
+  textDirectionality: TextDirectionality;
 
   /** Set if auto capitalization is turned on and how it behaves.
    * See https://draftjs.org/docs/api-reference-editor.html#autocapitalize-string.
@@ -153,17 +152,20 @@ interface DraftailEditorProps {
     }>
   >;
 
+  /** Optionally enable the command palette UI. */
+  commands: boolean | ReadonlyArray<CommandCategory>;
+
   /** List of plugins of the draft-js-plugins architecture. */
   plugins: ReadonlyArray<unknown>;
 
   /** Optionally override the default Draftail toolbar, removing or replacing it. */
-  topToolbar?: React.Component<ToolbarProps> | null;
+  topToolbar?: React.ComponentType<ToolbarProps> | null;
 
   /** Optionally add a custom toolbar underneath the editor, e.g. for metrics. */
-  bottomToolbar?: React.Component<ToolbarProps> | null;
+  bottomToolbar?: React.ComponentType<ToolbarProps> | null;
 
-  /** Optionally enable the command palette UI. */
-  commandPalette?: boolean | ReadonlyArray<CommandPaletteCategory>;
+  /** Optionally override the default command toolbar, removing or replacing it. */
+  commandToolbar?: React.ComponentType<ToolbarProps> | null;
 
   /** Max level of nesting for list items. 0 = no nesting. Maximum = 10. */
   maxListNesting: number;
@@ -246,12 +248,14 @@ const defaultProps = {
   controls: [],
   /** List of plugins of the draft-js-plugins architecture. */
   plugins: [],
+  /** Optionally enable the command palette UI. */
+  commands: false,
   /** Optionally override the default Draftail toolbar, removing or replacing it. */
   topToolbar: Toolbar,
   /** Optionally add a custom toolbar underneath the editor, e.g. for metrics. */
   bottomToolbar: null,
-  /** Optionally enable the command palette UI. */
-  commandPalette: false,
+  /** Optionally override the default command toolbar, removing or replacing it. */
+  commandToolbar: CommandPalette,
   /** Max level of nesting for list items. 0 = no nesting. Maximum = 10. */
   maxListNesting: 1,
   /** Frequency at which to call the onSave callback (ms). */
@@ -397,20 +401,20 @@ class DraftailEditor extends Component<
   }
 
   onUpArrow(event: React.KeyboardEvent<HTMLDivElement>) {
-    const { commandPalette } = this.props;
+    const { commands } = this.props;
     const editorState = this.getEditorState();
     const showPrompt =
-      !!commandPalette && !!DraftUtils.getCommandPalettePrompt(editorState);
+      !!commands && !!DraftUtils.getCommandPalettePrompt(editorState);
     if (showPrompt) {
       simulateInputEvent("ArrowUp", event);
     }
   }
 
   onDownArrow(event: React.KeyboardEvent<HTMLDivElement>) {
-    const { commandPalette } = this.props;
+    const { commands } = this.props;
     const editorState = this.getEditorState();
     const showPrompt =
-      !!commandPalette && !!DraftUtils.getCommandPalettePrompt(editorState);
+      !!commands && !!DraftUtils.getCommandPalettePrompt(editorState);
     if (showPrompt) {
       simulateInputEvent("ArrowDown", event);
     }
@@ -613,12 +617,11 @@ class DraftailEditor extends Component<
 
   // eslint-disable-next-line react/sort-comp
   handleReturn(e: React.KeyboardEvent<HTMLDivElement>) {
-    const { multiline, enableLineBreak, inlineStyles, commandPalette } =
-      this.props;
+    const { multiline, enableLineBreak, inlineStyles, commands } = this.props;
     const editorState = this.getEditorState();
 
     const showPrompt =
-      !!commandPalette && !!DraftUtils.getCommandPalettePrompt(editorState);
+      !!commands && !!DraftUtils.getCommandPalettePrompt(editorState);
     if (showPrompt) {
       simulateInputEvent("Enter", e);
       return HANDLED;
@@ -1001,9 +1004,10 @@ class DraftailEditor extends Component<
       readOnly,
       maxListNesting,
       plugins,
+      commands,
       topToolbar,
       bottomToolbar,
-      commandPalette,
+      commandToolbar,
     } = this.props;
     const { hasFocus, readOnlyState } = this.state;
     const editorState = this.getEditorState();
@@ -1024,6 +1028,7 @@ class DraftailEditor extends Component<
 
     const TopToolbar = topToolbar;
     const BottomToolbar = bottomToolbar;
+    const CommandToolbar = commandToolbar;
     const selectedBlock = DraftUtils.getSelectedBlock(editorState);
     const toolbarProps = {
       currentStyles: editorState.getCurrentInlineStyle(),
@@ -1037,7 +1042,7 @@ class DraftailEditor extends Component<
       inlineStyles,
       entityTypes,
       controls,
-      commandPalette,
+      commands,
       readOnly: isReadOnly,
       toggleBlockType: this.toggleBlockType,
       toggleInlineStyle: this.toggleInlineStyle,
@@ -1051,6 +1056,7 @@ class DraftailEditor extends Component<
       onChange: this.onChange,
     };
 
+    /* eslint-disable react/jsx-props-no-spreading */
     return (
       <div
         className={`Draftail-Editor${
@@ -1059,7 +1065,6 @@ class DraftailEditor extends Component<
         dir={textDirectionality === "RTL" ? "rtl" : "ltr"}
         data-draftail-editor
       >
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         {TopToolbar ? <TopToolbar {...toolbarProps} /> : null}
 
         <Editor
@@ -1113,11 +1118,11 @@ class DraftailEditor extends Component<
           decorators={decorators.concat(entityDecorators)}
         />
 
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         {BottomToolbar ? <BottomToolbar {...toolbarProps} /> : null}
 
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        {commandPalette ? <CommandPalette {...toolbarProps} /> : null}
+        {commands && CommandToolbar ? (
+          <CommandToolbar {...toolbarProps} />
+        ) : null}
 
         {this.renderSource()}
 
