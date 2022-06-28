@@ -45,7 +45,7 @@ const MetaToolbar = ({
           ))}
       </ToolbarGroup>
     ) : null}
-    <ToolbarGroup>
+    <ToolbarGroup name="controls">
       {controls.map((control, i) => {
         if (control.inline || control.block) {
           return null;

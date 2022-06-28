@@ -1,5 +1,4 @@
 import React from "react";
-import type { Node } from "react";
 import Prism from "prismjs";
 import type { ContentBlock } from "draft-js";
 
@@ -15,6 +14,23 @@ type Options = {
  * to use the CompositeDecorator strategy API.
  */
 class PrismDecorator {
+  options: Options;
+
+  highlighted: Record<string, Record<string, { type: string }>> = {};
+
+  component: ({
+    children,
+    offsetKey,
+  }: {
+    children: React.ReactNode;
+    offsetKey: string;
+  }) => JSX.Element;
+
+  strategy: (
+    block: ContentBlock,
+    callback: (start: number, end: number) => void,
+  ) => void;
+
   constructor(options: Options) {
     this.options = options;
     this.highlighted = {};
@@ -24,7 +40,13 @@ class PrismDecorator {
   }
 
   // Renders the decorated tokens.
-  renderToken({ children, offsetKey }: { children: Node; offsetKey: string }) {
+  renderToken({
+    children,
+    offsetKey,
+  }: {
+    children: React.ReactNode;
+    offsetKey: string;
+  }) {
     const type = this.getTokenTypeForKey(offsetKey);
     return <span className={`token ${type}`}>{children}</span>;
   }
@@ -69,7 +91,7 @@ class PrismDecorator {
     this.highlighted[blockKey] = {};
 
     let tokenCount = 0;
-    tokens.reduce((startOffset, token) => {
+    tokens.reduce((startOffset: number, token: string) => {
       const endOffset = startOffset + token.length;
 
       if (typeof token !== "string") {

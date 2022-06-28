@@ -1,5 +1,4 @@
 import React from "react";
-import type { Node } from "react";
 import { ContentState } from "draft-js";
 
 import FontIcon from "../components/FontIcon";
@@ -10,7 +9,7 @@ export const DOCUMENT_ICON = <FontIcon icon="document" />;
 type Props = {
   entityKey: string;
   contentState: ContentState;
-  children: Node;
+  children: React.ReactNode;
   onEdit: (entityType: string) => void;
   onRemove: (entityType: string) => void;
   textDirectionality: "LTR" | "RTL";

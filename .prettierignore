@@ -6,3 +6,4 @@ dist/
 webpack-stats.json
 public/webpack-stats.html
 public/storybook
+storybook-static

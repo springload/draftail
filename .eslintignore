@@ -4,3 +4,4 @@ coverage/
 dist/
 *.bundle.js
 public/storybook
+storybook-static

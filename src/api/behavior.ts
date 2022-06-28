@@ -4,8 +4,8 @@ import {
   getDefaultKeyBinding,
   KeyBindingUtil,
   EditorState,
+  ContentBlock,
 } from "draft-js";
-import type { ContentBlock } from "draft-js";
 import { filterEditorState } from "draftjs-filters";
 import { blockDepthStyleFn } from "draftjs-conductor";
 
