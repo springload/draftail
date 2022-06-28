@@ -176,13 +176,7 @@ const CommandPalette = ({
       >
         <div
           className="Draftail-CommandPalette__target"
-          style={
-            selectionRect
-              ? {
-                  top: selectionRect.top,
-                }
-              : {}
-          }
+          style={selectionRect ? { top: selectionRect.top } : undefined}
         >
           {"\u200B"}
         </div>

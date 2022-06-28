@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Tippy from "@tippyjs/react";
+import Tippy, { TippyProps } from "@tippyjs/react";
 
 import { getVisibleSelectionRect } from "draft-js";
 
@@ -11,7 +11,9 @@ const getReferenceClientRect = () => getVisibleSelectionRect(window);
 
 type FakeRect = ReturnType<typeof getVisibleSelectionRect>;
 
-export type InlineToolbarProps = ToolbarProps;
+export interface InlineToolbarProps extends ToolbarProps {
+  tooltipPlacement?: TippyProps["placement"];
+}
 
 const InlineToolbar = (props: InlineToolbarProps) => {
   const { controls, getEditorState, onChange } = props;
@@ -34,17 +36,15 @@ const InlineToolbar = (props: InlineToolbarProps) => {
 
   return (
     <>
-      <div ref={tippyParentRef} />
       {isVisible ? (
         <Tippy
           visible={isVisible}
-          getReferenceClientRect={() => selectionRect as DOMRect}
           maxWidth="100%"
           interactive
           arrow={false}
           appendTo={() => tippyParentRef.current as HTMLDivElement}
           content={
-            <div className="Draftail-Toolbar" role="toolbar">
+            <div className="Draftail-InlineToolbar" role="toolbar">
               {/* eslint-disable-next-line react/jsx-props-no-spreading */}
               <ToolbarDefaults {...props} />
 
@@ -68,16 +68,26 @@ const InlineToolbar = (props: InlineToolbarProps) => {
               </ToolbarGroup>
             </div>
           }
-        />
+        >
+          <div
+            className="Draftail-InlineToolbar__target"
+            style={
+              selectionRect
+                ? { top: selectionRect.top, left: selectionRect.left }
+                : undefined
+            }
+          >
+            {"\u200B"}
+          </div>
+        </Tippy>
       ) : null}
+      <div ref={tippyParentRef} />
     </>
   );
 };
 
 InlineToolbar.defaultProps = {
-  tooltip: {
-    placement: "top",
-  },
+  tooltipPlacement: "top" as TippyProps["placement"],
 };
 
 export default InlineToolbar;

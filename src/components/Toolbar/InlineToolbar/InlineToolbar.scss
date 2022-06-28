@@ -1,1 +1,13 @@
-@import "~tippy.js/dist/tippy.css";
+.#{$DRAFTAIL}InlineToolbar {
+  padding: $controls-spacing;
+  background-color: $draftail-editor-chrome;
+  color: $draftail-editor-chrome-text;
+  border-radius: $draftail-toolbar-radius;
+  border-bottom: $draftail-toolbar-border-bottom;
+}
+
+.#{$DRAFTAIL}InlineToolbar__target {
+  position: absolute;
+  pointer-events: none;
+  visibility: hidden;
+}
