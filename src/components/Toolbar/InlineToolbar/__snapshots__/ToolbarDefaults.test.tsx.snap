@@ -39,12 +39,14 @@ exports[`ToolbarDefaults #blockTypes 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   >
     <div
-      className="Draftail-ToolbarGroup"
+      className="Draftail-ToolbarGroup Draftail-ToolbarGroup--blocks"
     >
       <ToolbarButton
         active={false}
@@ -119,6 +121,7 @@ exports[`ToolbarDefaults #blockTypes 1`] = `
   </ToolbarGroup>
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
 </ToolbarDefaults>
 `;
@@ -153,12 +156,15 @@ exports[`ToolbarDefaults #enableHorizontalRule control overrides 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
 </ToolbarDefaults>
 `;
@@ -187,12 +193,15 @@ exports[`ToolbarDefaults #enableHorizontalRule works 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
 </ToolbarDefaults>
 `;
@@ -227,12 +236,15 @@ exports[`ToolbarDefaults #enableLineBreak control overrides 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
 </ToolbarDefaults>
 `;
@@ -261,12 +273,15 @@ exports[`ToolbarDefaults #enableLineBreak works 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
 </ToolbarDefaults>
 `;
@@ -316,12 +331,15 @@ exports[`ToolbarDefaults #entityTypes 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
 </ToolbarDefaults>
 `;
@@ -365,9 +383,10 @@ exports[`ToolbarDefaults #inlineStyles 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   >
     <div
-      className="Draftail-ToolbarGroup"
+      className="Draftail-ToolbarGroup Draftail-ToolbarGroup--styles"
     >
       <ToolbarButton
         active={false}
@@ -442,9 +461,11 @@ exports[`ToolbarDefaults #inlineStyles 1`] = `
   </ToolbarGroup>
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
 </ToolbarDefaults>
 `;
@@ -479,12 +500,15 @@ exports[`ToolbarDefaults #showRedoControl control overrides 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
 </ToolbarDefaults>
 `;
@@ -513,12 +537,15 @@ exports[`ToolbarDefaults #showRedoControl works 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
 </ToolbarDefaults>
 `;
@@ -553,12 +580,15 @@ exports[`ToolbarDefaults #showUndoControl control overrides 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
 </ToolbarDefaults>
 `;
@@ -587,12 +617,15 @@ exports[`ToolbarDefaults #showUndoControl works 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
 </ToolbarDefaults>
 `;
@@ -601,12 +634,15 @@ exports[`ToolbarDefaults empty 1`] = `
 Array [
   <ToolbarGroup
     key="styles"
+    name="styles"
   />,
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />,
   <ToolbarGroup
     key="entities"
+    name="entities"
   />,
 ]
 `;

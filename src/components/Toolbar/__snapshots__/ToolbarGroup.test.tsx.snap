@@ -2,7 +2,7 @@
 
 exports[`ToolbarGroup children 1`] = `
 <div
-  className="Draftail-ToolbarGroup"
+  className="Draftail-ToolbarGroup Draftail-ToolbarGroup--empty"
 >
   <span>
     Test child

@@ -39,12 +39,14 @@ exports[`ToolbarDefaults #blockTypes 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   >
     <div
-      className="Draftail-ToolbarGroup"
+      className="Draftail-ToolbarGroup Draftail-ToolbarGroup--blocks"
     >
       <ToolbarButton
         active={false}
@@ -119,12 +121,15 @@ exports[`ToolbarDefaults #blockTypes 1`] = `
   </ToolbarGroup>
   <ToolbarGroup
     key="hr-br"
+    name="hr-br"
   />
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
   <ToolbarGroup
     key="undo-redo"
+    name="undo-redo"
   />
 </ToolbarDefaults>
 `;
@@ -159,15 +164,18 @@ exports[`ToolbarDefaults #enableHorizontalRule control overrides 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="hr-br"
+    name="hr-br"
   >
     <div
-      className="Draftail-ToolbarGroup"
+      className="Draftail-ToolbarGroup Draftail-ToolbarGroup--hr-br"
     >
       <ToolbarButton
         icon="#icon-hr"
@@ -214,9 +222,11 @@ exports[`ToolbarDefaults #enableHorizontalRule control overrides 1`] = `
   </ToolbarGroup>
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
   <ToolbarGroup
     key="undo-redo"
+    name="undo-redo"
   />
 </ToolbarDefaults>
 `;
@@ -245,15 +255,18 @@ exports[`ToolbarDefaults #enableHorizontalRule works 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="hr-br"
+    name="hr-br"
   >
     <div
-      className="Draftail-ToolbarGroup"
+      className="Draftail-ToolbarGroup Draftail-ToolbarGroup--hr-br"
     >
       <ToolbarButton
         icon={null}
@@ -285,9 +298,11 @@ exports[`ToolbarDefaults #enableHorizontalRule works 1`] = `
   </ToolbarGroup>
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
   <ToolbarGroup
     key="undo-redo"
+    name="undo-redo"
   />
 </ToolbarDefaults>
 `;
@@ -322,15 +337,18 @@ exports[`ToolbarDefaults #enableLineBreak control overrides 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="hr-br"
+    name="hr-br"
   >
     <div
-      className="Draftail-ToolbarGroup"
+      className="Draftail-ToolbarGroup Draftail-ToolbarGroup--hr-br"
     >
       <ToolbarButton
         icon="#icon-br"
@@ -377,9 +395,11 @@ exports[`ToolbarDefaults #enableLineBreak control overrides 1`] = `
   </ToolbarGroup>
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
   <ToolbarGroup
     key="undo-redo"
+    name="undo-redo"
   />
 </ToolbarDefaults>
 `;
@@ -408,15 +428,18 @@ exports[`ToolbarDefaults #enableLineBreak works 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="hr-br"
+    name="hr-br"
   >
     <div
-      className="Draftail-ToolbarGroup"
+      className="Draftail-ToolbarGroup Draftail-ToolbarGroup--hr-br"
     >
       <ToolbarButton
         icon={null}
@@ -448,9 +471,11 @@ exports[`ToolbarDefaults #enableLineBreak works 1`] = `
   </ToolbarGroup>
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
   <ToolbarGroup
     key="undo-redo"
+    name="undo-redo"
   />
 </ToolbarDefaults>
 `;
@@ -500,18 +525,22 @@ exports[`ToolbarDefaults #entityTypes 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="hr-br"
+    name="hr-br"
   />
   <ToolbarGroup
     key="entities"
+    name="entities"
   >
     <div
-      className="Draftail-ToolbarGroup"
+      className="Draftail-ToolbarGroup Draftail-ToolbarGroup--entities"
     >
       <ToolbarButton
         key="TEST_1"
@@ -583,6 +612,7 @@ exports[`ToolbarDefaults #entityTypes 1`] = `
   </ToolbarGroup>
   <ToolbarGroup
     key="undo-redo"
+    name="undo-redo"
   />
 </ToolbarDefaults>
 `;
@@ -626,9 +656,10 @@ exports[`ToolbarDefaults #inlineStyles 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   >
     <div
-      className="Draftail-ToolbarGroup"
+      className="Draftail-ToolbarGroup Draftail-ToolbarGroup--styles"
     >
       <ToolbarButton
         active={false}
@@ -703,15 +734,19 @@ exports[`ToolbarDefaults #inlineStyles 1`] = `
   </ToolbarGroup>
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="hr-br"
+    name="hr-br"
   />
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
   <ToolbarGroup
     key="undo-redo"
+    name="undo-redo"
   />
 </ToolbarDefaults>
 `;
@@ -746,21 +781,26 @@ exports[`ToolbarDefaults #showRedoControl control overrides 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="hr-br"
+    name="hr-br"
   />
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
   <ToolbarGroup
     key="undo-redo"
+    name="undo-redo"
   >
     <div
-      className="Draftail-ToolbarGroup"
+      className="Draftail-ToolbarGroup Draftail-ToolbarGroup--undo-redo"
     >
       <ToolbarButton
         icon="#icon-redo"
@@ -832,21 +872,26 @@ exports[`ToolbarDefaults #showRedoControl works 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="hr-br"
+    name="hr-br"
   />
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
   <ToolbarGroup
     key="undo-redo"
+    name="undo-redo"
   >
     <div
-      className="Draftail-ToolbarGroup"
+      className="Draftail-ToolbarGroup Draftail-ToolbarGroup--undo-redo"
     >
       <ToolbarButton
         icon={null}
@@ -909,21 +954,26 @@ exports[`ToolbarDefaults #showUndoControl control overrides 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="hr-br"
+    name="hr-br"
   />
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
   <ToolbarGroup
     key="undo-redo"
+    name="undo-redo"
   >
     <div
-      className="Draftail-ToolbarGroup"
+      className="Draftail-ToolbarGroup Draftail-ToolbarGroup--undo-redo"
     >
       <ToolbarButton
         icon="#icon-undo"
@@ -995,21 +1045,26 @@ exports[`ToolbarDefaults #showUndoControl works 1`] = `
 >
   <ToolbarGroup
     key="styles"
+    name="styles"
   />
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />
   <ToolbarGroup
     key="hr-br"
+    name="hr-br"
   />
   <ToolbarGroup
     key="entities"
+    name="entities"
   />
   <ToolbarGroup
     key="undo-redo"
+    name="undo-redo"
   >
     <div
-      className="Draftail-ToolbarGroup"
+      className="Draftail-ToolbarGroup Draftail-ToolbarGroup--undo-redo"
     >
       <ToolbarButton
         icon={null}
@@ -1046,18 +1101,23 @@ exports[`ToolbarDefaults empty 1`] = `
 Array [
   <ToolbarGroup
     key="styles"
+    name="styles"
   />,
   <ToolbarGroup
     key="blocks"
+    name="blocks"
   />,
   <ToolbarGroup
     key="hr-br"
+    name="hr-br"
   />,
   <ToolbarGroup
     key="entities"
+    name="entities"
   />,
   <ToolbarGroup
     key="undo-redo"
+    name="undo-redo"
   />,
 ]
 `;

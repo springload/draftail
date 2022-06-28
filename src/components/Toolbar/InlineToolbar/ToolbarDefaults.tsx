@@ -23,7 +23,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
       onRequestSource,
     } = this.props;
     return [
-      <ToolbarGroup key="styles">
+      <ToolbarGroup key="styles" name="styles">
         {inlineStyles.filter(showControl).map((t) => (
           <ToolbarButton
             key={t.type}
@@ -37,7 +37,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
         ))}
       </ToolbarGroup>,
 
-      <ToolbarGroup key="blocks">
+      <ToolbarGroup key="blocks" name="blocks">
         {blockTypes.filter(showControl).map((t) => (
           <ToolbarButton
             key={t.type}
@@ -51,7 +51,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
         ))}
       </ToolbarGroup>,
 
-      <ToolbarGroup key="entities">
+      <ToolbarGroup key="entities" name="entities">
         {entityTypes.filter(showEntityButton).map((t) => (
           <ToolbarButton
             key={t.type}

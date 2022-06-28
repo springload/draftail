@@ -6,7 +6,7 @@ describe("ToolbarGroup", () => {
   it("children", () => {
     expect(
       shallow(
-        <ToolbarGroup>
+        <ToolbarGroup name="empty">
           <span>Test child</span>
         </ToolbarGroup>,
       ),
@@ -14,13 +14,13 @@ describe("ToolbarGroup", () => {
   });
 
   it("empty", () => {
-    expect(shallow(<ToolbarGroup />)).toMatchSnapshot();
+    expect(shallow(<ToolbarGroup name="empty" />)).toMatchSnapshot();
   });
 
   it("empty children", () => {
     expect(
       shallow(
-        <ToolbarGroup>
+        <ToolbarGroup name="empty">
           {null}
           {null}
         </ToolbarGroup>,
@@ -29,6 +29,8 @@ describe("ToolbarGroup", () => {
   });
 
   it("empty array children", () => {
-    expect(shallow(<ToolbarGroup>{[]}</ToolbarGroup>)).toMatchSnapshot();
+    expect(
+      shallow(<ToolbarGroup name="empty">{[]}</ToolbarGroup>),
+    ).toMatchSnapshot();
   });
 });

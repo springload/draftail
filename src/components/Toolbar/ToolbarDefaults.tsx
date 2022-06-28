@@ -82,7 +82,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
       onRequestSource,
     } = this.props;
     return [
-      <ToolbarGroup key="styles">
+      <ToolbarGroup key="styles" name="styles">
         {inlineStyles.filter(showControl).map((t) => (
           <ToolbarButton
             key={t.type}
@@ -96,7 +96,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
         ))}
       </ToolbarGroup>,
 
-      <ToolbarGroup key="blocks">
+      <ToolbarGroup key="blocks" name="blocks">
         {blockTypes.filter(showControl).map((t) => (
           <ToolbarButton
             key={t.type}
@@ -110,7 +110,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
         ))}
       </ToolbarGroup>,
 
-      <ToolbarGroup key="hr-br">
+      <ToolbarGroup key="hr-br" name="hr-br">
         {enableHorizontalRule ? (
           <ToolbarButton
             name={ENTITY_TYPE.HORIZONTAL_RULE}
@@ -144,7 +144,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
         ) : null}
       </ToolbarGroup>,
 
-      <ToolbarGroup key="entities">
+      <ToolbarGroup key="entities" name="entities">
         {entityTypes.filter(showControl).map((t) => (
           <ToolbarButton
             key={t.type}
@@ -157,7 +157,7 @@ class ToolbarDefaults extends PureComponent<ToolbarDefaultProps> {
         ))}
       </ToolbarGroup>,
 
-      <ToolbarGroup key="undo-redo">
+      <ToolbarGroup key="undo-redo" name="undo-redo">
         {showUndoControl ? (
           <ToolbarButton
             name={UNDO_TYPE}

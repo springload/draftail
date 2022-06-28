@@ -20,7 +20,7 @@ const Toolbar = (props: ToolbarProps) => {
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <ToolbarDefaults {...props} />
 
-      <ToolbarGroup>
+      <ToolbarGroup name="controls">
         {controls.map((control, i) => {
           if (control.inline || control.meta) {
             return null;

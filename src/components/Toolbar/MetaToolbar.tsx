@@ -30,7 +30,7 @@ const MetaToolbar = ({
 }: MetaToolbarProps) => (
   <div className="Draftail-MetaToolbar">
     {showBlockEntities ? (
-      <ToolbarGroup key="entities">
+      <ToolbarGroup key="entities" name="entities">
         {entityTypes
           .filter((entityType) => showControl(entityType) && entityType.block)
           .map((t) => (
