@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import type { Node } from "react";
-import { EditorState, EntityInstance } from "draft-js";
 
-import { Icon } from "../../src/index";
+import { EntityBlockProps, Icon } from "../../src/index";
 
-import Tooltip from "../components/Tooltip";
-import type { Rect } from "../components/Tooltip";
+import Tooltip, { Rect } from "../components/Tooltip";
 import Portal from "../components/Portal";
 
 // Constraints the maximum size of the tooltip.
@@ -13,64 +10,25 @@ const OPTIONS_MAX_WIDTH = 300;
 const OPTIONS_SPACING = 70;
 const TOOLTIP_MAX_WIDTH = OPTIONS_MAX_WIDTH + OPTIONS_SPACING;
 
-export type BlockProps = {
-  /** The editorState is available for arbitrary content manipulation. */
-  editorState: EditorState;
-
-  /** Current entity to manage. */
-  entity: EntityInstance;
-
-  /** Current entityKey to manage. */
-  entityKey: string;
-
-  /** Whole entityType configuration, as provided to the editor. */
-  entityType: {
-    description: string;
-    icon: string | string[] | Node;
-  };
-
-  /** Optionally set the overriding text directionality for this editor. */
-  textDirectionality: "LTR" | "RTL" | null;
-
-  /** Make the whole editor read-only, except for the block. */
-  lockEditor: () => void;
-
-  /** Make the editor editable again. */
-  unlockEditor: () => void;
-
-  /** Shorthand to edit entity data. */
-  onEditEntity: (entityKey: string) => void;
-
-  /** Shorthand to remove an entity, and the related block. */
-  onRemoveEntity: (entityKey: string, blockKey: string) => void;
-
-  /** Update the editorState with arbitrary changes. */
-  onChange: (state: EditorState) => void;
-};
-
-type Props = {
-  blockProps: BlockProps;
+export interface MediaBlockProps extends EntityBlockProps {
   src: string;
   label: string;
   isLoading: boolean;
-  children: Node;
-};
+  children: React.ReactNode;
+}
 
-type State = {
-  tooltip:
-    | {
-        target: Rect;
-        containerWidth: number;
-      }
-    | null
-    | undefined;
-};
+interface MediaBlockState {
+  tooltip: {
+    target: Rect;
+    containerWidth: number;
+  } | null;
+}
 
 /**
  * Editor block to preview and edit images.
  */
-class MediaBlock extends Component<Props, State> {
-  constructor(props: Props) {
+class MediaBlock extends Component<MediaBlockProps, MediaBlockState> {
+  constructor(props: MediaBlockProps) {
     super(props);
 
     this.state = {
@@ -82,7 +40,7 @@ class MediaBlock extends Component<Props, State> {
     this.renderTooltip = this.renderTooltip.bind(this);
   }
 
-  openTooltip(e: Event) {
+  openTooltip(e: React.MouseEvent<HTMLButtonElement>) {
     const trigger = e.target;
 
     if (

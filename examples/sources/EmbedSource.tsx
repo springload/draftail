@@ -1,32 +1,21 @@
 import React, { Component } from "react";
 import { AtomicBlockUtils, EditorState } from "draft-js";
-import type { EntityInstance } from "draft-js";
+
+import { EntitySourceProps, EntityTypeControl } from "../../src";
 
 import Modal from "../components/Modal";
 import { getValidLinkURL } from "../entities/Link";
 
 import embedly from "../utils/embedly";
 
-type Props = {
-  editorState: EditorState;
-  onComplete: (state: EditorState) => void;
-  onClose: () => void;
-  entityType: {
-    type: string;
-  };
-  entity: EntityInstance | null | undefined;
-  entityKey: string | null | undefined;
-  textDirectionality: "LTR" | "RTL";
-};
-
 type State = {
   url: string;
 };
 
-class EmbedSource extends Component<Props, State> {
-  inputRef: HTMLInputElement | null | undefined;
+class EmbedSource extends Component<EntitySourceProps, State> {
+  inputRef?: HTMLInputElement | null;
 
-  constructor(props: Props) {
+  constructor(props: EntitySourceProps) {
     super(props);
 
     const { entity } = this.props;
@@ -47,7 +36,7 @@ class EmbedSource extends Component<Props, State> {
     this.onChangeSource = this.onChangeSource.bind(this);
   }
 
-  onConfirm(e: Event) {
+  onConfirm(e: React.FormEvent<HTMLFormElement>) {
     const { editorState, entity, entityKey, entityType, onComplete } =
       this.props;
     const { url } = this.state;
@@ -103,11 +92,9 @@ class EmbedSource extends Component<Props, State> {
     }
   }
 
-  onChangeSource(e: Event) {
-    if (e.target instanceof HTMLInputElement) {
-      const url = e.target.value;
-      this.setState({ url });
-    }
+  onChangeSource(e: React.ChangeEvent<HTMLInputElement>) {
+    const url = e.target.value;
+    this.setState({ url });
   }
 
   render() {
@@ -121,7 +108,7 @@ class EmbedSource extends Component<Props, State> {
         contentLabel="Embed chooser"
       >
         <form
-          dir={textDirectionality === "RTL" ? "rtl" : null}
+          dir={textDirectionality === "RTL" ? "rtl" : undefined}
           className="EmbedSource"
           onSubmit={this.onConfirm}
         >
@@ -161,6 +148,10 @@ export const getValidEmbedURL = (
   return false;
 };
 
+interface OnPasteEntityTypeControl extends EntityTypeControl {
+  schemes: ReadonlyArray<string>;
+}
+
 export const onPasteEmbed = (
   text: string,
   html: string | null | undefined,
@@ -172,9 +163,7 @@ export const onPasteEmbed = (
     setEditorState: (state: EditorState) => void;
     getEditorState: () => EditorState;
   },
-  entityType: {
-    schemes: ReadonlyArray<string>;
-  },
+  entityType: OnPasteEntityTypeControl,
 ): "handled" | "not-handled" => {
   const url = getValidEmbedURL(getValidLinkURL(text, ["https:"]), [
     "www.youtube.com",

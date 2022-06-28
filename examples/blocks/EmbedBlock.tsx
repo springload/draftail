@@ -1,18 +1,17 @@
 import React from "react";
 import type { ContentBlock } from "draft-js";
 
-import MediaBlock from "./MediaBlock";
-import type { BlockProps } from "./MediaBlock";
+import MediaBlock, { MediaBlockProps } from "./MediaBlock";
 
-type Props = {
+interface EmbedBlockProps extends MediaBlockProps {
   block: ContentBlock;
   blockProps: BlockProps;
-};
+}
 
 /**
  * Editor block to display media and edit content.
  */
-const EmbedBlock = (props: Props) => {
+const EmbedBlock = (props: EmbedBlockProps) => {
   const { blockProps } = props;
   const { entity, onEditEntity, onRemoveEntity } = blockProps;
   const { url, title, thumbnail } = entity.getData();

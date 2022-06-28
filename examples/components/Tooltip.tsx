@@ -1,5 +1,5 @@
 import React from "react";
-import type { Node } from "react";
+import { TextDirectionality } from "../../src";
 
 const TOP = "top";
 const START = "start";
@@ -52,9 +52,9 @@ const getTooltipStyles = (
 
 type Props = {
   target: Rect;
-  children: Node;
+  children: React.ReactNode;
   direction: Direction;
-  textDirectionality: "LTR" | "RTL" | null;
+  textDirectionality: TextDirectionality;
 };
 
 /**
@@ -70,7 +70,7 @@ const Tooltip = ({
     style={getTooltipStyles(target, direction, textDirectionality)}
     className={`Tooltip Tooltip--${direction}`}
     role="tooltip"
-    dir={textDirectionality === "RTL" ? "rtl" : "ltr"}
+    dir={textDirectionality === "RTL" ? "rtl" : undefined}
   >
     {children}
   </div>

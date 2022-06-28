@@ -28,8 +28,8 @@ describe.each`
 });
 
 describe("onPasteLink", () => {
-  let editorState;
-  let setEditorState;
+  let editorState: EditorState;
+  let setEditorState: jest.Mock<(state: EditorState) => void>;
 
   beforeEach(() => {
     const { contentBlocks } = convertFromHTML("<p>hello</p>");

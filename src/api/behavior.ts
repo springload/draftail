@@ -30,7 +30,7 @@ import {
   EntityTypeControl,
   InlineStyleControl,
 } from "./types";
-import { showControl } from "./ui";
+import { showControlDesc } from "./ui";
 
 const { hasCommandModifier, isOptionKeyCommand } = KeyBindingUtil;
 const hasCmd = hasCommandModifier;
@@ -316,12 +316,12 @@ export default {
 
     if (typeof commands === "boolean" && commands) {
       const items = [
-        ...blockTypes.filter(showControl).map((t) => ({
+        ...blockTypes.filter(showControlDesc).map((t) => ({
           ...t,
           category: "blockTypes",
         })),
         ...entityTypes
-          .filter((t) => showControl(t) && Boolean(t.block))
+          .filter((t) => showControlDesc(t) && Boolean(t.block))
           .map((t) => ({
             ...t,
             category: "entityTypes",
@@ -352,7 +352,7 @@ export default {
 
       if (category.type === "blockTypes") {
         const rawItems = (category.items as BlockTypeControl[]) || blockTypes;
-        items = rawItems.filter(showControl).map((t) => ({
+        items = rawItems.filter(showControlDesc).map((t) => ({
           ...t,
           category: "blockTypes",
         }));
@@ -361,7 +361,7 @@ export default {
         items = rawItems
           .filter(
             (t) =>
-              showControl(t) &&
+              showControlDesc(t) &&
               (Boolean(t.block) || t.type === ENTITY_TYPE.HORIZONTAL_RULE),
           )
           .map((t) => ({

@@ -9,8 +9,6 @@ import ToolbarGroup from "../ToolbarGroup";
 
 const getReferenceClientRect = () => getVisibleSelectionRect(window);
 
-type FakeRect = ReturnType<typeof getVisibleSelectionRect>;
-
 export interface InlineToolbarProps extends ToolbarProps {
   tooltipPlacement?: TippyProps["placement"];
 }
@@ -18,15 +16,28 @@ export interface InlineToolbarProps extends ToolbarProps {
 const InlineToolbar = (props: InlineToolbarProps) => {
   const { controls, getEditorState, onChange } = props;
   const tippyParentRef = useRef<HTMLDivElement>(null);
-  const [selectionRect, setSelectionRect] = useState<FakeRect | null>();
+  const [selectionRect, setSelectionRect] = useState<{
+    top: number;
+    left: number | string;
+  } | null>();
 
   const editorState = getEditorState();
   const selection = editorState.getSelection();
   const hasSelection = selection.getHasFocus() && !selection.isCollapsed();
 
   useEffect(() => {
-    if (hasSelection) {
-      setSelectionRect(getReferenceClientRect());
+    if (hasSelection && tippyParentRef.current) {
+      const editor = tippyParentRef.current.closest<HTMLDivElement>(
+        "[data-draftail-editor]",
+      );
+      const editorRect = editor!.getBoundingClientRect();
+      const clientRect = getReferenceClientRect();
+      setSelectionRect({
+        top: clientRect.top - editorRect.top,
+        left: `calc(${
+          clientRect.left - editorRect.left
+        }px + var(--draftail-offset-inline-start, 0))`,
+      });
     } else {
       setSelectionRect(null);
     }
@@ -73,7 +84,10 @@ const InlineToolbar = (props: InlineToolbarProps) => {
             className="Draftail-InlineToolbar__target"
             style={
               selectionRect
-                ? { top: selectionRect.top, left: selectionRect.left }
+                ? {
+                    top: selectionRect.top,
+                    insetInlineStart: selectionRect.left,
+                  }
                 : undefined
             }
           >

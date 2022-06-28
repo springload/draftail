@@ -37,6 +37,7 @@ export const getControlDescription = (control: Control) => {
 };
 
 export const showControl = (config: Control) =>
-  Boolean(config.icon) ||
-  Boolean(getControlLabel(config.type, config)) ||
-  Boolean(getControlDescription(config));
+  Boolean(config.icon) || Boolean(getControlLabel(config.type, config));
+
+export const showControlDesc = (config: Control) =>
+  showControl(config) || Boolean(getControlDescription(config));

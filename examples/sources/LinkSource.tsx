@@ -11,7 +11,7 @@ type State = {
 };
 
 class LinkSource extends Component<EntitySourceProps, State> {
-  inputRef?: React.Ref<HTMLInputElement>;
+  inputRef?: HTMLInputElement | null;
 
   constructor(props: EntitySourceProps) {
     super(props);
@@ -76,7 +76,7 @@ class LinkSource extends Component<EntitySourceProps, State> {
     }
   }
 
-  onChangeURL(e: Event) {
+  onChangeURL(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target instanceof HTMLInputElement) {
       const url = e.target.value;
       this.setState({ url });
@@ -94,7 +94,7 @@ class LinkSource extends Component<EntitySourceProps, State> {
         contentLabel="Link chooser"
       >
         <form
-          dir={textDirectionality === "RTL" ? "rtl" : "ltr"}
+          dir={textDirectionality === "RTL" ? "rtl" : undefined}
           className="LinkSource"
           onSubmit={this.onConfirm}
         >

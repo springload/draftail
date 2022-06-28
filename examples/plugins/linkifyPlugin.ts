@@ -23,7 +23,7 @@ const createEntity = (
       contentState,
       selection,
       entityText,
-      null,
+      undefined,
       entityKey,
     );
   } else {
@@ -31,7 +31,7 @@ const createEntity = (
       contentState,
       selection,
       entityText,
-      null,
+      undefined,
       entityKey,
     );
   }

@@ -2,7 +2,7 @@ import React from "react";
 import { IconProp } from "../api/types";
 
 export interface IconProps {
-  icon: IconProp;
+  icon?: IconProp;
   title?: string | null;
   className?: string | null;
 }
@@ -10,7 +10,7 @@ export interface IconProps {
 /**
  * Icon as SVG element. Can optionally render a React element instead.
  */
-const Icon = ({ icon, title, className }: IconProps) => {
+const Icon = ({ icon, title, className }: IconProps): JSX.Element => {
   let children;
 
   if (typeof icon === "string") {
@@ -23,6 +23,8 @@ const Icon = ({ icon, title, className }: IconProps) => {
     // eslint-disable-next-line react/no-array-index-key
     children = icon.map((d, i) => <path key={i} d={d} />);
   } else {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     return icon;
   }
 

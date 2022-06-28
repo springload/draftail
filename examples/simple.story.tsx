@@ -1,11 +1,12 @@
 import { storiesOf } from "@storybook/react";
+import { RawDraftContentState } from "draft-js";
 import React from "react";
 
 import { DraftailEditor, BLOCK_TYPE, INLINE_STYLE } from "../src/index";
 
-const initial = JSON.parse(sessionStorage.getItem("content"));
+const initial = JSON.parse(sessionStorage.getItem("content") || "null");
 
-const onSave = (content) => {
+const onSave = (content: RawDraftContentState | null) => {
   // eslint-disable-next-line no-console
   console.log("saving", content);
   sessionStorage.setItem("content", JSON.stringify(content));

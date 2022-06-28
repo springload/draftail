@@ -45,7 +45,7 @@ class ImageSource extends Component<Props, State> {
     this.onChangeSource = this.onChangeSource.bind(this);
   }
 
-  onConfirm(e: Event) {
+  onConfirm(e: React.FormEvent<HTMLFormElement>) {
     const { editorState, entity, entityKey, entityType, onComplete } =
       this.props;
     const { src } = this.state;
@@ -92,11 +92,9 @@ class ImageSource extends Component<Props, State> {
     }
   }
 
-  onChangeSource(e: Event) {
-    if (e.target instanceof HTMLInputElement) {
-      const src = e.target.value;
-      this.setState({ src });
-    }
+  onChangeSource(e: React.ChangeEvent<HTMLInputElement>) {
+    const src = e.target.value;
+    this.setState({ src });
   }
 
   render() {
@@ -110,7 +108,7 @@ class ImageSource extends Component<Props, State> {
         contentLabel="Image chooser"
       >
         <form
-          dir={textDirectionality === "RTL" ? "rtl" : null}
+          dir={textDirectionality === "RTL" ? "rtl" : undefined}
           className="ImageSource"
           onSubmit={this.onConfirm}
         >

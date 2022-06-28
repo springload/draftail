@@ -1,40 +1,27 @@
 import React from "react";
-import type { Node } from "react";
-import { EditorState, ContentState, Modifier, RichUtils } from "draft-js";
+import { EditorState, Modifier, RichUtils } from "draft-js";
 
 import TooltipEntity from "./TooltipEntity";
-
-type Props = {
-  entityKey: string;
-  contentState: ContentState;
-  children: Node;
-  onEdit: (entityType: string) => void;
-  onRemove: (entityType: string) => void;
-  textDirectionality: "LTR" | "RTL";
-};
+import { EntityDecoratorProps, EntityTypeControl } from "../../src";
 
 const CUSTOM_ICON_URLS = {
   "://www.youtube.com/": "#icon-media",
   "://one.npr.org/": "#icon-media",
   "://twitter.com/": "#icon-twitter",
-};
+} as const;
 
-const getLinkIcon = (url, linkType) => {
+const getLinkIcon = (url: string, linkType: string) => {
   const isEmailLink = linkType === "email" || url.startsWith("mailto:");
 
   if (isEmailLink) {
     return "#icon-mail";
   }
 
-  const customIcon = Object.keys(CUSTOM_ICON_URLS).find((key) =>
+  const customIcon = Object.entries(CUSTOM_ICON_URLS).find(([key]) =>
     url.includes(key),
   );
 
-  if (customIcon) {
-    return CUSTOM_ICON_URLS[customIcon];
-  }
-
-  return "#icon-link";
+  return customIcon ? customIcon[1] : "#icon-link";
 };
 
 const Link = ({
@@ -44,7 +31,7 @@ const Link = ({
   onEdit,
   onRemove,
   textDirectionality,
-}: Props) => {
+}: EntityDecoratorProps) => {
   const { url, linkType } = contentState.getEntity(entityKey).getData();
   const icon = getLinkIcon(url, linkType);
   const label = url.replace(/(^\w+:|^)\/\//, "").split("/")[0];
@@ -96,6 +83,10 @@ export const getValidLinkURL = (
   return false;
 };
 
+interface OnPasteEntityTypeControl extends EntityTypeControl {
+  schemes: ReadonlyArray<string>;
+}
+
 export const onPasteLink = (
   text: string,
   html: string | null | undefined,
@@ -105,9 +96,7 @@ export const onPasteLink = (
   }: {
     setEditorState: (state: EditorState) => void;
   },
-  entityType: {
-    schemes: ReadonlyArray<string>;
-  },
+  entityType: OnPasteEntityTypeControl,
 ): "handled" | "not-handled" => {
   const url = getValidLinkURL(text, entityType.schemes);
 
@@ -126,7 +115,13 @@ export const onPasteLink = (
   let nextState: EditorState;
 
   if (selection.isCollapsed()) {
-    content = Modifier.insertText(content, selection, text, null, entityKey);
+    content = Modifier.insertText(
+      content,
+      selection,
+      text,
+      undefined,
+      entityKey,
+    );
     nextState = EditorState.push(editorState, content, "insert-characters");
   } else {
     nextState = RichUtils.toggleLink(editorState, selection, entityKey);

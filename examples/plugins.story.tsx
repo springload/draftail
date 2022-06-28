@@ -10,7 +10,6 @@ import { DraftailEditor } from "../src/index";
 import { INLINE_CONTROL, ENTITY_CONTROL, BLOCK_CONTROL } from "./constants/ui";
 
 import EditorWrapper from "./components/EditorWrapper";
-import singleLinePlugin from "./plugins/singleLinePlugin";
 import linkifyPlugin from "./plugins/linkifyPlugin";
 import actionBlockPlugin from "./plugins/actionBlockPlugin";
 import slashCommandPlugin from "./plugins/slashCommandPlugin";
@@ -20,7 +19,6 @@ import sectionBreakPlugin, {
 import autoEmbedPlugin from "./plugins/autoEmbedPlugin";
 import createFocusPlugin from "./plugins/draft-js-focus-plugin/index";
 
-const singleLine = singleLinePlugin();
 const linkify = linkifyPlugin();
 const autoEmbed = autoEmbedPlugin();
 const actionBlock = actionBlockPlugin();
@@ -31,15 +29,6 @@ const sectionBreak = sectionBreakPlugin({
 });
 
 storiesOf("Plugins", module)
-  .add("Single-line", () => (
-    <EditorWrapper
-      id="single-line"
-      inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
-      entityTypes={[ENTITY_CONTROL.LINK]}
-      enableLineBreak
-      plugins={[singleLine]}
-    />
-  ))
   .add("Linkify", () => (
     <EditorWrapper
       id="linkify"

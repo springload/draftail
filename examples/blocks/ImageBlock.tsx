@@ -1,27 +1,19 @@
 import React, { Component } from "react";
-import type { ContentBlock } from "draft-js";
 
 import MediaBlock from "./MediaBlock";
-import type { BlockProps } from "./MediaBlock";
-import { DraftUtils } from "../../src/index";
-
-type Props = {
-  block: ContentBlock;
-  blockProps: BlockProps;
-  textDirectionality: "RTL" | "LTR";
-};
+import { DraftUtils, EntityBlockProps } from "../../src/index";
 
 /**
  * Editor block to preview and edit images.
  */
-class ImageBlock extends Component<Props> {
-  constructor(props: Props) {
+class ImageBlock extends Component<EntityBlockProps> {
+  constructor(props: EntityBlockProps) {
     super(props);
 
     this.changeAlt = this.changeAlt.bind(this);
   }
 
-  changeAlt(e: Event) {
+  changeAlt(e: React.ChangeEvent<HTMLInputElement>) {
     const { block, blockProps } = this.props;
     const { editorState, onChange } = blockProps;
 

@@ -3,7 +3,6 @@
 exports[`Tooltip #direction start 1`] = `
 <div
   className="Tooltip Tooltip--start"
-  dir="ltr"
   role="tooltip"
   style={
     Object {
@@ -19,7 +18,6 @@ exports[`Tooltip #direction start 1`] = `
 exports[`Tooltip #direction top 1`] = `
 <div
   className="Tooltip Tooltip--top"
-  dir="ltr"
   role="tooltip"
   style={
     Object {
@@ -35,7 +33,6 @@ exports[`Tooltip #direction top 1`] = `
 exports[`Tooltip #direction top-start 1`] = `
 <div
   className="Tooltip Tooltip--top-start"
-  dir="ltr"
   role="tooltip"
   style={
     Object {

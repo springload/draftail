@@ -97,6 +97,7 @@ export default function ComboBox({
         <input
           data-draftail-command-palette-input
           type="text"
+          value=""
           {...getInputProps()}
           placeholder={placeholder}
         />

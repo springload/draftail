@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { EditorState, RawDraftContentState } from "draft-js";
 
-import { DraftailEditor, serialiseEditorStateToRaw } from "../../src/index";
+import {
+  DraftailEditor,
+  DraftailEditorProps,
+  serialiseEditorStateToRaw,
+} from "../../src/index";
 
 import SentryBoundary from "./SentryBoundary";
 import Highlight from "./Highlight";
@@ -11,21 +15,21 @@ import EditorBenchmark from "./EditorBenchmark";
 const DRAFTAIL_VERSION =
   typeof PKG_VERSION === "undefined" ? "dev" : PKG_VERSION;
 
-type Props = {
+interface EditorWrapperProps extends DraftailEditorProps {
   id: string;
   rawContentState: RawDraftContentState | null | undefined;
   editorState: EditorState | null | undefined;
   onSave: ((content: null | RawDraftContentState) => void) | null | undefined;
   onChange: ((editorState: EditorState) => void) | null | undefined;
-};
+}
 
-type State = {
-  content: RawDraftContentState | null | undefined;
+interface EditorWrapperState {
+  content: RawDraftContentState | null;
   saveCount: number;
-};
+}
 
-class EditorWrapper extends Component<Props, State> {
-  constructor(props: Props) {
+class EditorWrapper extends Component<EditorWrapperProps, EditorWrapperState> {
+  constructor(props: EditorWrapperProps) {
     super(props);
 
     this.state = {
@@ -72,7 +76,7 @@ class EditorWrapper extends Component<Props, State> {
       ...editorProps
     } = this.props;
     const { content, saveCount } = this.state;
-    const dataProps = {};
+    const dataProps: Partial<DraftailEditorProps> = {};
     let initialContent;
 
     if (editorState) {

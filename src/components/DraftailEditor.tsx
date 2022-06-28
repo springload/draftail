@@ -511,7 +511,7 @@ class DraftailEditor extends Component<
     this.toggleSource(entity.getType(), entityKey, entity);
   }
 
-  onRemoveEntity(entityKey: string, blockKey: string) {
+  onRemoveEntity(entityKey: string, blockKey?: string) {
     const { entityTypes } = this.props;
     const editorState = this.getEditorState();
     const content = editorState.getCurrentContent();
@@ -519,7 +519,7 @@ class DraftailEditor extends Component<
     const entityType = entityTypes.find((t) => t.type === entity.getType());
     let newState = editorState;
 
-    if (entityType!.block) {
+    if (blockKey && entityType!.block) {
       newState = DraftUtils.removeBlockEntity(newState, entityKey, blockKey);
     } else {
       const entitySelection = DraftUtils.getEntitySelection(
@@ -1077,7 +1077,7 @@ class DraftailEditor extends Component<
         className={`Draftail-Editor${
           isReadOnly ? " Draftail-Editor--readonly" : ""
         }${hasFocus ? " Draftail-Editor--focus" : ""}`}
-        dir={textDirectionality === "RTL" ? "rtl" : "ltr"}
+        dir={textDirectionality === "RTL" ? "rtl" : undefined}
         data-draftail-editor
       >
         {TopToolbar ? <TopToolbar {...toolbarProps} /> : null}

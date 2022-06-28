@@ -79,7 +79,7 @@ export const INLINE_CONTROL = {
     type: INLINE_STYLE.SUBSCRIPT,
     icon: "#icon-subscript",
   },
-};
+} as const;
 
 export const BLOCK_CONTROL = {
   UNSTYLED: {
@@ -118,7 +118,7 @@ export const BLOCK_CONTROL = {
   CODE: {
     type: BLOCK_TYPE.CODE,
   },
-};
+} as const;
 
 export const ENTITY_CONTROL = {
   LINK: {
@@ -162,21 +162,21 @@ export const ENTITY_CONTROL = {
     decorator: Document,
     attributes: ["url"],
   },
-};
+} as const;
 
 export const TINY_TEXT_BLOCK = {
   type: "tiny-text",
   label: "Tiny",
   description: "Legal print",
   element: "blockquote",
-};
+} as const;
 
 export const REDACTED_STYLE = {
   type: "REDACTED",
   icon: "M592 448h-16v-192c0-105.87-86.13-192-192-192h-128c-105.87 0-192 86.13-192 192v192h-16c-26.4 0-48 21.6-48 48v480c0 26.4 21.6 48 48 48h544c26.4 0 48-21.6 48-48v-480c0-26.4-21.6-48-48-48zM192 256c0-35.29 28.71-64 64-64h128c35.29 0 64 28.71 64 64v192h-256v-192z",
   description: "Redacted",
   style: { backgroundColor: "currentcolor" },
-};
+} as const;
 
 export const SCISSORS_ICON = (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">

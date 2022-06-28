@@ -1,19 +1,10 @@
 import React from "react";
-import { ContentState } from "draft-js";
 
 import FontIcon from "../components/FontIcon";
 import TooltipEntity from "./TooltipEntity";
+import { EntityDecoratorProps } from "../../src";
 
 export const DOCUMENT_ICON = <FontIcon icon="document" />;
-
-type Props = {
-  entityKey: string;
-  contentState: ContentState;
-  children: React.ReactNode;
-  onEdit: (entityType: string) => void;
-  onRemove: (entityType: string) => void;
-  textDirectionality: "LTR" | "RTL";
-};
 
 const Document = ({
   entityKey,
@@ -22,7 +13,7 @@ const Document = ({
   onEdit,
   onRemove,
   textDirectionality,
-}: Props) => {
+}: EntityDecoratorProps) => {
   const { url, id } = contentState.getEntity(entityKey).getData();
   // Supports documents defined based on a URL, and id.
   const label = url ? url.replace(/(^\w+:|^)\/\//, "").split("/")[0] : id;

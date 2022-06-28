@@ -103,7 +103,7 @@ export interface EntityDecoratorProps {
   /** Shorthand to edit entity data. */
   onEdit: (entityKey: string) => void;
   /** Shorthand to remove an entity, and the related block. */
-  onRemove: (entityKey: string, blockKey: string) => void;
+  onRemove: (entityKey: string, blockKey?: string) => void;
   /** Optionally set the overriding text directionality for this editor. */
   textDirectionality: TextDirectionality;
 }
@@ -124,11 +124,13 @@ export interface EntityBlockProps {
     /** Make the editor editable again. */
     unlockEditor: () => void;
     /** Shorthand to edit entity data. */
-    onEditEntity: (entityKey: string) => void;
+    onEditEntity: () => void;
     /** Shorthand to remove an entity, and the related block. */
-    onRemoveEntity: (entityKey: string, blockKey: string) => void;
+    onRemoveEntity: () => void;
     /** Update the editorState with arbitrary changes. */
     onChange: (nextState: EditorState) => void;
+    /** Optionally set the overriding text directionality for this editor. */
+    textDirectionality: TextDirectionality;
   };
 }
 

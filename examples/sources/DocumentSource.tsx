@@ -1,28 +1,18 @@
 import React, { Component } from "react";
-import { RichUtils, EditorState } from "draft-js";
-import type { EntityInstance } from "draft-js";
+import { RichUtils } from "draft-js";
+
+import { EntitySourceProps } from "../../src";
 
 import Modal from "../components/Modal";
-
-type Props = {
-  editorState: EditorState;
-  onComplete: (state: EditorState) => void;
-  onClose: () => void;
-  entityType: {
-    type: string;
-  };
-  entity: EntityInstance | null | undefined;
-  textDirectionality: "LTR" | "RTL";
-};
 
 type State = {
   url: string;
 };
 
-class DocumentSource extends Component<Props, State> {
-  inputRef: HTMLInputElement | null | undefined;
+class DocumentSource extends Component<EntitySourceProps, State> {
+  inputRef?: HTMLInputElement | null;
 
-  constructor(props: Props) {
+  constructor(props: EntitySourceProps) {
     super(props);
 
     const { entity } = this.props;

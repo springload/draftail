@@ -1,34 +1,21 @@
 import React, { Component } from "react";
-import { ContentState } from "draft-js";
 
-import { Icon } from "../../src/index";
+import { EntityDecoratorProps, Icon, IconProp } from "../../src/index";
 
-import Tooltip from "../components/Tooltip";
-import type { Rect } from "../components/Tooltip";
+import Tooltip, { Rect } from "../components/Tooltip";
 import Portal from "../components/Portal";
 
-type Props = {
-  // Key of the entity being decorated.
-  entityKey: string;
-  // Full contentState, read-only.
-  contentState: ContentState;
-  // The decorated nodes / entity text.
-  children: React.ReactNode;
-  // Call with the entityKey to trigger the entity source.
-  onEdit: (entityKey: string) => void;
-  // Call with the entityKey to remove the entity.
-  onRemove: (entityKey: string) => void;
-  textDirectionality: "LTR" | "RTL";
-  icon: string | React.ReactNode;
+interface TooltipEntityProps extends EntityDecoratorProps {
+  icon: IconProp;
   label: string;
-};
+}
 
-type State = {
-  showTooltipAt: Rect | null | undefined;
-};
+interface TooltipEntityState {
+  showTooltipAt: Rect | null;
+}
 
-class TooltipEntity extends Component<Props, State> {
-  constructor(props: Props) {
+class TooltipEntity extends Component<TooltipEntityProps, TooltipEntityState> {
+  constructor(props: TooltipEntityProps) {
     super(props);
 
     this.state = {
@@ -39,7 +26,7 @@ class TooltipEntity extends Component<Props, State> {
     this.closeTooltip = this.closeTooltip.bind(this);
   }
 
-  openTooltip(e: Event) {
+  openTooltip(e: React.MouseEvent<HTMLAnchorElement>) {
     const trigger = e.target;
 
     if (trigger instanceof Element) {
@@ -104,7 +91,7 @@ class TooltipEntity extends Component<Props, State> {
               <button
                 type="button"
                 className="Tooltip__button"
-                onClick={onRemove.bind(null, entityKey)}
+                onClick={() => onRemove(entityKey)}
               >
                 Remove
               </button>
