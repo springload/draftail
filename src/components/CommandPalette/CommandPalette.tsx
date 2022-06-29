@@ -58,8 +58,9 @@ export const simulateInputEvent = (
 const tippyPlugins = [hideTooltipOnEsc];
 
 export interface CommandPaletteProps extends ToolbarProps {
-  comboPlacement?: TippyProps["placement"];
-  noResultsText?: string;
+  comboPlacement: TippyProps["placement"];
+  noResultsText: string;
+  tooltipZIndex: number;
 }
 
 const CommandPalette = ({
@@ -68,6 +69,7 @@ const CommandPalette = ({
   enableHorizontalRule,
   comboPlacement,
   noResultsText,
+  tooltipZIndex,
   commands,
   getEditorState,
   onCompleteSource,
@@ -117,6 +119,7 @@ const CommandPalette = ({
           onClickOutside={() => setSelectionRect(null)}
           placement={comboPlacement}
           maxWidth="100%"
+          zIndex={tooltipZIndex}
           arrow={false}
           appendTo={() => tippyParentRef.current as HTMLDivElement}
           plugins={tippyPlugins}
@@ -194,6 +197,7 @@ CommandPalette.defaultProps = {
   // right-start also works in RTL mode.
   comboPlacement: "bottom-end" as TippyProps["placement"],
   noResultsText: "No results found",
+  tooltipZIndex: 100,
 };
 
 export default CommandPalette;

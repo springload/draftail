@@ -2,7 +2,7 @@ $easing-circ: cubic-bezier(0.075, 0.82, 0.165, 1);
 $color-bg-modal__overlay: rgba(0, 0, 0, 0.5);
 $color-bg-modal: #fff;
 
-$modal__overlay-z-index: 30;
+$modal__overlay-z-index: 110;
 $modal-z-index: $modal__overlay-z-index + 1;
 
 $spacing-modal: 0.5rem;

@@ -45,6 +45,7 @@ export interface BlockToolbarProps extends ToolbarProps {
   comboPlaceholder: string;
   comboPlacement: TippyProps["placement"];
   noResultsText: string;
+  tooltipZIndex: number;
 }
 
 const BlockToolbar = ({
@@ -54,6 +55,7 @@ const BlockToolbar = ({
   comboPlaceholder,
   comboPlacement,
   noResultsText,
+  tooltipZIndex,
   commands,
   getEditorState,
   blockTypes,
@@ -125,6 +127,7 @@ const BlockToolbar = ({
         onClickOutside={() => setVisible(false)}
         placement={comboPlacement}
         maxWidth="100%"
+        zIndex={tooltipZIndex}
         arrow={false}
         appendTo={() => tippyParentRef.current as HTMLDivElement}
         plugins={tippyPlugins}
@@ -202,6 +205,7 @@ BlockToolbar.defaultProps = {
   // right-start also works in RTL mode.
   comboPlacement: "right-start" as TippyProps["placement"],
   noResultsText: "No results found",
+  tooltipZIndex: 100,
 };
 
 export default BlockToolbar;

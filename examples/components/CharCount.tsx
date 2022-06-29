@@ -18,7 +18,7 @@ type Props = {
  */
 const countChars = (text: string) => {
   if (text) {
-    // Find as many matches as there are (g), as unicode code points (u), matching newlines as characters (s).
+    // Find as many matches as there are (g), matching newlines as characters (s), as unicode code points (u).
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#advanced_searching_with_flags.
     const matches = text.match(/./gsu);
     return matches ? matches.length : 0;
