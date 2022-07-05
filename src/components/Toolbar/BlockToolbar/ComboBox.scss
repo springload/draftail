@@ -10,6 +10,16 @@
   border: 0;
 }
 
+.#{$DRAFTAIL}ComboBox {
+  min-width: 240px;
+  background: $draftail-editor-background;
+  color: $draftail-editor-text;
+  border-radius: $draftail-tooltip-radius;
+  font-size: $draftail-editor-font-size;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  outline: $draftail-contrast-border;
+}
+
 .#{$DRAFTAIL}ComboBox__label {
   @include sr-only();
 }
@@ -38,6 +48,7 @@
   padding: 10px;
   font-size: 1rem;
   font-weight: 700;
+  border-top: 4px solid transparent;
 }
 
 .#{$DRAFTAIL}ComboBox__menu {
@@ -58,6 +69,8 @@
   &[aria-selected="true"] {
     background-color: $color-light-grey;
     border-color: currentColor;
+    outline: 6px solid transparent;
+    outline-offset: -6px;
   }
 }
 

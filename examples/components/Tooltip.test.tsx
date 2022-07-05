@@ -14,30 +14,69 @@ describe("Tooltip", () => {
   it("#direction top", () => {
     expect(
       shallow(
-        <Tooltip target={target} direction="top">
+        <Tooltip target={target} direction="top" textDirectionality="LTR">
           Test
         </Tooltip>,
       ),
-    ).toMatchSnapshot();
+    ).toMatchInlineSnapshot(`
+      <div
+        className="Tooltip Tooltip--top"
+        role="tooltip"
+        style={
+          Object {
+            "insetInlineStart": 7,
+            "top": 1201,
+          }
+        }
+      >
+        Test
+      </div>
+    `);
   });
 
   it("#direction start", () => {
     expect(
       shallow(
-        <Tooltip target={target} direction="start">
+        <Tooltip target={target} direction="start" textDirectionality="LTR">
           Test
         </Tooltip>,
       ),
-    ).toMatchSnapshot();
+    ).toMatchInlineSnapshot(`
+      <div
+        className="Tooltip Tooltip--start"
+        role="tooltip"
+        style={
+          Object {
+            "insetInlineStart": 13,
+            "top": 601,
+          }
+        }
+      >
+        Test
+      </div>
+    `);
   });
 
   it("#direction top-start", () => {
     expect(
       shallow(
-        <Tooltip target={target} direction="top-start">
+        <Tooltip target={target} direction="top-start" textDirectionality="LTR">
           Test
         </Tooltip>,
       ),
-    ).toMatchSnapshot();
+    ).toMatchInlineSnapshot(`
+      <div
+        className="Tooltip Tooltip--top-start"
+        role="tooltip"
+        style={
+          Object {
+            "insetInlineStart": 1,
+            "top": 1201,
+          }
+        }
+      >
+        Test
+      </div>
+    `);
   });
 });

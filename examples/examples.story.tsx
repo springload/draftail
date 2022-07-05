@@ -1,12 +1,14 @@
 import { storiesOf } from "@storybook/react";
 import React, { useState } from "react";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import createHashtagPlugin from "draft-js-hashtag-plugin";
 import {
   createEditorStateFromRaw,
   serialiseEditorStateToRaw,
 } from "draftjs-conductor";
 
-import { EditorState } from "draft-js";
+import { EditorState, RawDraftContentState } from "draft-js";
 import {
   INLINE_CONTROL,
   BLOCK_CONTROL,
@@ -146,7 +148,6 @@ storiesOf("Examples", module)
               },
               {
                 description: "Blockquote",
-                icon: null,
                 type: "blockquote",
                 onSelect: ({ editorState }: { editorState: EditorState }) => {
                   const block = DraftUtils.getSelectedBlock(editorState);
@@ -195,12 +196,12 @@ storiesOf("Examples", module)
   ))
   .add("Custom formats", () => {
     const [editorState, setEditorState] = useState(
-      createEditorStateFromRaw(customContentState),
+      createEditorStateFromRaw(customContentState as RawDraftContentState),
     );
     const [colorStyles, setColorStyles] = useState(
-      getColorInlineStyles(customContentState),
+      getColorInlineStyles(customContentState as RawDraftContentState),
     );
-    const onChange = (state) => {
+    const onChange = (state: EditorState) => {
       const raw = serialiseEditorStateToRaw(state);
       setColorStyles(raw ? getColorInlineStyles(raw) : []);
       setEditorState(state);
@@ -237,7 +238,7 @@ storiesOf("Examples", module)
         ]}
         entityTypes={[ENTITY_CONTROL.EMBED, ENTITY_CONTROL.DOCUMENT]}
         decorators={[new PrismDecorator({ defaultLanguage: "css" })]}
-        controls={[ReadingTime, ColorPicker]}
+        controls={[{ meta: ReadingTime }, { inline: ColorPicker }]}
         plugins={[hashtagPlugin]}
       />
     );
@@ -246,7 +247,7 @@ storiesOf("Examples", module)
     <EditorWrapper
       id="all"
       ariaDescribedBy="all-editor"
-      rawContentState={allContentState}
+      rawContentState={allContentState as RawDraftContentState}
       stripPastedStyles={false}
       enableHorizontalRule={{
         description: "Horizontal rule",
@@ -274,15 +275,17 @@ storiesOf("Examples", module)
     <EditorWrapper
       id="content-awareness"
       stripPastedStyles={false}
-      rawContentState={{
-        entityMap: {},
-        blocks: [
-          {
-            key: "aaa",
-            text: "Paste YouTube or Twitter links! Instantly create links on text, and insert embed blocks",
-          },
-        ],
-      }}
+      rawContentState={
+        {
+          entityMap: {},
+          blocks: [
+            {
+              key: "aaa",
+              text: "Paste YouTube or Twitter links! Instantly create links on text, and insert embed blocks",
+            },
+          ],
+        } as RawDraftContentState
+      }
       inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
       blockTypes={[
         BLOCK_CONTROL.HEADER_TWO,

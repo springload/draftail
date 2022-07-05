@@ -36,6 +36,7 @@ $draftail-editor-line-height: 1.5 !default;
 $draftail-placeholder-text: $color-grey-757575 !default;
 
 $draftail-editor-border: 1px solid $draftail-editor-chrome !default;
+$draftail-contrast-border: 2px solid transparent !default;
 
 $draftail-editor-radius: 5px !default;
 $draftail-tooltip-radius: 5px !default;
@@ -49,11 +50,11 @@ $draftail-toolbar-tooltip-delay: 1s !default;
 $draftail-block-spacing: $draftail-base-spacing * 2 !default;
 
 $draftail-editor-z-index: 1 !default;
-$draftail-tooltip-z-index: $draftail-editor-z-index + 1 !default;
-$draftail-overlay-z-index: $draftail-tooltip-z-index + 1 !default;
-$draftail-toolbar-z-index: $draftail-overlay-z-index + 1 !default;
-$draftail-toolbar-tooltip-z-index: $draftail-toolbar-z-index + 1 !default;
-$draftail-page-overlay-z-index: $draftail-toolbar-z-index + 1000 !default;
+$draftail-tooltip-z-index: $draftail-editor-z-index + 10 !default;
+$draftail-overlay-z-index: $draftail-tooltip-z-index + 10 !default;
+$draftail-toolbar-z-index: $draftail-overlay-z-index + 10 !default;
+$draftail-toolbar-tooltip-z-index: $draftail-toolbar-z-index + 10 !default;
+$draftail-page-overlay-z-index: $draftail-toolbar-z-index + 10 !default;
 
 @mixin font-smoothing {
   -webkit-font-smoothing: antialiased;

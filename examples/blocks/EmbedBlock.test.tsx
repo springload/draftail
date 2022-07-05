@@ -3,6 +3,7 @@ import { shallow } from "enzyme";
 
 import { ContentBlock, EditorState } from "draft-js";
 import EmbedBlock from "./EmbedBlock";
+import EmbedSource from "../sources/EmbedSource";
 
 describe("EmbedBlock", () => {
   it("renders", () => {
@@ -14,6 +15,8 @@ describe("EmbedBlock", () => {
             entityType: {
               description: "test",
               icon: "test",
+              type: "test",
+              source: EmbedSource,
             },
             editorState: EditorState.createEmpty(),
             entityKey: "string",
@@ -34,8 +37,8 @@ describe("EmbedBlock", () => {
             },
           }}
         />,
-      ),
-    ).toMatchSnapshot();
+      ).length,
+    ).toBe(1);
   });
 
   it("no data", () => {
@@ -47,6 +50,8 @@ describe("EmbedBlock", () => {
             entityType: {
               description: "test",
               icon: "test",
+              type: "test",
+              source: EmbedSource,
             },
             editorState: EditorState.createEmpty(),
             entityKey: "string",
@@ -63,7 +68,7 @@ describe("EmbedBlock", () => {
             },
           }}
         />,
-      ),
-    ).toMatchSnapshot();
+      ).length,
+    ).toBe(1);
   });
 });

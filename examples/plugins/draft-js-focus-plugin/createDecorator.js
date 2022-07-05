@@ -33,14 +33,11 @@ export default ({ blockKeyStore }) =>
       render() {
         const { blockProps } = this.props;
         const { isFocused } = blockProps;
-        return (
-          <WrappedComponent
-            // eslint-disable-next-line react/jsx-props-no-spreading
-            {...this.props}
-            onClick={this.onClick.bind(this)}
-            isFocused={isFocused}
-          />
-        );
+        return React.createElement(WrappedComponent, {
+          ...this.props,
+          onClick: this.onClick.bind(this),
+          isFocused,
+        });
       }
     }
 

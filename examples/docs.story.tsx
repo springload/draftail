@@ -1,7 +1,12 @@
 import { storiesOf } from "@storybook/react";
 import React, { useState } from "react";
 import { convertFromHTML, convertToHTML } from "draft-convert";
-import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
+import {
+  EditorState,
+  convertToRaw,
+  convertFromRaw,
+  RawDraftContentState,
+} from "draft-js";
 import { Formik } from "formik";
 
 import {
@@ -54,26 +59,28 @@ storiesOf("Docs", module)
   .add("Inline styles", () => (
     <EditorWrapper
       id="docs-inline-styles"
-      rawContentState={{
-        blocks: [
-          {
-            text: "This is redacted, and this is very bold.",
-            inlineStyleRanges: [
-              {
-                offset: 8,
-                length: 8,
-                style: "REDACTED",
-              },
-              {
-                offset: 30,
-                length: 9,
-                style: "BOLD",
-              },
-            ],
-          },
-        ],
-        entityMap: {},
-      }}
+      rawContentState={
+        {
+          blocks: [
+            {
+              text: "This is redacted, and this is very bold.",
+              inlineStyleRanges: [
+                {
+                  offset: 8,
+                  length: 8,
+                  style: "REDACTED",
+                },
+                {
+                  offset: 30,
+                  length: 9,
+                  style: "BOLD",
+                },
+              ],
+            },
+          ],
+          entityMap: {},
+        } as RawDraftContentState
+      }
       stripPastedStyles={false}
       inlineStyles={[
         REDACTED_STYLE,
@@ -91,19 +98,21 @@ storiesOf("Docs", module)
   .add("Blocks", () => (
     <EditorWrapper
       id="docs-blocks"
-      rawContentState={{
-        blocks: [
-          {
-            text: "This is blockquote",
-            type: "blockquote",
-          },
-          {
-            text: "This is tiny text",
-            type: "tiny-text",
-          },
-        ],
-        entityMap: {},
-      }}
+      rawContentState={
+        {
+          blocks: [
+            {
+              text: "This is blockquote",
+              type: "blockquote",
+            },
+            {
+              text: "This is tiny text",
+              type: "tiny-text",
+            },
+          ],
+          entityMap: {},
+        } as RawDraftContentState
+      }
       stripPastedStyles={false}
       blockTypes={[
         BLOCK_CONTROL.BLOCKQUOTE,
@@ -117,160 +126,14 @@ storiesOf("Docs", module)
   .add("Entities", () => (
     <EditorWrapper
       id="docs-entities"
-      rawContentState={{
-        blocks: [
-          {
-            text: "Here's an image, and a link:",
-            entityRanges: [
-              {
-                offset: 23,
-                length: 4,
-                key: 0,
-              },
-            ],
-          },
-          {
-            text: " ",
-            type: "atomic",
-            entityRanges: [
-              {
-                offset: 0,
-                length: 1,
-                key: 1,
-              },
-            ],
-          },
-          {
-            text: "",
-          },
-        ],
-        entityMap: {
-          0: {
-            type: "LINK",
-            data: {
-              url: "https://www.example.com/",
-            },
-          },
-          1: {
-            type: "IMAGE",
-            data: {
-              src: "/static/example-lowres-image.jpg",
-              alt: "",
-            },
-          },
-        },
-      }}
-      stripPastedStyles={false}
-      entityTypes={[ENTITY_CONTROL.LINK, ENTITY_CONTROL.IMAGE]}
-    />
-  ))
-  .add("Decorators", () => (
-    <EditorWrapper
-      id="docs-decorators"
-      rawContentState={{
-        blocks: [
-          {
-            text: "Sometimes #hashtags are useful.",
-          },
-          {
-            text: "console.log('Hello, World!');",
-            type: "code-block",
-          },
-        ],
-        entityMap: {},
-      }}
-      stripPastedStyles={false}
-      blockTypes={[BLOCK_CONTROL.CODE]}
-      decorators={[
+      rawContentState={
         {
-          strategy: (block, callback) => {
-            // Regexes are stateful – this needs to be declared separately from the while loop.
-            const regex = /#[\w]+/g;
-            const text = block.getText();
-            let matches;
-            // eslint-disable-next-line no-cond-assign
-            while ((matches = regex.exec(text)) !== null) {
-              callback(matches.index, matches.index + matches[0].length);
-            }
-          },
-
-          component: ({ children }) => (
-            <span style={{ color: "#007d7e" }}>{children}</span>
-          ),
-        },
-        new PrismDecorator({ defaultLanguage: "javascript" }),
-      ]}
-    />
-  ))
-  .add("Controls", () => (
-    <EditorWrapper
-      id="docs-controls"
-      rawContentState={{
-        blocks: [
-          {
-            text: "Sometimes #hashtags are useful.",
-          },
-          {
-            text: "console.log('Hello, World!');",
-            type: "code-block",
-          },
-        ],
-        entityMap: {},
-      }}
-      stripPastedStyles={false}
-      blockTypes={[
-        { type: BLOCK_TYPE.HEADER_TWO, label: null },
-        { type: BLOCK_TYPE.HEADER_THREE, label: null },
-        { type: BLOCK_TYPE.HEADER_FOUR, label: null },
-        BLOCK_CONTROL.CODE,
-        {
-          type: "tiny-text",
-          element: "blockquote",
-        },
-      ]}
-      controls={[
-        {
-          inline: BlockPicker,
-        },
-        {
-          meta: ReadingTime,
-        },
-      ]}
-    />
-  ))
-  .add("UI theming", () => (
-    <div className="docs-ui-theming">
-      <EditorWrapper
-        id="docs-ui-theming"
-        rawContentState={{
           blocks: [
             {
-              text: "Focus mode editor!",
-              type: "blockquote",
-            },
-          ],
-          entityMap: {},
-        }}
-        stripPastedStyles={false}
-        blockTypes={[
-          BLOCK_CONTROL.BLOCKQUOTE,
-          BLOCK_CONTROL.UNORDERED_LIST_ITEM,
-        ]}
-      />
-    </div>
-  ))
-  .add("RTL support", () => (
-    <div className="docs-rtl-support" dir="rtl">
-      <EditorWrapper
-        id="docs-rtl-support"
-        rawContentState={{
-          blocks: [
-            {
-              text: "ما تبحث عنه يبحث عنك",
-              type: "blockquote",
+              text: "Here's an image, and a link:",
               entityRanges: [
                 {
-                  offset: 3,
+                  offset: 23,
                   length: 4,
                   key: 0,
                 },
@@ -287,10 +150,9 @@ storiesOf("Docs", module)
                 },
               ],
             },
-            { text: "إنجليزي", type: "unordered-list-item" },
-            { text: "العربية", type: "unordered-list-item" },
-            { text: "اللغة العِبْرِيَّة", type: "unordered-list-item" },
-            { text: "اللُغَةُ الْفَارِسِيَّةُ", type: "unordered-list-item" },
+            {
+              text: "",
+            },
           ],
           entityMap: {
             0: {
@@ -307,7 +169,164 @@ storiesOf("Docs", module)
               },
             },
           },
-        }}
+        } as unknown as RawDraftContentState
+      }
+      stripPastedStyles={false}
+      entityTypes={[ENTITY_CONTROL.LINK, ENTITY_CONTROL.IMAGE]}
+    />
+  ))
+  .add("Decorators", () => (
+    <EditorWrapper
+      id="docs-decorators"
+      rawContentState={
+        {
+          blocks: [
+            {
+              text: "Sometimes #hashtags are useful.",
+            },
+            {
+              text: "console.log('Hello, World!');",
+              type: "code-block",
+            },
+          ],
+          entityMap: {},
+        } as RawDraftContentState
+      }
+      stripPastedStyles={false}
+      blockTypes={[BLOCK_CONTROL.CODE]}
+      decorators={[
+        {
+          strategy: (block, callback) => {
+            // Regexes are stateful – this needs to be declared separately from the while loop.
+            const regex = /#[\w]+/g;
+            const text = block.getText();
+            let matches;
+            // eslint-disable-next-line no-cond-assign
+            while ((matches = regex.exec(text)) !== null) {
+              callback(matches.index, matches.index + matches[0].length);
+            }
+          },
+
+          component: ({ children }: { children: React.ReactNode }) => (
+            <span style={{ color: "#007d7e" }}>{children}</span>
+          ),
+        },
+        new PrismDecorator({ defaultLanguage: "javascript" }),
+      ]}
+    />
+  ))
+  .add("Controls", () => (
+    <EditorWrapper
+      id="docs-controls"
+      rawContentState={
+        {
+          blocks: [
+            {
+              text: "Sometimes #hashtags are useful.",
+            },
+            {
+              text: "console.log('Hello, World!');",
+              type: "code-block",
+            },
+          ],
+          entityMap: {},
+        } as RawDraftContentState
+      }
+      stripPastedStyles={false}
+      blockTypes={[
+        { type: BLOCK_TYPE.HEADER_TWO, label: null },
+        { type: BLOCK_TYPE.HEADER_THREE, label: null },
+        { type: BLOCK_TYPE.HEADER_FOUR, label: null },
+        BLOCK_CONTROL.CODE,
+        {
+          type: "tiny-text",
+          element: "blockquote",
+        },
+      ]}
+      controls={[
+        {
+          block: BlockPicker,
+        },
+        {
+          block: ReadingTime,
+        },
+      ]}
+    />
+  ))
+  .add("UI theming", () => (
+    <div className="docs-ui-theming">
+      <EditorWrapper
+        id="docs-ui-theming"
+        rawContentState={
+          {
+            blocks: [
+              {
+                text: "Focus mode editor!",
+                type: "blockquote",
+              },
+            ],
+            entityMap: {},
+          } as RawDraftContentState
+        }
+        stripPastedStyles={false}
+        blockTypes={[
+          BLOCK_CONTROL.BLOCKQUOTE,
+          BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+        ]}
+      />
+    </div>
+  ))
+  .add("RTL support", () => (
+    <div className="docs-rtl-support" dir="rtl">
+      <EditorWrapper
+        id="docs-rtl-support"
+        rawContentState={
+          {
+            blocks: [
+              {
+                text: "ما تبحث عنه يبحث عنك",
+                type: "blockquote",
+                entityRanges: [
+                  {
+                    offset: 3,
+                    length: 4,
+                    key: 0,
+                  },
+                ],
+              },
+              {
+                text: " ",
+                type: "atomic",
+                entityRanges: [
+                  {
+                    offset: 0,
+                    length: 1,
+                    key: 1,
+                  },
+                ],
+              },
+              { text: "إنجليزي", type: "unordered-list-item" },
+              { text: "العربية", type: "unordered-list-item" },
+              { text: "اللغة العِبْرِيَّة", type: "unordered-list-item" },
+              { text: "اللُغَةُ الْفَارِسِيَّةُ", type: "unordered-list-item" },
+            ],
+            entityMap: {
+              0: {
+                type: "LINK",
+                data: {
+                  url: "https://www.example.com/",
+                },
+              },
+              1: {
+                type: "IMAGE",
+                data: {
+                  src: "/static/example-lowres-image.jpg",
+                  alt: "",
+                },
+              },
+            },
+          } as unknown as RawDraftContentState
+        }
         textDirectionality="RTL"
         placeholder="اكتب هنا…"
         enableHorizontalRule={{ description: "خط أفقي" }}
@@ -371,21 +390,23 @@ storiesOf("Docs", module)
     <div className="no-toolbar">
       <EditorWrapper
         id="no-toolbar"
-        rawContentState={{
-          blocks: [
-            {
-              text: "Disable the toolbar to save space if your editor only supports a handful of formats",
-              inlineStyleRanges: [
-                {
-                  offset: 23,
-                  length: 10,
-                  style: "ITALIC",
-                },
-              ],
-            },
-          ],
-          entityMap: {},
-        }}
+        rawContentState={
+          {
+            blocks: [
+              {
+                text: "Disable the toolbar to save space if your editor only supports a handful of formats",
+                inlineStyleRanges: [
+                  {
+                    offset: 23,
+                    length: 10,
+                    style: "ITALIC",
+                  },
+                ],
+              },
+            ],
+            entityMap: {},
+          } as RawDraftContentState
+        }
         stripPastedStyles={false}
         inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
         topToolbar={null}
@@ -445,7 +466,7 @@ storiesOf("Docs", module)
       <div className="docs-floating-toolbars">
         <EditorWrapper
           id="floating-toolbars"
-          rawContentState={indexContentState}
+          rawContentState={indexContentState as RawDraftContentState}
           stripPastedStyles={false}
           placeholder="Insert ‘/’ or write here…"
           enableHorizontalRule
@@ -498,14 +519,16 @@ storiesOf("Docs", module)
     <div className="docs-custom-toolbars">
       <EditorWrapper
         id="custom-toolbars"
-        rawContentState={{
-          blocks: [
-            {
-              text: "Use custom toolbars for more flexibility.",
-            },
-          ],
-          entityMap: {},
-        }}
+        rawContentState={
+          {
+            blocks: [
+              {
+                text: "Use custom toolbars for more flexibility.",
+              },
+            ],
+            entityMap: {},
+          } as RawDraftContentState
+        }
         stripPastedStyles={false}
         blockTypes={[
           BLOCK_CONTROL.HEADER_TWO,
@@ -536,7 +559,7 @@ storiesOf("Docs", module)
             className="Draftail-Toolbar Draftail-Toolbar--bottom"
             role="toolbar"
           >
-            <ReadingTime getEditorState={getEditorState} />
+            <ReadingTime getEditorState={getEditorState} onChange={() => {}} />
           </div>
         )}
       />
@@ -545,14 +568,16 @@ storiesOf("Docs", module)
   .add("Icons", () => (
     <EditorWrapper
       id="docs-icons"
-      rawContentState={{
-        blocks: [
-          {
-            text: "Icons can recycle Unicode characters, use SVG, or custom implementations.",
-          },
-        ],
-        entityMap: {},
-      }}
+      rawContentState={
+        {
+          blocks: [
+            {
+              text: "Icons can recycle Unicode characters, use SVG, or custom implementations.",
+            },
+          ],
+          entityMap: {},
+        } as RawDraftContentState
+      }
       enableLineBreak={{ icon: BR_ICON }}
       stripPastedStyles={false}
       inlineStyles={[
@@ -572,14 +597,16 @@ storiesOf("Docs", module)
   .add("i18n", () => (
     <EditorWrapper
       id="docs-i18n"
-      rawContentState={{
-        blocks: [
-          {
-            text: "All of the text displayed in the Draftail UI can be translated",
-          },
-        ],
-        entityMap: {},
-      }}
+      rawContentState={
+        {
+          blocks: [
+            {
+              text: "All of the text displayed in the Draftail UI can be translated",
+            },
+          ],
+          entityMap: {},
+        } as RawDraftContentState
+      }
       enableLineBreak={{
         icon: BR_ICON,
         description: "Saut de ligne",
@@ -612,8 +639,10 @@ storiesOf("Docs", module)
     <p></p>
     `;
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const fromHTML = convertFromHTML({
-      htmlToEntity: (nodeName, node, createEntity) => {
+      htmlToEntity: (nodeName: string, node, createEntity) => {
         // a tags will become LINK entities, marked as mutable, with only the URL as data.
         if (nodeName === "a") {
           return createEntity(ENTITY_TYPE.LINK, "MUTABLE", { url: node.href });
@@ -629,15 +658,15 @@ storiesOf("Docs", module)
           return createEntity(ENTITY_TYPE.HORIZONTAL_RULE, "IMMUTABLE", {});
         }
 
-        return null;
+        return false;
       },
-      htmlToBlock: (nodeName) => {
+      htmlToBlock: (nodeName: string) => {
         if (nodeName === "hr" || nodeName === "img") {
           // "atomic" blocks is how Draft.js structures block-level entities.
           return "atomic";
         }
 
-        return null;
+        return false;
       },
     });
 
@@ -703,10 +732,12 @@ storiesOf("Docs", module)
   ))
   .add("Form validation", () => (
     <Formik
-      initialValues={{ content: null }}
+      initialValues={
+        { content: null } as { content: RawDraftContentState | null }
+      }
       onSubmit={window.alert.bind(null, "Success!")}
       validate={(values) => {
-        const errors = {};
+        const errors: { content?: string } = {};
 
         if (!values.content) {
           errors.content = "Please enter at least two paragraphs";

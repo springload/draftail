@@ -9,6 +9,12 @@ export {
 } from "./components/DraftailEditor";
 export { default as Icon, IconProps } from "./components/Icon";
 export {
+  default as Tooltip,
+  TooltipPlacement,
+  TooltipPosition,
+  TooltipProps,
+} from "./components/Tooltip/Tooltip";
+export {
   default as ToolbarButton,
   ToolbarButtonProps,
 } from "./components/Toolbar/ToolbarButton";

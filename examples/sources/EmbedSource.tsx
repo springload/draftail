@@ -148,10 +148,6 @@ export const getValidEmbedURL = (
   return false;
 };
 
-interface OnPasteEntityTypeControl extends EntityTypeControl {
-  schemes: ReadonlyArray<string>;
-}
-
 export const onPasteEmbed = (
   text: string,
   html: string | null | undefined,
@@ -163,7 +159,7 @@ export const onPasteEmbed = (
     setEditorState: (state: EditorState) => void;
     getEditorState: () => EditorState;
   },
-  entityType: OnPasteEntityTypeControl,
+  entityType: EntityTypeControl,
 ): "handled" | "not-handled" => {
   const url = getValidEmbedURL(getValidLinkURL(text, ["https:"]), [
     "www.youtube.com",

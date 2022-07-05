@@ -15,8 +15,9 @@ type Props = {
  * Count characters in a string, with special processing to account for astral symbols in UCS-2. See:
  * - https://github.com/RadLikeWhoa/Countable/blob/master/Countable.js#L29
  * - https://mathiasbynens.be/notes/javascript-unicode
+ * - https://github.com/tc39/proposal-intl-segmenter
  */
-const countChars = (text: string) => {
+export const countChars = (text: string) => {
   if (text) {
     // Find as many matches as there are (g), matching newlines as characters (s), as unicode code points (u).
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#advanced_searching_with_flags.

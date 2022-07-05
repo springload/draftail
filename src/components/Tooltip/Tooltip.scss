@@ -1,0 +1,35 @@
+@import "~tippy.js/dist/tippy.css";
+
+.#{$DRAFTAIL}Tooltip {
+  background: none;
+  color: inherit;
+  border-radius: 0;
+  font-size: inherit;
+
+  .tippy-content {
+    padding: 0;
+  }
+}
+
+.#{$DRAFTAIL}Tooltip__target {
+  position: absolute;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.#{$DRAFTAIL}Tooltip__backdrop {
+  position: relative;
+  top: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color $draftail-toolbar-tooltip-duration 0s;
+  z-index: $draftail-page-overlay-z-index;
+  pointer-events: none;
+}
+
+.#{$DRAFTAIL}Tooltip__backdrop--visible {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.1);
+}

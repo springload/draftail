@@ -1,6 +1,6 @@
 import React from "react";
 
-const onCopy = (value) => {
+const onCopy = (value: string) => {
   const hidden = document.createElement("textarea");
   hidden.value = value;
   document.body.appendChild(hidden);

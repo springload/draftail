@@ -1,11 +1,17 @@
 import React from "react";
-import type { BenchResultsType } from "react-component-benchmark";
 
-type Props = {
-  results: BenchResultsType;
-};
+export interface BenchResultsType {
+  mean: number;
+  min: number;
+  median: number;
+  p70: number;
+  p95: number;
+  p99: number;
+  max: number;
+  stdDev: number;
+}
 
-const BenchmarkResults = ({ results }: Props) => (
+const BenchmarkResults = ({ results }: { results: BenchResultsType }) => (
   <table>
     <thead>
       <tr>

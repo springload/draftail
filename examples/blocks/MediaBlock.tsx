@@ -17,7 +17,7 @@ export interface MediaBlockProps extends EntityBlockProps {
   children: React.ReactNode;
 }
 
-interface MediaBlockState {
+export interface MediaBlockState {
   tooltip: {
     target: Rect;
     containerWidth: number;

@@ -31,33 +31,3 @@
   position: relative;
   visibility: hidden;
 }
-
-.#{$DRAFTAIL}BlockToolbar .tippy-box {
-  min-width: 240px;
-  background: $draftail-editor-background;
-  color: $draftail-editor-text;
-  border-radius: $draftail-tooltip-radius;
-  font-size: $draftail-editor-font-size;
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
-
-  .tippy-content {
-    padding: 0;
-  }
-}
-
-.#{$DRAFTAIL}BlockToolbar__backdrop {
-  position: relative;
-  top: 0;
-  inset-inline-start: 0;
-  inset-inline-end: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0);
-  transition: background-color $draftail-toolbar-tooltip-duration 0s;
-  z-index: $draftail-page-overlay-z-index;
-  pointer-events: none;
-}
-
-.#{$DRAFTAIL}BlockToolbar--open .#{$DRAFTAIL}BlockToolbar__backdrop {
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.1);
-}

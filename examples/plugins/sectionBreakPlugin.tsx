@@ -76,8 +76,8 @@ const SectionBreak = ({ isFocused }: SectionBreakProps) => (
 
 const sectionBreakPlugin = (config: {
   decorator: (
-    component: (props: SectionBreakProps) => Node,
-  ) => Component<unknown>;
+    component: React.ComponentType<SectionBreakProps>,
+  ) => Component<SectionBreakProps>;
 }) => {
   const component = config.decorator(SectionBreak);
   return {

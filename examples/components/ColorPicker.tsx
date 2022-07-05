@@ -6,6 +6,7 @@ import {
   CharacterMetadata,
   SelectionState,
   RawDraftContentState,
+  ContentBlock,
 } from "draft-js";
 
 import { ChromePicker } from "react-color";
@@ -20,15 +21,15 @@ import Modal from "./Modal";
 export const getColorInlineStyles = (rawContentState: RawDraftContentState) =>
   Array.from<string>(
     new Set(
-      rawContentState.blocks.reduce((acc, b) => {
+      rawContentState.blocks.reduce<string[]>((acc, b) => {
         if (!b.inlineStyleRanges) {
           return acc;
         }
 
         return acc.concat(
           b.inlineStyleRanges
-            .filter((r) => r.style.startsWith("COLOR_"))
-            .map((r) => r.style),
+            .filter((r) => (r.style as string).startsWith("COLOR_"))
+            .map((r) => r.style as string),
         );
       }, []),
     ),
@@ -54,6 +55,10 @@ export const filterColorStylesFromSelection = (
   let isAfterEndKey = false;
 
   const blocks = blockMap.map((block) => {
+    if (!block) {
+      return block as unknown as ContentBlock;
+    }
+
     const isStartBlock = block.getKey() === startKey;
     const isEndBlock = block.getKey() === endKey;
     isAfterStartKey = isAfterStartKey || isStartBlock;
@@ -69,6 +74,10 @@ export const filterColorStylesFromSelection = (
     let altered = false;
 
     const chars = block.getCharacterList().map((char, i) => {
+      if (!char || typeof i === "undefined") {
+        return char;
+      }
+
       const isAfterStartOffset = i >= startOffset;
       const isBeforeEndOffset = i < endOffset;
       const isCharInSelection =
@@ -89,22 +98,24 @@ export const filterColorStylesFromSelection = (
       if (isCharInSelection) {
         char
           .getStyle()
-          .filter((type) => type.startsWith("COLOR_"))
+          .filter((type) => (type as string).startsWith("COLOR_"))
           .forEach((type) => {
             altered = true;
-            newChar = CharacterMetadata.removeStyle(newChar, type);
+            newChar = CharacterMetadata.removeStyle(newChar, type as string);
           });
       }
 
       return newChar;
     });
 
-    return altered ? block.set("characterList", chars) : block;
+    return (
+      altered ? block.set("characterList", chars) : block
+    ) as ContentBlock;
   });
 
   return content.merge({
     blockMap: blockMap.merge(blocks),
-  });
+  }) as ContentState;
 };
 
 const DROP_ICON =
@@ -192,7 +203,7 @@ class ColorPicker extends Component<Props, State> {
           onClick={this.onClickButton}
           active={editorState
             .getCurrentInlineStyle()
-            .some((s) => s.startsWith("COLOR_"))}
+            .some((s) => (s as string).startsWith("COLOR_"))}
         />
         <Modal
           onRequestClose={this.onRequestClose}

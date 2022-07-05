@@ -15,8 +15,11 @@ storiesOf("Tests", module)
   // Add a decorator rendering story as a component for hooks support.
   .addDecorator((Story) => <Story />)
   .add("Unmount", () => {
-    class UnmountTest extends Component {
-      constructor(props) {
+    class UnmountTest extends Component<
+      Record<string, never>,
+      { count: number }
+    > {
+      constructor(props: Record<string, never>) {
         super(props);
 
         this.state = {
@@ -45,8 +48,11 @@ storiesOf("Tests", module)
       }
     }
 
-    class UnmountWrapper extends Component {
-      constructor(props) {
+    class UnmountWrapper extends Component<
+      Record<string, never>,
+      { isMounted: boolean }
+    > {
+      constructor(props: Record<string, never>) {
         super(props);
 
         this.state = {

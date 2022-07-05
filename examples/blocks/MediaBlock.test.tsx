@@ -1,21 +1,42 @@
 import React from "react";
+import { ContentBlock, EditorState } from "draft-js";
 import { shallow } from "enzyme";
 
-import MediaBlock from "./MediaBlock";
+import EmbedSource from "../sources/EmbedSource";
+
+import MediaBlock, { MediaBlockProps, MediaBlockState } from "./MediaBlock";
+import Portal from "../components/Portal";
+
+const typedShallow = (elt: React.ReactElement) =>
+  shallow<MediaBlock, MediaBlockProps, MediaBlockState>(elt);
 
 describe("MediaBlock", () => {
   it("renders", () => {
     expect(
-      shallow(
+      typedShallow(
         <MediaBlock
           src="example.png"
           label="test"
+          isLoading={false}
+          block={new ContentBlock()}
           blockProps={{
             entityType: {
+              description: "desc",
               icon: "#icon-test",
-              description: "Test",
+              type: "test",
+              source: EmbedSource,
             },
+            editorState: EditorState.createEmpty(),
+            entityKey: "string",
+            textDirectionality: "RTL",
+            lockEditor: () => {},
+            unlockEditor: () => {},
+            onChange: () => {},
+            onEditEntity: () => {},
+            onRemoveEntity: () => {},
             entity: {
+              getType: () => "type",
+              getMutability: () => "MUTABLE",
               getData: () => ({
                 src: "example.png",
               }),
@@ -30,17 +51,30 @@ describe("MediaBlock", () => {
 
   it("isLoading", () => {
     expect(
-      shallow(
+      typedShallow(
         <MediaBlock
           src="example.png"
           label="test"
           isLoading
+          block={new ContentBlock()}
           blockProps={{
             entityType: {
+              description: "desc",
               icon: "#icon-test",
-              description: "Test",
+              type: "test",
+              source: EmbedSource,
             },
+            editorState: EditorState.createEmpty(),
+            entityKey: "string",
+            textDirectionality: "RTL",
+            lockEditor: () => {},
+            unlockEditor: () => {},
+            onChange: () => {},
+            onEditEntity: () => {},
+            onRemoveEntity: () => {},
             entity: {
+              getType: () => "type",
+              getMutability: () => "MUTABLE",
               getData: () => ({
                 src: "example.png",
               }),
@@ -54,19 +88,33 @@ describe("MediaBlock", () => {
   });
 
   describe("tooltip", () => {
-    let wrapper;
+    let wrapper: ReturnType<typeof typedShallow>;
 
     beforeEach(() => {
-      wrapper = shallow(
+      wrapper = typedShallow(
         <MediaBlock
           src="example.png"
           label=""
+          isLoading={false}
+          block={new ContentBlock()}
           blockProps={{
             entityType: {
+              description: "desc",
               icon: "#icon-test",
-              description: "Test",
+              type: "test",
+              source: EmbedSource,
             },
+            editorState: EditorState.createEmpty(),
+            entityKey: "string",
+            textDirectionality: "RTL",
+            lockEditor: () => {},
+            unlockEditor: () => {},
+            onChange: () => {},
+            onEditEntity: () => {},
+            onRemoveEntity: () => {},
             entity: {
+              getType: () => "type",
+              getMutability: () => "MUTABLE",
               getData: () => ({
                 src: "example.png",
               }),
@@ -84,28 +132,29 @@ describe("MediaBlock", () => {
 
       wrapper.simulate("mouseup", { target });
 
-      expect(wrapper.find("Portal").dive().instance().portal).toMatchSnapshot();
+      expect(
+        wrapper.find("Portal").dive<Portal>().instance().portal,
+      ).toMatchSnapshot();
     });
 
     it("large viewport", () => {
       const target = document.createElement("div");
       document.body.appendChild(target);
-      target.getBoundingClientRect = () => ({
-        top: 0,
-        left: 0,
-        width: -600,
-        height: 0,
-      });
+      target.getBoundingClientRect = () =>
+        ({
+          top: 0,
+          left: 0,
+          width: -600,
+          height: 0,
+        } as DOMRect);
 
       wrapper.simulate("mouseup", { target });
 
-      expect(
-        wrapper
-          .find("Portal")
-          .dive()
-          .instance()
-          .portal.querySelector(".Tooltip").className,
-      ).toBe("Tooltip Tooltip--start");
+      const portalElt = wrapper.find("Portal").dive<Portal>().instance().portal;
+
+      expect(portalElt!.querySelector(".Tooltip")!.className).toBe(
+        "Tooltip Tooltip--start",
+      );
     });
 
     it("closes", () => {

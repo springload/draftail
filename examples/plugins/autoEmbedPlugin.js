@@ -12,11 +12,6 @@ const TARGET_EMBED_URLS = [
   ".npr.org",
 ];
 
-type PluginFunctions = {
-  setEditorState: (editorState: EditorState) => void;
-  getEditorState: () => EditorState;
-};
-
 const insertEmbedBlock = (editorState, block) => {
   const content = editorState.getCurrentContent();
   const contentWithEntity = content.createEntity("EMBED", "IMMUTABLE", {});
@@ -63,10 +58,7 @@ const replaceEmbedBlock = (editorState, block) => {
 };
 
 const autoEmbedPlugin = () => ({
-  onChange(
-    nextState: EditorState,
-    { getEditorState, setEditorState }: PluginFunctions,
-  ) {
+  onChange(nextState, { getEditorState, setEditorState }) {
     const editorState = getEditorState();
     const shouldFilterPaste =
       nextState.getCurrentContent() !== editorState.getCurrentContent() &&
@@ -114,10 +106,10 @@ const autoEmbedPlugin = () => ({
   },
 
   handlePastedText(
-    text: string,
-    html: string | null | undefined,
-    editorState: EditorState,
-    { setEditorState, getEditorState }: PluginFunctions,
+    text,
+    html,
+    editorState,
+    { setEditorState, getEditorState },
   ) {
     const selection = editorState.getSelection();
 

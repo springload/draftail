@@ -1,4 +1,5 @@
 import { storiesOf } from "@storybook/react";
+import { RawDraftContentState } from "draft-js";
 import React from "react";
 
 import {
@@ -16,7 +17,7 @@ import EditorWrapper from "./components/EditorWrapper";
 storiesOf("Draftail", module).add("Home", () => (
   <EditorWrapper
     id="index"
-    rawContentState={indexContentState}
+    rawContentState={indexContentState as RawDraftContentState}
     ariaDescribedBy="demo-editor-index"
     placeholder="Write here…"
     enableHorizontalRule

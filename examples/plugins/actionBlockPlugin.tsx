@@ -5,9 +5,8 @@ import {
   EditorState,
   EditorBlock,
   SelectionState,
+  DraftDecorator,
 } from "draft-js";
-import type { DraftDecoratorType } from "draft-js/lib/DraftDecoratorType";
-import type { BidiDirection } from "fbjs/lib/UnicodeBidiDirection";
 
 import { DraftUtils } from "../../src/index";
 
@@ -18,14 +17,18 @@ type PluginFns = {
   getEditorState: () => EditorState;
 };
 
-const updateDataOfBlock = (editorState, block, newData) => {
+const updateDataOfBlock = (
+  editorState: EditorState,
+  block: ContentBlock,
+  newData: Record<string, unknown>,
+) => {
   const contentState = editorState.getCurrentContent();
   const newBlock = block.merge({
     data: newData,
-  });
+  }) as ContentBlock;
   const newContentState = contentState.merge({
     blockMap: contentState.getBlockMap().set(block.getKey(), newBlock),
-  });
+  }) as ContentState;
 
   // forceSelection hack to make sure the selection does not attempt to go where the checkbox is.
   return EditorState.forceSelection(
@@ -34,7 +37,7 @@ const updateDataOfBlock = (editorState, block, newData) => {
   );
 };
 
-const preventDefaultStopPropagation = (e) => {
+const onMouseDown = (e: React.MouseEvent<HTMLInputElement>) => {
   e.preventDefault();
   e.stopPropagation();
 };
@@ -49,8 +52,7 @@ type Props = {
     block: ContentBlock,
   ) => React.CSSProperties | null | undefined;
   customStyleMap: { [key: string]: React.CSSProperties };
-  decorator: DraftDecoratorType | null | undefined;
-  direction: BidiDirection;
+  decorator?: DraftDecorator | null;
   forceSelection: boolean;
   offsetKey: string;
   selection: SelectionState;
@@ -84,7 +86,7 @@ class ActionBlock extends Component<Props> {
             type="checkbox"
             defaultChecked={checked}
             onChange={this.onChange}
-            onMouseDown={preventDefaultStopPropagation}
+            onMouseDown={onMouseDown}
           />
         </span>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}

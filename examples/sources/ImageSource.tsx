@@ -1,30 +1,18 @@
 import React, { Component } from "react";
 
 import { AtomicBlockUtils, EditorState } from "draft-js";
-import type { EntityInstance } from "draft-js";
 
 import Modal from "../components/Modal";
-
-type Props = {
-  editorState: EditorState;
-  onComplete: (state: EditorState) => void;
-  onClose: () => void;
-  entityType: {
-    type: string;
-  };
-  entity: EntityInstance | null | undefined;
-  entityKey: string | null | undefined;
-  textDirectionality: "LTR" | "RTL";
-};
+import { EntitySourceProps } from "../../src";
 
 type State = {
   src: string;
 };
 
-class ImageSource extends Component<Props, State> {
-  inputRef: HTMLInputElement | null | undefined;
+class ImageSource extends Component<EntitySourceProps, State> {
+  inputRef?: HTMLInputElement | null;
 
-  constructor(props: Props) {
+  constructor(props: EntitySourceProps) {
     super(props);
 
     const { entity } = this.props;

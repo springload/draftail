@@ -44,6 +44,7 @@ $tooltip-arrow-spacing: 25px;
   color: $draftail-tooltip-chrome-text;
   z-index: $draftail-tooltip-z-index;
   border-radius: $draftail-tooltip-radius;
+  border: $draftail-contrast-border;
 
   &[dir="rtl"],
   [dir="rtl"] & {

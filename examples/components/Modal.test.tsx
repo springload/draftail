@@ -5,7 +5,7 @@ import Modal from "./Modal";
 
 describe("Modal", () => {
   it("has defaults", () => {
-    expect(shallow(<Modal>Test</Modal>)).toMatchInlineSnapshot(`
+    expect(shallow(<Modal isOpen={false}>Test</Modal>)).toMatchInlineSnapshot(`
       <Modal
         ariaHideApp={false}
         bodyOpenClassName="modal__container--open"
@@ -39,13 +39,5 @@ describe("Modal", () => {
         Test
       </Modal>
     `);
-  });
-
-  it("forwards its props", () => {
-    expect(
-      shallow(<Modal forwarded>Test</Modal>)
-        .find("Modal")
-        .prop("forwarded"),
-    ).toBe(true);
   });
 });

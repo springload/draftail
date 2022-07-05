@@ -161,8 +161,8 @@ export default {
    */
   resetBlockWithType(
     editorState: EditorState,
-    newType: string,
-    newText: string,
+    newType?: string,
+    newText = "",
     newData: { [key: string]: unknown } = {},
   ) {
     const contentState = editorState.getCurrentContent();
@@ -183,7 +183,7 @@ export default {
     }
 
     const newBlock = block.merge({
-      type: newType,
+      type: newType || block.getType(),
       text: newText,
       characterList: chars,
       data: newData,

@@ -3,7 +3,7 @@
 @import "./components/Icon";
 @import "./components/DraftailEditor";
 @import "./components/PlaceholderBlock/Placeholder";
-@import "~tippy.js/dist/tippy.css";
+@import "./components/Tooltip/Tooltip";
 @import "./components/Toolbar/Toolbar";
 @import "./components/Toolbar/BlockToolbar/BlockToolbar";
 @import "./components/Toolbar/BlockToolbar/ComboBox";
@@ -12,6 +12,5 @@
 @import "./components/Toolbar/ToolbarGroup";
 @import "./components/Toolbar/ToolbarButton";
 @import "./components/Toolbar/ToolbarTooltip";
-@import "./components/CommandPalette/CommandPalette";
 
 @import "./blocks/DividerBlock";

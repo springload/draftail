@@ -1,36 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
-import Tippy, { TippyProps } from "@tippyjs/react";
+import React from "react";
 import { getVisibleSelectionRect } from "draft-js";
 
 import DraftUtils from "../../api/DraftUtils";
 import behavior from "../../api/behavior";
 
-import ComboBox from "../Toolbar/BlockToolbar/ComboBox";
+import ComboBox, { CommandStateChange } from "../Toolbar/BlockToolbar/ComboBox";
 import { ToolbarProps } from "../Toolbar/Toolbar";
 import { ENTITY_TYPE } from "../../api/constants";
-
-const getReferenceClientRect = () => getVisibleSelectionRect(window);
-
-const hideTooltipOnEsc = {
-  name: "hideOnEsc",
-  defaultValue: true,
-  fn({ hide }: { hide: () => void }) {
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") {
-        hide();
-      }
-    }
-
-    return {
-      onShow() {
-        document.addEventListener("keydown", onKeyDown);
-      },
-      onHide() {
-        document.removeEventListener("keydown", onKeyDown);
-      },
-    };
-  },
-};
+import Tooltip, { TooltipPlacement } from "../Tooltip/Tooltip";
 
 /**
  * Simulates a keyboard event having happened on the combobox’s input.
@@ -51,16 +28,29 @@ export const simulateInputEvent = (
   if (!input) {
     return;
   }
-  input?.dispatchEvent(new KeyboardEvent("keydown", { key, bubbles: true }));
+  input.dispatchEvent(new KeyboardEvent("keydown", { key, bubbles: true }));
   event.preventDefault();
 };
 
-const tippyPlugins = [hideTooltipOnEsc];
+/**
+ * Position the tooltip according to the current selection, relative to the editor, with an offset.
+ */
+const getTargetPosition = (editorRect: DOMRect) => {
+  const clientRect = getVisibleSelectionRect(window);
+  if (clientRect) {
+    return {
+      top: clientRect.top - editorRect.top,
+      left: clientRect.left - editorRect.left,
+    };
+  }
+
+  return null;
+};
 
 export interface CommandPaletteProps extends ToolbarProps {
-  comboPlacement: TippyProps["placement"];
-  noResultsText: string;
-  tooltipZIndex: number;
+  comboPlacement?: TooltipPlacement;
+  noResultsText?: string;
+  tooltipZIndex?: number;
 }
 
 const CommandPalette = ({
@@ -77,125 +67,68 @@ const CommandPalette = ({
 }: CommandPaletteProps) => {
   const editorState = getEditorState();
   const prompt = DraftUtils.getCommandPalettePrompt(editorState);
-  const showPrompt = !!prompt;
-  const comboOptions = behavior.getCommandPalette({
+  const shouldOpen = Boolean(prompt);
+
+  if (!shouldOpen) {
+    return null;
+  }
+
+  const items = behavior.getCommandPalette({
     commands,
     blockTypes,
     entityTypes,
     enableHorizontalRule,
   });
-  const tippyParentRef = useRef<HTMLDivElement>(null);
-  const [selectionRect, setSelectionRect] = useState<{ top: number } | null>();
 
-  useEffect(() => {
-    if (showPrompt && tippyParentRef.current) {
-      const editor = tippyParentRef.current.closest<HTMLDivElement>(
-        "[data-draftail-editor]",
-      );
-      const editorRect = editor!.getBoundingClientRect();
-      const clientRect = getReferenceClientRect();
-      setSelectionRect({
-        top: clientRect.top - editorRect.top + clientRect.height,
-      });
-    } else {
-      setSelectionRect(null);
+  const onSelect = (change: CommandStateChange) => {
+    const item = change.selectedItem;
+
+    if (!item) {
+      return;
     }
-  }, [showPrompt]);
 
-  const isVisible = showPrompt && Boolean(selectionRect);
+    const itemType = item.type as string;
 
+    if (item.onSelect) {
+      onCompleteSource(item.onSelect({ editorState, prompt }));
+    } else if (item.category === "blockTypes") {
+      const nextState = DraftUtils.resetBlockWithType(editorState, itemType);
+      onCompleteSource(nextState);
+    } else if (item.type === ENTITY_TYPE.HORIZONTAL_RULE) {
+      const nextState = DraftUtils.resetBlockWithType(editorState);
+      onCompleteSource(
+        DraftUtils.addHorizontalRuleRemovingSelection(nextState),
+      );
+    } else if (item.category === "entityTypes") {
+      const nextState = DraftUtils.resetBlockWithType(editorState);
+      onCompleteSource(nextState);
+      setTimeout(() => {
+        onRequestSource(itemType);
+      }, 50);
+    }
+  };
   return (
-    <div
-      className={`Draftail-CommandPalette${
-        isVisible ? " Draftail-CommandPalette--open" : ""
-      }`}
-    >
-      <div ref={tippyParentRef} />
-      {isVisible ? (
-        <Tippy
-          visible={isVisible}
-          interactive
-          onHide={() => setSelectionRect(null)}
-          onClickOutside={() => setSelectionRect(null)}
-          placement={comboPlacement}
-          maxWidth="100%"
-          zIndex={tooltipZIndex}
-          arrow={false}
-          appendTo={() => tippyParentRef.current as HTMLDivElement}
-          plugins={tippyPlugins}
-          content={
-            <ComboBox
-              items={comboOptions}
-              inputValue={prompt.substring(1)}
-              noResultsText={noResultsText}
-              onSelect={(change) => {
-                const item = change.selectedItem;
-
-                if (!item) {
-                  return;
-                }
-
-                const itemType = item.type as string;
-
-                setSelectionRect(null);
-                if (item.onSelect) {
-                  onCompleteSource(
-                    item.onSelect({ editorState: getEditorState(), prompt }),
-                  );
-                } else if (item.category === "blockTypes") {
-                  const state = getEditorState();
-                  const block = DraftUtils.getSelectedBlock(state);
-                  onCompleteSource(
-                    DraftUtils.resetBlockWithType(
-                      state,
-                      itemType,
-                      block.getText().replace(prompt, ""),
-                    ),
-                  );
-                } else if (item.type === ENTITY_TYPE.HORIZONTAL_RULE) {
-                  let nextState = getEditorState();
-                  const block = DraftUtils.getSelectedBlock(nextState);
-                  nextState = DraftUtils.resetBlockWithType(
-                    nextState,
-                    block.getType(),
-                    block.getText().replace(prompt, ""),
-                  );
-                  onCompleteSource(
-                    DraftUtils.addHorizontalRuleRemovingSelection(nextState),
-                  );
-                } else if (item.category === "entityTypes") {
-                  let nextState = getEditorState();
-                  const block = DraftUtils.getSelectedBlock(nextState);
-                  nextState = DraftUtils.resetBlockWithType(
-                    nextState,
-                    block.getType(),
-                    block.getText().replace(prompt, ""),
-                  );
-                  onCompleteSource(nextState);
-                  setTimeout(() => {
-                    onRequestSource(itemType);
-                  }, 50);
-                }
-              }}
-            />
-          }
-        >
-          <div
-            className="Draftail-CommandPalette__target"
-            style={selectionRect ? { top: selectionRect.top } : undefined}
-          >
-            {"\u200B"}
-          </div>
-        </Tippy>
-      ) : null}
-      <div className="Draftail-BlockToolbar__backdrop" />
-    </div>
+    <Tooltip
+      shouldOpen={shouldOpen}
+      getTargetPosition={getTargetPosition}
+      showBackdrop
+      placement={comboPlacement}
+      zIndex={tooltipZIndex}
+      content={
+        <ComboBox
+          items={items}
+          inputValue={prompt.substring(1)}
+          noResultsText={noResultsText}
+          onSelect={onSelect}
+        />
+      }
+    />
   );
 };
 
 CommandPalette.defaultProps = {
   // right-start also works in RTL mode.
-  comboPlacement: "bottom-end" as TippyProps["placement"],
+  comboPlacement: "bottom-end" as TooltipPlacement,
   noResultsText: "No results found",
   tooltipZIndex: 100,
 };

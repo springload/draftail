@@ -4,6 +4,7 @@
   color: $draftail-editor-chrome-text;
   border-radius: $draftail-toolbar-radius;
   border-bottom: $draftail-toolbar-border-bottom;
+  border: $draftail-contrast-border;
 }
 
 .#{$DRAFTAIL}InlineToolbar__target {

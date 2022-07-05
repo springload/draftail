@@ -1,6 +1,6 @@
 import React from "react";
-import Prism from "prismjs";
-import type { ContentBlock } from "draft-js";
+import { ContentBlock } from "draft-js";
+import Prism, { Token } from "prismjs";
 
 import { BLOCK_TYPE } from "../../src/index";
 
@@ -91,7 +91,7 @@ class PrismDecorator {
     this.highlighted[blockKey] = {};
 
     let tokenCount = 0;
-    tokens.reduce((startOffset: number, token: string) => {
+    tokens.reduce((startOffset: number, token: string | Token) => {
       const endOffset = startOffset + token.length;
 
       if (typeof token !== "string") {

@@ -49,7 +49,7 @@ export interface EntityTypeControl extends Control {
   block?: React.ComponentType<EntityBlockProps>;
 
   /** Custom copy-paste processing checker. */
-  onPaste: (
+  onPaste?: (
     text: string,
     html: string | null | undefined,
     editorState: EditorState,

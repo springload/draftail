@@ -1,11 +1,11 @@
 import { Modifier, RichUtils, EditorState } from "draft-js";
 
 const createEntity = (
-  editorState: EditorState,
-  entityType: string,
-  entityData: Record<string, unknown>,
-  entityText: string,
-  entityMutability: "IMMUTABLE" | "MUTABLE" = "IMMUTABLE",
+  editorState,
+  entityType,
+  entityData,
+  entityText,
+  entityMutability,
 ) => {
   const contentState = editorState.getCurrentContent();
   const selection = editorState.getSelection();
@@ -87,16 +87,7 @@ const LINKIFY_PATTERN = // protocol identifier (optional)
 export const LINKIFY_REGEX_EXACT = new RegExp(`^${LINKIFY_PATTERN}$`, "ig");
 
 const linkifyPlugin = () => ({
-  handlePastedText(
-    text: string,
-    html: string | null | undefined,
-    editorState: EditorState,
-    {
-      setEditorState,
-    }: {
-      setEditorState: (state: EditorState) => void;
-    },
-  ) {
+  handlePastedText(text, html, editorState, { setEditorState }) {
     let nextState = editorState;
 
     if (text.match(LINKIFY_REGEX_EXACT)) {

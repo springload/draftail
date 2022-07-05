@@ -1,23 +1,14 @@
 import React from "react";
-import { EditorState } from "draft-js";
 
-import {
-  ControlControl,
-  EntityTypeControl,
-  LegacyControlControl,
-} from "../../api/types";
+import { LegacyControlControl } from "../../api/types";
 import { getControlLabel, showControl } from "../../api/ui";
 import ToolbarButton from "./ToolbarButton";
 import ToolbarGroup from "./ToolbarGroup";
 import { getButtonTitle } from "./ToolbarDefaults";
+import { ToolbarProps } from "./Toolbar";
 
-export interface MetaToolbarProps {
+export interface MetaToolbarProps extends ToolbarProps {
   showBlockEntities?: boolean;
-  entityTypes: ReadonlyArray<EntityTypeControl>;
-  controls: ReadonlyArray<ControlControl | LegacyControlControl>;
-  getEditorState: () => EditorState;
-  onChange: (state: EditorState) => void;
-  onRequestSource: (entityType: string) => void;
 }
 
 const MetaToolbar = ({

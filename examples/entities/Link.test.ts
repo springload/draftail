@@ -1,8 +1,13 @@
 import { EditorState, ContentState, convertFromHTML } from "draft-js";
+import LinkSource from "../sources/LinkSource";
 
 import { getValidLinkURL, onPasteLink } from "./Link";
 
-const schemes = ["http:", "https:", "ftp:", "ftps:"];
+const testEntityType = {
+  type: "Test",
+  source: LinkSource,
+  schemes: ["http:", "https:", "ftp:", "ftps:"],
+};
 
 describe.each`
   text                           | result
@@ -23,7 +28,7 @@ describe.each`
   ${"file://test"}               | ${false}
 `("getValidLinkURL", ({ text, result }) => {
   test(text, () => {
-    expect(getValidLinkURL(text, schemes)).toBe(result);
+    expect(getValidLinkURL(text, testEntityType.schemes)).toBe(result);
   });
 });
 
@@ -41,7 +46,13 @@ describe("onPasteLink", () => {
 
   it("discards invalid URLs", () => {
     expect(
-      onPasteLink("test", null, editorState, { setEditorState }, { schemes }),
+      onPasteLink(
+        "test",
+        null,
+        editorState,
+        { setEditorState },
+        testEntityType,
+      ),
     ).toBe("not-handled");
     expect(setEditorState).not.toHaveBeenCalled();
   });
@@ -57,7 +68,7 @@ describe("onPasteLink", () => {
         null,
         selected,
         { setEditorState },
-        { schemes },
+        testEntityType,
       ),
     ).toBe("handled");
     expect(setEditorState).toHaveBeenCalled();
@@ -76,7 +87,7 @@ describe("onPasteLink", () => {
         null,
         editorState,
         { setEditorState },
-        { schemes },
+        testEntityType,
       ),
     ).toBe("handled");
     expect(setEditorState).toHaveBeenCalled();

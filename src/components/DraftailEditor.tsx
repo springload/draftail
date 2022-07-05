@@ -163,7 +163,8 @@ export interface DraftailEditorProps {
   commands: boolean | ReadonlyArray<CommandCategory>;
 
   /** List of plugins of the draft-js-plugins architecture. */
-  plugins: ReadonlyArray<unknown>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  plugins: ReadonlyArray<any>;
 
   /** Optionally override the default Draftail toolbar, removing or replacing it. */
   topToolbar?: React.ComponentType<ToolbarProps> | null;

@@ -1,9 +1,9 @@
 .MediaBlock {
   display: inline-block;
   position: relative;
-  border: 0;
   padding: 0;
   cursor: pointer;
+  outline: $draftail-contrast-border;
 
   // stylelint-disable
   &:focus {

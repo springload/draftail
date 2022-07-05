@@ -1,8 +1,11 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Portal from "./Portal";
+import Portal, { PortalProps } from "./Portal";
 
 const f = expect.any(Function);
+
+const typedShallow = (elt: React.ReactElement) =>
+  shallow<Portal, PortalProps>(elt);
 
 describe("Portal", () => {
   beforeEach(() => {
@@ -10,18 +13,20 @@ describe("Portal", () => {
   });
 
   it("empty", () => {
-    expect(shallow(<Portal />)).toMatchSnapshot();
+    expect(typedShallow(<Portal onClose={() => {}} />)).toMatchSnapshot();
   });
 
   it("#children", () => {
-    expect(shallow(<Portal>Test!</Portal>)).toMatchSnapshot();
+    expect(
+      typedShallow(<Portal onClose={() => {}}>Test!</Portal>),
+    ).toMatchSnapshot();
   });
 
   it("component lifecycle", () => {
     jest.spyOn(document, "removeEventListener");
     jest.spyOn(window, "removeEventListener");
 
-    const wrapper = shallow(<Portal onClose={() => {}}>Test!</Portal>);
+    const wrapper = typedShallow(<Portal onClose={() => {}}>Test!</Portal>);
 
     wrapper.instance().componentDidMount();
 
@@ -54,7 +59,7 @@ describe("Portal", () => {
 
     it("#closeOnClick", () => {
       const onClose = jest.fn();
-      shallow(
+      typedShallow(
         <Portal onClose={onClose} closeOnClick>
           Test!
         </Portal>,
@@ -64,7 +69,7 @@ describe("Portal", () => {
 
     it("#closeOnType", () => {
       const onClose = jest.fn();
-      shallow(
+      typedShallow(
         <Portal onClose={onClose} closeOnType>
           Test!
         </Portal>,
@@ -74,7 +79,7 @@ describe("Portal", () => {
 
     it("#closeOnResize", () => {
       const onClose = jest.fn();
-      shallow(
+      typedShallow(
         <Portal onClose={onClose} closeOnResize>
           Test!
         </Portal>,
@@ -86,24 +91,24 @@ describe("Portal", () => {
   describe("onCloseEvent", () => {
     it("shouldClose", () => {
       const onClose = jest.fn();
-      const wrapper = shallow(<Portal onClose={onClose}>Test!</Portal>);
+      const wrapper = typedShallow(<Portal onClose={onClose}>Test!</Portal>);
       const target = document.createElement("div");
 
-      wrapper.instance().onCloseEvent({ target });
+      wrapper.instance().onCloseEvent({ target } as unknown as KeyboardEvent);
 
       expect(onClose).toHaveBeenCalled();
     });
 
     it("not shouldClose", () => {
       const onClose = jest.fn();
-      const wrapper = shallow(
+      const wrapper = typedShallow(
         <Portal onClose={onClose}>
           <div id="test">Test</div>
         </Portal>,
       );
       const target = document.querySelector("#test");
 
-      wrapper.instance().onCloseEvent({ target });
+      wrapper.instance().onCloseEvent({ target } as unknown as KeyboardEvent);
 
       expect(onClose).not.toHaveBeenCalled();
     });

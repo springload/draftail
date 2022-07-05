@@ -13,15 +13,7 @@ const overlayClassName = {
   beforeClose: "modal__overlay--before-close",
 };
 
-interface ModalProps {
-  onAfterOpen: () => void | Promise<void>;
-  onRequestClose: (e: React.SyntheticEvent) => void;
-  isOpen: boolean;
-  contentLabel: string;
-  children: React.ReactNode;
-}
-
-const Modal = (props: ModalProps) => (
+const Modal = (props: ReactModal.Props) => (
   <ReactModal
     className={className}
     overlayClassName={overlayClassName}

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import Benchmark, { BenchmarkType } from "react-component-benchmark";
-import type { BenchResultsType } from "react-component-benchmark";
 
 import { DraftailEditor } from "../../src/index";
 
-import BenchmarkResults from "./BenchmarkResults";
+import BenchmarkResults, { BenchResultsType } from "./BenchmarkResults";
 
 type Props = {
   componentProps: unknown;
@@ -12,11 +13,11 @@ type Props = {
 };
 
 type State = {
-  results: BenchResultsType | null | undefined;
+  results: BenchResultsType | null;
 };
 
 class EditorBenchmark extends Component<Props, State> {
-  benchmark: Benchmark | null | undefined;
+  benchmark?: Benchmark;
 
   constructor(props: Props) {
     super(props);
@@ -60,7 +61,7 @@ class EditorBenchmark extends Component<Props, State> {
           component={DraftailEditor}
           componentProps={componentProps}
           onComplete={this.onBenchmarkComplete}
-          ref={(ref) => {
+          ref={(ref: React.Ref<Benchmark>) => {
             this.benchmark = ref;
           }}
           samples={25}

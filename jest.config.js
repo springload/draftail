@@ -7,7 +7,7 @@ module.exports = {
     "\\.(js|ts|tsx)$": "ts-jest",
   },
   testEnvironment: "jsdom",
-  collectCoverageFrom: ["<rootDir>/demo/**/*.js"],
+  collectCoverageFrom: ["<rootDir>/src/**/*.{js,ts,tsx}"],
   testPathIgnorePatterns: ["/node_modules/", "/dist/", "/es/", "/integration/"],
   coveragePathIgnorePatterns: ["<rootDir>/tests", "/examples/", "/.storybook/"],
   snapshotSerializers: ["enzyme-to-json/serializer"],

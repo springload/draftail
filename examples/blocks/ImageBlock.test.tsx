@@ -1,64 +1,106 @@
 import React from "react";
+import { ContentBlock, EditorState } from "draft-js";
 import { shallow } from "enzyme";
 
 import { DraftUtils } from "../../src/index";
 
 import ImageBlock from "./ImageBlock";
+import EmbedSource from "../sources/EmbedSource";
 
 describe("ImageBlock", () => {
   it("renders", () => {
     expect(
       shallow(
         <ImageBlock
-          block={{}}
+          block={new ContentBlock()}
           blockProps={{
-            editorState: {},
-            entityType: {},
+            entityType: {
+              description: "test",
+              icon: "test",
+              type: "test",
+              source: EmbedSource,
+            },
+            editorState: EditorState.createEmpty(),
+            entityKey: "string",
+            textDirectionality: "RTL",
+            lockEditor: () => {},
+            unlockEditor: () => {},
+            onChange: () => {},
+            onEditEntity: () => {},
+            onRemoveEntity: () => {},
             entity: {
+              getType: () => "type",
+              getMutability: () => "MUTABLE",
               getData: () => ({
                 src: "example.png",
               }),
             },
-            onChange: () => {},
           }}
         />,
-      ),
-    ).toMatchSnapshot();
+      ).length,
+    ).toBe(1);
   });
 
   it("alt", () => {
     expect(
       shallow(
         <ImageBlock
-          block={{}}
+          block={new ContentBlock()}
           blockProps={{
-            editorState: {},
-            entityType: {},
+            entityType: {
+              description: "test",
+              icon: "test",
+              type: "test",
+              source: EmbedSource,
+            },
+            editorState: EditorState.createEmpty(),
+            entityKey: "string",
+            textDirectionality: "RTL",
+            lockEditor: () => {},
+            unlockEditor: () => {},
+            onChange: () => {},
+            onEditEntity: () => {},
+            onRemoveEntity: () => {},
             entity: {
+              getType: () => "type",
+              getMutability: () => "MUTABLE",
               getData: () => ({
                 src: "example.png",
                 alt: "Test",
               }),
             },
-            onChange: () => {},
           }}
         />,
-      ),
-    ).toMatchSnapshot();
+      ).length,
+    ).toBe(1);
   });
 
   it("changeAlt", () => {
-    jest.spyOn(DraftUtils, "updateBlockEntity");
-    DraftUtils.updateBlockEntity.mockImplementation((e) => e);
+    const updateBlockEntity = jest
+      .spyOn(DraftUtils, "updateBlockEntity")
+      .mockImplementation((e) => e);
 
     const onChange = jest.fn();
     const wrapper = shallow(
       <ImageBlock
-        block={{}}
+        block={new ContentBlock()}
         blockProps={{
-          editorState: {},
-          entityType: {},
+          entityType: {
+            description: "test",
+            icon: "test",
+            type: "test",
+            source: EmbedSource,
+          },
+          editorState: EditorState.createEmpty(),
+          entityKey: "string",
+          textDirectionality: "RTL",
+          lockEditor: () => {},
+          unlockEditor: () => {},
+          onEditEntity: () => {},
+          onRemoveEntity: () => {},
           entity: {
+            getType: () => "type",
+            getMutability: () => "MUTABLE",
             getData: () => ({
               src: "example.png",
               alt: "Test",
@@ -75,9 +117,9 @@ describe("ImageBlock", () => {
     wrapper.find('[type="text"]').simulate("change", { currentTarget });
 
     expect(onChange).toHaveBeenCalled();
-    expect(DraftUtils.updateBlockEntity).toHaveBeenCalledWith(
+    expect(updateBlockEntity).toHaveBeenCalledWith(
       expect.any(Object),
-      {},
+      expect.any(Object),
       expect.objectContaining({ alt: "new alt" }),
     );
 

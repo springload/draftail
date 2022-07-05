@@ -8,12 +8,15 @@ interface DefaultProps {
   closeOnResize: boolean;
 }
 
-interface PortalProps extends DefaultProps {
+export interface PortalProps extends DefaultProps {
   onClose: () => void;
 }
 
 class Portal extends Component<PortalProps> {
-  portal: Element;
+  portal?: HTMLDivElement;
+
+  // eslint-disable-next-line react/static-property-placement
+  static defaultProps: DefaultProps;
 
   constructor(props: PortalProps) {
     super(props);
@@ -52,13 +55,17 @@ class Portal extends Component<PortalProps> {
   componentDidUpdate() {
     const { children } = this.props;
 
+    if (!this.portal) {
+      return;
+    }
+
     ReactDOM.render(<div>{children}</div>, this.portal);
   }
 
   componentWillUnmount() {
     const { onClose } = this.props;
 
-    if (document.body) {
+    if (document.body && this.portal) {
       document.body.removeChild(this.portal);
     }
 
@@ -67,10 +74,10 @@ class Portal extends Component<PortalProps> {
     window.removeEventListener("resize", onClose);
   }
 
-  onCloseEvent(e: Event) {
+  onCloseEvent(e: KeyboardEvent | MouseEvent) {
     const { onClose } = this.props;
 
-    if (e.target instanceof Element && !this.portal.contains(e.target)) {
+    if (e.target instanceof Element && !this.portal!.contains(e.target)) {
       onClose();
     }
   }

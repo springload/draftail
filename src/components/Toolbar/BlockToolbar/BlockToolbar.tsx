@@ -1,61 +1,30 @@
 import React, { useEffect, useRef, useState } from "react";
-import Tippy, { TippyProps } from "@tippyjs/react";
-
 import { RichUtils } from "draft-js";
+
 import { ENTITY_TYPE } from "../../../api/constants";
 
-import { ToolbarProps } from "../Toolbar";
-import ComboBox from "./ComboBox";
 import DraftUtils from "../../../api/DraftUtils";
 import behavior from "../../../api/behavior";
+import Tooltip, {
+  PopperInstance,
+  TooltipPlacement,
+} from "../../Tooltip/Tooltip";
+import { ToolbarProps } from "../Toolbar";
+import ComboBox, { CommandStateChange } from "./ComboBox";
 
-const addIcon = (
-  <svg width="16" height="16" viewBox="0 0 448 512" aria-hidden="true">
-    <path d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99h144v-144C192 62.32 206.33 48 224 48s32 14.32 32 32.01v144h144c17.7-.01 32 14.29 32 31.99z" />
-  </svg>
-);
-
-const hideTooltipOnEsc = {
-  name: "hideOnEsc",
-  defaultValue: true,
-  fn({ hide }: { hide: () => void }) {
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") {
-        hide();
-      }
-    }
-
-    return {
-      onShow() {
-        document.addEventListener("keydown", onKeyDown);
-      },
-      onHide() {
-        document.removeEventListener("keydown", onKeyDown);
-      },
-    };
-  },
-};
-
-const tippyPlugins = [hideTooltipOnEsc];
+const addIcon = <span aria-hidden="true">+</span>;
 
 export interface BlockToolbarProps extends ToolbarProps {
-  triggerLabel: string;
-  triggerIcon: React.ReactNode;
-  comboLabel: string;
-  comboPlaceholder: string;
-  comboPlacement: TippyProps["placement"];
-  noResultsText: string;
-  tooltipZIndex: number;
+  triggerLabel?: string;
+  triggerIcon?: React.ReactNode;
+  comboLabel?: string;
+  comboPlaceholder?: string;
+  comboPlacement?: TooltipPlacement;
+  noResultsText?: string;
+  tooltipZIndex?: number;
 }
 
 const BlockToolbar = ({
-  triggerLabel,
-  triggerIcon,
-  comboLabel,
-  comboPlaceholder,
-  comboPlacement,
-  noResultsText,
-  tooltipZIndex,
   commands,
   getEditorState,
   blockTypes,
@@ -66,8 +35,16 @@ const BlockToolbar = ({
   entityTypes,
   addHR,
   enableHorizontalRule,
+  triggerLabel = "Insert block",
+  triggerIcon = addIcon,
+  comboLabel = "Choose an item",
+  comboPlaceholder = "Search blocks",
+  // right-start also works in RTL mode.
+  comboPlacement = "right-start" as TooltipPlacement,
+  noResultsText = "No results found",
+  tooltipZIndex = 100,
 }: BlockToolbarProps) => {
-  const tippyParentRef = useRef<HTMLDivElement>(null);
+  const toolbarRef = useRef<HTMLDivElement>(null);
   const [focusedBlockTop, setFocusedBlockTop] = useState<number>(0);
   const [visible, setVisible] = useState<boolean>(false);
   const [toggleVisible, setToggleVisible] = useState<boolean>(false);
@@ -82,20 +59,24 @@ const BlockToolbar = ({
   const showToggle = isCollapsed && isStart && selectedBlock.getText() === "";
 
   useEffect(() => {
-    if (showToggle) {
-      const elt = document.querySelector<HTMLElement>(
-        `[data-block="true"][data-offset-key="${anchorKey}-0-0"]`,
-      );
-      if (elt) {
-        const editor = elt.closest<HTMLDivElement>("[data-draftail-editor]");
-        setFocusedBlockTop(
-          elt!.getBoundingClientRect().top -
-            editor!.getBoundingClientRect().top,
+    if (toolbarRef.current) {
+      if (showToggle) {
+        const editor = toolbarRef.current.closest<HTMLDivElement>(
+          "[data-draftail-editor]",
         );
-        setToggleVisible(true);
+        const elt = editor!.querySelector<HTMLElement>(
+          `[data-block="true"][data-offset-key="${anchorKey}-0-0"]`,
+        );
+        if (elt) {
+          setFocusedBlockTop(
+            elt.getBoundingClientRect().top -
+              editor!.getBoundingClientRect().top,
+          );
+          setToggleVisible(true);
+        }
+      } else {
+        setToggleVisible(false);
       }
-    } else {
-      setToggleVisible(false);
     }
 
     return () => {
@@ -113,25 +94,36 @@ const BlockToolbar = ({
     enableHorizontalRule,
   });
 
+  const onSelect = (change: CommandStateChange) => {
+    const item = change.selectedItem;
+
+    if (!item) {
+      return;
+    }
+
+    const itemType = item.type as string;
+
+    setVisible(false);
+    if (item.onSelect) {
+      onCompleteSource(item.onSelect({ editorState: getEditorState() }));
+    } else if (item.category === "blockTypes") {
+      onCompleteSource(RichUtils.toggleBlockType(getEditorState(), itemType));
+    } else if (itemType === ENTITY_TYPE.HORIZONTAL_RULE) {
+      addHR();
+    } else if (item.category === "entityTypes") {
+      onRequestSource(itemType);
+    }
+  };
+
   return (
-    <div
-      className={`Draftail-BlockToolbar Draftail-BlockToolbar--${
-        visible ? "open" : "closed"
-      }`}
-    >
-      <div ref={tippyParentRef} />
-      <Tippy
-        interactive
-        visible={visible}
+    <div className="Draftail-BlockToolbar" ref={toolbarRef}>
+      <Tooltip
+        shouldOpen={visible}
         onHide={() => setVisible(false)}
-        onClickOutside={() => setVisible(false)}
         placement={comboPlacement}
-        maxWidth="100%"
         zIndex={tooltipZIndex}
-        arrow={false}
-        appendTo={() => tippyParentRef.current as HTMLDivElement}
-        plugins={tippyPlugins}
-        onMount={(instance) => {
+        showBackdrop
+        onMount={(instance: PopperInstance) => {
           const field = instance.popper.querySelector<HTMLInputElement>(
             "[data-draftail-command-palette-input]",
           );
@@ -139,48 +131,22 @@ const BlockToolbar = ({
             field.focus();
           }
         }}
-        onHidden={() => {
-          if (!showToggle) {
-            setToggleVisible(false);
-          }
-        }}
         content={
-          <ComboBox
-            key={`${currentBlockKey}-${currentBlock}`}
-            label={comboLabel}
-            placeholder={comboPlaceholder}
-            items={comboOptions}
-            noResultsText={noResultsText}
-            onSelect={(change) => {
-              const item = change.selectedItem;
-
-              if (!item) {
-                return;
-              }
-
-              const itemType = item.type as string;
-
-              setVisible(false);
-              if (item.onSelect) {
-                onCompleteSource(
-                  item.onSelect({ editorState: getEditorState() }),
-                );
-              } else if (item.category === "blockTypes") {
-                onCompleteSource(
-                  RichUtils.toggleBlockType(getEditorState(), itemType),
-                );
-              } else if (itemType === ENTITY_TYPE.HORIZONTAL_RULE) {
-                addHR();
-              } else if (item.category === "entityTypes") {
-                onRequestSource(itemType);
-              }
-            }}
-          />
+          visible ? (
+            <ComboBox
+              key={`${currentBlockKey}-${currentBlock}`}
+              label={comboLabel}
+              placeholder={comboPlaceholder}
+              items={comboOptions}
+              noResultsText={noResultsText}
+              onSelect={onSelect}
+            />
+          ) : null
         }
       >
         <button
           type="button"
-          aria-expanded={toggleVisible ? "true" : "false"}
+          aria-expanded={visible ? "true" : "false"}
           className="Draftail-BlockToolbar__trigger"
           style={{
             top: focusedBlockTop,
@@ -191,21 +157,9 @@ const BlockToolbar = ({
         >
           {triggerIcon}
         </button>
-      </Tippy>
-      <div className="Draftail-BlockToolbar__backdrop" />
+      </Tooltip>
     </div>
   );
-};
-
-BlockToolbar.defaultProps = {
-  triggerLabel: "Insert block",
-  triggerIcon: addIcon,
-  comboLabel: "Choose an item",
-  comboPlaceholder: "Search blocks",
-  // right-start also works in RTL mode.
-  comboPlacement: "right-start" as TippyProps["placement"],
-  noResultsText: "No results found",
-  tooltipZIndex: 100,
 };
 
 export default BlockToolbar;

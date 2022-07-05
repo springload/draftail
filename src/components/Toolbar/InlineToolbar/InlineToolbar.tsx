@@ -1,134 +1,78 @@
-import React, { useEffect, useRef, useState } from "react";
-import Tippy, { TippyProps } from "@tippyjs/react";
+import React from "react";
 
 import { getVisibleSelectionRect } from "draft-js";
 
+import Tooltip, { TooltipPlacement } from "../../Tooltip/Tooltip";
 import { ToolbarProps } from "../Toolbar";
 import ToolbarDefaults from "./ToolbarDefaults";
 import ToolbarGroup from "../ToolbarGroup";
 
-const getReferenceClientRect = () => getVisibleSelectionRect(window);
-
-const hideTooltipOnEsc = {
-  name: "hideOnEsc",
-  defaultValue: true,
-  fn({ hide }: { hide: () => void }) {
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") {
-        hide();
-      }
-    }
-
-    return {
-      onShow() {
-        document.addEventListener("keydown", onKeyDown);
-      },
-      onHide() {
-        document.removeEventListener("keydown", onKeyDown);
-      },
-    };
-  },
-};
-
-const tippyPlugins = [hideTooltipOnEsc];
-
 export interface InlineToolbarProps extends ToolbarProps {
-  tooltipPlacement: TippyProps["placement"];
-  tooltipZIndex: number;
+  tooltipPlacement?: TooltipPlacement;
+  tooltipZIndex?: number;
 }
 
-const InlineToolbar = (props: InlineToolbarProps) => {
-  const { controls, getEditorState, onChange, tooltipZIndex } = props;
-  const tippyParentRef = useRef<HTMLDivElement>(null);
-  const [selectionRect, setSelectionRect] = useState<{
-    top: number;
-    left: number | string;
-  } | null>();
+/**
+ * Position the tooltip according to the current selection, relative to the editor, with an offset.
+ */
+const getTargetPosition = (editorRect: DOMRect) => {
+  const clientRect = getVisibleSelectionRect(window);
+  if (clientRect) {
+    return {
+      top: clientRect.top - editorRect.top,
+      left: `calc(${
+        clientRect.left - editorRect.left
+      }px + var(--draftail-offset-inline-start, 0))`,
+    };
+  }
 
-  const editorState = getEditorState();
-  const selection = editorState.getSelection();
-  const hasSelection = selection.getHasFocus() && !selection.isCollapsed();
-
-  useEffect(() => {
-    if (hasSelection && tippyParentRef.current) {
-      const editor = tippyParentRef.current.closest<HTMLDivElement>(
-        "[data-draftail-editor]",
-      );
-      const editorRect = editor!.getBoundingClientRect();
-      const clientRect = getReferenceClientRect();
-      setSelectionRect({
-        top: clientRect.top - editorRect.top,
-        left: `calc(${
-          clientRect.left - editorRect.left
-        }px + var(--draftail-offset-inline-start, 0))`,
-      });
-    } else {
-      setSelectionRect(null);
-    }
-  }, [hasSelection]);
-
-  const isVisible = hasSelection && Boolean(selectionRect);
-
-  return (
-    <>
-      {isVisible ? (
-        <Tippy
-          visible={isVisible}
-          maxWidth="100%"
-          zIndex={tooltipZIndex}
-          interactive
-          arrow={false}
-          appendTo={() => tippyParentRef.current as HTMLDivElement}
-          plugins={tippyPlugins}
-          content={
-            <div className="Draftail-InlineToolbar" role="toolbar">
-              {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-              <ToolbarDefaults {...props} />
-
-              <ToolbarGroup name="controls">
-                {controls.map((control, i) => {
-                  const Control = control.inline;
-
-                  if (!Control) {
-                    return null;
-                  }
-
-                  return (
-                    <Control
-                      // eslint-disable-next-line react/no-array-index-key
-                      key={i}
-                      getEditorState={getEditorState}
-                      onChange={onChange}
-                    />
-                  );
-                })}
-              </ToolbarGroup>
-            </div>
-          }
-        >
-          <div
-            className="Draftail-InlineToolbar__target"
-            style={
-              selectionRect
-                ? {
-                    top: selectionRect.top,
-                    insetInlineStart: selectionRect.left,
-                  }
-                : undefined
-            }
-          >
-            {"\u200B"}
-          </div>
-        </Tippy>
-      ) : null}
-      <div ref={tippyParentRef} />
-    </>
-  );
+  return null;
 };
 
-InlineToolbar.defaultProps = {
-  tooltipPlacement: "top" as TippyProps["placement"],
-  tooltipZIndex: 100,
+const InlineToolbar = ({
+  controls,
+  getEditorState,
+  onChange,
+  tooltipZIndex = 100,
+  tooltipPlacement = "top" as TooltipPlacement,
+  ...otherProps
+}: InlineToolbarProps) => {
+  const editorState = getEditorState();
+  const selection = editorState.getSelection();
+
+  return (
+    <Tooltip
+      shouldOpen={selection.getHasFocus() && !selection.isCollapsed()}
+      getTargetPosition={getTargetPosition}
+      placement={tooltipPlacement}
+      zIndex={tooltipZIndex}
+      content={
+        <div className="Draftail-InlineToolbar" role="toolbar">
+          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+          <ToolbarDefaults {...otherProps} />
+
+          <ToolbarGroup name="controls">
+            {controls.map((control, i) => {
+              const Control = control.inline;
+
+              if (!Control) {
+                return null;
+              }
+
+              return (
+                <Control
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={i}
+                  getEditorState={getEditorState}
+                  onChange={onChange}
+                />
+              );
+            })}
+          </ToolbarGroup>
+        </div>
+      }
+    />
+  );
 };
 
 export default InlineToolbar;

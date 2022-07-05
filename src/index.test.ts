@@ -94,6 +94,10 @@ describe("draftail", () => {
         "ToolbarButton": [Function],
         "ToolbarButtonProps": undefined,
         "ToolbarProps": undefined,
+        "Tooltip": [Function],
+        "TooltipPlacement": undefined,
+        "TooltipPosition": undefined,
+        "TooltipProps": undefined,
         "createEditorStateFromRaw": [Function],
         "serialiseEditorStateToRaw": [Function],
       }

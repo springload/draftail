@@ -6,6 +6,7 @@
   background-color: $draftail-editor-background;
   border: $draftail-editor-border;
   border-radius: $draftail-editor-radius;
+  position: relative;
 
   &[dir="rtl"],
   [dir="rtl"] & {

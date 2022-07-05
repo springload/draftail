@@ -84,7 +84,7 @@ export const getValidLinkURL = (
 };
 
 interface OnPasteEntityTypeControl extends EntityTypeControl {
-  schemes: ReadonlyArray<string>;
+  schemes?: ReadonlyArray<string>;
 }
 
 export const onPasteLink = (
@@ -98,7 +98,7 @@ export const onPasteLink = (
   },
   entityType: OnPasteEntityTypeControl,
 ): "handled" | "not-handled" => {
-  const url = getValidLinkURL(text, entityType.schemes);
+  const url = getValidLinkURL(text, entityType.schemes || []);
 
   if (!url) {
     return "not-handled";

@@ -6,12 +6,14 @@ import { getControlDescription, getControlLabel } from "../../../api/ui";
 import { CommandCategory, CommandControl } from "../../../api/types";
 import findMatches from "./findMatches";
 
+export type CommandStateChange = UseComboboxStateChange<CommandControl>;
+
 interface ComboBoxProps {
   label?: string;
   placeholder?: string;
   inputValue?: string;
   items: CommandCategory[];
-  onSelect: (change: UseComboboxStateChange<CommandControl>) => void;
+  onSelect: (change: CommandStateChange) => void;
   noResultsText?: string;
 }
 
@@ -39,6 +41,7 @@ export default function ComboBox({
     openMenu,
   } = useCombobox<CommandControl>({
     inputValue,
+    initialInputValue: inputValue || "",
     items: inputItems,
     itemToString(item: CommandControl | null) {
       if (!item) {
@@ -97,7 +100,6 @@ export default function ComboBox({
         <input
           data-draftail-command-palette-input
           type="text"
-          value=""
           {...getInputProps()}
           placeholder={placeholder}
         />

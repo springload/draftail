@@ -2,7 +2,7 @@
 
 exports[`MediaBlock isLoading 1`] = `
 <button
-  aria-label="Test: test"
+  aria-label="desc: test"
   className="MediaBlock MediaBlock--loading"
   onMouseUp={[Function]}
   tabIndex={-1}
@@ -28,7 +28,7 @@ exports[`MediaBlock isLoading 1`] = `
 
 exports[`MediaBlock renders 1`] = `
 <button
-  aria-label="Test: test"
+  aria-label="desc: test"
   className="MediaBlock"
   onMouseUp={[Function]}
   tabIndex={-1}
@@ -57,8 +57,9 @@ exports[`MediaBlock tooltip opens 1`] = `
   <div>
     <div
       class="Tooltip Tooltip--top-start"
+      dir="rtl"
       role="tooltip"
-      style="top: 0px; inset-inline-start: 0;"
+      style="top: 0px; inset-inline-start: 1024px;"
     >
       <div
         style="max-width: 300px;"

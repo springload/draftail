@@ -11,16 +11,17 @@ import SentryBoundary from "./SentryBoundary";
 import Highlight from "./Highlight";
 import EditorBenchmark from "./EditorBenchmark";
 
-/* global PKG_VERSION */
+declare let PKG_VERSION: string;
+
 const DRAFTAIL_VERSION =
   typeof PKG_VERSION === "undefined" ? "dev" : PKG_VERSION;
 
-interface EditorWrapperProps extends DraftailEditorProps {
+interface EditorWrapperProps extends Partial<DraftailEditorProps> {
   id: string;
-  rawContentState: RawDraftContentState | null | undefined;
-  editorState: EditorState | null | undefined;
-  onSave: ((content: null | RawDraftContentState) => void) | null | undefined;
-  onChange: ((editorState: EditorState) => void) | null | undefined;
+  rawContentState?: RawDraftContentState | null;
+  editorState?: EditorState | null;
+  onSave?: ((content: null | RawDraftContentState) => void) | null;
+  onChange?: ((editorState: EditorState) => void) | null;
 }
 
 interface EditorWrapperState {
