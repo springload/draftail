@@ -20,18 +20,22 @@ const EmbedBlock = (props: EntityBlockProps) => {
         href={url}
         title={url}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noreferrer"
       >
         {title}
       </a>
 
-      <button type="button" className="Tooltip__button" onClick={onEditEntity}>
+      <button
+        type="button"
+        className="Draftail-ToolbarButton"
+        onClick={onEditEntity}
+      >
         Edit
       </button>
 
       <button
         type="button"
-        className="Tooltip__button"
+        className="Draftail-ToolbarButton"
         onClick={onRemoveEntity}
       >
         Remove

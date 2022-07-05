@@ -26,6 +26,9 @@ const zeroWidthSpacer = "\u200B";
 
 const tippyPlugins = [hideTooltipOnEsc];
 
+// https://atomiks.github.io/tippyjs/v6/all-props/#duration
+const duration: [number, number] = [300, 0];
+
 export interface TooltipPosition {
   top: number;
   left: number | string;
@@ -78,14 +81,19 @@ const Tooltip = ({
 
   return (
     <>
+      {showBackdrop ? (
+        <div
+          className={`Draftail-Tooltip__backdrop${
+            shouldOpen ? " Draftail-Tooltip__backdrop--visible" : ""
+          }`}
+        />
+      ) : null}
       <div
-        className={`Draftail-Tooltip__backdrop${
-          shouldOpen && showBackdrop
-            ? " Draftail-Tooltip__backdrop--visible"
-            : ""
-        }`}
+        hidden
+        contentEditable="false"
+        suppressContentEditableWarning
+        ref={parentRef}
       />
-      <div ref={parentRef} />
       <Tippy
         className="Draftail-Tooltip"
         visible={visible}
@@ -96,8 +104,17 @@ const Tooltip = ({
         placement={placement}
         maxWidth="100%"
         zIndex={zIndex}
+        duration={duration}
         arrow={false}
-        appendTo={() => parentRef.current as HTMLDivElement}
+        appendTo={() => {
+          const editor = parentRef.current!.closest<HTMLDivElement>(
+            "[data-draftail-editor]",
+          );
+          const tooltipParent = editor!.querySelector(
+            "[data-draftail-tooltip-parent]",
+          );
+          return tooltipParent as HTMLDivElement;
+        }}
         plugins={tippyPlugins}
         content={content}
       >

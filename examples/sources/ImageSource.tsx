@@ -113,7 +113,7 @@ class ImageSource extends Component<EntitySourceProps, State> {
             />
           </label>
 
-          <button type="submit" className="Tooltip__button">
+          <button type="submit" className="Draftail-ToolbarButton">
             Save
           </button>
         </form>

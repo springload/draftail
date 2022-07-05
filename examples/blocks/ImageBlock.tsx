@@ -40,7 +40,7 @@ class ImageBlock extends Component<EntityBlockProps> {
         </label>
         <button
           type="button"
-          className="Tooltip__button"
+          className="Draftail-ToolbarButton"
           onClick={onEditEntity}
         >
           Edit
@@ -48,7 +48,7 @@ class ImageBlock extends Component<EntityBlockProps> {
 
         <button
           type="button"
-          className="Tooltip__button"
+          className="Draftail-ToolbarButton"
           onClick={onRemoveEntity}
         >
           Remove

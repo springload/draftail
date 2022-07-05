@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 
-import { EntityBlockProps, Icon } from "../../src/index";
-
-import Tooltip, { Rect } from "../components/Tooltip";
-import Portal from "../components/Portal";
+import { EntityBlockProps, Icon, Tooltip } from "../../src/index";
 
 // Constraints the maximum size of the tooltip.
 const OPTIONS_MAX_WIDTH = 300;
-const OPTIONS_SPACING = 70;
-const TOOLTIP_MAX_WIDTH = OPTIONS_MAX_WIDTH + OPTIONS_SPACING;
 
 export interface MediaBlockProps extends EntityBlockProps {
   src: string;
@@ -19,7 +14,7 @@ export interface MediaBlockProps extends EntityBlockProps {
 
 export interface MediaBlockState {
   tooltip: {
-    target: Rect;
+    target: DOMRect;
     containerWidth: number;
   } | null;
 }
@@ -63,32 +58,38 @@ class MediaBlock extends Component<MediaBlockProps, MediaBlockState> {
   }
 
   renderTooltip() {
-    const { children, blockProps } = this.props;
-    const { textDirectionality } = blockProps;
+    const { children } = this.props;
     const { tooltip } = this.state;
 
     if (!tooltip) {
       return null;
     }
 
-    const maxWidth = tooltip.containerWidth - tooltip.target.width;
-    const direction = maxWidth >= TOOLTIP_MAX_WIDTH ? "start" : "top-start";
-
     return (
-      <Portal
-        onClose={this.closeTooltip}
-        closeOnClick
-        closeOnType
-        closeOnResize
-      >
-        <Tooltip
-          target={tooltip.target}
-          direction={direction}
-          textDirectionality={textDirectionality}
-        >
-          <div style={{ maxWidth: OPTIONS_MAX_WIDTH }}>{children}</div>
-        </Tooltip>
-      </Portal>
+      <Tooltip
+        shouldOpen={Boolean(tooltip)}
+        onHide={this.closeTooltip}
+        placement="auto"
+        getTargetPosition={(editorRect) => {
+          if (!tooltip) {
+            return null;
+          }
+
+          return {
+            left: tooltip.target.left - editorRect.left,
+            top: 0,
+          };
+        }}
+        content={
+          <div
+            className="Draftail-InlineToolbar"
+            role="toolbar"
+            style={{ maxWidth: OPTIONS_MAX_WIDTH }}
+          >
+            {children}
+          </div>
+        }
+      />
     );
   }
 

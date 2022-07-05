@@ -17,8 +17,6 @@ $FONT_SIZE_H2: 2.5rem;
 $FONT_SIZE_H3: 1.5rem;
 $FONT_SIZE_TEXT: 1rem;
 
-$tooltip-spacing: 0.625rem;
-
 @import "./utils/breakpoints";
 @import "./utils/elements";
 @import "./utils/typography";
@@ -46,7 +44,6 @@ $draftail-editor-font-family: $FONT_FAMILY_SANS;
 @import "./components/header";
 @import "./components/page-nav";
 @import "./components/Modal";
-@import "./components/Tooltip";
 @import "./components/CharCount";
 @import "./components/EditorWrapper";
 @import "./components/PrismDecorator";

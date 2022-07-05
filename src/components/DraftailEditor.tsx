@@ -302,6 +302,8 @@ class DraftailEditor extends Component<
 
   editorRef?: DraftEditorRef;
 
+  tooltipParentRef: React.Ref<HTMLDivElement>;
+
   copySource?: ReturnType<typeof registerCopySource>;
 
   lockEditor: () => void;
@@ -349,6 +351,8 @@ class DraftailEditor extends Component<
     this.focus = this.focus.bind(this);
 
     this.renderSource = this.renderSource.bind(this);
+
+    this.tooltipParentRef = React.createRef<HTMLDivElement>();
 
     const { editorState, rawContentState } = props;
 
@@ -1141,6 +1145,8 @@ class DraftailEditor extends Component<
         ) : null}
 
         {this.renderSource()}
+
+        <div data-draftail-tooltip-parent ref={this.tooltipParentRef} />
 
         <PlaceholderStyles
           blockKey={selectedBlock.getKey()}

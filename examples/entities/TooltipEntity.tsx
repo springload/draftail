@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 
-import { EntityDecoratorProps, Icon, IconProp } from "../../src/index";
-
-import Tooltip, { Rect } from "../components/Tooltip";
-import Portal from "../components/Portal";
+import { EntityDecoratorProps, Icon, IconProp, Tooltip } from "../../src/index";
 
 interface TooltipEntityProps extends EntityDecoratorProps {
   icon: IconProp;
@@ -11,7 +8,7 @@ interface TooltipEntityProps extends EntityDecoratorProps {
 }
 
 interface TooltipEntityState {
-  showTooltipAt: Rect | null;
+  showTooltipAt: DOMRect | null;
 }
 
 class TooltipEntity extends Component<TooltipEntityProps, TooltipEntityState> {
@@ -39,16 +36,8 @@ class TooltipEntity extends Component<TooltipEntityProps, TooltipEntityState> {
   }
 
   render() {
-    const {
-      entityKey,
-      contentState,
-      children,
-      onEdit,
-      onRemove,
-      textDirectionality,
-      icon,
-      label,
-    } = this.props;
+    const { entityKey, contentState, children, onEdit, onRemove, icon, label } =
+      this.props;
     const { showTooltipAt } = this.state;
     const { url } = contentState.getEntity(entityKey).getData();
 
@@ -58,31 +47,34 @@ class TooltipEntity extends Component<TooltipEntityProps, TooltipEntityState> {
       <a role="button" onMouseUp={this.openTooltip} className="TooltipEntity">
         <Icon icon={icon} className="TooltipEntity__icon" />
         <span className="TooltipEntity__text">{children}</span>
-        {showTooltipAt && (
-          <Portal
-            onClose={this.closeTooltip}
-            closeOnClick
-            closeOnType
-            closeOnResize
-          >
-            <Tooltip
-              target={showTooltipAt}
-              direction="top"
-              textDirectionality={textDirectionality}
-            >
+        <Tooltip
+          shouldOpen={Boolean(showTooltipAt)}
+          onHide={() => this.setState({ showTooltipAt: null })}
+          getTargetPosition={(editorRect) => {
+            if (!showTooltipAt) {
+              return null;
+            }
+
+            return {
+              left: showTooltipAt.left - editorRect.left,
+              top: 0,
+            };
+          }}
+          content={
+            <div className="Draftail-InlineToolbar" role="toolbar">
               <a
                 href={url}
                 title={url}
                 target="_blank"
-                rel="noopener noreferrer"
-                className="Tooltip__link"
+                rel="noreferrer"
+                className="Draftail-ToolbarButton"
               >
                 {label}
               </a>
 
               <button
                 type="button"
-                className="Tooltip__button"
+                className="Draftail-ToolbarButton"
                 onClick={onEdit.bind(null, entityKey)}
               >
                 Edit
@@ -90,14 +82,14 @@ class TooltipEntity extends Component<TooltipEntityProps, TooltipEntityState> {
 
               <button
                 type="button"
-                className="Tooltip__button"
+                className="Draftail-ToolbarButton"
                 onClick={() => onRemove(entityKey)}
               >
                 Remove
               </button>
-            </Tooltip>
-          </Portal>
-        )}
+            </div>
+          }
+        />
       </a>
     );
   }

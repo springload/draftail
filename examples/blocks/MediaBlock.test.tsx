@@ -5,7 +5,7 @@ import { shallow } from "enzyme";
 import EmbedSource from "../sources/EmbedSource";
 
 import MediaBlock, { MediaBlockProps, MediaBlockState } from "./MediaBlock";
-import Portal from "../components/Portal";
+// import Portal from "../components/Portal";
 
 const typedShallow = (elt: React.ReactElement) =>
   shallow<MediaBlock, MediaBlockProps, MediaBlockState>(elt);
@@ -126,36 +126,36 @@ describe("MediaBlock", () => {
       );
     });
 
-    it("opens", () => {
-      const target = document.createElement("div");
-      document.body.appendChild(target);
+    // it.skip("opens", () => {
+    //   const target = document.createElement("div");
+    //   document.body.appendChild(target);
 
-      wrapper.simulate("mouseup", { target });
+    //   wrapper.simulate("mouseup", { target });
 
-      expect(
-        wrapper.find("Portal").dive<Portal>().instance().portal,
-      ).toMatchSnapshot();
-    });
+    //   expect(
+    //     wrapper.find("Portal").dive<Portal>().instance().portal,
+    //   ).toMatchSnapshot();
+    // });
 
-    it("large viewport", () => {
-      const target = document.createElement("div");
-      document.body.appendChild(target);
-      target.getBoundingClientRect = () =>
-        ({
-          top: 0,
-          left: 0,
-          width: -600,
-          height: 0,
-        } as DOMRect);
+    // it.skip("large viewport", () => {
+    //   const target = document.createElement("div");
+    //   document.body.appendChild(target);
+    //   target.getBoundingClientRect = () =>
+    //     ({
+    //       top: 0,
+    //       left: 0,
+    //       width: -600,
+    //       height: 0,
+    //     } as DOMRect);
 
-      wrapper.simulate("mouseup", { target });
+    //   wrapper.simulate("mouseup", { target });
 
-      const portalElt = wrapper.find("Portal").dive<Portal>().instance().portal;
+    //   const portalElt = wrapper.find("Portal").dive<Portal>().instance().portal;
 
-      expect(portalElt!.querySelector(".Tooltip")!.className).toBe(
-        "Tooltip Tooltip--start",
-      );
-    });
+    //   expect(portalElt!.querySelector(".Tooltip")!.className).toBe(
+    //     "Tooltip Tooltip--start",
+    //   );
+    // });
 
     it("closes", () => {
       const target = document.createElement("div");

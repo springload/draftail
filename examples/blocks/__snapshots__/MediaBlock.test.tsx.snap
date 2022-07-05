@@ -51,22 +51,3 @@ exports[`MediaBlock renders 1`] = `
   />
 </button>
 `;
-
-exports[`MediaBlock tooltip opens 1`] = `
-<div>
-  <div>
-    <div
-      class="Tooltip Tooltip--top-start"
-      dir="rtl"
-      role="tooltip"
-      style="top: 0px; inset-inline-start: 1024px;"
-    >
-      <div
-        style="max-width: 300px;"
-      >
-        Test
-      </div>
-    </div>
-  </div>
-</div>
-`;

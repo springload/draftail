@@ -206,6 +206,9 @@ exports[`DraftailEditor #maxListNesting 1`] = `
     textAlignment={null}
     textDirectionality={null}
   />
+  <div
+    data-draftail-tooltip-parent={true}
+  />
   <Memo(Styles)
     blockKey="a"
     placeholder={null}
@@ -421,6 +424,9 @@ exports[`DraftailEditor empty 1`] = `
     stripPastedStyles={true}
     textAlignment={null}
     textDirectionality={null}
+  />
+  <div
+    data-draftail-tooltip-parent={true}
   />
   <Memo(Styles)
     blockKey="a"
