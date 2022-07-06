@@ -12,12 +12,23 @@ const testEntityType = {
 describe.each`
   text                           | result
   ${"test@example.com"}          | ${"mailto:test@example.com"}
+  ${"test@example.com-test"}     | ${false}
+  ${"test@example-site.com"}     | ${"mailto:test@example-site.com"}
+  ${"test@test.example.com"}     | ${"mailto:test@test.example.com"}
+  ${"test@test.example.co.uk"}   | ${"mailto:test@test.example.co.uk"}
+  ${"test@xn--ls8h.la"}          | ${"mailto:test@xn--ls8h.la"}
   ${"test@example"}              | ${false}
   ${"test@.com"}                 | ${false}
   ${"mailto:test@.com"}          | ${false}
   ${"example.com"}               | ${false}
+  ${"test@example.com-"}         | ${false}
   ${"http://example.com"}        | ${"http://example.com"}
+  ${"http://example-site.com"}   | ${"http://example-site.com"}
+  ${"http://example.com-test"}   | ${"http://example.com-test"}
+  ${"http://test.example.com"}   | ${"http://test.example.com"}
+  ${"http://test.example.co.uk"} | ${"http://test.example.co.uk"}
   ${"https://example.com"}       | ${"https://example.com"}
+  ${"https://xn--ls8h.la"}       | ${"https://xn--ls8h.la"}
   ${"ftp://example.com"}         | ${"ftp://example.com"}
   ${"ftps://example.com"}        | ${"ftps://example.com"}
   ${"//example.com"}             | ${false}
