@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Tippy, { TippyProps } from "@tippyjs/react";
 
+export type TooltipPlacement = TippyProps["placement"];
+export type PopperInstance = Parameters<NonNullable<TippyProps["onMount"]>>[0];
+
 const hideTooltipOnEsc = {
   name: "hideOnEsc",
   defaultValue: true,
@@ -22,9 +25,31 @@ const hideTooltipOnEsc = {
   },
 };
 
+const hideOnPopperBlur = {
+  name: "hideOnPopperBlur",
+  defaultValue: true,
+  fn(instance: PopperInstance) {
+    return {
+      onCreate() {
+        instance.popper.addEventListener("focusout", (event: FocusEvent) => {
+          if (
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            instance.props.hideOnPopperBlur &&
+            event.relatedTarget &&
+            !instance.popper.contains(event.relatedTarget as HTMLElement)
+          ) {
+            instance.hide();
+          }
+        });
+      },
+    };
+  },
+};
+
 const zeroWidthSpacer = "\u200B";
 
-const tippyPlugins = [hideTooltipOnEsc];
+const tippyPlugins = [hideTooltipOnEsc, hideOnPopperBlur];
 
 // https://atomiks.github.io/tippyjs/v6/all-props/#duration
 const duration: [number, number] = [300, 0];
@@ -33,9 +58,6 @@ export interface TooltipPosition {
   top: number;
   left: number | string;
 }
-
-export type TooltipPlacement = TippyProps["placement"];
-export type PopperInstance = Parameters<NonNullable<TippyProps["onMount"]>>[0];
 
 export interface TooltipProps {
   shouldOpen: boolean;

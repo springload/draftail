@@ -505,6 +505,7 @@ export default {
     const hasPrompt =
       isCollapsed &&
       isAfterSlash &&
+      selection.getHasFocus() &&
       text.startsWith("/") &&
       ((text || "").match(/\s/g) || []).length < 2;
 
