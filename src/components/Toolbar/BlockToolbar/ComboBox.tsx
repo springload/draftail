@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { EditorState } from "draft-js";
 import { useCombobox, UseComboboxStateChange } from "downshift";
 
 import Icon from "../../Icon";
@@ -14,6 +15,7 @@ interface ComboBoxProps {
   inputValue?: string;
   items: CommandCategory[];
   onSelect: (change: CommandStateChange) => void;
+  getEditorState: () => EditorState;
   noResultsText?: string;
 }
 
@@ -24,6 +26,7 @@ export default function ComboBox({
   items,
   onSelect,
   noResultsText,
+  getEditorState,
 }: ComboBoxProps) {
   const flatItems = items.flatMap<CommandControl>(
     (category) => category.items || [],
@@ -127,6 +130,8 @@ export default function ComboBox({
               {categoryItems.map((item, index) => {
                 const itemLabel = getControlLabel(item.type, item);
                 const description = getControlDescription(item);
+                const hasIcon =
+                  typeof item.icon !== "undefined" && item.icon !== null;
 
                 return (
                   <div
@@ -139,15 +144,19 @@ export default function ComboBox({
                     className="Draftail-ComboBox__option"
                   >
                     <div className="Draftail-ComboBox__option-icon">
-                      {typeof item.icon !== "undefined" &&
-                      item.icon !== null ? (
-                        <Icon icon={item!.icon} />
-                      ) : null}
-                      {itemLabel ? <span>{itemLabel}</span> : null}
+                      {hasIcon ? <Icon icon={item!.icon} /> : null}
+                      {itemLabel && !hasIcon ? <span>{itemLabel}</span> : null}
                     </div>
-                    <div className="Draftail-ComboBox__option-text">
-                      {description}
-                    </div>
+                    {item.render ? (
+                      item.render({
+                        option: item,
+                        getEditorState,
+                      })
+                    ) : (
+                      <div className="Draftail-ComboBox__option-text">
+                        {description}
+                      </div>
+                    )}
                   </div>
                 );
               })}

@@ -20,6 +20,7 @@ import {
   DraftUtils,
   Toolbar,
   CommandPalette,
+  CommandControl,
 } from "../src/index";
 
 import {
@@ -456,6 +457,16 @@ storiesOf("Docs", module)
             type: "reset",
             description: "Reset",
             label: "♻",
+            render: ({
+              option,
+              getEditorState,
+            }: Parameters<NonNullable<CommandControl["render"]>>[0]) => {
+              const editorState = getEditorState();
+              const content = editorState.getCurrentContent();
+              const blocks = content.getBlockMap();
+              const text = `${option.description} (will remove ${blocks.size} blocks)`;
+              return <div>{text}</div>;
+            },
             onSelect: () => EditorState.createEmpty(),
           },
         ],

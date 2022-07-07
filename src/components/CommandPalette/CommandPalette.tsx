@@ -120,6 +120,7 @@ const CommandPalette = ({
           inputValue={prompt.substring(1)}
           noResultsText={noResultsText}
           onSelect={onSelect}
+          getEditorState={getEditorState}
         />
       }
     />

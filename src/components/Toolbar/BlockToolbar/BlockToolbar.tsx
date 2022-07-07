@@ -140,6 +140,7 @@ const BlockToolbar = ({
               items={comboOptions}
               noResultsText={noResultsText}
               onSelect={onSelect}
+              getEditorState={getEditorState}
             />
           ) : null
         }

@@ -160,6 +160,10 @@ export interface CommandControl extends Control {
     prompt?: string;
   }) => EditorState;
   category?: string;
+  render?: (props: {
+    option: CommandControl;
+    getEditorState: () => EditorState;
+  }) => JSX.Element;
 }
 
 export interface CommandCategory {
