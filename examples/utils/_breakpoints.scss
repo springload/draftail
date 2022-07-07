@@ -1,3 +1,4 @@
+@use "sass:math";
 // ----------------------------------------------------------------------------
 // Breakpoints and simple media query mixins
 // ----------------------------------------------------------------------------
@@ -10,7 +11,7 @@ $breakpoint-xlarge: 1280;
 $breakpoint-xxlarge: 1380;
 
 @function em($size, $em-base: 16) {
-  $em-size: $size / $em-base;
+  $em-size: math.div($size, $em-base);
   @return $em-size * 1em;
 }
 
