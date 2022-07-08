@@ -43,7 +43,7 @@ export default function ComboBox({
     setInputValue,
     openMenu,
   } = useCombobox<CommandControl>({
-    inputValue,
+    ...(typeof inputValue !== "undefined" && { inputValue }),
     initialInputValue: inputValue || "",
     items: inputItems,
     itemToString(item: CommandControl | null) {
