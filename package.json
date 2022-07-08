@@ -127,7 +127,7 @@
     "build:storybook": "build-storybook -c .storybook -o storybook-static --quiet --modern",
     "build": "npm run build:rollup -s && npm run build:storybook -s && npm run build:styles -s",
     "dist": "NODE_ENV=production npm run build -s",
-    "lint": "eslint --cache --ext .js,.ts,.tsx --report-unused-disable-directives . && stylelint --report-needless-disables '**/*.scss' && prettier --cache --check '**/?(.)*.{md,css,scss,js,ts,tsx,json,json5,yaml,yml,html}'",
+    "lint": "eslint --cache --cache-location ./node_modules/.cache --ext .js,.ts,.tsx --report-unused-disable-directives . && stylelint --report-needless-disables '**/*.scss' && prettier --cache --check '**/?(.)*.{md,css,scss,js,ts,tsx,json,json5,yaml,yml,html}'",
     "format": "prettier --cache --write '**/?(.)*.{md,css,scss,js,ts,tsx,json,json5,yaml,yml,html}'",
     "test": "jest",
     "test:integration": "jest --config tests/integration/jest.config.js",

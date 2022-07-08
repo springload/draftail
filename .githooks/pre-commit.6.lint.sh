@@ -2,7 +2,7 @@
 
 if [ -n "$JS_STAGED" ];
 then
-  npx eslint $JS_STAGED
+  npx eslint --cache --cache-location $JS_STAGED
 fi
 
 if [ -n "$SCSS_STAGED" ];
