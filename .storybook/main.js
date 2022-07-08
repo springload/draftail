@@ -18,6 +18,8 @@ const EMBEDLY_API_KEY = process.env.EMBEDLY_API_KEY || EMBEDLY_API_KEY_PROD;
 
 module.exports = {
   stories: ["../examples/**/*.story.*"],
+  // See https://github.com/storybookjs/storybook/issues/18662.
+  addons: [],
   framework: "@storybook/react",
   core: {
     builder: {

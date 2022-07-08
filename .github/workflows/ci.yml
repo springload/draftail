@@ -20,7 +20,7 @@ jobs:
             ${{ runner.os }}-node-
       - run: npm ci
       - run: npm run lint -s
-      - run: npm run dist -s
+      - run: npm run dist -s && mv storybook-static public/storybook
       - run: npm run report:size
       - run: npm run report:package
       - run: npm run test:coverage -s --json --runInBand

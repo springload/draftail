@@ -124,7 +124,7 @@
     "start": "start-storybook -c .storybook -p 9001 --no-open --no-version-updates --no-release-notes --quiet --modern",
     "build:rollup": "rollup -c",
     "build:styles": "sass src/index.scss > dist/draftail.css",
-    "build:storybook": "build-storybook -c .storybook -o storybook-static --quiet --modern && mv storybook-static public/storybook",
+    "build:storybook": "build-storybook -c .storybook -o storybook-static --quiet --modern",
     "build": "npm run build:rollup -s && npm run build:storybook -s && npm run build:styles -s",
     "dist": "NODE_ENV=production npm run build -s",
     "lint": "eslint --cache --ext .js,.ts,.tsx --report-unused-disable-directives . && stylelint --report-needless-disables '**/*.scss' && prettier --check '**/?(.)*.{md,css,scss,js,ts,tsx,json,json5,yaml,yml,html}'",
