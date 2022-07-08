@@ -12,13 +12,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
-      - uses: actions/cache@v3
+      - id: node-cache
+        uses: actions/cache@v3
         with:
-          path: ~/.npm
+          path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/.nvmrc') }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - run: npm ci
+      - if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm ci
       - run: npm run lint -s
       - run: npm run dist -s && mv storybook-static public/storybook
       - run: npm run report:size
