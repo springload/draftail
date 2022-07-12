@@ -7,10 +7,10 @@ export type PopperInstance = Parameters<NonNullable<TippyProps["onMount"]>>[0];
 const hideTooltipOnEsc = {
   name: "hideOnEsc",
   defaultValue: true,
-  fn({ hide }: { hide: () => void }) {
+  fn(instance: PopperInstance) {
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") {
-        hide();
+        instance.hide();
       }
     }
 

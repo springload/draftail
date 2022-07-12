@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { getVisibleSelectionRect } from "draft-js";
 
 import DraftUtils from "../../api/DraftUtils";
@@ -67,7 +67,10 @@ const CommandPalette = ({
 }: CommandPaletteProps) => {
   const editorState = getEditorState();
   const prompt = DraftUtils.getCommandPalettePrompt(editorState);
-  const shouldOpen = Boolean(prompt);
+  const [shouldOpen, setShouldOpen] = useState(false);
+  useEffect(() => {
+    setShouldOpen(Boolean(prompt));
+  }, [prompt, setShouldOpen]);
 
   if (!shouldOpen) {
     return null;
@@ -110,18 +113,21 @@ const CommandPalette = ({
   return (
     <Tooltip
       shouldOpen={shouldOpen}
+      onHide={() => setShouldOpen(false)}
       getTargetPosition={getTargetPosition}
       showBackdrop
       placement={comboPlacement}
       zIndex={tooltipZIndex}
       content={
-        <ComboBox
-          items={items}
-          inputValue={prompt.substring(1)}
-          noResultsText={noResultsText}
-          onSelect={onSelect}
-          getEditorState={getEditorState}
-        />
+        shouldOpen ? (
+          <ComboBox
+            items={items}
+            inputValue={prompt.substring(1)}
+            noResultsText={noResultsText}
+            onSelect={onSelect}
+            getEditorState={getEditorState}
+          />
+        ) : null
       }
     />
   );
