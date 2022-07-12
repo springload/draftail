@@ -4,21 +4,28 @@
 
 ## Unreleased
 
+## Unreleased – v2.0.0
+
 > This release contains **breaking changes**.
 
 > Documentation: [draftail.org/docs/next/getting-started](https://www.draftail.org/docs/next/getting-started)
 
 ### Added
 
-- Add TypeScript module definition for Draftail. [#388](https://github.com/springload/draftail/issues/388), [#429](https://github.com/springload/draftail/pull/429)
+- Add strict TypeScript module definition for Draftail. [#388](https://github.com/springload/draftail/issues/388), [#429](https://github.com/springload/draftail/pull/429)
 - Implement `onPaste` handler for entities to be able to create themselves on paste.
 - Add a new optional `InlineToolbar` component so the editor can be rendered with either a static or floating toolbar.
+- Add a new optional `BlockToolbar` component, intended to be used with `InlineToolbar`, so the editor UI is less visible.
 - Add a new optional `MetaToolbar` component intended to display editor metadata at the bottom of the editor.
+- Add a new optional `CommandPalette` component, usable with the `commandPalette` rendering prop and the `commands` data prop.
+- Empty blocks now have a `Draftail-block--empty` class for styling.
+- Add support for [Windows High contrast mode / Contrast themes](https://docs.microsoft.com/en-us/fluent-ui/web-components/design-system/high-contrast) for the whole editor UI.
+- Pass Draft.js ARIA props through. [#436](https://github.com/springload/draftail/issues/436), [#438](https://github.com/springload/draftail/pull/438)
 
 ### Changed
 
-- The controls API now expects JS objects similarly to other APIs. Controls can now declare in what type of toolbar they should be rendered: `block` (static top toolbar), `inline` (floating toolbar), `meta` (bottom / meta toolbar).
-- Draftail now uses [CSS logical properties and values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties) to support right-to-left (RTL) languages.
+- The controls API now expects JS objects similarly to other APIs. Controls can now declare in what type of toolbar they should be rendered: `block` (static top toolbar), `inline` (floating toolbar), `meta` (bottom / meta toolbar). They can also have a `type` to help with troubleshooting.
+- Draftail now uses [CSS logical properties and values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties) to [support right-to-left (RTL) languages](https://rtlstyling.com/posts/rtl-styling).
 
 ### Fixed
 
@@ -34,7 +41,32 @@
 
 For projects using TypeScript, the addition of type definitions is likely to cause new linting issues being reported in case Draftail’s new types are incompatible with the implementation.
 
+#### Browser support
+
+The editor now supports modern browsers only, in particular IE11 support has been removed. The new browser support follows evergreen browsers only. The oldest-supported browser is currently Safari 14.1.
+
+| Browser       | Device/OS  | Version(s) |
+| ------------- | ---------- | ---------- |
+| Mobile Safari | iOS Phone  | Last 2     |
+| Mobile Safari | iOS Tablet | Last 2     |
+| Chrome        | Android    | Last 2     |
+| Chrome        | Desktop    | Last 2     |
+| MS Edge       | Windows    | Last 2     |
+| Firefox       | Desktop    | Latest     |
+| Firefox ESR   | Desktop    | Latest     |
+| Safari        | macOS      | Last 3     |
+
+#### RTL support
+
+To introduce RTL support, a lot of the editor’s styles have been rewritten to use [CSS logical properties and values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties), as well as Flexbox and Grid layout. This could lead to issues with bespoke UI customisations.
+
 #### Controls API shape
+
+The `controls` prop now takes objects rather than React components. Controls which aren’t updated to the new API will render in the static "top" toolbar only.
+
+#### Entities API shape
+
+Entities now accept a `allowlist` attribute rather than `whitelist`.
 
 ## [[v1.4.1]](https://github.com/springload/draftail/releases/tag/v1.4.1)
 
