@@ -54,7 +54,8 @@ describe("constants", () => {
             "verticalAlign": "middle",
           },
           "MARK": Object {
-            "backgroundColor": "yellow",
+            "backgroundColor": "Mark",
+            "color": "MarkText",
           },
           "QUOTATION": Object {
             "fontStyle": "italic",

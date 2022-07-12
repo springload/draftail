@@ -17,7 +17,7 @@
   border-radius: $draftail-tooltip-radius;
   font-size: $draftail-editor-font-size;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
-  outline: $draftail-contrast-border;
+  outline: $draftail-contrast-outline-modal;
 }
 
 .#{$DRAFTAIL}ComboBox__label {
@@ -48,7 +48,11 @@
   padding: 10px;
   font-size: 1rem;
   font-weight: 700;
-  border-top: 4px solid transparent;
+  border-top: $draftail-contrast-outline;
+
+  @media (forced-colors: active) {
+    color: GrayText;
+  }
 }
 
 .#{$DRAFTAIL}ComboBox__menu {
@@ -59,7 +63,7 @@
 .#{$DRAFTAIL}ComboBox__status,
 .#{$DRAFTAIL}ComboBox__option {
   padding: 10px;
-  border: 1px solid transparent;
+  border: $draftail-contrast-outline;
   font-size: 0.875rem;
   font-weight: 700;
   line-height: 1.4;
@@ -69,8 +73,11 @@
   &[aria-selected="true"] {
     background-color: $color-light-grey;
     border-color: currentColor;
-    outline: 6px solid transparent;
-    outline-offset: -6px;
+
+    @media (forced-colors: active) {
+      background: Highlight;
+      color: HighlightText;
+    }
   }
 }
 
@@ -79,4 +86,13 @@
   height: 1.25rem;
   margin-inline-start: 6px;
   margin-inline-end: 6px;
+}
+
+.#{$DRAFTAIL}ComboBox__option-icon,
+.#{$DRAFTAIL}ComboBox__option-text {
+  // Force the text to CanvasText as forced colors automatically
+  // adds a Canvas outline behind text.
+  @media (forced-colors: active) {
+    color: CanvasText;
+  }
 }

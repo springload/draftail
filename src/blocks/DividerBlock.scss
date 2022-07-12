@@ -3,4 +3,8 @@
   background: $color-light-grey;
   height: 1px;
   margin: 10px 0;
+
+  @media (forced-colors: active) {
+    background: CanvasText;
+  }
 }

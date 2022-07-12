@@ -90,7 +90,8 @@ export const CUSTOM_STYLE_MAP = {
     borderRadius: "3px",
   },
   [INLINE_STYLE.MARK]: {
-    backgroundColor: "yellow",
+    backgroundColor: "Mark",
+    color: "MarkText",
   },
   [INLINE_STYLE.QUOTATION]: {
     fontStyle: "italic",

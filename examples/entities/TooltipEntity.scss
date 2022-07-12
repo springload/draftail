@@ -1,15 +1,27 @@
 .TooltipEntity {
   cursor: pointer;
 
+  @media (forced-colors: active) {
+    color: LinkText;
+  }
+
   &__icon {
     color: $TEAL_WAGTAIL;
     margin-inline-end: 0.2em;
     width: 1em;
     height: 1em;
+
+    @media (forced-colors: active) {
+      color: currentColor;
+    }
   }
 
   &__text {
     background: $LIGHT_BLUE_EEF8FF;
     border-bottom: 1px dotted $TEAL_WAGTAIL;
+
+    @media (forced-colors: active) {
+      border-bottom-color: currentColor;
+    }
   }
 }

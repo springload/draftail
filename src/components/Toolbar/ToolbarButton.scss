@@ -17,6 +17,7 @@ $button-font-size: 1rem;
   background: transparent;
   color: inherit;
   border: 1px solid transparent;
+  outline: $draftail-contrast-outline;
   font-size: $button-font-size;
   font-weight: 600;
   cursor: pointer;
@@ -25,11 +26,23 @@ $button-font-size: 1rem;
   &--active {
     background-color: $button-active-color;
     border: 1px solid $button-active-border-color;
+
+    @media (forced-colors: active) {
+      // Force the text to CanvasText as forced colors automatically
+      // adds a Canvas outline behind text.
+      background: Highlight;
+      color: HighlightText;
+      border-color: currentColor;
+    }
   }
 
   &__label {
     display: inline-block;
     vertical-align: middle;
     height: 1em;
+
+    @media (forced-colors: active) {
+      color: CanvasText;
+    }
   }
 }

@@ -25,6 +25,7 @@ $spacing-modal: 0.5rem;
   z-index: $modal-z-index;
   background-color: $color-bg-modal;
   animation: modal-in 0.2s $easing-circ 0s backwards;
+  outline: $draftail-contrast-outline-modal;
 
   &[dir="rtl"],
   [dir="rtl"] & {

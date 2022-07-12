@@ -94,7 +94,7 @@ button[data-draftail-balloon] {
 
     background: $balloon-bg;
     border-radius: $balloon-radius;
-    border: $draftail-contrast-border;
+    outline: $draftail-contrast-outline-modal;
     color: $balloon-text-color;
     content: attr(aria-label);
     padding: 0.5em 1em;
