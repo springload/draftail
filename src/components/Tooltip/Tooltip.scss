@@ -27,7 +27,6 @@
   background-color: rgba(0, 0, 0, 0);
   transition: background-color $draftail-toolbar-tooltip-duration 0s;
   z-index: $draftail-page-overlay-z-index;
-  pointer-events: none;
 }
 
 .#{$DRAFTAIL}Tooltip__backdrop--visible {
