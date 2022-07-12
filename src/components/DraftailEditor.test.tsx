@@ -26,7 +26,7 @@ import DraftailEditor, {
   DraftailEditorState,
 } from "./DraftailEditor";
 import Toolbar from "./Toolbar/Toolbar";
-import PlaceholderStyles from "./PlaceholderBlock/PlaceholderStyles";
+import PlaceholderStyles from "./PlaceholderStyles/PlaceholderStyles";
 
 jest.mock("draft-js/lib/generateRandomKey", () => () => "a");
 

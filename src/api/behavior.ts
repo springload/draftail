@@ -76,8 +76,11 @@ export default {
    */
   blockStyleFn(block: ContentBlock) {
     const type = block.getType();
+    const isEmpty = block.getText().length === 0;
 
-    return `Draftail-block--${type} ${blockDepthStyleFn(block)}`;
+    return `Draftail-block--${type}${
+      isEmpty ? " Draftail-block--empty" : ""
+    } ${blockDepthStyleFn(block)}`;
   },
 
   /**

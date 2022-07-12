@@ -88,6 +88,19 @@ describe("behavior", () => {
         ),
       ).toEqual("Draftail-block--TEST public-DraftStyleDefault-depth6");
     });
+
+    it("empty", () => {
+      expect(
+        behavior.blockStyleFn(
+          new ContentBlock({
+            key: "1234",
+            type: "TEST",
+            text: "",
+            characterList: List(),
+          }),
+        ),
+      ).toEqual("Draftail-block--TEST Draftail-block--empty ");
+    });
   });
 
   describe("#getKeyBindingFn", () => {

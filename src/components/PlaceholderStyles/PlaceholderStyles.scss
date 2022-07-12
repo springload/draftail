@@ -1,0 +1,11 @@
+// Avoid styling list items as they commonly have markers in the ::before pseudo element.
+.#{$DRAFTAIL}block--empty:not([class*="-list-item"])::before {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  color: $draftail-placeholder-text;
+
+  @media (forced-colors: active) {
+    color: GrayText;
+  }
+}

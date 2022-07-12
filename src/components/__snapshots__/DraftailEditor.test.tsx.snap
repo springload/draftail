@@ -211,6 +211,7 @@ exports[`DraftailEditor #maxListNesting 1`] = `
   />
   <Memo(Styles)
     blockKey="a"
+    blockTypes={Array []}
     placeholder={null}
   />
   <Memo(Styles)
@@ -430,6 +431,7 @@ exports[`DraftailEditor empty 1`] = `
   />
   <Memo(Styles)
     blockKey="a"
+    blockTypes={Array []}
     placeholder={null}
   />
   <Memo(Styles)

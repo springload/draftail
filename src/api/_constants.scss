@@ -36,7 +36,14 @@ $draftail-editor-line-height: 1.5 !default;
 $draftail-placeholder-text: $color-grey-757575 !default;
 
 $draftail-editor-border: 1px solid $draftail-editor-chrome !default;
-$draftail-contrast-border: 2px solid transparent !default;
+$draftail-contrast-outline: var(
+  --draftail-contrast-outline,
+  2px solid transparent
+) !default;
+$draftail-contrast-outline-modal: var(
+  --draftail-contrast-outline-modal,
+  10px solid transparent
+) !default;
 
 $draftail-editor-radius: 5px !default;
 $draftail-tooltip-radius: 5px !default;

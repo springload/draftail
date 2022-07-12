@@ -55,10 +55,7 @@ import CommandPalette, {
   CommandPaletteProps,
   simulateInputEvent,
 } from "./CommandPalette/CommandPalette";
-import PlaceholderStyles from "./PlaceholderBlock/PlaceholderStyles";
-import PlaceholderBlock, {
-  DraftailPlaceholderBlockProps,
-} from "./PlaceholderBlock/PlaceholderBlock";
+import PlaceholderStyles from "./PlaceholderStyles/PlaceholderStyles";
 import { MetaToolbarProps } from "./Toolbar/MetaToolbar";
 
 export interface DraftailEditorProps {
@@ -884,23 +881,11 @@ class DraftailEditor extends Component<
   }
 
   blockRenderer(block: ContentBlock) {
-    const { entityTypes, textDirectionality, placeholder, blockTypes } =
-      this.props;
+    const { entityTypes, textDirectionality } = this.props;
     const editorState = this.getEditorState();
     const contentState = editorState.getCurrentContent();
 
     if (block.getType() !== BLOCK_TYPE.ATOMIC) {
-      // Render an (editable) custom placeholder block for empty non-atomic blocks.
-      if (block.getText() === "") {
-        return {
-          component: PlaceholderBlock,
-          props: {
-            placeholder,
-            blockTypes,
-          } as DraftailPlaceholderBlockProps["blockProps"],
-        };
-      }
-
       return null;
     }
 
@@ -1150,6 +1135,7 @@ class DraftailEditor extends Component<
 
         <PlaceholderStyles
           blockKey={selectedBlock.getKey()}
+          blockTypes={blockTypes}
           placeholder={placeholder}
         />
 
