@@ -45,7 +45,7 @@ const BlockToolbar = ({
   tooltipZIndex = 100,
 }: BlockToolbarProps) => {
   const toolbarRef = useRef<HTMLDivElement>(null);
-  const [focusedBlockTop, setFocusedBlockTop] = useState<number>(0);
+  const [focusOffset, setFocusOffset] = useState<number | string>("50%");
   const [visible, setVisible] = useState<boolean>(false);
   const [toggleVisible, setToggleVisible] = useState<boolean>(false);
 
@@ -64,14 +64,18 @@ const BlockToolbar = ({
         const editor = toolbarRef.current.closest<HTMLDivElement>(
           "[data-draftail-editor]",
         );
-        const elt = editor!.querySelector<HTMLElement>(
+        const block = editor!.querySelector<HTMLElement>(
           `[data-block="true"][data-offset-key="${anchorKey}-0-0"]`,
         );
-        if (elt) {
-          setFocusedBlockTop(
-            elt.getBoundingClientRect().top -
-              editor!.getBoundingClientRect().top,
-          );
+        if (block) {
+          const topOffset =
+            block.getBoundingClientRect().top +
+            block.getBoundingClientRect().height / 2 -
+            editor!.getBoundingClientRect().top;
+          // If the top offset cannot be calculated, it’s likely because
+          // the editor is rendered in a hidden element.
+          // In this case, default to showing the trigger in the middle of the editor.
+          setFocusOffset(topOffset === 0 ? "50%" : topOffset);
           setToggleVisible(true);
         }
       } else {
@@ -150,7 +154,7 @@ const BlockToolbar = ({
           aria-expanded={visible ? "true" : "false"}
           className="Draftail-BlockToolbar__trigger"
           style={{
-            top: focusedBlockTop,
+            top: focusOffset,
             visibility: toggleVisible ? "visible" : "hidden",
           }}
           aria-label={triggerLabel}

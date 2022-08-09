@@ -28,6 +28,8 @@
   align-items: center;
   justify-content: center;
   // top offset will be set with JS.
-  position: relative;
+  position: absolute;
+  // Make sure the trigger is horizontally centred.
+  transform: translateY(-50%);
   visibility: hidden;
 }
