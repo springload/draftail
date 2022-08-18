@@ -134,6 +134,7 @@ export default function ComboBox({
                   typeof item.icon !== "undefined" && item.icon !== null;
 
                 return (
+                  // eslint-disable-next-line jsx-a11y/no-static-element-interactions
                   <div
                     // eslint-disable-next-line react/no-array-index-key
                     key={`${itemLabel}${item.type}${index}`}
@@ -141,6 +142,12 @@ export default function ComboBox({
                       item,
                       index: inputItems.findIndex((i) => i.type === item.type),
                     })}
+                    onMouseDown={(e) => {
+                      // Side-step Downshift event handling and trigger selection on mouse down for clicks,
+                      // so we preserve keyboard focus within the editor for the command palette.
+                      onSelect({ selectedItem: item } as CommandStateChange);
+                      e.stopPropagation();
+                    }}
                     className="Draftail-ComboBox__option"
                   >
                     <div className="Draftail-ComboBox__option-icon">

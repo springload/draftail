@@ -106,7 +106,7 @@ const Tooltip = ({
       {showBackdrop ? (
         <div
           className={`Draftail-Tooltip__backdrop${
-            shouldOpen ? " Draftail-Tooltip__backdrop--visible" : ""
+            visible ? " Draftail-Tooltip__backdrop--visible" : ""
           }`}
         />
       ) : null}
