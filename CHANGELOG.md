@@ -21,11 +21,19 @@
 - Empty blocks now have a `Draftail-block--empty` class for styling.
 - Add support for [Windows High contrast mode / Contrast themes](https://docs.microsoft.com/en-us/fluent-ui/web-components/design-system/high-contrast) for the whole editor UI.
 - Pass Draft.js ARIA props through. [#436](https://github.com/springload/draftail/issues/436), [#438](https://github.com/springload/draftail/pull/438)
+- Add a name prop and className to ToolbarGroup so different groups can have different styles, for example `Draftail-ToolbarGroup--entities`.
+- Placeholder follow focus
+- Heading blocks highlight
+- Single-line editing support
+- single-line editing
+- Dismiss keyboard shortcuts
 
 ### Changed
 
 - The controls API now expects JS objects similarly to other APIs. Controls can now declare in what type of toolbar they should be rendered: `block` (static top toolbar), `inline` (floating toolbar), `meta` (bottom / meta toolbar). They can also have a `type` to help with troubleshooting.
 - Draftail now uses [CSS logical properties and values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties) to [support right-to-left (RTL) languages](https://rtlstyling.com/posts/rtl-styling).
+- Latest draftjs-conductor
+- Latest draftjs-filters
 
 ### Fixed
 
