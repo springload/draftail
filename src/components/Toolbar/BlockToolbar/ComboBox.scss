@@ -60,6 +60,10 @@
   overflow-y: scroll;
 }
 
+.#{$DRAFTAIL}ComboBox__option {
+  cursor: pointer;
+}
+
 .#{$DRAFTAIL}ComboBox__status,
 .#{$DRAFTAIL}ComboBox__option {
   padding: 10px;
