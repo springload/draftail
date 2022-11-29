@@ -42,7 +42,7 @@
   "dependencies": {
     "@tippyjs/react": "^4.2.6",
     "decorate-component-with-props": "^1.0.2",
-    "downshift": "^6.1.7",
+    "downshift": "^7.0.4",
     "draft-js-plugins-editor": "^2.1.1",
     "draftjs-conductor": "^3.0.0",
     "draftjs-filters": "^3.0.1"

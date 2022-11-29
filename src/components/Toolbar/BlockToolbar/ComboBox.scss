@@ -24,11 +24,11 @@
   @include sr-only();
 }
 
-.#{$DRAFTAIL}ComboBox [role="combobox"] {
+.#{$DRAFTAIL}ComboBox__field {
   padding: 10px;
 }
 
-.#{$DRAFTAIL}ComboBox--contenteditable [role="combobox"] {
+.#{$DRAFTAIL}ComboBox--inline input[disabled] {
   @include sr-only();
 }
 

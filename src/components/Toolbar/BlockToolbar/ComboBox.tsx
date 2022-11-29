@@ -28,6 +28,8 @@ export default function ComboBox({
   noResultsText,
   getEditorState,
 }: ComboBoxProps) {
+  // If there is no label defined, assume the editor serves as the input field.
+  const inlineCombobox = !label;
   const flatItems = items.flatMap<CommandControl>(
     (category) => category.items || [],
   );
@@ -37,7 +39,6 @@ export default function ComboBox({
     getLabelProps,
     getMenuProps,
     getInputProps,
-    getComboboxProps,
     getItemProps,
     setHighlightedIndex,
     setInputValue,
@@ -93,17 +94,19 @@ export default function ComboBox({
   return (
     <div
       className={`Draftail-ComboBox Draftail-ComboBox--${
-        label ? "field" : "contenteditable"
+        inlineCombobox ? "inline" : "field"
       }`}
     >
       <label className="Draftail-ComboBox__label" {...getLabelProps()}>
         {label}
       </label>
-      <div {...getComboboxProps()}>
+      <div className="Draftail-ComboBox__field">
         <input
           data-draftail-command-palette-input
           type="text"
           {...getInputProps()}
+          // Prevent the field from receiving focus if it’s not visible.
+          disabled={inlineCombobox}
           placeholder={placeholder}
         />
       </div>
