@@ -7,6 +7,7 @@ const config = [
   {
     input: "./src/index.ts",
     external: [
+      "react/jsx-runtime",
       "draft-js/lib/isSoftNewlineEvent",
       "draft-js/lib/DraftEditorBlock.react",
     ]
