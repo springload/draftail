@@ -12,7 +12,7 @@
     "resolveJsonModule": true,
     "noEmit": true,
     "outDir": "dist",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "noFallthroughCasesInSwitch": true,
     "lib": ["dom", "dom.iterable", "esnext"]
   },
