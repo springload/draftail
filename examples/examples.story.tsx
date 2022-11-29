@@ -53,7 +53,7 @@ storiesOf("Examples", module)
       <EditorWrapper
         id="wagtail"
         ariaDescribedBy="wagtail-editor"
-        placeholder="Type ‘/’ to insert a block or write here…"
+        placeholder="Write here or type ‘/’ to insert a block in this field"
         // Makes it easier to write automated tests retrieving the content.
         stateSaveInterval={50}
         enableHorizontalRule
