@@ -459,12 +459,8 @@ storiesOf("Docs", module)
             label: "♻",
             render: ({
               option,
-              getEditorState,
             }: Parameters<NonNullable<CommandControl["render"]>>[0]) => {
-              const editorState = getEditorState();
-              const content = editorState.getCurrentContent();
-              const blocks = content.getBlockMap();
-              const text = `${option.description} (will remove ${blocks.size} blocks)`;
+              const text = `${option.description} (full reset)`;
               return <div>{text}</div>;
             },
             onSelect: () => EditorState.createEmpty(),

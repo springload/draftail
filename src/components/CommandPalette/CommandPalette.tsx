@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { getVisibleSelectionRect } from "draft-js";
 
+import { ENTITY_TYPE } from "../../api/constants";
 import DraftUtils from "../../api/DraftUtils";
 import behavior from "../../api/behavior";
 
-import ComboBox, { CommandStateChange } from "../Toolbar/BlockToolbar/ComboBox";
+import ComboBox, { UseComboboxStateChange } from "../ComboBox/ComboBox";
 import { ToolbarProps } from "../Toolbar/Toolbar";
-import { ENTITY_TYPE } from "../../api/constants";
 import Tooltip, { TooltipPlacement } from "../Tooltip/Tooltip";
+import {
+  getControlLabel,
+  getControlDescription,
+  getControlSearchFields,
+} from "../../api/ui";
+import { CommandControl } from "../../api/types";
 
 /**
  * Simulates a keyboard event having happened on the combobox’s input.
@@ -83,7 +89,7 @@ const CommandPalette = ({
     enableHorizontalRule,
   });
 
-  const onSelect = (change: CommandStateChange) => {
+  const onSelect = (change: UseComboboxStateChange<CommandControl>) => {
     const item = change.selectedItem;
 
     if (!item) {
@@ -122,10 +128,12 @@ const CommandPalette = ({
         shouldOpen ? (
           <ComboBox
             items={items}
+            getItemLabel={getControlLabel}
+            getItemDescription={getControlDescription}
+            getSearchFields={getControlSearchFields}
             inputValue={prompt.substring(1)}
             noResultsText={noResultsText}
             onSelect={onSelect}
-            getEditorState={getEditorState}
           />
         ) : null
       }

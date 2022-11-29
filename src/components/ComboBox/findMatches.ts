@@ -1,6 +1,3 @@
-import { DESCRIPTIONS, KnownFormatType, LABELS } from "../../../api/constants";
-import { Control } from "../../../api/types";
-
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator.
 const collator = new Intl.Collator(undefined, {
   usage: "search",
@@ -34,15 +31,13 @@ const contains = (string: string, substring: string) => {
 /**
  * Find all items where the label or description matches the inputValue.
  */
-const findMatches = <T extends Control>(items: T[], input: string) =>
+const findMatches = <T extends object>(
+  items: T[],
+  getSearchFields: (item: T) => string[],
+  input: string,
+) =>
   items.filter((item) => {
-    const matches = [
-      item.label,
-      item.description,
-      item.type ? LABELS[item.type as KnownFormatType] : "",
-      item.type ? DESCRIPTIONS[item.type as KnownFormatType] : "",
-      item.type,
-    ];
+    const matches = getSearchFields(item);
 
     return matches.some((match) => match && contains(match, input));
   });

@@ -5,12 +5,19 @@ import { ENTITY_TYPE } from "../../../api/constants";
 
 import DraftUtils from "../../../api/DraftUtils";
 import behavior from "../../../api/behavior";
+import {
+  getControlDescription,
+  getControlLabel,
+  getControlSearchFields,
+} from "../../../api/ui";
+
 import Tooltip, {
   PopperInstance,
   TooltipPlacement,
 } from "../../Tooltip/Tooltip";
 import { ToolbarProps } from "../Toolbar";
-import ComboBox, { CommandStateChange } from "./ComboBox";
+import ComboBox, { UseComboboxStateChange } from "../../ComboBox/ComboBox";
+import { CommandControl } from "../../../api/types";
 
 const addIcon = <span aria-hidden="true">+</span>;
 
@@ -98,7 +105,7 @@ const BlockToolbar = ({
     enableHorizontalRule,
   });
 
-  const onSelect = (change: CommandStateChange) => {
+  const onSelect = (change: UseComboboxStateChange<CommandControl>) => {
     const item = change.selectedItem;
 
     if (!item) {
@@ -142,9 +149,11 @@ const BlockToolbar = ({
               label={comboLabel}
               placeholder={comboPlaceholder}
               items={comboOptions}
+              getItemLabel={getControlLabel}
+              getItemDescription={getControlDescription}
+              getSearchFields={getControlSearchFields}
               noResultsText={noResultsText}
               onSelect={onSelect}
-              getEditorState={getEditorState}
             />
           ) : null
         }

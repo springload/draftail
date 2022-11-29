@@ -1,39 +1,60 @@
 import React, { useEffect, useState } from "react";
-import { EditorState } from "draft-js";
 import { useCombobox, UseComboboxStateChange } from "downshift";
 
-import Icon from "../../Icon";
-import { getControlDescription, getControlLabel } from "../../../api/ui";
-import { CommandCategory, CommandControl } from "../../../api/types";
+import Icon, { IconProp } from "../Icon";
 import findMatches from "./findMatches";
 
-export type CommandStateChange = UseComboboxStateChange<CommandControl>;
+export interface ComboBoxCategory<ItemType> {
+  type: string;
+  label: string | null;
+  items?: ItemType[];
+}
 
-interface ComboBoxProps {
+export interface ComboBoxItem {
+  type?: string;
+  label?: string | null;
+  description?: string | null;
+  icon?: IconProp;
+  category?: string;
+  render?: (props: { option: ComboBoxItem }) => JSX.Element;
+}
+
+export { UseComboboxStateChange };
+
+export type ComboBoxStateChange = UseComboboxStateChange<ComboBoxItem>;
+
+interface ComboBoxProps<ComboBoxOption> {
   label?: string;
   placeholder?: string;
   inputValue?: string;
-  items: CommandCategory[];
-  onSelect: (change: CommandStateChange) => void;
-  getEditorState: () => EditorState;
+  items: ComboBoxCategory<ComboBoxOption>[];
+  getItemLabel: (
+    type: string | undefined,
+    item: ComboBoxOption,
+  ) => string | null;
+  getItemDescription: (item: ComboBoxOption) => string | null | undefined;
+  getSearchFields: (item: ComboBoxOption) => string[];
+  onSelect: (change: UseComboboxStateChange<ComboBoxOption>) => void;
   noResultsText?: string;
 }
 
-export default function ComboBox({
+export default function ComboBox<ComboBoxOption extends ComboBoxItem>({
   label,
   placeholder,
   inputValue,
   items,
+  getItemLabel,
+  getItemDescription,
+  getSearchFields,
   onSelect,
   noResultsText,
-  getEditorState,
-}: ComboBoxProps) {
+}: ComboBoxProps<ComboBoxOption>) {
   // If there is no label defined, assume the editor serves as the input field.
   const inlineCombobox = !label;
-  const flatItems = items.flatMap<CommandControl>(
+  const flatItems = items.flatMap<ComboBoxOption>(
     (category) => category.items || [],
   );
-  const [inputItems, setInputItems] = useState<CommandControl[]>(flatItems);
+  const [inputItems, setInputItems] = useState<ComboBoxOption[]>(flatItems);
   const noResults = inputItems.length === 0;
   const {
     getLabelProps,
@@ -43,18 +64,16 @@ export default function ComboBox({
     setHighlightedIndex,
     setInputValue,
     openMenu,
-  } = useCombobox<CommandControl>({
+  } = useCombobox<ComboBoxOption>({
     ...(typeof inputValue !== "undefined" && { inputValue }),
     initialInputValue: inputValue || "",
     items: inputItems,
-    itemToString(item: CommandControl | null) {
+    itemToString(item: ComboBoxOption | null) {
       if (!item) {
         return "";
       }
 
-      return (
-        getControlDescription(item) || getControlLabel(item.type, item) || ""
-      );
+      return getItemDescription(item) || getItemLabel(item.type, item) || "";
     },
     selectedItem: null,
 
@@ -67,7 +86,11 @@ export default function ComboBox({
         return;
       }
 
-      const filtered = findMatches<CommandControl>(flatItems, val);
+      const filtered = findMatches<ComboBoxOption>(
+        flatItems,
+        getSearchFields,
+        val,
+      );
       setInputItems(filtered);
       // Always reset the first item to highlighted on filtering, to speed up selection.
       setHighlightedIndex(0);
@@ -78,7 +101,11 @@ export default function ComboBox({
     if (inputValue) {
       openMenu();
       setInputValue(inputValue);
-      const filtered = findMatches<CommandControl>(flatItems, inputValue);
+      const filtered = findMatches<ComboBoxOption>(
+        flatItems,
+        getSearchFields,
+        inputValue,
+      );
       setInputItems(filtered);
       // Always reset the first item to highlighted on filtering, to speed up selection.
       setHighlightedIndex(0);
@@ -131,8 +158,8 @@ export default function ComboBox({
                 </div>
               ) : null}
               {categoryItems.map((item, index) => {
-                const itemLabel = getControlLabel(item.type, item);
-                const description = getControlDescription(item);
+                const itemLabel = getItemLabel(item.type, item);
+                const description = getItemDescription(item);
                 const hasIcon =
                   typeof item.icon !== "undefined" && item.icon !== null;
 
@@ -148,7 +175,9 @@ export default function ComboBox({
                     onMouseDown={(e) => {
                       // Side-step Downshift event handling and trigger selection on mouse down for clicks,
                       // so we preserve keyboard focus within the editor for the command palette.
-                      onSelect({ selectedItem: item } as CommandStateChange);
+                      onSelect({
+                        selectedItem: item,
+                      } as UseComboboxStateChange<ComboBoxOption>);
                       e.stopPropagation();
                     }}
                     className="Draftail-ComboBox__option"
@@ -158,10 +187,7 @@ export default function ComboBox({
                       {itemLabel && !hasIcon ? <span>{itemLabel}</span> : null}
                     </div>
                     {item.render ? (
-                      item.render({
-                        option: item,
-                        getEditorState,
-                      })
+                      item.render({ option: item })
                     ) : (
                       <div className="Draftail-ComboBox__option-text">
                         {description}

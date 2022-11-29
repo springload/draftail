@@ -36,6 +36,14 @@ export const getControlDescription = (control: Control) => {
   return description || label;
 };
 
+export const getControlSearchFields = (control: Control) => [
+  control.label || "",
+  control.description || "",
+  control.type ? LABELS[control.type as KnownFormatType] : "",
+  control.type ? DESCRIPTIONS[control.type as KnownFormatType] : "",
+  control.type || "",
+];
+
 export const showControl = (config: Control) =>
   Boolean(config.icon) || Boolean(getControlLabel(config.type, config));
 

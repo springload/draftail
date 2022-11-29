@@ -7,6 +7,8 @@ export interface IconProps {
   className?: string | null;
 }
 
+export { IconProp };
+
 /**
  * Icon as SVG element. Can optionally render a React element instead.
  */
