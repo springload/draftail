@@ -61,3 +61,211 @@ $draftail-editor-font-family: $FONT_FAMILY_SANS;
 @import "./plugins/sectionBreakPlugin";
 
 @import "./utils/utilities";
+
+$color--primary: #2e1f5e;
+$color--grey-50: #f6f6f8;
+$color--grey-6: #e6e6e6;
+$color--grey-400: #5c5c5c;
+$color--grey-600: #262626;
+$color--white: #fff;
+
+$color--border: $color--grey-6;
+$color--meta: $color--grey-400;
+$color--input-text: $color--grey-600;
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+}
+
+.sidebar {
+  background-color: $color--primary;
+  width: 60px;
+  flex: 0;
+  flex-basis: 60px;
+}
+
+.main-col {
+  flex: 1;
+  background-color: $color--white;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  background-color: $color--grey-50;
+  padding: 20px 20px 20px 65px;
+  border-bottom: 1px solid $color--border;
+
+  &__breadcrumb {
+    color: $color--primary;
+    font-weight: 700;
+    font-size: 14px;
+  }
+}
+
+.tabs {
+  border-bottom: 1px solid $color--border;
+  margin-bottom: 40px;
+
+  &__container {
+    list-style-type: none;
+    display: flex;
+    flex: 0;
+    padding: 0;
+    margin: 0 0 0 65px;
+  }
+}
+
+.tab-item {
+  margin-right: 20px;
+
+  &__link {
+    display: block;
+    color: $color--grey-400;
+    text-decoration: none;
+    padding: 20px 0;
+    font-size: 14px;
+
+    &--active {
+      color: $color--primary;
+      border-bottom: 1px solid $color--primary;
+    }
+  }
+}
+
+.content {
+  margin-left: 65px;
+  max-width: 820px;
+}
+
+.form-item {
+  margin-bottom: 40px;
+
+  &__heading {
+    display: flex;
+    font-weight: 700;
+    color: $color--primary;
+    margin-bottom: 20px;
+    position: relative;
+    left: -30px;
+  }
+
+  &__icon {
+    margin-right: 15px;
+  }
+
+  &__input,
+  &__textarea {
+    border-radius: 4px;
+    border: 1px solid $color--border;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 20px 20px;
+    color: $color--input-text;
+
+    &--large {
+      font-size: 30px;
+      font-weight: 900;
+      padding: 10px 20px;
+    }
+
+    p {
+      font-size: 19px;
+    }
+
+    h2,
+    h3 {
+      &::after {
+        position: relative;
+        top: -2px;
+        z-index: 0;
+        font-size: 12px;
+        text-transform: uppercase;
+        color: $color--meta;
+        border: 1px solid $color--border;
+        border-radius: 7px;
+        padding: 2px 5px;
+        margin-left: 10px;
+      }
+    }
+
+    h2 {
+      font-size: 30px;
+
+      &::after {
+        content: "h2";
+      }
+    }
+
+    h3 {
+      font-size: 24px;
+
+      &::after {
+        content: "h3";
+      }
+    }
+  }
+
+  &__help {
+    display: block;
+    font-size: 14px;
+    color: $color--meta;
+  }
+}
+
+.rte-controls {
+  position: sticky;
+  top: 74px;
+  z-index: 19;
+
+  &__container {
+    position: relative;
+    top: -15px;
+    margin-bottom: -25px;
+    display: flex;
+    align-items: centre;
+    flex-direction: row;
+    padding: 15px 5px;
+    background-color: $color--white;
+  }
+
+  &__item {
+    margin-right: 15px;
+    background-color: transparent;
+    border: 0;
+    transition: color ease-in 0.3ms;
+    cursor: pointer;
+    color: $color--grey-400;
+
+    &:hover,
+    &:focus {
+      color: $color--primary;
+    }
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.sb-show-main.sb-main-padded {
+  padding: 0;
+}

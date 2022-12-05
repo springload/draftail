@@ -63,7 +63,7 @@ const BlockToolbar = ({
   const anchorKey = selection.getAnchorKey();
   const selectedBlock = DraftUtils.getSelectedBlock(editorState);
   const blockType = selectedBlock.getType();
-  const showToggle = isCollapsed && isStart && selectedBlock.getText() === "";
+  const showToggle = true;
 
   useEffect(() => {
     if (toolbarRef.current) {

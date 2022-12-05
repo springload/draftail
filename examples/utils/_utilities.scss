@@ -48,11 +48,14 @@
 .docs-floating-toolbars {
   .Draftail-Editor {
     border-color: transparent;
+    margin-inline-start: -2rem;
   }
 
   .DraftEditor-root {
     border: $draftail-editor-border;
     border-top: none;
+    border-radius: 4px;
+    border: 1px solid #e6e6e6;
   }
 }
 

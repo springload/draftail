@@ -502,13 +502,38 @@ export default {
     const isCollapsed = selection.isCollapsed();
     const isAfterSlash = selection.getFocusOffset() > 0;
 
-    const hasPrompt =
+    if (!isCollapsed || !selection.getHasFocus()) {
+      return "";
+    }
+
+    const hasPromptStartOfLine =
       isCollapsed &&
       isAfterSlash &&
       selection.getHasFocus() &&
       text.startsWith("/") &&
       ((text || "").match(/\s/g) || []).length < 2;
 
-    return hasPrompt ? text : "";
+    if (hasPromptStartOfLine) {
+      return text;
+    }
+
+    // Retrieve the text between the / and the next space
+    const slashPosition = text.indexOf("/");
+    console.log(slashPosition);
+
+    const hasPromptLaterLine =
+      isCollapsed &&
+      selection.getHasFocus() &&
+      slashPosition > 0 &&
+      (
+        (text.substring(slashPosition, text.length - 1) || "").match(/\s/g) ||
+        []
+      ).length < 2;
+
+    if (hasPromptLaterLine) {
+      return text.substring(slashPosition, text.length - 1);
+    }
+
+    return "";
   },
 };

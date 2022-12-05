@@ -5,4 +5,42 @@
     margin-inline-start: 0;
     font-style: italic;
   }
+
+  :where(.Draftail-block--header-one, .Draftail-block--header-two, .Draftail-block--header-three, .Draftail-block--header-four, .Draftail-block--header-five, .Draftail-block--header-six)
+    .public-DraftStyleDefault-block::after {
+    position: relative;
+    top: -0.25em;
+    z-index: 0;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #5c5c5c;
+    border: 1px solid #e6e6e6;
+    border-radius: 7px;
+    padding: 2px 5px;
+    margin-inline-start: 10px;
+  }
+
+  .Draftail-block--header-one .public-DraftStyleDefault-block::after {
+    content: "H1";
+  }
+
+  .Draftail-block--header-two .public-DraftStyleDefault-block::after {
+    content: "H2";
+  }
+
+  .Draftail-block--header-three .public-DraftStyleDefault-block::after {
+    content: "H3";
+  }
+
+  .Draftail-block--header-four .public-DraftStyleDefault-block::after {
+    content: "H4";
+  }
+
+  .Draftail-block--header-five .public-DraftStyleDefault-block::after {
+    content: "H5";
+  }
+
+  .Draftail-block--header-six .public-DraftStyleDefault-block::after {
+    content: "H6";
+  }
 }
