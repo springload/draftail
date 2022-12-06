@@ -6,7 +6,7 @@
     font-style: italic;
   }
 
-  :where(.Draftail-block--header-one, .Draftail-block--header-two, .Draftail-block--header-three, .Draftail-block--header-four, .Draftail-block--header-five, .Draftail-block--header-six)
+  :where(.Draftail-block--header-one, .Draftail-block--header-two, .Draftail-block--header-three, .Draftail-block--header-four, .Draftail-block--header-five, .Draftail-block--header-six):not(.Draftail-block--empty)
     .public-DraftStyleDefault-block::after {
     position: relative;
     top: -0.25em;
@@ -20,27 +20,33 @@
     margin-inline-start: 10px;
   }
 
-  .Draftail-block--header-one .public-DraftStyleDefault-block::after {
+  .Draftail-block--header-one:not(.Draftail-block--empty)
+    .public-DraftStyleDefault-block::after {
     content: "H1";
   }
 
-  .Draftail-block--header-two .public-DraftStyleDefault-block::after {
+  .Draftail-block--header-two:not(.Draftail-block--empty)
+    .public-DraftStyleDefault-block::after {
     content: "H2";
   }
 
-  .Draftail-block--header-three .public-DraftStyleDefault-block::after {
+  .Draftail-block--header-three:not(.Draftail-block--empty)
+    .public-DraftStyleDefault-block::after {
     content: "H3";
   }
 
-  .Draftail-block--header-four .public-DraftStyleDefault-block::after {
+  .Draftail-block--header-four:not(.Draftail-block--empty)
+    .public-DraftStyleDefault-block::after {
     content: "H4";
   }
 
-  .Draftail-block--header-five .public-DraftStyleDefault-block::after {
+  .Draftail-block--header-five:not(.Draftail-block--empty)
+    .public-DraftStyleDefault-block::after {
     content: "H5";
   }
 
-  .Draftail-block--header-six .public-DraftStyleDefault-block::after {
+  .Draftail-block--header-six:not(.Draftail-block--empty)
+    .public-DraftStyleDefault-block::after {
     content: "H6";
   }
 }

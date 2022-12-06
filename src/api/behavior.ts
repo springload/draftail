@@ -324,7 +324,7 @@ export default {
           category: "blockTypes",
         })),
         ...entityTypes
-          .filter((t) => showControlDesc(t) && Boolean(t.block))
+          .filter((t) => showControlDesc(t))
           .map((t) => ({
             ...t,
             category: "entityTypes",

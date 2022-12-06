@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { getVisibleSelectionRect } from "draft-js";
+import {
+  EditorState,
+  getVisibleSelectionRect,
+  Modifier,
+  RichUtils,
+  SelectionState,
+} from "draft-js";
 
 import { ENTITY_TYPE } from "../../api/constants";
 import DraftUtils from "../../api/DraftUtils";
@@ -101,15 +107,60 @@ const CommandPalette = ({
     if (item.onSelect) {
       onCompleteSource(item.onSelect({ editorState, prompt }));
     } else if (item.category === "blockTypes") {
-      const nextState = DraftUtils.resetBlockWithType(editorState, itemType);
-      onCompleteSource(nextState);
+      const selection = editorState.getSelection();
+      const block = DraftUtils.getSelectedBlock(editorState);
+      const promptPosition = block.getText().indexOf(prompt);
+      const promptSelection = selection.merge({
+        anchorOffset: promptPosition,
+      });
+      const nextContent = Modifier.replaceText(
+        editorState.getCurrentContent(),
+        promptSelection,
+        "",
+      );
+      const nextState = EditorState.push(
+        editorState,
+        nextContent,
+        "insert-characters",
+      );
+      onCompleteSource(RichUtils.toggleBlockType(nextState, itemType));
     } else if (item.type === ENTITY_TYPE.HORIZONTAL_RULE) {
-      const nextState = DraftUtils.resetBlockWithType(editorState);
+      const selection = editorState.getSelection();
+      const block = DraftUtils.getSelectedBlock(editorState);
+      const promptPosition = block.getText().indexOf(prompt);
+      const promptSelection = selection.merge({
+        anchorOffset: promptPosition,
+      });
+      const nextContent = Modifier.replaceText(
+        editorState.getCurrentContent(),
+        promptSelection,
+        "",
+      );
+      const nextState = EditorState.push(
+        editorState,
+        nextContent,
+        "insert-characters",
+      );
       onCompleteSource(
         DraftUtils.addHorizontalRuleRemovingSelection(nextState),
       );
     } else if (item.category === "entityTypes") {
-      const nextState = DraftUtils.resetBlockWithType(editorState);
+      const selection = editorState.getSelection();
+      const block = DraftUtils.getSelectedBlock(editorState);
+      const promptPosition = block.getText().indexOf(prompt);
+      const promptSelection = selection.merge({
+        anchorOffset: promptPosition,
+      });
+      const nextContent = Modifier.replaceText(
+        editorState.getCurrentContent(),
+        promptSelection,
+        "",
+      );
+      const nextState = EditorState.push(
+        editorState,
+        nextContent,
+        "insert-characters",
+      );
       onCompleteSource(nextState);
       setTimeout(() => {
         onRequestSource(itemType);

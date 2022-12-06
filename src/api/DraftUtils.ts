@@ -518,20 +518,19 @@ export default {
     }
 
     // Retrieve the text between the / and the next space
-    const slashPosition = text.indexOf("/");
-    console.log(slashPosition);
+    const textBeforeSelection = text.substring(0, selection.getFocusOffset());
+    const slashPosition = textBeforeSelection.indexOf(" /") + 1;
+
+    console.log({ textBeforeSelection, slashPosition, t: textBeforeSelection });
 
     const hasPromptLaterLine =
       isCollapsed &&
       selection.getHasFocus() &&
       slashPosition > 0 &&
-      (
-        (text.substring(slashPosition, text.length - 1) || "").match(/\s/g) ||
-        []
-      ).length < 2;
+      !/\s/g.test(textBeforeSelection.substring(slashPosition));
 
     if (hasPromptLaterLine) {
-      return text.substring(slashPosition, text.length - 1);
+      return textBeforeSelection.substring(slashPosition);
     }
 
     return "";

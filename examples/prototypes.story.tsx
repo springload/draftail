@@ -6,6 +6,7 @@ import {
   convertToRaw,
   convertFromRaw,
   RawDraftContentState,
+  Modifier,
 } from "draft-js";
 
 import {
@@ -21,6 +22,7 @@ import {
   CommandPalette,
   CommandControl,
   ToolbarButton,
+  EntitySourceProps,
 } from "../src/index";
 
 import {
@@ -41,6 +43,34 @@ type Props = {
   setPinToolbar: (pinToolbar: boolean) => void;
 };
 
+class EmojiSource extends React.Component<EntitySourceProps> {
+  componentDidMount() {
+    const { editorState, onComplete } = this.props;
+
+    const content = editorState.getCurrentContent();
+    const selection = editorState.getSelection();
+
+    const newContent = Modifier.replaceText(
+      content,
+      selection,
+      "🙂",
+      undefined,
+      undefined,
+    );
+    const nextState = EditorState.push(
+      editorState,
+      newContent,
+      "insert-characters",
+    );
+
+    onComplete(nextState);
+  }
+
+  render() {
+    return null;
+  }
+}
+
 /**
  * A traditional text style picker.
  */
@@ -60,7 +90,7 @@ storiesOf("Prototypes", module)
     const [pinToolbar, setPinToolbar] = useState<boolean>(false);
     const commands = [
       {
-        label: "Block formats",
+        label: "Formatting",
         type: "blockTypes",
         items: [
           BLOCK_CONTROL.HEADER_TWO,
@@ -69,9 +99,20 @@ storiesOf("Prototypes", module)
         ],
       },
       {
-        label: "Data",
+        label: "Content",
         type: "entityTypes",
         items: [
+          {
+            type: "EMOJI",
+            label: "🙂",
+            description: "Emoji",
+            source: EmojiSource,
+            block: ENTITY_CONTROL.LINK.decorator,
+          },
+          {
+            ...ENTITY_CONTROL.LINK,
+            block: ENTITY_CONTROL.LINK.decorator,
+          },
           ENTITY_CONTROL.IMAGE,
           ENTITY_CONTROL.EMBED,
           {
@@ -209,6 +250,13 @@ storiesOf("Prototypes", module)
                       ENTITY_CONTROL.LINK,
                       ENTITY_CONTROL.IMAGE,
                       ENTITY_CONTROL.EMBED,
+                      {
+                        type: "EMOJI",
+                        label: "🙂",
+                        description: "🙂 emoji",
+                        source: EmojiSource,
+                        decorator: ENTITY_CONTROL.LINK.decorator,
+                      },
                     ]}
                     blockTypes={[
                       BLOCK_CONTROL.HEADER_TWO,
@@ -226,14 +274,14 @@ storiesOf("Prototypes", module)
                       {
                         inline: CharCount,
                       },
-                      {
-                        inline: () => (
-                          <ToolbarPinButton
-                            pinToolbar={pinToolbar}
-                            setPinToolbar={setPinToolbar}
-                          />
-                        ),
-                      },
+                      // {
+                      //   inline: () => (
+                      //     <ToolbarPinButton
+                      //       pinToolbar={pinToolbar}
+                      //       setPinToolbar={setPinToolbar}
+                      //     />
+                      //   ),
+                      // },
                       {
                         meta: CharCount,
                       },
