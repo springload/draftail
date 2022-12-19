@@ -16,7 +16,7 @@ interface PlaceholderStylesProps {
 function Styles({ blockKey, blockTypes, placeholder }: PlaceholderStylesProps) {
   let placeholderStyle = "";
   if (blockKey && placeholder) {
-    placeholderStyle = `.Draftail-block--unstyled.Draftail-block--empty[data-offset-key="${blockKey}-0-0"]::before { content: "${placeholder}"; }`;
+    placeholderStyle = `.Draftail-block--unstyled.Draftail-block--empty[data-offset-key="${blockKey}-0-0"]::after { content: "${placeholder}"; }`;
   }
 
   const blockPlaceholders = blockTypes

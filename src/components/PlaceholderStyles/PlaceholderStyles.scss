@@ -1,11 +1,25 @@
 // Avoid styling list items as they commonly have markers in the ::before pseudo element.
+.#{$DRAFTAIL}block--empty:not([class*="-list-item"]) {
+  &::before,
+  &::after {
+    pointer-events: none;
+    user-select: none;
+    color: $draftail-placeholder-text;
+
+    @media (forced-colors: active) {
+      color: GrayText;
+    }
+  }
+}
+
+// Use ::before for block type placeholders which need to support blocks of varying heights.
 .#{$DRAFTAIL}block--empty:not([class*="-list-item"])::before {
   position: absolute;
-  pointer-events: none;
-  user-select: none;
-  color: $draftail-placeholder-text;
+}
 
-  @media (forced-colors: active) {
-    color: GrayText;
-  }
+// Use ::after for field placeholder which only displays on unstyled blocks.
+.#{$DRAFTAIL}block--empty:not([class*="-list-item"])::after {
+  display: block;
+  // Move up by the height of one block.
+  margin-top: calc(-1 * 1em * $draftail-editor-line-height);
 }
