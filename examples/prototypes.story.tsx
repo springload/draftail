@@ -200,48 +200,12 @@ storiesOf("Prototypes", module)
                   />
                   <label className="form-item__label">Rich text</label>
                 </div>
-                <input
-                  className="form-item__input"
-                  type="text"
-                  placeholder="Write something or type '/' to insert a block"
-                />
-                <span className="form-item__help">
-                  This is the help text for this field
-                </span>
-              </div>
-
-              <div className="form-item">
-                <div className="form-item__heading">
-                  <i
-                    className="form-item__icon fa-solid fa-paragraph"
-                    aria-hidden="true"
-                  />
-                  <label className="form-item__label">Rich text</label>
-                </div>
-                <input
-                  className="form-item__input"
-                  type="text"
-                  placeholder="Write something or type '/' to insert a block"
-                />
-                <span className="form-item__help">
-                  This is the help text for this field
-                </span>
-              </div>
-
-              <div className="form-item">
-                <div className="form-item__heading">
-                  <i
-                    className="form-item__icon fa-solid fa-paragraph"
-                    aria-hidden="true"
-                  />
-                  <label className="form-item__label">Rich text</label>
-                </div>
                 <div className="docs-floating-toolbars">
                   <EditorWrapper
                     id="floating-toolbars"
                     rawContentState={indexContentState as RawDraftContentState}
                     stripPastedStyles={false}
-                    placeholder="Insert ‘/’ or write here…"
+                    placeholder="Write something or type '/' to insert a block"
                     enableHorizontalRule
                     enableLineBreak={{
                       icon: BR_ICON,
@@ -302,24 +266,6 @@ storiesOf("Prototypes", module)
                   />
                 </div>
 
-                <span className="form-item__help">
-                  This is the help text for this field
-                </span>
-              </div>
-
-              <div className="form-item">
-                <div className="form-item__heading">
-                  <i
-                    className="form-item__icon fa-solid fa-paragraph"
-                    aria-hidden="true"
-                  />
-                  <label className="form-item__label">Rich text</label>
-                </div>
-                <input
-                  className="form-item__input"
-                  type="text"
-                  placeholder="Write something or type '/' to insert a block"
-                />
                 <span className="form-item__help">
                   This is the help text for this field
                 </span>
