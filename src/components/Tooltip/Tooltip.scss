@@ -1,4 +1,87 @@
-@import "~tippy.js/dist/tippy.css";
+// Tippy CSS re-implemented with only needed properties, and logical properties.
+// @import "~tippy.js/dist/tippy.css";
+.#{$DRAFTAIL}Editor {
+  .tippy-box[data-animation="fade"][data-state="hidden"] {
+    opacity: 0;
+  }
+
+  [data-tippy-root] {
+    max-width: calc(100vw - 10px);
+  }
+
+  .tippy-box {
+    position: relative;
+    transition-property: transform, visibility, opacity;
+  }
+
+  .tippy-box[data-placement^="top"] > .tippy-arrow {
+    bottom: 0;
+  }
+
+  .tippy-box[data-placement^="top"] > .tippy-arrow::before {
+    bottom: -7px;
+    inset-inline-start: 0;
+    border-width: 8px 8px 0;
+    border-top-color: initial;
+    transform-origin: center top;
+  }
+
+  .tippy-box[data-placement^="bottom"] > .tippy-arrow {
+    top: 0;
+  }
+
+  .tippy-box[data-placement^="bottom"] > .tippy-arrow::before {
+    top: -7px;
+    inset-inline-start: 0;
+    border-width: 0 8px 8px;
+    border-bottom-color: initial;
+    transform-origin: center bottom;
+  }
+
+  .tippy-box[data-placement^="left"] > .tippy-arrow {
+    inset-inline-end: 0;
+  }
+
+  .tippy-box[data-placement^="left"] > .tippy-arrow::before {
+    border-width: 8px 0 8px 8px;
+    border-inline-start-color: initial;
+    inset-inline-end: -7px;
+    transform-origin: center left;
+  }
+
+  .tippy-box[data-placement^="right"] > .tippy-arrow {
+    inset-inline-start: 0;
+  }
+
+  .tippy-box[data-placement^="right"] > .tippy-arrow::before {
+    inset-inline-start: -7px;
+    border-width: 8px 8px 8px 0;
+    border-inline-end-color: initial;
+    transform-origin: center right;
+  }
+
+  .tippy-box[data-inertia][data-state="visible"] {
+    transition-timing-function: cubic-bezier(0.54, 1.5, 0.38, 1.11);
+  }
+
+  .tippy-arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  .tippy-arrow::before {
+    content: "";
+    position: absolute;
+    border-color: transparent;
+    border-style: solid;
+  }
+
+  .tippy-content {
+    position: relative;
+    padding: 5px 9px;
+    z-index: 1;
+  }
+}
 
 .#{$DRAFTAIL}Tooltip {
   background: none;
