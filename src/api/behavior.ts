@@ -324,7 +324,7 @@ export default {
           category: "blockTypes",
         })),
         ...entityTypes
-          .filter((t) => showControlDesc(t) && Boolean(t.block))
+          .filter((t) => showControlDesc(t))
           .map((t) => ({
             ...t,
             category: "entityTypes",
@@ -362,11 +362,7 @@ export default {
       } else if (category.type === "entityTypes") {
         const rawItems = (category.items as EntityTypeControl[]) || entityTypes;
         items = rawItems
-          .filter(
-            (t) =>
-              showControlDesc(t) &&
-              (Boolean(t.block) || t.type === ENTITY_TYPE.HORIZONTAL_RULE),
-          )
+          .filter((t) => showControlDesc(t))
           .map((t) => ({
             ...t,
             category: "entityTypes",
