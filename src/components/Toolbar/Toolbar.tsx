@@ -22,11 +22,14 @@ const Toolbar = (props: ToolbarProps) => {
 
       <ToolbarGroup name="controls">
         {controls.map((control, i) => {
-          if (control.inline || control.meta) {
+          if (control.meta) {
             return null;
           }
 
-          const Control = control.block || (control as LegacyControlControl);
+          const Control =
+            control.block ||
+            control.inline ||
+            (control as LegacyControlControl);
 
           return (
             <Control
