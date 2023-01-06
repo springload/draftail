@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { RichUtils } from "draft-js";
+import { EditorState, Modifier, RichUtils } from "draft-js";
 
 import { EntitySourceProps } from "../../src/api/types";
 
@@ -51,11 +51,28 @@ class LinkSource extends Component<EntitySourceProps, State> {
       data,
     );
     const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-    const nextState = RichUtils.toggleLink(
-      editorState,
-      editorState.getSelection(),
-      entityKey,
-    );
+    const selection = editorState.getSelection();
+    const shouldReplaceText = selection.isCollapsed();
+
+    let nextState;
+    if (shouldReplaceText) {
+      // If there is a title attribute, use it. Otherwise we inject the URL.
+      const newText = data.url;
+      const newContent = Modifier.replaceText(
+        contentStateWithEntity,
+        selection,
+        newText,
+        undefined,
+        entityKey,
+      );
+      nextState = EditorState.push(
+        editorState,
+        newContent,
+        "insert-characters",
+      );
+    } else {
+      nextState = RichUtils.toggleLink(editorState, selection, entityKey);
+    }
 
     onComplete(nextState);
   }
