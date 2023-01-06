@@ -6,6 +6,7 @@ import DocumentSource from "../sources/DocumentSource";
 import LinkSource from "../sources/LinkSource";
 import ImageSource from "../sources/ImageSource";
 import EmbedSource, { onPasteEmbed } from "../sources/EmbedSource";
+import EmojiSource from "../sources/EmojiSource";
 
 import Link, { onPasteLink } from "../entities/Link";
 import Document, { DOCUMENT_ICON } from "../entities/Document";
@@ -153,7 +154,6 @@ export const ENTITY_CONTROL = {
     block: EmbedBlock,
     attributes: ["url", "title", "thumbnail", "html"],
   },
-
   DOCUMENT: {
     type: "DOCUMENT",
     icon: DOCUMENT_ICON,
@@ -161,6 +161,14 @@ export const ENTITY_CONTROL = {
     source: DocumentSource,
     decorator: Document,
     attributes: ["url"],
+  },
+  EMOJI: {
+    type: "EMOJI",
+    label: "🙂",
+    description: "Emoji",
+    source: EmojiSource,
+    // The source only inserts characters, using a decorator here is a hack.
+    decorator: Link,
   },
 } as const;
 

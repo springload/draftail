@@ -429,6 +429,11 @@ storiesOf("Docs", module)
         label: "Data",
         type: "entityTypes",
         items: [
+          ENTITY_CONTROL.EMOJI,
+          {
+            ...ENTITY_CONTROL.LINK,
+            block: ENTITY_CONTROL.LINK.decorator,
+          },
           ENTITY_CONTROL.IMAGE,
           ENTITY_CONTROL.EMBED,
           {
@@ -482,6 +487,7 @@ storiesOf("Docs", module)
           }}
           entityTypes={[
             ENTITY_CONTROL.LINK,
+            ENTITY_CONTROL.EMOJI,
             ENTITY_CONTROL.IMAGE,
             ENTITY_CONTROL.EMBED,
           ]}
