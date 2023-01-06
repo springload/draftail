@@ -32,4 +32,11 @@
   // Make sure the trigger is horizontally centred.
   transform: translateY(-50%);
   visibility: hidden;
+
+  .#{$DRAFTAIL}Editor--focus &,
+  .#{$DRAFTAIL}Editor:focus-within &,
+  &:hover,
+  &:focus {
+    visibility: visible;
+  }
 }

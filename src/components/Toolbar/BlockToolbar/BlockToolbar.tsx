@@ -54,48 +54,35 @@ const BlockToolbar = ({
   const toolbarRef = useRef<HTMLDivElement>(null);
   const [focusOffset, setFocusOffset] = useState<number | string>("50%");
   const [visible, setVisible] = useState<boolean>(false);
-  const [toggleVisible, setToggleVisible] = useState<boolean>(false);
 
   const editorState = getEditorState();
   const selection = editorState.getSelection();
-  const isCollapsed = selection.isCollapsed();
-  const isStart = selection.getAnchorOffset() === 0;
   const anchorKey = selection.getAnchorKey();
   const selectedBlock = DraftUtils.getSelectedBlock(editorState);
   const blockType = selectedBlock.getType();
-  const showToggle = isCollapsed && isStart && selectedBlock.getText() === "";
 
   useEffect(() => {
     if (toolbarRef.current) {
-      if (showToggle) {
-        const editor = toolbarRef.current.closest<HTMLDivElement>(
-          "[data-draftail-editor]",
-        );
-        const block = editor!.querySelector<HTMLElement>(
-          `[data-block="true"][data-offset-key="${anchorKey}-0-0"]`,
-        );
-        if (block) {
-          const topOffset =
-            block.getBoundingClientRect().top +
-            block.getBoundingClientRect().height / 2 -
-            editor!.getBoundingClientRect().top;
-          // If the top offset cannot be calculated, it’s likely because
-          // the editor is rendered in a hidden element.
-          // In this case, default to showing the trigger in the middle of the editor.
-          setFocusOffset(topOffset === 0 ? "50%" : topOffset);
-          setToggleVisible(true);
-        }
-      } else {
-        setToggleVisible(false);
+      const editor = toolbarRef.current.closest<HTMLDivElement>(
+        "[data-draftail-editor]",
+      );
+      const block = editor!.querySelector<HTMLElement>(
+        `[data-block="true"][data-offset-key="${anchorKey}-0-0"]`,
+      );
+      if (block) {
+        const topOffset =
+          block.getBoundingClientRect().top +
+          block.getBoundingClientRect().height / 2 -
+          editor!.getBoundingClientRect().top;
+        // If the top offset cannot be calculated, it’s likely because
+        // the editor is rendered in a hidden element.
+        // In this case, default to showing the trigger in the middle of the editor.
+        setFocusOffset(topOffset === 0 ? "50%" : topOffset);
       }
     }
-
-    return () => {
-      setToggleVisible(false);
-    };
     // Account for the block type, as each type has a different height.
     // Worst-case scenario is turning a list item block into unstyled.
-  }, [showToggle, anchorKey, blockType]);
+  }, [anchorKey, blockType]);
 
   const comboOptions = behavior.getCommandPalette({
     // We always want commands for the block toolbar, even if the main command palette is disabled.
@@ -162,10 +149,7 @@ const BlockToolbar = ({
           type="button"
           aria-expanded={visible ? "true" : "false"}
           className="Draftail-BlockToolbar__trigger"
-          style={{
-            top: focusOffset,
-            visibility: toggleVisible ? "visible" : "hidden",
-          }}
+          style={{ top: focusOffset }}
           aria-label={triggerLabel}
           onClick={() => setVisible(true)}
         >
