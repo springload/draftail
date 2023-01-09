@@ -497,18 +497,40 @@ export default {
 
   getCommandPalettePrompt(editorState: EditorState) {
     const selection = editorState.getSelection();
-    const block = this.getSelectedBlock(editorState);
-    const text = block.getText();
     const isCollapsed = selection.isCollapsed();
-    const isAfterSlash = selection.getFocusOffset() > 0;
 
-    const hasPrompt =
-      isCollapsed &&
-      isAfterSlash &&
-      selection.getHasFocus() &&
-      text.startsWith("/") &&
-      ((text || "").match(/\s/g) || []).length < 2;
+    // No prompt if the selection isn’t collapsed.
+    if (!isCollapsed || !selection.getHasFocus()) {
+      return null;
+    }
 
-    return hasPrompt ? text : "";
+    const block = this.getSelectedBlock(editorState);
+    const focusOffset = selection.getFocusOffset();
+    const blockText = block.getText().slice(0, focusOffset);
+    const slashPos = blockText.lastIndexOf("/");
+    const spaceAfterSlash =
+      blockText.length > slashPos + 1 ? blockText[slashPos + 1] === " " : false;
+
+    // No prompt if there is no slash or a space right after.
+    if (slashPos === -1 || spaceAfterSlash) {
+      return null;
+    }
+
+    const hasPromptStartOfLine =
+      slashPos === 0 && (blockText.match(/\s/g) || []).length < 2;
+
+    if (hasPromptStartOfLine) {
+      return { text: blockText, block, position: slashPos };
+    }
+
+    const afterSlashText = blockText.slice(slashPos);
+
+    const hasPrompt = (afterSlashText.match(/\s/g) || []).length < 2;
+
+    if (hasPrompt) {
+      return { text: afterSlashText, block, position: slashPos };
+    }
+
+    return null;
   },
 };

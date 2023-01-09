@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { getVisibleSelectionRect } from "draft-js";
+import {
+  EditorState,
+  getVisibleSelectionRect,
+  Modifier,
+  RichUtils,
+} from "draft-js";
 
 import { ENTITY_TYPE } from "../../api/constants";
 import DraftUtils from "../../api/DraftUtils";
@@ -73,10 +78,24 @@ const CommandPalette = ({
 }: CommandPaletteProps) => {
   const editorState = getEditorState();
   const prompt = DraftUtils.getCommandPalettePrompt(editorState);
+  const promptText = prompt?.text || "";
   const [shouldOpen, setShouldOpen] = useState(false);
+  const [dismissedPrefix, setDismissedPrefix] = useState<string | null>(null);
   useEffect(() => {
-    setShouldOpen(Boolean(prompt));
-  }, [prompt, setShouldOpen]);
+    if (promptText) {
+      if (dismissedPrefix) {
+        const open = !promptText.startsWith(dismissedPrefix);
+        setShouldOpen(open);
+        if (open) {
+          setDismissedPrefix(null);
+        }
+      } else {
+        setShouldOpen(true);
+      }
+    } else {
+      setShouldOpen(false);
+    }
+  }, [dismissedPrefix, promptText]);
 
   if (!shouldOpen) {
     return null;
@@ -99,17 +118,56 @@ const CommandPalette = ({
     const itemType = item.type as string;
 
     if (item.onSelect) {
-      onCompleteSource(item.onSelect({ editorState, prompt }));
+      onCompleteSource(item.onSelect({ editorState, prompt: prompt?.text }));
     } else if (item.category === "blockTypes") {
-      const nextState = DraftUtils.resetBlockWithType(editorState, itemType);
-      onCompleteSource(nextState);
+      const selection = editorState.getSelection();
+      const promptSelection = selection.merge({
+        anchorOffset: prompt?.position,
+      });
+      const nextContent = Modifier.replaceText(
+        editorState.getCurrentContent(),
+        promptSelection,
+        "",
+      );
+      const nextState = EditorState.push(
+        editorState,
+        nextContent,
+        "remove-range",
+      );
+      onCompleteSource(RichUtils.toggleBlockType(nextState, itemType));
     } else if (item.type === ENTITY_TYPE.HORIZONTAL_RULE) {
-      const nextState = DraftUtils.resetBlockWithType(editorState);
+      const selection = editorState.getSelection();
+      const promptSelection = selection.merge({
+        anchorOffset: prompt?.position,
+      });
+      const nextContent = Modifier.replaceText(
+        editorState.getCurrentContent(),
+        promptSelection,
+        "",
+      );
+      const nextState = EditorState.push(
+        editorState,
+        nextContent,
+        "remove-range",
+      );
       onCompleteSource(
         DraftUtils.addHorizontalRuleRemovingSelection(nextState),
       );
     } else if (item.category === "entityTypes") {
-      const nextState = DraftUtils.resetBlockWithType(editorState);
+      const selection = editorState.getSelection();
+      const promptSelection = selection.merge({
+        anchorOffset: prompt?.position,
+      });
+      const nextContent = Modifier.replaceText(
+        editorState.getCurrentContent(),
+        promptSelection,
+        "",
+      );
+      const nextState = EditorState.push(
+        editorState,
+        nextContent,
+        "remove-range",
+      );
       onCompleteSource(nextState);
       setTimeout(() => {
         onRequestSource(itemType);
@@ -119,7 +177,12 @@ const CommandPalette = ({
   return (
     <Tooltip
       shouldOpen={shouldOpen}
-      onHide={() => setShouldOpen(false)}
+      onHide={() => {
+        if (prompt) {
+          setDismissedPrefix(prompt.text);
+        }
+        setShouldOpen(false);
+      }}
       getTargetPosition={getTargetPosition}
       showBackdrop
       placement={comboPlacement}
@@ -131,7 +194,7 @@ const CommandPalette = ({
             getItemLabel={getControlLabel}
             getItemDescription={getControlDescription}
             getSearchFields={getControlSearchFields}
-            inputValue={prompt.substring(1)}
+            inputValue={promptText.substring(1) || ""}
             noResultsText={noResultsText}
             onSelect={onSelect}
           />
