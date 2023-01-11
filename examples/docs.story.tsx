@@ -515,14 +515,34 @@ storiesOf("Docs", module)
           topToolbar={(props) => (
             <>
               <BlockToolbar {...props} />
-              <Toolbar {...props} />
+              <InlineToolbar
+                {...props}
+                pinButton={{
+                  floatingDescription: "Pin formatting options to the editor",
+                  stickyDescription: "Unpin from editor",
+                  floatingIcon: REDO_ICON,
+                  stickyIcon: UNDO_ICON,
+                }}
+                defaultToolbar={
+                  (sessionStorage.getItem("toolbar") as
+                    | "floating"
+                    | "sticky") || "floating"
+                }
+                onSetToolbar={(newToolbar, callback) => {
+                  sessionStorage.setItem("toolbar", newToolbar);
+                  document
+                    .querySelector(".EditorWrapper--floating-toolbars")!
+                    .classList.toggle(
+                      "EditorWrapper--floating",
+                      newToolbar === "floating",
+                    );
+                  callback();
+                }}
+              />
             </>
           )}
           bottomToolbar={(props) => (
-            <>
-              <InlineToolbar {...props} />
-              <MetaToolbar showBlockEntities {...props} />
-            </>
+            <MetaToolbar showBlockEntities {...props} />
           )}
         />
       </div>

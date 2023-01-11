@@ -9,10 +9,14 @@ $button-active-border-color: transparentize(
 $button-font-size: 1rem;
 
 .#{$DRAFTAIL}ToolbarButton {
+  // Guarantee buttons are a predictable round-number size.
+  $size: $button-font-size + $button-spacing * 2 + $draftail-base-spacing;
   @include font-smoothing();
 
   display: inline-block;
   padding: $button-spacing;
+  min-width: $size;
+  max-height: $size;
   border-radius: 0;
   background: transparent;
   color: inherit;

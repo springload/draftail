@@ -1,13 +1,13 @@
-.#{$DRAFTAIL}InlineToolbar {
+.#{$DRAFTAIL}FloatingToolbar {
   padding: $controls-spacing;
   background-color: $draftail-editor-chrome;
   color: $draftail-editor-chrome-text;
   border-radius: $draftail-toolbar-radius;
-  border-bottom: $draftail-toolbar-border-bottom;
+  border: $draftail-toolbar-border-bottom;
   outline: $draftail-contrast-outline-modal;
 }
 
-.#{$DRAFTAIL}InlineToolbar__target {
+.#{$DRAFTAIL}FloatingToolbar__target {
   position: absolute;
   pointer-events: none;
   visibility: hidden;

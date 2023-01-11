@@ -22,7 +22,11 @@ export { default as Toolbar, ToolbarProps } from "./components/Toolbar/Toolbar";
 export {
   default as InlineToolbar,
   InlineToolbarProps,
-} from "./components/Toolbar/InlineToolbar/InlineToolbar";
+} from "./components/Toolbar/InlineToolbar";
+export {
+  default as FloatingToolbar,
+  FloatingToolbarProps,
+} from "./components/Toolbar/FloatingToolbar/FloatingToolbar";
 export {
   default as BlockToolbar,
   BlockToolbarProps,

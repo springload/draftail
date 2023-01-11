@@ -61,7 +61,7 @@ class TooltipEntity extends Component<TooltipEntityProps, TooltipEntityState> {
             };
           }}
           content={
-            <div className="Draftail-InlineToolbar" role="toolbar">
+            <div className="Draftail-FloatingToolbar" role="toolbar">
               <a
                 href={url}
                 title={url}

@@ -1,0 +1,36 @@
+.#{$DRAFTAIL}ToolbarButton--pin {
+  color: $draftail-editor-chrome;
+  background-color: $draftail-editor-chrome-text;
+  border-end-start-radius: $draftail-toolbar-radius;
+  padding: 0;
+  min-width: 1.5rem;
+  height: 1.5rem;
+
+  .#{$DRAFTAIL}Icon {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  .#{$DRAFTAIL}ToolbarButton__label {
+    vertical-align: top;
+  }
+
+  &::before {
+    margin-bottom: 2px;
+  }
+
+  &::after {
+    margin-bottom: 8px;
+  }
+
+  .#{$DRAFTAIL}FloatingToolbar & {
+    vertical-align: top;
+    transform: translate($controls-spacing, -1 * $controls-spacing);
+  }
+
+  .#{$DRAFTAIL}Toolbar & {
+    position: absolute;
+    top: 1px;
+    inset-inline-end: 1px;
+  }
+}

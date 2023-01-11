@@ -4,10 +4,10 @@ import { getVisibleSelectionRect } from "draft-js";
 
 import Tooltip, { TooltipPlacement } from "../../Tooltip/Tooltip";
 import { ToolbarProps } from "../Toolbar";
-import ToolbarDefaults from "./ToolbarDefaults";
+import ToolbarDefaults from "../ToolbarDefaults";
 import ToolbarGroup from "../ToolbarGroup";
 
-export interface InlineToolbarProps extends ToolbarProps {
+export interface FloatingToolbarProps extends ToolbarProps {
   tooltipPlacement?: TooltipPlacement;
   tooltipZIndex?: number;
 }
@@ -29,14 +29,14 @@ const getTargetPosition = (editorRect: DOMRect) => {
   return null;
 };
 
-const InlineToolbar = ({
+const FloatingToolbar = ({
   controls,
   getEditorState,
   onChange,
   tooltipZIndex = 100,
   tooltipPlacement = "top" as TooltipPlacement,
   ...otherProps
-}: InlineToolbarProps) => {
+}: FloatingToolbarProps) => {
   const editorState = getEditorState();
   const selection = editorState.getSelection();
 
@@ -47,7 +47,7 @@ const InlineToolbar = ({
       placement={tooltipPlacement}
       zIndex={tooltipZIndex}
       content={
-        <div className="Draftail-InlineToolbar" role="toolbar">
+        <div className="Draftail-FloatingToolbar" role="toolbar">
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <ToolbarDefaults {...otherProps} />
 
@@ -75,4 +75,4 @@ const InlineToolbar = ({
   );
 };
 
-export default InlineToolbar;
+export default FloatingToolbar;

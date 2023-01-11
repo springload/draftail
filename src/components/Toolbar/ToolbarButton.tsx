@@ -8,6 +8,8 @@ export interface ToolbarButtonProps {
   label?: string | null;
   title?: string | null;
   icon?: IconProp | null;
+  className?: string | null;
+  tooltipDirection?: "up" | "down";
   onClick?: ((name: string) => void) | null;
 }
 
@@ -54,18 +56,20 @@ class ToolbarButton extends PureComponent<
   }
 
   render() {
-    const { name, active, label, title, icon } = this.props;
+    const { name, active, label, title, icon, className, tooltipDirection } =
+      this.props;
     const { showTooltipOnHover } = this.state;
+    const showTooltip = title && showTooltipOnHover;
 
     return (
       <button
         name={name}
-        className={`Draftail-ToolbarButton${
+        className={`Draftail-ToolbarButton ${className || ""}${
           active ? " Draftail-ToolbarButton--active" : ""
         }`}
         type="button"
         aria-label={title || undefined}
-        data-draftail-balloon={title && showTooltipOnHover ? true : null}
+        data-draftail-balloon={showTooltip ? tooltipDirection || "up" : null}
         tabIndex={-1}
         onMouseDown={this.onMouseDown}
         onMouseLeave={this.onMouseLeave}
