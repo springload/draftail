@@ -518,8 +518,8 @@ storiesOf("Docs", module)
               <InlineToolbar
                 {...props}
                 pinButton={{
-                  floatingDescription: "Pin formatting options to the editor",
-                  stickyDescription: "Unpin from editor",
+                  floatingDescription: "Pin toolbar",
+                  stickyDescription: "Unpin toolbar",
                   floatingIcon: REDO_ICON,
                   stickyIcon: UNDO_ICON,
                 }}

@@ -37,6 +37,7 @@ import {
   InlineToolbar,
   MetaToolbar,
 } from "../src";
+import indexContentState from "./constants/indexContentState";
 
 const hashtagPlugin = createHashtagPlugin();
 const linkify = linkifyPlugin();
@@ -52,6 +53,7 @@ storiesOf("Examples", module)
       </p>
       <EditorWrapper
         id="wagtail"
+        rawContentState={indexContentState as RawDraftContentState}
         ariaDescribedBy="wagtail-editor"
         placeholder="Write here or type ‘/’ to insert a block in this field"
         // Makes it easier to write automated tests retrieving the content.
@@ -81,13 +83,13 @@ storiesOf("Examples", module)
             meta: CharCount,
           },
         ]}
-        topToolbar={BlockToolbar}
-        bottomToolbar={(props) => (
+        topToolbar={(props) => (
           <>
             <InlineToolbar {...props} />
-            <MetaToolbar {...props} />
+            <BlockToolbar {...props} />
           </>
         )}
+        bottomToolbar={MetaToolbar}
         commands={[
           {
             label: "Rich text",
@@ -191,6 +193,130 @@ storiesOf("Examples", module)
             ],
           },
         ]}
+      />
+    </main>
+  ))
+  .add("Multiple editors", () => (
+    <main>
+      <EditorWrapper
+        id="multi-one"
+        rawContentState={indexContentState as RawDraftContentState}
+        placeholder="Write here or type ‘/’ to insert a block in this field"
+        // Makes it easier to write automated tests retrieving the content.
+        stateSaveInterval={50}
+        enableHorizontalRule
+        enableLineBreak
+        stripPastedStyles={false}
+        maxListNesting={6}
+        spellCheck
+        entityTypes={[
+          ENTITY_CONTROL.IMAGE,
+          ENTITY_CONTROL.EMBED,
+          ENTITY_CONTROL.LINK,
+          ENTITY_CONTROL.DOCUMENT,
+        ]}
+        blockTypes={[
+          BLOCK_CONTROL.HEADER_TWO,
+          BLOCK_CONTROL.HEADER_THREE,
+          BLOCK_CONTROL.HEADER_FOUR,
+          BLOCK_CONTROL.HEADER_FIVE,
+          BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+          BLOCK_CONTROL.ORDERED_LIST_ITEM,
+        ]}
+        inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
+        controls={[
+          {
+            meta: CharCount,
+          },
+        ]}
+        topToolbar={(props) => (
+          <>
+            <InlineToolbar {...props} />
+            <BlockToolbar {...props} />
+          </>
+        )}
+        bottomToolbar={MetaToolbar}
+        commands
+      />
+      <EditorWrapper
+        id="multi-two"
+        rawContentState={indexContentState as RawDraftContentState}
+        placeholder="Write here or type ‘/’ to insert a block in this field"
+        // Makes it easier to write automated tests retrieving the content.
+        stateSaveInterval={50}
+        enableHorizontalRule
+        enableLineBreak
+        stripPastedStyles={false}
+        maxListNesting={6}
+        spellCheck
+        entityTypes={[
+          ENTITY_CONTROL.IMAGE,
+          ENTITY_CONTROL.EMBED,
+          ENTITY_CONTROL.LINK,
+          ENTITY_CONTROL.DOCUMENT,
+        ]}
+        blockTypes={[
+          BLOCK_CONTROL.HEADER_TWO,
+          BLOCK_CONTROL.HEADER_THREE,
+          BLOCK_CONTROL.HEADER_FOUR,
+          BLOCK_CONTROL.HEADER_FIVE,
+          BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+          BLOCK_CONTROL.ORDERED_LIST_ITEM,
+        ]}
+        inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
+        controls={[
+          {
+            meta: CharCount,
+          },
+        ]}
+        topToolbar={(props) => (
+          <>
+            <InlineToolbar {...props} />
+            <BlockToolbar {...props} />
+          </>
+        )}
+        bottomToolbar={MetaToolbar}
+        commands
+      />
+      <EditorWrapper
+        id="multi-three"
+        rawContentState={indexContentState as RawDraftContentState}
+        placeholder="Write here or type ‘/’ to insert a block in this field"
+        // Makes it easier to write automated tests retrieving the content.
+        stateSaveInterval={50}
+        enableHorizontalRule
+        enableLineBreak
+        stripPastedStyles={false}
+        maxListNesting={6}
+        spellCheck
+        entityTypes={[
+          ENTITY_CONTROL.IMAGE,
+          ENTITY_CONTROL.EMBED,
+          ENTITY_CONTROL.LINK,
+          ENTITY_CONTROL.DOCUMENT,
+        ]}
+        blockTypes={[
+          BLOCK_CONTROL.HEADER_TWO,
+          BLOCK_CONTROL.HEADER_THREE,
+          BLOCK_CONTROL.HEADER_FOUR,
+          BLOCK_CONTROL.HEADER_FIVE,
+          BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+          BLOCK_CONTROL.ORDERED_LIST_ITEM,
+        ]}
+        inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
+        controls={[
+          {
+            meta: CharCount,
+          },
+        ]}
+        topToolbar={(props) => (
+          <>
+            <InlineToolbar {...props} />
+            <BlockToolbar {...props} />
+          </>
+        )}
+        bottomToolbar={MetaToolbar}
+        commands
       />
     </main>
   ))
