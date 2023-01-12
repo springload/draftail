@@ -10,39 +10,40 @@ export interface ToolbarProps extends ToolbarDefaultProps {
   controls: ReadonlyArray<ControlControl | LegacyControlControl>;
   getEditorState: () => EditorState;
   onChange: (state: EditorState) => void;
+  className?: string;
 }
 
-const Toolbar = (props: ToolbarProps) => {
-  // Support the legacy and current controls APIs.
-  const { controls, getEditorState, onChange } = props;
-  return (
-    <div className="Draftail-Toolbar" role="toolbar">
-      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-      <ToolbarDefaults {...props} />
+const Toolbar = ({
+  controls,
+  getEditorState,
+  onChange,
+  className,
+  ...otherProps
+}: ToolbarProps) => (
+  <div className={`Draftail-Toolbar ${className || ""}`} role="toolbar">
+    {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+    <ToolbarDefaults {...otherProps} />
 
-      <ToolbarGroup name="controls">
-        {controls.map((control, i) => {
-          if (control.meta) {
-            return null;
-          }
+    <ToolbarGroup name="controls">
+      {controls.map((control, i) => {
+        if (control.meta) {
+          return null;
+        }
 
-          const Control =
-            control.block ||
-            control.inline ||
-            (control as LegacyControlControl);
+        const Control =
+          control.block || control.inline || (control as LegacyControlControl);
 
-          return (
-            <Control
-              // eslint-disable-next-line react/no-array-index-key
-              key={i}
-              getEditorState={getEditorState}
-              onChange={onChange}
-            />
-          );
-        })}
-      </ToolbarGroup>
-    </div>
-  );
-};
+        return (
+          <Control
+            // eslint-disable-next-line react/no-array-index-key
+            key={i}
+            getEditorState={getEditorState}
+            onChange={onChange}
+          />
+        );
+      })}
+    </ToolbarGroup>
+  </div>
+);
 
 export default Toolbar;

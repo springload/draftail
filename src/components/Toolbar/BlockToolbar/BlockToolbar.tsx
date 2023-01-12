@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { RichUtils } from "draft-js";
 
 import { ENTITY_TYPE } from "../../../api/constants";
@@ -20,6 +20,29 @@ import ComboBox, { UseComboboxStateChange } from "../../ComboBox/ComboBox";
 import { CommandControl } from "../../../api/types";
 
 const addIcon = <span aria-hidden="true">+</span>;
+
+const getFocusOffset = (toolbarElt: HTMLElement | null, anchorKey: string) => {
+  if (!toolbarElt) {
+    return "50%";
+  }
+
+  const editor = toolbarElt.closest<HTMLDivElement>("[data-draftail-editor]");
+  const block = editor!.querySelector<HTMLElement>(
+    `[data-block="true"][data-offset-key="${anchorKey}-0-0"]`,
+  );
+  if (block) {
+    const topOffset =
+      block.getBoundingClientRect().top +
+      block.getBoundingClientRect().height / 2 -
+      editor!.getBoundingClientRect().top;
+    // If the top offset cannot be calculated, it’s likely because
+    // the editor is rendered in a hidden element.
+    // In this case, default to showing the trigger in the middle of the editor.
+    return topOffset === 0 ? "50%" : topOffset;
+  }
+
+  return "50%";
+};
 
 export interface BlockToolbarProps extends ToolbarProps {
   triggerLabel?: string;
@@ -61,28 +84,28 @@ const BlockToolbar = ({
   const selectedBlock = DraftUtils.getSelectedBlock(editorState);
   const blockType = selectedBlock.getType();
 
-  useEffect(() => {
-    if (toolbarRef.current) {
-      const editor = toolbarRef.current.closest<HTMLDivElement>(
-        "[data-draftail-editor]",
-      );
-      const block = editor!.querySelector<HTMLElement>(
-        `[data-block="true"][data-offset-key="${anchorKey}-0-0"]`,
-      );
-      if (block) {
-        const topOffset =
-          block.getBoundingClientRect().top +
-          block.getBoundingClientRect().height / 2 -
-          editor!.getBoundingClientRect().top;
-        // If the top offset cannot be calculated, it’s likely because
-        // the editor is rendered in a hidden element.
-        // In this case, default to showing the trigger in the middle of the editor.
-        setFocusOffset(topOffset === 0 ? "50%" : topOffset);
-      }
+  const updateTriggerOffset = useCallback(() => {
+    if (!toolbarRef.current) {
+      return;
     }
+    requestAnimationFrame(() => {
+      setFocusOffset(getFocusOffset(toolbarRef.current, anchorKey));
+    });
+
     // Account for the block type, as each type has a different height.
     // Worst-case scenario is turning a list item block into unstyled.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [anchorKey, blockType]);
+
+  useEffect(() => {
+    updateTriggerOffset();
+
+    document.addEventListener("draftail:toolbar", updateTriggerOffset);
+
+    return () => {
+      document.removeEventListener("draftail:toolbar", updateTriggerOffset);
+    };
+  }, [updateTriggerOffset]);
 
   const comboOptions = behavior.getCommandPalette({
     // We always want commands for the block toolbar, even if the main command palette is disabled.

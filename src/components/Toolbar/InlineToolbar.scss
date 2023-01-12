@@ -1,10 +1,23 @@
+$button-size: 1.5rem;
+
 .#{$DRAFTAIL}ToolbarButton--pin {
-  color: $draftail-editor-chrome;
-  background-color: $draftail-editor-chrome-text;
-  border-end-start-radius: $draftail-toolbar-radius;
+  position: absolute;
+  top: 0;
+  inset-inline-end: 0;
   padding: 0;
   min-width: 1.5rem;
   height: 1.5rem;
+  color: $draftail-editor-chrome;
+  background-color: $draftail-editor-chrome-text;
+  // Remove once we drop support for Safari 14.
+  // stylelint-disable-next-line property-disallowed-list
+  border-top-left-radius: 0;
+  border-start-start-radius: 0;
+  // Remove once we drop support for Safari 14.
+  // stylelint-disable-next-line property-disallowed-list
+  border-bottom-right-radius: 0;
+  border-end-end-radius: 0;
+  border: $draftail-toolbar-border-bottom;
 
   .#{$DRAFTAIL}Icon {
     width: 0.75rem;
@@ -22,15 +35,8 @@
   &::after {
     margin-bottom: 8px;
   }
+}
 
-  .#{$DRAFTAIL}FloatingToolbar & {
-    vertical-align: top;
-    transform: translate($controls-spacing, -1 * $controls-spacing);
-  }
-
-  .#{$DRAFTAIL}Toolbar & {
-    position: absolute;
-    top: 1px;
-    inset-inline-end: 1px;
-  }
+.#{$DRAFTAIL}Toolbar--pin {
+  padding-inline-end: $button-size;
 }

@@ -1,4 +1,10 @@
-import React, { useContext, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 import { Control } from "../../api/types";
 
@@ -72,17 +78,31 @@ const InlineToolbar = ({
   ...otherProps
 }: InlineToolbarProps) => {
   const [toolbar, setToolbar] = useState(defaultToolbar);
+  const handleSyncEvent = useCallback(
+    (e: CustomEventInit<{ toolbar: ToolbarType }>) => {
+      if (!e.detail) {
+        return;
+      }
+      setToolbar(e.detail.toolbar);
+    },
+    [],
+  );
   const ctx = useMemo(
     () => ({
       pinButton,
       toolbar,
       setToolbar: (val: ToolbarType) => {
-        if (onSetToolbar) {
-          onSetToolbar(val, () => {
-            setToolbar(val);
-          });
-        } else {
+        const callback = () => {
           setToolbar(val);
+          const event = new CustomEvent("draftail:toolbar", {
+            detail: { toolbar: val },
+          });
+          document.dispatchEvent(event);
+        };
+        if (onSetToolbar) {
+          onSetToolbar(val, callback);
+        } else {
+          callback();
         }
       },
     }),
@@ -90,10 +110,19 @@ const InlineToolbar = ({
   );
   const ToolbarComponent = toolbar === "floating" ? FloatingToolbar : Toolbar;
 
+  useEffect(() => {
+    document.addEventListener("draftail:toolbar", handleSyncEvent);
+
+    return () => {
+      document.removeEventListener("draftail:toolbar", handleSyncEvent);
+    };
+  }, [handleSyncEvent]);
+
   return (
     <ToolbarContext.Provider value={ctx}>
       <ToolbarComponent
         controls={controls.concat(pinControls)}
+        className="Draftail-Toolbar--pin"
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...otherProps}
       />

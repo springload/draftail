@@ -17,7 +17,7 @@ $button-font-size: 1rem;
   padding: $button-spacing;
   min-width: $size;
   max-height: $size;
-  border-radius: 0;
+  border-radius: $draftail-toolbar-radius;
   background: transparent;
   color: inherit;
   border: 1px solid transparent;

@@ -10,6 +10,7 @@ import ToolbarGroup from "../ToolbarGroup";
 export interface FloatingToolbarProps extends ToolbarProps {
   tooltipPlacement?: TooltipPlacement;
   tooltipZIndex?: number;
+  className?: string;
 }
 
 /**
@@ -35,6 +36,7 @@ const FloatingToolbar = ({
   onChange,
   tooltipZIndex = 100,
   tooltipPlacement = "top" as TooltipPlacement,
+  className,
   ...otherProps
 }: FloatingToolbarProps) => {
   const editorState = getEditorState();
@@ -47,7 +49,10 @@ const FloatingToolbar = ({
       placement={tooltipPlacement}
       zIndex={tooltipZIndex}
       content={
-        <div className="Draftail-FloatingToolbar" role="toolbar">
+        <div
+          className={`Draftail-FloatingToolbar ${className || ""}`}
+          role="toolbar"
+        >
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <ToolbarDefaults {...otherProps} />
 
