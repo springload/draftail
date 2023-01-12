@@ -533,4 +533,23 @@ export default {
 
     return null;
   },
+
+  removeCommandPalettePrompt(editorState: EditorState) {
+    const prompt = this.getCommandPalettePrompt(editorState);
+
+    if (!prompt) {
+      return editorState;
+    }
+
+    const selection = editorState.getSelection();
+    const promptSelection = selection.merge({
+      anchorOffset: prompt?.position,
+    });
+    const nextContent = Modifier.replaceText(
+      editorState.getCurrentContent(),
+      promptSelection,
+      "",
+    );
+    return EditorState.push(editorState, nextContent, "remove-range");
+  },
 };

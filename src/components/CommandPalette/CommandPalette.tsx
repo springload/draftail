@@ -120,54 +120,15 @@ const CommandPalette = ({
     if (item.onSelect) {
       onCompleteSource(item.onSelect({ editorState, prompt: prompt?.text }));
     } else if (item.category === "blockTypes") {
-      const selection = editorState.getSelection();
-      const promptSelection = selection.merge({
-        anchorOffset: prompt?.position,
-      });
-      const nextContent = Modifier.replaceText(
-        editorState.getCurrentContent(),
-        promptSelection,
-        "",
-      );
-      const nextState = EditorState.push(
-        editorState,
-        nextContent,
-        "remove-range",
-      );
+      const nextState = DraftUtils.removeCommandPalettePrompt(editorState);
       onCompleteSource(RichUtils.toggleBlockType(nextState, itemType));
     } else if (item.type === ENTITY_TYPE.HORIZONTAL_RULE) {
-      const selection = editorState.getSelection();
-      const promptSelection = selection.merge({
-        anchorOffset: prompt?.position,
-      });
-      const nextContent = Modifier.replaceText(
-        editorState.getCurrentContent(),
-        promptSelection,
-        "",
-      );
-      const nextState = EditorState.push(
-        editorState,
-        nextContent,
-        "remove-range",
-      );
+      const nextState = DraftUtils.removeCommandPalettePrompt(editorState);
       onCompleteSource(
         DraftUtils.addHorizontalRuleRemovingSelection(nextState),
       );
     } else if (item.category === "entityTypes") {
-      const selection = editorState.getSelection();
-      const promptSelection = selection.merge({
-        anchorOffset: prompt?.position,
-      });
-      const nextContent = Modifier.replaceText(
-        editorState.getCurrentContent(),
-        promptSelection,
-        "",
-      );
-      const nextState = EditorState.push(
-        editorState,
-        nextContent,
-        "remove-range",
-      );
+      const nextState = DraftUtils.removeCommandPalettePrompt(editorState);
       onCompleteSource(nextState);
       setTimeout(() => {
         onRequestSource(itemType);
