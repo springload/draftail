@@ -23,7 +23,7 @@ export { UseComboboxStateChange };
 
 export type ComboBoxStateChange = UseComboboxStateChange<ComboBoxItem>;
 
-interface ComboBoxProps<ComboBoxOption> {
+export interface ComboBoxProps<ComboBoxOption> {
   label?: string;
   placeholder?: string;
   inputValue?: string;
@@ -38,6 +38,9 @@ interface ComboBoxProps<ComboBoxOption> {
   noResultsText?: string;
 }
 
+/**
+ * A generic ComboBox component, intended to be reusable outside of Draftail.
+ */
 export default function ComboBox<ComboBoxOption extends ComboBoxItem>({
   label,
   placeholder,

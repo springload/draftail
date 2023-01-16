@@ -2,7 +2,7 @@
 
 exports[`ToolbarButton #active 1`] = `
 <button
-  className="Draftail-ToolbarButton Draftail-ToolbarButton--active"
+  className="Draftail-ToolbarButton  Draftail-ToolbarButton--active"
   data-draftail-balloon={null}
   onMouseDown={[Function]}
   onMouseLeave={[Function]}
@@ -13,7 +13,7 @@ exports[`ToolbarButton #active 1`] = `
 
 exports[`ToolbarButton #icon 1`] = `
 <button
-  className="Draftail-ToolbarButton"
+  className="Draftail-ToolbarButton "
   data-draftail-balloon={null}
   onMouseDown={[Function]}
   onMouseLeave={[Function]}
@@ -28,7 +28,7 @@ exports[`ToolbarButton #icon 1`] = `
 
 exports[`ToolbarButton #label 1`] = `
 <button
-  className="Draftail-ToolbarButton"
+  className="Draftail-ToolbarButton "
   data-draftail-balloon={null}
   onMouseDown={[Function]}
   onMouseLeave={[Function]}
@@ -45,7 +45,7 @@ exports[`ToolbarButton #label 1`] = `
 
 exports[`ToolbarButton #name 1`] = `
 <button
-  className="Draftail-ToolbarButton"
+  className="Draftail-ToolbarButton "
   data-draftail-balloon={null}
   name="TEST"
   onMouseDown={[Function]}
@@ -58,8 +58,8 @@ exports[`ToolbarButton #name 1`] = `
 exports[`ToolbarButton #title 1`] = `
 <button
   aria-label="Test title"
-  className="Draftail-ToolbarButton"
-  data-draftail-balloon={true}
+  className="Draftail-ToolbarButton "
+  data-draftail-balloon="up"
   onMouseDown={[Function]}
   onMouseLeave={[Function]}
   tabIndex={-1}
@@ -69,7 +69,7 @@ exports[`ToolbarButton #title 1`] = `
 
 exports[`ToolbarButton empty 1`] = `
 <button
-  className="Draftail-ToolbarButton"
+  className="Draftail-ToolbarButton "
   data-draftail-balloon={null}
   onMouseDown={[Function]}
   onMouseLeave={[Function]}

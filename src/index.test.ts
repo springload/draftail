@@ -45,6 +45,7 @@ describe("draftail", () => {
           "insertNewUnstyledBlock": [Function],
           "removeBlock": [Function],
           "removeBlockEntity": [Function],
+          "removeCommandPalettePrompt": [Function],
           "resetBlockWithType": [Function],
           "updateBlockEntity": [Function],
         },
@@ -61,6 +62,8 @@ describe("draftail", () => {
         "EntitySourceProps": undefined,
         "EntityType": undefined,
         "EntityTypeControl": undefined,
+        "FloatingToolbar": [Function],
+        "FloatingToolbarProps": undefined,
         "INLINE_STYLE": Object {
           "BOLD": "BOLD",
           "CODE": "CODE",

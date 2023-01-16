@@ -2,7 +2,7 @@
 
 exports[`Toolbar #controls 1`] = `
 <div
-  className="Draftail-Toolbar"
+  className="Draftail-Toolbar "
   role="toolbar"
 >
   <ToolbarDefaults
@@ -10,13 +10,6 @@ exports[`Toolbar #controls 1`] = `
     addHR={[Function]}
     blockTypes={Array []}
     commands={false}
-    controls={
-      Array [
-        Object {
-          "block": [Function],
-        },
-      ]
-    }
     currentBlock="unstyled"
     currentBlockKey="abcd"
     currentStyles={Immutable.OrderedSet []}
@@ -24,9 +17,7 @@ exports[`Toolbar #controls 1`] = `
     enableLineBreak={false}
     entityTypes={Array []}
     focus={[Function]}
-    getEditorState={[Function]}
     inlineStyles={Array []}
-    onChange={[Function]}
     onCompleteSource={[Function]}
     onRequestSource={[Function]}
     onUndoRedo={[Function]}
@@ -49,7 +40,7 @@ exports[`Toolbar #controls 1`] = `
 
 exports[`Toolbar empty 1`] = `
 <div
-  className="Draftail-Toolbar"
+  className="Draftail-Toolbar "
   role="toolbar"
 >
   <ToolbarDefaults
@@ -57,7 +48,6 @@ exports[`Toolbar empty 1`] = `
     addHR={[Function]}
     blockTypes={Array []}
     commands={false}
-    controls={Array []}
     currentBlock="unstyled"
     currentBlockKey="abcd"
     currentStyles={Immutable.OrderedSet []}
@@ -65,9 +55,7 @@ exports[`Toolbar empty 1`] = `
     enableLineBreak={false}
     entityTypes={Array []}
     focus={[Function]}
-    getEditorState={[Function]}
     inlineStyles={Array []}
-    onChange={[Function]}
     onCompleteSource={[Function]}
     onRequestSource={[Function]}
     onUndoRedo={[Function]}

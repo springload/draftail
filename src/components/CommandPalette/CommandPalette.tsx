@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  EditorState,
-  getVisibleSelectionRect,
-  Modifier,
-  RichUtils,
-} from "draft-js";
+import { getVisibleSelectionRect, RichUtils } from "draft-js";
 
 import { ENTITY_TYPE } from "../../api/constants";
 import DraftUtils from "../../api/DraftUtils";
@@ -62,6 +57,8 @@ export interface CommandPaletteProps extends ToolbarProps {
   comboPlacement?: TooltipPlacement;
   noResultsText?: string;
   tooltipZIndex?: number;
+  showBackdrop?: boolean;
+  ComboBoxComponent?: typeof ComboBox;
 }
 
 const CommandPalette = ({
@@ -71,10 +68,12 @@ const CommandPalette = ({
   comboPlacement,
   noResultsText,
   tooltipZIndex,
+  showBackdrop,
   commands,
   getEditorState,
   onCompleteSource,
   onRequestSource,
+  ComboBoxComponent = ComboBox,
 }: CommandPaletteProps) => {
   const editorState = getEditorState();
   const prompt = DraftUtils.getCommandPalettePrompt(editorState);
@@ -145,12 +144,12 @@ const CommandPalette = ({
         setShouldOpen(false);
       }}
       getTargetPosition={getTargetPosition}
-      showBackdrop
+      showBackdrop={showBackdrop}
       placement={comboPlacement}
       zIndex={tooltipZIndex}
       content={
         shouldOpen ? (
-          <ComboBox
+          <ComboBoxComponent
             items={items}
             getItemLabel={getControlLabel}
             getItemDescription={getControlDescription}
@@ -170,6 +169,7 @@ CommandPalette.defaultProps = {
   comboPlacement: "bottom-end" as TooltipPlacement,
   noResultsText: "No results found",
   tooltipZIndex: 100,
+  showBackdrop: false,
 };
 
 export default CommandPalette;

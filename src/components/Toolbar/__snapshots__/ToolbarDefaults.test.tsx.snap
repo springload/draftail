@@ -56,7 +56,7 @@ exports[`ToolbarDefaults #blockTypes 1`] = `
         onClick={[Function]}
       >
         <button
-          className="Draftail-ToolbarButton"
+          className="Draftail-ToolbarButton "
           data-draftail-balloon={null}
           name="TEST_1"
           onMouseDown={[Function]}
@@ -79,7 +79,7 @@ exports[`ToolbarDefaults #blockTypes 1`] = `
         onClick={[Function]}
       >
         <button
-          className="Draftail-ToolbarButton"
+          className="Draftail-ToolbarButton "
           data-draftail-balloon={null}
           name="TEST_2"
           onMouseDown={[Function]}
@@ -102,7 +102,7 @@ exports[`ToolbarDefaults #blockTypes 1`] = `
         onClick={[Function]}
       >
         <button
-          className="Draftail-ToolbarButton"
+          className="Draftail-ToolbarButton "
           data-draftail-balloon={null}
           name="TEST_3"
           onMouseDown={[Function]}
@@ -188,8 +188,8 @@ exports[`ToolbarDefaults #enableHorizontalRule control overrides 1`] = `
         <button
           aria-label="Horizontal rule
 - - -"
-          className="Draftail-ToolbarButton"
-          data-draftail-balloon={true}
+          className="Draftail-ToolbarButton "
+          data-draftail-balloon="up"
           name="HORIZONTAL_RULE"
           onMouseDown={[Function]}
           onMouseLeave={[Function]}
@@ -279,8 +279,8 @@ exports[`ToolbarDefaults #enableHorizontalRule works 1`] = `
         <button
           aria-label="Horizontal line
 - - -"
-          className="Draftail-ToolbarButton"
-          data-draftail-balloon={true}
+          className="Draftail-ToolbarButton "
+          data-draftail-balloon="up"
           name="HORIZONTAL_RULE"
           onMouseDown={[Function]}
           onMouseLeave={[Function]}
@@ -361,8 +361,8 @@ exports[`ToolbarDefaults #enableLineBreak control overrides 1`] = `
         <button
           aria-label="Soft line break
 ⇧ + ↵"
-          className="Draftail-ToolbarButton"
-          data-draftail-balloon={true}
+          className="Draftail-ToolbarButton "
+          data-draftail-balloon="up"
           name="BR"
           onMouseDown={[Function]}
           onMouseLeave={[Function]}
@@ -452,8 +452,8 @@ exports[`ToolbarDefaults #enableLineBreak works 1`] = `
         <button
           aria-label="Line break
 ⇧ + ↵"
-          className="Draftail-ToolbarButton"
-          data-draftail-balloon={true}
+          className="Draftail-ToolbarButton "
+          data-draftail-balloon="up"
           name="BR"
           onMouseDown={[Function]}
           onMouseLeave={[Function]}
@@ -549,7 +549,7 @@ exports[`ToolbarDefaults #entityTypes 1`] = `
         onClick={[Function]}
       >
         <button
-          className="Draftail-ToolbarButton"
+          className="Draftail-ToolbarButton "
           data-draftail-balloon={null}
           name="TEST_1"
           onMouseDown={[Function]}
@@ -571,7 +571,7 @@ exports[`ToolbarDefaults #entityTypes 1`] = `
         onClick={[Function]}
       >
         <button
-          className="Draftail-ToolbarButton"
+          className="Draftail-ToolbarButton "
           data-draftail-balloon={null}
           name="TEST_2"
           onMouseDown={[Function]}
@@ -593,7 +593,7 @@ exports[`ToolbarDefaults #entityTypes 1`] = `
         onClick={[Function]}
       >
         <button
-          className="Draftail-ToolbarButton"
+          className="Draftail-ToolbarButton "
           data-draftail-balloon={null}
           name="TEST_3"
           onMouseDown={[Function]}
@@ -669,7 +669,7 @@ exports[`ToolbarDefaults #inlineStyles 1`] = `
         onClick={[Function]}
       >
         <button
-          className="Draftail-ToolbarButton"
+          className="Draftail-ToolbarButton "
           data-draftail-balloon={null}
           name="TEST_1"
           onMouseDown={[Function]}
@@ -692,7 +692,7 @@ exports[`ToolbarDefaults #inlineStyles 1`] = `
         onClick={[Function]}
       >
         <button
-          className="Draftail-ToolbarButton"
+          className="Draftail-ToolbarButton "
           data-draftail-balloon={null}
           name="TEST_2"
           onMouseDown={[Function]}
@@ -715,7 +715,7 @@ exports[`ToolbarDefaults #inlineStyles 1`] = `
         onClick={[Function]}
       >
         <button
-          className="Draftail-ToolbarButton"
+          className="Draftail-ToolbarButton "
           data-draftail-balloon={null}
           name="TEST_3"
           onMouseDown={[Function]}
@@ -813,8 +813,8 @@ Ctrl + ⇧ + Z"
         <button
           aria-label="Redo last change
 Ctrl + ⇧ + Z"
-          className="Draftail-ToolbarButton"
-          data-draftail-balloon={true}
+          className="Draftail-ToolbarButton "
+          data-draftail-balloon="up"
           name="redo"
           onMouseDown={[Function]}
           onMouseLeave={[Function]}
@@ -904,8 +904,8 @@ Ctrl + ⇧ + Z"
         <button
           aria-label="Redo
 Ctrl + ⇧ + Z"
-          className="Draftail-ToolbarButton"
-          data-draftail-balloon={true}
+          className="Draftail-ToolbarButton "
+          data-draftail-balloon="up"
           name="redo"
           onMouseDown={[Function]}
           onMouseLeave={[Function]}
@@ -986,8 +986,8 @@ Ctrl + Z"
         <button
           aria-label="Undo last change
 Ctrl + Z"
-          className="Draftail-ToolbarButton"
-          data-draftail-balloon={true}
+          className="Draftail-ToolbarButton "
+          data-draftail-balloon="up"
           name="undo"
           onMouseDown={[Function]}
           onMouseLeave={[Function]}
@@ -1077,8 +1077,8 @@ Ctrl + Z"
         <button
           aria-label="Undo
 Ctrl + Z"
-          className="Draftail-ToolbarButton"
-          data-draftail-balloon={true}
+          className="Draftail-ToolbarButton "
+          data-draftail-balloon="up"
           name="undo"
           onMouseDown={[Function]}
           onMouseLeave={[Function]}

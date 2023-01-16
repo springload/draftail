@@ -52,6 +52,8 @@ export interface BlockToolbarProps extends ToolbarProps {
   comboPlacement?: TooltipPlacement;
   noResultsText?: string;
   tooltipZIndex?: number;
+  showBackdrop?: boolean;
+  ComboBoxComponent?: typeof ComboBox;
 }
 
 const BlockToolbar = ({
@@ -73,6 +75,8 @@ const BlockToolbar = ({
   comboPlacement = "right-start" as TooltipPlacement,
   noResultsText = "No results found",
   tooltipZIndex = 100,
+  showBackdrop = false,
+  ComboBoxComponent = ComboBox,
 }: BlockToolbarProps) => {
   const toolbarRef = useRef<HTMLDivElement>(null);
   const [focusOffset, setFocusOffset] = useState<number | string>("50%");
@@ -143,7 +147,7 @@ const BlockToolbar = ({
         onHide={() => setVisible(false)}
         placement={comboPlacement}
         zIndex={tooltipZIndex}
-        showBackdrop
+        showBackdrop={showBackdrop}
         onMount={(instance: PopperInstance) => {
           const field = instance.popper.querySelector<HTMLInputElement>(
             "[data-draftail-command-palette-input]",
@@ -154,7 +158,7 @@ const BlockToolbar = ({
         }}
         content={
           visible ? (
-            <ComboBox
+            <ComboBoxComponent
               key={`${currentBlockKey}-${currentBlock}`}
               label={comboLabel}
               placeholder={comboPlaceholder}
