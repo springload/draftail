@@ -12,21 +12,25 @@
 
 ### Added
 
+#### Toolbars
+
+- Add a new optional `FloatingToolbar` component so the editor can be rendered with a minimal height.
+- Add a new optional `BlockToolbar` component, intended for keyboard and first-time users.
+- Add a new optional `MetaToolbar` component intended to display editor metadata at the bottom of the editor.
+- Add a new optional `InlineToolbar` component, which is user-configurable to display either a static or floating toolbar.
+- Add a new optional `CommandPalette` component, usable with the `commandPalette` rendering prop and the `commands` data prop.
+- Placeholder follow focus
+- Heading blocks highlight
+- Single-line editing support
+
+#### Miscellaneous improvements
+
 - Add strict TypeScript module definition for Draftail. [#388](https://github.com/springload/draftail/issues/388), [#429](https://github.com/springload/draftail/pull/429)
 - Implement `onPaste` handler for entities to be able to create themselves on paste.
-- Add a new optional `InlineToolbar` component so the editor can be rendered with either a static or floating toolbar.
-- Add a new optional `BlockToolbar` component, intended to be used with `InlineToolbar`, so the editor UI is less visible.
-- Add a new optional `MetaToolbar` component intended to display editor metadata at the bottom of the editor.
-- Add a new optional `CommandPalette` component, usable with the `commandPalette` rendering prop and the `commands` data prop.
 - Empty blocks now have a `Draftail-block--empty` class for styling.
 - Add support for [Windows High contrast mode / Contrast themes](https://docs.microsoft.com/en-us/fluent-ui/web-components/design-system/high-contrast) for the whole editor UI.
 - Pass Draft.js ARIA props through. [#436](https://github.com/springload/draftail/issues/436), [#438](https://github.com/springload/draftail/pull/438)
 - Add a name prop and className to ToolbarGroup so different groups can have different styles, for example `Draftail-ToolbarGroup--entities`.
-- Placeholder follow focus
-- Heading blocks highlight
-- Single-line editing support
-- single-line editing
-- Dismiss keyboard shortcuts
 
 ### Changed
 
@@ -34,10 +38,12 @@
 - Draftail now uses [CSS logical properties and values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties) to [support right-to-left (RTL) languages](https://rtlstyling.com/posts/rtl-styling).
 - Latest draftjs-conductor
 - Latest draftjs-filters
+- Dismiss keyboard shortcuts
 
 ### Fixed
 
 - Fix Sass deprecation warning with `/` slash character for divisions and separators.
+- Fix potential SSR issue with first-child selector
 
 ### Removed
 
