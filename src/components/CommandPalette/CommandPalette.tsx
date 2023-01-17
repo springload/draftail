@@ -28,9 +28,7 @@ export const simulateInputEvent = (
   if (!editor) {
     return;
   }
-  const input = editor.querySelector<HTMLInputElement>(
-    "[data-draftail-command-palette-input]",
-  );
+  const input = editor.querySelector<HTMLInputElement>('[role="combobox"]');
   if (!input) {
     return;
   }

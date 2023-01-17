@@ -132,7 +132,6 @@ export default function ComboBox<ComboBoxOption extends ComboBoxItem>({
       </label>
       <div className="Draftail-ComboBox__field">
         <input
-          data-draftail-command-palette-input
           type="text"
           {...getInputProps()}
           // Prevent the field from receiving focus if it’s not visible.

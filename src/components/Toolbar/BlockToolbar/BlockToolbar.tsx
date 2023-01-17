@@ -149,9 +149,10 @@ const BlockToolbar = ({
         zIndex={tooltipZIndex}
         showBackdrop={showBackdrop}
         onMount={(instance: PopperInstance) => {
-          const field = instance.popper.querySelector<HTMLInputElement>(
-            "[data-draftail-command-palette-input]",
-          );
+          const field =
+            instance.popper.querySelector<HTMLInputElement>(
+              '[role="combobox"]',
+            );
           if (field) {
             field.focus();
           }
