@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getVisibleSelectionRect, RichUtils } from "draft-js";
+import { ContentBlock, getVisibleSelectionRect, RichUtils } from "draft-js";
 
 import { ENTITY_TYPE } from "../../api/constants";
 import DraftUtils from "../../api/DraftUtils";
@@ -62,6 +62,12 @@ const getTargetPosition = (editorRect: DOMRect) => {
   return null;
 };
 
+type Prompt = {
+  text: string;
+  position: number;
+  block: ContentBlock;
+};
+
 export interface CommandPaletteProps extends ToolbarProps {
   comboPlacement?: TooltipPlacement;
   noResultsText?: string;
@@ -87,15 +93,23 @@ const CommandPalette = ({
   const editorState = getEditorState();
   const prompt = DraftUtils.getCommandPalettePrompt(editorState);
   const promptText = prompt?.text || "";
+  const promptPos = prompt?.position;
+  const promptBlock = prompt?.block.getKey();
   const [shouldOpen, setShouldOpen] = useState(false);
-  const [dismissedPrefix, setDismissedPrefix] = useState<string | null>(null);
+  const [dismissedPrompt, setDismissedPrompt] = useState<Prompt | null>(null);
   useEffect(() => {
     if (promptText) {
-      if (dismissedPrefix) {
-        const open = !promptText.startsWith(dismissedPrefix);
+      // When there is a previously-dismissed prompt, only open the palette if the prompt has changed:
+      // - new position (char offset, block)
+      // - new starting text
+      if (dismissedPrompt) {
+        const open =
+          dismissedPrompt.position !== promptPos ||
+          dismissedPrompt.block.getKey() !== promptBlock ||
+          !promptText.startsWith(dismissedPrompt.text);
         setShouldOpen(open);
         if (open) {
-          setDismissedPrefix(null);
+          setDismissedPrompt(null);
         }
       } else {
         setShouldOpen(true);
@@ -103,7 +117,7 @@ const CommandPalette = ({
     } else {
       setShouldOpen(false);
     }
-  }, [dismissedPrefix, promptText]);
+  }, [dismissedPrompt, promptText, promptPos, promptBlock]);
 
   if (!shouldOpen) {
     return null;
@@ -148,7 +162,7 @@ const CommandPalette = ({
       shouldOpen={shouldOpen}
       onHide={() => {
         if (prompt) {
-          setDismissedPrefix(prompt.text);
+          setDismissedPrompt(prompt);
         }
         setShouldOpen(false);
       }}
