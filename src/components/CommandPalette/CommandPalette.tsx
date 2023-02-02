@@ -26,14 +26,25 @@ export const simulateInputEvent = (
     "[data-draftail-editor]",
   );
   if (!editor) {
-    return;
+    return false;
   }
   const input = editor.querySelector<HTMLInputElement>('[role="combobox"]');
   if (!input) {
-    return;
+    return false;
   }
+
+  if (key === "Enter") {
+    const selected = editor.querySelector(
+      `#${input.getAttribute("aria-controls")} [aria-selected="true"]`,
+    );
+    if (!selected) {
+      return false;
+    }
+  }
+
   input.dispatchEvent(new KeyboardEvent("keydown", { key, bubbles: true }));
   event.preventDefault();
+  return true;
 };
 
 /**

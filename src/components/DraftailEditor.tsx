@@ -639,8 +639,9 @@ class DraftailEditor extends Component<
     const showPrompt =
       !!commands && !!DraftUtils.getCommandPalettePrompt(editorState);
     if (showPrompt) {
-      simulateInputEvent("Enter", e);
-      return HANDLED;
+      if (simulateInputEvent("Enter", e)) {
+        return HANDLED;
+      }
     }
 
     // alt + enter opens links and other entities with a `url` property.
