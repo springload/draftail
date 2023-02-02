@@ -9,7 +9,7 @@ import BenchmarkResults, { BenchResultsType } from "./BenchmarkResults";
 
 type Props = {
   componentProps: unknown;
-  runOnMount: boolean;
+  runOnMount?: boolean;
 };
 
 type State = {

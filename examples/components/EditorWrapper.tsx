@@ -110,9 +110,7 @@ class EditorWrapper extends Component<EditorWrapperProps, EditorWrapperState> {
             </li>
           </ul>
           {/* Running multiple editors with the same base state is a source of issues. */}
-          {editorState ? null : (
-            <EditorBenchmark componentProps={this.props} runOnMount />
-          )}
+          {editorState ? null : <EditorBenchmark componentProps={this.props} />}
           <Highlight
             value={JSON.stringify(content || initialContent, null, 2) || ""}
           />
