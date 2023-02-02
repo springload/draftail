@@ -525,7 +525,7 @@ export default {
 
     const afterSlashText = blockText.slice(slashPos);
 
-    const hasPrompt = (afterSlashText.match(/\s/g) || []).length < 2;
+    const hasPrompt = (afterSlashText.match(/\s/g) || []).length < 1;
 
     if (hasPrompt) {
       return { text: afterSlashText, block, position: slashPos };
