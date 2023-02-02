@@ -144,7 +144,7 @@ const BlockToolbar = ({
     <div className="Draftail-BlockToolbar" ref={toolbarRef}>
       <Tooltip
         shouldOpen={visible}
-        onHide={() => setVisible(false)}
+        onClickOutside={() => setVisible(false)}
         placement={comboPlacement}
         zIndex={tooltipZIndex}
         showBackdrop={showBackdrop}
@@ -179,7 +179,7 @@ const BlockToolbar = ({
           className="Draftail-BlockToolbar__trigger"
           style={{ top: focusOffset }}
           aria-label={triggerLabel}
-          onClick={() => setVisible(true)}
+          onClick={() => setVisible(!visible)}
         >
           {triggerIcon}
         </button>

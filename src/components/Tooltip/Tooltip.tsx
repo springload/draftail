@@ -68,6 +68,7 @@ export interface TooltipProps {
   zIndex?: number;
   placement?: TooltipPlacement;
   onHide?: () => void;
+  onClickOutside?: () => void;
   onMount?: (instance: PopperInstance) => void;
 }
 
@@ -80,6 +81,7 @@ const Tooltip = ({
   zIndex = 100,
   placement = "top" as TooltipPlacement,
   onHide,
+  onClickOutside,
   onMount,
 }: TooltipProps) => {
   const parentRef = useRef<HTMLDivElement>(null);
@@ -121,7 +123,7 @@ const Tooltip = ({
         visible={visible}
         interactive
         onHide={onHide}
-        onClickOutside={onHide}
+        onClickOutside={onClickOutside || onHide}
         onMount={onMount}
         placement={placement}
         maxWidth="100%"
