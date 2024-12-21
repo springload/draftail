@@ -4,11 +4,11 @@
 
 ## Unreleased
 
-## Unreleased – v2.0.0
+## [[v2.0.0]](https://github.com/springload/draftail/releases/tag/v2.0.0)
 
-> This release contains **breaking changes**.
-
-> Documentation: [draftail.org/docs/next/getting-started](https://www.draftail.org/docs/next/getting-started)
+> This release contains **breaking changes** compared to v1.4.1. It’s identical to the v2.0.0-rc.6 pre-release.
+>
+> Documentation: [Getting started](https://www.draftail.org/docs/getting-started)
 
 ### Added
 
