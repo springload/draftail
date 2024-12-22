@@ -10,6 +10,7 @@ export type IconProp = string | string[] | JSX.Element;
 export type TextDirectionality = "LTR" | "RTL" | null;
 
 export interface Control {
+  // Identifier for this item.
   type?: string;
   // Describes the control in the editor UI, concisely.
   label?: string | null;
