@@ -39,6 +39,7 @@
 - Latest draftjs-conductor
 - Latest draftjs-filters
 - Dismiss keyboard shortcuts
+- Move Sass import from `draftail/lib/index.scss` to `draftail/src/index.scss`
 
 ### Fixed
 
@@ -54,6 +55,10 @@
 #### TypeScript type definitions
 
 For projects using TypeScript, the addition of type definitions is likely to cause new linting issues being reported in case Draftail’s new types are incompatible with the implementation.
+
+#### Sass import
+
+- Move Sass import from `draftail/lib/index.scss` to `draftail/src/index.scss`
 
 #### Browser support
 
