@@ -1,17 +1,17 @@
-@import "./api/constants";
+@forward "./api/constants";
 
-@import "./components/Icon";
-@import "./components/DraftailEditor";
-@import "./components/PlaceholderStyles/PlaceholderStyles";
-@import "./components/Tooltip/Tooltip";
-@import "./components/ComboBox/ComboBox";
-@import "./components/Toolbar/Toolbar";
-@import "./components/Toolbar/BlockToolbar/BlockToolbar";
-@import "./components/Toolbar/FloatingToolbar/FloatingToolbar";
-@import "./components/Toolbar/MetaToolbar";
-@import "./components/Toolbar/ToolbarGroup";
-@import "./components/Toolbar/ToolbarButton";
-@import "./components/Toolbar/ToolbarTooltip";
-@import "./components/Toolbar/InlineToolbar";
+@use "./components/Icon";
+@use "./components/DraftailEditor";
+@use "./components/PlaceholderStyles/PlaceholderStyles";
+@use "./components/Tooltip/Tooltip";
+@use "./components/ComboBox/ComboBox";
+@use "./components/Toolbar/Toolbar";
+@use "./components/Toolbar/BlockToolbar/BlockToolbar";
+@use "./components/Toolbar/FloatingToolbar/FloatingToolbar";
+@use "./components/Toolbar/MetaToolbar";
+@use "./components/Toolbar/ToolbarGroup";
+@use "./components/Toolbar/ToolbarButton";
+@use "./components/Toolbar/ToolbarTooltip";
+@use "./components/Toolbar/InlineToolbar";
 
-@import "./blocks/DividerBlock";
+@use "./blocks/DividerBlock";

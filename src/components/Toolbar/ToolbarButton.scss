@@ -1,4 +1,5 @@
 @use "sass:color";
+@use "../../api/constants" as *;
 
 $button-active-color: color.adjust(
   $color: $draftail-editor-chrome-active,

@@ -1,3 +1,5 @@
+@use "../api/constants" as *;
+
 .#{$DRAFTAIL}DividerBlock {
   border: 0;
   background: $color-light-grey;

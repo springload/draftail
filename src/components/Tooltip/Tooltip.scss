@@ -1,3 +1,5 @@
+@use "../../api/constants" as *;
+
 // Tippy CSS re-implemented with only needed properties, and logical properties.
 // @import "~tippy.js/dist/tippy.css";
 .#{$DRAFTAIL}Editor {

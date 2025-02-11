@@ -1,3 +1,5 @@
+@use "../../api/constants" as *;
+
 .#{$DRAFTAIL}Toolbar {
   position: relative;
   padding: $controls-spacing;

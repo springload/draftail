@@ -1,3 +1,5 @@
+@use "../api/constants" as *;
+
 .#{$DRAFTAIL}Editor {
   --draftail-offset-inline-start: 2rem;
   --draftail-text-direction: 1;
@@ -64,12 +66,4 @@
 .#{$DRAFTAIL}block--unstyled,
 .#{$DRAFTAIL}Editor .public-DraftEditorPlaceholder-inner {
   margin: $draftail-block-spacing 0;
-}
-
-// This makes it possible to add styles to rich text content within the editor,
-// without Draftail users having to know exactly which Draft.js class to use.
-@mixin draftail-richtext-styles {
-  .#{$DRAFTAIL}Editor .DraftEditor-editorContainer {
-    @content;
-  }
 }

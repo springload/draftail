@@ -69,3 +69,11 @@ $draftail-page-overlay-z-index: $draftail-toolbar-z-index + 10 !default;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+// This makes it possible to add styles to rich text content within the editor,
+// without Draftail users having to know exactly which Draft.js class to use.
+@mixin draftail-richtext-styles {
+  .#{$DRAFTAIL}Editor .DraftEditor-editorContainer {
+    @content;
+  }
+}
