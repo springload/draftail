@@ -86,7 +86,7 @@
     "jest-environment-jsdom": "^28.1.1",
     "jest-environment-node": "^28.1.1",
     "jest-image-snapshot": "^5.1.0",
-    "markov_draftjs": "^0.2.0",
+    "markov_draftjs": "^2.0.1",
     "mkdirp": "^1.0.4",
     "normalize.css": "^8.0.1",
     "prettier": "^2.7.1",
