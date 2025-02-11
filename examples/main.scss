@@ -1,3 +1,5 @@
+@use "sass:color";
+
 @import "../node_modules/normalize.css";
 @import "../node_modules/draft-js-emoji-plugin/lib/plugin.css";
 
@@ -27,9 +29,9 @@ $FONT_SIZE_TEXT: 1rem;
 $draftail-editor-chrome: $GREY_333;
 $draftail-editor-chrome-text: $WHITE;
 $draftail-editor-chrome-active: $WHITE;
-$draftail-editor-chrome-accent: lighten(
+$draftail-editor-chrome-accent: color.adjust(
   $color: $draftail-editor-chrome,
-  $amount: 20%,
+  $lightness: 20%,
 );
 
 $draftail-editor-font-family: $FONT_FAMILY_SANS;
