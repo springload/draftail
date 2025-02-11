@@ -44,7 +44,12 @@ class SentryBoundary extends Component<Props, State> {
       <div className="editor">
         <div className="editor__toolbar">
           <div className="toolbar-group">
-            <button type="button" className="toolbar-button" disabled>
+            <button
+              type="button"
+              className="toolbar-button"
+              disabled
+              aria-label="Placeholder"
+            >
               &nbsp;
             </button>
           </div>
