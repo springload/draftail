@@ -7,13 +7,15 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
       - id: node-cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/.nvmrc') }}-${{ hashFiles('**/package-lock.json') }}
@@ -28,10 +30,10 @@ jobs:
       - run: npm run test:performance -s
       - run: base64 < ./tests/integration/__image_snapshots__/__diff_output__/* || true
       - run: mv coverage/lcov-report build || true
-      - uses: coverallsapp/github-action@master
+      - uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: reports
           path: public
