@@ -1,6 +1,8 @@
 import { storiesOf } from "@storybook/react";
 import React, { Component, useState } from "react";
 
+import { BlockToolbar, InlineToolbar, MetaToolbar } from "../src";
+
 import {
   INLINE_CONTROL,
   BLOCK_CONTROL,
@@ -10,6 +12,7 @@ import {
 } from "./constants/ui";
 
 import EditorWrapper from "./components/EditorWrapper";
+import CharCount from "./components/CharCount";
 
 storiesOf("Tests", module)
   // Add a decorator rendering story as a component for hooks support.
@@ -180,4 +183,48 @@ storiesOf("Tests", module)
         </button>
       </>
     );
-  });
+  })
+  .add("Integration", () => (
+    <main>
+      <p id="integration-editor">Integration tests</p>
+      <EditorWrapper
+        id="integration"
+        ariaDescribedBy="integration-editor"
+        placeholder="Write here…"
+        // Makes it easier to write automated tests retrieving the content.
+        stateSaveInterval={50}
+        enableHorizontalRule
+        enableLineBreak
+        stripPastedStyles={false}
+        maxListNesting={6}
+        spellCheck
+        entityTypes={[
+          ENTITY_CONTROL.IMAGE,
+          ENTITY_CONTROL.EMBED,
+          ENTITY_CONTROL.LINK,
+          ENTITY_CONTROL.DOCUMENT,
+        ]}
+        blockTypes={[
+          BLOCK_CONTROL.HEADER_TWO,
+          BLOCK_CONTROL.HEADER_THREE,
+          BLOCK_CONTROL.HEADER_FOUR,
+          BLOCK_CONTROL.HEADER_FIVE,
+          BLOCK_CONTROL.UNORDERED_LIST_ITEM,
+          BLOCK_CONTROL.ORDERED_LIST_ITEM,
+        ]}
+        inlineStyles={[INLINE_CONTROL.BOLD, INLINE_CONTROL.ITALIC]}
+        controls={[
+          {
+            meta: CharCount,
+          },
+        ]}
+        topToolbar={(props) => (
+          <>
+            <InlineToolbar defaultToolbar="sticky" {...props} />
+            <BlockToolbar {...props} />
+          </>
+        )}
+        bottomToolbar={MetaToolbar}
+      />
+    </main>
+  ));

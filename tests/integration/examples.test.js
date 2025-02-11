@@ -8,9 +8,7 @@ describe("/storybook/", () => {
   let page;
   beforeAll(async () => {
     page = await global.BROWSER.newPage();
-    await page.goto(
-      `${global.ROOT}?selectedKind=Examples&selectedStory=Wagtail%20features`,
-    );
+    await page.goto(`${global.ROOT}?id=tests--integration`);
 
     await page.addScriptTag({ path: require.resolve("axe-core") });
   });
@@ -62,7 +60,7 @@ describe("/storybook/", () => {
       await page.keyboard.press("ArrowRight");
       await page.waitFor(100);
       const content = await page.evaluate(() =>
-        JSON.parse(window.sessionStorage.getItem("wagtail:content")),
+        JSON.parse(window.sessionStorage.getItem("integration:content")),
       );
       content.blocks.forEach((b) => delete b.key);
       expect(content.blocks).toMatchSnapshot();
@@ -72,7 +70,7 @@ describe("/storybook/", () => {
       await page.type('[role="textbox"]', "### H3");
       await page.waitFor(100);
       const content = await page.evaluate(() =>
-        JSON.parse(window.sessionStorage.getItem("wagtail:content")),
+        JSON.parse(window.sessionStorage.getItem("integration:content")),
       );
       content.blocks.forEach((b) => delete b.key);
       expect(content.blocks).toMatchSnapshot();
@@ -82,7 +80,7 @@ describe("/storybook/", () => {
       await page.type('[role="textbox"]', "* UL");
       await page.waitFor(100);
       const content = await page.evaluate(() =>
-        JSON.parse(window.sessionStorage.getItem("wagtail:content")),
+        JSON.parse(window.sessionStorage.getItem("integration:content")),
       );
       content.blocks.forEach((b) => delete b.key);
       expect(content.blocks).toMatchSnapshot();
@@ -92,7 +90,7 @@ describe("/storybook/", () => {
       await page.type('[role="textbox"]', "---");
       await page.waitFor(100);
       const content = await page.evaluate(() =>
-        JSON.parse(window.sessionStorage.getItem("wagtail:content")),
+        JSON.parse(window.sessionStorage.getItem("integration:content")),
       );
       content.blocks.forEach((b) => delete b.key);
       expect(content).toMatchSnapshot();
@@ -107,7 +105,7 @@ describe("/storybook/", () => {
       await page.type('[role="textbox"]', "lo");
       await page.waitFor(100);
       const content = await page.evaluate(() =>
-        JSON.parse(window.sessionStorage.getItem("wagtail:content")),
+        JSON.parse(window.sessionStorage.getItem("integration:content")),
       );
       content.blocks.forEach((b) => delete b.key);
       expect(content).toMatchSnapshot();
@@ -119,7 +117,7 @@ describe("/storybook/", () => {
       await page.keyboard.press("Enter");
       await page.waitFor(100);
       const content = await page.evaluate(() =>
-        JSON.parse(window.sessionStorage.getItem("wagtail:content")),
+        JSON.parse(window.sessionStorage.getItem("integration:content")),
       );
       content.blocks.forEach((b) => delete b.key);
       expect(content).toMatchSnapshot();
@@ -137,7 +135,7 @@ describe("/storybook/", () => {
       await page.keyboard.press("Enter");
       await page.waitFor(100);
       const content = await page.evaluate(() =>
-        JSON.parse(window.sessionStorage.getItem("wagtail:content")),
+        JSON.parse(window.sessionStorage.getItem("integration:content")),
       );
       content.blocks.forEach((b) => delete b.key);
       expect(content).toMatchSnapshot();

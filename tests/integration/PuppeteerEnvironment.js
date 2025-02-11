@@ -1,4 +1,4 @@
-const NodeEnvironment = require("jest-environment-node");
+const { TestEnvironment } = require("jest-environment-node");
 const puppeteer = require("puppeteer");
 const fs = require("fs");
 const os = require("os");
@@ -12,7 +12,7 @@ const IS_WATCH = process.argv.includes("--watch");
  * Automated end to end integration tests built with Puppeteer.
  * See https://facebook.github.io/jest/docs/en/puppeteer.html.
  */
-class PuppeteerEnvironment extends NodeEnvironment {
+class PuppeteerEnvironment extends TestEnvironment {
   constructor(config, options) {
     super(config, options);
 

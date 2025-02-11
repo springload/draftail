@@ -7,9 +7,7 @@ describe("performance", () => {
   });
 
   it("simple editor", async () => {
-    await page.goto(
-      `${global.ROOT}?selectedKind=Draftail&selectedStory=Simple`,
-    );
+    await page.goto(`${global.ROOT}?id=draftail--simple`);
 
     await page.type('[role="textbox"]', "Hello");
     await page.keyboard.press("Enter");
@@ -26,9 +24,7 @@ describe("performance", () => {
 
   it("markov_draftjs 41 memory", async () => {
     jest.setTimeout(20000);
-    await page.goto(
-      `${global.ROOT}?selectedKind=Performance&selectedStory=markov_draftjs%2041`,
-    );
+    await page.goto(`${global.ROOT}?id=performance--markov_draftjs%2041`);
 
     const heapSize = await page.evaluate(
       () => window.performance.memory.usedJSHeapSize,
@@ -39,9 +35,8 @@ describe("performance", () => {
 
   it("markov_draftjs 41 speed", async () => {
     jest.setTimeout(20000);
-    await page.goto(
-      `${global.ROOT}?selectedKind=Performance&selectedStory=markov_draftjs%2041`,
-    );
+    await page.goto(`${global.ROOT}?id=performance--markov-draftjs-41`);
+    await page.waitForSelector('[data-benchmark="mean"]');
 
     const mean = await page.$eval('[data-benchmark="mean"]', (elt) =>
       parseFloat(elt.innerHTML),
