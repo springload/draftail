@@ -1,10 +1,12 @@
-$button-active-color: transparentize(
+@use "sass:color";
+
+$button-active-color: color.adjust(
   $color: $draftail-editor-chrome-active,
-  $amount: 0.9,
+  $alpha: -0.9,
 );
-$button-active-border-color: transparentize(
+$button-active-border-color: color.adjust(
   $color: $draftail-editor-chrome-active,
-  $amount: 0.8,
+  $alpha: -0.8,
 );
 $button-font-size: 1rem;
 

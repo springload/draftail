@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // Namespace for all classes, reduces the risk of style clashes.
 $DRAFTAIL: "Draftail-";
 
@@ -22,9 +24,9 @@ $draftail-editor-readonly-opacity: 0.5 !default;
 $draftail-editor-chrome: $color-light-grey !default;
 $draftail-editor-chrome-text: $color-grey !default;
 $draftail-editor-chrome-active: $color-black !default;
-$draftail-editor-chrome-accent: darken(
+$draftail-editor-chrome-accent: color.adjust(
   $color: $draftail-editor-chrome,
-  $amount: 10%,
+  $lightness: -10%,
 ) !default;
 $draftail-tooltip-chrome: $color-grey !default;
 $draftail-tooltip-chrome-text: $color-white !default;

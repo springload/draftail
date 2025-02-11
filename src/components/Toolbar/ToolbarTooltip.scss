@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:color";
 
 // Code initially taken from Balloon.css
 // See https://github.com/kazzkiq/balloon.css.
@@ -6,9 +7,9 @@
 // Variables
 // -----------------------------------------
 
-$balloon-bg: transparentize(
+$balloon-bg: color.adjust(
   $color: #111,
-  $amount: 0.1,
+  $alpha: -0.1,
 ) !default;
 $balloon-text-color: $color-white;
 $arrow-height: 6px;
