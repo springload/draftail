@@ -89,7 +89,7 @@
     "markov_draftjs": "^2.0.1",
     "mkdirp": "^1.0.4",
     "normalize.css": "^8.0.1",
-    "prettier": "^2.7.1",
+    "prettier": "^2.8.8",
     "prismjs": "^1.28.0",
     "puppeteer": "^14.3.0",
     "react": "^16.14.0",

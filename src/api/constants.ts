@@ -16,7 +16,7 @@ export const BLOCK_TYPE = {
   ATOMIC: "atomic",
 } as const;
 
-export type BlockType = typeof BLOCK_TYPE[keyof typeof BLOCK_TYPE];
+export type BlockType = (typeof BLOCK_TYPE)[keyof typeof BLOCK_TYPE];
 
 export const ENTITY_TYPE = {
   LINK: "LINK",
@@ -24,7 +24,7 @@ export const ENTITY_TYPE = {
   HORIZONTAL_RULE: "HORIZONTAL_RULE",
 } as const;
 
-export type EntityType = typeof ENTITY_TYPE[keyof typeof ENTITY_TYPE];
+export type EntityType = (typeof ENTITY_TYPE)[keyof typeof ENTITY_TYPE];
 
 // See https://github.com/facebook/draft-js/blob/master/src/model/immutable/DefaultDraftInlineStyle.js
 export const INLINE_STYLE = {
@@ -44,7 +44,7 @@ export const INLINE_STYLE = {
   SUBSCRIPT: "SUBSCRIPT",
 } as const;
 
-export type InlineStyle = typeof INLINE_STYLE[keyof typeof INLINE_STYLE];
+export type InlineStyle = (typeof INLINE_STYLE)[keyof typeof INLINE_STYLE];
 
 const BLOCK_TYPES = Object.values(BLOCK_TYPE);
 const ENTITY_TYPES = Object.values(ENTITY_TYPE);
@@ -62,7 +62,7 @@ export const KEY_COMMANDS = [
   "code",
 ] as const;
 
-export type KnownKeyCommand = typeof KEY_COMMANDS[number];
+export type KnownKeyCommand = (typeof KEY_COMMANDS)[number];
 
 export const FONT_FAMILY_MONOSPACE =
   "Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif";
