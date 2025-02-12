@@ -6,6 +6,9 @@
 
 [![Screenshot of Draftail](https://www.draftail.org/img/draftail-ui-screenshot.png)](https://www.draftail.org/)
 
+> [!NOTE]
+> While Draftail itself is maintained, the underlying Draft.js library has been archived and no longer receives updates. For more information, see [Draft.js no longer maintained #456](https://github.com/springload/draftail/issues/456).
+
 ## Features
 
 Draftail aims for a mouse-free, keyboard-centric experience. Here are important features worth highlighting:
