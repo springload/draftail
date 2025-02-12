@@ -2,7 +2,18 @@
 
 > All notable changes to this project are documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [[v2.0.1]](https://github.com/springload/draftail/releases/tag/v2.0.1)
+
+> Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
+
+### Fixed
+
+- Fix Sass deprecation warning with `@import` syntax.
+- Fix Sass deprecation warning with legacy color functions.
+
+### Changed
+
+- Allow a wide range of downshift dependency versions: `^7.0.4 || ^8.5.0 || ^9.0.0`.
 
 ## [[v2.0.0]](https://github.com/springload/draftail/releases/tag/v2.0.0)
 
