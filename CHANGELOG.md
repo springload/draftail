@@ -8,8 +8,8 @@
 
 ### Fixed
 
-- Fix Sass deprecation warning with `@import` syntax.
-- Fix Sass deprecation warning with legacy color functions.
+- Fix Sass deprecation warning with `@import` syntax. [#459](https://github.com/springload/draftail/issues/459)
+- Fix Sass deprecation warning with legacy color functions. [#459](https://github.com/springload/draftail/issues/459)
 
 ### Changed
 
