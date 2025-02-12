@@ -4,7 +4,7 @@
 
 ## [[v2.0.1]](https://github.com/springload/draftail/releases/tag/v2.0.1)
 
-> Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
+> Documentation: [v2.0.0 Getting started](https://www.draftail.org/docs/getting-started)
 
 ### Fixed
 
@@ -19,7 +19,7 @@
 
 > This release contains **breaking changes** compared to v1.4.1. It’s identical to the v2.0.0-rc.6 pre-release.
 >
-> Documentation: [Getting started](https://www.draftail.org/docs/getting-started)
+> Documentation: [v2.0.0 Getting started](https://www.draftail.org/docs/getting-started)
 
 ### Added
 
@@ -100,7 +100,7 @@ Entities now accept a `allowlist` attribute rather than `whitelist`.
 
 ## [[v1.4.1]](https://github.com/springload/draftail/releases/tag/v1.4.1)
 
-> Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
+> Documentation: [v1.4.0 Getting started](https://www.draftail.org/docs/1.4.0/getting-started)
 
 ### Fixed
 
@@ -108,7 +108,7 @@ Entities now accept a `allowlist` attribute rather than `whitelist`.
 
 ## [[v1.4.0]](https://github.com/springload/draftail/releases/tag/v1.4.0)
 
-> Documentation: [draftail.org/docs/getting-started](https://www.draftail.org/docs/getting-started)
+> Documentation: [v1.4.0 Getting started](https://www.draftail.org/docs/1.4.0/getting-started)
 
 ### Added
 
@@ -125,7 +125,7 @@ Entities now accept a `allowlist` attribute rather than `whitelist`.
 
 ## [[v1.3.0]](https://github.com/springload/draftail/releases/tag/v1.3.0)
 
-> Documentation: [draftail.org/docs/1.3.0/getting-started](https://www.draftail.org/docs/1.3.0/getting-started)
+> Documentation: [v1.3.0 Getting started](https://www.draftail.org/docs/1.3.0/getting-started)
 
 🎉 blog post for this release: [Draftail v1.3.0: community improvements, beyond Wagtail](https://www.draftail.org/blog/2019/03/03/draftail-v1-2-0-supporting-modern-experiences).
 
