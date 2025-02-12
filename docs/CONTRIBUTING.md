@@ -77,8 +77,8 @@ npm run
 
 ```sh
 npm run dist
-# Use irish-pub to check the package content. Install w/ npm install -g first.
-irish-pub
+npm run report:size
+npm run report:package
 npm publish
 ```
 
